@@ -11,7 +11,7 @@
 #import "PDFViewController.h"
 #import <ScanbotSDK/SBSDKCropViewController.h>
 
-@interface DocumentDemoViewController () <SBSDKCropViewControllerDelegate>
+@interface DocumentDemoViewController () <SBSDKImageEditingViewControllerDelegate>
 @property (strong, nonatomic) SBSDKImageStorage *imageStorage;
 @property (strong, nonatomic) SBSDKImageStorage *originalImageStorage;
 @property (strong, nonatomic) IBOutlet UIButton *actionsButton;
@@ -531,29 +531,41 @@ shouldRotateInterfaceForDeviceOrientation:(UIDeviceOrientation)orientation
 
 - (IBAction)performManualCrop:(id)sender {
     UIImage *image = [self.originalImageStorage imageAtIndex:0];
-    SBSDKCropViewController *cropController = [[SBSDKCropViewController alloc] init];
-    cropController.image = image;
-    cropController.delegate = self;
-    [self.navigationController pushViewController:cropController animated:YES];
+    SBSDKImageEditingViewController *editingViewController = [[SBSDKImageEditingViewController alloc] init];
+    editingViewController.image = image;
+    editingViewController.delegate = self;
+    [self.navigationController pushViewController:editingViewController animated:YES];
 }
 
 - (IBAction)goBack:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-#pragma mark - SBSDKCropViewControllerDelegate implementation
+#pragma mark - SBSDKImageEditingViewControllerDelegate implementation
 
-- (void)cropViewControllerDidCancelChanges:(SBSDKCropViewController *)cropViewController {
-    [cropViewController.navigationController popViewControllerAnimated:YES];
+
+
+- (void)imageEditingViewControllerDidCancelChanges:(SBSDKImageEditingViewController *)editingViewController {
+    [editingViewController.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)cropViewController:(SBSDKCropViewController *)cropViewController
-didApplyChangesWithPolygon:(SBSDKPolygon *)polygon
-              croppedImage:(UIImage *)croppedImage {
+- (void)imageEditingViewController:(SBSDKImageEditingViewController *)editingViewController
+        didApplyChangesWithPolygon:(SBSDKPolygon *)polygon croppedImage:(UIImage *)croppedImage {
+    
     /**
      * Perform custom actions with cropped results
      */
-    [cropViewController.navigationController popViewControllerAnimated:YES];
+    [editingViewController.navigationController popViewControllerAnimated:YES];
+}
+
+- (UIBarButtonItem *_Nullable)imageEditingViewControllerRotateClockwiseToolbarItem:(nonnull SBSDKImageEditingViewController *)editingViewController {
+    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Right" style:UIBarButtonItemStylePlain
+                                           target:nil action:NULL];
+}
+
+- (UIBarButtonItem *_Nullable)imageEditingViewControllerRotateCounterClockwiseToolbarItem:(nonnull SBSDKImageEditingViewController *)editingViewController {
+    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Left" style:UIBarButtonItemStylePlain
+                                           target:nil action:NULL];
 }
 
 
