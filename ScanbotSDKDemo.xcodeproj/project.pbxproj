@@ -51,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SBSDKLanguageData; path = ScanbotSDK/AdditionalData/SBSDKLanguageData; sourceTree = SOURCE_ROOT; };
+		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKCreditCardData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKCreditCardData.bundle; sourceTree = SOURCE_ROOT; };
 		0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +105,7 @@
 		9ED845781AE670CC008B2731 = {
 			isa = PBXGroup;
 			children = (
+				082022701F791157005FF9F2 /* README.md */,
 				9ED845831AE670CC008B2731 /* DemoApp */,
 				9ED845821AE670CC008B2731 /* Products */,
 			);
@@ -120,10 +122,10 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
-				C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */,
 				C27562771DE45368003F5FE0 /* AppDelegate.h */,
 				C27562781DE45368003F5FE0 /* AppDelegate.m */,
+				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
+				C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */,
 				C27562791DE45368003F5FE0 /* ChequeViewController.h */,
 				C275627A1DE45368003F5FE0 /* ChequeViewController.m */,
 				C275627B1DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.h */,
