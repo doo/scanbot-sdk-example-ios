@@ -28,7 +28,7 @@ Scanbot SDK supports iOS 8 and higher.
 
 If you need further information or are interested in licensing Scanbot SDK please contact us: sdk@scanbot.io
 
-[Get Scanbot SDK and Demo App](https://scanbot.io/sdk.html)
+[Get Scanbot SDK](https://scanbot.io/sdk.html)
 
 [View Scanbot SDK Online documentation](https://scanbotsdk.github.io/documentation/ios/)
 
@@ -38,7 +38,7 @@ If you need further information or are interested in licensing Scanbot SDK pleas
 
 - Clone this repository to a local folder
 - [Download the latest Scanbot SDK from our website](https://scanbot.io/sdk.html)
-- Unzip the downloaded zip file and copy the extracted <ScanbotSDK> folder to your local folder containing the example app
+- Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
 - Open ScanbotSDKDemo.xcodeproj with Xcode, build and run
 
 
