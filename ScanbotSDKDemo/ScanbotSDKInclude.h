@@ -1,6 +1,6 @@
 //
 //  ScanbotSDKInclude.h
-//  ScanbotSDKTestApp
+//  ScanbotSDKDemo
 //
 //  Created by Sebastian Husche on 28.06.16.
 //  Copyright © 2016 doo GmbH. All rights reserved.

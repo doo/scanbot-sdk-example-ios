@@ -1,6 +1,6 @@
 //
 //  DocumentDemoViewController.m
-//  PayFormScannerDemo
+//  ScanbotSDKDemo
 //
 //  Created by Sebastian Husche on 08.06.15.
 //  Copyright (c) 2015 doo GmbH. All rights reserved.

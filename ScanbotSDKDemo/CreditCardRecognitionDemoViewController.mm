@@ -1,9 +1,9 @@
 //
 //  CreditCardRecognitionDemoViewController.m
-//  CreditCardRecognizer
+//  ScanbotSDKDemo
 //
 //  Created by Max Tymchiy on 2/25/16.
-//  Copyright © 2016 Max Tymchiy. All rights reserved.
+//  Copyright (c) 2016 doo GmbH. All rights reserved.
 //
 
 #import "CreditCardRecognitionDemoViewController.h"

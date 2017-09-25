@@ -1,9 +1,9 @@
 //
 //  ChequeViewController.m
-//  ScanbotSDKTestApp
+//  ScanbotSDKDemo
 //
 //  Created by Dmitry Zaytsev on 12/04/16.
-//  Copyright © 2016 doo GmbH. All rights reserved.
+//  Copyright (c) 2016 doo GmbH. All rights reserved.
 //
 
 #import "ChequeViewController.h"
