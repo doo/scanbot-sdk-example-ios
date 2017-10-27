@@ -17,6 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // TODO Add your Scanbot SDK license here:
+    //[ScanbotSDK setLicense: @"..."];
+    
     return YES;
 }
 
