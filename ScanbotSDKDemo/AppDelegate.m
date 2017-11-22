@@ -1,6 +1,6 @@
 //
 //  AppDelegate.m
-//  PayFormScannerDemo
+//  ScanbotSDKDemo
 //
 //  Created by Sebastian Husche on 21.04.15.
 //  Copyright (c) 2015 doo GmbH. All rights reserved.
@@ -17,6 +17,9 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // TODO Add your Scanbot SDK license here:
+    //[ScanbotSDK setLicense: @"..."];
+    
     return YES;
 }
 

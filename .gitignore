@@ -1,2 +1,7 @@
 .DS_Store
-/ScanbotSDKDemo.xcodeproj/project.xcworkspace/xcuserdata/sebastianhusche.xcuserdatad/UserInterfaceState.xcuserstate
+
+ScanbotSDK/
+ScanbotSDKDemo.xcodeproj/project.xcworkspace/xcuserdata/
+ScanbotSDKDemo.xcodeproj/xcuserdata/
+
+.idea/
