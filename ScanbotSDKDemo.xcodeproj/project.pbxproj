@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		0820226D1F790A41005FF9F2 /* ScanbotSDKCreditCardData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */; };
 		0820226F1F790A93005FF9F2 /* SBSDKLanguageData in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */; };
+		08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BB21FC5818500E01F0E /* QRDemoViewController.m */; };
+		08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */; };
+		08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */; };
+		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		0896B5F31F7909BA00E79F85 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
 		C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627A1DE45368003F5FE0 /* ChequeViewController.m */; };
@@ -52,6 +56,14 @@
 /* Begin PBXFileReference section */
 		0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SBSDKLanguageData; path = ScanbotSDK/AdditionalData/SBSDKLanguageData; sourceTree = SOURCE_ROOT; };
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		08299BAE1FC5818400E01F0E /* QRDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRDemoViewController.h; sourceTree = "<group>"; };
+		08299BB21FC5818500E01F0E /* QRDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRDemoViewController.m; sourceTree = "<group>"; };
+		08299BBC1FC5822F00E01F0E /* QRDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRDescriptionViewController.h; sourceTree = "<group>"; };
+		08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRDescriptionViewController.m; sourceTree = "<group>"; };
+		08299BBE1FC5822F00E01F0E /* RecognizedQRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizedQRCell.h; sourceTree = "<group>"; };
+		08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognizedQRCell.m; sourceTree = "<group>"; };
+		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
+		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
 		088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKCreditCardData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKCreditCardData.bundle; sourceTree = SOURCE_ROOT; };
 		0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -102,6 +114,19 @@
 			path = ..;
 			sourceTree = "<group>";
 		};
+		08299BBB1FC5822F00E01F0E /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				08299BBC1FC5822F00E01F0E /* QRDescriptionViewController.h */,
+				08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */,
+				08299BBE1FC5822F00E01F0E /* RecognizedQRCell.h */,
+				08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */,
+				08299BC01FC5822F00E01F0E /* UnfoldTransition.h */,
+				08299BC11FC5822F00E01F0E /* UnfoldTransition.m */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9ED845781AE670CC008B2731 = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +147,9 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				08299BBB1FC5822F00E01F0E /* Helpers */,
+				08299BAE1FC5818400E01F0E /* QRDemoViewController.h */,
+				08299BB21FC5818500E01F0E /* QRDemoViewController.m */,
 				C27562771DE45368003F5FE0 /* AppDelegate.h */,
 				C27562781DE45368003F5FE0 /* AppDelegate.m */,
 				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
@@ -241,14 +269,18 @@
 				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
 				C27562991DE45368003F5FE0 /* PDFViewController.m in Sources */,
+				08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
+				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
 				C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */,
 				C27562941DE45368003F5FE0 /* DocumentDemoViewController.m in Sources */,
 				C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */,
 				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
 				C27562911DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.mm in Sources */,
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
+				08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */,
+				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,7 +406,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -402,7 +434,7 @@
 					"$(PROJECT_DIR)/ScanbotSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
