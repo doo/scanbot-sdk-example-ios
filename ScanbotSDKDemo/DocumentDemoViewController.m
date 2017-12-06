@@ -224,6 +224,30 @@ shouldRotateInterfaceForDeviceOrientation:(UIDeviceOrientation)orientation
     return !self.shouldAutorotate;
 }
 
+- (NSString *)scannerController:(SBSDKScannerViewController *)controller
+localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
+    // Here you can return custom user guidance strings depending on the current detection status.
+    switch (status) {
+        case SBSDKDocumentDetectionStatusOK:
+            return @"Don't move. Capturing document...";
+        case SBSDKDocumentDetectionStatusOK_SmallSize:
+            return @"Move closer.";
+        case SBSDKDocumentDetectionStatusOK_BadAngles:
+            return @"Turn your device to\nhave a more rectangular outline.";
+        case SBSDKDocumentDetectionStatusOK_BadAspectRatio:
+            return @"Wrong aspect ratio.\n Rotate your device.";
+        case SBSDKDocumentDetectionStatusError_NothingDetected:
+            return @"Searching for document...";
+        case SBSDKDocumentDetectionStatusError_Noise:
+            return @"Background too noisy!\nSearching for document...";
+        case SBSDKDocumentDetectionStatusError_Brightness:
+            return @"Poor light!\nSearching for document...";
+        default:
+            return nil;
+    }
+}
+
+
 /**
  UI updating
  */
