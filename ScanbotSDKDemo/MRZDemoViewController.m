@@ -19,7 +19,7 @@
 @property (nonatomic, strong) SBSDKMachineReadableZoneRecognizer *recognizer;
 @property (nonatomic, strong) SBSDKCameraSession *cameraSession;
 
-@property (nonatomic) BOOL recognitionEnabled;
+@property (nonatomic) BOOL isViewAppeared;
 @property (nonatomic) CGRect machineReadableZoneRect;
 
 @end
@@ -30,35 +30,40 @@
     if (!_cameraSession) {
         _cameraSession = [[SBSDKCameraSession alloc] initForFeature:FeatureMRZRecognition];
         _cameraSession.videoDelegate = self;
+        _cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
     }
     return _cameraSession;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recognizer = [SBSDKMachineReadableZoneRecognizer new];
     self.view.backgroundColor = [UIColor blackColor];
-    [self.view.layer addSublayer:self.cameraSession.previewLayer];
+    self.recognizer = [SBSDKMachineReadableZoneRecognizer new];
 }
-
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
     [self.cameraSession startSession];
-    
-    [self.view bringSubviewToFront:self.blackView];
-    [self.view bringSubviewToFront:self.imageView];
-    [self.view bringSubviewToFront:self.templateView];
-    [self.view bringSubviewToFront:self.textHintLabel];
-    
-    self.recognitionEnabled = YES;
+    [self.view.layer insertSublayer:self.cameraSession.previewLayer atIndex:0];
+    self.isViewAppeared = YES;
+    self.blackView.hidden = YES;
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+    [super viewWillDisappear:animated];
+    [self.cameraSession stopSession];
+    self.isViewAppeared = NO;
+    self.blackView.hidden = NO;
 }
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
     self.cameraSession.previewLayer.frame = self.view.bounds;
     [self recalculateMRZRect];
+}
+
+- (BOOL)shouldRecognize {
+    return self.isViewAppeared && self.imageView.image == nil && self.presentedViewController == nil;
 }
 
 #pragma mark - Custom helpers
@@ -99,29 +104,18 @@
 #pragma mark - Custom actions
 
 - (IBAction)selectImageButtoTapped:(id)sender {
-    [self.cameraSession stopSession];
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    self.recognitionEnabled = NO;
     [self presentViewController:picker animated:YES completion:nil];
 }
 
 #pragma mark - UIImagePickerController delegate
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    self.recognitionEnabled = YES;
-    if (!self.cameraSession.isSessionRunning) {
-        [self.cameraSession startSession];
-        self.blackView.hidden = YES;
-    }
-}
-
 - (void)imagePickerController:(UIImagePickerController *)picker
         didFinishPickingImage:(UIImage *)image
                   editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
+
     self.imageView.image = image;
-    self.blackView.hidden = NO;
-    
     [self dismissViewControllerAnimated:YES
                              completion:^{
                                  SBSDKMachineReadableZoneRecognizerResult *result = [self.recognizer recognizePersonalIdentityFromImage:image];
@@ -134,12 +128,20 @@
 - (void)captureOutput:(AVCaptureOutput *)captureOutput
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
-    if (self.recognitionEnabled) {
-        SBSDKMachineReadableZoneRecognizerResult *result = [self.recognizer recognizePersonalIdentityFromSampleBuffer:sampleBuffer
-                                                                                                          orientation:self.cameraSession.videoOrientation searchMachineReadableZone:NO
-                                                                                              machineReadableZoneRect:self.machineReadableZoneRect];
+    
+    __block BOOL shouldRecognize;
+    dispatch_sync(dispatch_get_main_queue(), ^{
+        shouldRecognize = [self shouldRecognize];
+    });
+    
+    if (shouldRecognize) {
+        SBSDKMachineReadableZoneRecognizerResult *result
+        = [self.recognizer recognizePersonalIdentityFromSampleBuffer:sampleBuffer
+                                                         orientation:self.cameraSession.videoOrientation
+                                           searchMachineReadableZone:NO
+                                             machineReadableZoneRect:self.machineReadableZoneRect];
+        
         if (result != nil && result.recognitionSuccessfull) {
-            self.recognitionEnabled = NO;
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showResult:result];
             });
@@ -155,13 +157,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"OK"
                                                        style:UIAlertActionStyleDefault
                                                      handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.recognitionEnabled = YES;
                                                          if (self.imageView.image) {
                                                              self.imageView.image = nil;
                                                              self.blackView.hidden = YES;
-                                                             if (!self.cameraSession.isSessionRunning) {
-                                                                 [self.cameraSession startSession];
-                                                             }
                                                          }
                                                      }];
     [alert addAction:okAction];
