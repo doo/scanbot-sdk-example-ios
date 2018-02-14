@@ -782,10 +782,10 @@
             </objects>
             <point key="canvasLocation" x="2385" y="1519"/>
         </scene>
-        <!--Demo View Controller-->
+        <!--MRZ Demo View Controller-->
         <scene sceneID="ekv-9A-Uqf">
             <objects>
-                <viewController id="kwz-bW-V9c" customClass="MRZDemoViewController" sceneMemberID="viewController">
+                <viewController id="kwz-bW-V9c" userLabel="MRZ Demo View Controller" customClass="MRZDemoViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="fQK-l4-NKk"/>
                         <viewControllerLayoutGuide type="bottom" id="Gbd-iC-HnH"/>
@@ -798,9 +798,6 @@
                                 <rect key="frame" x="0.0" y="64" width="375" height="643"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F4S-Rt-EzA">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mrz_template" translatesAutoresizingMaskIntoConstraints="NO" id="a8j-wl-Nt3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
@@ -812,6 +809,9 @@ MRZ code at the from of your document:</string>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F4S-Rt-EzA">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
