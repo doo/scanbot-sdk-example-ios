@@ -13,7 +13,6 @@
 		08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */; };
 		08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */; };
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
-		0896B5F31F7909BA00E79F85 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
 		C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627A1DE45368003F5FE0 /* ChequeViewController.m */; };
 		C27562911DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C275627C1DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.mm */; };
@@ -27,6 +26,9 @@
 		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
+		C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F131F02034237A00FFF96B /* MRZDemoViewController.m */; };
+		C2F131F6203426FF00FFF96B /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -40,13 +42,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9E8AC0C01D227C420017703D /* Embed Frameworks */ = {
+		C2F131F7203426FF00FFF96B /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				0896B5F31F7909BA00E79F85 /* ScanbotSDK.framework in Embed Frameworks */,
+				C2F131F6203426FF00FFF96B /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -92,6 +94,9 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A51DE453B2003F5FE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotSDKDemo/main.m; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
+		C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRZDemoViewController.h; sourceTree = "<group>"; };
+		C2F131F02034237A00FFF96B /* MRZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRZDemoViewController.m; sourceTree = "<group>"; };
+		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +155,8 @@
 				08299BBB1FC5822F00E01F0E /* Helpers */,
 				08299BAE1FC5818400E01F0E /* QRDemoViewController.h */,
 				08299BB21FC5818500E01F0E /* QRDemoViewController.m */,
+				C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */,
+				C2F131F02034237A00FFF96B /* MRZDemoViewController.m */,
 				C27562771DE45368003F5FE0 /* AppDelegate.h */,
 				C27562781DE45368003F5FE0 /* AppDelegate.m */,
 				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
@@ -183,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */,
+				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
 				C27562A51DE453B2003F5FE0 /* main.m */,
@@ -202,7 +210,7 @@
 				9ED8457D1AE670CC008B2731 /* Sources */,
 				9ED8457F1AE670CC008B2731 /* Resources */,
 				9E69F5C41AE7E45500E6131A /* CopyFiles */,
-				9E8AC0C01D227C420017703D /* Embed Frameworks */,
+				C2F131F7203426FF00FFF96B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -256,6 +264,7 @@
 				0820226D1F790A41005FF9F2 /* ScanbotSDKCreditCardData.bundle in Resources */,
 				C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */,
 				C27562961DE45368003F5FE0 /* Main.storyboard in Resources */,
+				C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -281,6 +290,7 @@
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */,
 				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
+				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
