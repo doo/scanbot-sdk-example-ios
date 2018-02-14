@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *blackView;
 @property (weak, nonatomic) IBOutlet UIImageView *templateView;
+@property (weak, nonatomic) IBOutlet UILabel *textHintLabel;
 
 @property (nonatomic, strong) SBSDKMachineReadableZoneRecognizer *recognizer;
 @property (nonatomic, strong) SBSDKCameraSession *cameraSession;
@@ -49,6 +50,7 @@
     [self.view bringSubviewToFront:self.blackView];
     [self.view bringSubviewToFront:self.imageView];
     [self.view bringSubviewToFront:self.templateView];
+    [self.view bringSubviewToFront:self.textHintLabel];
     
     self.recognitionEnabled = YES;
 }

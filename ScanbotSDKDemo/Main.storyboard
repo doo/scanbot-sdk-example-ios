@@ -804,11 +804,21 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mrz_template" translatesAutoresizingMaskIntoConstraints="NO" id="a8j-wl-Nt3">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-Ne-Nxq">
+                                <rect key="frame" x="16" y="313" width="343" height="41"/>
+                                <string key="text">Please hold your phone over 2- or 3-line
+MRZ code at the from of your document:</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="zAg-vd-ZGF" secondAttribute="trailing" id="0J0-vg-yNa"/>
                             <constraint firstAttribute="trailing" secondItem="a8j-wl-Nt3" secondAttribute="trailing" id="5iC-HX-oLS"/>
+                            <constraint firstItem="CkE-Ne-Nxq" firstAttribute="centerY" secondItem="wQR-gx-2S1" secondAttribute="centerY" id="N3X-aG-TwQ"/>
+                            <constraint firstAttribute="trailing" secondItem="CkE-Ne-Nxq" secondAttribute="trailing" constant="16" id="Nk1-n7-TaP"/>
                             <constraint firstItem="zAg-vd-ZGF" firstAttribute="leading" secondItem="wQR-gx-2S1" secondAttribute="leading" id="Xp8-cA-S8Q"/>
                             <constraint firstItem="Gbd-iC-HnH" firstAttribute="top" secondItem="F4S-Rt-EzA" secondAttribute="bottom" id="YT2-Gr-baG"/>
                             <constraint firstItem="zAg-vd-ZGF" firstAttribute="top" secondItem="fQK-l4-NKk" secondAttribute="bottom" id="a3R-lw-EuG"/>
@@ -816,6 +826,7 @@
                             <constraint firstItem="a8j-wl-Nt3" firstAttribute="leading" secondItem="wQR-gx-2S1" secondAttribute="leading" id="b45-F8-3YV"/>
                             <constraint firstItem="F4S-Rt-EzA" firstAttribute="top" secondItem="fQK-l4-NKk" secondAttribute="bottom" id="dBX-3v-wDw"/>
                             <constraint firstItem="Gbd-iC-HnH" firstAttribute="top" secondItem="a8j-wl-Nt3" secondAttribute="bottom" id="ev5-l2-BYE"/>
+                            <constraint firstItem="CkE-Ne-Nxq" firstAttribute="leading" secondItem="wQR-gx-2S1" secondAttribute="leading" constant="16" id="fAK-Ca-mtd"/>
                             <constraint firstItem="a8j-wl-Nt3" firstAttribute="top" secondItem="wQR-gx-2S1" secondAttribute="top" id="sJv-Oc-bIo"/>
                             <constraint firstItem="Gbd-iC-HnH" firstAttribute="top" secondItem="zAg-vd-ZGF" secondAttribute="bottom" constant="-40" id="z2k-Za-JcM"/>
                             <constraint firstAttribute="trailing" secondItem="F4S-Rt-EzA" secondAttribute="trailing" id="zWN-Xg-lMM"/>
@@ -832,11 +843,12 @@
                         <outlet property="blackView" destination="zAg-vd-ZGF" id="12d-gy-yAz"/>
                         <outlet property="imageView" destination="F4S-Rt-EzA" id="nlN-vc-xAl"/>
                         <outlet property="templateView" destination="a8j-wl-Nt3" id="meM-bE-4Tk"/>
+                        <outlet property="textHintLabel" destination="CkE-Ne-Nxq" id="fnU-h7-dDN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-aG-ftj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1062" y="1879"/>
+            <point key="canvasLocation" x="-1063.2" y="1878.7106446776613"/>
         </scene>
         <!--Disability Certificates Recognition Demo View Controller-->
         <scene sceneID="nFK-OP-JJG">
