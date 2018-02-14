@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="480" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="628" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <attributedString key="attributedText">
                                 <fragment content=" This demo app will only run 1 minute before terminating.">
@@ -234,6 +234,56 @@
                                             <segue destination="kwz-bW-V9c" kind="show" id="eZm-65-LsA"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="9Hd-Cl-BX9">
+                                        <rect key="frame" x="0.0" y="479" width="375" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Hd-Cl-BX9" id="EdW-jS-UEM">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disability Certificates Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DUa-eD-5ID">
+                                                    <rect key="frame" x="29" y="0.0" width="317" height="73.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DUa-eD-5ID" firstAttribute="leading" secondItem="EdW-jS-UEM" secondAttribute="leading" constant="29" id="0CR-Lb-pds"/>
+                                                <constraint firstItem="DUa-eD-5ID" firstAttribute="top" secondItem="EdW-jS-UEM" secondAttribute="top" id="1us-uU-ynC"/>
+                                                <constraint firstAttribute="bottom" secondItem="DUa-eD-5ID" secondAttribute="bottom" id="Q5l-9Z-iLW"/>
+                                                <constraint firstAttribute="trailing" secondItem="DUa-eD-5ID" secondAttribute="trailing" constant="29" id="bOA-pE-Rft"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="BF3-Mr-5J6" kind="show" id="b8W-mR-4FK"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="BeL-bh-jib">
+                                        <rect key="frame" x="0.0" y="553" width="375" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeL-bh-jib" id="6Qk-nk-X9T">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disability Certificates Live Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-IO-fd0">
+                                                    <rect key="frame" x="29" y="0.0" width="317" height="73.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="KVy-IO-fd0" firstAttribute="leading" secondItem="6Qk-nk-X9T" secondAttribute="leading" constant="29" id="M56-6P-YDX"/>
+                                                <constraint firstAttribute="bottom" secondItem="KVy-IO-fd0" secondAttribute="bottom" id="do3-1Z-D9t"/>
+                                                <constraint firstAttribute="trailing" secondItem="KVy-IO-fd0" secondAttribute="trailing" constant="29" id="gJO-ky-4Q6"/>
+                                                <constraint firstItem="KVy-IO-fd0" firstAttribute="top" secondItem="6Qk-nk-X9T" secondAttribute="top" id="qie-5j-wMw"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="WBS-5b-7Tz" kind="show" id="VHx-I9-vaf"/>
+                                        </connections>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -379,7 +429,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6hw-wT-cJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1158" y="1743"/>
+            <point key="canvasLocation" x="-1758" y="1879"/>
         </scene>
         <!--Recognized Text-->
         <scene sceneID="jMy-hz-a1b">
@@ -786,7 +836,50 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-aG-ftj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-462" y="1743"/>
+            <point key="canvasLocation" x="-1062" y="1879"/>
+        </scene>
+        <!--Disability Certificates Recognition Demo View Controller-->
+        <scene sceneID="nFK-OP-JJG">
+            <objects>
+                <viewController storyboardIdentifier="AURecognitionDemoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BF3-Mr-5J6" customClass="DisabilityCertificatesRecognitionDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gc4-65-XJX"/>
+                        <viewControllerLayoutGuide type="bottom" id="Lbj-gM-u0n"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="2De-WZ-Vjx">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="LdC-AE-La8">
+                        <barButtonItem key="rightBarButtonItem" title="Select image" id="WyH-i7-3iT">
+                            <connections>
+                                <action selector="selectImageButtonTapped:" destination="BF3-Mr-5J6" id="ZOy-h4-9vb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Tl-vH-RFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-324" y="1879"/>
+        </scene>
+        <!--Disability Certificates Live Demo View Controller-->
+        <scene sceneID="ghe-qR-r1u">
+            <objects>
+                <viewController id="WBS-5b-7Tz" customClass="DisabilityCertificatesLiveDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HhR-ki-X4R"/>
+                        <viewControllerLayoutGuide type="bottom" id="k4j-x9-2e7"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ccS-c7-hZ6">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6dH-jp-Ty5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="398" y="1879"/>
         </scene>
     </scenes>
     <resources>
