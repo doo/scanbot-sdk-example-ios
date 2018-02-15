@@ -7,14 +7,17 @@
 //
 
 #import "DisabilityCertificatesLiveDemoViewController.h"
+#import "DisabilityCertificatesRecognizerResultViewController.h"
 @import ScanbotSDK;
 
 @interface DisabilityCertificatesLiveDemoViewController () <SBSDKCameraSessionDelegate>
 
 @property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizer *recognizer;
-@property (nonatomic) BOOL recognitionEnabled;
-
 @property (nonatomic, strong) SBSDKCameraSession *cameraSession;
+
+@property (nonatomic) BOOL recognitionEnabled;
+@property (nonatomic, strong) UIImage *originalImage;
+@property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizerResult *result;
 
 @end
 
@@ -38,9 +41,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.cameraSession startSession];
-    self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
-    
     self.recognitionEnabled = YES;
+    self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
 }
 
 - (void)viewDidLayoutSubviews {
@@ -49,30 +51,37 @@
 }
 
 - (void)recognizeInformationFromSampleBuffer:(CMSampleBufferRef)sampleBuffer {
-    SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromSampleBuffer:sampleBuffer
-                                                                                         orientation:self.cameraSession.videoOrientation];
-    if (result != nil && result.recognitionSuccessful) {
-        self.recognitionEnabled = NO;
+    self.result = [self.recognizer recognizeFromSampleBuffer:sampleBuffer
+                                                 orientation:self.cameraSession.videoOrientation];
+    if (self.result != nil && self.result.recognitionSuccessful) {
+        self.originalImage = [self imageFromCMSampleBufferRef:sampleBuffer];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self showResult:result];
+            [self showResult];
         });
     }
 }
 
-- (void)showResult:(SBSDKDisabilityCertificatesRecognizerResult *)result {
-    NSString *message = [result stringRepresentation];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Result"
-                                                                   message:message
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.recognitionEnabled = YES;
-                                                     }];
-    [alert addAction:okAction];
-    [self presentViewController:alert
-                       animated:YES
-                     completion:nil];
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDCResultsLive"]) {
+        DisabilityCertificatesRecognizerResultViewController *resultController = (DisabilityCertificatesRecognizerResultViewController *)segue.destinationViewController;
+        resultController.originalImage = self.originalImage;
+        resultController.selectedImage = self.originalImage;
+        resultController.initialResult = self.result;
+    }
+}
+
+- (UIImage *)imageFromCMSampleBufferRef:(CMSampleBufferRef)ref {
+    CVPixelBufferRef pixelBuffer = CMSampleBufferGetImageBuffer(ref);
+    CIImage *ciImage = [CIImage imageWithCVPixelBuffer:pixelBuffer];
+    CIContext *context = [CIContext contextWithOptions:nil];
+    CGImageRef imageRef = [context createCGImage:ciImage
+                                        fromRect:CGRectMake(0, 0, CVPixelBufferGetWidth(pixelBuffer), CVPixelBufferGetHeight(pixelBuffer))];
+    return [UIImage imageWithCGImage:imageRef];
+}
+
+- (void)showResult {
+    self.recognitionEnabled = NO;
+    [self performSegueWithIdentifier:@"showDCResultsLive" sender:nil];
 }
 
 #pragma mark - SBSDKCameraSessionDelegate methods
@@ -81,14 +90,7 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     if (self.recognitionEnabled) {
-        SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromSampleBuffer:sampleBuffer
-                                                                                             orientation:self.cameraSession.videoOrientation];
-        if (result != nil && result.recognitionSuccessful) {
-            self.recognitionEnabled = NO;
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [self showResult:result];
-            });
-        }
+        [self recognizeInformationFromSampleBuffer:sampleBuffer];
     }
 }
 

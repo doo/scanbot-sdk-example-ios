@@ -7,15 +7,17 @@
 //
 
 #import "DisabilityCertificatesRecognitionDemoViewController.h"
+#import "DisabilityCertificatesRecognizerResultViewController.h"
 @import ScanbotSDK;
 
 @interface DisabilityCertificatesRecognitionDemoViewController () <SBSDKScannerViewControllerDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
 @property (weak, nonatomic) IBOutlet UIView *hudView;
 
-@property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizer *recognizer;
 @property (strong, nonatomic) SBSDKScannerViewController *scannerViewController;
-@property (nonatomic) BOOL recognitionEnabled;
+
+@property (nonatomic, strong) UIImage *capturedImage;
+@property (nonatomic, strong) UIImage *originalImage;
 
 @end
 
@@ -24,53 +26,26 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
-    self.recognizer = [SBSDKDisabilityCertificatesRecognizer new];
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self
                                                                                      imageStorage:nil];
     self.scannerViewController.delegate = self;
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-    [super viewWillAppear:animated];
-    self.recognitionEnabled = YES;
-}
-
-- (void)recognizeAUDataFromImage:(UIImage *)documentImage {
-    SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromImage:documentImage];
-    [self showResult:result];
-    [UIView animateWithDuration:0.25 animations:^{
-        self.scannerViewController.HUDView.backgroundColor = [UIColor clearColor];
-    }];
-}
-
-- (void)showResult:(SBSDKDisabilityCertificatesRecognizerResult *)result {
-    NSString *message = [result stringRepresentation];
-    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Result"
-                                                                   message:message
-                                                            preferredStyle:UIAlertControllerStyleAlert];
-    UIAlertAction *okAction = [UIAlertAction actionWithTitle:@"Ok"
-                                                       style:UIAlertActionStyleDefault
-                                                     handler:^(UIAlertAction * _Nonnull action) {
-                                                         self.recognitionEnabled = YES;
-                                                     }];
-    [alert addAction:okAction];
-    [self presentViewController:alert
-                       animated:YES
-                     completion:nil];
-}
-
 - (IBAction)selectImageButtonTapped:(id)sender {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
-    self.recognitionEnabled = NO;
     [self presentViewController:picker animated:YES completion:nil];
 }
 
-#pragma mark - UIImagePickerController delegate
-
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker {
-    self.recognitionEnabled = YES;
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"showDCResultFromImage"]) {
+        DisabilityCertificatesRecognizerResultViewController *resultController = (DisabilityCertificatesRecognizerResultViewController *)segue.destinationViewController;
+        resultController.originalImage = self.originalImage;
+        resultController.selectedImage = self.capturedImage;
+    }
 }
+
+#pragma mark - UIImagePickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
         didFinishPickingImage:(UIImage *)image
@@ -82,16 +57,16 @@
     
     [self dismissViewControllerAnimated:YES
                              completion:^{
-                                 [self recognizeAUDataFromImage:image];
+                                 self.originalImage = image;
+                                 self.capturedImage = image;
+                                 [self performSegueWithIdentifier:@"showDCResultFromImage" sender:nil];
                              }];
 }
 
 #pragma mark - SBSDKScannerViewControllerDelegate
 
 - (BOOL)scannerControllerShouldAnalyseVideoFrame:(SBSDKScannerViewController *)controller {
-    return (self.recognitionEnabled
-            && self.presentedViewController == nil
-            && self.scannerViewController.autoShutterEnabled == YES);
+    return self.presentedViewController == nil && self.scannerViewController.autoShutterEnabled == YES;
 }
 
 - (void)scannerControllerWillCaptureStillImage:(SBSDKScannerViewController *)controller {
@@ -100,9 +75,14 @@
     }];
 }
 
+- (void)scannerController:(SBSDKScannerViewController *)controller didCaptureImage:(UIImage *)image {
+    self.originalImage = image;
+}
+
 - (void)scannerController:(SBSDKScannerViewController *)controller
   didCaptureDocumentImage:(UIImage *)documentImage {
-    [self recognizeAUDataFromImage:documentImage];
+    self.capturedImage = documentImage;
+    [self performSegueWithIdentifier:@"showDCResultFromImage" sender:nil];
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller didFailCapturingImage:(NSError *)error {
