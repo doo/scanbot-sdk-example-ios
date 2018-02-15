@@ -221,10 +221,10 @@
 		C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */,
 				C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */,
 				C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */,
 				C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */,
-				C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */,
 				C2B8AC722035C86C00F4F48E /* Results */,
 			);
 			path = DisabilityCertificatesDemo;

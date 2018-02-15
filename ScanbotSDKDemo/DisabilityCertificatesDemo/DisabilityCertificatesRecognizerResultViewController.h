@@ -8,9 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+@import ScanbotSDK;
+
 @interface DisabilityCertificatesRecognizerResultViewController : UITableViewController
 
 @property (nonatomic, strong) UIImage *selectedImage;
 @property (nonatomic, strong) UIImage *originalImage;
+@property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizerResult *initialResult;
 
 @end

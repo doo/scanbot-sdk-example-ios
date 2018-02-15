@@ -11,8 +11,6 @@
 #import "DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h"
 #import "DisabilityCertificatesResultsDatesInfoTableViewCell.h"
 
-@import ScanbotSDK;
-
 @interface DisabilityCertificatesRecognizerResultViewController () <SBSDKImageEditingViewControllerDelegate>
 
 @property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizer *recognizer;
@@ -34,7 +32,11 @@
         if (self.originalImage == nil) {
             self.originalImage = self.selectedImage;
         }
-        [self recognizeAUDataFromImage:self.selectedImage];
+        if (self.initialResult != nil) {
+            [self showDCRecognizerResult:self.initialResult];
+        } else {
+            [self recognizeAUDataFromImage:self.selectedImage];
+        }
     } else {
         [self showDCRecognizerResult:nil];
     }
@@ -65,13 +67,13 @@
     dispatch_async(dispatch_queue_create("net.doo.DisabilityCertificatesRecognizerDemo.recognition", NULL), ^{
         SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromImage:image];
         dispatch_async(dispatch_get_main_queue(), ^{
-            [self.activityIndicator stopAnimating];
             [self showDCRecognizerResult:result];
         });
     });
 }
 
 - (void)showDCRecognizerResult:(SBSDKDisabilityCertificatesRecognizerResult *)result {
+    [self.activityIndicator stopAnimating];
     self.imageCell.documentImage.image = self.selectedImage;
     [self.checkboxesInfoCell updateCell:result];
     [self.datesInfoCell updateCell:result];
