@@ -10,4 +10,7 @@
 
 @interface DisabilityCertificatesRecognizerResultViewController : UITableViewController
 
+@property (nonatomic, strong) UIImage *selectedImage;
+@property (nonatomic, strong) UIImage *originalImage;
+
 @end

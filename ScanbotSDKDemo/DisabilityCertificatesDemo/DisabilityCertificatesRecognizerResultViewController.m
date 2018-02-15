@@ -16,8 +16,6 @@
 @interface DisabilityCertificatesRecognizerResultViewController () <SBSDKImageEditingViewControllerDelegate>
 
 @property (nonatomic, strong) SBSDKDisabilityCertificatesRecognizer *recognizer;
-@property (nonatomic, strong) UIImage *selectedImage;
-@property (nonatomic, strong) UIImage *originalImage;
 @property (nonatomic, strong) SBSDKImageEditingViewController *editingController;
 
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
@@ -31,6 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.recognizer = [SBSDKDisabilityCertificatesRecognizer new];
     if (self.selectedImage != nil) {
         if (self.originalImage == nil) {
             self.originalImage = self.selectedImage;
@@ -61,8 +60,10 @@
 
 - (void)recognizeAUDataFromImage:(UIImage *)documentImage {
     [self.activityIndicator startAnimating];
+    
+    __block UIImage *image = documentImage;
     dispatch_async(dispatch_queue_create("net.doo.DisabilityCertificatesRecognizerDemo.recognition", NULL), ^{
-        SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromImage:documentImage];
+        SBSDKDisabilityCertificatesRecognizerResult *result = [self.recognizer recognizeFromImage:image];
         dispatch_async(dispatch_get_main_queue(), ^{
             [self.activityIndicator stopAnimating];
             [self showDCRecognizerResult:result];
