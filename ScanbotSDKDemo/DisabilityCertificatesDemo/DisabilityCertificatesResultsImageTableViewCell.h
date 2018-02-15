@@ -10,4 +10,6 @@
 
 @interface DisabilityCertificatesResultsImageTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *documentImage;
+
 @end

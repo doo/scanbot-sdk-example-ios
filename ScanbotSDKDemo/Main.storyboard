@@ -908,7 +908,7 @@ MRZ code at the from of your document:</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
-                            <tableViewSection id="qPc-zs-tcd">
+                            <tableViewSection id="TOu-4X-d6a">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="imageCell" rowHeight="366" id="Noq-VD-tmc" customClass="DisabilityCertificatesResultsImageTableViewCell">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
@@ -933,6 +933,9 @@ MRZ code at the from of your document:</string>
                                                 <constraint firstItem="zFQ-ju-iNY" firstAttribute="top" secondItem="O5F-fB-4RO" secondAttribute="top" id="tcV-iL-wpp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="documentImage" destination="zFQ-ju-iNY" id="iSz-qd-DM9"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="checkboxesTitleCell" id="MR3-3z-Tf9">
                                         <rect key="frame" x="0.0" y="366" width="375" height="44"/>

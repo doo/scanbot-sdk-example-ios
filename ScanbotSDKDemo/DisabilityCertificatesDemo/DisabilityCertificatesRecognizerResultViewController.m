@@ -35,7 +35,7 @@
         if (self.originalImage == nil) {
             self.originalImage = self.selectedImage;
         }
-        [self recognizeAUDataFromImage:selectedImage];
+        [self recognizeAUDataFromImage:self.selectedImage];
     } else {
         [self showDCRecognizerResult:nil];
     }
