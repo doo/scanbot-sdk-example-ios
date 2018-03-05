@@ -26,6 +26,7 @@
 		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
+		C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29DC070204D915900059670 /* TIFFDemoViewController.m */; };
 		C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */; };
 		C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */; };
 		C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */; };
@@ -100,6 +101,8 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A51DE453B2003F5FE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotSDKDemo/main.m; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
+		C29DC06F204D915900059670 /* TIFFDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIFFDemoViewController.h; sourceTree = "<group>"; };
+		C29DC070204D915900059670 /* TIFFDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIFFDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesLiveDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognitionDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognitionDemoViewController.h; sourceTree = "<group>"; };
@@ -195,6 +198,8 @@
 				C27562891DE45368003F5FE0 /* PayformDemoViewController.m */,
 				C275628A1DE45368003F5FE0 /* PDFViewController.h */,
 				C275628B1DE45368003F5FE0 /* PDFViewController.m */,
+				C29DC06F204D915900059670 /* TIFFDemoViewController.h */,
+				C29DC070204D915900059670 /* TIFFDemoViewController.m */,
 				C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */,
 				C275628D1DE45368003F5FE0 /* TextViewController.h */,
 				C275628E1DE45368003F5FE0 /* TextViewController.m */,
@@ -340,6 +345,7 @@
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
+				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
 				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
