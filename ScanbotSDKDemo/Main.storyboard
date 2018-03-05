@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="628" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="702" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <attributedString key="attributedText">
                                 <fragment content=" This demo app will only run 1 minute before terminating.">
@@ -282,6 +282,31 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="WBS-5b-7Tz" kind="show" id="VHx-I9-vaf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="ePC-zM-olr">
+                                        <rect key="frame" x="0.0" y="627" width="375" height="74"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ePC-zM-olr" id="nVv-L2-x0m">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TIFF Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EB9-Sd-jqe">
+                                                    <rect key="frame" x="29" y="0.0" width="317" height="73.5"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="EB9-Sd-jqe" secondAttribute="bottom" id="6cg-sL-qEt"/>
+                                                <constraint firstItem="EB9-Sd-jqe" firstAttribute="leading" secondItem="nVv-L2-x0m" secondAttribute="leading" constant="29" id="JGR-zC-0eh"/>
+                                                <constraint firstItem="EB9-Sd-jqe" firstAttribute="top" secondItem="nVv-L2-x0m" secondAttribute="top" id="LxO-Xv-cs6"/>
+                                                <constraint firstAttribute="trailing" secondItem="EB9-Sd-jqe" secondAttribute="trailing" constant="29" id="Nma-wL-I1B"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="kA5-fG-Aau" kind="show" id="VY6-Ws-pVM"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1347,6 +1372,68 @@ MRZ code at the from of your document:</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ch5-5h-w9z" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="31" y="2769"/>
+        </scene>
+        <!--TIFF Demo-->
+        <scene sceneID="8b8-Sm-fTk">
+            <objects>
+                <viewController id="kA5-fG-Aau" customClass="TIFFDemoViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zkt-U6-h2C"/>
+                        <viewControllerLayoutGuide type="bottom" id="LWL-Yh-fkN"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T9I-Zk-geb">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Images added: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MYn-Jo-CbE">
+                                <rect key="frame" x="16" y="72" width="128" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYV-ye-pAf">
+                                <rect key="frame" x="16" y="101" width="343" height="30"/>
+                                <state key="normal" title="Generate TIFF"/>
+                                <connections>
+                                    <action selector="generateTIFFTapped:" destination="kA5-fG-Aau" eventType="touchUpInside" id="0bc-ch-PqA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1o2-wk-OhH">
+                                <rect key="frame" x="16" y="139" width="343" height="30"/>
+                                <state key="normal" title="Generate binarized TIFF"/>
+                                <connections>
+                                    <action selector="generateBinarizedTIFFTapped:" destination="kA5-fG-Aau" eventType="touchUpInside" id="SPg-eJ-2GD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="MYn-Jo-CbE" firstAttribute="leading" secondItem="T9I-Zk-geb" secondAttribute="leading" constant="16" id="4aN-74-x9Y"/>
+                            <constraint firstItem="EYV-ye-pAf" firstAttribute="leading" secondItem="T9I-Zk-geb" secondAttribute="leading" constant="16" id="NEc-0k-pi8"/>
+                            <constraint firstAttribute="trailing" secondItem="1o2-wk-OhH" secondAttribute="trailing" constant="16" id="Oj3-ui-0Zk"/>
+                            <constraint firstAttribute="trailing" secondItem="EYV-ye-pAf" secondAttribute="trailing" constant="16" id="bag-fN-uLv"/>
+                            <constraint firstItem="MYn-Jo-CbE" firstAttribute="top" secondItem="zkt-U6-h2C" secondAttribute="bottom" constant="8" id="gha-zE-GVD"/>
+                            <constraint firstItem="EYV-ye-pAf" firstAttribute="top" secondItem="MYn-Jo-CbE" secondAttribute="bottom" constant="8" id="gyg-WC-I8I"/>
+                            <constraint firstItem="1o2-wk-OhH" firstAttribute="leading" secondItem="T9I-Zk-geb" secondAttribute="leading" constant="16" id="pr0-g2-EX8"/>
+                            <constraint firstItem="1o2-wk-OhH" firstAttribute="top" secondItem="EYV-ye-pAf" secondAttribute="bottom" constant="8" id="shD-HN-pTo"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="TIFF Demo" id="c16-fe-iRI">
+                        <barButtonItem key="rightBarButtonItem" title="Add Image" id="JFJ-rA-j0x">
+                            <connections>
+                                <action selector="addImageButtoTapped:" destination="kA5-fG-Aau" id="Zix-Hh-6zl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="imagesCountLabel" destination="MYn-Jo-CbE" id="nkQ-Vw-JAX"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PDc-G0-qwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2497" y="1879"/>
         </scene>
     </scenes>
     <resources>
