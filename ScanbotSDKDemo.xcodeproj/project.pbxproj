@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		0820226D1F790A41005FF9F2 /* ScanbotSDKCreditCardData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */; };
-		0820226F1F790A93005FF9F2 /* SBSDKLanguageData in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */; };
 		08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BB21FC5818500E01F0E /* QRDemoViewController.m */; };
 		08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */; };
 		08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */; };
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
+		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
 		C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627A1DE45368003F5FE0 /* ChequeViewController.m */; };
 		C27562911DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = C275627C1DE45368003F5FE0 /* CreditCardRecognitionDemoViewController.mm */; };
@@ -45,7 +45,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
-				0820226F1F790A93005FF9F2 /* SBSDKLanguageData in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +62,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */ = {isa = PBXFileReference; lastKnownFileType = folder; name = SBSDKLanguageData; path = ScanbotSDK/AdditionalData/SBSDKLanguageData; sourceTree = SOURCE_ROOT; };
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		08299BAE1FC5818400E01F0E /* QRDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRDemoViewController.h; sourceTree = "<group>"; };
 		08299BB21FC5818500E01F0E /* QRDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRDemoViewController.m; sourceTree = "<group>"; };
@@ -75,6 +73,7 @@
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
 		088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKCreditCardData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKCreditCardData.bundle; sourceTree = SOURCE_ROOT; };
 		0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
+		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27562771DE45368003F5FE0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ScanbotSDKDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C27562781DE45368003F5FE0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ScanbotSDKDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -213,7 +212,7 @@
 		9ED845841AE670CC008B2731 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				0820226E1F790A8A005FF9F2 /* SBSDKLanguageData */,
+				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
 				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				088F99071F7908E8007381EF /* ScanbotSDKCreditCardData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
@@ -279,7 +278,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0730;
-				LastUpgradeCheck = 0900;
+				LastUpgradeCheck = 0930;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					9ED845801AE670CC008B2731 = {
@@ -316,6 +315,7 @@
 				C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */,
 				C27562961DE45368003F5FE0 /* Main.storyboard in Resources */,
 				C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */,
+				08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
