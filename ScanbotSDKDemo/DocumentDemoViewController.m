@@ -12,8 +12,8 @@
 #import <ScanbotSDK/SBSDKCropViewController.h>
 
 @interface DocumentDemoViewController () <SBSDKImageEditingViewControllerDelegate>
-@property (strong, nonatomic) SBSDKImageStorage *imageStorage;
-@property (strong, nonatomic) SBSDKImageStorage *originalImageStorage;
+@property (strong, nonatomic) SBSDKIndexedImageStorage *imageStorage;
+@property (strong, nonatomic) SBSDKIndexedImageStorage *originalImageStorage;
 @property (strong, nonatomic) IBOutlet UIButton *actionsButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UIButton *clearButton;
@@ -40,9 +40,10 @@
 
     if (![ScanbotSDK isLicenseValid]) {
         [self updateUI];
-        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Error"
-                                                                       message:@"The ScanbotSDK license has been expired. Please contact the manufacturer of the app."
-                                                                preferredStyle:UIAlertControllerStyleAlert];
+        UIAlertController *alert
+        = [UIAlertController alertControllerWithTitle:@"Error"
+                                              message:@"The ScanbotSDK license has been expired. Please contact the manufacturer of the app."
+                                       preferredStyle:UIAlertControllerStyleAlert];
         
         [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
             [self dismissViewControllerAnimated:YES completion:nil];
@@ -58,8 +59,8 @@
                                                object:nil];
     
     
-    self.imageStorage = [[SBSDKImageStorage alloc] init];
-    self.originalImageStorage = [[SBSDKImageStorage alloc] init];
+    self.imageStorage = [[SBSDKIndexedImageStorage alloc] init];
+    self.originalImageStorage = [[SBSDKIndexedImageStorage alloc] init];
     
     self.scannerViewController
     = [[SBSDKScannerViewController alloc] initWithParentViewController:self
@@ -103,7 +104,11 @@
 #pragma mark - SBSDKScannerViewControllerDelegate
 
 - (BOOL)scannerControllerShouldAnalyseVideoFrame:(SBSDKScannerViewController *)controller {
+    
+    BOOL hasActivity = !(controller.timeSinceLastMotion > 3.0 && controller.timeSinceLastDetectedPolygon > 1.0);
+    
     return (self.viewAppeared
+            && hasActivity
             && self.presentedViewController == nil
             && self.currentProgress == nil
             && self.scannerViewController.autoShutterEnabled == YES);
@@ -294,8 +299,8 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 #pragma mark - User initiated actions
 
 - (IBAction)clearImageStorage:(id)sender {
-    self.imageStorage = [[SBSDKImageStorage alloc] init];
-    self.originalImageStorage = [[SBSDKImageStorage alloc] init];
+    self.imageStorage = [[SBSDKIndexedImageStorage alloc] init];
+    self.originalImageStorage = [[SBSDKIndexedImageStorage alloc] init];
     [self updateUI];
 }
 
@@ -393,7 +398,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     }
     
     NSString *filename = @"ScanbotSDK_PDF.pdf";
-    NSURL *pdfURL = [SBSDKImageStorage applicationDocumentsFolderURL];
+    NSURL *pdfURL = [SBSDKStorageLocation applicationDocumentsFolderURL];
     pdfURL = [pdfURL URLByAppendingPathComponent:filename];
     
     self.currentProgress = [SBSDKPDFRenderer renderImageStorage:self.imageStorage
@@ -458,7 +463,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     }
     
     NSString *filename = @"ScanbotSDK_PDF_OCR.pdf";
-    NSURL *pdfURL = [SBSDKImageStorage applicationDocumentsFolderURL];
+    NSURL *pdfURL = [SBSDKStorageLocation applicationDocumentsFolderURL];
     pdfURL = [pdfURL URLByAppendingPathComponent:filename];
     
     self.currentProgress =

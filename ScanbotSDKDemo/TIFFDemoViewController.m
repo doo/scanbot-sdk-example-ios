@@ -77,10 +77,9 @@
 }
 
 #pragma mark - UIImagePickerController delegate
-
 - (void)imagePickerController:(UIImagePickerController *)picker
-        didFinishPickingImage:(UIImage *)image
-                  editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     if (!self.images) {
         self.images = [NSMutableArray array];
     }
@@ -90,6 +89,7 @@
                              completion:^{
                                  self.imagesCountLabel.text = [NSString stringWithFormat:@"Images added: %lu", (unsigned long)self.images.count];
                              }];
+
 }
 
 @end

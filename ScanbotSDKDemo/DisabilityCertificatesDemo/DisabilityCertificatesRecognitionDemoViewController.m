@@ -48,8 +48,9 @@
 #pragma mark - UIImagePickerController delegate
 
 - (void)imagePickerController:(UIImagePickerController *)picker
-        didFinishPickingImage:(UIImage *)image
-                  editingInfo:(NSDictionary<NSString *,id> *)editingInfo {
+didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
+    
+    UIImage *image = [info objectForKey:UIImagePickerControllerOriginalImage];
     
     [UIView animateWithDuration:0.25 animations:^{
         self.scannerViewController.HUDView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.85];
