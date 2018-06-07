@@ -71,7 +71,7 @@
                                         <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                     </attributes>
                                 </fragment>
-                                <fragment content="      Copyright (c) 2017 doo GmbH. All rights reserved.">
+                                <fragment content="      Copyright (c) 2018 doo GmbH. All rights reserved.">
                                     <attributes>
                                         <color key="NSColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <font key="NSFont" metaFont="cellTitle"/>
