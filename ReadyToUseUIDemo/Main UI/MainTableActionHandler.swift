@@ -19,7 +19,6 @@ class MainTableActionHandler: NSObject {
 
     func showDocumentScanning() {
         let configuration = SBSDKUIDocumentScannerConfiguration.default()
-        configuration.textConfiguration.cancelButtonTitle = "Done"
         SBSDKUIDocumentScannerViewController.present(on: self.presenter, with: configuration, andDelegate: self)
     }
     
@@ -84,12 +83,9 @@ class MainTableActionHandler: NSObject {
 extension MainTableActionHandler: SBSDKUIDocumentScannerViewControllerDelegate {
     
     func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
-                                didScanDocumentPages pages: [SBSDKUIPage]) {
-
+                                didFinish pages: [SBSDKUIPage]) {
+        
         self.scannedPages.append(contentsOf: pages)
-    }
-    
-    func scanningViewControllerDidDismiss(_ viewController: SBSDKUIDocumentScannerViewController) {
         if self.scannedPages.count > 0 {
             self.showAllImages()
         }
@@ -99,11 +95,11 @@ extension MainTableActionHandler: SBSDKUIDocumentScannerViewControllerDelegate {
 extension MainTableActionHandler: SBSDKUIBarcodeScannerViewControllerDelegate {
 
     func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
-                                          detectedCode code: SBSDKMachineReadableCode) {
+                                          didDetect code: SBSDKMachineReadableCode) {
         
         guard let message = code.stringValue else { return }
         let title = code.isQRCode() ? "QR code detected" : "Barcode detected"
-
+        
         viewController.isRecognitionEnabled = false
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
             viewController.isRecognitionEnabled = true
@@ -114,8 +110,8 @@ extension MainTableActionHandler: SBSDKUIBarcodeScannerViewControllerDelegate {
 extension MainTableActionHandler: SBSDKUIMRZScannerViewControllerDelegate {
     
     func mrzDetectionViewController(_ viewController: SBSDKUIMRZScannerViewController,
-                                    detectedZone zone: SBSDKMachineReadableZoneRecognizerResult) {
-
+                                    didDetect zone: SBSDKMachineReadableZoneRecognizerResult) {
+        
         let title = "MRZ detected"
         let message = zone.stringRepresentation()
         viewController.isRecognitionEnabled = false
@@ -126,9 +122,8 @@ extension MainTableActionHandler: SBSDKUIMRZScannerViewControllerDelegate {
 }
 
 extension MainTableActionHandler: SBSDKUICroppingViewControllerDelegate {
-    func croppingViewController(_ viewController: SBSDKUICroppingViewController,
-                                didApplyChanges changedPage: SBSDKUIPage) {
-        
+    
+    func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKUIPage) {
         if self.scannedPages.filter({ (page) -> Bool in
             return page.pageFileUUID == changedPage.pageFileUUID
         }).count == 0 {
@@ -154,6 +149,7 @@ extension MainTableActionHandler: UIImagePickerControllerDelegate, UINavigationC
 }
 
 extension MainTableActionHandler: ImageBrowserViewControllerDelegate {
+    
     func imageBrowser(_ imageBrowser: ImageBrowserViewController, didSelectPage page: SBSDKUIPage) {
         self.showCroppingForPage(page)
     }
