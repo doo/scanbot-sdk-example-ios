@@ -25,7 +25,7 @@ selectable text
 - Payform recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR
 - Beta software for invoice, cheque and credit card recognition
 
-Scanbot SDK supports iOS 8 and higher.
+Scanbot SDK supports iOS 9 and higher.
 
 If you need further information or are interested in licensing Scanbot SDK please contact us via sdk@scanbot.io
 or visit our website https://scanbot.io/sdk.html
