@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        // TODO set your license key here
+        //ScanbotSDK.setLicense("YOUR_SCANBOT_SDK_LICENSE_KEY")
+        
         return true
     }
 
