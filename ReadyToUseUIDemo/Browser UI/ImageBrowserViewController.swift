@@ -19,26 +19,26 @@ class ImageBrowserViewController: UIViewController {
     @IBOutlet var collectionLayout: UICollectionViewFlowLayout!
     
     weak var delegate: ImageBrowserViewControllerDelegate?
-    private(set) var document = SBSDKUIDocument()
+    private(set) var pages: [SBSDKUIPage] = []
 
     private var imageCache = NSCache<NSString, UIImage>()
     
-    class func createNewWithDocument(_ document: SBSDKUIDocument, andDelegate delegate: ImageBrowserViewControllerDelegate)
+    class func createNewWithPages(_ pages: [SBSDKUIPage], andDelegate delegate: ImageBrowserViewControllerDelegate)
         -> ImageBrowserViewController {
             
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let browser = storyboard.instantiateViewController(withIdentifier: "ImageBrowserViewController")
                 as! ImageBrowserViewController
             browser.delegate = delegate
-            browser.document = document
+            browser.pages = pages
             return browser
     }
     
     class func presentOn(_ presenter: UIViewController,
-                         withDocument document: SBSDKUIDocument,
+                         withPages pages: [SBSDKUIPage],
                          andDelegate delegate: ImageBrowserViewControllerDelegate) -> ImageBrowserViewController {
         
-        let browser = self.createNewWithDocument(document, andDelegate: delegate)
+        let browser = self.createNewWithPages(pages, andDelegate: delegate)
         presenter.present(browser, animated: true, completion: nil)
         return browser
     }
@@ -55,14 +55,15 @@ class ImageBrowserViewController: UIViewController {
         self.collectionView.reloadData()
     }
     
-    private func thumbnailImageForPage(_ page: SBSDKUIPage) -> UIImage? {
-        var image = self.imageCache.object(forKey: page.pageFileUUID.uuidString as NSString)
+    private func thumbnailImageForID(_ uuid: UUID) -> UIImage? {
+        var image = self.imageCache.object(forKey: uuid.uuidString as NSString)
         if image != nil {
             return image
         }
-        image = page.documentPreviewImage()
+        image = SBSDKUIPageFileStorage.default().previewImage(withPageFileID: uuid,
+                                                              pageFileType: SBSDKUIPageFileType.document)
         if let image = image {
-            self.imageCache.setObject(image, forKey: page.pageFileUUID.uuidString as NSString)
+            self.imageCache.setObject(image, forKey: uuid.uuidString as NSString)
         }
         return image
     }
@@ -77,16 +78,15 @@ extension ImageBrowserViewController {
 extension ImageBrowserViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.document.numberOfPages()
+        return self.pages.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "pageCell", for: indexPath)
             as! ImageBrowserCollectionViewCell
         
-        if let page = self.document.page(at: indexPath.item) {
-            cell.imageView.image = self.thumbnailImageForPage(page)
-        }
+        let page = self.pages[indexPath.row]
+        cell.imageView.image = self.thumbnailImageForID(page.pageFileUUID)
         return cell
     }
 }
@@ -94,18 +94,16 @@ extension ImageBrowserViewController: UICollectionViewDataSource {
 extension ImageBrowserViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.collectionView.deselectItem(at: indexPath, animated: true)
-        if let page = self.document.page(at: indexPath.item) {
-            self.delegate?.imageBrowser(self, didSelectPage: page)
-        }
+        let page = self.pages[indexPath.item]
+        self.delegate?.imageBrowser(self, didSelectPage: page)
     }
 }
 
 extension ImageBrowserViewController: UICollectionViewDataSourcePrefetching {
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
         indexPaths.forEach { (indexPath) in
-            if let page = self.document.page(at: indexPath.item) {
-                let _ = self.thumbnailImageForPage(page)
-            }
+            let page = self.pages[indexPath.item]
+            let _ = self.thumbnailImageForID(page.pageFileUUID)
         }
     }
 }
