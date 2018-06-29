@@ -11,7 +11,7 @@ import ScanbotSDK
 
 class MainTableActionHandler: NSObject {
     let presenter: UIViewController
-    private(set) var scannedPages: [SBSDKUIPage] = []
+    private(set) var scannedDocument = SBSDKUIDocument()
     
     init(presenter: UIViewController) {
         self.presenter = presenter
@@ -19,7 +19,10 @@ class MainTableActionHandler: NSObject {
 
     func showDocumentScanning() {
         let configuration = SBSDKUIDocumentScannerConfiguration.default()
-        SBSDKUIDocumentScannerViewController.present(on: self.presenter, with: configuration, andDelegate: self)
+        SBSDKUIDocumentScannerViewController.present(on: self.presenter,
+                                                     with: self.scannedDocument,
+                                                     with: configuration,
+                                                     andDelegate: self)
     }
     
     func showQRCodeScanning() {
@@ -70,13 +73,13 @@ class MainTableActionHandler: NSObject {
     }
     
     func showAllImages() {
-        let browser = ImageBrowserViewController.createNewWithPages(self.scannedPages, andDelegate: self)
+        let browser = ImageBrowserViewController.createNewWithDocument(self.scannedDocument, andDelegate: self)
         self.presenter.navigationController?.pushViewController(browser, animated: true)
     }
     
     func deleteAllImages() {
         SBSDKUIPageFileStorage.default().removeAll()
-        self.scannedPages.removeAll()
+        self.scannedDocument = SBSDKUIDocument()
     }
 }
 
@@ -84,16 +87,7 @@ extension MainTableActionHandler: SBSDKUIDocumentScannerViewControllerDelegate {
     
     func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
                                 didFinishWith document: SBSDKUIDocument) {
-        
-    }
-    
-    func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
-                                didFinish pages: [SBSDKUIPage]) {
-        
-        self.scannedPages.append(contentsOf: pages)
-        if self.scannedPages.count > 0 {
-            self.showAllImages()
-        }
+        self.showAllImages()
     }
 }
 
@@ -129,10 +123,8 @@ extension MainTableActionHandler: SBSDKUIMRZScannerViewControllerDelegate {
 extension MainTableActionHandler: SBSDKUICroppingViewControllerDelegate {
     
     func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKUIPage) {
-        if self.scannedPages.filter({ (page) -> Bool in
-            return page.pageFileUUID == changedPage.pageFileUUID
-        }).count == 0 {
-            self.scannedPages.append(changedPage)
+        if self.scannedDocument.page(withPageFileID: changedPage.pageFileUUID) == nil {
+            self.scannedDocument.add(changedPage)
         }
     }
 }
