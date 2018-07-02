@@ -20,8 +20,24 @@
 		082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */; };
 		082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */; };
 		082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */; };
-		082D0A6520C82CE3009B1A7A /* ImageBrowserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6420C82CE3009B1A7A /* ImageBrowserViewController.swift */; };
-		082D0A6720C8303C009B1A7A /* ImageBrowserCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6620C8303C009B1A7A /* ImageBrowserCollectionViewCell.swift */; };
+		0889D10120EA632800A36316 /* PageReviewScreenConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889D0F620EA632800A36316 /* PageReviewScreenConfiguration.m */; };
+		0889D10220EA632800A36316 /* PageReviewScreenTextConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889D0F720EA632800A36316 /* PageReviewScreenTextConfiguration.m */; };
+		0889D10320EA632800A36316 /* PageReviewScreenUIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889D0FA20EA632800A36316 /* PageReviewScreenUIConfiguration.m */; };
+		0889D10420EA632800A36316 /* PageCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889D0FE20EA632800A36316 /* PageCollectionViewCell.m */; };
+		0889D10520EA632800A36316 /* PageReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 0889D10020EA632800A36316 /* PageReviewViewController.m */; };
+		0889D10F20EA700C00A36316 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D10E20EA700C00A36316 /* Usecase.swift */; };
+		0889D11120EA718400A36316 /* UsecaseScanQRCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11020EA718400A36316 /* UsecaseScanQRCode.swift */; };
+		0889D11320EA729D00A36316 /* UsecaseScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11220EA729D00A36316 /* UsecaseScanBarcode.swift */; };
+		0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */; };
+		0889D11720EA74B600A36316 /* UsecaseScanDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */; };
+		08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */; };
+		08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */; };
+		08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */; };
+		08B6F2FB20EA8D0800691231 /* FilteringScreenTextConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F420EA8D0800691231 /* FilteringScreenTextConfiguration.m */; };
+		08B6F2FC20EA8D0800691231 /* FilteringScreenUIConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F720EA8D0800691231 /* FilteringScreenUIConfiguration.m */; };
+		08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */; };
+		08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FA20EA8D0800691231 /* FilteringViewController.m */; };
+		08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,8 +69,34 @@
 		082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableActionHandler.swift; sourceTree = "<group>"; };
 		082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewItemProvider.swift; sourceTree = "<group>"; };
 		082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
-		082D0A6420C82CE3009B1A7A /* ImageBrowserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBrowserViewController.swift; sourceTree = "<group>"; };
-		082D0A6620C8303C009B1A7A /* ImageBrowserCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageBrowserCollectionViewCell.swift; sourceTree = "<group>"; };
+		0889D0F620EA632800A36316 /* PageReviewScreenConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageReviewScreenConfiguration.m; sourceTree = "<group>"; };
+		0889D0F720EA632800A36316 /* PageReviewScreenTextConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageReviewScreenTextConfiguration.m; sourceTree = "<group>"; };
+		0889D0F820EA632800A36316 /* PageReviewScreenUIConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageReviewScreenUIConfiguration.h; sourceTree = "<group>"; };
+		0889D0F920EA632800A36316 /* PageReviewScreenConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageReviewScreenConfiguration.h; sourceTree = "<group>"; };
+		0889D0FA20EA632800A36316 /* PageReviewScreenUIConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageReviewScreenUIConfiguration.m; sourceTree = "<group>"; };
+		0889D0FB20EA632800A36316 /* PageReviewScreenTextConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageReviewScreenTextConfiguration.h; sourceTree = "<group>"; };
+		0889D0FC20EA632800A36316 /* PageReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageReviewViewController.h; sourceTree = "<group>"; };
+		0889D0FE20EA632800A36316 /* PageCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageCollectionViewCell.m; sourceTree = "<group>"; };
+		0889D0FF20EA632800A36316 /* PageCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PageCollectionViewCell.h; sourceTree = "<group>"; };
+		0889D10020EA632800A36316 /* PageReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PageReviewViewController.m; sourceTree = "<group>"; };
+		0889D10620EA663A00A36316 /* ReadyToUseUIDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ReadyToUseUIDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		0889D10E20EA700C00A36316 /* Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
+		0889D11020EA718400A36316 /* UsecaseScanQRCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanQRCode.swift; sourceTree = "<group>"; };
+		0889D11220EA729D00A36316 /* UsecaseScanBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanBarcode.swift; sourceTree = "<group>"; };
+		0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMRZ.swift; sourceTree = "<group>"; };
+		0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocument.swift; sourceTree = "<group>"; };
+		08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseImportImage.swift; sourceTree = "<group>"; };
+		08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseBrowseDocumentPages.swift; sourceTree = "<group>"; };
+		08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseCropPage.swift; sourceTree = "<group>"; };
+		08B6F2F320EA8D0800691231 /* FilteringScreenUIConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringScreenUIConfiguration.h; sourceTree = "<group>"; };
+		08B6F2F420EA8D0800691231 /* FilteringScreenTextConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringScreenTextConfiguration.m; sourceTree = "<group>"; };
+		08B6F2F520EA8D0800691231 /* FilteringScreenConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringScreenConfiguration.h; sourceTree = "<group>"; };
+		08B6F2F620EA8D0800691231 /* FilteringScreenTextConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringScreenTextConfiguration.h; sourceTree = "<group>"; };
+		08B6F2F720EA8D0800691231 /* FilteringScreenUIConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringScreenUIConfiguration.m; sourceTree = "<group>"; };
+		08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringScreenConfiguration.m; sourceTree = "<group>"; };
+		08B6F2F920EA8D0800691231 /* FilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringViewController.h; sourceTree = "<group>"; };
+		08B6F2FA20EA8D0800691231 /* FilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringViewController.m; sourceTree = "<group>"; };
+		08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFilterPage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -89,13 +131,16 @@
 		082D0A3120C801AA009B1A7A /* ReadyToUseUIDemo */ = {
 			isa = PBXGroup;
 			children = (
-				082D0A6320C82CC3009B1A7A /* Browser UI */,
-				082D0A5A20C81760009B1A7A /* Main UI */,
+				0889D10D20EA6FA500A36316 /* Usecases */,
+				082D0A5A20C81760009B1A7A /* Main Screen */,
+				08B6F2F120EA8D0800691231 /* Filter Screen */,
+				0889D0F420EA632800A36316 /* Review Screen */,
 				082D0A3220C801AA009B1A7A /* AppDelegate.swift */,
 				082D0A3620C801AB009B1A7A /* Main.storyboard */,
 				082D0A3920C801AB009B1A7A /* Assets.xcassets */,
 				082D0A3B20C801AB009B1A7A /* LaunchScreen.storyboard */,
 				082D0A3E20C801AB009B1A7A /* Info.plist */,
+				0889D10620EA663A00A36316 /* ReadyToUseUIDemo-Bridging-Header.h */,
 			);
 			path = ReadyToUseUIDemo;
 			sourceTree = "<group>";
@@ -111,7 +156,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		082D0A5A20C81760009B1A7A /* Main UI */ = {
+		082D0A5A20C81760009B1A7A /* Main Screen */ = {
 			isa = PBXGroup;
 			children = (
 				082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */,
@@ -119,16 +164,80 @@
 				082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */,
 				082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */,
 			);
-			path = "Main UI";
+			path = "Main Screen";
 			sourceTree = "<group>";
 		};
-		082D0A6320C82CC3009B1A7A /* Browser UI */ = {
+		0889D0F420EA632800A36316 /* Review Screen */ = {
 			isa = PBXGroup;
 			children = (
-				082D0A6620C8303C009B1A7A /* ImageBrowserCollectionViewCell.swift */,
-				082D0A6420C82CE3009B1A7A /* ImageBrowserViewController.swift */,
+				0889D0F520EA632800A36316 /* Configuration */,
+				0889D0FD20EA632800A36316 /* Views */,
+				0889D0FC20EA632800A36316 /* PageReviewViewController.h */,
+				0889D10020EA632800A36316 /* PageReviewViewController.m */,
 			);
-			path = "Browser UI";
+			path = "Review Screen";
+			sourceTree = "<group>";
+		};
+		0889D0F520EA632800A36316 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				0889D0F620EA632800A36316 /* PageReviewScreenConfiguration.m */,
+				0889D0F720EA632800A36316 /* PageReviewScreenTextConfiguration.m */,
+				0889D0F820EA632800A36316 /* PageReviewScreenUIConfiguration.h */,
+				0889D0F920EA632800A36316 /* PageReviewScreenConfiguration.h */,
+				0889D0FA20EA632800A36316 /* PageReviewScreenUIConfiguration.m */,
+				0889D0FB20EA632800A36316 /* PageReviewScreenTextConfiguration.h */,
+			);
+			path = Configuration;
+			sourceTree = "<group>";
+		};
+		0889D0FD20EA632800A36316 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0889D0FF20EA632800A36316 /* PageCollectionViewCell.h */,
+				0889D0FE20EA632800A36316 /* PageCollectionViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0889D10D20EA6FA500A36316 /* Usecases */ = {
+			isa = PBXGroup;
+			children = (
+				0889D10E20EA700C00A36316 /* Usecase.swift */,
+				0889D11020EA718400A36316 /* UsecaseScanQRCode.swift */,
+				0889D11220EA729D00A36316 /* UsecaseScanBarcode.swift */,
+				0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */,
+				0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */,
+				08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */,
+				08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */,
+				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
+				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
+			);
+			path = Usecases;
+			sourceTree = "<group>";
+		};
+		08B6F2F120EA8D0800691231 /* Filter Screen */ = {
+			isa = PBXGroup;
+			children = (
+				08B6F2F220EA8D0800691231 /* Configuration */,
+				08B6F2F920EA8D0800691231 /* FilteringViewController.h */,
+				08B6F2FA20EA8D0800691231 /* FilteringViewController.m */,
+			);
+			name = "Filter Screen";
+			path = "ReadyToUseUIDemo/Filter Screen";
+			sourceTree = SOURCE_ROOT;
+		};
+		08B6F2F220EA8D0800691231 /* Configuration */ = {
+			isa = PBXGroup;
+			children = (
+				08B6F2F320EA8D0800691231 /* FilteringScreenUIConfiguration.h */,
+				08B6F2F420EA8D0800691231 /* FilteringScreenTextConfiguration.m */,
+				08B6F2F520EA8D0800691231 /* FilteringScreenConfiguration.h */,
+				08B6F2F620EA8D0800691231 /* FilteringScreenTextConfiguration.h */,
+				08B6F2F720EA8D0800691231 /* FilteringScreenUIConfiguration.m */,
+				08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */,
+			);
+			path = Configuration;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,12 +316,28 @@
 			buildActionMask = 2147483647;
 			files = (
 				082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */,
+				0889D10420EA632800A36316 /* PageCollectionViewCell.m in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
+				0889D10320EA632800A36316 /* PageReviewScreenUIConfiguration.m in Sources */,
+				0889D10520EA632800A36316 /* PageReviewViewController.m in Sources */,
+				08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
-				082D0A6720C8303C009B1A7A /* ImageBrowserCollectionViewCell.swift in Sources */,
-				082D0A6520C82CE3009B1A7A /* ImageBrowserViewController.swift in Sources */,
+				0889D10120EA632800A36316 /* PageReviewScreenConfiguration.m in Sources */,
+				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
+				08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */,
+				08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */,
+				0889D11120EA718400A36316 /* UsecaseScanQRCode.swift in Sources */,
+				08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */,
+				08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */,
+				08B6F2FB20EA8D0800691231 /* FilteringScreenTextConfiguration.m in Sources */,
+				0889D11320EA729D00A36316 /* UsecaseScanBarcode.swift in Sources */,
+				0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */,
 				082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */,
+				08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */,
+				08B6F2FC20EA8D0800691231 /* FilteringScreenUIConfiguration.m in Sources */,
+				0889D11720EA74B600A36316 /* UsecaseScanDocument.swift in Sources */,
+				0889D10220EA632800A36316 /* PageReviewScreenTextConfiguration.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -370,6 +495,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.ReadyToUseUIDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -393,6 +519,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.ReadyToUseUIDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
