@@ -83,6 +83,11 @@ class MainTableActionHandler: NSObject {
 extension MainTableActionHandler: SBSDKUIDocumentScannerViewControllerDelegate {
     
     func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
+                                didFinishWith document: SBSDKUIDocument) {
+        
+    }
+    
+    func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
                                 didFinish pages: [SBSDKUIPage]) {
         
         self.scannedPages.append(contentsOf: pages)
