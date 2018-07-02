@@ -10,7 +10,9 @@ import UIKit
 import ScanbotSDK
 
 class MainTableActionHandler: NSObject {
+    
     let presenter: UIViewController
+    
     private(set) var scannedDocument = SBSDKUIDocument()
     
     init(presenter: UIViewController) {

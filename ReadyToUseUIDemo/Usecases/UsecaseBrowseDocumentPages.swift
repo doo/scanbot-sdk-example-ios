@@ -6,7 +6,7 @@
 //  Copyright © 2018 doo GmbH. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class UsecaseBrowseDocumentPages: Usecase, PageReviewViewControllerDelegate {
 
@@ -33,8 +33,29 @@ class UsecaseBrowseDocumentPages: Usecase, PageReviewViewControllerDelegate {
     }
     
     func pageReviewViewController(_ viewController: PageReviewViewController, didSelect page: SBSDKUIPage) {
-//        UsecaseCropPage(page: page).start(presenter: viewController)
-        UsecaseFilterPage(page: page).start(presenter: viewController)
+        
+        let alert = UIAlertController(title: "Edit Page",
+                                      message: "Which operation do you want to perform on the page?",
+                                      preferredStyle: .actionSheet)
+        
+        let cropAction = UIAlertAction(title: "Crop Page", style: .default) { (_) in
+            UsecaseCropPage(page: page).start(presenter: viewController)
+        }
+        
+        let filterAction = UIAlertAction(title: "Filter Page", style: .default) { (_) in
+            UsecaseFilterPage(page: page).start(presenter: viewController)
+        }
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel)
+        
+        alert.addAction(cropAction)
+        alert.addAction(filterAction)
+        alert.addAction(cancelAction)
+        
+        alert.actions.forEach { (action) in
+            action.setValue(UIColor.black, forKey: "titleTextColor")
+        }
+        
+        viewController.present(alert, animated: true, completion: nil)
     }
-    
 }

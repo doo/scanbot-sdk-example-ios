@@ -178,6 +178,8 @@
                                                    handler:^(UIAlertAction * _Nonnull action) {
                                                        [self setSelectedFilter:filter];
                                                    }];
+    
+    [action setValue:[UIColor blackColor] forKey:@"titleTextColor"];
     return action;
 }
 
