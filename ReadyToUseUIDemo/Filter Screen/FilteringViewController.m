@@ -6,10 +6,14 @@
 //  Copyright © 2018 doo GmbH. All rights reserved.
 //
 
-#import "FilteringViewController.h"
 @import ScanbotSDK;
+#import "FilteringViewController.h"
+#import "FilterTableViewCell.h"
+#import "FilterTableItem.h"
+#import "ReadyToUseUIDemo-Swift.h"
 
-@interface FilteringViewController ()
+@interface FilteringViewController() <UITableViewDataSource, UITableViewDelegate>
+
 @property (strong, nonatomic) FilteringScreenConfiguration *configuration;
 @property (strong, nonatomic) SBSDKUIPage *currentPage;
 @property (assign, nonatomic) SBSDKImageFilterType selectedFilter;
@@ -18,15 +22,18 @@
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
 @property (strong, nonatomic) IBOutlet UILabel *titleLabel;
 @property (strong, nonatomic) IBOutlet UIView *topBarView;
-@property (strong, nonatomic) IBOutlet UIView *bottomBarView;
-@property (strong, nonatomic) IBOutlet UIButton *selectFilterButton;
 @property (strong, nonatomic) IBOutlet UIImageView *imageView;
 @property (strong, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) dispatch_queue_t filterQueue;
+@property (nonnull, nonatomic, strong) NSArray<FilterTableItem*>* filterItems;
+
 @end
 
+
 @implementation FilteringViewController
+
 @synthesize currentPage = _currentPage;
 @synthesize selectedFilter = _selectedFilter;
 
@@ -100,32 +107,29 @@
     [self.doneButton setTitleColor:self.configuration.uiConfiguration.topBarButtonsColor forState:UIControlStateNormal];
     [self.doneButton setTitle:self.configuration.textConfiguration.doneButtonTitle forState:UIControlStateNormal];
     
-    [self.bottomBarView setBackgroundColor:self.configuration.uiConfiguration.bottomBarBackgroundColor];
-    [self.selectFilterButton setTitleColor:self.configuration.uiConfiguration.bottomBarButtonsColor
-                                  forState:UIControlStateNormal];
-    [self.selectFilterButton setTitle:self.configuration.textConfiguration.filterButtonTitle
-                             forState:UIControlStateNormal];
     
     [self.activityIndicator setColor:self.configuration.uiConfiguration.activityIndicatorColor];
     
     self.view.backgroundColor = self.configuration.uiConfiguration.backgroundColor;
+    self.tableView.backgroundColor = self.configuration.uiConfiguration.filterItemBackgroundColor;
+    
+    self.filterItems = [self.configuration.uiConfiguration.filterItems copy];
 }
 
 - (void)updateUI {
     if (!self.isViewLoaded) {
         return;
     }
+    [self.tableView reloadData];
     [self.activityIndicator startAnimating];
-    self.imageView.image = nil;
     SBSDKImageFilterType filter = self.selectedFilter;
     dispatch_async(self.filterQueue, ^{
         UIImage *filteredImage = [self.currentPage documentPreviewImageUsingFilter:filter];
         dispatch_async(dispatch_get_main_queue(), ^{
-            self.imageView.image = filteredImage;
+            [self.imageView setImageAnimated: filteredImage];
             [self.activityIndicator stopAnimating];
         });
     });
-    [self.selectFilterButton setTitle:[self nameForFilter:self.selectedFilter] forState:UIControlStateNormal];
 }
 
 - (void)didCancel {
@@ -147,6 +151,33 @@
 - (IBAction)doneButtonTapped:(UIButton *)sender {
     self.currentPage.filter = self.selectedFilter;
     [self dismiss:self.currentPage == nil];
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.filterItems.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    FilterTableViewCell *cell = (FilterTableViewCell*)[tableView dequeueReusableCellWithIdentifier:@"filterCell"
+                                                                                      forIndexPath:indexPath];
+    FilterTableItem *item = self.filterItems[indexPath.row];
+    
+    cell.accessoryType = (self.selectedFilter == item.filterType) ?
+    UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    
+    cell.textLabel.text = item.title;
+    cell.tintColor = self.configuration.uiConfiguration.filterItemAccessoryColor;
+    cell.textLabel.textColor = self.configuration.uiConfiguration.filterItemTextColor;
+    cell.backgroundColor = [UIColor clearColor];
+    cell.backgroundView.backgroundColor = self.configuration.uiConfiguration.filterItemBackgroundColor;
+    cell.selectedBackgroundView.backgroundColor
+    = [self.configuration.uiConfiguration.filterItemBackgroundColor colorWithAlphaComponent:0.5];
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    self.selectedFilter = self.filterItems[indexPath.row].filterType;
 }
 
 - (NSString *)nameForFilter:(SBSDKImageFilterType)filter {

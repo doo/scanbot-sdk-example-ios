@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		080F3A8B20EB9ABB00E2A3CC /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8A20EB9ABB00E2A3CC /* FilterTableViewCell.m */; };
+		080F3A8E20EB9B2300E2A3CC /* FilterTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */; };
+		080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */; };
 		082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A3220C801AA009B1A7A /* AppDelegate.swift */; };
 		082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3620C801AB009B1A7A /* Main.storyboard */; };
 		082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3920C801AB009B1A7A /* Assets.xcassets */; };
@@ -55,6 +58,11 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		080F3A8920EB9ABB00E2A3CC /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
+		080F3A8A20EB9ABB00E2A3CC /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
+		080F3A8C20EB9B2300E2A3CC /* FilterTableItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableItem.h; sourceTree = "<group>"; };
+		080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableItem.m; sourceTree = "<group>"; };
+		080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		082D0A2F20C801AA009B1A7A /* ReadyToUseUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadyToUseUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		082D0A3220C801AA009B1A7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		082D0A3720C801AB009B1A7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -111,6 +119,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		080F3A8820EB9A9F00E2A3CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				080F3A8920EB9ABB00E2A3CC /* FilterTableViewCell.h */,
+				080F3A8A20EB9ABB00E2A3CC /* FilterTableViewCell.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		082D0A2620C801AA009B1A7A = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */,
+				080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */,
 				082D0A5B20C81760009B1A7A /* MainViewController.swift */,
 				082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */,
 				082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */,
@@ -219,6 +237,7 @@
 		08B6F2F120EA8D0800691231 /* Filter Screen */ = {
 			isa = PBXGroup;
 			children = (
+				080F3A8820EB9A9F00E2A3CC /* Views */,
 				08B6F2F220EA8D0800691231 /* Configuration */,
 				08B6F2F920EA8D0800691231 /* FilteringViewController.h */,
 				08B6F2FA20EA8D0800691231 /* FilteringViewController.m */,
@@ -230,12 +249,14 @@
 		08B6F2F220EA8D0800691231 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				08B6F2F320EA8D0800691231 /* FilteringScreenUIConfiguration.h */,
-				08B6F2F420EA8D0800691231 /* FilteringScreenTextConfiguration.m */,
 				08B6F2F520EA8D0800691231 /* FilteringScreenConfiguration.h */,
-				08B6F2F620EA8D0800691231 /* FilteringScreenTextConfiguration.h */,
-				08B6F2F720EA8D0800691231 /* FilteringScreenUIConfiguration.m */,
 				08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */,
+				08B6F2F320EA8D0800691231 /* FilteringScreenUIConfiguration.h */,
+				08B6F2F720EA8D0800691231 /* FilteringScreenUIConfiguration.m */,
+				08B6F2F620EA8D0800691231 /* FilteringScreenTextConfiguration.h */,
+				08B6F2F420EA8D0800691231 /* FilteringScreenTextConfiguration.m */,
+				080F3A8C20EB9B2300E2A3CC /* FilterTableItem.h */,
+				080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -321,11 +342,14 @@
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
 				0889D10320EA632800A36316 /* PageReviewScreenUIConfiguration.m in Sources */,
 				0889D10520EA632800A36316 /* PageReviewViewController.m in Sources */,
+				080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */,
 				08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
 				0889D10120EA632800A36316 /* PageReviewScreenConfiguration.m in Sources */,
+				080F3A8B20EB9ABB00E2A3CC /* FilterTableViewCell.m in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
 				08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */,
+				080F3A8E20EB9B2300E2A3CC /* FilterTableItem.m in Sources */,
 				08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */,
 				0889D11120EA718400A36316 /* UsecaseScanQRCode.swift in Sources */,
 				08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */,
