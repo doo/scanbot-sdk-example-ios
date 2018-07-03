@@ -13,8 +13,10 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _closeButtonTitle = @"Close";
-        _topBarTitle = @"Review";
+        _bottomButtonTitle = @"Delete All Scans";
+        _topRightButtonTitle = @"Close";
+        _topLeftButtonTitle = @"Back";
+        _topBarTitle = @"Scan Results";
     }
     return self;
 }

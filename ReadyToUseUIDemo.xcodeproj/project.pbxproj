@@ -181,12 +181,12 @@
 		0889D0F520EA632800A36316 /* Configuration */ = {
 			isa = PBXGroup;
 			children = (
-				0889D0F620EA632800A36316 /* PageReviewScreenConfiguration.m */,
-				0889D0F720EA632800A36316 /* PageReviewScreenTextConfiguration.m */,
-				0889D0F820EA632800A36316 /* PageReviewScreenUIConfiguration.h */,
 				0889D0F920EA632800A36316 /* PageReviewScreenConfiguration.h */,
+				0889D0F620EA632800A36316 /* PageReviewScreenConfiguration.m */,
+				0889D0F820EA632800A36316 /* PageReviewScreenUIConfiguration.h */,
 				0889D0FA20EA632800A36316 /* PageReviewScreenUIConfiguration.m */,
 				0889D0FB20EA632800A36316 /* PageReviewScreenTextConfiguration.h */,
+				0889D0F720EA632800A36316 /* PageReviewScreenTextConfiguration.m */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";

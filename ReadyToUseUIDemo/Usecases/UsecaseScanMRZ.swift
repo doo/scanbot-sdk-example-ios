@@ -15,6 +15,8 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
         super.start(presenter: presenter)
 
         let configuration = SBSDKUIMachineCodeScannerConfiguration.default()
+        configuration.textConfiguration.cancelButtonTitle = "Done"
+
         let viewSize = presenter.view.frame.size
         let targetWidth = viewSize.width - ((viewSize.width * 0.058) * 2)
         configuration.uiConfiguration.finderWidth = targetWidth

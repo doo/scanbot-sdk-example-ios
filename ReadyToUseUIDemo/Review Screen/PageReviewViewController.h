@@ -30,6 +30,24 @@
  */
 - (void)pageReviewViewControllerDidCancel:(nonnull PageReviewViewController *)viewController;
 
+/**
+ * Optional: informs the delegate that the PageReviewViewControllers bottom button has been pressed.
+ * @param viewController The 'PageReviewViewController'.
+ */
+- (void)pageReviewViewControllerDidPressBottomButton:(nonnull PageReviewViewController *)viewController;
+
+/**
+ * Optional: informs the delegate that the PageReviewViewControllers top left button has been pressed.
+ * @param viewController The 'PageReviewViewController'.
+ */
+- (void)pageReviewViewControllerDidPressTopLeftButton:(nonnull PageReviewViewController *)viewController;
+
+/**
+ * Optional: informs the delegate that the PageReviewViewControllers top right button has been pressed.
+ * @param viewController The 'PageReviewViewController'.
+ */
+- (void)pageReviewViewControllerDidPressTopRightButton:(nonnull PageReviewViewController *)viewController;
+
 @end
 
 /**
@@ -66,5 +84,7 @@
 @property (nullable, nonatomic, weak) id <PageReviewViewControllerDelegate> delegate;
 
 - (void)reloadData;
+
+- (void)deleteAllPages;
 
 @end

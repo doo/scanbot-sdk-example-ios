@@ -15,9 +15,13 @@
 @property (nonatomic, strong) IBOutlet UICollectionView *collectionView;
 @property (nonatomic, strong) IBOutlet UICollectionViewFlowLayout *collectionLayout;
 
-@property (nonatomic, strong) IBOutlet UIButton *closeButton;
-@property (nonatomic, strong) IBOutlet UIView *topBarView;
+@property (nonatomic, strong) IBOutlet UIButton *topRightButton;
+@property (strong, nonatomic) IBOutlet UIButton *topLeftButton;
 @property (nonatomic, strong) IBOutlet UILabel *titleLabel;
+@property (nonatomic, strong) IBOutlet UIButton *bottomButton;
+
+@property (nonatomic, strong) IBOutlet UIView *topBarView;
+@property (nonatomic, strong) IBOutlet UIView *bottomBarView;
 
 @property (nonatomic, strong) PageReviewScreenConfiguration *configuration;
 @property (nonatomic, strong) SBSDKUIDocument *document;
@@ -73,12 +77,31 @@
     self.titleLabel.textColor = self.configuration.uiConfiguration.titleColor;
     self.titleLabel.text = self.configuration.textConfiguration.topBarTitle;
     
-    self.topBarView.backgroundColor = self.configuration.uiConfiguration.topBarColor;
+    self.topBarView.backgroundColor = self.configuration.uiConfiguration.topBarBackgroundColor;
+    self.bottomBarView.backgroundColor = self.configuration.uiConfiguration.bottomBarBackgroundColor;
     
-    [self.closeButton setTitleColor:self.configuration.uiConfiguration.closeButtonColor
+    [self.topRightButton setTitleColor:self.configuration.uiConfiguration.topBarButtonsColor
                             forState:UIControlStateNormal];
     
-    [self.closeButton setTitle:self.configuration.textConfiguration.closeButtonTitle forState:UIControlStateNormal];
+    [self.topLeftButton setTitleColor:self.configuration.uiConfiguration.topBarButtonsColor
+                              forState:UIControlStateNormal];
+    
+    [self.bottomButton setTitleColor:self.configuration.uiConfiguration.bottomBarButtonsColor
+                               forState:UIControlStateNormal];
+    
+    [self.bottomButton setTitle:self.configuration.textConfiguration.bottomButtonTitle
+                          forState:UIControlStateNormal];
+
+    [self.topLeftButton setTitle:self.configuration.textConfiguration.topLeftButtonTitle
+                        forState:UIControlStateNormal];
+
+    [self.topRightButton setTitle:self.configuration.textConfiguration.topRightButtonTitle
+                         forState:UIControlStateNormal];
+    
+    NSArray *buttons = @[self.topRightButton, self.topLeftButton, self.bottomButton];
+    for (UIButton *button in buttons) {
+        [button setHidden:[button titleForState:UIControlStateNormal] == nil];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -101,8 +124,35 @@
     [self didCancel];
 }
 
-- (IBAction)closeButtonTapped:(id)sender {
-    [self dismiss:NO];
+- (void)deleteAllPages {
+    while (self.document.numberOfPages > 0) {
+        [self.document removePageAtIndex:0];
+    }
+    [[SBSDKUIPageFileStorage defaultStorage] removeAll];
+    self.imageCache = [[NSCache alloc] init];
+    [self reloadData];
+}
+
+- (IBAction)topRightButtonTapped:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(pageReviewViewControllerDidPressTopRightButton:)]) {
+        [self.delegate pageReviewViewControllerDidPressTopRightButton:self];
+    } else {
+        [self dismiss:NO];
+    }
+}
+
+- (IBAction)topLeftButtonPressed:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(pageReviewViewControllerDidPressTopLeftButton:)]) {
+        [self.delegate pageReviewViewControllerDidPressTopLeftButton:self];
+    }
+}
+
+- (IBAction)bottomButtonTapped:(id)sender {
+    if ([self.delegate respondsToSelector:@selector(pageReviewViewControllerDidPressBottomButton:)]) {
+        [self.delegate pageReviewViewControllerDidPressBottomButton:self];
+    } else {
+        [self deleteAllPages];
+    }
 }
 
 - (UIImage *)thumbnailImageForPage:(SBSDKUIPage *)page {

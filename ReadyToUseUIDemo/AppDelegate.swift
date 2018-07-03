@@ -19,23 +19,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         // TODO set your license key here
-        //ScanbotSDK.setLicense("YOUR_SCANBOT_SDK_LICENSE_KEY")
-        ScanbotSDK.setLicense(
-            "kQFXbr3Iak41fJVKnqcDzCs5lM4KDE" +
-                "8NpxGE+EmlQm9lE1KjvPcwD9jKjygD" +
-                "2jPSvLOKfLoRinND8gFrAFOhjSlsj0" +
-                "2UDVl19hrOJvIdBgEPl0RtPw8yW3ZJ" +
-                "7QejWgtLuc1qpf3SQkhUhKzV6Zklb+" +
-                "VGnWTH3sITdXgr55l5zxT3MhuRmFP9" +
-                "3tdEunx3tWTyd9oyZ2wue/ZIWBDB+1" +
-                "xlizoA8yi/VK2GfPhgzFD539j42avM" +
-                "xK6iuYu9Pyl4nwNbrNRkl4Auy4+Ulh" +
-                "TArunU9xQuWENTtI/dxvRE2czTmsGr" +
-                "xmw6IQaXfcadXijtd+afq22wI9Ar9v" +
-                "3kLIjwoHbVug==\nU2NhbmJvdFNESw" +
-                "ppby5zY2FuYm90LlJlYWR5VG9Vc2VV" +
-                "SURlbW8KMTUzMzI1NDM5OQozMjc2Nw" +
-            "ox\n")
+//        ScanbotSDK.setLicense("YOUR_SCANBOT_SDK_LICENSE_KEY")
+
+//        ScanbotSDK.setLicense(
+//            "kQFXbr3Iak41fJVKnqcDzCs5lM4KDE" +
+//                "8NpxGE+EmlQm9lE1KjvPcwD9jKjygD" +
+//                "2jPSvLOKfLoRinND8gFrAFOhjSlsj0" +
+//                "2UDVl19hrOJvIdBgEPl0RtPw8yW3ZJ" +
+//                "7QejWgtLuc1qpf3SQkhUhKzV6Zklb+" +
+//                "VGnWTH3sITdXgr55l5zxT3MhuRmFP9" +
+//                "3tdEunx3tWTyd9oyZ2wue/ZIWBDB+1" +
+//                "xlizoA8yi/VK2GfPhgzFD539j42avM" +
+//                "xK6iuYu9Pyl4nwNbrNRkl4Auy4+Ulh" +
+//                "TArunU9xQuWENTtI/dxvRE2czTmsGr" +
+//                "xmw6IQaXfcadXijtd+afq22wI9Ar9v" +
+//                "3kLIjwoHbVug==\nU2NhbmJvdFNESw" +
+//                "ppby5zY2FuYm90LlJlYWR5VG9Vc2VV" +
+//                "SURlbW8KMTUzMzI1NDM5OQozMjc2Nw" +
+//            "ox\n")
         return true
     }
 

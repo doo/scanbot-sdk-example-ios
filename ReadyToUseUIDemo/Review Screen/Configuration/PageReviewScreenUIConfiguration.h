@@ -11,11 +11,17 @@
 /** Subconfiguration for user interface of the page preview screen. */
 @interface PageReviewScreenUIConfiguration : NSObject
 
-/** Foreground color of the close button. */
-@property (nonnull, nonatomic, strong) UIColor *closeButtonColor;
+/** Foreground color of the top bars buttons. */
+@property (nonnull, nonatomic, strong) UIColor *topBarButtonsColor;
 
 /** Background color of the top bar. */
-@property (nonnull, nonatomic, strong) UIColor *topBarColor;
+@property (nonnull, nonatomic, strong) UIColor *topBarBackgroundColor;
+
+/** Foreground color of the rotate button. */
+@property (nonnull, nonatomic, strong) UIColor *bottomBarButtonsColor;
+
+/** Background color of the bottom bar. */
+@property (nonnull, nonatomic, strong) UIColor *bottomBarBackgroundColor;
 
 /** Text color of the title in the top bar. */
 @property (nonnull, nonatomic, strong) UIColor *titleColor;

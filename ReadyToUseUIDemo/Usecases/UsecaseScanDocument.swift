@@ -35,7 +35,7 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
     
     func viewControllerShouldFinish(_ viewController: SBSDKUIViewController) -> Bool {
         if let presenter = self.presenter, self.document.numberOfPages() > 0 {
-            UsecaseBrowseDocumentPages(document: self.document).start(presenter: presenter)
+            UsecaseBrowseDocumentPages(document: self.document, mode: .scanning).start(presenter: presenter)
             return false
         }
         return true

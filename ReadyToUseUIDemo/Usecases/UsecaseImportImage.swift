@@ -29,21 +29,17 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        picker.presentingViewController?.dismiss(animated: true, completion: {
-            guard let image = info[UIImagePickerControllerOriginalImage] as? UIImage else {
-                return
+        var page: SBSDKUIPage?
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
+            if let uuid = SBSDKUIPageFileStorage.default().add(image.sbsdk_imageWithFixedOrientation()!) {
+                page = SBSDKUIPage(pageFileID: uuid, polygon: nil)
             }
-            guard let uuid = SBSDKUIPageFileStorage.default().add(image.sbsdk_imageWithFixedOrientation()!) else {
-                return
-            }
-            let page = SBSDKUIPage(pageFileID: uuid, polygon: nil)
+        }
+        if let page = page {
             page.detectDocument(true)
             self.document.add(page)
-            
-            if let presenter = self.presenter {
-                UsecaseBrowseDocumentPages(document: self.document).start(presenter: presenter)
-            }
-
+        }
+        picker.presentingViewController?.dismiss(animated: true, completion: {
             self.didFinish()
         })
     }
