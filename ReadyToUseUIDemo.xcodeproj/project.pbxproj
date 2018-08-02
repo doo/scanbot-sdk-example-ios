@@ -513,7 +513,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.ReadyToUseUIDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.rtu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
@@ -537,7 +537,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.ReadyToUseUIDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.rtu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
