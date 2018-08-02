@@ -16,7 +16,6 @@
 		082D0A3D20C801AB009B1A7A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3B20C801AB009B1A7A /* LaunchScreen.storyboard */; };
 		082D0A4520C8022A009B1A7A /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 082D0A4420C8022A009B1A7A /* ScanbotSDK.framework */; };
 		082D0A4620C8022A009B1A7A /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 082D0A4420C8022A009B1A7A /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		082D0A4E20C802B7009B1A7A /* ScanbotSDKCreditCardData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A4B20C802B7009B1A7A /* ScanbotSDKCreditCardData.bundle */; };
 		082D0A4F20C802B7009B1A7A /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A4C20C802B7009B1A7A /* ScanbotSDKMRZData.bundle */; };
 		082D0A5020C802B7009B1A7A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A4D20C802B7009B1A7A /* ScanbotSDKOCRData.bundle */; };
 		082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5B20C81760009B1A7A /* MainViewController.swift */; };
@@ -70,7 +69,6 @@
 		082D0A3C20C801AB009B1A7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		082D0A3E20C801AB009B1A7A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		082D0A4420C8022A009B1A7A /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
-		082D0A4B20C802B7009B1A7A /* ScanbotSDKCreditCardData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKCreditCardData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKCreditCardData.bundle; sourceTree = "<group>"; };
 		082D0A4C20C802B7009B1A7A /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = "<group>"; };
 		082D0A4D20C802B7009B1A7A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = "<group>"; };
 		082D0A5B20C81760009B1A7A /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 		082D0A4920C80261009B1A7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				082D0A4B20C802B7009B1A7A /* ScanbotSDKCreditCardData.bundle */,
 				082D0A4C20C802B7009B1A7A /* ScanbotSDKMRZData.bundle */,
 				082D0A4D20C802B7009B1A7A /* ScanbotSDKOCRData.bundle */,
 				082D0A4420C8022A009B1A7A /* ScanbotSDK.framework */,
@@ -324,7 +321,6 @@
 				082D0A3D20C801AB009B1A7A /* LaunchScreen.storyboard in Resources */,
 				082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */,
 				082D0A4F20C802B7009B1A7A /* ScanbotSDKMRZData.bundle in Resources */,
-				082D0A4E20C802B7009B1A7A /* ScanbotSDKCreditCardData.bundle in Resources */,
 				082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
