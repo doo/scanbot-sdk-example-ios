@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="666" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="592" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <attributedString key="attributedText">
                                 <fragment content=" This demo app will only run 1 minute before terminating.">
@@ -134,33 +134,8 @@
                                             <segue destination="OcF-Ne-jQP" kind="show" id="JTX-Eh-WRV"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="24f-sf-Jbz">
-                                        <rect key="frame" x="0.0" y="148" width="375" height="74"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="24f-sf-Jbz" id="yvo-5H-dQR">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duz-hr-h02">
-                                                    <rect key="frame" x="29" y="0.0" width="317" height="73.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="duz-hr-h02" firstAttribute="top" secondItem="yvo-5H-dQR" secondAttribute="top" id="XGL-7G-mEC"/>
-                                                <constraint firstAttribute="trailing" secondItem="duz-hr-h02" secondAttribute="trailing" constant="29" id="ZHO-Rs-J6i"/>
-                                                <constraint firstItem="duz-hr-h02" firstAttribute="leading" secondItem="yvo-5H-dQR" secondAttribute="leading" constant="29" id="oeZ-bj-hcG"/>
-                                                <constraint firstAttribute="bottom" secondItem="duz-hr-h02" secondAttribute="bottom" id="xCq-Kh-hid"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="blK-ed-CC4" kind="show" id="tGW-ba-KME"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="LuU-hY-5RS">
-                                        <rect key="frame" x="0.0" y="222" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="148" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LuU-hY-5RS" id="hEp-FG-s01">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -185,7 +160,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="qVL-sW-K1e">
-                                        <rect key="frame" x="0.0" y="296" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="222" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qVL-sW-K1e" id="qoZ-6t-NBm">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -210,7 +185,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="xAn-Tr-BHY">
-                                        <rect key="frame" x="0.0" y="370" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="296" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xAn-Tr-BHY" id="pOO-I8-hIc">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -235,7 +210,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="9Hd-Cl-BX9">
-                                        <rect key="frame" x="0.0" y="444" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="370" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9Hd-Cl-BX9" id="EdW-jS-UEM">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -260,7 +235,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="BeL-bh-jib">
-                                        <rect key="frame" x="0.0" y="518" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="444" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="BeL-bh-jib" id="6Qk-nk-X9T">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -285,7 +260,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="ePC-zM-olr">
-                                        <rect key="frame" x="0.0" y="592" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="518" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ePC-zM-olr" id="nVv-L2-x0m">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="73.5"/>
@@ -437,24 +412,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nW-rz-JhG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="807" y="1001"/>
-        </scene>
-        <!--Credit Card Recognition Demo View Controller-->
-        <scene sceneID="02R-8f-tQP">
-            <objects>
-                <viewController storyboardIdentifier="CreditCardRecognitionDemoViewController" id="blK-ed-CC4" customClass="CreditCardRecognitionDemoViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Qfy-3t-8cz"/>
-                        <viewControllerLayoutGuide type="bottom" id="CHt-pc-tQj"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Rho-FF-1sE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6hw-wT-cJz" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1758" y="1879"/>
         </scene>
         <!--Recognized Text-->
         <scene sceneID="jMy-hz-a1b">
