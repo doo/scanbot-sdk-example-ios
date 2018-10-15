@@ -1,24 +1,24 @@
 //
-//  PDFViewController.m
+//  DemoPDFViewController.m
 //  ScanbotSDKDemo
 //
 //  Created by Sebastian Husche on 24.06.15.
 //  Copyright (c) 2015 doo GmbH. All rights reserved.
 //
 
-#import "PDFViewController.h"
+#import "DemoPDFViewController.h"
 
-@interface PDFViewController ()
+@interface DemoPDFViewController ()
 @property (strong, nonatomic) IBOutlet UIView *webViewContainer;
 @property (nonatomic, strong) UIWebView *webView;
 @property (nonatomic, strong) UIDocumentInteractionController *documentInteractionController;
 @end
 
-@implementation PDFViewController
+@implementation DemoPDFViewController
 
-+ (PDFViewController *)pdfControllerWithURL:(NSURL *)pdfURL {
++ (DemoPDFViewController *)pdfControllerWithURL:(NSURL *)pdfURL {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    PDFViewController  *pdfViewController = (PDFViewController *)[storyBoard instantiateViewControllerWithIdentifier:NSStringFromClass(self)];
+    DemoPDFViewController  *pdfViewController = (DemoPDFViewController *)[storyBoard instantiateViewControllerWithIdentifier:@"DemoPDFViewController"];
     pdfViewController.pdfURL = pdfURL;
     return pdfViewController;
 }

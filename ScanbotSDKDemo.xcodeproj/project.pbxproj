@@ -19,7 +19,7 @@
 		C27562941DE45368003F5FE0 /* DocumentDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562891DE45368003F5FE0 /* PayformDemoViewController.m */; };
-		C27562991DE45368003F5FE0 /* PDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628B1DE45368003F5FE0 /* PDFViewController.m */; };
+		C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */; };
 		C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628E1DE45368003F5FE0 /* TextViewController.m */; };
 		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
@@ -85,8 +85,8 @@
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562881DE45368003F5FE0 /* PayformDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayformDemoViewController.h; path = ScanbotSDKDemo/PayformDemoViewController.h; sourceTree = SOURCE_ROOT; };
 		C27562891DE45368003F5FE0 /* PayformDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayformDemoViewController.m; path = ScanbotSDKDemo/PayformDemoViewController.m; sourceTree = SOURCE_ROOT; };
-		C275628A1DE45368003F5FE0 /* PDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDFViewController.h; path = ScanbotSDKDemo/PDFViewController.h; sourceTree = SOURCE_ROOT; };
-		C275628B1DE45368003F5FE0 /* PDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PDFViewController.m; path = ScanbotSDKDemo/PDFViewController.m; sourceTree = SOURCE_ROOT; };
+		C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoPDFViewController.h; path = ScanbotSDKDemo/DemoPDFViewController.h; sourceTree = SOURCE_ROOT; };
+		C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoPDFViewController.m; path = ScanbotSDKDemo/DemoPDFViewController.m; sourceTree = SOURCE_ROOT; };
 		C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanbotSDKInclude.h; path = ScanbotSDKDemo/ScanbotSDKInclude.h; sourceTree = SOURCE_ROOT; };
 		C275628D1DE45368003F5FE0 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewController.h; path = ScanbotSDKDemo/TextViewController.h; sourceTree = SOURCE_ROOT; };
 		C275628E1DE45368003F5FE0 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewController.m; path = ScanbotSDKDemo/TextViewController.m; sourceTree = SOURCE_ROOT; };
@@ -188,8 +188,8 @@
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
 				C27562881DE45368003F5FE0 /* PayformDemoViewController.h */,
 				C27562891DE45368003F5FE0 /* PayformDemoViewController.m */,
-				C275628A1DE45368003F5FE0 /* PDFViewController.h */,
-				C275628B1DE45368003F5FE0 /* PDFViewController.m */,
+				C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */,
+				C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */,
 				C29DC06F204D915900059670 /* TIFFDemoViewController.h */,
 				C29DC070204D915900059670 /* TIFFDemoViewController.m */,
 				C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */,
@@ -319,7 +319,7 @@
 			files = (
 				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
-				C27562991DE45368003F5FE0 /* PDFViewController.m in Sources */,
+				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
 				08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
