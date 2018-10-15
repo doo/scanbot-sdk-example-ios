@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PDFViewController : UIViewController
+@interface DemoPDFViewController : UIViewController
 
 @property (nonatomic, strong) NSURL *pdfURL;
 
-+ (PDFViewController *)pdfControllerWithURL:(NSURL *)pdfURL;
++ (DemoPDFViewController *)pdfControllerWithURL:(NSURL *)pdfURL;
 
 @end

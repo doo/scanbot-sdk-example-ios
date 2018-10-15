@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment version="2352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -331,7 +330,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="msx-7x-G9e">
-                                <rect key="frame" x="347" y="620" width="12" height="22"/>
+                                <rect key="frame" x="347" y="620.5" width="12" height="22"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -452,7 +451,7 @@
         <!--Generated PDF-->
         <scene sceneID="M96-tg-FQY">
             <objects>
-                <viewController storyboardIdentifier="PDFViewController" title="Generated PDF" automaticallyAdjustsScrollViewInsets="NO" id="UbA-6j-j0s" customClass="PDFViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DemoPDFViewController" title="Generated PDF" automaticallyAdjustsScrollViewInsets="NO" id="UbA-6j-j0s" customClass="DemoPDFViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4u-rz-Wn3"/>
                         <viewControllerLayoutGuide type="bottom" id="6ox-qv-4ad"/>
@@ -900,10 +899,10 @@ MRZ code at the from of your document:</string>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zFQ-ju-iNY">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="366"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="365.5"/>
                                                 </imageView>
                                                 <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" animating="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="yIu-aZ-wyW">
-                                                    <rect key="frame" x="178" y="173" width="20" height="20"/>
+                                                    <rect key="frame" x="177.5" y="173" width="20" height="20"/>
                                                 </activityIndicatorView>
                                             </subviews>
                                             <constraints>

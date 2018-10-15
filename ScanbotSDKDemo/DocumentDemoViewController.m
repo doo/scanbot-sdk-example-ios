@@ -8,7 +8,7 @@
 
 #import "DocumentDemoViewController.h"
 #import "TextViewController.h"
-#import "PDFViewController.h"
+#import "DemoPDFViewController.h"
 #import <ScanbotSDK/SBSDKCropViewController.h>
 
 @interface DocumentDemoViewController () <SBSDKImageEditingViewControllerDelegate>
@@ -410,7 +410,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     {
         if (finished && error == nil) {
             NSURL *outputURL = resultInfo[SBSDKResultInfoDestinationFileURLKey];
-            PDFViewController *pdfController = [PDFViewController pdfControllerWithURL:outputURL];
+            DemoPDFViewController *pdfController = [DemoPDFViewController pdfControllerWithURL:outputURL];
             [self.navigationController pushViewController:pdfController animated:YES];
         } else {
             NSLog(@"%@", error);
@@ -475,7 +475,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
                                    completion:^(BOOL finished, NSError *error, NSDictionary *resultInfo)
      {
          if (error == nil && finished) {
-             PDFViewController *pdfController = [PDFViewController pdfControllerWithURL:pdfURL];
+             DemoPDFViewController *pdfController = [DemoPDFViewController pdfControllerWithURL:pdfURL];
              [self.navigationController pushViewController:pdfController animated:YES];
          }
          if (error) {
@@ -588,14 +588,21 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 }
 
 - (UIBarButtonItem *_Nullable)imageEditingViewControllerRotateClockwiseToolbarItem:(nonnull SBSDKImageEditingViewController *)editingViewController {
-    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Right" style:UIBarButtonItemStylePlain
+    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Right"
+                                            style:UIBarButtonItemStylePlain
                                            target:nil action:NULL];
 }
 
 - (UIBarButtonItem *_Nullable)imageEditingViewControllerRotateCounterClockwiseToolbarItem:(nonnull SBSDKImageEditingViewController *)editingViewController {
-    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Left" style:UIBarButtonItemStylePlain
+    return [[UIBarButtonItem alloc] initWithTitle:@"Rotate Left"
+                                            style:UIBarButtonItemStylePlain
                                            target:nil action:NULL];
 }
 
+- (UIBarButtonItem *)imageEditingViewControllerApplyButtonItem:(SBSDKImageEditingViewController *)editingViewController {
+    return [[UIBarButtonItem alloc] initWithTitle:@"Apply"
+                                            style:UIBarButtonItemStylePlain
+                                           target:nil action:NULL];
+}
 
 @end
