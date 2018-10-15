@@ -12,7 +12,7 @@
 #import <ScanbotSDK/SBSDKCropViewController.h>
 
 @interface DocumentDemoViewController () <SBSDKImageEditingViewControllerDelegate>
-@property (strong, nonatomic) SBSDKIndexedImageStorage *imageStorage;
+@property (strong, nonatomic) SBSDKIndexedImageStorage *documentImageStorage;
 @property (strong, nonatomic) SBSDKIndexedImageStorage *originalImageStorage;
 @property (strong, nonatomic) IBOutlet UIButton *actionsButton;
 @property (strong, nonatomic) IBOutlet UIButton *cancelButton;
@@ -57,14 +57,25 @@
                                              selector:@selector(appTerminates:)
                                                  name:UIApplicationWillTerminateNotification
                                                object:nil];
-    
-    
-    self.imageStorage = [[SBSDKIndexedImageStorage alloc] init];
+
+    // Initialize image storages.
+    //
+    // For demo purposes we use two different storages:
+    // - a default one for ORIGINAL (uncropped) images
+    // - and a custom one for cropped DOCUMENT images.
+
+    // Default ImageStorage for original images:
     self.originalImageStorage = [[SBSDKIndexedImageStorage alloc] init];
-    
-    self.scannerViewController
-    = [[SBSDKScannerViewController alloc] initWithParentViewController:self
-                                                          imageStorage:nil];
+
+    // Custom ImageStorage for document images:
+    // You can fetch the cropped images of this custom storage location via iTunes file sharing.
+    NSURL *appDocDir = [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+    NSString *docImagesDir = [NSString stringWithFormat:@"%@/%@", appDocDir.path, @"sbsdk-demo-document-images"];
+    NSURL *docImagesDirUrl = [[NSURL alloc] initFileURLWithPath:docImagesDir isDirectory:YES];
+    SBSDKStorageLocation *customStorageLocation = [[SBSDKStorageLocation alloc] initWithBaseURL:docImagesDirUrl];
+    self.documentImageStorage = [[SBSDKIndexedImageStorage alloc] initWithStorageLocation:customStorageLocation];
+
+    self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
     self.scannerViewController.delegate = self;
     
     [self updateUI];
@@ -85,7 +96,7 @@
 }
 
 - (void)appTerminates:(NSNotification *)notification {
-    self.imageStorage = nil;
+    self.documentImageStorage = nil;
     self.originalImageStorage = nil;
 }
 
@@ -130,8 +141,10 @@
 
 - (void)scannerController:(SBSDKScannerViewController *)controller
   didCaptureDocumentImage:(UIImage *)documentImage {
-    
-    [self.imageStorage addImage:documentImage];
+    // Successfully captured an image.
+    // Here we get and store the (cropped) DOCUMENT image:
+    [self.documentImageStorage addImage:documentImage];
+
     [self updateUI];
     [UIView animateWithDuration:0.25 animations:^{
         controller.HUDView.backgroundColor = [UIColor clearColor];
@@ -139,12 +152,12 @@
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller didCaptureImage:(UIImage *)image {
-    // We finished successfully to capture an image.
+    // Successfully captured an image.
+    // Here we get and store the ORIGINAL (uncropped) image:
     [self.originalImageStorage addImage:image];
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller didFailCapturingImage:(NSError *)error {
-    // We finished successfully to capture an image.
     // Display the error.
     // Undo all your changes to your UI that you did in -scannerControllerWillCaptureStillImage:
     [UIView animateWithDuration:0.25 animations:^{
@@ -272,8 +285,8 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 }
 
 - (void)updateUI {
-    self.pageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.imageStorage.imageCount];
-    BOOL hasImages = self.imageStorage.imageCount > 0;
+    self.pageLabel.text = [NSString stringWithFormat:@"%lu", (unsigned long)self.documentImageStorage.imageCount];
+    BOOL hasImages = self.documentImageStorage.imageCount > 0;
     BOOL operationRunning = self.currentProgress != nil;
     self.actionsButton.hidden = operationRunning || !hasImages;
     self.progressView.hidden = !operationRunning;
@@ -299,8 +312,8 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 #pragma mark - User initiated actions
 
 - (IBAction)clearImageStorage:(id)sender {
-    self.imageStorage = [[SBSDKIndexedImageStorage alloc] init];
-    self.originalImageStorage = [[SBSDKIndexedImageStorage alloc] init];
+    [self.documentImageStorage removeAllImages];
+    [self.originalImageStorage removeAllImages];
     [self updateUI];
 }
 
@@ -393,7 +406,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         return;
     }
     
-    if (self.imageStorage.imageCount == 0) {
+    if (self.documentImageStorage.imageCount == 0) {
         return;
     }
     
@@ -401,7 +414,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     NSURL *pdfURL = [SBSDKStorageLocation applicationDocumentsFolderURL];
     pdfURL = [pdfURL URLByAppendingPathComponent:filename];
     
-    self.currentProgress = [SBSDKPDFRenderer renderImageStorage:self.imageStorage
+    self.currentProgress = [SBSDKPDFRenderer renderImageStorage:self.documentImageStorage
                                                copyImageStorage:YES
                                                        indexSet:nil
                                                    withPageSize:SBSDKPDFRendererPageSizeFromImage
@@ -427,12 +440,12 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         return;
     }
     
-    if (self.imageStorage.imageCount == 0) {
+    if (self.documentImageStorage.imageCount == 0) {
         return;
     }
     
     self.currentProgress =
-    [SBSDKOpticalTextRecognizer recognizeText:self.imageStorage
+    [SBSDKOpticalTextRecognizer recognizeText:self.documentImageStorage
                              copyImageStorage:YES
                                      indexSet:nil
                                languageString:@"en+de"
@@ -458,7 +471,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         return;
     }
     
-    if (self.imageStorage.imageCount == 0) {
+    if (self.documentImageStorage.imageCount == 0) {
         return;
     }
     
@@ -467,7 +480,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     pdfURL = [pdfURL URLByAppendingPathComponent:filename];
     
     self.currentProgress =
-    [SBSDKOpticalTextRecognizer recognizeText:self.imageStorage
+    [SBSDKOpticalTextRecognizer recognizeText:self.documentImageStorage
                              copyImageStorage:YES
                                      indexSet:nil
                                languageString:@"en+de"
@@ -493,11 +506,12 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         return;
     }
     
-    if (self.imageStorage.imageCount == 0) {
+    if (self.documentImageStorage.imageCount == 0) {
         return;
     }
     
-    NSURL *imageURL = [self.imageStorage imageURLAtIndex:0];
+    // Please note: For the sake of simplicity, we use only the first taken image in this example app!
+    NSURL *imageURL = [self.documentImageStorage imageURLAtIndex:0];
     
     self.currentProgress =
     [SBSDKOpticalTextRecognizer recognizeText:imageURL
@@ -523,12 +537,12 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         return;
     }
     
-    if (self.imageStorage.imageCount == 0) {
+    if (self.documentImageStorage.imageCount == 0) {
         return;
     }
     
-    
-    NSURL *imageURL = [self.imageStorage imageURLAtIndex:0];
+    // Please note: For the sake of simplicity, we use only the first taken image in this example app!
+    NSURL *imageURL = [self.documentImageStorage imageURLAtIndex:0];
     
     self.currentProgress =
     [SBSDKOpticalTextRecognizer analyseImagePageLayout:imageURL
@@ -559,6 +573,7 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 }
 
 - (IBAction)performManualCrop:(id)sender {
+    // Please note: For the sake of simplicity, we use only the first taken image in this example app!
     UIImage *image = [self.originalImageStorage imageAtIndex:0];
     SBSDKImageEditingViewController *editingViewController = [[SBSDKImageEditingViewController alloc] init];
     editingViewController.image = image;
@@ -570,9 +585,9 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     [self.navigationController popViewControllerAnimated:YES];
 }
 
+
+
 #pragma mark - SBSDKImageEditingViewControllerDelegate implementation
-
-
 
 - (void)imageEditingViewControllerDidCancelChanges:(SBSDKImageEditingViewController *)editingViewController {
     [editingViewController.navigationController popViewControllerAnimated:YES];
@@ -580,10 +595,14 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 
 - (void)imageEditingViewController:(SBSDKImageEditingViewController *)editingViewController
         didApplyChangesWithPolygon:(SBSDKPolygon *)polygon croppedImage:(UIImage *)croppedImage {
+    // Here we get the cropped image result as well as the applied polygon.
+    // Perform custom actions with results..
     
-    /**
-     * Perform custom actions with cropped results
-     */
+    // Update the document image:
+    // Please note: For the sake of simplicity, we use only the first taken image in this example app!
+    [self.documentImageStorage removeImageAtIndex:0];
+    [self.documentImageStorage insertImage:croppedImage atIndex:0];
+    
     [editingViewController.navigationController popViewControllerAnimated:YES];
 }
 
