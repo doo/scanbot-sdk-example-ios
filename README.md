@@ -46,8 +46,11 @@ or visit our website https://scanbot.io/sdk.html
 - Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
 
 
-### Please note
+## Please note
 
-This example app doesn't contain a Scanbot SDK license key and runs in a trial mode (trial period of 1 minute)!
-After the trial period is over the Scanbot SDK functions will stop working. The app will be terminated.
-You will have to restart the app to get another trial period.
+The Scanbot SDK will run without a license for one minute per session!
+
+After the trial period is over all Scanbot SDK functions as well as the UI components (like Document Scanner UI) will stop working or may be terminated.
+You have to restart the app to get another trial period.
+
+To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/sdk/trial.html) on our website.
