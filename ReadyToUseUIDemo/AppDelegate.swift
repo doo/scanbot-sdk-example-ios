@@ -19,6 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // TODO: Set your license key here
         // ScanbotSDK.setLicense("YOUR_SCANBOT_SDK_LICENSE_KEY")
+        
+        // Setup the default license failure handler. In case of expired license or expired trial period it will present an alert and terminate the app.
+        // See also ScanbotSDK.setLicenseFailureHandler(handler) to setup a custom handler.
+        ScanbotSDK.setupDefaultLicenseFailureHandler()
   
         return true
     }
