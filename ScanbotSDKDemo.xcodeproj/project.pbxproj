@@ -12,6 +12,8 @@
 		08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */; };
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
+		6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */; };
+		6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */; };
 		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
 		C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627A1DE45368003F5FE0 /* ChequeViewController.m */; };
 		C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627E1DE45368003F5FE0 /* DemoViewController.m */; };
@@ -71,6 +73,9 @@
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
 		0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		6EE9904B21ECD74F00182A94 /* ScanbotSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScanbotSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
+		6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioDocumentDemoViewController.swift; sourceTree = "<group>"; };
+		6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultViewController.swift; sourceTree = "<group>"; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27562771DE45368003F5FE0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ScanbotSDKDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
 		C27562781DE45368003F5FE0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ScanbotSDKDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
@@ -185,6 +190,8 @@
 				C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */,
 				C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */,
 				C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */,
+				6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */,
+				6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
 				C27562881DE45368003F5FE0 /* PayformDemoViewController.h */,
 				C27562891DE45368003F5FE0 /* PayformDemoViewController.m */,
@@ -210,6 +217,7 @@
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
 				C27562A51DE453B2003F5FE0 /* main.m */,
 				C27562A61DE453B2003F5FE0 /* Media.xcassets */,
+				6EE9904B21ECD74F00182A94 /* ScanbotSDKDemo-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 					9ED845801AE670CC008B2731 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = VZ266K5KCR;
+						LastSwiftMigration = 1010;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -329,6 +338,7 @@
 				C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */,
 				C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */,
 				C27562941DE45368003F5FE0 /* DocumentDemoViewController.m in Sources */,
+				6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */,
 				C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */,
 				C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */,
 				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
@@ -337,6 +347,7 @@
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
 				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
 				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
+				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 			);
@@ -475,7 +486,9 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -503,6 +516,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";
+				SWIFT_VERSION = 4.2;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

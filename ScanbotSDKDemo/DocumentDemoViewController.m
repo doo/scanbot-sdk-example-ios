@@ -22,7 +22,6 @@
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
 @property (strong, nonatomic) SBSDKOpticalTextRecognizer *textRecognizer;
-@property (strong, nonatomic) SBSDKScannerViewController *scannerViewController;
 @property (strong, nonatomic) UIAlertController *actionController;
 @property (assign, nonatomic) BOOL viewAppeared;
 @property (strong, nonatomic) UIButton *myShutterButton;
@@ -74,11 +73,14 @@
     NSURL *docImagesDirUrl = [[NSURL alloc] initFileURLWithPath:docImagesDir isDirectory:YES];
     SBSDKStorageLocation *customStorageLocation = [[SBSDKStorageLocation alloc] initWithBaseURL:docImagesDirUrl];
     self.documentImageStorage = [[SBSDKIndexedImageStorage alloc] initWithStorageLocation:customStorageLocation];
-
-    self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
-    self.scannerViewController.delegate = self;
+    [self setupScannerViewController];
     
     [self updateUI];
+}
+
+- (void)setupScannerViewController {
+    self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
+    self.scannerViewController.delegate = self;
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -625,3 +627,4 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 }
 
 @end
+
