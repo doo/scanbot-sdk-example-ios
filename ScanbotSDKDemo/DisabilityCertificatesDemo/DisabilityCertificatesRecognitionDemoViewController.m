@@ -12,8 +12,6 @@
 
 @interface DisabilityCertificatesRecognitionDemoViewController () <SBSDKScannerViewControllerDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *hudView;
-
 @property (strong, nonatomic) SBSDKScannerViewController *scannerViewController;
 
 @property (nonatomic, strong) UIImage *capturedImage;
@@ -28,7 +26,20 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self
                                                                                      imageStorage:nil];
+    self.scannerViewController.requiredAspectRatios = @[@1.4142, @0.7071]; //DIN Ax portrait and landscape
+    self.scannerViewController.finderMode = SBSDKFinderModeAlways;
     self.scannerViewController.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self cleanHUDBackground];
+}
+
+- (void)cleanHUDBackground {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.scannerViewController.HUDView.backgroundColor = [UIColor clearColor];
+    }];
 }
 
 - (IBAction)selectImageButtonTapped:(id)sender {
@@ -87,9 +98,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller didFailCapturingImage:(NSError *)error {
-    [UIView animateWithDuration:0.25 animations:^{
-        controller.HUDView.backgroundColor = [UIColor clearColor];
-    }];
+    [self cleanHUDBackground];
 }
 
 - (UIButton *)scannerControllerCustomShutterButton:(SBSDKScannerViewController *)controller {
