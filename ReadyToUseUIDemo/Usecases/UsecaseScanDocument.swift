@@ -22,6 +22,12 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
         super.start(presenter: presenter)
 
         let configuration = SBSDKUIDocumentScannerConfiguration.default()
+        // Customize text resources, behavior and UI:
+        //configuration.textConfiguration.cancelButtonTitle = "Abort"
+        //configuration.textConfiguration.pageCounterButtonTitle = "%d Pages"
+        //configuration.behaviorConfiguration.isAutoSnappingEnabled = false
+        //configuration.uiConfiguration.bottomBarBackgroundColor = UIColor.blue
+        
         let scanner = SBSDKUIDocumentScannerViewController.createNew(with: self.document,
                                                                      configuration: configuration,
                                                                      andDelegate: self)
