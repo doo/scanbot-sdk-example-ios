@@ -256,6 +256,8 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
             return @"Turn your device to\nhave a more rectangular outline.";
         case SBSDKDocumentDetectionStatusOK_BadAspectRatio:
             return @"Wrong aspect ratio.\n Rotate your device.";
+        case SBSDKDocumentDetectionStatusOK_OffCenter:
+            return @"Move to the center.";
         case SBSDKDocumentDetectionStatusError_NothingDetected:
             return @"Searching for document...";
         case SBSDKDocumentDetectionStatusError_Noise:

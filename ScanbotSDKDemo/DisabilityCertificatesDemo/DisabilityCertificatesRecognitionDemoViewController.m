@@ -26,7 +26,12 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self
                                                                                      imageStorage:nil];
-    self.scannerViewController.requiredAspectRatios = @[@1.4142, @0.7071]; //DIN Ax portrait and landscape
+    // define aspect ratios for german DC forms
+    NSArray *aspectRatios = @[
+                              //[[SBSDKPageAspectRatio alloc] initWithWidth:14.8 andHeight:21.0], // white variant
+                              [[SBSDKPageAspectRatio alloc] initWithWidth:14.8 andHeight:10.5] // yellow variant
+                              ];
+    self.scannerViewController.requiredAspectRatios = aspectRatios;
     self.scannerViewController.finderMode = SBSDKFinderModeAlways;
     self.scannerViewController.delegate = self;
 }

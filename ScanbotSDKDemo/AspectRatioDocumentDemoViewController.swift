@@ -15,7 +15,7 @@ final class AspectRatioDocumentDemoViewController: DocumentDemoViewController {
     
     override func setupScannerViewController() {
         super.setupScannerViewController()
-        scannerViewController.requiredAspectRatios = [1.4142]
+        scannerViewController.requiredAspectRatios = [SBSDKPageAspectRatio(width: 21.0, andHeight: 29.7)] // DIN A4
         scannerViewController.finderMode = .always
     }
     
