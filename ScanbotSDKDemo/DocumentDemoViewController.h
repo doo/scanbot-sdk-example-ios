@@ -11,5 +11,7 @@
 #import "ScanbotSDKInclude.h"
 
 @interface DocumentDemoViewController : DemoViewController<SBSDKScannerViewControllerDelegate>
-
+@property (strong, nonatomic) SBSDKScannerViewController *scannerViewController;
+- (void)setupScannerViewController;
 @end
+

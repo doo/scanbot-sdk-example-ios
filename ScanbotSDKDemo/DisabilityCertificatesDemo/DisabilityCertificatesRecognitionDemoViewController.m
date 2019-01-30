@@ -12,8 +12,6 @@
 
 @interface DisabilityCertificatesRecognitionDemoViewController () <SBSDKScannerViewControllerDelegate,  UIImagePickerControllerDelegate, UINavigationControllerDelegate>
 
-@property (weak, nonatomic) IBOutlet UIView *hudView;
-
 @property (strong, nonatomic) SBSDKScannerViewController *scannerViewController;
 
 @property (nonatomic, strong) UIImage *capturedImage;
@@ -28,7 +26,25 @@
     self.view.backgroundColor = [UIColor blackColor];
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self
                                                                                      imageStorage:nil];
+    // define aspect ratios for german DC forms
+    NSArray *aspectRatios = @[
+                              [[SBSDKPageAspectRatio alloc] initWithWidth:14.8 andHeight:21.0], // white variant
+                              [[SBSDKPageAspectRatio alloc] initWithWidth:14.8 andHeight:10.5] // yellow variant
+                              ];
+    self.scannerViewController.requiredAspectRatios = aspectRatios;
+    self.scannerViewController.finderMode = SBSDKFinderModeAlways;
     self.scannerViewController.delegate = self;
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    [self cleanHUDBackground];
+}
+
+- (void)cleanHUDBackground {
+    [UIView animateWithDuration:0.25 animations:^{
+        self.scannerViewController.HUDView.backgroundColor = [UIColor clearColor];
+    }];
 }
 
 - (IBAction)selectImageButtonTapped:(id)sender {
@@ -87,9 +103,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller didFailCapturingImage:(NSError *)error {
-    [UIView animateWithDuration:0.25 animations:^{
-        controller.HUDView.backgroundColor = [UIColor clearColor];
-    }];
+    [self cleanHUDBackground];
 }
 
 - (UIButton *)scannerControllerCustomShutterButton:(SBSDKScannerViewController *)controller {
