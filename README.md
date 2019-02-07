@@ -2,7 +2,7 @@
 
 ## Scanbot SDK example apps for iOS
 
-This example app shows how to integrate the Scanbot SDK for iOS.
+These example apps show how to integrate the [Scanbot SDK](https://scanbot.io/sdk) for iOS.
 
 
 ## What is Scanbot SDK?
@@ -30,7 +30,7 @@ selectable text
 Scanbot SDK supports iOS 9 and higher.
 
 If you need further information or are interested in licensing Scanbot SDK please contact us via sdk@scanbot.io
-or visit our website https://scanbot.io/sdk.html
+or visit our website https://scanbot.io/sdk
 
 
 
@@ -43,7 +43,7 @@ or visit our website https://scanbot.io/sdk.html
 ## How to run this example app?
 
 - Clone this repository to a local folder
-- [Download the latest Scanbot SDK from our website](https://scanbot.io/sdk.html)
+- [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/sdk/downloads.html)
 - Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
 - Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
 
