@@ -1,4 +1,6 @@
-# Example app for Scanbot SDK iOS
+# Document scanner SDK and MRZ, QR code, barcode scanner
+
+## Scanbot SDK example apps for iOS
 
 This example app shows how to integrate the Scanbot SDK for iOS.
 
