@@ -1,4 +1,4 @@
-Open Source libraries used in the Scanbot SDK for iOS version 1.8.4:
+Open Source libraries used in the Scanbot SDK for iOS version 1.8.5:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -84,7 +84,7 @@ Neither the names of the copyright holders nor the names of the contributors may
 This software is provided by the copyright holders and contributors “as is” and any express or implied warranties, including, but not limited to, the implied warranties of merchantability and fitness for a particular purpose are disclaimed. In no event shall copyright holders or contributors be liable for any direct, indirect, incidental, special, exemplary, or consequential damages (including, but not limited to, procurement of substitute goods or services; loss of use, data, or profits; or business interruption) however caused and on any theory of liability, whether in contract, strict liability, or tort (including negligence or otherwise) arising in any way out of the use of this software, even if advised of the possibility of such damage.
 
 
-OpenSSL 1.0.2d
+OpenSSL 1.0.2q
 Copyright @ 1998-2011 The OpenSSL Project. All rights reserved. (https://www.openssl.org)
 This library is distributed under the terms of the following license: https://github.com/openssl/openssl/blob/master/LICENSE
 
