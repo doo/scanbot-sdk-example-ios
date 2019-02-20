@@ -1,4 +1,4 @@
-Open Source libraries used in the Scanbot SDK for iOS version 1.8.5:
+Open Source libraries used in the Scanbot SDK for iOS version 1.8.6:
 
 BOOST C++ Libraries version 1.68
 This library is distributed under the terms of the following license: https://www.boost.org/LICENSE_1_0.txt
@@ -39,7 +39,7 @@ Leptonica 1.71
 Copyright @ 2001-2015, Leptonica, (http://leptonica.org),
 is distributed under a Creative Commons Attribution 3.0 United States License ( http://creativecommons.org/licenses/by/3.0/us/).
 
-LibTIFF - TIFF Library and Utilities v4.0.9
+LibTIFF - TIFF Library and Utilities v4.0.10
 Copyright (c) 1988-1997 Sam Leffler
 Copyright (c) 1991-1997 Silicon Graphics, Inc.
 This license is distributed under the terms of the following license: http://libtiff.maptools.org/misc.html.
