@@ -89,4 +89,10 @@ class MainTableActionHandler: NSObject {
                                        mode: .viewing).start(presenter: self.presenter)
         }
     }
+    
+    func showWorkflow() {
+        self.guardLicense {
+            UsecaseStartWorkflow().start(presenter: self.presenter)
+        }
+    }
 }

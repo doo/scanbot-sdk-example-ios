@@ -40,6 +40,9 @@
 		08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */; };
 		08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FA20EA8D0800691231 /* FilteringViewController.m */; };
 		08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */; };
+		6E2DA8C2226489080043B2F0 /* WorkflowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8BE226489080043B2F0 /* WorkflowFactory.m */; };
+		6E2DA8C3226489080043B2F0 /* WorkflowResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */; };
+		6E2DA8C52264AB420043B2F0 /* UsecaseStartWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -103,6 +106,11 @@
 		08B6F2F920EA8D0800691231 /* FilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringViewController.h; sourceTree = "<group>"; };
 		08B6F2FA20EA8D0800691231 /* FilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringViewController.m; sourceTree = "<group>"; };
 		08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFilterPage.swift; sourceTree = "<group>"; };
+		6E2DA8BE226489080043B2F0 /* WorkflowFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkflowFactory.m; sourceTree = "<group>"; };
+		6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkflowResultsViewController.m; sourceTree = "<group>"; };
+		6E2DA8C0226489080043B2F0 /* WorkflowFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkflowFactory.h; sourceTree = "<group>"; };
+		6E2DA8C1226489080043B2F0 /* WorkflowResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkflowResultsViewController.h; sourceTree = "<group>"; };
+		6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseStartWorkflow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 				082D0A5A20C81760009B1A7A /* Main Screen */,
 				08B6F2F120EA8D0800691231 /* Filter Screen */,
 				0889D0F420EA632800A36316 /* Review Screen */,
+				6E2DA8BC226487830043B2F0 /* Workflow Screen */,
 				082D0A3220C801AA009B1A7A /* AppDelegate.swift */,
 				082D0A3620C801AB009B1A7A /* Main.storyboard */,
 				082D0A3920C801AB009B1A7A /* Assets.xcassets */,
@@ -227,6 +236,7 @@
 				08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */,
 				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
 				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
+				6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -256,6 +266,17 @@
 				080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */,
 			);
 			path = Configuration;
+			sourceTree = "<group>";
+		};
+		6E2DA8BC226487830043B2F0 /* Workflow Screen */ = {
+			isa = PBXGroup;
+			children = (
+				6E2DA8C0226489080043B2F0 /* WorkflowFactory.h */,
+				6E2DA8BE226489080043B2F0 /* WorkflowFactory.m */,
+				6E2DA8C1226489080043B2F0 /* WorkflowResultsViewController.h */,
+				6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */,
+			);
+			path = "Workflow Screen";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -334,6 +355,8 @@
 			files = (
 				082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */,
 				0889D10420EA632800A36316 /* PageCollectionViewCell.m in Sources */,
+				6E2DA8C52264AB420043B2F0 /* UsecaseStartWorkflow.swift in Sources */,
+				6E2DA8C3226489080043B2F0 /* WorkflowResultsViewController.m in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
 				0889D10320EA632800A36316 /* PageReviewScreenUIConfiguration.m in Sources */,
@@ -352,6 +375,7 @@
 				08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */,
 				08B6F2FB20EA8D0800691231 /* FilteringScreenTextConfiguration.m in Sources */,
 				0889D11320EA729D00A36316 /* UsecaseScanBarcode.swift in Sources */,
+				6E2DA8C2226489080043B2F0 /* WorkflowFactory.m in Sources */,
 				0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */,
 				082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */,
 				08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */,
