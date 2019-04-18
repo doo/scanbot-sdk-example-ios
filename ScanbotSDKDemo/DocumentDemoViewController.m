@@ -80,6 +80,7 @@
 
 - (void)setupScannerViewController {
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
+    self.scannerViewController.imageScale = 1.0;
     self.scannerViewController.delegate = self;
 }
 
