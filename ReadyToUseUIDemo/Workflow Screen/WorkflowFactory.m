@@ -1,9 +1,9 @@
 //
 //  WorkflowFactory.m
-//  SBSDK Internal Demo
+//  ReadyToUseUIDemo
 //
 //  Created by Sebastian Husche on 20.11.18.
-//  Copyright © 2018 doo GmbH. All rights reserved.
+//  Copyright © 2019 doo GmbH. All rights reserved.
 //
 
 #import "WorkflowFactory.h"
@@ -219,9 +219,10 @@
     
     SBSDKUIWorkflowStep *qrcodeStep
     = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"QR code and Document 1/2"
-                                                        message:@"Please scan a QR code"
-                                              acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
-                                               resultValidation:nil];
+                                                    message:@"Please scan a QR code"
+                                          acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
+                                             finderViewSize:CGSizeMake(1, 1)
+                                           resultValidation:nil];
 
     SBSDKUIWorkflowStep *documentStep
     = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"QR code and Document 2/2"
@@ -240,9 +241,10 @@
 + (SBSDKUIWorkflowStep *)qrCodeStep {
     SBSDKUIWorkflowStep *qrcodeStep
     = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"Scan your QR code"
-                                                        message:nil
-                                              acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
-                                               resultValidation:nil];
+                                                    message:nil
+                                          acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
+                                             finderViewSize:CGSizeMake(1, 1)
+                                           resultValidation:nil];
     return qrcodeStep;
 }
 
