@@ -31,41 +31,35 @@
 @implementation WorkflowFactory
 
 + (NSArray<SBSDKUIWorkflow*>*)allWorkflows {
-    return @[[self germanIDCard],
-             [self ukrainianPassport],
-             [self payform],
+    return @[[self idCard],
+             [self idCardOrPassport],
              [self disabilityCertificate],
              [self qrCodeAndDocument],
-             [self blackWhiteDocument]];
+             [self payform]];
 }
 
-+ (SBSDKUIWorkflow *)germanIDCard {
++ (SBSDKUIWorkflow *)idCard {
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:1.0 andHeight:0.6353]];
+    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:85.0 andHeight:54.0]];
 
     SBSDKUIWorkflowStep *frontSide
-    = [[SBSDKUIScanMachineReadableZoneWorkflowStep alloc] initWithTitle:@"German ID card 1/2"
-                                                                message:@"Please scan the front of your id card."
-                                                   requiredAspectRatios:ratios
-                                                      wantsCapturedPage:YES
-                                                       resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
-                                                           SBSDKMachineReadableZoneRecognizerResult *mrz
-                                                           = result.mrzResult;
-                                                           if (mrz.recognitionSuccessfull) {
-                                                               return [WorkflowError errorWithCode:1
-                                                                              localizedDescription: @"This does not seem to be the front side."];
-                                                           }
-                                                           return nil;
-                                                       }];
+    = [[SBSDKUIWorkflowStep alloc] initWithTitle:@"Step 1 of 2"
+                                         message:@"Please scan the front of your ID card."
+                            requiredAspectRatios:ratios
+                               wantsCapturedPage:YES
+                             wantsVideoFramePage:NO
+                acceptedMachineReadableCodeTypes:nil
+                                resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
+                                    return nil;
+                                }];
 
     SBSDKUIWorkflowStep *backSide
-    = [[SBSDKUIScanMachineReadableZoneWorkflowStep alloc] initWithTitle:@"German ID card 2/2"
-                                                                message:@"Please scan the back of your id card."
+    = [[SBSDKUIScanMachineReadableZoneWorkflowStep alloc] initWithTitle:@"Step 2 of 2"
+                                                                message:@"Please scan the back of your ID card."
                                                    requiredAspectRatios:ratios
                                                       wantsCapturedPage:YES
                                                        resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
-                                                           SBSDKMachineReadableZoneRecognizerResult *mrz
-                                                           = result.mrzResult;
+                                                           SBSDKMachineReadableZoneRecognizerResult *mrz = result.mrzResult;
                                                            if (mrz == nil || !mrz.recognitionSuccessfull) {
                                                                return [WorkflowError errorWithCode:2
                                                                               localizedDescription: @"This does not seem to be the back side."];
@@ -76,70 +70,66 @@
                                                                               localizedDescription: @"This does not seem to be an ID card."];
                                                            }
                                                            
+                                                           /*
+                                                           // Example for validating the issuing state from parsed MRZ data fields:
                                                            if (mrz.documentCodeField.value.length != 9
                                                                || ![mrz.issuingStateOrOrganizationField.value isEqualToString:@"D"] ) {
-                                                               
                                                                return [WorkflowError errorWithCode:3
                                                                               localizedDescription: @"This does not seem to be a german ID card."];
                                                            }
+                                                           */
                                                            
                                                            return nil;
                                                        }];
 
     SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[frontSide, backSide]
-                                                                  name:@"German ID card"
+                                                                  name:@"ID Card - Front + Back Image + MRZ"
                                                      validationHandler:nil];
 
     return workflow;
 }
 
-+ (SBSDKUIWorkflow *)ukrainianPassport {
++ (SBSDKUIWorkflow *)idCardOrPassport {
 
-    NSArray *ratios = nil;//@[@(0.704)];
+    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:85.0 andHeight:54.0],   // ID card
+                        [[SBSDKPageAspectRatio alloc] initWithWidth:125.0 andHeight:88.0]]; // Passport
 
-    SBSDKUIWorkflowStep *frontSide
-    = [[SBSDKUIWorkflowStep alloc] initWithTitle:@"Ukrainian passport 1/1"
-                                         message:@"Please scan the front of your passport card."
-                            requiredAspectRatios:ratios
-                               wantsCapturedPage:YES
-                             wantsVideoFramePage:NO
-                acceptedMachineReadableCodeTypes:nil
-                                resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
-                                    
-                                    //Demonstrates custom detection in result validation step
-                                    SBSDKMachineReadableZoneRecognizer *recognizer = [[SBSDKMachineReadableZoneRecognizer alloc] init];
-                                    SBSDKMachineReadableZoneRecognizerResult *mrz = [recognizer recognizePersonalIdentityFromImage:result.capturedPage.documentImage];
+    SBSDKUIWorkflowStep *step
+    = [[SBSDKUIScanMachineReadableZoneWorkflowStep alloc] initWithTitle:@"Scan ID card or passport"
+                                                                message:@"Please align your ID card or passport in the frame."
+                                                   requiredAspectRatios:ratios
+                                                      wantsCapturedPage:YES
+                                                       resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
+                                                            // Example of custom detection in result validation step:
+                                                            SBSDKMachineReadableZoneRecognizer *recognizer = [[SBSDKMachineReadableZoneRecognizer alloc] init];
+                                                            SBSDKMachineReadableZoneRecognizerResult *mrz = [recognizer recognizePersonalIdentityFromImage:result.capturedPage.documentImage];
 
-                                    if (mrz == nil || !mrz.recognitionSuccessfull) {
-                                        return [WorkflowError errorWithCode:2
-                                                       localizedDescription: @"This does not seem to be the correct page."];
-                                    }
-                                    
-                                    if (mrz.documentType != SBSDKMachineReadableZoneRecognizerResultDocumentTypePassport) {
-                                        return [WorkflowError errorWithCode:3
-                                                       localizedDescription: @"This does not seem to be an passport."];
-                                    }
-                                    
-                                    if (mrz.documentCodeField.value.length != 8
-                                        || ![mrz.issuingStateOrOrganizationField.value isEqualToString:@"UKR"] ) {
-                                        
-                                        return [WorkflowError errorWithCode:3
-                                                       localizedDescription: @"This does not seem to be a ukrainian passport."];
-                                    }
-                                    
-                                    return nil;
-                                }];
+                                                            if (mrz == nil || !mrz.recognitionSuccessfull) {
+                                                                return [WorkflowError errorWithCode:2
+                                                                               localizedDescription: @"This does not seem to be the correct side. Please scan the side containing MRZ lines."];
+                                                            }
+                                                           
+                                                            /*
+                                                            // Example for validating the document type from parsed MRZ data fields:
+                                                            if (mrz.documentType != SBSDKMachineReadableZoneRecognizerResultDocumentTypePassport) {
+                                                                return [WorkflowError errorWithCode:3
+                                                                               localizedDescription: @"This does not seem to be a passport."];
+                                                            }
+                                                            */
+                                                           
+                                                            return nil;
+                                                       }];
     
-    SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[frontSide]
-                                                                  name:@"Ukrainian passport"
+    SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[step]
+                                                                  name:@"ID Card or Passport - Image + MRZ"
                                                      validationHandler:nil];
 
     return workflow;
 }
 
 + (SBSDKUIWorkflow *)payform {
-    SBSDKUIWorkflowStep *payform = [[SBSDKUIScanPayFormWorkflowStep alloc] initWithTitle:@"Payform 1/1"
-                                                                                 message:@"Please scan your SEPA payform."
+    SBSDKUIWorkflowStep *payform = [[SBSDKUIScanPayFormWorkflowStep alloc] initWithTitle:@"Please scan a SEPA payform"
+                                                                                 message:@""
                                                                        wantsCapturedPage:NO
                                                                         resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
                                                                             SBSDKPayFormRecognitionResult *payform = result.payformResult;
@@ -150,7 +140,7 @@
                                                                        }];
 
     SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[payform]
-                                                                  name:@"Payform"
+                                                                  name:@"SEPA Payform"
                                                      validationHandler:nil];
     
     return workflow;
@@ -159,13 +149,12 @@
 
 + (SBSDKUIWorkflow *)disabilityCertificate {
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:1.0 andHeight:1.414],
-                        [[SBSDKPageAspectRatio alloc] initWithWidth:1.414 andHeight:1.0],
-                        [[SBSDKPageAspectRatio alloc] initWithWidth:1.0 andHeight:1.5715]];
+    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:148.0 andHeight:210.0],  // DC form A5 portrait (e.g. white sheet, AUB Muster 1b/E (1/2018))
+                        [[SBSDKPageAspectRatio alloc] initWithWidth:148.0 andHeight:105.0]]; // DC form A6 landscape (e.g. yellow sheet, AUB Muster 1b (1.2018))
                         
-    SBSDKUIWorkflowStep *certificate
-    = [[SBSDKUIScanDisabilityCertificateWorkflowStep alloc] initWithTitle:@"Disability Certificate 1/1"
-                                                                  message:@"Please scan your disability certificate."
+    SBSDKUIWorkflowStep *step
+    = [[SBSDKUIScanDisabilityCertificateWorkflowStep alloc] initWithTitle:@"Please align the DC form in the frame."
+                                                                  message:@""
                                                      requiredAspectRatios:ratios
                                                         wantsCapturedPage:YES
                                                          resultValidation:^NSError *(SBSDKUIWorkflowStepResult * result) {
@@ -178,84 +167,40 @@
                                                          }];
     
     
-    SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[certificate]
+    SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[step]
                                                                   name:@"Disability Certificate"
                                                      validationHandler:nil];
 
     return workflow;
 }
 
-+ (SBSDKUIWorkflow *)blackWhiteDocument {
-    
-    NSArray *portrait = @[[[SBSDKPageAspectRatio alloc] initWithWidth:1.0 andHeight:1.414]];
-    NSArray *landscape = @[[[SBSDKPageAspectRatio alloc] initWithWidth:1.414 andHeight:1.0]];
-
-    SBSDKUIWorkflowStep *portraitStep
-    = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"Black & White Document 1/2"
-                                                         message:@"Please scan a PORTRAIT A4 document."
-                                            requiredAspectRatios:portrait
-                                              pagePostProcessing:^(SBSDKUIPage *page) {
-                                                  [page setFilter:SBSDKImageFilterTypeBlackAndWhite];
-                                              }
-                                                resultValidation:nil];
-    
-    SBSDKUIWorkflowStep *landscapeStep
-    = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"Black & White Document 2/2"
-                                                         message:@"Please scan a LANDSCAPE A4 document."
-                                            requiredAspectRatios:landscape
-                                              pagePostProcessing:^(SBSDKUIPage *page) {
-                                                  [page setFilter:SBSDKImageFilterTypeBlackAndWhite];
-                                              }
-                                                resultValidation:nil];
-
-    SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[portraitStep, landscapeStep]
-                                                                  name:@"2-page, black and white document"
-                                                     validationHandler:nil];
-    
-    return workflow;
-}
 
 + (SBSDKUIWorkflow *)qrCodeAndDocument {
     
     SBSDKUIWorkflowStep *qrcodeStep
-    = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"QR code and Document 1/2"
-                                                    message:@"Please scan a QR code"
+    = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"Step 1 of 2"
+                                                    message:@"Please scan a QR code."
                                           acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
                                              finderViewSize:CGSizeMake(1, 1)
                                            resultValidation:nil];
 
+    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:210.0 andHeight:297.0],  // A4 sheet portrait
+                        [[SBSDKPageAspectRatio alloc] initWithWidth:297.0 andHeight:210.0]]; // A4 sheet landscape
+
     SBSDKUIWorkflowStep *documentStep
-    = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"QR code and Document 2/2"
-                                                         message:@"Please scan a document."
-                                            requiredAspectRatios:nil
-                                              pagePostProcessing:nil
+    = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"Step 2 of 2"
+                                                         message:@"Please scan an A4 document."
+                                            requiredAspectRatios:ratios
+                                              pagePostProcessing:^(SBSDKUIPage *page) {
+                                                  [page setFilter:SBSDKImageFilterTypeBlackAndWhite];
+                                              }
                                                 resultValidation:nil];
 
     SBSDKUIWorkflow *workflow = [[SBSDKUIWorkflow alloc] initWithSteps:@[qrcodeStep, documentStep]
-                                                                  name:@"QR code and document"
+                                                                  name:@"QR Code and Document"
                                                      validationHandler:nil];
     
     return workflow;
-}
-
-+ (SBSDKUIWorkflowStep *)qrCodeStep {
-    SBSDKUIWorkflowStep *qrcodeStep
-    = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"Scan your QR code"
-                                                    message:nil
-                                          acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
-                                             finderViewSize:CGSizeMake(1, 1)
-                                           resultValidation:nil];
-    return qrcodeStep;
-}
-
-+ (SBSDKUIWorkflowStep *)documentStep {
-    SBSDKUIWorkflowStep *documentStep
-    = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"Scan your document"
-                                                         message:nil
-                                            requiredAspectRatios:nil
-                                              pagePostProcessing:nil
-                                                resultValidation:nil];
-    return documentStep;
 }
 
 @end

@@ -1,9 +1,9 @@
 //
 //  WorkflowFactory.h
-//  SBSDK Internal Demo
+//  ReadyToUseUIDemo
 //
 //  Created by Sebastian Husche on 20.11.18.
-//  Copyright © 2018 doo GmbH. All rights reserved.
+//  Copyright © 2019 doo GmbH. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -15,14 +15,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (NSArray<SBSDKUIWorkflow*>*)allWorkflows;
 
-+ (SBSDKUIWorkflow *)germanIDCard;
-+ (SBSDKUIWorkflow *)ukrainianPassport;
++ (SBSDKUIWorkflow *)idCard;
++ (SBSDKUIWorkflow *)idCardOrPassport;
 + (SBSDKUIWorkflow *)disabilityCertificate;
-+ (SBSDKUIWorkflow *)blackWhiteDocument;
 + (SBSDKUIWorkflow *)qrCodeAndDocument;
-
-+ (SBSDKUIWorkflowStep *)qrCodeStep;
-+ (SBSDKUIWorkflowStep *)documentStep;
++ (SBSDKUIWorkflow *)payform;
 
 @end
 
