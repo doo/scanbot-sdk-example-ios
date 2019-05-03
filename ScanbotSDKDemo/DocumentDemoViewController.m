@@ -80,7 +80,6 @@
 
 - (void)setupScannerViewController {
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
-    //self.scannerViewController.shutterMode = SBSDKShutterModeSmart;
     self.scannerViewController.delegate = self;
 }
 
