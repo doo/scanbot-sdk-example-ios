@@ -119,13 +119,9 @@
 
 - (BOOL)scannerControllerShouldAnalyseVideoFrame:(SBSDKScannerViewController *)controller {
     
-    BOOL hasActivity = !(controller.timeSinceLastMotion > 3.0 && controller.timeSinceLastDetectedPolygon > 1.0);
-    
     return (self.viewAppeared
-            && hasActivity
             && self.presentedViewController == nil
-            && self.currentProgress == nil
-            && self.scannerViewController.autoShutterEnabled == YES);
+            && self.currentProgress == nil);
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller
