@@ -1,6 +1,6 @@
 //
 //  FilteringViewController.m
-//  ScanbotSDKBeta
+//  ReadyToUseUIDemo
 //
 //  Created by Sebastian Husche on 19.06.18.
 //  Copyright © 2018 doo GmbH. All rights reserved.
@@ -198,6 +198,14 @@
             return @"SBSDKImageFilterTypeBackgroundClean";
         case SBSDKImageFilterTypeBlackAndWhite:
             return @"SBSDKImageFilterTypeBlackAndWhite";
+        case SBSDKImageFilterTypeOtsuBinarization:
+            return @"SBSDKImageFilterTypeOtsuBinarization";
+        case SBSDKImageFilterTypeDeepBinarization:
+            return @"SBSDKImageFilterTypeDeepBinarization";
+        case SBSDKImageFilterTypeEdgeHighlight:
+            return @"SBSDKImageFilterTypeEdgeHighlight";
+        case SBSDKImageFilterTypeLowLightBinarization:
+            return @"SBSDKImageFilterTypeLowLightBinarization";
         default:
             return [NSString stringWithFormat:@"Filter No. %lu", (NSUInteger)filter];
     }
@@ -234,7 +242,11 @@
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypePureBinarized]];
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypeBackgroundClean]];
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypeBlackAndWhite]];
-    
+    [alert addAction:[self actionForFilter:SBSDKImageFilterTypeOtsuBinarization]];
+    [alert addAction:[self actionForFilter:SBSDKImageFilterTypeDeepBinarization]];
+    [alert addAction:[self actionForFilter:SBSDKImageFilterTypeEdgeHighlight]];
+    [alert addAction:[self actionForFilter:SBSDKImageFilterTypeLowLightBinarization]];
+
     [alert addAction:[self cancelAction]];
     
     [self presentViewController:alert animated:YES completion:nil];

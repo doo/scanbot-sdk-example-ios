@@ -34,6 +34,10 @@
              [[FilterTableItem alloc] initWithTitle:@"PureBinarized" filterType:SBSDKImageFilterTypePureBinarized],
              [[FilterTableItem alloc] initWithTitle:@"BackgroundClean" filterType:SBSDKImageFilterTypeBackgroundClean],
              [[FilterTableItem alloc] initWithTitle:@"BlackAndWhite" filterType:SBSDKImageFilterTypeBlackAndWhite],
+             [[FilterTableItem alloc] initWithTitle:@"OtsuBinarization" filterType:SBSDKImageFilterTypeOtsuBinarization],
+             [[FilterTableItem alloc] initWithTitle:@"DeepBinarization" filterType:SBSDKImageFilterTypeDeepBinarization],
+             [[FilterTableItem alloc] initWithTitle:@"EdgeHighlight" filterType:SBSDKImageFilterTypeEdgeHighlight],
+             [[FilterTableItem alloc] initWithTitle:@"LowLightBinarization" filterType:SBSDKImageFilterTypeLowLightBinarization],
       ];
 }
 
