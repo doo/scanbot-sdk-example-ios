@@ -119,13 +119,9 @@
 
 - (BOOL)scannerControllerShouldAnalyseVideoFrame:(SBSDKScannerViewController *)controller {
     
-    BOOL hasActivity = !(controller.timeSinceLastMotion > 3.0 && controller.timeSinceLastDetectedPolygon > 1.0);
-    
     return (self.viewAppeared
-            && hasActivity
             && self.presentedViewController == nil
-            && self.currentProgress == nil
-            && self.scannerViewController.autoShutterEnabled == YES);
+            && self.currentProgress == nil);
 }
 
 - (void)scannerController:(SBSDKScannerViewController *)controller
@@ -248,6 +244,11 @@ shouldRotateInterfaceForDeviceOrientation:(UIDeviceOrientation)orientation
 - (NSString *)scannerController:(SBSDKScannerViewController *)controller
 localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     // Here you can return custom user guidance strings depending on the current detection status.
+    
+    if (self.scannerViewController.energySavingActive) {
+        return @"Energy saving active.\nMove your device.";
+    }
+    
     switch (status) {
         case SBSDKDocumentDetectionStatusOK:
             return @"Don't move. Capturing document...";

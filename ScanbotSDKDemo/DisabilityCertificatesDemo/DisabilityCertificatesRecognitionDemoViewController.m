@@ -32,7 +32,7 @@
                               [[SBSDKPageAspectRatio alloc] initWithWidth:14.8 andHeight:10.5] // yellow variant
                               ];
     self.scannerViewController.requiredAspectRatios = aspectRatios;
-    self.scannerViewController.finderMode = SBSDKFinderModeAlways;
+    self.scannerViewController.finderMode = SBSDKFinderModeAspectRatioAlways;
     self.scannerViewController.delegate = self;
 }
 

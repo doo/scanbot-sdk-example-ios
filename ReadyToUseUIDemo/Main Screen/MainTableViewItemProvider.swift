@@ -38,8 +38,11 @@ class MainTableViewItemProvider {
 
         let viewImagesItem = MainTableViewItem(title: "View Images",
                                                action: { actionHandler.showAllImages() })
+        
+        let workflowItem = MainTableViewItem(title: "Workflow",
+                                             action: { actionHandler.showWorkflow()})
 
-        let items1 = [docScanItem, importImageItem, viewImagesItem]
+        let items1 = [docScanItem, importImageItem, viewImagesItem, workflowItem]
 
         
         
