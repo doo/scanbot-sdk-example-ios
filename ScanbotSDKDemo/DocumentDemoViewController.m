@@ -80,6 +80,7 @@
 
 - (void)setupScannerViewController {
     self.scannerViewController = [[SBSDKScannerViewController alloc] initWithParentViewController:self imageStorage:nil];
+    //self.scannerViewController.shutterMode = SBSDKShutterModeSmart;
     self.scannerViewController.delegate = self;
 }
 
@@ -247,6 +248,11 @@ shouldRotateInterfaceForDeviceOrientation:(UIDeviceOrientation)orientation
 - (NSString *)scannerController:(SBSDKScannerViewController *)controller
 localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     // Here you can return custom user guidance strings depending on the current detection status.
+    
+    if (self.scannerViewController.energySavingActive) {
+        return @"Energy saving active.\nMove your device.";
+    }
+    
     switch (status) {
         case SBSDKDocumentDetectionStatusOK:
             return @"Don't move. Capturing document...";
