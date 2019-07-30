@@ -127,17 +127,14 @@
         return;
     }
     AVCaptureVideoOrientation orientation = self.cameraSession.videoOrientation;
-    SBSDKPayFormDetectionResult *detectionResult;
-    detectionResult = [self.payformScanner detectInSampleBuffer:sampleBuffer orientation:orientation];
-    if (detectionResult.isValidPayForm) {
-        SBSDKPayFormRecognitionResult *recognitionResult;
-        recognitionResult = [self.payformScanner recognizeFieldsInSampleBuffer:sampleBuffer orientation:orientation];
+    
+    SBSDKPayFormRecognitionResult *recognitionResult = [self.payformScanner recognizeFromSampleBuffer:sampleBuffer orientation:orientation];
+    if (recognitionResult.recognitionSuccessful) {
         self.detectionEnabled = NO;
         dispatch_async(dispatch_get_main_queue(), ^{
             [self presentResult:recognitionResult];
         });
     }
-    
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
