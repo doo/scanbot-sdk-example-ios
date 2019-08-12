@@ -13,7 +13,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UIView *blackView;
-@property (weak, nonatomic) IBOutlet UIImageView *templateView;
+@property (weak, nonatomic) IBOutlet UIView *cameraView;
 @property (weak, nonatomic) IBOutlet UILabel *textHintLabel;
 
 @property (nonatomic, strong) SBSDKMachineReadableZoneRecognizer *recognizer;
@@ -44,7 +44,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.cameraSession startSession];
-    [self.view.layer insertSublayer:self.cameraSession.previewLayer atIndex:0];
+    [self.cameraView.layer insertSublayer:self.cameraSession.previewLayer atIndex:0];
     self.isViewAppeared = YES;
     self.blackView.hidden = YES;
 }
@@ -58,8 +58,22 @@
 
 - (void)viewDidLayoutSubviews {
     [super viewDidLayoutSubviews];
-    self.cameraSession.previewLayer.frame = self.view.bounds;
+    self.cameraSession.previewLayer.frame = self.cameraView.bounds;
     [self recalculateMRZRect];
+}
+
+- (void)viewWillTransitionToSize:(CGSize)size
+       withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
+    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
+    [coordinator animateAlongsideTransition:^(id<UIViewControllerTransitionCoordinatorContext>  _Nonnull context) {
+        [self recalculateMRZRect];
+        [self updateVideoOrientation];
+    } completion:nil];
+}
+
+- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
+    [super traitCollectionDidChange: previousTraitCollection];
+    [self updateVideoOrientation];
 }
 
 - (BOOL)shouldRecognize {
@@ -68,37 +82,44 @@
 
 #pragma mark - Custom helpers
 
-- (CGSize)previewSizeFromCameraSessionPreset {
-    // in this demo we use 1920x1080 capture preset
-    if (self.view.frame.size.height > self.view.frame.size.width) {
-        return CGSizeMake(1080, 1920);
+- (void)recalculateMRZRect {
+    CGFloat aspectRatio = 1.47f;
+    CGFloat edgeMargin = 15.0f;
+    
+    CGSize size = self.cameraView.frame.size;
+    CGFloat heightLimit = size.height - (edgeMargin * 2);
+    CGFloat widthLimit = size.width - (edgeMargin * 2);
+    
+    CGFloat targetHeight = widthLimit/aspectRatio;
+    CGFloat targetWidth = widthLimit;
+    
+    if (targetHeight > heightLimit) {
+        targetHeight = heightLimit;
+        targetWidth = heightLimit * aspectRatio;
     }
-    return CGSizeMake(1920, 1080);
+    
+    CGSize targetSize = CGSizeMake(targetWidth, targetHeight);
+    CGPoint targetPoint = CGPointMake((size.width/2) - targetSize.width/2,
+                                      (size.height/2) - targetSize.height/2);
+    CGRect targetRect = CGRectMake(targetPoint.x, targetPoint.y, targetSize.width, targetSize.height);
+    
+    BOOL isLandscape = self.cameraView.frame.size.height < self.cameraView.frame.size.width;
+    CGSize screenSize = self.cameraView.frame.size;
+    CGSize imageSize = isLandscape ? CGSizeMake(1920, 1080) : CGSizeMake(1080, 1920); // AVCaptureSessionPreset1920x1080
+    
+    CGFloat xMultiplier = imageSize.width / screenSize.width;
+    CGFloat yMultiplier = imageSize.height / screenSize.height;
+    
+    CGRect convertedRect = CGRectMake(targetRect.origin.x * xMultiplier,
+                                      (targetRect.origin.y + (targetRect.size.height / 3 * 2)) * yMultiplier,
+                                      targetRect.size.width * xMultiplier,
+                                      targetRect.size.height / 3 * yMultiplier);
+    
+    self.machineReadableZoneRect = convertedRect;
 }
 
-- (void)recalculateMRZRect {
-    const CGFloat documentRelativeWidth = 1.47f;
-    const CGFloat documentRelativeHeight = 0.68f;
-    const CGFloat edgeMargin = 15.0f;
-    
-    CGFloat documentWidth = self.view.frame.size.width;
-    CGFloat documentHeight = documentWidth * documentRelativeHeight;
-    CGFloat documentOriginX = 0.0f;
-    CGFloat documentOriginY = self.view.frame.size.height / 2 - documentHeight / 2;
-    
-    if (self.view.frame.size.height < self.view.frame.size.width) { // Landscape mode
-        documentHeight = self.view.frame.size.height;
-        documentWidth = documentHeight * documentRelativeWidth;
-        documentOriginX = self.view.frame.size.width / 2 - documentWidth / 2;
-        documentOriginY = 0.0f;
-    }
-    
-    const CGFloat xScale = [self previewSizeFromCameraSessionPreset].width / self.view.frame.size.width;
-    const CGFloat yScale = [self previewSizeFromCameraSessionPreset].height / self.view.frame.size.height;
-    self.machineReadableZoneRect = CGRectMake((documentOriginX + edgeMargin) * xScale,
-                              (documentOriginY + documentHeight / 3 * 2 - edgeMargin) * yScale,
-                              (documentWidth - edgeMargin) * xScale,
-                              (documentHeight / 3) * yScale);
+- (void)updateVideoOrientation {
+    self.cameraSession.videoOrientation = self.videoOrientationFromInterfaceOrientation;
 }
 
 #pragma mark - Custom actions
@@ -165,34 +186,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [self presentViewController:alert
                        animated:YES
                      completion:nil];
-}
-
-- (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {
-    
-    UIInterfaceOrientation orientation = [UIApplication sharedApplication].statusBarOrientation;
-    
-    AVCaptureVideoOrientation videoOrientation = AVCaptureVideoOrientationPortrait;
-    switch (orientation) {
-            
-        case UIInterfaceOrientationPortrait:
-            videoOrientation = AVCaptureVideoOrientationPortrait;
-            break;
-            
-        case UIInterfaceOrientationPortraitUpsideDown:
-            videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
-            break;
-            
-        case UIInterfaceOrientationLandscapeLeft:
-            videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
-            break;
-            
-        case UIInterfaceOrientationLandscapeRight:
-            videoOrientation = AVCaptureVideoOrientationLandscapeRight;
-            
-        default:
-            break;
-    }
-    self.cameraSession.videoOrientation = videoOrientation;
 }
 
 @end
