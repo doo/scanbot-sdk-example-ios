@@ -111,9 +111,9 @@
     CGFloat yMultiplier = imageSize.height / screenSize.height;
     
     CGRect convertedRect = CGRectMake(targetRect.origin.x * xMultiplier,
-                                      targetRect.origin.y * yMultiplier,
+                                      (targetRect.origin.y + (targetRect.size.height / 3 * 2)) * yMultiplier,
                                       targetRect.size.width * xMultiplier,
-                                      targetRect.size.height * yMultiplier);
+                                      targetRect.size.height / 3 * yMultiplier);
     
     self.machineReadableZoneRect = convertedRect;
 }
