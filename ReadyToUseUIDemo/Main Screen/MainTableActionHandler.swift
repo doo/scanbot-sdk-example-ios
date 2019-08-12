@@ -76,6 +76,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showEHICScanning() {
+        self.guardLicense {
+            UsecaseScanEHIC().start(presenter: self.presenter)
+        }
+    }
+    
     func showImportImages() {
         self.guardLicense {
             UsecaseBrowseDocumentPages(document: self.scannedDocument,

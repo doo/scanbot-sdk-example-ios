@@ -55,7 +55,10 @@ class MainTableViewItemProvider {
         let barcodeScanItem = MainTableViewItem(title: "Scan Bar Code",
                                                 action: { actionHandler.showBarcodeScanning() })
         
-        let items2 = [qrScanItem, mrzScanItem, barcodeScanItem]
+        let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
+                                            action: { actionHandler.showEHICScanning() })
+        
+        let items2 = [qrScanItem, mrzScanItem, barcodeScanItem, ehicScanItem]
         
         let firstSection = MainTableViewSection(title: "", items: items1)
         let secondSection = MainTableViewSection(title: "", items: items2)
