@@ -31,7 +31,7 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         var page: SBSDKUIPage?
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            if let uuid = SBSDKUIPageFileStorage.default().add(image.sbsdk_imageWithFixedOrientation()!) {
+            if let uuid = SBSDKUIPageFileStorage.default().add(image.sbsdk_imageWithNormalizedOrientation()!) {
                 page = SBSDKUIPage(pageFileID: uuid, polygon: nil)
             }
         }
