@@ -38,6 +38,20 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (BOOL)checkHasImages {
+    if (self.images.count > 0) {
+        return YES;
+    }
+
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Image(s) required"
+                                                                   message:@"Please add at least one image from the Photo Library."
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    [alert addAction:[UIAlertAction actionWithTitle:@"OK" style:UIAlertActionStyleDefault handler:nil]];
+    [self presentViewController:alert animated:YES completion:nil];
+    return NO;
+}
+
+
 - (IBAction)addImageButtoTapped:(id)sender {
     UIImagePickerController *picker = [[UIImagePickerController alloc] init];
     picker.delegate = self;
@@ -45,34 +59,41 @@
 }
 
 - (IBAction)generateTIFFTapped:(id)sender {
-    if (self.images.count == 0) {
+    if (!self.checkHasImages) {
         return;
     }
     
-    NSString *filePath = [NSString stringWithFormat:@"%@/demo.tiff", [self applicationDocumentsDirectory]];
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@.tiff",
+                          [self applicationDocumentsDirectory], [[[NSUUID UUID] UUIDString] lowercaseString]];
     NSURL *fileURL = [NSURL URLWithString:filePath];
-    BOOL result = NO;
-    if (self.images.count == 1) {
-        result = [SBSDKTIFFImageWriter writeTIFF:self.images[0] fileURL:fileURL];
-    } else {
-        result = [SBSDKTIFFImageWriter writeMultiPageTIFF:self.images fileURL:fileURL];
-    }
+    
+    SBSDKTIFFImageWriterParameters *params = [SBSDKTIFFImageWriterParameters defaultParameters];
+    params.compression = COMPRESSION_LZW;
+    params.dpi = 200;
+    
+    BOOL result = [SBSDKTIFFImageWriter writeTIFF:self.images fileURL:fileURL parameters:params];
+
     [self showResult:result filePath:filePath];
 }
 
 - (IBAction)generateBinarizedTIFFTapped:(id)sender {
-    if (self.images.count == 0) {
+    if (!self.checkHasImages) {
         return;
     }
-    
-    NSString *filePath = [NSString stringWithFormat:@"%@/demo_binarized.tiff", [self applicationDocumentsDirectory]];
+
+    NSString *filePath = [NSString stringWithFormat:@"%@/%@_binarized.tiff",
+                          [self applicationDocumentsDirectory], [[[NSUUID UUID] UUIDString] lowercaseString]];
     NSURL *fileURL = [NSURL URLWithString:filePath];
-    BOOL result = NO;
-    if (self.images.count == 1) {
-        result = [SBSDKTIFFImageWriter writeBinarizedTIFF:self.images[0] fileURL:fileURL];
-    } else {
-        result = [SBSDKTIFFImageWriter writeBinarizedMultiPageTIFF:self.images fileURL:fileURL];
-    }
+    
+    SBSDKTIFFImageWriterParameters *params = [SBSDKTIFFImageWriterParameters defaultParameters];
+    // alternatively init params via defaultParametersForBinaryImages, like:
+    // SBSDKTIFFImageWriterParameters *params = [SBSDKTIFFImageWriterParameters defaultParametersForBinaryImages];
+    params.binarize = YES;
+    params.compression = COMPRESSION_CCITT_T6;
+    params.dpi = 200;
+
+    BOOL result = [SBSDKTIFFImageWriter writeTIFF:self.images fileURL:fileURL parameters:params];
+    
     [self showResult:result filePath:filePath];
 }
 
