@@ -23,6 +23,7 @@ class UsecaseFilterPage: Usecase, FilteringViewControllerDelegate {
         
         let configuration = FilteringScreenConfiguration.default()
         let editor = FilteringViewController.createNew(with: self.page, with: configuration, andDelegate: self)
+        editor.modalPresentationStyle = .fullScreen
         self.presenter?.present(editor, animated: true, completion: nil)
     }
 

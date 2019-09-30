@@ -24,6 +24,7 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
         let configuration = SBSDKUICroppingScreenConfiguration.default()
         configuration.uiConfiguration.backgroundColor = UIColor.darkGray
         let editor = SBSDKUICroppingViewController.createNew(with: self.page, with: configuration, andDelegate: self)
+        editor.modalPresentationStyle = .fullScreen
         self.presenter?.present(editor, animated: true, completion: nil)
     }
 
