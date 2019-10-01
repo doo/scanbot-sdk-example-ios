@@ -25,6 +25,13 @@ class UsecaseStartWorkflow: Usecase {
                 dialog.addAction(action)
         }
         
+        dialog.popoverPresentationController?.sourceView = presenter.view
+        dialog.popoverPresentationController?.sourceRect = CGRect(x: presenter.view.center.x,
+                                                                  y: presenter.view.center.y,
+                                                                  width: 0,
+                                                                  height: 0)
+        dialog.popoverPresentationController?.permittedArrowDirections = []
+        
         presenter.present(dialog, animated: true)
     }
     
