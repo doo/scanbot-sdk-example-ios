@@ -38,6 +38,7 @@
              [[FilterTableItem alloc] initWithTitle:@"DeepBinarization" filterType:SBSDKImageFilterTypeDeepBinarization],
              [[FilterTableItem alloc] initWithTitle:@"EdgeHighlight" filterType:SBSDKImageFilterTypeEdgeHighlight],
              [[FilterTableItem alloc] initWithTitle:@"LowLightBinarization" filterType:SBSDKImageFilterTypeLowLightBinarization],
+             [[FilterTableItem alloc] initWithTitle:@"LowLightBinarization2" filterType:SBSDKImageFilterTypeLowLightBinarization2],
       ];
 }
 

@@ -1,6 +1,6 @@
 //
 //  BarCodeScannerWithFinderViewController.m
-//  SBSDK Internal Demo
+//  ScanbotSDK Demo
 //
 //  Created by Andrew Petrus on 30.04.19.
 //  Copyright © 2019 doo GmbH. All rights reserved.
@@ -18,7 +18,7 @@ BarCodeTypesListViewControllerDelegate>
 
 @property (nonatomic, strong) SBSDKCameraSession *cameraSession;
 @property (nonatomic, strong) SBSDKBarcodeScanner *scanner;
-@property (nonatomic, strong) NSArray<NSNumber *> *selectedBarCodeTypes;
+@property (nonatomic, strong) NSArray<SBSDKBarcodeType *> *selectedBarCodeTypes;
 @property (nonatomic, strong) NSArray<SBSDKBarcodeScannerResult *> *currentResults;
 @property (nonatomic) BOOL liveDetectionEnabled;
 @property (nonatomic, strong) SBSDKFrameLimiter *frameLimiter;
@@ -54,6 +54,7 @@ BarCodeTypesListViewControllerDelegate>
     [self.view.layer addSublayer:self.cameraSession.previewLayer];
     self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
     self.scanner = [[SBSDKBarcodeScanner alloc] init];
+    self.selectedBarCodeTypes = [SBSDKBarcodeType allTypes];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -122,7 +123,7 @@ BarCodeTypesListViewControllerDelegate>
 
 #pragma mark - BarCode types selection delegate
 
-- (void)barCodeTypesSelectionChanged:(NSArray<NSNumber *> *)newTypes {
+- (void)barCodeTypesSelectionChanged:(NSArray<SBSDKBarcodeType *> *)newTypes {
     self.selectedBarCodeTypes = newTypes;
 }
 

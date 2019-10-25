@@ -206,6 +206,8 @@
             return @"SBSDKImageFilterTypeEdgeHighlight";
         case SBSDKImageFilterTypeLowLightBinarization:
             return @"SBSDKImageFilterTypeLowLightBinarization";
+        case SBSDKImageFilterTypeLowLightBinarization2:
+            return @"SBSDKImageFilterTypeLowLightBinarization2";
         default:
             return [NSString stringWithFormat:@"Filter No. %lu", (NSUInteger)filter];
     }
@@ -246,6 +248,7 @@
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypeDeepBinarization]];
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypeEdgeHighlight]];
     [alert addAction:[self actionForFilter:SBSDKImageFilterTypeLowLightBinarization]];
+    [alert addAction:[self actionForFilter:SBSDKImageFilterTypeLowLightBinarization2]];
 
     [alert addAction:[self cancelAction]];
     

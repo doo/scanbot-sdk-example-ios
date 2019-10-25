@@ -17,7 +17,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 @property (nonatomic, strong) SBSDKCameraSession *cameraSession;
 @property (nonatomic, strong) SBSDKBarcodeScanner *scanner;
 @property (nonatomic, strong) SBSDKPolygonLayer *polygonLayer;
-@property (nonatomic, strong) NSArray<NSNumber *> *selectedBarCodeTypes;
+@property (nonatomic, strong) NSArray<SBSDKBarcodeType *> *selectedBarCodeTypes;
 @property (nonatomic, strong) NSArray<SBSDKBarcodeScannerResult *> *currentResults;
 @property (nonatomic) BOOL liveDetectionEnabled;
 @property (nonatomic, strong) SBSDKFrameLimiter *frameLimiter;
@@ -59,6 +59,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
     [self.view.layer addSublayer:self.polygonLayer];
     
     self.scanner = [[SBSDKBarcodeScanner alloc] init];
+    self.selectedBarCodeTypes = [SBSDKBarcodeType allTypes];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -124,7 +125,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 
 #pragma mark - BarCode types selection delegate
 
-- (void)barCodeTypesSelectionChanged:(NSArray<NSNumber *> *)newTypes {
+- (void)barCodeTypesSelectionChanged:(NSArray<SBSDKBarcodeType *> *)newTypes {
     self.selectedBarCodeTypes = newTypes;
 }
 
@@ -140,7 +141,9 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = (UIImage *)info[UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^{
-        self.currentResults = [self.scanner detectAllBarCodesOnImage:image];
+        self.currentResults = [self.scanner detectBarCodesOnImage:image
+                                                          ofTypes:self.selectedBarCodeTypes
+                                                     searchInRect:CGRectZero];
         [self performSegueWithIdentifier:@"showBarCodeScannerResults" sender:nil];
     }];
 }

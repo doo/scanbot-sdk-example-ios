@@ -1,6 +1,6 @@
 //
 //  BarCodesResultDetailsViewController.h
-//  SBSDK Internal Demo
+//  ScanbotSDK Demo
 //
 //  Created by Andrew Petrus on 13.05.19.
 //  Copyright © 2019 doo GmbH. All rights reserved.

@@ -180,7 +180,7 @@
     SBSDKUIWorkflowStep *qrcodeStep
     = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"Step 1 of 2"
                                                     message:@"Please scan a QR code."
-                                          acceptedCodeTypes:@[AVMetadataObjectTypeQRCode]
+                                          acceptedCodeTypes:@[SBSDKBarcodeTypeQRCode]
                                              finderViewSize:CGSizeMake(1, 1)
                                            resultValidation:nil];
 

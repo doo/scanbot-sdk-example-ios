@@ -1,6 +1,6 @@
 //
 //  BarCodeScannerResultsTableViewController.m
-//  SBSDK Internal Demo
+//  ScanbotSDK Demo
 //
 //  Created by Andrew Petrus on 24.01.19.
 //  Copyright © 2019 doo GmbH. All rights reserved.
@@ -19,50 +19,6 @@
 @end
 
 @implementation BarCodeScannerResultsTableViewController
-
-- (NSString *)barcodeTypeStringRepresentation:(SBSDKBarcodeType)type {
-    switch (type) {
-        case SBSDKBarcodeTypeUnknown:
-            return @"Unknown";
-        case SBSDKBarcodeTypeUPCEANExtension:
-            return @"UPC-EAN Extension";
-        case SBSDKBarcodeTypeUPCE:
-            return @"UPC-E";
-        case SBSDKBarcodeTypeUPCA:
-            return @"UPC-A";
-        case SBSDKBarcodeTypeRSSExpanded:
-            return @"RSS Expanded";
-        case SBSDKBarcodeTypeRSS14:
-            return @"RSS14";
-        case SBSDKBarcodeTypeQRCode:
-            return @"QR code";
-        case SBSDKBarcodeTypePDF417:
-            return @"PDF417";
-        case SBSDKBarcodeTypeMaxicode:
-            return @"Maxicode";
-        case SBSDKBarcodeTypeITF:
-            return @"ITF";
-        case SBSDKBarcodeTypeEAN8:
-            return @"EAN8";
-        case SBSDKBarcodeTypeAztec:
-            return @"Aztec";
-        case SBSDKBarcodeTypeEAN13:
-            return @"EAN13";
-        case SBSDKBarcodeTypeCode39:
-            return @"Code39";
-        case SBSDKBarcodeTypeCode93:
-            return @"Code93";
-        case SBSDKBarcodeTypeCodaBar:
-            return @"Codabar";
-        case SBSDKBarcodeTypeCode128:
-            return @"Code128";
-        case SBSDKBarcodeTypeDataMatrix:
-            return @"DataMatrix";
-            
-        default:
-            return @"Unknown";
-    }
-}
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"showBarCodeDetailsVC"]) {
@@ -84,7 +40,7 @@
                                                                                forIndexPath:indexPath];
     
     cell.barcodeText.text = self.results[indexPath.row].rawTextString;
-    cell.barCodeType.text = [self barcodeTypeStringRepresentation:self.results[indexPath.row].type];
+    cell.barCodeType.text = self.results[indexPath.row].type.name;
     cell.barcodeImage.image = self.results[indexPath.row].barcodeImage;
     
     return cell;

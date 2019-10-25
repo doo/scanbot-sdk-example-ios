@@ -1,18 +1,19 @@
 //
 //  BarCodeTypesListViewController.m
-//  SBSDK Internal Demo
+//  ScanbotSDK Demo
 //
 //  Created by Andrew Petrus on 13.05.19.
 //  Copyright © 2019 doo GmbH. All rights reserved.
 //
 
 #import "BarCodeTypesListViewController.h"
-#import "BarCodeTypesListTableViewCell.h"
+
 @import ScanbotSDK;
 
 @interface BarCodeTypesListViewController ()
 
-@property (nonatomic, strong) NSMutableArray<NSNumber *> *selectedTypes;
+@property (nonatomic, strong) NSMutableArray<SBSDKBarcodeType *> *selectedTypes;
+@property (nonatomic, strong) NSArray<SBSDKBarcodeType *> *selectableTypes;
 
 @end
 
@@ -22,6 +23,8 @@
     [super viewWillAppear:animated];
 
     self.selectedTypes = [NSMutableArray arrayWithArray:self.selectedBarCodeTypes];
+    self.selectableTypes = [SBSDKBarcodeType allTypes];
+    
     [self.tableView reloadData];
 }
 
@@ -42,106 +45,30 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 17;
+    return self.selectableTypes.count;
 }
 
-- (void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-    if ([self.selectedTypes containsObject:@(indexPath.row)]) {
-        [tableView selectRowAtIndexPath:indexPath
-                               animated:NO
-                         scrollPosition:UITableViewScrollPositionNone];
-    }
+- (SBSDKBarcodeType *)barcodeTypeAtIndex:(NSUInteger)index {
+    return self.selectableTypes[index];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    BarCodeTypesListTableViewCell *cell = (BarCodeTypesListTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"barCodeTypesListCell"
-                                                                                                           forIndexPath:indexPath];
-    
-    switch (indexPath.row) {
-        case 0:
-            cell.barCodeTypaNameLabel.text = @"Aztec";
-            break;
-            
-        case 1:
-            cell.barCodeTypaNameLabel.text = @"Codabar";
-            break;
-            
-        case 2:
-            cell.barCodeTypaNameLabel.text = @"Code39";
-            break;
-            
-        case 3:
-            cell.barCodeTypaNameLabel.text = @"Code93";
-            break;
-            
-        case 4:
-            cell.barCodeTypaNameLabel.text = @"Code128";
-            break;
-            
-        case 5:
-            cell.barCodeTypaNameLabel.text = @"DataMatrix";
-            break;
-            
-        case 6:
-            cell.barCodeTypaNameLabel.text = @"EAN8";
-            break;
-            
-        case 7:
-            cell.barCodeTypaNameLabel.text = @"EAN13";
-            break;
-            
-        case 8:
-            cell.barCodeTypaNameLabel.text = @"ITF";
-            break;
-            
-        case 9:
-            cell.barCodeTypaNameLabel.text = @"Maxicode";
-            break;
-            
-        case 10:
-            cell.barCodeTypaNameLabel.text = @"PDF417";
-            break;
-            
-        case 11:
-            cell.barCodeTypaNameLabel.text = @"QR";
-            break;
-            
-        case 12:
-            cell.barCodeTypaNameLabel.text = @"RSS14";
-            break;
-            
-        case 13:
-            cell.barCodeTypaNameLabel.text = @"RSS Expanded";
-            break;
-        
-        case 14:
-            cell.barCodeTypaNameLabel.text = @"UPC-A";
-            break;
-            
-        case 15:
-            cell.barCodeTypaNameLabel.text = @"UPC-E";
-            break;
-            
-        case 16:
-            cell.barCodeTypaNameLabel.text = @"UPC EAN Extension";
-            break;
-            
-        default:
-            cell.barCodeTypaNameLabel.text = @"UNKNOWN";
-            break;
-    }
-    
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"barCodeTypesListCell"
+                                                            forIndexPath:indexPath];
+    SBSDKBarcodeType *type = self.selectableTypes[indexPath.row];
+    cell.textLabel.text = type.name;
+    cell.accessoryType = [self.selectedTypes containsObject:type] ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self.selectedTypes removeObject:@(indexPath.row)];
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (![self.selectedTypes containsObject:@(indexPath.row)]) {
-        [self.selectedTypes addObject:@(indexPath.row)];
+    SBSDKBarcodeType *type = self.selectableTypes[indexPath.row];
+    if ([self.selectedTypes containsObject:type]) {
+        [self.selectedTypes removeObject:type];
+    } else {
+        [self.selectedTypes addObject:type];
     }
+    [self.tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
 }
 
 @end

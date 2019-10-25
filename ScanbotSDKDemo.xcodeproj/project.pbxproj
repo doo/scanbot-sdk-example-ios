@@ -22,7 +22,6 @@
 		C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0822FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.m */; };
 		C22FFF1522FAEA7B006E0862 /* BarCodesResultDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */; };
 		C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */; };
-		C22FFF1722FAEA7B006E0862 /* BarCodeTypesListTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0E22FAEA7A006E0862 /* BarCodeTypesListTableViewCell.m */; };
 		C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */; };
 		C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF1022FAEA7A006E0862 /* BarCodeScannerViewController.m */; };
 		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
@@ -97,7 +96,6 @@
 		6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultViewController.swift; sourceTree = "<group>"; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C22FFF0522FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerResultsTableViewController.m; sourceTree = "<group>"; };
-		C22FFF0622FAEA7A006E0862 /* BarCodeTypesListTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeTypesListTableViewCell.h; sourceTree = "<group>"; };
 		C22FFF0722FAEA7A006E0862 /* BarCodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerViewController.h; sourceTree = "<group>"; };
 		C22FFF0822FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerResultsTableViewCell.m; sourceTree = "<group>"; };
 		C22FFF0922FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerResultsTableViewController.h; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 		C22FFF0B22FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerResultsTableViewCell.h; sourceTree = "<group>"; };
 		C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodesResultDetailsViewController.m; sourceTree = "<group>"; };
 		C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerWithFinderViewController.m; sourceTree = "<group>"; };
-		C22FFF0E22FAEA7A006E0862 /* BarCodeTypesListTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeTypesListTableViewCell.m; sourceTree = "<group>"; };
 		C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeTypesListViewController.m; sourceTree = "<group>"; };
 		C22FFF1022FAEA7A006E0862 /* BarCodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerViewController.m; sourceTree = "<group>"; };
 		C22FFF1122FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerWithFinderViewController.h; sourceTree = "<group>"; };
@@ -285,8 +282,6 @@
 				C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */,
 				C22FFF0A22FAEA7A006E0862 /* BarCodesResultDetailsViewController.h */,
 				C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */,
-				C22FFF0622FAEA7A006E0862 /* BarCodeTypesListTableViewCell.h */,
-				C22FFF0E22FAEA7A006E0862 /* BarCodeTypesListTableViewCell.m */,
 				C22FFF1222FAEA7B006E0862 /* BarCodeTypesListViewController.h */,
 				C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */,
 			);
@@ -431,7 +426,6 @@
 				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
-				C22FFF1722FAEA7B006E0862 /* BarCodeTypesListTableViewCell.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

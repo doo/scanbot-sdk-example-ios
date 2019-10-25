@@ -1,6 +1,6 @@
 //
 //  BarCodeScannerWithFinderViewController.h
-//  SBSDK Internal Demo
+//  ScanbotSDK Demo
 //
 //  Created by Andrew Petrus on 30.04.19.
 //  Copyright © 2019 doo GmbH. All rights reserved.
