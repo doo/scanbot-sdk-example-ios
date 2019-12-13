@@ -86,11 +86,23 @@
     NSURL *fileURL = [NSURL URLWithString:filePath];
     
     SBSDKTIFFImageWriterParameters *params = [SBSDKTIFFImageWriterParameters defaultParameters];
-    // alternatively init params via defaultParametersForBinaryImages, like:
-    // SBSDKTIFFImageWriterParameters *params = [SBSDKTIFFImageWriterParameters defaultParametersForBinaryImages];
     params.binarize = YES;
     params.compression = COMPRESSION_CCITT_T6;
     params.dpi = 200;
+    
+    // Example for custom tags (fields) as userDefinedFields.
+    // Please note the range for custom tag IDs and refer to TIFF specifications.
+    params.userDefinedFields = [NSMutableArray arrayWithObjects:
+                                [SBSDKTIFFImageWriterUserDefinedField fieldWithStringValue:@"String value"
+                                                                                 fieldName:@"SomeStringField"
+                                                                                  fieldTag:65000],
+                                [SBSDKTIFFImageWriterUserDefinedField fieldWithNumericValue:@123
+                                                                                  fieldName:@"SomeLongField"
+                                                                                   fieldTag:65001],
+                                [SBSDKTIFFImageWriterUserDefinedField fieldWithNumericValue:@123.5
+                                                                                  fieldName:@"SomeDoubleField"
+                                                                                   fieldTag:65535],
+                                nil];
 
     BOOL result = [SBSDKTIFFImageWriter writeTIFF:self.images fileURL:fileURL parameters:params];
     
