@@ -60,7 +60,7 @@
                                                       wantsCapturedPage:YES
                                                        resultValidation:^NSError *(SBSDKUIWorkflowStepResult *result) {
                                                            SBSDKMachineReadableZoneRecognizerResult *mrz = result.mrzResult;
-                                                           if (mrz == nil || !mrz.recognitionSuccessfull) {
+                                                           if (mrz == nil || !mrz.recognitionSuccessful) {
                                                                return [WorkflowError errorWithCode:2
                                                                               localizedDescription: @"This does not seem to be the back side."];
                                                            }
@@ -104,7 +104,7 @@
                                                             SBSDKMachineReadableZoneRecognizer *recognizer = [[SBSDKMachineReadableZoneRecognizer alloc] init];
                                                             SBSDKMachineReadableZoneRecognizerResult *mrz = [recognizer recognizePersonalIdentityFromImage:result.capturedPage.documentImage];
 
-                                                            if (mrz == nil || !mrz.recognitionSuccessfull) {
+                                                            if (mrz == nil || !mrz.recognitionSuccessful) {
                                                                 return [WorkflowError errorWithCode:2
                                                                                localizedDescription: @"This does not seem to be the correct side. Please scan the side containing MRZ lines."];
                                                             }

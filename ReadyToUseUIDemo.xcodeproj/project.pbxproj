@@ -315,6 +315,7 @@
 				TargetAttributes = {
 					082D0A2E20C801AA009B1A7A = {
 						CreatedOnToolsVersion = 9.4;
+						LastSwiftMigration = 1130;
 					};
 				};
 			};
@@ -544,7 +545,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.rtu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -568,7 +569,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.rtu.ios;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "${PROJECT_DIR}/${PRODUCT_NAME}/ReadyToUseUIDemo-Bridging-Header.h";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

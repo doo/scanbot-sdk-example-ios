@@ -38,7 +38,7 @@ class MainTableActionHandler: NSObject {
         
         let getLicenseAction = UIAlertAction(title: "Get License", style: .cancel) { (_) in
             let url = URL(string: "https://scanbot.io/sdk/")!
-            UIApplication.shared.open(url, options: [:], completionHandler: { (_) in
+            UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: { (_) in
                 objc_terminate()
             })
         }
@@ -101,4 +101,9 @@ class MainTableActionHandler: NSObject {
             UsecaseStartWorkflow().start(presenter: self.presenter)
         }
     }
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

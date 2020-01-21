@@ -13,8 +13,8 @@ extension UIImageView {
         self.image = image
         let transition = CATransition()
         transition.duration = 0.5
-        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        transition.type = kCATransitionFade
+        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        transition.type = CATransitionType.fade
         self.layer.add(transition, forKey: nil)
     }
 }
