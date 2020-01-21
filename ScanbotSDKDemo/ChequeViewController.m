@@ -73,7 +73,7 @@
     
     self.polygonLayer.path = [result.polygon bezierPathForPreviewLayer:self.cameraSession.previewLayer].CGPath;
     
-    if (result == nil || result.routingNumber.length == 0) {
+    if (result == nil || result.routingNumberField.value.length == 0) {
         return;
     }
     
@@ -82,12 +82,12 @@
     self.recognitionEnabled = NO;
     
     NSMutableString *message = [[NSMutableString alloc] init];
-    if (result.routingNumber.length > 0) {
-        [message appendString:[NSString stringWithFormat:@"Routing number: %@\n", result.routingNumber]];
+    if (result.routingNumberField.value.length > 0) {
+        [message appendString:[NSString stringWithFormat:@"Routing number: %@\n", result.routingNumberField.value]];
     }
     
-    if (result.accountNumber.length > 0) {
-        [message appendString:[NSString stringWithFormat:@"Account number: %@\n", result.accountNumber]];
+    if (result.accountNumberField.value.length > 0) {
+        [message appendString:[NSString stringWithFormat:@"Account number: %@\n", result.accountNumberField.value]];
     }
     
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Recognized Cheque"

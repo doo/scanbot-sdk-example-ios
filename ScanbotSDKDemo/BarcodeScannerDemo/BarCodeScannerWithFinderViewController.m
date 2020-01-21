@@ -152,11 +152,13 @@ BarCodeTypesListViewControllerDelegate>
                                    finderWidth,
                                    finderHeight);
     
+
+    self.scanner.acceptedBarcodeTypes = self.selectedBarCodeTypes;
+
     NSArray<SBSDKBarcodeScannerResult *> *results =
     [self.scanner detectBarCodesOnSampleBuffer:sampleBuffer
-                                       ofTypes:self.selectedBarCodeTypes
                                    orientation:self.cameraSession.videoOrientation
-                                  searchInRect:searchRect];
+                                        inRect:searchRect];
     if (results.count > 0) {
         dispatch_async(dispatch_get_main_queue(), ^{
             self.liveDetectionEnabled = NO;

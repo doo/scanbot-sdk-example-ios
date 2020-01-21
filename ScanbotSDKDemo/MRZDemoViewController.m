@@ -161,7 +161,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
                                            searchMachineReadableZone:NO
                                              machineReadableZoneRect:self.machineReadableZoneRect];
         
-        if (result != nil && result.recognitionSuccessfull) {
+        if (result != nil && result.recognitionSuccessful) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showResult:result];
             });

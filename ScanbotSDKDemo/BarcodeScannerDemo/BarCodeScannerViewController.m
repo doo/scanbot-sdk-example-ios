@@ -141,9 +141,8 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = (UIImage *)info[UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^{
-        self.currentResults = [self.scanner detectBarCodesOnImage:image
-                                                          ofTypes:self.selectedBarCodeTypes
-                                                     searchInRect:CGRectZero];
+        self.scanner.acceptedBarcodeTypes = self.selectedBarCodeTypes;
+        self.currentResults = [self.scanner detectBarCodesOnImage:image inRect:CGRectZero];
         [self performSegueWithIdentifier:@"showBarCodeScannerResults" sender:nil];
     }];
 }
@@ -167,10 +166,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     }
     
     NSArray<SBSDKBarcodeScannerResult *> *results =
-    [self.scanner detectBarCodesOnSampleBuffer:sampleBuffer
-                                       ofTypes:self.selectedBarCodeTypes
-                                   orientation:self.cameraSession.videoOrientation];
-
+    [self.scanner detectBarCodesOnSampleBuffer:sampleBuffer orientation:self.cameraSession.videoOrientation];
     dispatch_async(dispatch_get_main_queue(), ^{
         if (results.count > 0) {
             if (self.polygonsSwitch.isOn) {
