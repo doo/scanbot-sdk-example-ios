@@ -43,9 +43,12 @@ or visit our website https://scanbot.io/sdk
 ## How to run this example app?
 
 - Clone this repository to a local folder
-- [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/sdk/downloads.html)
-- Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
-- Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
+- Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run, a build script will automatically download ScanbotSDK to your project folder if needed
+
+- In case you don't want to automatically download the SDK in the Demo apps target remove the dependency to the 'Download ScanbotSDK' aggregate target and perform the following steps:
+  * [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/sdk/downloads.html)
+  * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
+  * Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
 
 
 ## Please note
