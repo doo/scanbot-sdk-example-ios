@@ -209,7 +209,7 @@
         case SBSDKImageFilterTypeLowLightBinarization2:
             return @"SBSDKImageFilterTypeLowLightBinarization2";
         default:
-            return [NSString stringWithFormat:@"Filter No. %lu", (NSUInteger)filter];
+            return [NSString stringWithFormat:@"Filter No. %lu", (unsigned long)filter];
     }
 }
 

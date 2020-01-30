@@ -6,6 +6,20 @@
 	objectVersion = 50;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		08E3397923E2F3A200699471 /* Download ScanbotSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 08E3397C23E2F3A200699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */;
+			buildPhases = (
+				08E3397D23E2F3A800699471 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Download ScanbotSDK";
+			productName = "Download ScanbotSDK";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		080F3A8B20EB9ABB00E2A3CC /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8A20EB9ABB00E2A3CC /* FilterTableViewCell.m */; };
 		080F3A8E20EB9B2300E2A3CC /* FilterTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */; };
@@ -45,6 +59,16 @@
 		6E2DA8C3226489080043B2F0 /* WorkflowResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */; };
 		6E2DA8C52264AB420043B2F0 /* UsecaseStartWorkflow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08E3397E23E2F3BA00699471 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08E3397923E2F3A200699471;
+			remoteInfo = "Download ScanbotSDK";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		082D0A4720C8022A009B1A7A /* Embed Frameworks */ = {
@@ -297,6 +321,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				08E3397F23E2F3BA00699471 /* PBXTargetDependency */,
 			);
 			name = ReadyToUseUIDemo;
 			productName = ReadyToUseUIDemo;
@@ -317,6 +342,9 @@
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1130;
 					};
+					08E3397923E2F3A200699471 = {
+						CreatedOnToolsVersion = 11.3;
+					};
 				};
 			};
 			buildConfigurationList = 082D0A2A20C801AA009B1A7A /* Build configuration list for PBXProject "ReadyToUseUIDemo" */;
@@ -333,6 +361,7 @@
 			projectRoot = "";
 			targets = (
 				082D0A2E20C801AA009B1A7A /* ReadyToUseUIDemo */,
+				08E3397923E2F3A200699471 /* Download ScanbotSDK */,
 			);
 		};
 /* End PBXProject section */
@@ -351,6 +380,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08E3397D23E2F3A800699471 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.9.9\"\nZIPFILENAME=\"1.9.9\"\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		082D0A2B20C801AA009B1A7A /* Sources */ = {
@@ -391,6 +440,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08E3397F23E2F3BA00699471 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08E3397923E2F3A200699471 /* Download ScanbotSDK */;
+			targetProxy = 08E3397E23E2F3BA00699471 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		082D0A3620C801AB009B1A7A /* Main.storyboard */ = {
@@ -530,6 +587,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VZ266K5KCR;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -554,6 +612,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = VZ266K5KCR;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -574,6 +633,24 @@
 			};
 			name = Release;
 		};
+		08E3397A23E2F3A200699471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VZ266K5KCR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		08E3397B23E2F3A200699471 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VZ266K5KCR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -591,6 +668,15 @@
 			buildConfigurations = (
 				082D0A4220C801AB009B1A7A /* Debug */,
 				082D0A4320C801AB009B1A7A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		08E3397C23E2F3A200699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08E3397A23E2F3A200699471 /* Debug */,
+				08E3397B23E2F3A200699471 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

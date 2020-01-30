@@ -6,6 +6,20 @@
 	objectVersion = 46;
 	objects = {
 
+/* Begin PBXAggregateTarget section */
+		08E3396C23E2EC8000699471 /* Download ScanbotSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 08E3396F23E2EC8000699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */;
+			buildPhases = (
+				08E3397023E2EC8600699471 /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = "Download ScanbotSDK";
+			productName = "Download ScanbotSDK";
+		};
+/* End PBXAggregateTarget section */
+
 /* Begin PBXBuildFile section */
 		08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BB21FC5818500E01F0E /* QRDemoViewController.m */; };
 		08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */; };
@@ -47,6 +61,16 @@
 		C2F131F6203426FF00FFF96B /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		08E3397123E2ECDF00699471 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ED845791AE670CC008B2731 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08E3396C23E2EC8000699471;
+			remoteInfo = "Download ScanbotSDK";
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		9E69F5C41AE7E45500E6131A /* CopyFiles */ = {
@@ -331,6 +355,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				08E3397223E2ECDF00699471 /* PBXTargetDependency */,
 			);
 			name = ScanbotSDKDemo;
 			productName = PayFormScannerDemo;
@@ -347,6 +372,11 @@
 				LastUpgradeCheck = 1130;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
+					08E3396C23E2EC8000699471 = {
+						CreatedOnToolsVersion = 11.3;
+						DevelopmentTeam = VZ266K5KCR;
+						ProvisioningStyle = Automatic;
+					};
 					9ED845801AE670CC008B2731 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = VZ266K5KCR;
@@ -369,6 +399,7 @@
 			projectRoot = "";
 			targets = (
 				9ED845801AE670CC008B2731 /* ScanbotSDKDemo */,
+				08E3396C23E2EC8000699471 /* Download ScanbotSDK */,
 			);
 		};
 /* End PBXProject section */
@@ -386,6 +417,26 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		08E3397023E2EC8600699471 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.9.9\"\nZIPFILENAME=\"1.9.9\"\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		9ED8457D1AE670CC008B2731 /* Sources */ = {
@@ -431,7 +482,33 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		08E3397223E2ECDF00699471 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08E3396C23E2EC8000699471 /* Download ScanbotSDK */;
+			targetProxy = 08E3397123E2ECDF00699471 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		08E3396D23E2EC8000699471 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VZ266K5KCR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		08E3396E23E2EC8000699471 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = VZ266K5KCR;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 		9ED845A21AE670CD008B2731 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -604,6 +681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		08E3396F23E2EC8000699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				08E3396D23E2EC8000699471 /* Debug */,
+				08E3396E23E2EC8000699471 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9ED8457C1AE670CC008B2731 /* Build configuration list for PBXProject "ScanbotSDKDemo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
