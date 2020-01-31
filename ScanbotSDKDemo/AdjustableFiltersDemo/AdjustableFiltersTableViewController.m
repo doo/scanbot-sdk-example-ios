@@ -14,13 +14,8 @@
 @interface AdjustableFiltersTableViewController () <UINavigationControllerDelegate,
 UIImagePickerControllerDelegate, UITableViewDataSource>
 
-@property (strong, nonatomic) IBOutlet UIImageView *leftResultImageView;
-@property (strong, nonatomic) IBOutlet UIImageView *rightResultImageView;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *leftIndicator;
-@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *rightIndicator;
-@property (strong, nonatomic) IBOutlet UILabel *leftLabel;
-@property (strong, nonatomic) IBOutlet UILabel *rightLabel;
-
+@property (strong, nonatomic) IBOutlet UIImageView *filteredImageView;
+@property (strong, nonatomic) IBOutlet UIActivityIndicatorView *processingIndicator;
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) SBSDKBrightnessFilter *brightnessFilter;
@@ -34,16 +29,11 @@ UIImagePickerControllerDelegate, UITableViewDataSource>
 @property (strong, nonatomic) SBSDKShadowsHighlightsFilter *shadowsHighlightsFilter;
 @property (strong, nonatomic) SBSDKSmartFilter *smartFilter;
 
-@property (strong, nonatomic) SBSDKCompoundFilter *compoundFilterLeft;
-@property (strong, nonatomic) SBSDKCompoundFilter *compoundFilterRight;
+@property (strong, nonatomic) SBSDKCompoundFilter *compoundFilter;
 
 @property (strong, nonatomic) UIImage *selectedImage;
 
-@property (strong, nonatomic) dispatch_queue_t rightFilteringQueue;
-@property (strong, nonatomic) dispatch_queue_t leftFilteringQueue;
-
-@property (assign, nonatomic) SBSDKFilterMethod leftMethod;
-@property (assign, nonatomic) SBSDKFilterMethod rightMethod;
+@property (strong, nonatomic) dispatch_queue_t filteringQueue;
 
 @property (strong, nonatomic) NSMutableArray *filterModels;
 
@@ -53,9 +43,6 @@ UIImagePickerControllerDelegate, UITableViewDataSource>
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    self.leftMethod = SBSDKFilterMethodCPU;
-    self.rightMethod = SBSDKFilterMethodGPUMetal;
     
     self.brightnessFilter = [[SBSDKBrightnessFilter alloc] init];
     self.contrastFilter = [[SBSDKContrastFilter alloc] init];
@@ -80,33 +67,12 @@ UIImagePickerControllerDelegate, UITableViewDataSource>
                          self.shadowsHighlightsFilter,
                          self.smartFilter];
     
-    self.compoundFilterLeft = [[SBSDKCompoundFilter alloc] initWithFilters:filters];
-    self.compoundFilterRight = [[SBSDKCompoundFilter alloc] initWithFilters:filters];
+    self.compoundFilter = [[SBSDKCompoundFilter alloc] initWithFilters:filters];
     
-    self.leftFilteringQueue = dispatch_queue_create("net.doo.scanbotsdkdemo.filtering.left", 0);
-    self.rightFilteringQueue = dispatch_queue_create("net.doo.scanbotsdkdemo.filtering.right", 0);
+    self.filteringQueue = dispatch_queue_create("net.doo.scanbotsdkdemo.filtering", 0);
     
     [self buildFilterModel];
-    [self updateLabels];
     [self.tableView reloadData];
-}
-
-- (NSString *)labelForMethod:(SBSDKFilterMethod)method {
-    switch (method) {
-        case SBSDKFilterMethodAuto:
-            return @"Automatic";
-        case SBSDKFilterMethodCPU:
-            return @"CPU";
-        case SBSDKFilterMethodGPUMetal:
-            return @"GPU Metal";
-        case SBSDKFilterMethodGPUOpenGL:
-            return @"GPU OpenGLES";
-    }
-}
-
-- (void)updateLabels {
-    self.leftLabel.text = [self labelForMethod:self.leftMethod];
-    self.rightLabel.text = [self labelForMethod:self.rightMethod];
 }
 
 - (void)buildFilterModel {
@@ -182,27 +148,15 @@ UIImagePickerControllerDelegate, UITableViewDataSource>
 }
 
 - (void)applyFilterChain {
-    dispatch_async(self.rightFilteringQueue, ^{
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.rightIndicator startAnimating];
-        });
-        UIImage *rightResult = [self.compoundFilterRight runFilterOnImage:self.selectedImage
-                                                          preferredMethod:self.rightMethod];
-        dispatch_sync(dispatch_get_main_queue(), ^{
-            self.rightResultImageView.image = rightResult;
-            [self.rightIndicator stopAnimating];
-        });
-    });
     
-    dispatch_async(self.leftFilteringQueue, ^{
+    dispatch_async(self.filteringQueue, ^{
         dispatch_sync(dispatch_get_main_queue(), ^{
-            [self.leftIndicator startAnimating];
+            [self.processingIndicator startAnimating];
         });
-        UIImage *leftResult = [self.compoundFilterLeft runFilterOnImage:self.selectedImage
-                                                        preferredMethod:self.leftMethod];
+        UIImage *filteredImage = [self.compoundFilter runFilterOnImage:self.selectedImage];
         dispatch_sync(dispatch_get_main_queue(), ^{
-            self.leftResultImageView.image = leftResult;
-            [self.leftIndicator stopAnimating];
+            self.filteredImageView.image = filteredImage;
+            [self.processingIndicator stopAnimating];
         });
     });
 }
