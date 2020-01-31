@@ -2188,44 +2188,6 @@ MRZ code at the from of your document:</string>
             </objects>
             <point key="canvasLocation" x="-2730" y="1879"/>
         </scene>
-        <!--BarCode demo-->
-        <scene sceneID="or7-x8-iTw">
-            <objects>
-                <viewController id="Kqi-sg-v9w" customClass="BarCodeScannerViewController" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="xY8-5j-qMb"/>
-                        <viewControllerLayoutGuide type="bottom" id="91j-WT-Yx5"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="XGJ-Dq-URO">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xcJ-cq-PfQ">
-                                <rect key="frame" x="0.0" y="623" width="375" height="44"/>
-                                <items>
-                                    <barButtonItem title="Select types" id="Z5G-ko-9ru"/>
-                                </items>
-                            </toolbar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="91j-WT-Yx5" firstAttribute="top" secondItem="xcJ-cq-PfQ" secondAttribute="bottom" id="4cn-g7-pWw"/>
-                            <constraint firstItem="xcJ-cq-PfQ" firstAttribute="leading" secondItem="XGJ-Dq-URO" secondAttribute="leading" id="9eL-8c-4Rx"/>
-                            <constraint firstAttribute="trailing" secondItem="xcJ-cq-PfQ" secondAttribute="trailing" id="pHE-fF-Up2"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="BarCode demo" id="l4h-dM-Or3">
-                        <barButtonItem key="rightBarButtonItem" title="Select image" id="pzL-CC-3TJ">
-                            <connections>
-                                <action selector="selectImageButtonTapped:" destination="Kqi-sg-v9w" id="u3g-HZ-hVi"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="tSK-Tz-xLK" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2730" y="1879"/>
-        </scene>
         <!--Adjustable Filters Table View Controller-->
         <scene sceneID="Okl-gq-eXK">
             <objects>
