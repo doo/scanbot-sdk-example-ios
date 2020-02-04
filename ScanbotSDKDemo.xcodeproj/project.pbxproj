@@ -21,9 +21,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BB21FC5818500E01F0E /* QRDemoViewController.m */; };
-		08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */; };
-		08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */; };
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */; };
 		08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */; };
@@ -100,12 +97,6 @@
 
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		08299BAE1FC5818400E01F0E /* QRDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRDemoViewController.h; sourceTree = "<group>"; };
-		08299BB21FC5818500E01F0E /* QRDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRDemoViewController.m; sourceTree = "<group>"; };
-		08299BBC1FC5822F00E01F0E /* QRDescriptionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRDescriptionViewController.h; sourceTree = "<group>"; };
-		08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRDescriptionViewController.m; sourceTree = "<group>"; };
-		08299BBE1FC5822F00E01F0E /* RecognizedQRCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecognizedQRCell.h; sourceTree = "<group>"; };
-		08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecognizedQRCell.m; sourceTree = "<group>"; };
 		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
 		08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardsDemoViewController.m; sourceTree = "<group>"; };
@@ -205,10 +196,6 @@
 		08299BBB1FC5822F00E01F0E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				08299BBC1FC5822F00E01F0E /* QRDescriptionViewController.h */,
-				08299BBD1FC5822F00E01F0E /* QRDescriptionViewController.m */,
-				08299BBE1FC5822F00E01F0E /* RecognizedQRCell.h */,
-				08299BBF1FC5822F00E01F0E /* RecognizedQRCell.m */,
 				08299BC01FC5822F00E01F0E /* UnfoldTransition.h */,
 				08299BC11FC5822F00E01F0E /* UnfoldTransition.m */,
 			);
@@ -266,8 +253,6 @@
 				C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */,
 				28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */,
 				08299BBB1FC5822F00E01F0E /* Helpers */,
-				08299BAE1FC5818400E01F0E /* QRDemoViewController.h */,
-				08299BB21FC5818500E01F0E /* QRDemoViewController.m */,
 				C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */,
 				C2F131F02034237A00FFF96B /* MRZDemoViewController.m */,
 				69CF30B723015C7700AA5A07 /* EHICDemoViewController.h */,
@@ -474,7 +459,6 @@
 				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
 				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
 				28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */,
-				08299BB71FC5818500E01F0E /* QRDemoViewController.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
 				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
@@ -496,10 +480,8 @@
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
 				28B21DBF23E31219002D2621 /* FilterModel.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
-				08299BC31FC5822F00E01F0E /* RecognizedQRCell.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
 				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
-				08299BC21FC5822F00E01F0E /* QRDescriptionViewController.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
