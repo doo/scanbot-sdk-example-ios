@@ -41,19 +41,7 @@ class UsecaseScanQRCode: Usecase, SBSDKUIBarcodeScannerViewControllerDelegate {
         }
 
     }
-    
-    func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
-                                          didDetect code: SBSDKMachineReadableCode) {
-
-        guard let message = code.stringValue else { return }
-        let title = code.isQRCode() ? "QR code detected" : "Barcode detected"
         
-        viewController.isRecognitionEnabled = false
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            viewController.isRecognitionEnabled = true
-        }
-    }
-    
     func qrBarcodeDetectionViewControllerDidCancel(_ viewController: SBSDKUIBarcodeScannerViewController) {
         self.didFinish()
     }

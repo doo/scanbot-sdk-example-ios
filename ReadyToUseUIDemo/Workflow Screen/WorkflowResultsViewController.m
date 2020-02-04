@@ -57,8 +57,8 @@
             [texts addObject:result.disabilityCertificateResult.stringRepresentation];
         }
         if (result.barcodeResults.count > 0) {
-            for (SBSDKMachineReadableCode *code in result.barcodeResults) {
-                [texts addObject:code.stringValue];
+            for (SBSDKBarcodeScannerResult *code in result.barcodeResults) {
+                [texts addObject:code.rawTextString];
                 [texts addObject:@"\n\n"];
             }
         }
