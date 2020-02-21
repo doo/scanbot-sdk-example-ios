@@ -89,7 +89,11 @@
     if (result.accountNumberField.value.length > 0) {
         [message appendString:[NSString stringWithFormat:@"Account number: %@\n", result.accountNumberField.value]];
     }
-    
+
+    if (result.chequeNumberField.value.length > 0) {
+        [message appendString:[NSString stringWithFormat:@"Cheque number: %@\n", result.chequeNumberField.value]];
+    }
+
     UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Recognized Cheque"
                                                                    message:[message copy]
                                                             preferredStyle:UIAlertControllerStyleAlert];
