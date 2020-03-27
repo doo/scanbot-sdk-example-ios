@@ -58,6 +58,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showMultipleObjectsScanning() {
+        self.guardLicense {
+            UsecaseScanMultipleObjects(document: self.scannedDocument).start(presenter: self.presenter)
+        }
+    }
+    
     func showQRCodeScanning() {
         self.guardLicense {
             UsecaseScanQRCode().start(presenter: self.presenter)

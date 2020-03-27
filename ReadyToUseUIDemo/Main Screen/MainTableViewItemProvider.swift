@@ -33,6 +33,9 @@ class MainTableViewItemProvider {
         let docScanItem = MainTableViewItem(title: "Scan Document",
                                             action: { actionHandler.showDocumentScanning() })
         
+        let multipleObjectsItem = MainTableViewItem(title: "Multiple objects scanner",
+                                                    action: { actionHandler.showMultipleObjectsScanning() })
+        
         let importImageItem = MainTableViewItem(title: "Import Image",
                                                 action: { actionHandler.showImportImages() })
 
@@ -42,7 +45,7 @@ class MainTableViewItemProvider {
         let workflowItem = MainTableViewItem(title: "Workflow",
                                              action: { actionHandler.showWorkflow()})
 
-        let items1 = [docScanItem, importImageItem, viewImagesItem, workflowItem]
+        let items1 = [docScanItem, multipleObjectsItem, importImageItem, viewImagesItem, workflowItem]
 
         
         
