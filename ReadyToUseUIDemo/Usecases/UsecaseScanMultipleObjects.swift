@@ -21,10 +21,10 @@ class UsecaseScanMultipleObjects: Usecase, SBSDKUIMultipleObjectScannerViewContr
 
         let configuration = SBSDKUIMultipleObjectScannerConfiguration.default()
         // Customize text resources, behavior and UI:
-        //configuration.textConfiguration.cancelButtonTitle = "Abort"
-        //configuration.textConfiguration.pageCounterButtonTitle = "%d Pages"
-        //configuration.behaviorConfiguration.isAutoSnappingEnabled = false
-        //configuration.uiConfiguration.bottomBarBackgroundColor = UIColor.blue
+//        configuration.textConfiguration.cancelButtonTitle = "Abort"
+//        configuration.textConfiguration.objectsCounterButtonTitle = "%d Objects"
+//        configuration.behaviorConfiguration.isBatchModeEnabled = false
+//        configuration.uiConfiguration.bottomBarBackgroundColor = UIColor.blue
 
         let scanner = SBSDKUIMultipleObjectScannerViewController.createNew(with: self.document,
                                                                            configuration: configuration,
