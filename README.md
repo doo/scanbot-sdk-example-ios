@@ -2,7 +2,7 @@
 
 ## Scanbot SDK example apps for iOS
 
-These example apps show how to integrate the [Scanbot SDK](https://scanbot.io/sdk) for iOS.
+These example apps show how to integrate the [Scanbot SDK](https://scanbot.io) for iOS.
 
 
 ## What is Scanbot SDK?
@@ -30,7 +30,7 @@ selectable text
 Scanbot SDK supports iOS 9 and higher.
 
 If you need further information or are interested in licensing Scanbot SDK please contact us via sdk@scanbot.io
-or visit our website https://scanbot.io/sdk
+or visit our website https://scanbot.io
 
 
 
@@ -46,7 +46,7 @@ or visit our website https://scanbot.io/sdk
 - Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run, a build script will automatically download ScanbotSDK to your project folder if needed
 
 - In case you don't want to automatically download the SDK in the Demo apps target remove the dependency to the 'Download ScanbotSDK' aggregate target and perform the following steps:
-  * [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/sdk/downloads.html)
+  * [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/en/sdk/documentation)
   * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
   * Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
 
@@ -58,4 +58,4 @@ The Scanbot SDK will run without a license for one minute per session!
 After the trial period is over all Scanbot SDK functions as well as the UI components (like Document Scanner UI) will stop working or may be terminated.
 You have to restart the app to get another trial period.
 
-To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/sdk/trial.html) on our website.
+To get an unrestricted "no-strings-attached" 30 day trial license, please submit the [Trial License Form](https://scanbot.io/en/sdk/demo/trial) on our website.
