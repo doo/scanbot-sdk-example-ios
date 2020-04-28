@@ -21,6 +21,9 @@
 @property (strong, nonatomic) SBSDKProgress *currentProgress;
 @property (strong, nonatomic) IBOutlet UIProgressView *progressView;
 @property (strong, nonatomic) IBOutlet UILabel *progressLabel;
+@property (strong, nonatomic) IBOutlet UISwitch *modeSwitch;
+@property (strong, nonatomic) IBOutlet UILabel *modeLabel;
+
 @property (strong, nonatomic) SBSDKOpticalTextRecognizer *textRecognizer;
 @property (strong, nonatomic) UIAlertController *actionController;
 @property (assign, nonatomic) BOOL viewAppeared;
@@ -301,6 +304,14 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     self.clearButton.hidden = !hasImages;
     self.scannerViewController.shutterButtonHidden = operationRunning;
     self.scannerViewController.detectionStatusHidden = operationRunning;
+    BOOL hasMLMode = [SBSDKDocumentDetector isDocumentDetectorModeAvailable:SBSDKDocumentDetectorModeMachineLearning];
+    self.modeSwitch.hidden = !hasMLMode;
+    self.modeLabel.hidden = !hasMLMode;
+    if (hasMLMode) {
+        SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
+        self.modeLabel.text = @"ML detection";
+        self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
+    }
 }
 
 - (void)updateProgress {
@@ -316,6 +327,13 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
  User initiated actions
  */
 #pragma mark - User initiated actions
+
+- (IBAction)modeSwitchToggled:(id)sender {
+    self.scannerViewController.detectorMode = self.modeSwitch.on
+    ? SBSDKDocumentDetectorModeMachineLearning : SBSDKDocumentDetectorModeStandard;
+    
+    [self updateUI];
+}
 
 - (IBAction)clearImageStorage:(id)sender {
     [self.documentImageStorage removeAllImages];

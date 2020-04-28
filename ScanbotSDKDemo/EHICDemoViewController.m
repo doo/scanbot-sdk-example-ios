@@ -33,7 +33,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recognizer = [SBSDKHealthInsuranceCardRecognizer new];
+    self.recognizer = [[SBSDKHealthInsuranceCardRecognizer alloc]
+                       initWithValidationType:SBSDKHealthInsuranceCardValidationTypeAutoSupported];
     self.view.backgroundColor = [UIColor blackColor];
     [self.view.layer addSublayer:self.cameraSession.previewLayer];
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15702" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2352" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15704"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -488,6 +488,17 @@
                                     <action selector="clearImageStorage:" destination="YcZ-Bd-Nef" eventType="touchUpInside" id="yDE-wO-Ni9"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g9Y-Hs-pLX">
+                                <rect key="frame" x="16" y="52" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Use ML" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xbn-QT-ncW">
+                                <rect key="frame" x="16" y="91" width="59.5" height="22"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.94999999999999996" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <size key="shadowOffset" width="1" height="-1"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -496,13 +507,17 @@
                             <constraint firstItem="Kdw-SD-RpR" firstAttribute="leading" secondItem="AMA-XS-i2H" secondAttribute="leading" id="86w-aE-58J"/>
                             <constraint firstItem="8KW-v4-aGv" firstAttribute="top" secondItem="Bvl-wn-pqJ" secondAttribute="bottom" constant="20" id="8uV-H5-X3n"/>
                             <constraint firstItem="Bvl-wn-pqJ" firstAttribute="leading" secondItem="vhN-XA-swO" secondAttribute="leadingMargin" id="CGg-UD-k6k"/>
+                            <constraint firstItem="g9Y-Hs-pLX" firstAttribute="top" secondItem="BmT-Ci-TEy" secondAttribute="bottom" constant="8" id="JQh-ws-ugF"/>
                             <constraint firstItem="AMA-XS-i2H" firstAttribute="top" secondItem="Kdw-SD-RpR" secondAttribute="bottom" constant="3" id="Ncb-L7-KIJ"/>
                             <constraint firstItem="Kdw-SD-RpR" firstAttribute="leading" secondItem="vhN-XA-swO" secondAttribute="leadingMargin" id="Os2-eJ-Gd1"/>
                             <constraint firstItem="msx-7x-G9e" firstAttribute="leading" secondItem="CPu-4l-IaH" secondAttribute="trailing" constant="8" id="P6H-Z1-KQM"/>
+                            <constraint firstItem="xbn-QT-ncW" firstAttribute="top" secondItem="g9Y-Hs-pLX" secondAttribute="bottom" constant="8" id="QsB-Ii-iQi"/>
                             <constraint firstItem="Kdw-SD-RpR" firstAttribute="width" secondItem="AMA-XS-i2H" secondAttribute="width" id="U9V-cx-h3G"/>
+                            <constraint firstItem="xbn-QT-ncW" firstAttribute="leading" secondItem="g9Y-Hs-pLX" secondAttribute="leading" id="dkk-6q-C0o"/>
                             <constraint firstItem="msx-7x-G9e" firstAttribute="trailing" secondItem="vhN-XA-swO" secondAttribute="trailingMargin" id="gDi-Vw-lIG"/>
                             <constraint firstAttribute="centerY" secondItem="Kdw-SD-RpR" secondAttribute="centerY" id="h1i-ic-Rgh"/>
                             <constraint firstItem="msx-7x-G9e" firstAttribute="baseline" secondItem="Bvl-wn-pqJ" secondAttribute="baseline" id="tnK-tl-ghK"/>
+                            <constraint firstItem="g9Y-Hs-pLX" firstAttribute="leading" secondItem="vhN-XA-swO" secondAttribute="leadingMargin" id="uyH-bP-GPx"/>
                             <constraint firstItem="8KW-v4-aGv" firstAttribute="top" secondItem="zRh-ke-YNo" secondAttribute="bottom" constant="20" id="vE4-gp-uLA"/>
                             <constraint firstItem="Kdw-SD-RpR" firstAttribute="trailing" secondItem="vhN-XA-swO" secondAttribute="trailingMargin" id="xxB-UM-KbS"/>
                         </constraints>
@@ -512,6 +527,8 @@
                         <outlet property="actionsButton" destination="Bvl-wn-pqJ" id="frT-ri-sPD"/>
                         <outlet property="cancelButton" destination="zRh-ke-YNo" id="8L6-bC-abJ"/>
                         <outlet property="clearButton" destination="CPu-4l-IaH" id="CR2-39-5IT"/>
+                        <outlet property="modeLabel" destination="xbn-QT-ncW" id="hYa-m9-fMk"/>
+                        <outlet property="modeSwitch" destination="g9Y-Hs-pLX" id="INH-gA-4qI"/>
                         <outlet property="pageLabel" destination="msx-7x-G9e" id="3uL-0S-OfR"/>
                         <outlet property="progressLabel" destination="AMA-XS-i2H" id="hfF-6m-Cy1"/>
                         <outlet property="progressView" destination="Kdw-SD-RpR" id="axB-ay-5Ny"/>
@@ -1994,12 +2011,12 @@ MRZ code at the from of your document:</string>
             <point key="canvasLocation" x="-4290" y="1879"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="mrz_template" width="1000" height="681"/>
-    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="jjq-Nw-fZI"/>
         <segue reference="l1x-kI-HGt"/>
         <segue reference="OFA-fP-WQ1"/>
     </inferredMetricsTieBreakers>
+    <resources>
+        <image name="mrz_template" width="1000" height="681"/>
+    </resources>
 </document>
