@@ -40,7 +40,7 @@
 
 + (SBSDKUIWorkflow *)idCard {
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:85.0 andHeight:54.0]];
+    NSArray *ratios = @[[[SBSDKAspectRatio alloc] initWithWidth:85.0 andHeight:54.0]];
 
     SBSDKUIWorkflowStep *frontSide
     = [[SBSDKUIWorkflowStep alloc] initWithTitle:@"Step 1 of 2"
@@ -91,8 +91,8 @@
 
 + (SBSDKUIWorkflow *)idCardOrPassport {
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:85.0 andHeight:54.0],   // ID card
-                        [[SBSDKPageAspectRatio alloc] initWithWidth:125.0 andHeight:88.0]]; // Passport
+    NSArray *ratios = @[[[SBSDKAspectRatio alloc] initWithWidth:85.0 andHeight:54.0],   // ID card
+                        [[SBSDKAspectRatio alloc] initWithWidth:125.0 andHeight:88.0]]; // Passport
 
     SBSDKUIWorkflowStep *step
     = [[SBSDKUIScanMachineReadableZoneWorkflowStep alloc] initWithTitle:@"Scan ID card or passport"
@@ -149,8 +149,8 @@
 
 + (SBSDKUIWorkflow *)disabilityCertificate {
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:148.0 andHeight:210.0],  // DC form A5 portrait (e.g. white sheet, AUB Muster 1b/E (1/2018))
-                        [[SBSDKPageAspectRatio alloc] initWithWidth:148.0 andHeight:105.0]]; // DC form A6 landscape (e.g. yellow sheet, AUB Muster 1b (1.2018))
+    NSArray *ratios = @[[[SBSDKAspectRatio alloc] initWithWidth:148.0 andHeight:210.0],  // DC form A5 portrait (e.g. white sheet, AUB Muster 1b/E (1/2018))
+                        [[SBSDKAspectRatio alloc] initWithWidth:148.0 andHeight:105.0]]; // DC form A6 landscape (e.g. yellow sheet, AUB Muster 1b (1.2018))
                         
     SBSDKUIWorkflowStep *step
     = [[SBSDKUIScanDisabilityCertificateWorkflowStep alloc] initWithTitle:@"Please align the DC form in the frame."
@@ -181,11 +181,11 @@
     = [[SBSDKUIScanBarCodeWorkflowStep alloc] initWithTitle:@"Step 1 of 2"
                                                     message:@"Please scan a QR code."
                                           acceptedCodeTypes:@[SBSDKBarcodeTypeQRCode]
-                                             finderViewSize:CGSizeMake(1, 1)
+                                      finderViewAspectRatio:[[SBSDKAspectRatio alloc] initWithWidth: 1 andHeight:1]
                                            resultValidation:nil];
 
-    NSArray *ratios = @[[[SBSDKPageAspectRatio alloc] initWithWidth:210.0 andHeight:297.0],  // A4 sheet portrait
-                        [[SBSDKPageAspectRatio alloc] initWithWidth:297.0 andHeight:210.0]]; // A4 sheet landscape
+    NSArray *ratios = @[[[SBSDKAspectRatio alloc] initWithWidth:210.0 andHeight:297.0],  // A4 sheet portrait
+                        [[SBSDKAspectRatio alloc] initWithWidth:297.0 andHeight:210.0]]; // A4 sheet landscape
 
     SBSDKUIWorkflowStep *documentStep
     = [[SBSDKUIScanDocumentPageWorkflowStep alloc] initWithTitle:@"Step 2 of 2"
