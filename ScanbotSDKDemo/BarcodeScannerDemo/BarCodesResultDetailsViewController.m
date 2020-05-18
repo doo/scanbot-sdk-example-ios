@@ -52,11 +52,11 @@
                 }
             }
             
-            if (subheading.receipes.count > 0) {
+            if (subheading.prescriptions.count > 0) {
                 result = [result stringByAppendingString:@"\nReceipes:"];
-                for (SBSDKMedicalPlanSubheadingReceipe *receipe in subheading.receipes) {
-                    for (SBSDKMedicalPlanSubheadingReceipeField *receipeField in receipe.fields) {
-                        result = [result stringByAppendingFormat:@"\n%@: %@", receipeField.typeHumanReadableString, receipeField.value];
+                for (SBSDKMedicalPlanSubheadingPrescription *prescription in subheading.prescriptions) {
+                    for (SBSDKMedicalPlanSubheadingPrescriptionField *prescriptionField in prescription.fields) {
+                        result = [result stringByAppendingFormat:@"\n%@: %@", prescriptionField.typeHumanReadableString, prescriptionField.value];
                     }
                     result = [result stringByAppendingString:@"\n------"];
                 }
@@ -65,7 +65,7 @@
             if (subheading.medicines.count > 0) {
                 result = [result stringByAppendingString:@"\nMedicines:"];
                 for (SBSDKMedicalPlanMedicine *medicine in subheading.medicines) {
-                    for (SBSDKMedicalPlanSubheadingReceipeField *medicineField in medicine.fields) {
+                    for (SBSDKMedicalPlanSubheadingPrescriptionField *medicineField in medicine.fields) {
                         result = [result stringByAppendingFormat:@"\n%@: %@", medicineField.typeHumanReadableString, medicineField.value];
                     }
                     
