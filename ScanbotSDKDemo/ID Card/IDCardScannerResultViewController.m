@@ -11,8 +11,8 @@
 #import "IDCardResultFieldTableViewCell.h"
 
 @interface IDCardScannerResultViewController () <UITableViewDataSource, UITableViewDelegate>
-@property (nonatomic, strong) SBSDKIDCardRecognizerResult* result;
-@property (nonatomic, strong) UIImage* sourceImage;
+@property (nonatomic, strong) SBSDKIDCardRecognizerResult *result;
+@property (nonatomic, strong) UIImage *sourceImage;
 @property (nonatomic, strong) IBOutlet UITableView *tableView;
 @end
 

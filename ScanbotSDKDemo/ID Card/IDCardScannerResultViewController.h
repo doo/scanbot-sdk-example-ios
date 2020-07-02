@@ -13,8 +13,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface IDCardScannerResultViewController : UIViewController
 
-@property (nonatomic, readonly) SBSDKIDCardRecognizerResult* result;
-@property (nonatomic, readonly) UIImage* sourceImage;
+@property (nonatomic, readonly) SBSDKIDCardRecognizerResult *result;
+@property (nonatomic, readonly) UIImage *sourceImage;
 
 + (instancetype)makeWithResult:(SBSDKIDCardRecognizerResult *)result sourceImage:(UIImage *)sourceImage;
 
