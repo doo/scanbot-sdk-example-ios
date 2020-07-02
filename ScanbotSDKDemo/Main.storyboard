@@ -404,6 +404,9 @@
                                                 <constraint firstAttribute="bottom" secondItem="y8u-TS-8Mf" secondAttribute="bottom" constant="8" id="gux-3f-hCf"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="c6A-FK-gkm" kind="show" id="Jnz-gh-NW7"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="T6m-rq-Js3">
                                         <rect key="frame" x="0.0" y="974" width="375" height="75"/>
@@ -441,9 +444,6 @@
                     <navigationItem key="navigationItem" title="Select a ScanbotSDK Demo" id="ii2-ve-Ezv"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
-                    <connections>
-                        <segue destination="c6A-FK-gkm" kind="show" id="6Gp-ul-XEj"/>
-                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmB-Cd-C4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
