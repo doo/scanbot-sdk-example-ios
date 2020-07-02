@@ -331,9 +331,10 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 #pragma mark - User initiated actions
 
 - (IBAction)modeSwitchToggled:(id)sender {
-    self.scannerViewController.detectorMode = self.modeSwitch.on
-    ? SBSDKDocumentDetectorModeMachineLearning : SBSDKDocumentDetectorModeStandard;
-    
+    if (@available(iOS 11.2, *)) {
+        self.scannerViewController.detectorMode = self.modeSwitch.on
+        ? SBSDKDocumentDetectorModeMachineLearning : SBSDKDocumentDetectorModeStandard;
+    }
     [self updateUI];
 }
 
