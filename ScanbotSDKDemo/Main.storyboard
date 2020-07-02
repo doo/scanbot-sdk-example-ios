@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment version="2352" identifier="iOS"/>
@@ -55,7 +55,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1019" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1077" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <attributedString key="attributedText">
                                 <fragment content=" This demo app will only run 1 minute before terminating.">
@@ -383,8 +383,30 @@
                                             <segue destination="zHp-Ks-DGS" kind="show" id="Rhs-5E-cXJ"/>
                                         </connections>
                                     </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="60M-I7-JKT">
+                                        <rect key="frame" x="0.0" y="916" width="375" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="60M-I7-JKT" id="mbh-To-Ish">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ID Card Scanner" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y8u-TS-8Mf">
+                                                    <rect key="frame" x="29" y="0.0" width="317" height="50"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="y8u-TS-8Mf" firstAttribute="leading" secondItem="mbh-To-Ish" secondAttribute="leading" constant="29" id="BkP-pq-rPw"/>
+                                                <constraint firstAttribute="trailing" secondItem="y8u-TS-8Mf" secondAttribute="trailing" constant="29" id="cLQ-ax-VuJ"/>
+                                                <constraint firstItem="y8u-TS-8Mf" firstAttribute="top" secondItem="mbh-To-Ish" secondAttribute="top" id="eBM-8d-l9K"/>
+                                                <constraint firstAttribute="bottom" secondItem="y8u-TS-8Mf" secondAttribute="bottom" constant="8" id="gux-3f-hCf"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="T6m-rq-Js3">
-                                        <rect key="frame" x="0.0" y="916" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="974" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="T6m-rq-Js3" id="LkF-KB-UKh">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
@@ -419,6 +441,9 @@
                     <navigationItem key="navigationItem" title="Select a ScanbotSDK Demo" id="ii2-ve-Ezv"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
+                    <connections>
+                        <segue destination="c6A-FK-gkm" kind="show" id="6Gp-ul-XEj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SmB-Cd-C4c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2009,6 +2034,32 @@ MRZ code at the from of your document:</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NaA-F6-qKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-4290" y="1879"/>
+        </scene>
+        <!--ID Card demo-->
+        <scene sceneID="t1o-iX-6hQ">
+            <objects>
+                <viewController storyboardIdentifier="IDCardScannerViewController" id="c6A-FK-gkm" customClass="IDCardScannerViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3eI-yx-D5I"/>
+                        <viewControllerLayoutGuide type="bottom" id="r92-T7-hjX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="LQv-EI-Ob0">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="ID Card demo" id="c6B-4C-y31">
+                        <barButtonItem key="rightBarButtonItem" title="Import" id="WMp-45-3sD">
+                            <connections>
+                                <action selector="selectImageButtonTapped:" destination="c6A-FK-gkm" id="4xD-TI-Hji"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="i1x-JB-7aR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="806" y="-1899"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

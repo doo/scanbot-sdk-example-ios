@@ -304,10 +304,9 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     self.clearButton.hidden = !hasImages;
     self.scannerViewController.shutterButtonHidden = operationRunning;
     self.scannerViewController.detectionStatusHidden = operationRunning;
-    BOOL hasMLMode = [SBSDKDocumentDetector isDocumentDetectorModeAvailable:SBSDKDocumentDetectorModeMachineLearning];
-    self.modeSwitch.hidden = !hasMLMode;
-    self.modeLabel.hidden = !hasMLMode;
-    if (hasMLMode) {
+    if (@available(iOS 11.2, *)) {
+        self.modeSwitch.hidden = NO;
+        self.modeLabel.hidden = NO;
         SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
         self.modeLabel.text = @"ML detection";
         self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
@@ -329,9 +328,10 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
 #pragma mark - User initiated actions
 
 - (IBAction)modeSwitchToggled:(id)sender {
-    self.scannerViewController.detectorMode = self.modeSwitch.on
-    ? SBSDKDocumentDetectorModeMachineLearning : SBSDKDocumentDetectorModeStandard;
-    
+    if (@available(iOS 11.2, *)) {
+        self.scannerViewController.detectorMode = self.modeSwitch.on
+        ? SBSDKDocumentDetectorModeMachineLearning : SBSDKDocumentDetectorModeStandard;
+    }
     [self updateUI];
 }
 
