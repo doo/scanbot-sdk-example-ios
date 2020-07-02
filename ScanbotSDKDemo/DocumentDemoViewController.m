@@ -308,8 +308,11 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
         self.modeSwitch.hidden = NO;
         self.modeLabel.hidden = NO;
         SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
-        self.modeLabel.text = @"ML detection";
         self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
+        self.modeLabel.text = @"ML detection";
+    } else {
+        self.modeSwitch.hidden = YES;
+        self.modeLabel.hidden = YES;
     }
 }
 
