@@ -63,7 +63,7 @@ extension UsecaseStartWorkflow: SBSDKUIWorkflowScannerViewControllerDelegate {
     func workflowScanViewController(_ viewController: SBSDKUIWorkflowScannerViewController,
                                     didFailStepValidation step: SBSDKUIWorkflowStep,
                                     with result: SBSDKUIWorkflowStepResult) {
-        if !step.runsContinousValidation {
+        if !step.runsContinuousValidation {
             self.showErrorAlert(title: "Step validation failed",
                                 message:result.validationError?.localizedDescription,
                                 on:viewController)
