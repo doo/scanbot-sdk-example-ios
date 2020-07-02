@@ -26,6 +26,8 @@
 		08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */; };
 		08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
+		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
+		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
 		28B21DBF23E31219002D2621 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBE23E31219002D2621 /* FilterModel.m */; };
 		28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DC123E313C2002D2621 /* FilterTableViewCell.m */; };
@@ -33,8 +35,6 @@
 		28D7361124AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */; };
 		28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* IDCardScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */; };
-		28D7361824AE302D00A0B821 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; };
-		28D7361924AE302D00A0B821 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		69CF30B923015C7800AA5A07 /* EHICDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */; };
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */; };
 		6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */; };
@@ -67,6 +67,16 @@
 		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		287FE72B24AE43F2002569D9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9ED845791AE670CC008B2731 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 08E3396C23E2EC8000699471;
+			remoteInfo = "Download ScanbotSDK";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		28D7361A24AE302D00A0B821 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -74,7 +84,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				28D7361924AE302D00A0B821 /* ScanbotSDK.framework in Embed Frameworks */,
+				287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -100,8 +110,8 @@
 		08716C7E220DC4D600119B9C /* BusinessCardDetailDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDetailDemoViewController.h; sourceTree = "<group>"; };
 		08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDemoCell.m; sourceTree = "<group>"; };
 		08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardsDemoViewController.h; sourceTree = "<group>"; };
-		0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdjustableFiltersTableViewController.h; sourceTree = "<group>"; };
 		28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdjustableFiltersTableViewController.m; sourceTree = "<group>"; };
 		28B21DBD23E31219002D2621 /* FilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterModel.h; sourceTree = "<group>"; };
@@ -182,7 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				28D7361824AE302D00A0B821 /* ScanbotSDK.framework in Frameworks */,
+				287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -192,7 +202,6 @@
 		0820226C1F790A19005FF9F2 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				0896B5F21F7909BA00E79F85 /* ScanbotSDK.framework */,
 			);
 			name = Frameworks;
 			path = ..;
@@ -251,6 +260,7 @@
 		28D7361624AE302000A0B821 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				287FE72224AE3D71002569D9 /* ScanbotSDK.framework */,
 				28D7361724AE302000A0B821 /* ScanbotSDK */,
 			);
 			name = Frameworks;
@@ -393,6 +403,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				287FE72C24AE43F2002569D9 /* PBXTargetDependency */,
 			);
 			name = ScanbotSDKDemo;
 			productName = PayFormScannerDemo;
@@ -471,7 +482,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.9.13\"\nZIPFILENAME=\"1.9.13\"\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.9.16\"\nZIPFILENAME=\"1.9.13\"\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -522,6 +533,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		287FE72C24AE43F2002569D9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 08E3396C23E2EC8000699471 /* Download ScanbotSDK */;
+			targetProxy = 287FE72B24AE43F2002569D9 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		08E3396D23E2EC8000699471 /* Debug */ = {
