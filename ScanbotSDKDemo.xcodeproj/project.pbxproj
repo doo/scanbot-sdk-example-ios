@@ -26,6 +26,7 @@
 		08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */; };
 		08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
+		08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */; };
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
@@ -111,6 +112,8 @@
 		08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDemoCell.m; sourceTree = "<group>"; };
 		08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardsDemoViewController.h; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurrinessEstimatorDemoViewController.m; sourceTree = "<group>"; };
+		08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurrinessEstimatorDemoViewController.h; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdjustableFiltersTableViewController.h; sourceTree = "<group>"; };
 		28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdjustableFiltersTableViewController.m; sourceTree = "<group>"; };
@@ -295,6 +298,8 @@
 				08299BBB1FC5822F00E01F0E /* Helpers */,
 				C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */,
 				C2F131F02034237A00FFF96B /* MRZDemoViewController.m */,
+				08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */,
+				08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */,
 				69CF30B723015C7700AA5A07 /* EHICDemoViewController.h */,
 				69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */,
 				C27562771DE45368003F5FE0 /* AppDelegate.h */,
@@ -527,6 +532,7 @@
 				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
+				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 				28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */,
 			);
