@@ -54,7 +54,7 @@ BarCodeTypesListViewControllerDelegate>
     [self.view.layer addSublayer:self.cameraSession.previewLayer];
     self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPreset1920x1080;
     self.scanner = [[SBSDKBarcodeScanner alloc] init];
-    self.selectedBarCodeTypes = [SBSDKBarcodeType allTypes];
+    self.selectedBarCodeTypes = [SBSDKBarcodeType commonTypes];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

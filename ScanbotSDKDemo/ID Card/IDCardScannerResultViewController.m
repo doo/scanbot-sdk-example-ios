@@ -84,6 +84,8 @@
             return @"Back Side DE";
         case SBSDKIDCardTypeFront_DE:
             return @"Front Side DE";
+        case SBSDKIDCardTypePassport_DE:
+            return @"Passport DE";
         case SBSDKIDCardTypeUnknown:
             return @"Unknown";
     }
@@ -101,6 +103,9 @@
         case SBSDKIDCardFieldTypeSurname:
             typeString = @"Surname";
             break;
+        case SBSDKIDCardFieldTypeMaidenName:
+            typeString = @"Maiden name";
+            break;
         case SBSDKIDCardFieldTypeGivenNames:
             typeString = @"Given name";
             break;
@@ -110,7 +115,7 @@
         case SBSDKIDCardFieldTypeNationality:
             typeString = @"Nationality";
             break;
-        case SBSDKIDCardFieldTypeBirthPlace:
+        case SBSDKIDCardFieldTypeBirthplace:
             typeString = @"Birth place";
             break;
         case SBSDKIDCardFieldTypeExpiryDate:
@@ -145,6 +150,15 @@
             break;
         case SBSDKIDCardFieldTypePhoto:
             typeString = @"Photo";
+            break;
+        case SBSDKIDCardFieldTypePassportType:
+            typeString = @"Passport type";
+            break;
+        case SBSDKIDCardFieldTypeCountryCode:
+            typeString = @"Country code";
+            break;
+        case SBSDKIDCardFieldTypeGender:
+            typeString = @"Gender";
             break;
     }
     return [NSString stringWithFormat:@"Field type: %@", typeString];

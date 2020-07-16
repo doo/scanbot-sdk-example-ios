@@ -59,7 +59,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
     [self.view.layer addSublayer:self.polygonLayer];
     
     self.scanner = [[SBSDKBarcodeScanner alloc] init];
-    self.selectedBarCodeTypes = [SBSDKBarcodeType allTypes];
+    self.selectedBarCodeTypes = [SBSDKBarcodeType commonTypes];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
