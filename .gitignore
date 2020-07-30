@@ -7,3 +7,5 @@ ScanbotSDK/
 /ReadyToUseUIDemo.xcodeproj/project.xcworkspace/xcuserdata
 .idea/
 *.xcuserstate
+DownloadTemp/
+
