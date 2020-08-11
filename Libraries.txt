@@ -1,4 +1,4 @@
-Open Source libraries used in the Scanbot SDK for iOS version 1.9.19:
+Open Source libraries used in the Scanbot SDK for iOS version 1.10.0:
 
 
 BOOST C++ Libraries version 1.68

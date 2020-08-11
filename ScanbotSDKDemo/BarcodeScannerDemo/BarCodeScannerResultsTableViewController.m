@@ -15,6 +15,7 @@
 @property (nonatomic, strong) UIImage *selectedBarCodeImage;
 @property (nonatomic, strong) NSString *selectedBarCodeText;
 @property (nonatomic, strong) SBSDKBarCodeScannerDocumentFormat *selectedFormat;
+@property (nonatomic, strong) NSData *barCodeRawData;
 
 @end
 
@@ -26,6 +27,7 @@
         destinationVC.barCodeImage = self.selectedBarCodeImage;
         destinationVC.barCodeText = self.selectedBarCodeText;
         destinationVC.barcodeFormat = self.selectedFormat;
+        destinationVC.barCodeRawBytes = self.barCodeRawData;
     }
 }
 
@@ -54,6 +56,7 @@
     self.selectedBarCodeImage = self.results[indexPath.row].barcodeImage;
     self.selectedBarCodeText = self.results[indexPath.row].rawTextString;
     self.selectedFormat = self.results[indexPath.row].formattedResult;
+    self.barCodeRawData = self.results[indexPath.row].rawBytes;
     
     [self performSegueWithIdentifier:@"showBarCodeDetailsVC" sender:nil];
 }

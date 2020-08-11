@@ -16,6 +16,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, strong) SBSDKBarCodeScannerDocumentFormat *barcodeFormat;
 @property (nonatomic, strong) UIImage *barCodeImage;
 @property (nonatomic, strong) NSString *barCodeText;
+@property (nonatomic, strong) NSData *barCodeRawBytes;
 
 @end
 

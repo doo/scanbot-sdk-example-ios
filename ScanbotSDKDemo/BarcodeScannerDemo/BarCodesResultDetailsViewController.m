@@ -17,6 +17,18 @@
 
 @implementation BarCodesResultDetailsViewController
 
+- (NSString *)hexStringFromData:(NSData *)data {
+    NSUInteger len = [data length];
+    char *chars = (char *)[data bytes];
+    NSMutableString *hexString = [[NSMutableString alloc] init];
+
+    for (NSUInteger i = 0; i < len; i++) {
+        [hexString appendString:[NSString stringWithFormat:@"%0.2hhx", chars[i]]];
+    }
+
+    return hexString;
+}
+
 #pragma mark - German medical plan documents
 
 - (NSString *)medicalPlanDocumentFormatToString:(SBSDKMedicalPlanDocumentFormat *)medicalPlanDocumentFormat {
@@ -229,6 +241,9 @@
     
     if (self.barCodeText) {
         self.barCodeTextLabel.text = self.barCodeText;
+        if (self.barCodeRawBytes) {
+            self.barCodeTextLabel.text = [self.barCodeTextLabel.text stringByAppendingFormat:@"\n\nRaw bytes:\n%@", [self hexStringFromData:self.barCodeRawBytes]];
+        }
     } else {
         self.barCodeTextLabel.text = @"";
     }
