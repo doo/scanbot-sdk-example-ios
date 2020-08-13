@@ -36,6 +36,10 @@
 		28D7361124AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */; };
 		28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* IDCardScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */; };
+		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
+		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
+		6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA024E52EF600005627 /* PassportReaderViewController.m */; };
+		6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */; };
 		69CF30B923015C7800AA5A07 /* EHICDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */; };
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */; };
 		6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */; };
@@ -130,6 +134,15 @@
 		28D7360E24AE2D8100A0B821 /* IDCardScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardScannerResultViewController.h; sourceTree = "<group>"; };
 		28D7360F24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardResultGeneralTableViewCell.h; sourceTree = "<group>"; };
 		28D7361724AE302000A0B821 /* ScanbotSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScanbotSDK; sourceTree = "<group>"; };
+		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
+		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
+		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
+		6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultsViewController.m; sourceTree = "<group>"; };
+		6954AEA024E52EF600005627 /* PassportReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderViewController.m; sourceTree = "<group>"; };
+		6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultTextTableViewCell.h; sourceTree = "<group>"; };
+		6954AEA224E52EF600005627 /* PassportReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderViewController.h; sourceTree = "<group>"; };
+		6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultImageTableViewCell.m; sourceTree = "<group>"; };
+		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
 		69CF30B723015C7700AA5A07 /* EHICDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EHICDemoViewController.h; sourceTree = "<group>"; };
 		69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHICDemoViewController.m; sourceTree = "<group>"; };
 		6EE9904B21ECD74F00182A94 /* ScanbotSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScanbotSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -269,9 +282,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		6954AE9B24E52E7D00005627 /* NFC */ = {
+			isa = PBXGroup;
+			children = (
+				6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */,
+				6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */,
+				6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */,
+				6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */,
+				6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */,
+				6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */,
+				6954AEA224E52EF600005627 /* PassportReaderViewController.h */,
+				6954AEA024E52EF600005627 /* PassportReaderViewController.m */,
+			);
+			path = NFC;
+			sourceTree = "<group>";
+		};
 		9ED845781AE670CC008B2731 = {
 			isa = PBXGroup;
 			children = (
+				6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */,
 				082022701F791157005FF9F2 /* README.md */,
 				9ED845831AE670CC008B2731 /* DemoApp */,
 				9ED845821AE670CC008B2731 /* Products */,
@@ -290,6 +319,7 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				6954AE9B24E52E7D00005627 /* NFC */,
 				28D735F424AE214D00A0B821 /* ID Card */,
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
 				08716C7A220DC49400119B9C /* BusinessCardDemo */,
@@ -527,10 +557,14 @@
 				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
 				28B21DBF23E31219002D2621 /* FilterModel.m in Sources */,
+				6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
+				6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
 				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
+				6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
+				6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
@@ -680,6 +714,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
@@ -697,7 +732,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios.classic;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";
@@ -714,6 +749,7 @@
 				CLANG_CXX_LANGUAGE_STANDARD = "c++14";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
@@ -727,7 +763,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios.classic;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";

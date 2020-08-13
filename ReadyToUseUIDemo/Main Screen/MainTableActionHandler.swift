@@ -107,6 +107,18 @@ class MainTableActionHandler: NSObject {
             UsecaseStartWorkflow().start(presenter: self.presenter)
         }
     }
+    
+    func showBarcodeBatchScanner() {
+        self.guardLicense {
+            UsecaseScanBarcodeBatch().start(presenter: self.presenter)
+        }
+    }
+    
+    func showIDCardScanner() {
+        self.guardLicense {
+            UsecaseIDCardScan().start(presenter: self.presenter)
+        }
+    }
 }
 
 // Helper function inserted by Swift 4.2 migrator.

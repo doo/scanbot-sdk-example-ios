@@ -28,6 +28,8 @@
 	<string>6</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NFCReaderUsageDescription</key>
+	<string>Please allow NFC usage.</string>
 	<key>NSCameraUsageDescription</key>
 	<string>"Please allow access to camera"</string>
 	<key>NSPhotoLibraryUsageDescription</key>
