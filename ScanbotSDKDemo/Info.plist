@@ -31,9 +31,9 @@
 	<key>NFCReaderUsageDescription</key>
 	<string>Please allow NFC usage.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>"Please allow access to camera"</string>
+	<string>&quot;Please allow access to camera&quot;</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>"Please allow access to photo library"</string>
+	<string>&quot;Please allow access to photo library&quot;</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -60,6 +60,10 @@
 		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+	</array>
+	<key>com.apple.developer.nfc.readersession.iso7816.select-identifiers</key>
+	<array>
+		<string>A0000002471001</string>
 	</array>
 </dict>
 </plist>

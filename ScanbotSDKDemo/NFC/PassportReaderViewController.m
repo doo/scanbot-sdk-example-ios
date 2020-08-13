@@ -116,10 +116,14 @@
     [self.nfcReader setMessage:[NSString stringWithFormat:@"Finished downloading data group %@...", type]];
     self.progressView.progress = 1.0f;
     self.progressView.hidden = YES;
-    self.mrzController.recognitionEnabled = YES;
 }
 
 - (void)passportReaderDidFinishSession:(SBSDKNFCPassportReader *)reader {
+    self.progressView.hidden = YES;
+    self.mrzController.recognitionEnabled = YES;
+}
+
+- (void)passportReaderDidCancelSession:(SBSDKNFCPassportReader *)reader {
     self.progressView.hidden = YES;
     self.mrzController.recognitionEnabled = YES;
 }
