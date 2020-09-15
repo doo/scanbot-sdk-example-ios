@@ -304,16 +304,11 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     self.clearButton.hidden = !hasImages;
     self.scannerViewController.shutterButtonHidden = operationRunning;
     self.scannerViewController.detectionStatusHidden = operationRunning;
-    if (@available(iOS 11.2, *)) {
-        self.modeSwitch.hidden = NO;
-        self.modeLabel.hidden = NO;
-        SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
-        self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
-        self.modeLabel.text = @"ML detection";
-    } else {
-        self.modeSwitch.hidden = YES;
-        self.modeLabel.hidden = YES;
-    }
+    self.modeSwitch.hidden = NO;
+    self.modeLabel.hidden = NO;
+    SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
+    self.modeLabel.text = @"ML detection";
+    self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
 }
 
 - (void)updateProgress {
