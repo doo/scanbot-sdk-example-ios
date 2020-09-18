@@ -24,6 +24,7 @@
 		080F3A8B20EB9ABB00E2A3CC /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8A20EB9ABB00E2A3CC /* FilterTableViewCell.m */; };
 		080F3A8E20EB9B2300E2A3CC /* FilterTableItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */; };
 		080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */; };
+		08129DD02514CC1B0007749C /* ScanbotSDKDocumentDetectorData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08129DCF2514CC1B0007749C /* ScanbotSDKDocumentDetectorData.bundle */; };
 		082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A3220C801AA009B1A7A /* AppDelegate.swift */; };
 		082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3620C801AB009B1A7A /* Main.storyboard */; };
 		082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3920C801AB009B1A7A /* Assets.xcassets */; };
@@ -93,6 +94,7 @@
 		080F3A8C20EB9B2300E2A3CC /* FilterTableItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableItem.h; sourceTree = "<group>"; };
 		080F3A8D20EB9B2300E2A3CC /* FilterTableItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableItem.m; sourceTree = "<group>"; };
 		080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
+		08129DCF2514CC1B0007749C /* ScanbotSDKDocumentDetectorData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKDocumentDetectorData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKDocumentDetectorData.bundle; sourceTree = "<group>"; };
 		082D0A2F20C801AA009B1A7A /* ReadyToUseUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadyToUseUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		082D0A3220C801AA009B1A7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		082D0A3720C801AB009B1A7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -204,6 +206,7 @@
 		082D0A4920C80261009B1A7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				08129DCF2514CC1B0007749C /* ScanbotSDKDocumentDetectorData.bundle */,
 				082D0A4C20C802B7009B1A7A /* ScanbotSDKMRZData.bundle */,
 				082D0A4D20C802B7009B1A7A /* ScanbotSDKOCRData.bundle */,
 				082D0A4420C8022A009B1A7A /* ScanbotSDK.framework */,
@@ -382,6 +385,7 @@
 			files = (
 				082D0A5020C802B7009B1A7A /* ScanbotSDKOCRData.bundle in Resources */,
 				082D0A3D20C801AB009B1A7A /* LaunchScreen.storyboard in Resources */,
+				08129DD02514CC1B0007749C /* ScanbotSDKDocumentDetectorData.bundle in Resources */,
 				082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */,
 				082D0A4F20C802B7009B1A7A /* ScanbotSDKMRZData.bundle in Resources */,
 				082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */,
