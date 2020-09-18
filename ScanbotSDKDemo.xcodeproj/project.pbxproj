@@ -21,6 +21,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		08129DCE2514C9250007749C /* ScanbotSDKDocumentDetectorData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08129DCD2514C9250007749C /* ScanbotSDKDocumentDetectorData.bundle */; };
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */; };
 		08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */; };
@@ -107,6 +108,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		08129DCD2514C9250007749C /* ScanbotSDKDocumentDetectorData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKDocumentDetectorData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKDocumentDetectorData.bundle; sourceTree = SOURCE_ROOT; };
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
@@ -136,7 +138,6 @@
 		28D7360D24AE2D8100A0B821 /* IDCardScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardScannerViewController.h; sourceTree = "<group>"; };
 		28D7360E24AE2D8100A0B821 /* IDCardScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardScannerResultViewController.h; sourceTree = "<group>"; };
 		28D7360F24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardResultGeneralTableViewCell.h; sourceTree = "<group>"; };
-		28D7361724AE302000A0B821 /* ScanbotSDK */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ScanbotSDK; sourceTree = "<group>"; };
 		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
 		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
 		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
@@ -218,14 +219,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0820226C1F790A19005FF9F2 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Frameworks;
-			path = ..;
-			sourceTree = "<group>";
-		};
 		08299BBB1FC5822F00E01F0E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -280,7 +273,6 @@
 			isa = PBXGroup;
 			children = (
 				287FE72224AE3D71002569D9 /* ScanbotSDK.framework */,
-				28D7361724AE302000A0B821 /* ScanbotSDK */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -361,7 +353,6 @@
 				C275628E1DE45368003F5FE0 /* TextViewController.m */,
 				086AF337251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.h */,
 				086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */,
-				0820226C1F790A19005FF9F2 /* Frameworks */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
 			);
 			name = DemoApp;
@@ -371,6 +362,7 @@
 		9ED845841AE670CC008B2731 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				08129DCD2514C9250007749C /* ScanbotSDKDocumentDetectorData.bundle */,
 				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
 				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
@@ -501,6 +493,7 @@
 				C27562961DE45368003F5FE0 /* Main.storyboard in Resources */,
 				C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */,
 				08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */,
+				08129DCE2514C9250007749C /* ScanbotSDKDocumentDetectorData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

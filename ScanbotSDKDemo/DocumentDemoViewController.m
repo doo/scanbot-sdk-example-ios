@@ -77,7 +77,6 @@
     SBSDKStorageLocation *customStorageLocation = [[SBSDKStorageLocation alloc] initWithBaseURL:docImagesDirUrl];
     self.documentImageStorage = [[SBSDKIndexedImageStorage alloc] initWithStorageLocation:customStorageLocation];
     [self setupScannerViewController];
-    
     [self updateUI];
 }
 
@@ -308,7 +307,11 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     self.modeLabel.hidden = NO;
     SBSDKDocumentDetectorMode mode = self.scannerViewController.detectorMode;
     self.modeLabel.text = @"ML detection";
-    self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
+    if (@available(iOS 11.2, *)) {
+        self.modeSwitch.on = mode == SBSDKDocumentDetectorModeMachineLearning;
+    } else {
+        self.modeSwitch.on = NO;
+    }
 }
 
 - (void)updateProgress {
@@ -316,8 +319,6 @@ localizedTextForDetectionStatus:(SBSDKDocumentDetectionStatus)status {
     self.progressLabel.text = [self.currentProgress.localizedDescription stringByAppendingFormat:@"\n%@",
                                self.currentProgress.localizedAdditionalDescription];
 }
-
-
 
 
 /**
