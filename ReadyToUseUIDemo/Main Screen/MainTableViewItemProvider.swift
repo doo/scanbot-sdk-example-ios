@@ -52,6 +52,9 @@ class MainTableViewItemProvider {
         let qrScanItem = MainTableViewItem(title: "Scan QR-Code",
                                            action: { actionHandler.showQRCodeScanning() })
         
+        let textScanItem = MainTableViewItem(title: "Extract text data",
+                                             action: { actionHandler.showTextDataScanner() })
+        
         let batchBarcodesItem = MainTableViewItem(title: "Scan Barcodes in batch",
                                                   action: { actionHandler.showBarcodeBatchScanner() })
         
@@ -67,7 +70,7 @@ class MainTableViewItemProvider {
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
         
-        let items2 = [qrScanItem, mrzScanItem, idCardItem, batchBarcodesItem, barcodeScanItem, ehicScanItem]
+        let items2 = [qrScanItem, mrzScanItem, idCardItem, batchBarcodesItem, barcodeScanItem, textScanItem, ehicScanItem]
         
         let firstSection = MainTableViewSection(title: "", items: items1)
         let secondSection = MainTableViewSection(title: "", items: items2)

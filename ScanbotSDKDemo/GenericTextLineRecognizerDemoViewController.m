@@ -51,8 +51,6 @@
     = [[SBSDKGenericTextLineRecognizerViewController alloc] initWithParentViewController:self
                                                                               parentView:self.cameraContainer
                                                                            configuration:configuration
-                                                                   preferredFinderHeight:40.0f
-                                                                       finderAspectRatio:5.0
                                                                                 delegate:self];
 }
 

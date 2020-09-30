@@ -70,6 +70,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showTextDataScanner() {
+        self.guardLicense {
+            UsecaseScanTextData().start(presenter: self.presenter)
+        }
+    }
+    
     func showBarcodeScanning() {
         self.guardLicense {
             UsecaseScanBarcode().start(presenter: self.presenter)
