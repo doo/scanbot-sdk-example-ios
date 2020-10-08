@@ -7,30 +7,27 @@ These example apps show how to integrate the [Scanbot SDK](https://scanbot.io) f
 
 ## What is Scanbot SDK?
 
-Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions
+Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions 
 for scanning and processing documents from your mobile device's camera or other image sources like your photo library.
 
-Boost your iOS app with the powerful and convenient document scanning and processing features that also drive the #1
-scanning app in the iOS app store: Scanbot Pro.
+Integrate our Ready-To-Use UI Components with only a few lines of code and get the same look and feel as our award winning scanner app Scanbot. 
+Benefit from a proven user experience, super fast integration time and customizable colors and text to match your brand. 
+Or dive into our Classical UI Components and build your fully customized scanning experience.
 
 Scanbot SDK consists of a bunch of modules, each individually licensable or avalaible in license packages.
 
-Currently the following modules are available:
-- Document detection in digital images
+Currently the following modules and features are available:
+- Document Detection in digital images
 - User interface for guided, automatic document scanning using the document detection module
-- Image processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document
+- Image Processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document 
 scanning
-- PDF creation, merge a collection of processed or unprocessed document images and write them into a PDF document with
+- PDF Creation - merge a collection of processed or unprocessed document images and write them into a PDF document with 
 one page per image
-- Optical character recognition, recognize text in document images and create searchable PDF documents with
+- Optical Character Recognition - recognize text in document images and create searchable PDF documents with 
 selectable text
-- Payform recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR
-- Beta software for invoice, cheque and credit card recognition
-
-Scanbot SDK supports iOS 9 and higher.
-
-If you need further information or are interested in licensing Scanbot SDK please contact us via sdk@scanbot.io
-or visit our website https://scanbot.io
+- Payform Recognition, detect and recognize SEPA payforms on images and extract the important data fields via OCR
+- Recognition and Data Extraction from German Medical Certificate forms (aka. Disability Certificate or AU-Bescheinigung)
+- MRZ Scanner - Provides the ability to find and extract Machine Readable Zone (MRZ) content from ID cards, passports and travel documents.
 
 
 
@@ -48,7 +45,8 @@ or visit our website https://scanbot.io
 - In case you don't want to automatically download the SDK in the Demo apps target remove the dependency to the 'Download ScanbotSDK' aggregate target and perform the following steps:
   * [Download the latest Scanbot SDK for iOS from our website](https://scanbot.io/en/sdk/documentation)
   * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
-  * Open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
+  * For Classical UI open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
+  * For Ready-To-Use UI open `ReadyToUseUIDemo.xcodeproj` with Xcode, build and run
 
 
 ## Please note
