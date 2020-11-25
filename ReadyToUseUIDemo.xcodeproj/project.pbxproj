@@ -18,6 +18,17 @@
 			name = "Download ScanbotSDK";
 			productName = "Download ScanbotSDK";
 		};
+		6991C58A256C27CE008188AD /* DeleteSDK */ = {
+			isa = PBXAggregateTarget;
+			buildConfigurationList = 6991C58D256C27CE008188AD /* Build configuration list for PBXAggregateTarget "DeleteSDK" */;
+			buildPhases = (
+				6991C58E256C27D3008188AD /* ShellScript */,
+			);
+			dependencies = (
+			);
+			name = DeleteSDK;
+			productName = DeleteSDK;
+		};
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
@@ -58,6 +69,7 @@
 		690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */; };
 		690DCE7924E5597400160876 /* UsecaseIDCardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */; };
 		692227BC2524A95E00E81886 /* UsecaseScanTextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */; };
+		6991C59C256C2989008188AD /* ReadyToUseUIDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* ReadyToUseUIDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
 		6E2DA8C2226489080043B2F0 /* WorkflowFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8BE226489080043B2F0 /* WorkflowFactory.m */; };
 		6E2DA8C3226489080043B2F0 /* WorkflowResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */; };
@@ -71,6 +83,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 08E3397923E2F3A200699471;
 			remoteInfo = "Download ScanbotSDK";
+		};
+		6991C59E256C2989008188AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 082D0A2E20C801AA009B1A7A;
+			remoteInfo = ReadyToUseUIDemo;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -139,6 +158,9 @@
 		690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanBarcodeBatch.swift; sourceTree = "<group>"; };
 		690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseIDCardScan.swift; sourceTree = "<group>"; };
 		692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTextData.swift; sourceTree = "<group>"; };
+		6991C599256C2989008188AD /* ReadyToUseUIDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadyToUseUIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6991C59B256C2989008188AD /* ReadyToUseUIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyToUseUIDemoUITests.swift; sourceTree = "<group>"; };
+		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
 		6E2DA8BE226489080043B2F0 /* WorkflowFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkflowFactory.m; sourceTree = "<group>"; };
 		6E2DA8BF226489080043B2F0 /* WorkflowResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkflowResultsViewController.m; sourceTree = "<group>"; };
@@ -153,6 +175,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				082D0A4520C8022A009B1A7A /* ScanbotSDK.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6991C596256C2989008188AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -172,6 +201,7 @@
 			isa = PBXGroup;
 			children = (
 				082D0A3120C801AA009B1A7A /* ReadyToUseUIDemo */,
+				6991C59A256C2989008188AD /* ReadyToUseUIDemoUITests */,
 				082D0A4920C80261009B1A7A /* Frameworks */,
 				082D0A3020C801AA009B1A7A /* Products */,
 			);
@@ -181,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				082D0A2F20C801AA009B1A7A /* ReadyToUseUIDemo.app */,
+				6991C599256C2989008188AD /* ReadyToUseUIDemoUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -307,6 +338,15 @@
 			path = Configuration;
 			sourceTree = "<group>";
 		};
+		6991C59A256C2989008188AD /* ReadyToUseUIDemoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				6991C59B256C2989008188AD /* ReadyToUseUIDemoUITests.swift */,
+				6991C59D256C2989008188AD /* Info.plist */,
+			);
+			path = ReadyToUseUIDemoUITests;
+			sourceTree = "<group>";
+		};
 		6E2DA8BC226487830043B2F0 /* Workflow Screen */ = {
 			isa = PBXGroup;
 			children = (
@@ -340,13 +380,31 @@
 			productReference = 082D0A2F20C801AA009B1A7A /* ReadyToUseUIDemo.app */;
 			productType = "com.apple.product-type.application";
 		};
+		6991C598256C2989008188AD /* ReadyToUseUIDemoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6991C5A0256C2989008188AD /* Build configuration list for PBXNativeTarget "ReadyToUseUIDemoUITests" */;
+			buildPhases = (
+				6991C595256C2989008188AD /* Sources */,
+				6991C596256C2989008188AD /* Frameworks */,
+				6991C597256C2989008188AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6991C59F256C2989008188AD /* PBXTargetDependency */,
+			);
+			name = ReadyToUseUIDemoUITests;
+			productName = ReadyToUseUIDemoUITests;
+			productReference = 6991C599256C2989008188AD /* ReadyToUseUIDemoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		082D0A2720C801AA009B1A7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0940;
+				LastSwiftUpdateCheck = 1220;
 				LastUpgradeCheck = 0940;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
@@ -356,6 +414,13 @@
 					};
 					08E3397923E2F3A200699471 = {
 						CreatedOnToolsVersion = 11.3;
+					};
+					6991C58A256C27CE008188AD = {
+						CreatedOnToolsVersion = 12.2;
+					};
+					6991C598256C2989008188AD = {
+						CreatedOnToolsVersion = 12.2;
+						TestTargetID = 082D0A2E20C801AA009B1A7A;
 					};
 				};
 			};
@@ -374,6 +439,8 @@
 			targets = (
 				082D0A2E20C801AA009B1A7A /* ReadyToUseUIDemo */,
 				08E3397923E2F3A200699471 /* Download ScanbotSDK */,
+				6991C58A256C27CE008188AD /* DeleteSDK */,
+				6991C598256C2989008188AD /* ReadyToUseUIDemoUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -388,6 +455,13 @@
 				082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */,
 				082D0A4F20C802B7009B1A7A /* ScanbotSDKMRZData.bundle in Resources */,
 				082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		6991C597256C2989008188AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -409,7 +483,24 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.11.7\"\nZIPFILENAME=\"1.11.7\"\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.11.7\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
+		};
+		6991C58E256C27D3008188AD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#!/bin/bash\n\nSDKFOLDER=${SRCROOT}/ScanbotSDK\nrm -dfr \"${SDKFOLDER}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -455,6 +546,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6991C595256C2989008188AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6991C59C256C2989008188AD /* ReadyToUseUIDemoUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -462,6 +561,11 @@
 			isa = PBXTargetDependency;
 			target = 08E3397923E2F3A200699471 /* Download ScanbotSDK */;
 			targetProxy = 08E3397E23E2F3BA00699471 /* PBXContainerItemProxy */;
+		};
+		6991C59F256C2989008188AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 082D0A2E20C801AA009B1A7A /* ReadyToUseUIDemo */;
+			targetProxy = 6991C59E256C2989008188AD /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -667,6 +771,69 @@
 			};
 			name = Release;
 		};
+		6991C58B256C27CE008188AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		6991C58C256C27CE008188AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		6991C5A1256C2989008188AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.ReadyToUseUIDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReadyToUseUIDemo;
+			};
+			name = Debug;
+		};
+		6991C5A2256C2989008188AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.ReadyToUseUIDemoUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReadyToUseUIDemo;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -693,6 +860,24 @@
 			buildConfigurations = (
 				08E3397A23E2F3A200699471 /* Debug */,
 				08E3397B23E2F3A200699471 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6991C58D256C27CE008188AD /* Build configuration list for PBXAggregateTarget "DeleteSDK" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6991C58B256C27CE008188AD /* Debug */,
+				6991C58C256C27CE008188AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		6991C5A0256C2989008188AD /* Build configuration list for PBXNativeTarget "ReadyToUseUIDemoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6991C5A1256C2989008188AD /* Debug */,
+				6991C5A2256C2989008188AD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

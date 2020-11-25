@@ -28,6 +28,16 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "6991C571256C179A008188AD"
+               BuildableName = "ScanbotSDKDemoUITests.xctest"
+               BlueprintName = "ScanbotSDKDemoUITests"
+               ReferencedContainer = "container:ScanbotSDKDemo.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction
