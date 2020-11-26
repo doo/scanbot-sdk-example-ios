@@ -45,10 +45,12 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         tablesQuery.cells.staticTexts["Workflow"].tap()
         let elementsQuery = app.sheets["Select a Workflow"].scrollViews.otherElements
         elementsQuery.buttons["ID Card - Front + Back Image + MRZ"].tap()
+        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
         app.buttons["Cancel"].tap()
         
         tablesQuery.cells.staticTexts["Workflow"].tap()
         elementsQuery.buttons["SEPA Payform"].tap()
+        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
         app.buttons["Cancel"].tap()
         
         tablesQuery.cells.staticTexts["Scan QR-Code"].tap()
