@@ -23,7 +23,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Setup the default license failure handler. In case of expired license or expired trial period it will present an alert and terminate the app.
         // See also ScanbotSDK.setLicenseFailureHandler(handler) to setup a custom handler.
         ScanbotSDK.setupDefaultLicenseFailureHandler()
-  
+        
+        // Demonstration of global SBSDKUI image storage encryption.
+        let encrypter = SBSDKAESEncrypter(key: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
+        ScanbotSDKUI.setDefaultImageStoreEncrypter(encrypter)
+        // Now all images written to the disk are encrypted.
+        
         return true
     }
 
