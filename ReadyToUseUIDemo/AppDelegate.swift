@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ScanbotSDK.setupDefaultLicenseFailureHandler()
         
         // Demonstration of global SBSDKUI image storage encryption.
-        let encrypter = SBSDKAESEncrypter(key: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
+        let encrypter = SBSDKAESEncrypter(password: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
         ScanbotSDKUI.setDefaultImageStoreEncrypter(encrypter)
         // Now all images written to the disk are encrypted.
         

@@ -45,35 +45,74 @@
     [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 3;
+}
+
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    switch (section) {
+        case 0:
+            return @"Recognized Fields";
+        case 1:
+            return @"Machine Readable Zone Fields";
+        default:
+            return @"Machine Readable Zone Check Digits";
+    }
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1 + self.result.fields.count;
+    if (section == 0) {
+        return 1 + self.result.fields.count;
+    } else if (section == 1) {
+        return self.result.mrzFields.count;
+    } else {
+        return self.result.mrzCheckDigits.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        IDCardResultGeneralTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generalCell"];
-        cell.titleLabel.text = [self textForType:self.result.type];
-        cell.titleImageView.image = [self.result croppedImage];
-        return cell;
-    } else {
-        IDCardResultFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fieldCell"];
-        SBSDKIDCardRecognizerResultField *field = self.result.fields[indexPath.row - 1];
-        
-        cell.fieldTypeLabel.text = [self fieldTypeTextForField:field];
-        if (field.binarizedImage != nil) {
-            cell.fieldImageView.image = field.binarizedImage;
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            IDCardResultGeneralTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generalCell"];
+            cell.titleLabel.text = [self textForType:self.result.type];
+            cell.titleImageView.image = [self.result croppedImage];
+            return cell;
         } else {
-            cell.fieldImageView.image = field.image;
+            IDCardResultFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fieldCell"];
+            SBSDKIDCardRecognizerResultField *field = self.result.fields[indexPath.row - 1];
+            
+            cell.fieldTypeLabel.text = [self fieldTypeTextForField:field];
+            UIImage *image = [field.image sbsdk_limitedToSize:CGSizeMake(10000.0, 80.0f)];
+            cell.fieldImageView.image = image;
+            if (field.text.length > 0) {
+                cell.recognizedTextInfoLabel.text
+                = [NSString stringWithFormat:@"Recognized text with confidence %0.2f %%", field.textConfidence * 100.0f];
+                cell.recognizedTextLabel.text = field.text;
+            } else {
+                cell.recognizedTextInfoLabel.text = @"";
+                cell.recognizedTextLabel.text = @"";
+            }
+            return cell;
         }
-        
-        if (field.text.length > 0) {
+    } else if (indexPath.section == 1) {
+        IDCardResultFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fieldCell"];
+        SBSDKMachineReadableZoneRecognizerField *field = self.result.mrzFields[indexPath.row];
+        cell.fieldTypeLabel.text = [self fieldTypeTextForMRZField:field];
+        cell.fieldImageView.image = nil;
+        if (field.value.length > 0) {
             cell.recognizedTextInfoLabel.text
-            = [NSString stringWithFormat:@"Recognized text with confidence %0.2f %%", field.textConfidence * 100.0f];
-            cell.recognizedTextLabel.text = field.text;
+            = [NSString stringWithFormat:@"Recognized text with confidence %0.2f %%", field.averageRecognitionConfidence * 100.0f];
+            cell.recognizedTextLabel.text = field.value;
         } else {
             cell.recognizedTextInfoLabel.text = @"";
             cell.recognizedTextLabel.text = @"";
         }
+        return cell;
+    } else {
+        IDCardResultFieldTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"fieldCell"];
+        SBSDKMachineReadableZoneRecognizerResultCheckDigit *field = self.result.mrzCheckDigits[indexPath.row];
+        cell.fieldTypeLabel.text = field.validatedString;
+        cell.fieldImageView.image = nil;
         return cell;
     }
 }
@@ -89,6 +128,51 @@
         case SBSDKIDCardTypeUnknown:
             return @"Unknown";
     }
+}
+- (NSString *)fieldTypeTextForMRZField:(SBSDKMachineReadableZoneRecognizerField *)field {
+    NSString *typeString = @"";
+    switch (field.fieldName) {
+        case SBSDKMachineReadableZoneRecognizerFieldNameTravelDocumentType:
+            typeString = @"MRZ Document type";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameKindOfDocument:
+            typeString = @"MRZ Document type variant";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameIssuingStateOrOrganization:
+            typeString = @"MRZ Issuing authority";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameDocumentCode:
+            typeString = @"MRZ Document number";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameOptional1:
+            typeString = @"MRZ Optional 1";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameDateOfBirth:
+            typeString = @"MRZ Birth date";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameGender:
+            typeString = @"MRZ Gender";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameDateOfExpiry:
+            typeString = @"MRZ Expiry date";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameNationality:
+            typeString = @"MRZ Nationality";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameOptional2:
+            typeString = @"MRZ Optional 2";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameLastName:
+            typeString = @"MRZ Surname";
+            break;
+        case SBSDKMachineReadableZoneRecognizerFieldNameFirstName:
+            typeString = @"MRZ Given names";
+            break;
+        default:
+            typeString = @"";
+            break;
+    }
+    return [NSString stringWithFormat:@"Field type: %@", typeString];
 }
 
 - (NSString *)fieldTypeTextForField:(SBSDKIDCardRecognizerResultField *)field {
