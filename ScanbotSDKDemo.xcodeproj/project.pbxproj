@@ -41,7 +41,6 @@
 		08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */; };
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		289AB67426011D2400D9197A /* LicensePlateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */; };
 		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
 		28B21DBF23E31219002D2621 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBE23E31219002D2621 /* FilterModel.m */; };
 		28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DC123E313C2002D2621 /* FilterTableViewCell.m */; };
@@ -49,6 +48,7 @@
 		28D7361124AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */; };
 		28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* IDCardScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */; };
+		28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */; };
 		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
 		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
 		6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA024E52EF600005627 /* PassportReaderViewController.m */; };
@@ -594,7 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.14.1\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"11.15.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -661,7 +661,7 @@
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
 				28B21DBF23E31219002D2621 /* FilterModel.m in Sources */,
 				6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */,
-				289AB67426011D2400D9197A /* LicensePlateDemoViewController.m in Sources */,
+				28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
 				6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,

@@ -69,8 +69,12 @@ class MainTableViewItemProvider {
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
+
+        let licensePlateScanItem = MainTableViewItem(title: "Scan License Plate",
+                                                     action: { actionHandler.showLicensePlateScanner() })
         
-        let items2 = [qrScanItem, mrzScanItem, idCardItem, batchBarcodesItem, barcodeScanItem, textScanItem, ehicScanItem]
+        let items2 = [qrScanItem, mrzScanItem, idCardItem, batchBarcodesItem, barcodeScanItem, textScanItem,
+                      ehicScanItem, licensePlateScanItem]
         
         let firstSection = MainTableViewSection(title: "", items: items1)
         let secondSection = MainTableViewSection(title: "", items: items2)

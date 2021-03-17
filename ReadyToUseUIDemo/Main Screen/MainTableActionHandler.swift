@@ -125,6 +125,12 @@ class MainTableActionHandler: NSObject {
             UsecaseIDCardScan().start(presenter: self.presenter)
         }
     }
+
+    func showLicensePlateScanner() {
+        self.guardLicense {
+            UsecaseScanLicensePlate().start(presenter: self.presenter)
+        }
+    }
 }
 
 // Helper function inserted by Swift 4.2 migrator.

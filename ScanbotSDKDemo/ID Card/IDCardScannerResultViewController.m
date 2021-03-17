@@ -74,7 +74,7 @@
     if (indexPath.section == 0) {
         if (indexPath.row == 0) {
             IDCardResultGeneralTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"generalCell"];
-            cell.titleLabel.text = [self textForType:self.result.type];
+            cell.titleLabel.text = self.result.type.cardTypeName;
             cell.titleImageView.image = [self.result croppedImage];
             return cell;
         } else {
@@ -117,18 +117,6 @@
     }
 }
 
-- (NSString *)textForType:(SBSDKIDCardType)type {
-    switch (type) {
-        case SBSDKIDCardTypeBack_DE:
-            return @"Back Side DE";
-        case SBSDKIDCardTypeFront_DE:
-            return @"Front Side DE";
-        case SBSDKIDCardTypePassport_DE:
-            return @"Passport DE";
-        case SBSDKIDCardTypeUnknown:
-            return @"Unknown";
-    }
-}
 - (NSString *)fieldTypeTextForMRZField:(SBSDKMachineReadableZoneRecognizerField *)field {
     NSString *typeString = @"";
     switch (field.fieldName) {
