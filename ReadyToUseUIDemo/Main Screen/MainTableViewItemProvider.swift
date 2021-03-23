@@ -70,7 +70,7 @@ class MainTableViewItemProvider {
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
 
-        let licensePlateScanItem = MainTableViewItem(title: "Scan License Plate",
+        let licensePlateScanItem = MainTableViewItem(title: "Scan EU License Plate",
                                                      action: { actionHandler.showLicensePlateScanner() })
         
         let items2 = [qrScanItem, mrzScanItem, idCardItem, batchBarcodesItem, barcodeScanItem, textScanItem,
