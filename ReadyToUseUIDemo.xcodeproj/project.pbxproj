@@ -65,6 +65,7 @@
 		08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */; };
 		08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FA20EA8D0800691231 /* FilteringViewController.m */; };
 		08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */; };
+		28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */; };
 		690CD22B242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */; };
 		690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */; };
 		690DCE7924E5597400160876 /* UsecaseIDCardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */; };
@@ -154,6 +155,7 @@
 		08B6F2F920EA8D0800691231 /* FilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringViewController.h; sourceTree = "<group>"; };
 		08B6F2FA20EA8D0800691231 /* FilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringViewController.m; sourceTree = "<group>"; };
 		08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFilterPage.swift; sourceTree = "<group>"; };
+		28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanLicensePlate.swift; sourceTree = "<group>"; };
 		690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMultipleObjects.swift; sourceTree = "<group>"; };
 		690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanBarcodeBatch.swift; sourceTree = "<group>"; };
 		690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseIDCardScan.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 				690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */,
 				690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */,
 				692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */,
+				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -483,7 +486,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.14.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.15.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C58E256C27D3008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -521,6 +524,7 @@
 				690DCE7924E5597400160876 /* UsecaseIDCardScan.swift in Sources */,
 				0889D10520EA632800A36316 /* PageReviewViewController.m in Sources */,
 				080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */,
+				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
 				08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
 				0889D10120EA632800A36316 /* PageReviewScreenConfiguration.m in Sources */,
