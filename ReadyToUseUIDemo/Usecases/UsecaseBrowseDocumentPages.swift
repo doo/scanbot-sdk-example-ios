@@ -53,7 +53,9 @@ class UsecaseBrowseDocumentPages: Usecase, PageReviewViewControllerDelegate {
     
     private func showImagePickerIfNeeded(_ viewController: UIViewController) {
         if self.mode == .importing {
-            UsecaseImportImage(document: self.document).start(presenter: viewController)
+            UsecaseImportImage(document: self.document, completion: { [weak self] in
+                self?.browser?.reloadData()
+            }).start(presenter: viewController)
         }
     }
     
@@ -87,7 +89,9 @@ class UsecaseBrowseDocumentPages: Usecase, PageReviewViewControllerDelegate {
                 navigationController.popViewController(animated: true)
             }
         case .importing:
-            UsecaseImportImage(document: self.document).start(presenter: viewController)
+            UsecaseImportImage(document: self.document, completion: {
+                viewController.reloadData()
+            }).start(presenter: viewController)
         }
     }
     

@@ -11,16 +11,17 @@ import UIKit
 class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     private let document: SBSDKUIDocument
+    private var completionHandler: (() -> ())?
     
-    init(document: SBSDKUIDocument) {
+    init(document: SBSDKUIDocument, completion: (() -> ())?) {
         self.document = document
+        self.completionHandler = completion
         super.init()
     }
 
     override func start(presenter: UIViewController) {
 
         super.start(presenter: presenter)
-
         let picker = UIImagePickerController()
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary
@@ -29,8 +30,8 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
     }
 
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-// Local variable inserted by Swift 4.2 migrator.
-let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
+        // Local variable inserted by Swift 4.2 migrator.
+        let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
 
         var page: SBSDKUIPage?
         if let image = info[convertFromUIImagePickerControllerInfoKey(UIImagePickerController.InfoKey.originalImage)] as? UIImage {
@@ -44,6 +45,7 @@ let info = convertFromUIImagePickerControllerInfoKeyDictionary(info)
         }
         picker.presentingViewController?.dismiss(animated: true, completion: {
             self.didFinish()
+            self.completionHandler?()
         })
     }
 }
