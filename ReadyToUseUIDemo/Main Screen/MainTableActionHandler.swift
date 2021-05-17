@@ -122,7 +122,7 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         self.guardLicense {
-            UsecaseIDCardScan().start(presenter: self.presenter)
+            UsecaseGenericDocumentScan().start(presenter: self.presenter)
         }
     }
 

@@ -68,7 +68,7 @@
 		28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */; };
 		690CD22B242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */; };
 		690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */; };
-		690DCE7924E5597400160876 /* UsecaseIDCardScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */; };
+		690DCE7924E5597400160876 /* UsecaseGenericDocumentScan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */; };
 		692227BC2524A95E00E81886 /* UsecaseScanTextData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */; };
 		6991C59C256C2989008188AD /* ReadyToUseUIDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* ReadyToUseUIDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
@@ -158,7 +158,7 @@
 		28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanLicensePlate.swift; sourceTree = "<group>"; };
 		690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMultipleObjects.swift; sourceTree = "<group>"; };
 		690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanBarcodeBatch.swift; sourceTree = "<group>"; };
-		690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseIDCardScan.swift; sourceTree = "<group>"; };
+		690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseGenericDocumentScan.swift; sourceTree = "<group>"; };
 		692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTextData.swift; sourceTree = "<group>"; };
 		6991C599256C2989008188AD /* ReadyToUseUIDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReadyToUseUIDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C59B256C2989008188AD /* ReadyToUseUIDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadyToUseUIDemoUITests.swift; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
 				6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */,
 				690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */,
-				690DCE7824E5597400160876 /* UsecaseIDCardScan.swift */,
+				690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */,
 				692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */,
 				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
 			);
@@ -408,7 +408,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1240;
+				LastUpgradeCheck = 1250;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					082D0A2E20C801AA009B1A7A = {
@@ -486,7 +486,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.15.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.17.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C58E256C27D3008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -521,7 +521,7 @@
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
 				0889D10320EA632800A36316 /* PageReviewScreenUIConfiguration.m in Sources */,
-				690DCE7924E5597400160876 /* UsecaseIDCardScan.swift in Sources */,
+				690DCE7924E5597400160876 /* UsecaseGenericDocumentScan.swift in Sources */,
 				0889D10520EA632800A36316 /* PageReviewViewController.m in Sources */,
 				080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */,
 				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
@@ -619,6 +619,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -679,6 +680,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;

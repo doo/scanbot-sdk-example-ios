@@ -14,7 +14,7 @@ class UsecaseScanQRCode: Usecase, SBSDKUIBarcodeScannerViewControllerDelegate {
         
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIMachineCodeScannerConfiguration.default()
+        let configuration = SBSDKUIBarcodeScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         let codeTypes = SBSDKUIMachineCodesCollection.twoDimensionalBarcodes()
         
