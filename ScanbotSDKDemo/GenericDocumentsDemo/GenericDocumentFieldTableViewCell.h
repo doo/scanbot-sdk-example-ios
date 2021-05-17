@@ -1,5 +1,5 @@
 //
-//  IDCardResultFieldTableViewCell.h
+//  GenericDocumentFieldTableViewCell.h
 //  SBSDK Internal Demo
 //
 //  Created by Sebastian Husche on 22.05.20.
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface IDCardResultFieldTableViewCell : UITableViewCell
+@interface GenericDocumentFieldTableViewCell : UITableViewCell
 
 @property (strong, nonatomic) IBOutlet UILabel *fieldTypeLabel;
 @property (strong, nonatomic) IBOutlet UIImageView *fieldImageView;

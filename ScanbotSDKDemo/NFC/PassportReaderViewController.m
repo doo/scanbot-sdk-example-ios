@@ -50,7 +50,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    SBSDKUIMachineCodeScannerConfiguration *configuration = SBSDKUIMachineCodeScannerConfiguration.defaultConfiguration;
+    SBSDKUIMRZScannerConfiguration *configuration = SBSDKUIMRZScannerConfiguration.defaultConfiguration;
     configuration.uiConfiguration.finderAspectRatio = [[SBSDKAspectRatio alloc]initWithWidth:1.0 andHeight:0.18];
     configuration.uiConfiguration.cancelButtonHidden = YES;
     configuration.textConfiguration.finderTextHint = @"Please align the passports machine readable zone with the frame above to scan it.";

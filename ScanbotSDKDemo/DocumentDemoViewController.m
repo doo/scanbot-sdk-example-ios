@@ -9,7 +9,6 @@
 #import "DocumentDemoViewController.h"
 #import "TextViewController.h"
 #import "DemoPDFViewController.h"
-#import <ScanbotSDK/SBSDKCropViewController.h>
 
 @interface DocumentDemoViewController () <SBSDKImageEditingViewControllerDelegate>
 @property (strong, nonatomic) SBSDKIndexedImageStorage *documentImageStorage;
