@@ -122,7 +122,13 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         self.guardLicense {
-            UsecaseGenericDocumentScan().start(presenter: self.presenter)
+            UsecaseGenericDocumentScan(documentType: .idCardFrontBackDE()).start(presenter: self.presenter)
+        }
+    }
+
+    func showDriverLicenseScanner() {
+        self.guardLicense {
+            UsecaseGenericDocumentScan(documentType: .driverLicenseFrontBackDE()).start(presenter: self.presenter)
         }
     }
 
