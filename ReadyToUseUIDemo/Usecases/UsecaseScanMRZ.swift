@@ -14,7 +14,7 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
 
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUIMachineCodeScannerConfiguration.default()
+        let configuration = SBSDKUIMRZScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
 
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 3, andHeight: 1)

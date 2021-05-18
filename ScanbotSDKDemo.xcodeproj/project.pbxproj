@@ -44,10 +44,9 @@
 		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
 		28B21DBF23E31219002D2621 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBE23E31219002D2621 /* FilterModel.m */; };
 		28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DC123E313C2002D2621 /* FilterTableViewCell.m */; };
-		28D7361024AE2D8100A0B821 /* IDCardScannerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360824AE2D8000A0B821 /* IDCardScannerResultViewController.m */; };
-		28D7361124AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */; };
-		28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */; };
-		28D7361324AE2D8100A0B821 /* IDCardScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */; };
+		28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */; };
+		28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */; };
+		28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */; };
 		28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */; };
 		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
 		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
@@ -150,14 +149,12 @@
 		28B21DBE23E31219002D2621 /* FilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterModel.m; sourceTree = "<group>"; };
 		28B21DC023E313C2002D2621 /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
 		28B21DC123E313C2002D2621 /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
-		28D7360824AE2D8000A0B821 /* IDCardScannerResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardScannerResultViewController.m; sourceTree = "<group>"; };
-		28D7360924AE2D8000A0B821 /* IDCardResultFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardResultFieldTableViewCell.h; sourceTree = "<group>"; };
-		28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardResultGeneralTableViewCell.m; sourceTree = "<group>"; };
-		28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardResultFieldTableViewCell.m; sourceTree = "<group>"; };
-		28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IDCardScannerViewController.m; sourceTree = "<group>"; };
-		28D7360D24AE2D8100A0B821 /* IDCardScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardScannerViewController.h; sourceTree = "<group>"; };
-		28D7360E24AE2D8100A0B821 /* IDCardScannerResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardScannerResultViewController.h; sourceTree = "<group>"; };
-		28D7360F24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IDCardResultGeneralTableViewCell.h; sourceTree = "<group>"; };
+		28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentResultViewController.m; sourceTree = "<group>"; };
+		28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentFieldTableViewCell.h; sourceTree = "<group>"; };
+		28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentFieldTableViewCell.m; sourceTree = "<group>"; };
+		28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentViewController.m; sourceTree = "<group>"; };
+		28D7360D24AE2D8100A0B821 /* GenericDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentViewController.h; sourceTree = "<group>"; };
+		28D7360E24AE2D8100A0B821 /* GenericDocumentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentResultViewController.h; sourceTree = "<group>"; };
 		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
 		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
 		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
@@ -284,19 +281,17 @@
 			path = AdjustableFiltersDemo;
 			sourceTree = "<group>";
 		};
-		28D735F424AE214D00A0B821 /* ID Card */ = {
+		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				28D7360924AE2D8000A0B821 /* IDCardResultFieldTableViewCell.h */,
-				28D7360B24AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m */,
-				28D7360F24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.h */,
-				28D7360A24AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m */,
-				28D7360E24AE2D8100A0B821 /* IDCardScannerResultViewController.h */,
-				28D7360824AE2D8000A0B821 /* IDCardScannerResultViewController.m */,
-				28D7360D24AE2D8100A0B821 /* IDCardScannerViewController.h */,
-				28D7360C24AE2D8100A0B821 /* IDCardScannerViewController.m */,
+				28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */,
+				28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */,
+				28D7360E24AE2D8100A0B821 /* GenericDocumentResultViewController.h */,
+				28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */,
+				28D7360D24AE2D8100A0B821 /* GenericDocumentViewController.h */,
+				28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */,
 			);
-			path = "ID Card";
+			path = GenericDocumentsDemo;
 			sourceTree = "<group>";
 		};
 		28D7361624AE302000A0B821 /* Frameworks */ = {
@@ -356,7 +351,7 @@
 			isa = PBXGroup;
 			children = (
 				6954AE9B24E52E7D00005627 /* NFC */,
-				28D735F424AE214D00A0B821 /* ID Card */,
+				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
 				08716C7A220DC49400119B9C /* BusinessCardDemo */,
 				C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */,
@@ -594,7 +589,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.15.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.17.0\"\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\n# Example: https://download.scanbot.io/sdk/ios/scanbot-ios-sdk1.9.1.zip\ncurl -s -o ${ZIPNAME} https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -632,15 +627,14 @@
 				C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */,
 				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
-				28D7361324AE2D8100A0B821 /* IDCardScannerViewController.m in Sources */,
+				28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */,
 				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
 				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
 				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
 				28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */,
-				28D7361124AE2D8100A0B821 /* IDCardResultGeneralTableViewCell.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
-				28D7361024AE2D8100A0B821 /* IDCardScannerResultViewController.m in Sources */,
+				28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */,
 				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
 				C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */,
 				28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */,
@@ -672,7 +666,7 @@
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
-				28D7361224AE2D8100A0B821 /* IDCardResultFieldTableViewCell.m in Sources */,
+				28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

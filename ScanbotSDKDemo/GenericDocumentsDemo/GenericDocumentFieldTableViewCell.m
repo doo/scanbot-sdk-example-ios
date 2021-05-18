@@ -6,8 +6,8 @@
 //  Copyright © 2020 doo GmbH. All rights reserved.
 //
 
-#import "IDCardResultFieldTableViewCell.h"
+#import "GenericDocumentFieldTableViewCell.h"
 
-@implementation IDCardResultFieldTableViewCell
+@implementation GenericDocumentFieldTableViewCell
 
 @end
