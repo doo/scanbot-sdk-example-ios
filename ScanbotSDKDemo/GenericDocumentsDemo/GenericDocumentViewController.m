@@ -83,6 +83,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     [self dismissViewControllerAnimated:YES completion:^{
         SBSDKGenericDocumentRecognizer *recognizer =
         [[SBSDKGenericDocumentRecognizer alloc] initWithAcceptedDocumentTypes:[self documentTypes]];
+        recognizer.accumulatesDocuments = NO;
         
         SBSDKGenericDocument *document = [recognizer recognizeDocumentOnImage:image];
         [self displayResult:document withSourceImage:image];
