@@ -64,9 +64,9 @@ class MainTableActionHandler: NSObject {
         }
     }
     
-    func showQRCodeScanning() {
+    func showTwoDimensionalBarcodeScanning() {
         self.guardLicense {
-            UsecaseScanQRCode().start(presenter: self.presenter)
+            UsecaseScanTwoDimensionalBarcode().start(presenter: self.presenter)
         }
     }
     
@@ -76,9 +76,9 @@ class MainTableActionHandler: NSObject {
         }
     }
     
-    func showBarcodeScanning() {
+    func showOneDimensionalBarcodeScanning() {
         self.guardLicense {
-            UsecaseScanBarcode().start(presenter: self.presenter)
+            UsecaseScanOneDimensionalBarcode().start(presenter: self.presenter)
         }
     }
     
@@ -114,9 +114,11 @@ class MainTableActionHandler: NSObject {
         }
     }
     
-    func showBarcodeBatchScanner() {
+    func showBarcodeBatchScanner(engineMode: SBSDKBarcodeEngineMode,
+                                 additionalParameters: SBSDKBarcodeAdditionalParameters? = nil) {
         self.guardLicense {
-            UsecaseScanBarcodeBatch().start(presenter: self.presenter)
+            UsecaseScanBarcodeBatch(engineMode: engineMode,
+                                    additionalParameters: additionalParameters).start(presenter: self.presenter)
         }
     }
     
