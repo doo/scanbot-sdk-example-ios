@@ -23,6 +23,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 @property (nonatomic, strong) SBSDKFrameLimiter *frameLimiter;
 @property (nonatomic, strong) UISwitch *polygonsSwitch;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolbar;
+@property (nonatomic) BOOL showDebugLayer;
 @end
 
 @implementation BarCodeScannerViewController
@@ -47,7 +48,7 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 
 - (SBSDKFrameLimiter *)frameLimiter {
     if (!_frameLimiter) {
-        _frameLimiter = [[SBSDKFrameLimiter alloc] initWithFPSCount:5];
+        _frameLimiter = [[SBSDKFrameLimiter alloc] initWithFPSCount:25];
     }
     return _frameLimiter;
 }
@@ -55,17 +56,19 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor blackColor];
+    
+    self.cameraSession.captureSession.sessionPreset = AVCaptureSessionPresetPhoto;
     [self.view.layer addSublayer:self.cameraSession.previewLayer];
     [self.view.layer addSublayer:self.polygonLayer];
     
-    self.scanner = [[SBSDKBarcodeScanner alloc] init];
-    self.selectedBarCodeTypes = [SBSDKBarcodeType commonTypes];
+    [self configureBarCodeTypes:[SBSDKBarcodeType commonTypes]];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.cameraSession startSession];
     self.liveDetectionEnabled = YES;
+    self.showDebugLayer = NO;
     
     [self.view bringSubviewToFront:self.toolbar];
 }
@@ -123,26 +126,38 @@ UIImagePickerControllerDelegate, BarCodeTypesListViewControllerDelegate>
     }
 }
 
+- (void)configureBarCodeTypes:(NSArray<SBSDKBarcodeType *> *)newTypes {
+    self.selectedBarCodeTypes = newTypes;
+    self.scanner = [[SBSDKBarcodeScanner alloc] initWithFrameAccumulator:1
+                                                                   types:self.selectedBarCodeTypes
+                                                                liveMode:YES];
+    
+    SBSDKBarcodeAdditionalParameters *parameters = [[SBSDKBarcodeAdditionalParameters alloc] init];
+    self.scanner.additionalParameters = parameters;
+}
+
 #pragma mark - BarCode types selection delegate
 
 - (void)barCodeTypesSelectionChanged:(NSArray<SBSDKBarcodeType *> *)newTypes {
-    self.selectedBarCodeTypes = newTypes;
+    [self configureBarCodeTypes:newTypes];
 }
 
 - (void) polygonsSwitchIsChanged:(UISwitch *)paramSender {
     if (![paramSender isOn]) {
         self.polygonLayer.path = nil;
     }
+    self.showDebugLayer = paramSender.isOn;
 }
 
 #pragma mark - UIImagePickerControllerDelegate
+
 
 - (void)imagePickerController:(UIImagePickerController *)picker
 didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
     UIImage *image = (UIImage *)info[UIImagePickerControllerEditedImage];
     [self dismissViewControllerAnimated:YES completion:^{
-        self.scanner.acceptedBarcodeTypes = self.selectedBarCodeTypes;
-        self.currentResults = [self.scanner detectBarCodesOnImage:image inRect:CGRectZero];
+        self.scanner.useLiveMode = NO;
+        self.currentResults = [self.scanner detectBarCodesOnImage:image];
         [self performSegueWithIdentifier:@"showBarCodeScannerResults" sender:nil];
     }];
 }
@@ -165,14 +180,21 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
         return;
     }
     
+    self.scanner.useLiveMode = YES;
+    
     NSArray<SBSDKBarcodeScannerResult *> *results =
-    [self.scanner detectBarCodesOnSampleBuffer:sampleBuffer orientation:self.cameraSession.videoOrientation];
+    [self.scanner detectBarCodesOnSampleBuffer:sampleBuffer
+                                   orientation:self.cameraSession.videoOrientation];
+    
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (results.count > 0) {
+        if (self.liveDetectionEnabled) {
             if (self.polygonsSwitch.isOn) {
                 // show live results as polygons
                 [self showLiveResults:results];
-            } else {
+                return;
+            }
+
+            if (results.count > 0) {
                 // beep tone & vibrate
                 AudioServicesPlaySystemSound(1052);
                 AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -186,6 +208,8 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
 }
 
 - (void)showLiveResults:(NSArray<SBSDKBarcodeScannerResult *> *)results {
+    [CATransaction begin];
+    [CATransaction setValue: (id) kCFBooleanTrue forKey: kCATransactionDisableActions];
     self.polygonLayer.path = nil;
     if (results.count != 0) {
         UIBezierPath *bezierPath = [UIBezierPath bezierPath];
@@ -195,6 +219,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
         }
         self.polygonLayer.path = bezierPath.CGPath;
     }
+    [CATransaction commit];
 }
 
 - (void)traitCollectionDidChange:(UITraitCollection *)previousTraitCollection {

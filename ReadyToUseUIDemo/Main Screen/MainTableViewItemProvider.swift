@@ -49,14 +49,20 @@ class MainTableViewItemProvider {
 
         
         
-        let qrScanItem = MainTableViewItem(title: "Scan QR-Code",
-                                           action: { actionHandler.showQRCodeScanning() })
+        let barcode2DScanItem = MainTableViewItem(title: "Scan 2D Barcodes",
+                                           action: { actionHandler.showTwoDimensionalBarcodeScanning() })
+        
+        let barcode1DScanItem = MainTableViewItem(title: "Scan 1D Barcodes",
+                                                action: { actionHandler.showOneDimensionalBarcodeScanning() })
+        
+        let batchBarcodesItemV3 = MainTableViewItem(title: "Scan Barcodes in batch (V3 Next Gen)",
+                                                    action: { actionHandler.showBarcodeBatchScanner(engineMode: .nextGen) })
+        
+        let batchBarcodesItemV2 = MainTableViewItem(title: "Scan Barcodes in batch (V2 Legacy)",
+                                                    action: { actionHandler.showBarcodeBatchScanner(engineMode: .legacy) })
         
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
-        
-        let batchBarcodesItem = MainTableViewItem(title: "Scan Barcodes in batch",
-                                                  action: { actionHandler.showBarcodeBatchScanner() })
         
         let idCardItem = MainTableViewItem(title: "Scan German ID card",
                                            action: { actionHandler.showIDCardScanner() })
@@ -67,17 +73,14 @@ class MainTableViewItemProvider {
         let mrzScanItem = MainTableViewItem(title: "Scan Machine Readable Zone",
                                             action: { actionHandler.showMRZScanning() })
 
-        let barcodeScanItem = MainTableViewItem(title: "Scan Bar Code",
-                                                action: { actionHandler.showBarcodeScanning() })
-        
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
 
         let licensePlateScanItem = MainTableViewItem(title: "Scan EU License Plate",
                                                      action: { actionHandler.showLicensePlateScanner() })
         
-        let items2 = [qrScanItem, mrzScanItem, idCardItem, driverLicenseItem,
-                      batchBarcodesItem, barcodeScanItem, textScanItem,
+        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItemV3, batchBarcodesItemV2,
+                      mrzScanItem, idCardItem, driverLicenseItem, textScanItem,
                       ehicScanItem, licensePlateScanItem]
         
         let firstSection = MainTableViewSection(title: "", items: items1)

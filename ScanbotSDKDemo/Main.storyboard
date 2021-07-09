@@ -266,7 +266,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NFC Passport Reader (beta)" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyk-PJ-2ic">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="NFC Passport Reader" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qyk-PJ-2ic">
                                                     <rect key="frame" x="29" y="0.0" width="317" height="74"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1950,10 +1950,6 @@ MRZ code at the from of your document:</string>
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xu5-z0-uI8">
-                                <rect key="frame" x="20.666666666666657" y="268.66666666666663" width="372.66666666666674" height="358.66666666666663"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ADN-KZ-aW1">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
@@ -1967,18 +1963,13 @@ MRZ code at the from of your document:</string>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Xu5-z0-uI8" firstAttribute="height" secondItem="rsL-DE-DTE" secondAttribute="height" multiplier="0.4" id="D0D-UO-6SK"/>
-                            <constraint firstItem="Xu5-z0-uI8" firstAttribute="centerY" secondItem="rsL-DE-DTE" secondAttribute="centerY" id="JHu-Sm-bYv"/>
-                            <constraint firstItem="Xu5-z0-uI8" firstAttribute="centerX" secondItem="rsL-DE-DTE" secondAttribute="centerX" id="Xob-mn-DTc"/>
                             <constraint firstItem="eJk-e9-yKZ" firstAttribute="top" secondItem="ADN-KZ-aW1" secondAttribute="bottom" id="i5H-NB-6Sx"/>
-                            <constraint firstItem="Xu5-z0-uI8" firstAttribute="width" secondItem="rsL-DE-DTE" secondAttribute="width" multiplier="0.9" id="mS7-hW-BVR"/>
                             <constraint firstAttribute="trailing" secondItem="ADN-KZ-aW1" secondAttribute="trailing" id="xNg-0E-e7p"/>
                             <constraint firstItem="ADN-KZ-aW1" firstAttribute="leading" secondItem="rsL-DE-DTE" secondAttribute="leading" id="xYD-be-V7Z"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Spo-Gs-cGC"/>
                     <connections>
-                        <outlet property="finderView" destination="Xu5-z0-uI8" id="4mK-Z3-4bd"/>
                         <outlet property="toolbar" destination="ADN-KZ-aW1" id="3jj-m2-cl3"/>
                         <segue destination="JT2-2c-YSO" kind="show" identifier="showBarCodeScannerResultsFromFinderView" id="aIj-8j-G7M"/>
                         <segue destination="Sdx-og-pZf" kind="show" identifier="showBarCodeTypesSelectionVCFromFinderDemo" id="x62-mu-ve4"/>
@@ -2557,8 +2548,8 @@ MRZ code at the from of your document:</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jjq-Nw-fZI"/>
-        <segue reference="l1x-kI-HGt"/>
+        <segue reference="x62-mu-ve4"/>
+        <segue reference="aIj-8j-G7M"/>
         <segue reference="OFA-fP-WQ1"/>
     </inferredMetricsTieBreakers>
     <resources>
