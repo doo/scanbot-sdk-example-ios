@@ -45,14 +45,14 @@ UIImagePickerControllerDelegate>
 }
 
 - (void)documentRecognizerViewController:(nonnull SBSDKGenericDocumentRecognizerViewController *)controller
-                    didRecognizeDocument:(nonnull SBSDKGenericDocument *)document
+                      didRecognizeResult:(nonnull SBSDKGenericDocumentRecognitionResult *)result
                                  onImage:(nonnull UIImage *)image {
     
-    self.indicator.hidden = YES;
-    [self.indicator stopAnimating];
-
-    [self displayResult:document withSourceImage:image];
-
+    if (result.status == SBSDKGenericDocumentRecognitionStatusSuccess) {
+        self.indicator.hidden = YES;
+        [self.indicator stopAnimating];
+        [self displayResult:result.document withSourceImage:result.croppedImage];
+    }
 }
 
 - (void)displayResult:(SBSDKGenericDocument *)document withSourceImage:(UIImage *)sourceImage {
@@ -85,7 +85,7 @@ didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info {
         [[SBSDKGenericDocumentRecognizer alloc] initWithAcceptedDocumentTypes:[self documentTypes]];
         recognizer.accumulatesDocuments = NO;
         
-        SBSDKGenericDocument *document = [recognizer recognizeDocumentOnImage:image];
+        SBSDKGenericDocument *document = [recognizer recognizeDocumentOnImage:image].document;
         [self displayResult:document withSourceImage:image];
     }];
 }
