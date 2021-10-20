@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DocumentScannerMainView: View {
     
-    @StateObject var pagesContainer: DocumentPagesContainer
+    @StateObject var pagesContainer = DocumentPagesContainer()
     
     var body: some View {
             VStack {

@@ -13,7 +13,7 @@ struct MainListView: View {
         NavigationView {
             List() {
                 NavigationLink("Document Scanner") {
-                    DocumentScannerMainView(pagesContainer: DocumentPagesContainer())
+                    DocumentScannerMainView()
                 }
                 NavigationLink("Barcode Scanner") {
                     BarcodeScannerListView()
