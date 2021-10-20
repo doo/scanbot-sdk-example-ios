@@ -8,7 +8,7 @@
 import Foundation
 import ScanbotSDK
 
-class DocumentPagesContainer: ObservableObject {
+final class DocumentPagesContainer: ObservableObject {
         
     @Published private(set) var pages: [SBSDKUIPage]
     @Published var selectedPage: SBSDKUIPage?
