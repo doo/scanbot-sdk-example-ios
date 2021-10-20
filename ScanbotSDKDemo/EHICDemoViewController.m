@@ -33,8 +33,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.recognizer = [[SBSDKHealthInsuranceCardRecognizer alloc]
-                       initWithValidationType:SBSDKHealthInsuranceCardValidationTypeAutoSupported];
+    self.recognizer = [[SBSDKHealthInsuranceCardRecognizer alloc] init];
     self.view.backgroundColor = [UIColor blackColor];
     [self.view.layer addSublayer:self.cameraSession.previewLayer];
 }
@@ -65,8 +64,8 @@
 didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
        fromConnection:(AVCaptureConnection *)connection {
     if (self.recognitionEnabled) {
-        SBSDKHealthInsuranceCardRecognitionResult *result = [self.recognizer detectAndRecognizeFromSampleBuffer:sampleBuffer
-                                                                                                    orientation:self.cameraSession.videoOrientation];
+        SBSDKHealthInsuranceCardRecognitionResult *result = [self.recognizer recognizeFromSampleBuffer:sampleBuffer
+                                                                                           orientation:self.cameraSession.videoOrientation];
         if (result != nil) {
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self showResult:result];
@@ -83,7 +82,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             case SBSDKHealthInsuranceCardDetectionStatusFailedDetection:
             self.statusView.text = @"Please align the back side of the card in the frame above to scan it";
             return;
-            case SBSDKHealthInsuranceCardDetectionStatusFailedValidation:
+            case SBSDKHealthInsuranceCardDetectionStatusIncompleteValidation:
             self.statusView.text = @"Card found, please wait...";
             return;
     }
