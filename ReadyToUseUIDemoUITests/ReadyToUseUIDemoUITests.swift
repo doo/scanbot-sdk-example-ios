@@ -34,7 +34,6 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         app.buttons["Cancel"].tap()
         
         tablesQuery.cells.staticTexts["Import Image"].tap()
-        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 4))
         app.buttons["Cancel"].tap()
         app.buttons["Done"].tap()
         
@@ -53,26 +52,34 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
         app.buttons["Cancel"].tap()
         
-        tablesQuery.cells.staticTexts["Scan QR-Code"].tap()
+        tablesQuery.cells.staticTexts["Scan 2D Barcodes"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
-        
+
+        tablesQuery.cells.staticTexts["Scan 1D Barcodes"].tap()
+        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
+        app.buttons["Done"].tap()
+
+        tablesQuery.cells.staticTexts["Scan Barcodes in batch (V3 Next Gen)"].tap()
+        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
+        app.buttons["Done"].tap()
+
+        tablesQuery.cells.staticTexts["Scan Barcodes in batch (V2 Legacy)"].tap()
+        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
+        app.buttons["Done"].tap()
+
         tablesQuery.cells.staticTexts["Scan Machine Readable Zone"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
-        tablesQuery.cells.staticTexts["Scan ID card"].tap()
+        tablesQuery.cells.staticTexts["Scan German ID card"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
-        
-        tablesQuery.cells.staticTexts["Scan Barcodes in batch"].tap()
+
+        tablesQuery.cells.staticTexts["Scan German driver's license"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
-        
-        tablesQuery.cells.staticTexts["Scan Bar Code"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
-        
+
         tablesQuery.cells.staticTexts["Extract text data"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
@@ -81,5 +88,8 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
+        tablesQuery.cells.staticTexts["Scan EU License Plate"].tap()
+        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
+        app.buttons["Done"].tap()
     }
 }

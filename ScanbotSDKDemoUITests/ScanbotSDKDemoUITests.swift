@@ -53,7 +53,7 @@ class ScanbotSDKDemoUITests: XCTestCase {
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         
-        tablesQuery.cells.staticTexts["NFC Passport Reader (beta)"].tap()
+        tablesQuery.cells.staticTexts["NFC Passport Reader"].tap()
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         
@@ -74,10 +74,6 @@ class ScanbotSDKDemoUITests: XCTestCase {
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         
         tablesQuery.cells.staticTexts["Barcode Scanner Demo with Finder View"].tap()
-        _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
-        app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
-        
-        tablesQuery.cells.staticTexts["ID Card Scanner"].tap()
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         
