@@ -8,24 +8,27 @@
 import SwiftUI
 import ScanbotSDK
 
-struct DocumentScannerView: UIViewControllerRepresentable {
+final class DocumentScannerView: UIViewControllerRepresentable {
     
     @ObservedObject var pagesContainer: DocumentPagesContainer
         
-    private let scannerViewController = SBSDKScannerViewController(parentViewController: UIViewController(),
-                                                                   imageStorage: nil)
+    private let parentController: UIViewController
+    private let scannerViewController: SBSDKScannerViewController
+    
+    init(pagesContainer: DocumentPagesContainer) {
+        self.pagesContainer = pagesContainer
+        self.parentController = UIViewController()
+        self.scannerViewController = SBSDKScannerViewController(parentViewController: self.parentController,
+                                                                imageStorage: nil)
+    }
     
     func makeCoordinator() -> Coordinator {
-        Coordinator(self, scannerViewController: scannerViewController)
+        Coordinator(self, scannerViewController: self.scannerViewController)
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        guard let parent = scannerViewController.parent else {
-            fatalError("Scanner View Controller must have parent view controller")
-        }
-        scannerViewController.delegate = context.coordinator
-        
-        return parent
+        self.scannerViewController.delegate = context.coordinator
+        return self.parentController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
