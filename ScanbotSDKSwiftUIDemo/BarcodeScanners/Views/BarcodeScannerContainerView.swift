@@ -24,7 +24,6 @@ struct BarcodeScannerContainerView: View {
         viewForScanner(scanner)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle(Text(scanner.title))
-            .ignoresSafeArea()
             .onAppear{ self.isRecognitionEnabled = true }
             .onDisappear { self.isRecognitionEnabled = false }
     }
