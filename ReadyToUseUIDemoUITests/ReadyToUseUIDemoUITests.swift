@@ -32,11 +32,7 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         tablesQuery.cells.staticTexts["Multiple objects scanner"].tap()
         XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
         app.buttons["Cancel"].tap()
-        
-        tablesQuery.cells.staticTexts["Import Image"].tap()
-        app.buttons["Cancel"].tap()
-        app.buttons["Done"].tap()
-        
+                
         tablesQuery.cells.staticTexts["View Images"].tap()
         XCTAssert(app.buttons["Back"].waitForExistence(timeout: 1))
         app.buttons["Back"].tap()
