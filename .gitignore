@@ -9,3 +9,4 @@ ScanbotSDK/
 *.xcuserstate
 DownloadTemp/
 
+/ScanbotSDKSwiftUIDemo.xcodeproj/xcuserdata
