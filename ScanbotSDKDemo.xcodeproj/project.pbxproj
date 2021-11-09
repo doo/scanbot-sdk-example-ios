@@ -48,6 +48,9 @@
 		28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */; };
 		28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */; };
+		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
+		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
+		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
 		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
 		6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA024E52EF600005627 /* PassportReaderViewController.m */; };
@@ -155,6 +158,9 @@
 		28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentViewController.m; sourceTree = "<group>"; };
 		28D7360D24AE2D8100A0B821 /* GenericDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentViewController.h; sourceTree = "<group>"; };
 		28D7360E24AE2D8100A0B821 /* GenericDocumentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentResultViewController.h; sourceTree = "<group>"; };
+		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
+		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
 		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
 		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
@@ -268,6 +274,15 @@
 			path = BusinessCardDemo;
 			sourceTree = "<group>";
 		};
+		28002718273400BE00E11311 /* DocumentScanners */ = {
+			isa = PBXGroup;
+			children = (
+				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
+				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
+			);
+			path = DocumentScanners;
+			sourceTree = "<group>";
+		};
 		28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -300,6 +315,15 @@
 				287FE72224AE3D71002569D9 /* ScanbotSDK.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		28E2736D27356EB600B3F7F4 /* ReviewDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */,
+				28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */,
+			);
+			path = ReviewDocuments;
 			sourceTree = "<group>";
 		};
 		6954AE9B24E52E7D00005627 /* NFC */ = {
@@ -350,6 +374,7 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				28002718273400BE00E11311 /* DocumentScanners */,
 				6954AE9B24E52E7D00005627 /* NFC */,
 				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
@@ -629,8 +654,10 @@
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
 				28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */,
 				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
+				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
 				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
+				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
@@ -650,6 +677,7 @@
 				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
 				C22FFF1522FAEA7B006E0862 /* BarCodesResultDetailsViewController.m in Sources */,
 				086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */,
+				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
