@@ -151,11 +151,11 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
     
     func imageEditingViewControllerRotateClockwiseToolbarItem(
         _ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
-            return UIBarButtonItem(title: "Rotate Right", style: .done, target: nil, action: nil)
+            return UIBarButtonItem(title: "Rotate Right", style: .plain, target: nil, action: nil)
     }
 
     func imageEditingViewControllerRotateCounterClockwiseToolbarItem(
         _ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
-            return UIBarButtonItem(title: "Rotate Left", style: .done, target: nil, action: nil)
+            return UIBarButtonItem(title: "Rotate Left", style: .plain, target: nil, action: nil)
     }
 }
