@@ -13,19 +13,9 @@ class DocumentScannerViewController: UIViewController {
     
     private var scanner: SBSDKScannerViewController?
     
-    private var documentImageStorage: SBSDKIndexedImageStorage {
-        guard let appDocumentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                      in: .userDomainMask).last else {
-            fatalError("Failed to fetch document's directory URL")
-        }
-        let documentImagesDirectory = appDocumentsDirectory.path + "sbsdk-demo-document-images"
-        let documentImagesDirectoryUrl = URL(fileURLWithPath: documentImagesDirectory, isDirectory: true)
-        let customStorageLocation = SBSDKStorageLocation(baseURL: documentImagesDirectoryUrl)
-        guard let documentImageStorage = SBSDKIndexedImageStorage(storageLocation: customStorageLocation) else {
-            fatalError("Failed to create image storage")
-        }
-        return documentImageStorage
-    }
+    private var documentImageStorage = ImageStorageManager().documentImageStorage
+    private var originalImageStorage = ImageStorageManager().originalImageStorage
+    
     @IBOutlet private var pageCountButton: UIBarButtonItem?
     @IBOutlet private var scannerContainerView: UIView?
     
@@ -38,7 +28,7 @@ class DocumentScannerViewController: UIViewController {
         }
         scanner = SBSDKScannerViewController(parentViewController: self,
                                              parentView: self.scannerContainerView,
-                                             imageStorage: documentImageStorage,
+                                             imageStorage: nil,
                                              enableQRCodeDetection: false)
     }
     
@@ -69,6 +59,7 @@ class DocumentScannerViewController: UIViewController {
             if documentImageStorage.imageCount > 0 {
                 if let controller = segue.destination as? ReviewDocumentsViewController {
                     controller.documentImageStorage = documentImageStorage
+                    controller.originalImageStorage = originalImageStorage
                 }
             }
         }
@@ -76,12 +67,13 @@ class DocumentScannerViewController: UIViewController {
 }
 
 extension DocumentScannerViewController: SBSDKScannerViewControllerDelegate {
-    
-    func scannerController(_ controller: SBSDKScannerViewController,
-                           didCapture image: UIImage,
-                           with info: SBSDKCaptureInfo) {
-        documentImageStorage.add(image)
+    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+        documentImageStorage.add(documentImage)
         updateUI()
+    }
+    
+    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
+        originalImageStorage.add(image)
     }
 }
 

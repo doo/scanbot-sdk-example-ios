@@ -12,13 +12,16 @@ import ScanbotSDK
 class ReviewDocumentsViewController: UIViewController {
     
     var documentImageStorage: SBSDKIndexedImageStorage?
-        
+    var originalImageStorage: SBSDKIndexedImageStorage?
+
     @IBOutlet private var collectionView: UICollectionView?
     @IBOutlet private var importButton: UIBarButtonItem?
     @IBOutlet private var deleteAllButton: UIBarButtonItem?
     @IBOutlet private var exportButton: UIBarButtonItem?
     @IBOutlet private var toolbar: UIToolbar?
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
+
+    private var selectedImageIndex: Int?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,13 +44,14 @@ class ReviewDocumentsViewController: UIViewController {
     
     @IBAction private func deleteAllButtonDidPress(_ sender: Any) {
         documentImageStorage?.removeAllImages()
+        originalImageStorage?.removeAllImages()
         reloadData()
     }
     
     @IBAction private func exportButtonDidPress(_ sender: Any) {
         guard let documentImageStorage = documentImageStorage else { return }
         activityIndicator?.startAnimating()
-        DispatchQueue(label: "ExportToPDF_queue").async {
+        DispatchQueue(label: "exportToPDF_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
@@ -95,21 +99,63 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCollectionCell",
                                                       for: indexPath) as! ReviewDocumentsCollectionViewCell
         cell.previewImageView?.image = image
+        
         return cell
+    }
+}
+
+extension ReviewDocumentsViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let image = originalImageStorage?.image(at: UInt(indexPath.item)) else { return }
+        
+        selectedImageIndex = indexPath.item
+        
+        let editingViewController = SBSDKImageEditingViewController()
+        editingViewController.image = image
+        editingViewController.delegate = self
+        
+        navigationController?.pushViewController(editingViewController, animated: true)
     }
 }
 
 extension ReviewDocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            documentImageStorage?.add(image)
-            reloadData()
-        }
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        documentImageStorage?.add(image)
+        originalImageStorage?.add(image)
+        reloadData()
         picker.dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
+    }
+}
+
+extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate {
+    func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
+                                    didApplyChangesWith polygon: SBSDKPolygon,
+                                    croppedImage: UIImage) {
+        guard let selectedImageIndex = selectedImageIndex else { return }
+        
+        documentImageStorage?.replaceImage(at: UInt(selectedImageIndex), with: croppedImage)
+        editingViewController.navigationController?.popViewController(animated: true)
+    }
+    
+    func imageEditingViewControllerApplyButtonItem(
+        _ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
+        return UIBarButtonItem(title: "Apply", style: .done, target: nil, action: nil)
+    }
+    
+    func imageEditingViewControllerRotateClockwiseToolbarItem(
+        _ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
+            return UIBarButtonItem(title: "Rotate Right", style: .done, target: nil, action: nil)
+    }
+
+    func imageEditingViewControllerRotateCounterClockwiseToolbarItem(
+        _ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
+            return UIBarButtonItem(title: "Rotate Left", style: .done, target: nil, action: nil)
     }
 }
