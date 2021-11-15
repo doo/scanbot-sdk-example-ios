@@ -17,6 +17,7 @@ class ReviewDocumentsViewController: UIViewController {
     @IBOutlet private var collectionView: UICollectionView?
     @IBOutlet private var importButton: UIBarButtonItem?
     @IBOutlet private var deleteAllButton: UIBarButtonItem?
+    @IBOutlet private var filterButton: UIBarButtonItem?
     @IBOutlet private var exportButton: UIBarButtonItem?
     @IBOutlet private var toolbar: UIToolbar?
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
@@ -46,6 +47,10 @@ class ReviewDocumentsViewController: UIViewController {
         documentImageStorage?.removeAllImages()
         originalImageStorage?.removeAllImages()
         reloadData()
+    }
+    
+    @IBAction private func filterButtonDidPress(_ sender: Any) {
+//        let filterController = Adjusta
     }
     
     @IBAction private func exportButtonDidPress(_ sender: Any) {
@@ -87,6 +92,7 @@ class ReviewDocumentsViewController: UIViewController {
     }
 }
 
+// MARK: - UICollectionViewDataSource
 extension ReviewDocumentsViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,6 +110,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - UICollectionViewDelegate
 extension ReviewDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let image = originalImageStorage?.image(at: UInt(indexPath.item)) else { return }
@@ -118,6 +125,7 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate
 extension ReviewDocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
@@ -134,6 +142,7 @@ extension ReviewDocumentsViewController: UIImagePickerControllerDelegate, UINavi
     }
 }
 
+// MARK: - SBSDKImageEditingViewControllerDelegate
 extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate {
     func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
                                     didApplyChangesWith polygon: SBSDKPolygon,

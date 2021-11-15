@@ -655,21 +655,27 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNG-bM-XWY">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Export to PDF" id="3r2-wf-KCD">
-                                        <connections>
-                                            <action selector="exportButtonDidPress:" destination="xfQ-6p-F5C" id="4wM-up-DTY"/>
-                                        </connections>
-                                    </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8ag-FB-JsX"/>
                                     <barButtonItem title="Import" id="uGR-i5-pZQ">
                                         <connections>
                                             <action selector="importButtonDidPress:" destination="xfQ-6p-F5C" id="N8u-lI-8cY"/>
                                         </connections>
                                     </barButtonItem>
-                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6uT-St-QhB"/>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="8ag-FB-JsX"/>
                                     <barButtonItem title="Delete All" id="goE-KE-WeB">
                                         <connections>
                                             <action selector="deleteAllButtonDidPress:" destination="xfQ-6p-F5C" id="Vl6-64-hi8"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="Aam-NM-uMi"/>
+                                    <barButtonItem title="Filter" id="zik-y2-VKY">
+                                        <connections>
+                                            <action selector="filterButtonDidPress:" destination="xfQ-6p-F5C" id="tAe-fU-IMf"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="6uT-St-QhB"/>
+                                    <barButtonItem title="Export to PDF" id="3r2-wf-KCD">
+                                        <connections>
+                                            <action selector="exportButtonDidPress:" destination="xfQ-6p-F5C" id="4wM-up-DTY"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -694,6 +700,7 @@
                         <outlet property="collectionView" destination="oTb-Ne-skE" id="bMC-33-Ydq"/>
                         <outlet property="deleteAllButton" destination="goE-KE-WeB" id="4Pz-RT-NgF"/>
                         <outlet property="exportButton" destination="3r2-wf-KCD" id="RoS-7N-V5b"/>
+                        <outlet property="filterButton" destination="zik-y2-VKY" id="zzz-px-5Dj"/>
                         <outlet property="importButton" destination="uGR-i5-pZQ" id="5cg-yw-YL8"/>
                         <outlet property="toolbar" destination="qNG-bM-XWY" id="zTj-Ja-O6h"/>
                     </connections>
@@ -2306,20 +2313,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="44.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14.333333333333336" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.66666666666669" y="11.999999999999998" width="40.333333333333314" height="20.333333333333329"/>
+                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
