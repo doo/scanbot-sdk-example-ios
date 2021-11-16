@@ -33,7 +33,11 @@ class SAdjustableFiltersTableViewController: UIViewController {
                                       shadowsHighlightsFilter, smartFilter])
     }()
     
-    private var selectedImage: UIImage?
+    var selectedImage: UIImage? {
+        didSet {
+            updateImage()
+        }
+    }
     private var filteringQueue = DispatchQueue(label: "io.scanbotsdk.filtering")
     
     private var filterModels: [SFilterModel] = []
@@ -102,7 +106,41 @@ class SAdjustableFiltersTableViewController: UIViewController {
         filterModels.append(highlights)
         filterModels.append(specialContrast)
     }
+    
+    @objc private func applyFilterChain() {
+        filteringQueue.async { [weak self] in
+            DispatchQueue.main.sync { [weak self] in
+                self?.processingIndicator?.startAnimating()
+            }
+            guard let selectedImage = self?.selectedImage else { return }
+            let filteredImage = self?.compoundFilter.run(on: selectedImage)
+            DispatchQueue.main.sync {
+                self?.filteredImageView?.image = filteredImage
+                self?.processingIndicator?.stopAnimating()
+            }
+        }
+    }
+    
+    @IBAction func cancelButtonDidPress(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     private func updateImage() {
-        
+        if selectedImage == nil { return }
+        NSObject.cancelPreviousPerformRequests(withTarget: self, selector: #selector(applyFilterChain), object: nil)
+        perform(#selector(applyFilterChain), with: nil, afterDelay: 0.2)
+    }
+}
+
+extension SAdjustableFiltersTableViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return filterModels.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! SFilterTableViewCell
+        cell.filterModel = filterModels[indexPath.row]
+        return cell
     }
 }

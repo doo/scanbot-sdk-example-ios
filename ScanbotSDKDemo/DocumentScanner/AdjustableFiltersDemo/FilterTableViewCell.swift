@@ -9,6 +9,10 @@
 import UIKit
 
 class SFilterTableViewCell: UITableViewCell {
+    
+    @IBOutlet private var label: UILabel?
+    @IBOutlet private var slider: UISlider?
+    
     var filterModel: SFilterModel? {
         didSet {
             guard let filterModel = filterModel else { return }
@@ -19,6 +23,12 @@ class SFilterTableViewCell: UITableViewCell {
         }
     }
     
-    @IBOutlet private var label: UILabel?
-    @IBOutlet private var slider: UISlider?
+    @IBAction private func sliderChanged(_ sender: UISlider) {
+        filterModel?.value = sender.value
+    }
+    
+    @IBAction private func resetButtonPressed(_ sender: Any) {
+        filterModel?.value = 0
+        slider?.value = 0
+    }
 }

@@ -207,8 +207,8 @@
 		C275627E1DE45368003F5FE0 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoViewController.m; path = ScanbotSDKDemo/DemoViewController.m; sourceTree = SOURCE_ROOT; };
 		C275627F1DE45368003F5FE0 /* DocumentDemoNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoNavigationViewController.h; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.h; sourceTree = SOURCE_ROOT; };
 		C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoNavigationViewController.m; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.m; sourceTree = SOURCE_ROOT; };
-		C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoViewController.h; path = ScanbotSDKDemo/DocumentScanner/DocumentDemoViewController.h; sourceTree = SOURCE_ROOT; };
-		C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoViewController.m; path = ScanbotSDKDemo/DocumentScanner/DocumentDemoViewController.m; sourceTree = SOURCE_ROOT; };
+		C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoViewController.h; path = ScanbotSDKDemo/DocumentScanner/Objc/DocumentDemoViewController.h; sourceTree = SOURCE_ROOT; };
+		C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoViewController.m; path = ScanbotSDKDemo/DocumentScanner/Objc/DocumentDemoViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562881DE45368003F5FE0 /* PayformDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayformDemoViewController.h; path = ScanbotSDKDemo/PayformDemoViewController.h; sourceTree = SOURCE_ROOT; };
 		C27562891DE45368003F5FE0 /* PayformDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayformDemoViewController.m; path = ScanbotSDKDemo/PayformDemoViewController.m; sourceTree = SOURCE_ROOT; };
@@ -285,14 +285,35 @@
 		28002718273400BE00E11311 /* DocumentScanner */ = {
 			isa = PBXGroup;
 			children = (
-				C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */,
-				C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */,
+				28352F032743D5CC00AF6238 /* Objc */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
 				28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */,
 				288F0D48273C2A0900BF615C /* Managers */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
+			sourceTree = "<group>";
+		};
+		28352F022743CFD600AF6238 /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+				28B21DC023E313C2002D2621 /* FilterTableViewCell.h */,
+				28B21DC123E313C2002D2621 /* FilterTableViewCell.m */,
+				28B21DBD23E31219002D2621 /* FilterModel.h */,
+				28B21DBE23E31219002D2621 /* FilterModel.m */,
+				28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */,
+				28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */,
+			);
+			path = Objc;
+			sourceTree = "<group>";
+		};
+		28352F032743D5CC00AF6238 /* Objc */ = {
+			isa = PBXGroup;
+			children = (
+				C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */,
+				C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */,
+			);
+			path = Objc;
 			sourceTree = "<group>";
 		};
 		288F0D48273C2A0900BF615C /* Managers */ = {
@@ -306,14 +327,9 @@
 		28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */ = {
 			isa = PBXGroup;
 			children = (
-				28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */,
-				28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */,
+				28352F022743CFD600AF6238 /* Objc */,
 				288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */,
-				28B21DBD23E31219002D2621 /* FilterModel.h */,
-				28B21DBE23E31219002D2621 /* FilterModel.m */,
 				288F0D4B27428DE100BF615C /* FilterModel.swift */,
-				28B21DC023E313C2002D2621 /* FilterTableViewCell.h */,
-				28B21DC123E313C2002D2621 /* FilterTableViewCell.m */,
 				288F0D4927428D8D00BF615C /* FilterTableViewCell.swift */,
 			);
 			path = AdjustableFiltersDemo;

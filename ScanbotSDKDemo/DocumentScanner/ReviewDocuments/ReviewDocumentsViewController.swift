@@ -49,10 +49,6 @@ class ReviewDocumentsViewController: UIViewController {
         reloadData()
     }
     
-    @IBAction private func filterButtonDidPress(_ sender: Any) {
-//        let filterController = Adjusta
-    }
-    
     @IBAction private func exportButtonDidPress(_ sender: Any) {
         guard let documentImageStorage = documentImageStorage else { return }
         activityIndicator?.startAnimating()
@@ -80,7 +76,7 @@ class ReviewDocumentsViewController: UIViewController {
     
     private func reloadData() {
         collectionView?.reloadData()
-        [importButton, deleteAllButton, exportButton]
+        [importButton, deleteAllButton, filterButton, exportButton]
             .forEach({ $0?.isEnabled = (documentImageStorage?.imageCount ?? 0) > 0 })
     }
         
@@ -89,6 +85,16 @@ class ReviewDocumentsViewController: UIViewController {
         controller.popoverPresentationController?.sourceView = exportButton?.customView
         controller.popoverPresentationController?.sourceRect = exportButton?.customView?.bounds ?? .zero
         present(controller, animated: true, completion: nil)
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "adjustableFiltersSegue" {
+           if let navigationController = segue.destination as? UINavigationController,
+              let controller = navigationController.viewControllers.first as? SAdjustableFiltersTableViewController {
+               navigationController.modalPresentationStyle = .fullScreen
+               controller.selectedImage = documentImageStorage?.image(at: 0)
+           }
+       }
     }
 }
 
