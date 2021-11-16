@@ -1,5 +1,5 @@
 //
-//  FilterTableViewCell.swift
+//  AdjustableFilterTableViewCell.swift
 //  ScanbotSDKDemo
 //
 //  Created by Danil Voitenko on 15.11.21.
@@ -8,12 +8,12 @@
 
 import UIKit
 
-class FilterTableViewCell: UITableViewCell {
+class AdjustableFilterTableViewCell: UITableViewCell {
     
     @IBOutlet private var label: UILabel?
     @IBOutlet private var slider: UISlider?
     
-    var filterModel: FilterModel? {
+    var filterModel: AdjustableFilterModel? {
         didSet {
             guard let filterModel = filterModel else { return }
             label?.text = filterModel.name
