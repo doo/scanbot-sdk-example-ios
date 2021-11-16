@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class SAdjustableFiltersTableViewController: UIViewController {
+class AdjustableFiltersTableViewController: UIViewController {
     
     @IBOutlet private var filteredImageView: UIImageView?
     @IBOutlet private var processingIndicator: UIActivityIndicatorView?
@@ -40,7 +40,7 @@ class SAdjustableFiltersTableViewController: UIViewController {
     }
     private var filteringQueue = DispatchQueue(label: "io.scanbotsdk.filtering")
     
-    private var filterModels: [SFilterModel] = []
+    private var filterModels: [FilterModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -50,47 +50,47 @@ class SAdjustableFiltersTableViewController: UIViewController {
     }
     
     private func buildFilterModels() {
-        let brightness = SFilterModel(name: "Brightness") { [weak self] value in
+        let brightness = FilterModel(name: "Brightness") { [weak self] value in
             self?.brightnessFilter.brightness = value
             self?.updateImage()
         }
-        let contrast = SFilterModel(name: "Contrast") { [weak self] value in
+        let contrast = FilterModel(name: "Contrast") { [weak self] value in
             self?.contrastFilter.contrast = value
             self?.updateImage()
         }
-        let saturation = SFilterModel(name: "Saturation") { [weak self] value in
+        let saturation = FilterModel(name: "Saturation") { [weak self] value in
             self?.saturationFilter.saturation = value
             self?.updateImage()
         }
-        let vibrance = SFilterModel(name: "Vibrance") { [weak self] value in
+        let vibrance = FilterModel(name: "Vibrance") { [weak self] value in
             self?.vibranceFilter.vibrance = value
             self?.updateImage()
         }
-        let temperature = SFilterModel(name: "Temperature") { [weak self] value in
+        let temperature = FilterModel(name: "Temperature") { [weak self] value in
             self?.temperatureFilter.temperature = value
             self?.updateImage()
         }
-        let tint = SFilterModel(name: "Tint") { [weak self] value in
+        let tint = FilterModel(name: "Tint") { [weak self] value in
             self?.tintFilter.tint = value
             self?.updateImage()
         }
-        let blackPoint = SFilterModel(name: "Black Point") { [weak self] value in
+        let blackPoint = FilterModel(name: "Black Point") { [weak self] value in
             self?.whiteAndBlackPointFilter.blackPointOffset = value
             self?.updateImage()
         }
-        let whitePoint = SFilterModel(name: "White Point") { [weak self] value in
+        let whitePoint = FilterModel(name: "White Point") { [weak self] value in
             self?.whiteAndBlackPointFilter.whitePointOffset = value
             self?.updateImage()
         }
-        let shadows = SFilterModel(name: "Shadows") { [weak self] value in
+        let shadows = FilterModel(name: "Shadows") { [weak self] value in
             self?.shadowsHighlightsFilter.shadows = value
             self?.updateImage()
         }
-        let highlights = SFilterModel(name: "Highlights") { [weak self] value in
+        let highlights = FilterModel(name: "Highlights") { [weak self] value in
             self?.shadowsHighlightsFilter.highlights = value
             self?.updateImage()
         }
-        let specialContrast = SFilterModel(name: "Special Contrast") { [weak self] value in
+        let specialContrast = FilterModel(name: "Special Contrast") { [weak self] value in
             self?.specialContrastFilter.amount = value
             self?.updateImage()
         }
@@ -132,14 +132,14 @@ class SAdjustableFiltersTableViewController: UIViewController {
     }
 }
 
-extension SAdjustableFiltersTableViewController: UITableViewDataSource {
+extension AdjustableFiltersTableViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return filterModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! SFilterTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! FilterTableViewCell
         cell.filterModel = filterModels[indexPath.row]
         return cell
     }

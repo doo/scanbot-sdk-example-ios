@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct SFilterModel {
+struct FilterModel {
     typealias Changehandler = (Float)->()
     
     var name: String

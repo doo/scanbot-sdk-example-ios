@@ -8,12 +8,12 @@
 
 import UIKit
 
-class SFilterTableViewCell: UITableViewCell {
+class FilterTableViewCell: UITableViewCell {
     
     @IBOutlet private var label: UILabel?
     @IBOutlet private var slider: UISlider?
     
-    var filterModel: SFilterModel? {
+    var filterModel: FilterModel? {
         didSet {
             guard let filterModel = filterModel else { return }
             label?.text = filterModel.name

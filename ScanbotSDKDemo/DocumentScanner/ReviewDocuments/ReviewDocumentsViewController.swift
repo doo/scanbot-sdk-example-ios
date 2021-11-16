@@ -43,6 +43,10 @@ class ReviewDocumentsViewController: UIViewController {
         present(imagePicker, animated: true)
     }
     
+    @IBAction private func filterButtonDidPress(_ sender: Any) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    }
+    
     @IBAction private func deleteAllButtonDidPress(_ sender: Any) {
         documentImageStorage?.removeAllImages()
         originalImageStorage?.removeAllImages()
@@ -90,7 +94,7 @@ class ReviewDocumentsViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "adjustableFiltersSegue" {
            if let navigationController = segue.destination as? UINavigationController,
-              let controller = navigationController.viewControllers.first as? SAdjustableFiltersTableViewController {
+              let controller = navigationController.viewControllers.first as? AdjustableFiltersTableViewController {
                navigationController.modalPresentationStyle = .fullScreen
                controller.selectedImage = documentImageStorage?.image(at: 0)
            }

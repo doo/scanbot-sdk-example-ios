@@ -45,9 +45,6 @@
 		288F0D4A27428D8D00BF615C /* FilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* FilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* FilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* FilterModel.swift */; };
 		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
-		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
-		28B21DBF23E31219002D2621 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBE23E31219002D2621 /* FilterModel.m */; };
-		28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DC123E313C2002D2621 /* FilterTableViewCell.m */; };
 		28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */; };
 		28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */; };
@@ -154,12 +151,6 @@
 		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
 		289AB67226011D2400D9197A /* LicensePlateDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePlateDemoViewController.h; sourceTree = "<group>"; };
 		289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePlateDemoViewController.m; sourceTree = "<group>"; };
-		28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdjustableFiltersTableViewController.h; sourceTree = "<group>"; };
-		28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdjustableFiltersTableViewController.m; sourceTree = "<group>"; };
-		28B21DBD23E31219002D2621 /* FilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterModel.h; sourceTree = "<group>"; };
-		28B21DBE23E31219002D2621 /* FilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterModel.m; sourceTree = "<group>"; };
-		28B21DC023E313C2002D2621 /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
-		28B21DC123E313C2002D2621 /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
 		28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentResultViewController.m; sourceTree = "<group>"; };
 		28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentFieldTableViewCell.h; sourceTree = "<group>"; };
 		28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentFieldTableViewCell.m; sourceTree = "<group>"; };
@@ -287,24 +278,11 @@
 			children = (
 				28352F032743D5CC00AF6238 /* Objc */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
-				28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */,
+				28B21DBC23E31200002D2621 /* Filters */,
 				288F0D48273C2A0900BF615C /* Managers */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
-			sourceTree = "<group>";
-		};
-		28352F022743CFD600AF6238 /* Objc */ = {
-			isa = PBXGroup;
-			children = (
-				28B21DC023E313C2002D2621 /* FilterTableViewCell.h */,
-				28B21DC123E313C2002D2621 /* FilterTableViewCell.m */,
-				28B21DBD23E31219002D2621 /* FilterModel.h */,
-				28B21DBE23E31219002D2621 /* FilterModel.m */,
-				28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */,
-				28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */,
-			);
-			path = Objc;
 			sourceTree = "<group>";
 		};
 		28352F032743D5CC00AF6238 /* Objc */ = {
@@ -324,15 +302,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */ = {
+		28B21DBC23E31200002D2621 /* Filters */ = {
 			isa = PBXGroup;
 			children = (
-				28352F022743CFD600AF6238 /* Objc */,
 				288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */,
 				288F0D4B27428DE100BF615C /* FilterModel.swift */,
 				288F0D4927428D8D00BF615C /* FilterTableViewCell.swift */,
 			);
-			path = AdjustableFiltersDemo;
+			path = Filters;
 			sourceTree = "<group>";
 		};
 		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
@@ -694,14 +671,12 @@
 				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
 				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
-				28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
 				28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */,
 				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
 				288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */,
 				C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */,
-				28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */,
 				C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */,
@@ -720,7 +695,6 @@
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
-				28B21DBF23E31219002D2621 /* FilterModel.m in Sources */,
 				6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */,
 				28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
