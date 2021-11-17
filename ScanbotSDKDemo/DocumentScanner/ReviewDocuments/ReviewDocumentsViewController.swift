@@ -45,6 +45,35 @@ class ReviewDocumentsViewController: UIViewController {
     
     @IBAction private func filterButtonDidPress(_ sender: Any) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        Filter.filters.forEach { filterType in
+            let action = UIAlertAction(title: Filter.name(for: filterType), style: .default) { _ in
+                let smartFilter = SBSDKSmartFilter()
+                smartFilter.filterType = filterType
+                let compoundFilter = SBSDKCompoundFilter(filters: [smartFilter])
+                DispatchQueue(label: "FilterQueue").async { [weak self] in
+                    guard let self = self,
+                    let documentImageStorage = self.documentImageStorage,
+                    let originalImageStorage = self.originalImageStorage else { return }
+                    for index in 0..<documentImageStorage.imageCount {
+                        if let filteredImage = compoundFilter.run(on: originalImageStorage.image(at: index)!) {
+                            documentImageStorage.replaceImage(at: index, with: filteredImage)
+                        }
+                    }
+                    DispatchQueue.main.async {
+                        self.reloadData()
+                    }
+                }
+            }
+            alert.addAction(action)
+        }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            alert.dismiss(animated: true, completion: nil)
+        }
+        alert.addAction(cancel)
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = self.view.bounds
+        alert.popoverPresentationController?.permittedArrowDirections = []
+        present(alert, animated: true, completion: nil)
     }
     
     @IBAction private func deleteAllButtonDidPress(_ sender: Any) {
@@ -178,3 +207,58 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
             return UIBarButtonItem(title: "Rotate Left", style: .plain, target: nil, action: nil)
     }
 }
+
+
+struct Filter {
+    static let filters: [SBSDKImageFilterType] = [
+        SBSDKImageFilterTypeNone,
+        SBSDKImageFilterTypeColor,
+        SBSDKImageFilterTypeGray,
+        SBSDKImageFilterTypePureGray,
+        SBSDKImageFilterTypeBinarized,
+        SBSDKImageFilterTypeColorDocument,
+        SBSDKImageFilterTypePureBinarized,
+        SBSDKImageFilterTypeBackgroundClean,
+        SBSDKImageFilterTypeBlackAndWhite,
+        SBSDKImageFilterTypeOtsuBinarization,
+        SBSDKImageFilterTypeDeepBinarization,
+        SBSDKImageFilterTypeEdgeHighlight,
+        SBSDKImageFilterTypeLowLightBinarization,
+        SBSDKImageFilterTypeLowLightBinarization2
+    ]
+    
+    static func name(for filter: SBSDKImageFilterType) -> String {
+        switch filter {
+        case SBSDKImageFilterTypeNone:
+            return "None"
+        case SBSDKImageFilterTypeColor:
+            return "Color"
+        case SBSDKImageFilterTypeGray:
+            return "Optimized greyscale"
+        case SBSDKImageFilterTypePureGray:
+            return "Pure greyscale"
+        case SBSDKImageFilterTypeBinarized:
+            return "Binarized"
+        case SBSDKImageFilterTypeColorDocument:
+            return "Color document"
+        case SBSDKImageFilterTypePureBinarized:
+            return "Pure binarized"
+        case SBSDKImageFilterTypeBackgroundClean:
+            return "Background clean"
+        case SBSDKImageFilterTypeBlackAndWhite:
+            return "Black & white"
+        case SBSDKImageFilterTypeOtsuBinarization:
+            return "Otsu binarization"
+        case SBSDKImageFilterTypeDeepBinarization:
+            return "Deep binarization"
+        case SBSDKImageFilterTypeEdgeHighlight:
+            return "Edge highlight"
+        case SBSDKImageFilterTypeLowLightBinarization:
+            return "Low light binarization"
+        case SBSDKImageFilterTypeLowLightBinarization2:
+            return "Low light binarization 2"
+        default: return "UNKNOWN"
+        }
+    }
+}
+
