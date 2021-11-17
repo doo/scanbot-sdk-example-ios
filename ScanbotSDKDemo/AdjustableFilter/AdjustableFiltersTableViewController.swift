@@ -25,12 +25,10 @@ class AdjustableFiltersTableViewController: UIViewController {
     private let shadowsHighlightsFilter = SBSDKShadowsHighlightsFilter()
     private let specialContrastFilter = SBSDKSpecialContrastFilter()
     
-    private let smartFilter = SBSDKSmartFilter()
-    
     private lazy var compoundFilter = {
         SBSDKCompoundFilter(filters: [brightnessFilter, contrastFilter, saturationFilter, vibranceFilter,
                                       temperatureFilter, tintFilter, specialContrastFilter, whiteAndBlackPointFilter,
-                                      shadowsHighlightsFilter, smartFilter])
+                                      shadowsHighlightsFilter])
     }()
     
     var selectedImage: UIImage? {
@@ -121,8 +119,11 @@ class AdjustableFiltersTableViewController: UIViewController {
         }
     }
     
-    @IBAction func cancelButtonDidPress(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
+    @IBAction func importButtonDidPress(_ sender: UIBarButtonItem) {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .photoLibrary
+        present(picker, animated: true, completion: nil)
     }
     
     private func updateImage() {
@@ -142,5 +143,15 @@ extension AdjustableFiltersTableViewController: UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "FilterCell", for: indexPath) as! AdjustableFilterTableViewCell
         cell.filterModel = filterModels[indexPath.row]
         return cell
+    }
+}
+
+extension AdjustableFiltersTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        selectedImage = info[.originalImage] as? UIImage
+        dismiss(animated: true) { [weak self] in
+            self?.updateImage()
+        }
     }
 }

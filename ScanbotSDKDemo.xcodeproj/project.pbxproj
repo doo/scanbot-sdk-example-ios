@@ -278,7 +278,6 @@
 			children = (
 				28352F032743D5CC00AF6238 /* Objc */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
-				28B21DBC23E31200002D2621 /* Filters */,
 				288F0D48273C2A0900BF615C /* Managers */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
@@ -302,14 +301,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
-		28B21DBC23E31200002D2621 /* Filters */ = {
+		28B21DBC23E31200002D2621 /* AdjustableFilter */ = {
 			isa = PBXGroup;
 			children = (
 				288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */,
 				288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */,
 				288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */,
 			);
-			path = Filters;
+			path = AdjustableFilter;
 			sourceTree = "<group>";
 		};
 		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
@@ -397,6 +396,7 @@
 				08716C7A220DC49400119B9C /* BusinessCardDemo */,
 				C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */,
 				08299BBB1FC5822F00E01F0E /* Helpers */,
+				28B21DBC23E31200002D2621 /* AdjustableFilter */,
 				C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */,
 				C2F131F02034237A00FFF96B /* MRZDemoViewController.m */,
 				08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */,
