@@ -41,6 +41,7 @@
 		08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */; };
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
 		288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* StorageManager.swift */; };
 		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
@@ -145,6 +146,7 @@
 		08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurrinessEstimatorDemoViewController.m; sourceTree = "<group>"; };
 		08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurrinessEstimatorDemoViewController.h; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
+		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
 		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
@@ -278,7 +280,7 @@
 			children = (
 				28352F032743D5CC00AF6238 /* Objc */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
-				288F0D48273C2A0900BF615C /* Managers */,
+				288F0D48273C2A0900BF615C /* Helpers */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
@@ -293,12 +295,13 @@
 			path = Objc;
 			sourceTree = "<group>";
 		};
-		288F0D48273C2A0900BF615C /* Managers */ = {
+		288F0D48273C2A0900BF615C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				288F0D41273C0A1E00BF615C /* StorageManager.swift */,
+				2884E28527455B9200C0ABA2 /* FiltersManager.swift */,
 			);
-			path = Managers;
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		28B21DBC23E31200002D2621 /* AdjustableFilter */ = {
@@ -707,6 +710,7 @@
 				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
+				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 				28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */,
 			);
