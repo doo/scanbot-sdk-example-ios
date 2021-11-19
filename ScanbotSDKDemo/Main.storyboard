@@ -2244,7 +2244,7 @@ MRZ code at the from of your document:</string>
         <!--Passport Reader View Controller-->
         <scene sceneID="OuM-Hr-otr">
             <objects>
-                <viewController storyboardIdentifier="PassportReaderViewController" id="Wek-20-VLj" customClass="PassportReaderViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PassportReaderViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Wek-20-VLj" customClass="PassportReaderViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Dir-ce-KDX"/>
                         <viewControllerLayoutGuide type="bottom" id="1bQ-4L-t79"/>
@@ -2277,7 +2277,7 @@ MRZ code at the from of your document:</string>
         <!--Passport Reader Results View Controller-->
         <scene sceneID="cvi-bR-IdK">
             <objects>
-                <viewController storyboardIdentifier="PassportReaderResultsViewController" id="FWI-Zd-zTL" customClass="PassportReaderResultsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PassportReaderResultsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="FWI-Zd-zTL" customClass="PassportReaderResultsViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="aLJ-Gt-0DN"/>
                         <viewControllerLayoutGuide type="bottom" id="aci-6b-ju8"/>
@@ -2290,7 +2290,7 @@ MRZ code at the from of your document:</string>
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" id="arv-Al-M1u" customClass="PassportReaderResultImageTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="imageCell" id="arv-Al-M1u" customClass="PassportReaderResultImageTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="49" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="arv-Al-M1u" id="1Q1-xp-hmc">
@@ -2312,11 +2312,11 @@ MRZ code at the from of your document:</string>
                                             <outlet property="photoView" destination="N4u-Bm-XN7" id="RNw-sc-azy"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="44"/>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
@@ -2326,7 +2326,7 @@ MRZ code at the from of your document:</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.66666666666669" y="12" width="40.333333333333314" height="20"/>
+                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2593,9 +2593,9 @@ MRZ code at the from of your document:</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="x62-mu-ve4"/>
-        <segue reference="aIj-8j-G7M"/>
-        <segue reference="OFA-fP-WQ1"/>
+        <segue reference="jjq-Nw-fZI"/>
+        <segue reference="l1x-kI-HGt"/>
+        <segue reference="dZL-H7-bk7"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="mrz_template" width="1000" height="681"/>

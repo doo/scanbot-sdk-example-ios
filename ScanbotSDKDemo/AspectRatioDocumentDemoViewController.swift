@@ -8,28 +8,28 @@
 
 import UIKit
 
-final class AspectRatioDocumentDemoViewController: DocumentDemoViewController {
-    private enum Segue: String {
-        case showResult
-    }
-    
-    override func setupScannerViewController() {
-        super.setupScannerViewController()
-        scannerViewController.requiredAspectRatios = [SBSDKAspectRatio(width: 21.0, andHeight: 29.7)] // DIN A4
-        scannerViewController.finderMode = .aspectRatioAlways
-    }
-    
-    override func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
-        super.scannerController(controller, didCaptureDocumentImage: documentImage)
-        performSegue(withIdentifier: Segue.showResult.rawValue, sender: documentImage)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard
-            let destination = segue.destination as? ScanResultViewController,
-            let image = sender as? UIImage
-            else { return }
-        
-        destination.resultImage = image
-    }
+final class AspectRatioDocumentDemoViewController: UIViewController {
+//    private enum Segue: String {
+//        case showResult
+//    }
+//    
+//    override func setupScannerViewController() {
+//        super.setupScannerViewController()
+//        scannerViewController.requiredAspectRatios = [SBSDKAspectRatio(width: 21.0, andHeight: 29.7)] // DIN A4
+//        scannerViewController.finderMode = .aspectRatioAlways
+//    }
+//    
+//    override func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+//        super.scannerController(controller, didCaptureDocumentImage: documentImage)
+//        performSegue(withIdentifier: Segue.showResult.rawValue, sender: documentImage)
+//    }
+//    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        guard
+//            let destination = segue.destination as? ScanResultViewController,
+//            let image = sender as? UIImage
+//            else { return }
+//        
+//        destination.resultImage = image
+//    }
 }

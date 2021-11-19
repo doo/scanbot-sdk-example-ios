@@ -41,12 +41,12 @@ class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
         let imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         switch imageView.contentMode {
         case .scaleAspectFit:
-            return RectFitInRect(imageRect, imageView.frame)
+            return .zero//RectFitInRect(imageRect, imageView.frame)
         case .center:
             var centerRect = imageRect
             centerRect.size.width = min(centerRect.size.width, imageView.frame.size.width)
             centerRect.size.height = min(centerRect.size.height, imageView.frame.size.height)
-            return RectCenterInRect(centerRect, imageView.frame)
+            return .zero//RectCenterInRect(centerRect, imageView.frame)
         default:
             return imageView.frame
         }

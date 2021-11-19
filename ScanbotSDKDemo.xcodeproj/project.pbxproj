@@ -46,6 +46,10 @@
 		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
 		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
+		28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */; };
+		28A116C72746B192006E75D6 /* PassportReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C62746B192006E75D6 /* PassportReaderViewController.swift */; };
+		28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */; };
+		28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */; };
 		28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */; };
 		28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */; };
 		28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */; };
@@ -53,10 +57,6 @@
 		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
 		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
-		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
-		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
-		6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA024E52EF600005627 /* PassportReaderViewController.m */; };
-		6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */; };
 		6991C575256C179A008188AD /* ScanbotSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */; };
 		69CF30B923015C7800AA5A07 /* EHICDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */; };
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */; };
@@ -152,6 +152,10 @@
 		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
 		289AB67226011D2400D9197A /* LicensePlateDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePlateDemoViewController.h; sourceTree = "<group>"; };
 		289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePlateDemoViewController.m; sourceTree = "<group>"; };
+		28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultTextTableViewCell.swift; sourceTree = "<group>"; };
+		28A116C62746B192006E75D6 /* PassportReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderViewController.swift; sourceTree = "<group>"; };
+		28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultImageTableViewCell.swift; sourceTree = "<group>"; };
+		28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultsViewController.swift; sourceTree = "<group>"; };
 		28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentResultViewController.m; sourceTree = "<group>"; };
 		28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentFieldTableViewCell.h; sourceTree = "<group>"; };
 		28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentFieldTableViewCell.m; sourceTree = "<group>"; };
@@ -161,14 +165,6 @@
 		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
-		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
-		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
-		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
-		6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultsViewController.m; sourceTree = "<group>"; };
-		6954AEA024E52EF600005627 /* PassportReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderViewController.m; sourceTree = "<group>"; };
-		6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultTextTableViewCell.h; sourceTree = "<group>"; };
-		6954AEA224E52EF600005627 /* PassportReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderViewController.h; sourceTree = "<group>"; };
-		6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultImageTableViewCell.m; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
 		6991C572256C179A008188AD /* ScanbotSDKDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScanbotSDKDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanbotSDKDemoUITests.swift; sourceTree = "<group>"; };
@@ -331,17 +327,20 @@
 			path = ReviewDocuments;
 			sourceTree = "<group>";
 		};
+		28EA1AC62747D26E005B36A2 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		6954AE9B24E52E7D00005627 /* NFC */ = {
 			isa = PBXGroup;
 			children = (
-				6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */,
-				6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */,
-				6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */,
-				6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */,
-				6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */,
-				6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */,
-				6954AEA224E52EF600005627 /* PassportReaderViewController.h */,
-				6954AEA024E52EF600005627 /* PassportReaderViewController.m */,
+				28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */,
+				28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */,
+				28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */,
+				28A116C62746B192006E75D6 /* PassportReaderViewController.swift */,
 			);
 			path = NFC;
 			sourceTree = "<group>";
@@ -364,6 +363,7 @@
 				6991C573256C179A008188AD /* ScanbotSDKDemoUITests */,
 				9ED845821AE670CC008B2731 /* Products */,
 				28D7361624AE302000A0B821 /* Frameworks */,
+				28EA1AC62747D26E005B36A2 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -666,9 +666,11 @@
 				28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */,
 				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
 				288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */,
+				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
 				C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */,
 				C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
+				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
 				C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */,
 				C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */,
 				C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */,
@@ -684,21 +686,19 @@
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
 				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
-				6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */,
+				28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */,
 				28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
-				6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
 				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
-				6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
-				6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */,
 				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
 				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
 				28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */,
+				28A116C72746B192006E75D6 /* PassportReaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

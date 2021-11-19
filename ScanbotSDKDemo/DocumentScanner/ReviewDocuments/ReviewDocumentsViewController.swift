@@ -133,7 +133,7 @@ class ReviewDocumentsViewController: UIViewController {
 
 // MARK: - UICollectionViewDataSource
 extension ReviewDocumentsViewController: UICollectionViewDataSource {
-    
+     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int(documentImageStorage?.imageCount ?? 0)
     }
