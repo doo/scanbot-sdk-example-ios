@@ -45,15 +45,22 @@ extension PassportReaderResultsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let group = datagroups[indexPath.section]
         if let value = group.value(at: UInt(indexPath.row)) as? Data {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as! PassportReaderResultImageTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "imageCell", for: indexPath) as!
+            PassportReaderResultImageTableViewCell
+            
             let image = UIImage(data: value)
             cell.photoView?.image = image
+            
             return cell
         } else {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "textCell", for: indexPath) as! PassportReaderResultTextTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "textCell", for: indexPath) as!
+            PassportReaderResultTextTableViewCell
+            
             cell.keyLabel?.text = group.key(at: UInt(indexPath.row))
             if let value = group.value(at: UInt(indexPath.row)) as? NSNumber {
                 cell.valueLabel?.text = value.stringValue.isEmpty ? "---" : value.stringValue
+            } else if let value = group.value(at: UInt(indexPath.row)) as? String {
+                cell.valueLabel?.text = value.isEmpty ? "---" : value
             }
             return cell
         }

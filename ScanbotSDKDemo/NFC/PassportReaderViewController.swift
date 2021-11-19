@@ -31,7 +31,8 @@ class PassportReaderViewController: UIViewController {
         let configuration = SBSDKUIMRZScannerConfiguration.default()
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 1.0, andHeight: 0.18)
         configuration.uiConfiguration.isCancelButtonHidden = true
-        configuration.textConfiguration.finderTextHint = "Please align the passports machine readable zone with the frame above to scan it."
+        configuration.textConfiguration.finderTextHint =
+        "Please align the passports machine readable zone with the frame above to scan it."
         
         mrzController = SBSDKUIMRZScannerViewController.createNew(with: configuration, andDelegate: self)
     }
@@ -40,16 +41,21 @@ class PassportReaderViewController: UIViewController {
         super.viewDidAppear(animated)
         
         mrzController?.isRecognitionEnabled = true
-        
-        sbsdk_attach(mrzController!, in: view)
-        view.bringSubviewToFront(progressView!)
+        guard let mrzController = mrzController, let progressView = progressView else { return }
+
+        sbsdk_attach(mrzController, in: view)
+        view.bringSubviewToFront(progressView)
     }
     
     private func startNFCScanning() {
         mrzController?.isRecognitionEnabled = false
-        nfcReader = SBSDKNFCPassportReader(passportNumber: passportNumber!,
-                                        birthDate: birthDate!,
-                                        expirationDate: expirationDate!,
+        guard let passportNumber = passportNumber,
+              let birthDate = birthDate,
+              let expirationDate = expirationDate else { return }
+
+        nfcReader = SBSDKNFCPassportReader(passportNumber: passportNumber,
+                                        birthDate: birthDate,
+                                        expirationDate: expirationDate,
                                         initialMessage: "Hold your phone over the passport.",
                                         delegate: self)
         nfcReader?.setMessage("Authenticating with passport...")
