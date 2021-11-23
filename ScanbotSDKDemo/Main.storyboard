@@ -56,7 +56,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1336.3333320617676" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1294.3333320617676" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <attributedString key="attributedText">
                                 <fragment content=" This demo app will only run 1 minute before terminating.">
@@ -2178,7 +2178,7 @@ MRZ code at the from of your document:</string>
         <!--ID Card demo-->
         <scene sceneID="t1o-iX-6hQ">
             <objects>
-                <viewController storyboardIdentifier="GenericDocumentViewController" id="c6A-FK-gkm" customClass="GenericDocumentViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenericDocumentViewController" id="c6A-FK-gkm" customClass="GenericDocumentViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3eI-yx-D5I"/>
                         <viewControllerLayoutGuide type="bottom" id="r92-T7-hjX"/>
@@ -2192,7 +2192,7 @@ MRZ code at the from of your document:</string>
                     <navigationItem key="navigationItem" title="ID Card demo" id="c6B-4C-y31">
                         <barButtonItem key="rightBarButtonItem" title="Import" id="WMp-45-3sD">
                             <connections>
-                                <action selector="selectImageButtonTapped:" destination="c6A-FK-gkm" id="4xD-TI-Hji"/>
+                                <action selector="selectImageButtonDidPress:" destination="c6A-FK-gkm" id="Pnz-27-iZt"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -2494,7 +2494,7 @@ MRZ code at the from of your document:</string>
         <!--Identity Card Result-->
         <scene sceneID="b1m-0N-f4b">
             <objects>
-                <viewController storyboardIdentifier="GenericDocumentResultViewController" title="Identity Card Result" id="U50-5h-EhL" customClass="GenericDocumentResultViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenericDocumentResultViewController" title="Identity Card Result" id="U50-5h-EhL" customClass="GenericDocumentResultViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JdX-da-PnU"/>
                         <viewControllerLayoutGuide type="bottom" id="Xg1-7i-OUK"/>
@@ -2506,7 +2506,7 @@ MRZ code at the from of your document:</string>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="insetGrouped" separatorStyle="default" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="100" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="AcZ-52-Iy0">
                                 <rect key="frame" x="0.0" y="44" width="414" height="852"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fieldCell" rowHeight="266" id="6AP-eT-rmw" customClass="GenericDocumentFieldTableViewCell">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="fieldCell" rowHeight="266" id="6AP-eT-rmw" customClass="GenericDocumentFieldTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="49" width="374" height="266"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="6AP-eT-rmw" id="BM1-7Z-yjt">
