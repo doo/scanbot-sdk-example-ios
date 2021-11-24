@@ -712,7 +712,7 @@
         <!--Demo View Controller-->
         <scene sceneID="msr-xP-ITG">
             <objects>
-                <viewController id="1eX-ba-V8R" customClass="EHICDemoViewController" sceneMemberID="viewController">
+                <viewController id="1eX-ba-V8R" customClass="EHICDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m4f-Rm-vIj"/>
                         <viewControllerLayoutGuide type="bottom" id="lmq-1S-G37"/>
@@ -738,7 +738,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="ezh-D3-sOM"/>
                     <connections>
-                        <outlet property="statusView" destination="uVH-le-hgp" id="w2g-t1-jC0"/>
+                        <outlet property="statusLabel" destination="uVH-le-hgp" id="w2g-t1-jC0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="INU-n7-tG8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2204,7 +2204,7 @@ MRZ code at the from of your document:</string>
         <!--Blurriness Estimator Demo View Controller-->
         <scene sceneID="AYy-Wd-hzr">
             <objects>
-                <viewController storyboardIdentifier="BlurrinessEstimatorDemoViewController" id="BT7-Vp-MF5" customClass="BlurrinessEstimatorDemoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BlurrinessEstimatorDemoViewController" id="BT7-Vp-MF5" customClass="BlurrinessEstimatorDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5k-Q9-tQ5"/>
                         <viewControllerLayoutGuide type="bottom" id="s3E-p7-JPg"/>
@@ -2229,7 +2229,7 @@ MRZ code at the from of your document:</string>
                     <navigationItem key="navigationItem" id="ti4-a0-lQf">
                         <barButtonItem key="rightBarButtonItem" title="Select image" id="lZg-a3-pwm">
                             <connections>
-                                <action selector="selectImageButtonTapped:" destination="BT7-Vp-MF5" id="5aS-lH-5J6"/>
+                                <action selector="selectImageButtonDidPress:" destination="BT7-Vp-MF5" id="CoN-OV-hPG"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
