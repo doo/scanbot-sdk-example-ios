@@ -44,6 +44,7 @@
 		2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C496274E49BE0036F44D /* EHICDemoViewController.swift */; };
 		2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C49D274E63790036F44D /* ChequeViewController.swift */; };
 		2869C4A1274E8D480036F44D /* PayformDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */; };
+		2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */; };
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
@@ -74,7 +75,6 @@
 		C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627E1DE45368003F5FE0 /* DemoViewController.m */; };
 		C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
-		C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */; };
 		C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628E1DE45368003F5FE0 /* TextViewController.m */; };
 		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
@@ -148,6 +148,7 @@
 		2869C496274E49BE0036F44D /* EHICDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHICDemoViewController.swift; sourceTree = "<group>"; };
 		2869C49D274E63790036F44D /* ChequeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequeViewController.swift; sourceTree = "<group>"; };
 		2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayformDemoViewController.swift; sourceTree = "<group>"; };
+		2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPDFViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -192,8 +193,6 @@
 		C275627F1DE45368003F5FE0 /* DocumentDemoNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoNavigationViewController.h; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.h; sourceTree = SOURCE_ROOT; };
 		C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoNavigationViewController.m; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoPDFViewController.h; path = ScanbotSDKDemo/DemoPDFViewController.h; sourceTree = SOURCE_ROOT; };
-		C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoPDFViewController.m; path = ScanbotSDKDemo/DemoPDFViewController.m; sourceTree = SOURCE_ROOT; };
 		C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanbotSDKInclude.h; path = ScanbotSDKDemo/ScanbotSDKInclude.h; sourceTree = SOURCE_ROOT; };
 		C275628D1DE45368003F5FE0 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewController.h; path = ScanbotSDKDemo/TextViewController.h; sourceTree = SOURCE_ROOT; };
 		C275628E1DE45368003F5FE0 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewController.m; path = ScanbotSDKDemo/TextViewController.m; sourceTree = SOURCE_ROOT; };
@@ -381,6 +380,7 @@
 				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
 				2869C49D274E63790036F44D /* ChequeViewController.swift */,
 				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
+				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
 				C27562771DE45368003F5FE0 /* AppDelegate.h */,
 				C27562781DE45368003F5FE0 /* AppDelegate.m */,
 				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
@@ -392,8 +392,6 @@
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */,
 				6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
-				C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */,
-				C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */,
 				C29DC06F204D915900059670 /* TIFFDemoViewController.h */,
 				C29DC070204D915900059670 /* TIFFDemoViewController.m */,
 				C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */,
@@ -639,13 +637,13 @@
 				C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */,
 				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
+				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
 				2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */,
 				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
-				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,

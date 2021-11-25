@@ -114,10 +114,8 @@ class ReviewDocumentsViewController: UIViewController {
     }
         
     private func sharePDF(at url: URL) {
-        let controller = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-        controller.popoverPresentationController?.sourceView = exportButton?.customView
-        controller.popoverPresentationController?.sourceRect = exportButton?.customView?.bounds ?? .zero
-        present(controller, animated: true, completion: nil)
+        let controller = DemoPDFViewController.make(with: url)
+        navigationController?.pushViewController(controller, animated: true)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

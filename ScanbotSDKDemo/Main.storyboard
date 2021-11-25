@@ -831,7 +831,7 @@
         <!--Generated PDF-->
         <scene sceneID="M96-tg-FQY">
             <objects>
-                <viewController storyboardIdentifier="DemoPDFViewController" title="Generated PDF" automaticallyAdjustsScrollViewInsets="NO" id="UbA-6j-j0s" customClass="DemoPDFViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DemoPDFViewController" title="Generated PDF" automaticallyAdjustsScrollViewInsets="NO" id="UbA-6j-j0s" customClass="DemoPDFViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4u-rz-Wn3"/>
                         <viewControllerLayoutGuide type="bottom" id="6ox-qv-4ad"/>
@@ -840,7 +840,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kh-xc-1Ph">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kh-xc-1Ph" customClass="PDFView">
                                 <rect key="frame" x="0.0" y="88" width="414" height="774"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -856,13 +856,13 @@
                     <navigationItem key="navigationItem" id="4t5-E7-JZQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="zPA-6I-dn7">
                             <connections>
-                                <action selector="share:" destination="UbA-6j-j0s" id="L6H-Sa-5LV"/>
+                                <action selector="shareButtonDidPress:" destination="UbA-6j-j0s" id="TJU-th-9lR"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="webViewContainer" destination="3Kh-xc-1Ph" id="WF1-2C-5Ue"/>
+                        <outlet property="pdfView" destination="3Kh-xc-1Ph" id="nhj-Nb-2Z3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azl-eU-f1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2313,20 +2313,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="44.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14.333333333333336" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.66666666666669" y="11.999999999999998" width="40.333333333333314" height="20.333333333333329"/>
+                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
