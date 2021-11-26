@@ -33,11 +33,13 @@
 
 /* Begin PBXBuildFile section */
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
-		086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */; };
 		08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */; };
 		08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */; };
 		08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
+		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
+		28101821274FF28C000350F5 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101820274FF28C000350F5 /* TextViewController.swift */; };
+		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
 		2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */; };
 		2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C491274D49DC0036F44D /* MRZDemoViewController.swift */; };
 		2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */; };
@@ -75,11 +77,9 @@
 		C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627E1DE45368003F5FE0 /* DemoViewController.m */; };
 		C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
-		C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628E1DE45368003F5FE0 /* TextViewController.m */; };
 		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
-		C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29DC070204D915900059670 /* TIFFDemoViewController.m */; };
 		C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */; };
 		C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */; };
 		C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */; };
@@ -133,8 +133,6 @@
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
-		086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericTextLineRecognizerDemoViewController.m; sourceTree = "<group>"; };
-		086AF337251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTextLineRecognizerDemoViewController.h; sourceTree = "<group>"; };
 		08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardsDemoViewController.m; sourceTree = "<group>"; };
 		08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDetailDemoViewController.m; sourceTree = "<group>"; };
 		08716C7D220DC4D600119B9C /* BusinessCardDemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDemoCell.h; sourceTree = "<group>"; };
@@ -142,6 +140,8 @@
 		08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDemoCell.m; sourceTree = "<group>"; };
 		08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardsDemoViewController.h; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		28101820274FF28C000350F5 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
+		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
 		2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentViewController.swift; sourceTree = "<group>"; };
 		2869C491274D49DC0036F44D /* MRZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZDemoViewController.swift; sourceTree = "<group>"; };
 		2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurrinessEstimatorDemoViewController.swift; sourceTree = "<group>"; };
@@ -149,6 +149,7 @@
 		2869C49D274E63790036F44D /* ChequeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequeViewController.swift; sourceTree = "<group>"; };
 		2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayformDemoViewController.swift; sourceTree = "<group>"; };
 		2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPDFViewController.swift; sourceTree = "<group>"; };
+		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
@@ -194,15 +195,11 @@
 		C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoNavigationViewController.m; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanbotSDKInclude.h; path = ScanbotSDKDemo/ScanbotSDKInclude.h; sourceTree = SOURCE_ROOT; };
-		C275628D1DE45368003F5FE0 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewController.h; path = ScanbotSDKDemo/TextViewController.h; sourceTree = SOURCE_ROOT; };
-		C275628E1DE45368003F5FE0 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewController.m; path = ScanbotSDKDemo/TextViewController.m; sourceTree = SOURCE_ROOT; };
 		C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoSelectionTableViewController.h; path = ScanbotSDKDemo/DemoSelectionTableViewController.h; sourceTree = SOURCE_ROOT; };
 		C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoSelectionTableViewController.m; path = ScanbotSDKDemo/DemoSelectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A51DE453B2003F5FE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotSDKDemo/main.m; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
-		C29DC06F204D915900059670 /* TIFFDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIFFDemoViewController.h; sourceTree = "<group>"; };
-		C29DC070204D915900059670 /* TIFFDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIFFDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesLiveDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognitionDemoViewController.m; sourceTree = "<group>"; };
 		C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognitionDemoViewController.h; sourceTree = "<group>"; };
@@ -392,13 +389,10 @@
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */,
 				6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
-				C29DC06F204D915900059670 /* TIFFDemoViewController.h */,
-				C29DC070204D915900059670 /* TIFFDemoViewController.m */,
+				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
 				C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */,
-				C275628D1DE45368003F5FE0 /* TextViewController.h */,
-				C275628E1DE45368003F5FE0 /* TextViewController.m */,
-				086AF337251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.h */,
-				086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */,
+				28101820274FF28C000350F5 /* TextViewController.swift */,
+				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
 				289AB67226011D2400D9197A /* LicensePlateDemoViewController.h */,
 				289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
@@ -635,8 +629,9 @@
 			files = (
 				28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */,
 				C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */,
-				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
 				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
+				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
+				28101821274FF28C000350F5 /* TextViewController.swift in Sources */,
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
 				2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */,
 				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
@@ -648,6 +643,7 @@
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
 				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
+				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
 				288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */,
 				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
 				C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */,
@@ -664,7 +660,6 @@
 				C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */,
 				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
 				C22FFF1522FAEA7B006E0862 /* BarCodesResultDetailsViewController.m in Sources */,
-				086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */,
 				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
 				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
@@ -673,7 +668,6 @@
 				28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */,
 				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
 				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
-				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
 				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
 				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,

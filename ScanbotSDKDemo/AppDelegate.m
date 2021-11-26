@@ -19,6 +19,22 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // TODO Add your Scanbot SDK license here:
     //[ScanbotSDK setLicense: @"YOUR_SCANBOT_SDK_LICENSE_KEY"];
+    [ScanbotSDK setLicense:
+    @"es1863Een2nSot1SmxyVqcEXJgTZXB"
+    "bkNznctG6B8kNj/0Dn1HOhyWxl02OY"
+    "jKqKm6mVQG6l/pet9usBiNnuzn3Iej"
+    "Ap/ICsmWYZ8d4wm72Br9OOor0YF5hF"
+    "yiuXUvKvZA1ys8jMvEf1S3+2C/7AR1"
+    "4/24VzdJsLYL1NnLSqGLappgCaTbrm"
+    "BJlJBP/dCi+AG8Uizp8OQ7aU7tQjii"
+    "joNUbcBUhwVFIo2uBzK/gvptSqewDh"
+    "v2q1SrXO/CQtjrc0yIX1C+aoZ50FTh"
+    "gbul1FmfHVNM3fqyiz8YdVxW92hKUa"
+    "ZRlf+MLVW3aIg3HlU/O51tzEaqGJdr"
+    "x0JYG2QKztaA==\nU2NhbmJvdFNESw"
+    "ppby5zY2FuYm90LmV4YW1wbGUuc2Rr"
+    "Lmlvcy5jbGFzc2ljCjE2Mzg2NjIzOT"
+    "kKODM4ODYwNwox\n"];// TODO: Remove before submitting PR
     
     // Setup the default license failure handler. In case of expired license or expired trial period it will present an alert and terminate the app.
     // See also [ScanbotSDK setLicenseFailureHandler:handler]; to setup a custom handler.

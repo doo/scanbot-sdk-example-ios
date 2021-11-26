@@ -1459,7 +1459,7 @@ MRZ code at the from of your document:</string>
         <!--TIFF Demo-->
         <scene sceneID="8b8-Sm-fTk">
             <objects>
-                <viewController id="kA5-fG-Aau" customClass="TIFFDemoViewController" sceneMemberID="viewController">
+                <viewController id="kA5-fG-Aau" customClass="TIFFDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zkt-U6-h2C"/>
                         <viewControllerLayoutGuide type="bottom" id="LWL-Yh-fkN"/>
@@ -1478,14 +1478,14 @@ MRZ code at the from of your document:</string>
                                 <rect key="frame" x="16" y="125" width="382" height="30"/>
                                 <state key="normal" title="Generate TIFF"/>
                                 <connections>
-                                    <action selector="generateTIFFTapped:" destination="kA5-fG-Aau" eventType="touchUpInside" id="0bc-ch-PqA"/>
+                                    <action selector="createTIFFDidPress:" destination="kA5-fG-Aau" eventType="touchUpInside" id="PhW-jD-ua0"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1o2-wk-OhH">
                                 <rect key="frame" x="16" y="163" width="382" height="30"/>
                                 <state key="normal" title="Generate binarized TIFF"/>
                                 <connections>
-                                    <action selector="generateBinarizedTIFFTapped:" destination="kA5-fG-Aau" eventType="touchUpInside" id="SPg-eJ-2GD"/>
+                                    <action selector="createBinarizedTIFFDidPress:" destination="kA5-fG-Aau" eventType="touchUpInside" id="uCO-yP-skC"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1505,13 +1505,13 @@ MRZ code at the from of your document:</string>
                     <navigationItem key="navigationItem" title="TIFF Demo" id="c16-fe-iRI">
                         <barButtonItem key="rightBarButtonItem" title="Add Image" id="JFJ-rA-j0x">
                             <connections>
-                                <action selector="addImageButtoTapped:" destination="kA5-fG-Aau" id="Zix-Hh-6zl"/>
+                                <action selector="importImageButtonDidPress:" destination="kA5-fG-Aau" id="XBv-kB-Gly"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="imagesCountLabel" destination="MYn-Jo-CbE" id="nkQ-Vw-JAX"/>
+                        <outlet property="imagesCountLabel" destination="MYn-Jo-CbE" id="Jzx-Dr-0PE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PDc-G0-qwQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2313,20 +2313,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="44.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14.333333333333336" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
+                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -2372,7 +2372,7 @@ MRZ code at the from of your document:</string>
         <!--Generic Text Line Recognizer Demo View Controller-->
         <scene sceneID="JYf-1W-mJw">
             <objects>
-                <viewController id="DOu-rx-fzf" customClass="GenericTextLineRecognizerDemoViewController" sceneMemberID="viewController">
+                <viewController id="DOu-rx-fzf" customClass="GenericTextLineRecognizerDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q6y-BS-uIw"/>
                         <viewControllerLayoutGuide type="bottom" id="a7R-Rd-oCN"/>
@@ -2397,7 +2397,7 @@ MRZ code at the from of your document:</string>
                                 <rect key="frame" x="304" y="812" width="90" height="30"/>
                                 <state key="normal" title="Toggle Zoom"/>
                                 <connections>
-                                    <action selector="toggleZoom:" destination="DOu-rx-fzf" eventType="touchUpInside" id="cjF-NK-Kbc"/>
+                                    <action selector="zoomButtonDidPress:" destination="DOu-rx-fzf" eventType="touchUpInside" id="mdh-GW-Zts"/>
                                 </connections>
                             </button>
                         </subviews>
