@@ -34,14 +34,14 @@
 /* Begin PBXBuildFile section */
 		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
-		2803648627513FA900C76910 /* BusinessCardsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101821274FF28C000350F5 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101820274FF28C000350F5 /* TextViewController.swift */; };
 		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
 		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
+		2839FE712754FA2200E2DCDA /* BusinessCardDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */; };
+		2839FE722754FA2600E2DCDA /* BusinessCardDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */; };
+		2839FE732754FA2D00E2DCDA /* BusinessCardsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */; };
 		2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */; };
-		2849C02D27513BA600D9760C /* BusinessCardDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */; };
-		2849C02F27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */; };
 		2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */; };
 		2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C491274D49DC0036F44D /* MRZDemoViewController.swift */; };
 		2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */; };
@@ -133,12 +133,6 @@
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
 		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
-		08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardsDemoViewController.m; sourceTree = "<group>"; };
-		08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDetailDemoViewController.m; sourceTree = "<group>"; };
-		08716C7D220DC4D600119B9C /* BusinessCardDemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDemoCell.h; sourceTree = "<group>"; };
-		08716C7E220DC4D600119B9C /* BusinessCardDetailDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDetailDemoViewController.h; sourceTree = "<group>"; };
-		08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDemoCell.m; sourceTree = "<group>"; };
-		08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardsDemoViewController.h; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardsDemoViewController.swift; sourceTree = "<group>"; };
 		28101820274FF28C000350F5 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
@@ -247,14 +241,8 @@
 		08716C7A220DC49400119B9C /* BusinessCardDemo */ = {
 			isa = PBXGroup;
 			children = (
-				08716C7D220DC4D600119B9C /* BusinessCardDemoCell.h */,
-				08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */,
 				2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */,
-				08716C7E220DC4D600119B9C /* BusinessCardDetailDemoViewController.h */,
-				08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */,
 				2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */,
-				08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */,
-				08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */,
 				2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */,
 			);
 			path = BusinessCardDemo;
@@ -637,10 +625,8 @@
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
 				2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */,
 				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
-				2803648627513FA900C76910 /* BusinessCardsDemoViewController.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
-				2849C02D27513BA600D9760C /* BusinessCardDemoCell.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
@@ -656,9 +642,11 @@
 				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
 				C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */,
 				C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */,
-				2849C02F27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift in Sources */,
 				6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */,
+				2839FE722754FA2600E2DCDA /* BusinessCardDetailDemoViewController.swift in Sources */,
+				2839FE712754FA2200E2DCDA /* BusinessCardDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
+				2839FE732754FA2D00E2DCDA /* BusinessCardsDemoViewController.swift in Sources */,
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
 				C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */,

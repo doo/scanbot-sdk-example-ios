@@ -9,11 +9,28 @@
 import UIKit
 
 class BusinessCardDetailDemoViewController: UIViewController {
+        
+    var image: UIImage? {
+        didSet {
+            updateView()
+        }
+    }
+    var text: String? {
+        didSet {
+            updateView()
+        }
+    }
     
     @IBOutlet private var imageView: UIImageView?
     @IBOutlet private var textView: UITextView?
     
-    func update(with image: UIImage?, text: String) {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        updateView()
+    }
+    
+    private func updateView() {
         if isViewLoaded {
             imageView?.image = image
             textView?.text = text

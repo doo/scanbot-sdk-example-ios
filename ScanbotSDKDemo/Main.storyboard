@@ -491,7 +491,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Line Recognizer Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-G4-NTF">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Text Line Recognizer Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4aL-G4-NTF">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -516,7 +516,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EU Licence Plate Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3u-R6-2kN">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="EU Licence Plate Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u3u-R6-2kN">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1619,7 +1619,7 @@ MRZ code at the from of your document:</string>
         <!--Business Cards Demo-->
         <scene sceneID="HRZ-Ep-bFV">
             <objects>
-                <viewController id="agc-1A-mno" userLabel="Business Cards Demo" customClass="BusinessCardsDemoViewController" sceneMemberID="viewController">
+                <viewController id="agc-1A-mno" userLabel="Business Cards Demo" customClass="BusinessCardsDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="1WA-nB-CQN"/>
                         <viewControllerLayoutGuide type="bottom" id="ADA-qs-TWo"/>
@@ -1641,7 +1641,7 @@ MRZ code at the from of your document:</string>
                                                 </constraints>
                                                 <state key="normal" title="Close"/>
                                                 <connections>
-                                                    <action selector="closeCollectionContainerTapped:" destination="agc-1A-mno" eventType="touchUpInside" id="3n3-wI-V4y"/>
+                                                    <action selector="closeCollectionViewButtonDidPress:" destination="agc-1A-mno" eventType="touchUpInside" id="zjb-TY-7wi"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -1666,7 +1666,7 @@ MRZ code at the from of your document:</string>
                                             <inset key="sectionInset" minX="2" minY="0.0" maxX="2" maxY="0.0"/>
                                         </collectionViewFlowLayout>
                                         <cells>
-                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessCardCell" id="PXp-yB-UbG" customClass="BusinessCardDemoCell">
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BusinessCardCell" id="PXp-yB-UbG" customClass="BusinessCardDemoCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
                                                 <rect key="frame" x="2" y="0.0" width="170" height="120"/>
                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="d3S-66-vwV">
@@ -1755,7 +1755,7 @@ MRZ code at the from of your document:</string>
         <!--Business Card Detail Demo View Controller-->
         <scene sceneID="oRA-RS-kIo">
             <objects>
-                <viewController id="jiC-Gj-JSd" customClass="BusinessCardDetailDemoViewController" sceneMemberID="viewController">
+                <viewController id="jiC-Gj-JSd" customClass="BusinessCardDetailDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="EM5-O5-ycc"/>
                         <viewControllerLayoutGuide type="bottom" id="K29-nj-q1E"/>
@@ -2313,20 +2313,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="44.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="414" height="43.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14.333333333333336" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.66666666666669" y="11.999999999999998" width="40.333333333333314" height="20.333333333333329"/>
+                                                    <rect key="frame" x="353.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
