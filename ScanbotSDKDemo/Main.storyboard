@@ -1695,16 +1695,16 @@ MRZ code at the from of your document:</string>
             </objects>
             <point key="canvasLocation" x="2385" y="2234"/>
         </scene>
-        <!--Bar Code Scanner Results Table View Controller-->
+        <!--Barcode Scanner Results View Controller-->
         <scene sceneID="he8-Wh-Duc">
             <objects>
-                <tableViewController id="JT2-2c-YSO" customClass="BarCodeScannerResultsTableViewController" sceneMemberID="viewController">
+                <tableViewController id="JT2-2c-YSO" customClass="BarcodeScannerResultsViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="yn3-1E-zQu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="barCodeResultCell" rowHeight="100" id="dV0-sC-16f" customClass="BarCodeScannerResultsTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="barCodeResultCell" rowHeight="100" id="dV0-sC-16f" customClass="BarcodeScannerResultsTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="100"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="dV0-sC-16f" id="pfP-Yk-Axl">
@@ -1744,9 +1744,9 @@ MRZ code at the from of your document:</string>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="barCodeType" destination="C7M-7u-jT1" id="cpC-cH-h8Z"/>
-                                    <outlet property="barcodeImage" destination="Zv7-BL-gD7" id="Q7k-gs-n5h"/>
-                                    <outlet property="barcodeText" destination="CPB-EM-hGW" id="Ldo-3k-jgm"/>
+                                    <outlet property="barcodeImageView" destination="Zv7-BL-gD7" id="dyy-Sw-wF1"/>
+                                    <outlet property="barcodeTextLabel" destination="CPB-EM-hGW" id="a9l-LU-8RH"/>
+                                    <outlet property="barcodeTypeLabel" destination="C7M-7u-jT1" id="5aP-iv-Qz5"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -1757,93 +1757,71 @@ MRZ code at the from of your document:</string>
                     </tableView>
                     <navigationItem key="navigationItem" id="n11-Pi-KRu"/>
                     <connections>
-                        <segue destination="Wux-m0-lAX" kind="show" identifier="showBarCodeDetailsVC" id="TDk-vI-1Xw"/>
+                        <segue destination="X3k-Zm-Au0" kind="show" identifier="barcodeResultDetails" id="Khd-Uq-WFv"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gbu-b6-e9s" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3495" y="2768"/>
+            <point key="canvasLocation" x="-2730" y="2648"/>
         </scene>
-        <!--Bar Codes Result Details View Controller-->
-        <scene sceneID="mSB-UV-eNl">
+        <!--Barcode Result Details View Controller-->
+        <scene sceneID="qmT-RI-YXr">
             <objects>
-                <tableViewController id="Wux-m0-lAX" customClass="BarCodesResultDetailsViewController" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="qt6-36-fPv">
+                <viewController id="X3k-Zm-Au0" customClass="BarcodeResultDetailsViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ca2-U9-jEh"/>
+                        <viewControllerLayoutGuide type="bottom" id="abp-sk-1mE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="PX2-uu-j6b">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <sections>
-                            <tableViewSection id="Xjj-iT-BuK">
-                                <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="225" id="9NL-sJ-WjI">
-                                        <rect key="frame" x="0.0" y="44.5" width="414" height="225"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="9NL-sJ-WjI" id="bR7-rR-nyC">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="225"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rgW-68-Tpo">
-                                                    <rect key="frame" x="0.0" y="0.0" width="414" height="225"/>
-                                                </imageView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="rgW-68-Tpo" secondAttribute="trailing" id="0Ex-Tf-iDb"/>
-                                                <constraint firstItem="rgW-68-Tpo" firstAttribute="top" secondItem="bR7-rR-nyC" secondAttribute="top" id="7kt-EP-y7J"/>
-                                                <constraint firstAttribute="bottom" secondItem="rgW-68-Tpo" secondAttribute="bottom" id="9fo-Jl-6eq"/>
-                                                <constraint firstItem="rgW-68-Tpo" firstAttribute="leading" secondItem="bR7-rR-nyC" secondAttribute="leading" id="QKn-eu-Bqt"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="1Bb-Ni-xiS">
-                                        <rect key="frame" x="0.0" y="269.5" width="414" height="42.5"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="1Bb-Ni-xiS" id="Qvs-lN-DGV">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="42.5"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kbd-dI-GX2">
-                                                    <rect key="frame" x="28" y="11" width="358" height="20.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kbd-dI-GX2" firstAttribute="leading" secondItem="Qvs-lN-DGV" secondAttribute="leadingMargin" constant="8" id="4DA-Uu-Rq5"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="kbd-dI-GX2" secondAttribute="bottom" id="4ED-kT-nzZ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kbd-dI-GX2" secondAttribute="trailing" constant="8" id="A8L-5o-j85"/>
-                                                <constraint firstItem="kbd-dI-GX2" firstAttribute="top" secondItem="Qvs-lN-DGV" secondAttribute="topMargin" id="Eo6-Ve-oEC"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                        </sections>
-                        <connections>
-                            <outlet property="dataSource" destination="Wux-m0-lAX" id="KaP-vR-Pe1"/>
-                            <outlet property="delegate" destination="Wux-m0-lAX" id="PYL-41-roy"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Au0-a8-eIS"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="06m-PU-t7M">
+                                <rect key="frame" x="20" y="104" width="374" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="aLj-3O-YOi"/>
+                                </constraints>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="6EJ-7Y-Mrj">
+                                <rect key="frame" x="20" y="320" width="374" height="542"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                <color key="textColor" systemColor="labelColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6EJ-7Y-Mrj" firstAttribute="top" secondItem="06m-PU-t7M" secondAttribute="bottom" constant="16" id="FSH-uB-id4"/>
+                            <constraint firstItem="abp-sk-1mE" firstAttribute="top" secondItem="6EJ-7Y-Mrj" secondAttribute="bottom" id="FXo-tE-3GX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="06m-PU-t7M" secondAttribute="trailing" id="GDR-pg-c0h"/>
+                            <constraint firstItem="06m-PU-t7M" firstAttribute="top" secondItem="ca2-U9-jEh" secondAttribute="bottom" constant="16" id="P36-e9-ySo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="6EJ-7Y-Mrj" secondAttribute="trailing" id="Z1O-aW-68r"/>
+                            <constraint firstItem="06m-PU-t7M" firstAttribute="leading" secondItem="PX2-uu-j6b" secondAttribute="leadingMargin" id="orq-vT-hvq"/>
+                            <constraint firstItem="6EJ-7Y-Mrj" firstAttribute="leading" secondItem="PX2-uu-j6b" secondAttribute="leadingMargin" id="wsp-fd-Cbo"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="HDs-DG-zoE"/>
                     <connections>
-                        <outlet property="barCodeImageView" destination="rgW-68-Tpo" id="eBY-64-VIq"/>
-                        <outlet property="barCodeTextLabel" destination="kbd-dI-GX2" id="fLp-N3-sOi"/>
+                        <outlet property="barcodeImageView" destination="06m-PU-t7M" id="i7K-qY-rL5"/>
+                        <outlet property="barcodeTextLabel" destination="6EJ-7Y-Mrj" id="Rye-Pg-k1J"/>
                     </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yfE-WR-ndH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eEy-CT-8T3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3495" y="3515"/>
+            <point key="canvasLocation" x="-2730" y="3366"/>
         </scene>
         <!--Select types-->
         <scene sceneID="Pwd-4V-LTC">
             <objects>
-                <tableViewController id="Sdx-og-pZf" customClass="BarCodeTypesListViewController" sceneMemberID="viewController">
+                <tableViewController id="Sdx-og-pZf" customClass="BarcodeTypesViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsMultipleSelection="YES" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="4Aq-0F-yHP">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="barCodeTypesListCell" textLabel="P6j-4r-rdZ" style="IBUITableViewCellStyleDefault" id="R5B-HP-fRf" customClass="BarCodeTypesListTableViewCell">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="barcodeTypesListCell" textLabel="P6j-4r-rdZ" style="IBUITableViewCellStyleDefault" id="R5B-HP-fRf" customClass="BarCodeTypesListTableViewCell">
                                 <rect key="frame" x="0.0" y="44.5" width="414" height="43.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="R5B-HP-fRf" id="ooo-Px-GP1">
@@ -1868,21 +1846,21 @@ MRZ code at the from of your document:</string>
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select types" id="ccx-I6-fxz">
-                        <barButtonItem key="rightBarButtonItem" title="Apply" id="dV0-Md-FTF">
+                        <barButtonItem key="rightBarButtonItem" title="Apply" style="done" id="dV0-Md-FTF">
                             <connections>
-                                <action selector="applyButtonTapped:" destination="Sdx-og-pZf" id="HxX-9S-AxY"/>
+                                <action selector="applyButtonDidPress:" destination="Sdx-og-pZf" id="zQG-6L-uFZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QcH-Qk-a0H" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-4289" y="2768"/>
+            <point key="canvasLocation" x="-3512" y="2648"/>
         </scene>
-        <!--Bar Code Scanner With Finder View Controller-->
+        <!--Barcode Scanner With Finder View Controller-->
         <scene sceneID="XP2-k8-1tv">
             <objects>
-                <viewController id="zHp-Ks-DGS" customClass="BarCodeScannerWithFinderViewController" sceneMemberID="viewController">
+                <viewController id="zHp-Ks-DGS" customClass="BarcodeScannerWithFinderViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="DXm-ok-8oS"/>
                         <viewControllerLayoutGuide type="bottom" id="eJk-e9-yKZ"/>
@@ -1897,6 +1875,7 @@ MRZ code at the from of your document:</string>
                                     <barButtonItem title="Select types" id="dc0-gX-sEC">
                                         <connections>
                                             <action selector="selectTypesButtonTapped:" destination="zHp-Ks-DGS" id="QwY-3T-S1P"/>
+                                            <segue destination="Sdx-og-pZf" kind="show" identifier="showTypesSelection" id="XHT-es-9nv"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1911,9 +1890,7 @@ MRZ code at the from of your document:</string>
                     </view>
                     <navigationItem key="navigationItem" id="Spo-Gs-cGC"/>
                     <connections>
-                        <outlet property="toolbar" destination="ADN-KZ-aW1" id="3jj-m2-cl3"/>
-                        <segue destination="JT2-2c-YSO" kind="show" identifier="showBarCodeScannerResultsFromFinderView" id="aIj-8j-G7M"/>
-                        <segue destination="Sdx-og-pZf" kind="show" identifier="showBarCodeTypesSelectionVCFromFinderDemo" id="x62-mu-ve4"/>
+                        <segue destination="JT2-2c-YSO" kind="show" identifier="showResults" id="aIj-8j-G7M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xj2-WN-SbY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1923,7 +1900,7 @@ MRZ code at the from of your document:</string>
         <!--BarCode demo-->
         <scene sceneID="hHD-y0-BDC">
             <objects>
-                <viewController id="mFb-qo-0nm" customClass="BarCodeScannerViewController" sceneMemberID="viewController">
+                <viewController id="mFb-qo-0nm" customClass="BarcodeScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4RU-xB-iEj"/>
                         <viewControllerLayoutGuide type="bottom" id="4Hj-E1-Jmp"/>
@@ -1937,7 +1914,7 @@ MRZ code at the from of your document:</string>
                                 <items>
                                     <barButtonItem title="Select types" id="UNh-ns-hhN">
                                         <connections>
-                                            <action selector="selectTypesButtonTapped:" destination="mFb-qo-0nm" id="7g9-ej-wo3"/>
+                                            <segue destination="Sdx-og-pZf" kind="show" identifier="showTypesSelection" id="7vE-X4-6FK"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -1950,17 +1927,9 @@ MRZ code at the from of your document:</string>
                             <constraint firstItem="4Hj-E1-Jmp" firstAttribute="top" secondItem="dgP-Vl-14c" secondAttribute="bottom" id="wvv-xb-B7E"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="BarCode demo" id="NJq-rM-1Yi">
-                        <barButtonItem key="rightBarButtonItem" title="Select image" id="DsC-Cz-sg5">
-                            <connections>
-                                <action selector="selectImageButtonTapped:" destination="mFb-qo-0nm" id="Mas-3k-6KB"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="BarCode demo" id="NJq-rM-1Yi"/>
                     <connections>
-                        <outlet property="toolbar" destination="dgP-Vl-14c" id="Aht-kA-30p"/>
-                        <segue destination="JT2-2c-YSO" kind="show" identifier="showBarCodeScannerResults" id="l1x-kI-HGt"/>
-                        <segue destination="Sdx-og-pZf" kind="show" identifier="showBarCodeTypesSelectionVCFromBasicDemo" id="jjq-Nw-fZI"/>
+                        <segue destination="JT2-2c-YSO" kind="show" identifier="showResults" id="l1x-kI-HGt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W6T-to-4Sd" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2489,13 +2458,16 @@ MRZ code at the from of your document:</string>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jjq-Nw-fZI"/>
-        <segue reference="l1x-kI-HGt"/>
+        <segue reference="XHT-es-9nv"/>
+        <segue reference="aIj-8j-G7M"/>
         <segue reference="dZL-H7-bk7"/>
         <segue reference="S1o-VU-9nm"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="mrz_template" width="1000" height="681"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
