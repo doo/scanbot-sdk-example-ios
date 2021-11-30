@@ -15,8 +15,8 @@ final class AspectRatioDocumentScannerViewController: UIViewController {
     }
     private var scannerViewController: SBSDKScannerViewController?
     
-    private let documentImageStorage = ImageStorageManager().documentImageStorage
-    private let originalImageStorage = ImageStorageManager().originalImageStorage
+    private let documentImageStorage = ImageStorageManager.shared.documentImageStorage
+    private let originalImageStorage = ImageStorageManager.shared.originalImageStorage
     
     override func viewDidLoad() {
         super.viewDidLoad()

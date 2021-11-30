@@ -206,7 +206,6 @@
 			children = (
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
-				288F0D48273C2A0900BF615C /* Managers */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
@@ -302,6 +301,7 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
+				288F0D48273C2A0900BF615C /* Managers */,
 				28002718273400BE00E11311 /* DocumentScanner */,
 				6954AE9B24E52E7D00005627 /* NFC */,
 				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,

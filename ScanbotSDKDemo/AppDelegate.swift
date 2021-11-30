@@ -36,4 +36,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ScanbotSDK.setupDefaultLicenseFailureHandler()
         return true
     }
+    
+    func applicationWillTerminate(_ application: UIApplication) {
+        let imageManager = ImageStorageManager.shared
+        imageManager.originalImageStorage.removeAllImages()
+        imageManager.documentImageStorage.removeAllImages()
+    }
 }

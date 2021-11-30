@@ -13,8 +13,8 @@ class DocumentScannerViewController: UIViewController {
     
     private var scanner: SBSDKScannerViewController?
     
-    private let documentImageStorage = ImageStorageManager().documentImageStorage
-    private let originalImageStorage = ImageStorageManager().originalImageStorage
+    private let documentImageStorage = ImageStorageManager.shared.documentImageStorage
+    private let originalImageStorage = ImageStorageManager.shared.originalImageStorage
     
     @IBOutlet private var pageCountButton: UIBarButtonItem?
     @IBOutlet private var scannerContainerView: UIView?

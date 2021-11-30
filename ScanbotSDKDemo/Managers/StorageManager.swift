@@ -11,6 +11,8 @@ import ScanbotSDK
 
 class ImageStorageManager {
     
+    static let shared = ImageStorageManager()
+    
     let documentImageStorage = storageForDirectory("/sbsdk-demo-document-images")
     let originalImageStorage = storageForDirectory("/sbsdk-demo-original-images")
     
