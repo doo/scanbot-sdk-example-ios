@@ -32,7 +32,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101821274FF28C000350F5 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101820274FF28C000350F5 /* TextViewController.swift */; };
@@ -69,6 +68,7 @@
 		28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */; };
 		28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */; };
 		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
+		28E71F3C275672660061B433 /* DisabilityCertificateScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */; };
 		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6991C575256C179A008188AD /* ScanbotSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */; };
@@ -79,12 +79,6 @@
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
-		C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */; };
-		C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */; };
-		C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */; };
-		C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */; };
-		C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */; };
-		C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */; };
 		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
 /* End PBXBuildFile section */
 
@@ -130,8 +124,6 @@
 
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
-		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardsDemoViewController.swift; sourceTree = "<group>"; };
 		28101820274FF28C000350F5 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
@@ -167,6 +159,7 @@
 		28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentFieldTableViewCell.swift; sourceTree = "<group>"; };
 		28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultViewController.swift; sourceTree = "<group>"; };
 		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabilityCertificateScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
@@ -187,18 +180,6 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A51DE453B2003F5FE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotSDKDemo/main.m; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
-		C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesLiveDemoViewController.m; sourceTree = "<group>"; };
-		C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognitionDemoViewController.m; sourceTree = "<group>"; };
-		C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognitionDemoViewController.h; sourceTree = "<group>"; };
-		C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesLiveDemoViewController.h; sourceTree = "<group>"; };
-		C2B8AC662035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognizerResultViewController.h; sourceTree = "<group>"; };
-		C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognizerResultViewController.m; sourceTree = "<group>"; };
-		C2B8AC692035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsImageTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsImageTableViewCell.m; sourceTree = "<group>"; };
-		C2B8AC6C2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m; sourceTree = "<group>"; };
-		C2B8AC6F2035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsDatesInfoTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsDatesInfoTableViewCell.m; sourceTree = "<group>"; };
 		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -221,15 +202,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08299BBB1FC5822F00E01F0E /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				08299BC01FC5822F00E01F0E /* UnfoldTransition.h */,
-				08299BC11FC5822F00E01F0E /* UnfoldTransition.m */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		08716C7A220DC49400119B9C /* BusinessCardDemo */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,10 +325,9 @@
 				6954AE9B24E52E7D00005627 /* NFC */,
 				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
-				C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */,
 				08716C7A220DC49400119B9C /* BusinessCardDemo */,
-				08299BBB1FC5822F00E01F0E /* Helpers */,
 				28B21DBC23E31200002D2621 /* AdjustableFilter */,
+				28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
 				2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */,
 				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
@@ -406,33 +377,6 @@
 				2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */,
 			);
 			path = BarcodeScannerDemo;
-			sourceTree = "<group>";
-		};
-		C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */ = {
-			isa = PBXGroup;
-			children = (
-				C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */,
-				C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */,
-				C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */,
-				C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */,
-				C2B8AC722035C86C00F4F48E /* Results */,
-			);
-			path = DisabilityCertificatesDemo;
-			sourceTree = "<group>";
-		};
-		C2B8AC722035C86C00F4F48E /* Results */ = {
-			isa = PBXGroup;
-			children = (
-				C2B8AC662035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.h */,
-				C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */,
-				C2B8AC692035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.h */,
-				C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */,
-				C2B8AC6C2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h */,
-				C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */,
-				C2B8AC6F2035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.h */,
-				C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */,
-			);
-			name = Results;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -616,34 +560,28 @@
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
 				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
-				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
 				288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */,
 				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
-				C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
-				C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */,
-				C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */,
 				2839FE722754FA2600E2DCDA /* BusinessCardDetailDemoViewController.swift in Sources */,
 				2839FE712754FA2200E2DCDA /* BusinessCardDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
 				2839FE732754FA2D00E2DCDA /* BusinessCardsDemoViewController.swift in Sources */,
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
-				C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */,
 				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
 				2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */,
 				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
 				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
+				28E71F3C275672660061B433 /* DisabilityCertificateScannerViewController.swift in Sources */,
 				28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */,
-				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
 				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
-				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
 				2869C4A1274E8D480036F44D /* PayformDemoViewController.swift in Sources */,
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
