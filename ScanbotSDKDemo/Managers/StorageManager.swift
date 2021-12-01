@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-class ImageStorageManager {
+final class ImageStorageManager {
     
     static let shared = ImageStorageManager()
     

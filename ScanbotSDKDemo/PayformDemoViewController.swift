@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class PayformDemoViewController: UIViewController {
+final class PayformDemoViewController: UIViewController {
     private lazy var cameraSession: SBSDKCameraSession = {
        let cameraSession = SBSDKCameraSession(for: FeaturePayformDetection)
         cameraSession.videoDelegate = self

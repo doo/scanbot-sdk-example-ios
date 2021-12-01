@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class LicensePlateDemoViewController: UIViewController {
+final class LicensePlateDemoViewController: UIViewController {
     @IBOutlet private var cameraContainer: UIView?
     @IBOutlet private var resultLabel: UILabel?
     @IBOutlet private var resultImageView: UIImageView?

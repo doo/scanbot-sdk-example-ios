@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TextViewController: UIViewController {
+final class TextViewController: UIViewController {
     @IBOutlet private var textView: UITextView?
     var textToDisplay: String? {
         didSet {

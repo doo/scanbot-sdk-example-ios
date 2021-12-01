@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class GenericTextLineRecognizerDemoViewController: UIViewController {
+final class GenericTextLineRecognizerDemoViewController: UIViewController {
     @IBOutlet private var cameraContainer: UIView?
     @IBOutlet private var resultLabel: UILabel?
     @IBOutlet private var zoomButton: UIButton?

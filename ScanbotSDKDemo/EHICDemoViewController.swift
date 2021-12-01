@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class EHICDemoViewController: UIViewController {
+final class EHICDemoViewController: UIViewController {
     @IBOutlet private var statusLabel: UILabel?
     private let recognizer = SBSDKHealthInsuranceCardRecognizer()
     private lazy var cameraSession: SBSDKCameraSession = {

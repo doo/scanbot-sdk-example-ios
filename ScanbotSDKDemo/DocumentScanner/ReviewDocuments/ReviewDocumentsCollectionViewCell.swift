@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
+final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewImageView: UIImageView?
     @IBOutlet private var highlightView: UIView?
     

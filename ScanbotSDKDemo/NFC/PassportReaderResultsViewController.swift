@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class PassportReaderResultsViewController: UIViewController {
+final class PassportReaderResultsViewController: UIViewController {
     private(set) var datagroups: [SBSDKNFCDatagroup]!
     @IBOutlet private var tableView: UITableView?
     

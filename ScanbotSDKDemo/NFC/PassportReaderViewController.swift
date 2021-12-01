@@ -10,7 +10,7 @@ import UIKit
 import ScanbotSDK
 
 @available(iOS 13.0, *)
-class PassportReaderViewController: UIViewController {
+final class PassportReaderViewController: UIViewController {
     
     private var nfcReader: SBSDKNFCPassportReader?
     private var passportNumber: String?

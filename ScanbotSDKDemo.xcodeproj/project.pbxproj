@@ -37,9 +37,9 @@
 		28101821274FF28C000350F5 /* TextViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101820274FF28C000350F5 /* TextViewController.swift */; };
 		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
 		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
-		2839FE712754FA2200E2DCDA /* BusinessCardDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */; };
-		2839FE722754FA2600E2DCDA /* BusinessCardDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */; };
-		2839FE732754FA2D00E2DCDA /* BusinessCardsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */; };
+		2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */; };
+		2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */; };
+		2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */; };
 		2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */; };
 		2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */; };
 		2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */; };
@@ -122,13 +122,13 @@
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
-		2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardsDemoViewController.swift; sourceTree = "<group>"; };
+		2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoViewController.swift; sourceTree = "<group>"; };
 		28101820274FF28C000350F5 /* TextViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
 		28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePlateDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
-		2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardDemoCell.swift; sourceTree = "<group>"; };
-		2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BusinessCardDetailDemoViewController.swift; sourceTree = "<group>"; };
+		2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoCell.swift; sourceTree = "<group>"; };
+		2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDetailDemoViewController.swift; sourceTree = "<group>"; };
 		2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsTableViewCell.swift; sourceTree = "<group>"; };
 		2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsViewController.swift; sourceTree = "<group>"; };
 		2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
@@ -191,14 +191,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08716C7A220DC49400119B9C /* BusinessCardDemo */ = {
+		08716C7A220DC49400119B9C /* MultipleObjectsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				2849C02C27513BA600D9760C /* BusinessCardDemoCell.swift */,
-				2849C02E27513C7E00D9760C /* BusinessCardDetailDemoViewController.swift */,
-				2803648527513FA900C76910 /* BusinessCardsDemoViewController.swift */,
+				2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */,
+				2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */,
+				2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */,
 			);
-			path = BusinessCardDemo;
+			path = MultipleObjectsDemo;
 			sourceTree = "<group>";
 		};
 		28002718273400BE00E11311 /* DocumentScanner */ = {
@@ -306,7 +306,7 @@
 				6954AE9B24E52E7D00005627 /* NFC */,
 				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
-				08716C7A220DC49400119B9C /* BusinessCardDemo */,
+				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
 				28B21DBC23E31200002D2621 /* AdjustableFilter */,
 				28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
@@ -539,10 +539,10 @@
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
-				2839FE722754FA2600E2DCDA /* BusinessCardDetailDemoViewController.swift in Sources */,
-				2839FE712754FA2200E2DCDA /* BusinessCardDemoCell.swift in Sources */,
+				2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */,
+				2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
-				2839FE732754FA2D00E2DCDA /* BusinessCardsDemoViewController.swift in Sources */,
+				2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */,
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,

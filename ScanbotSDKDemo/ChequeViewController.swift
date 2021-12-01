@@ -10,7 +10,7 @@ import UIKit
 import ScanbotSDK
 
 
-class ChequeViewController: UIViewController {
+final class ChequeViewController: UIViewController {
     private lazy var cameraSession: SBSDKCameraSession = {
        let cameraSession = SBSDKCameraSession(for: FeatureCheque)
         cameraSession.videoDelegate = self

@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class ReviewDocumentsViewController: UIViewController {
+final class ReviewDocumentsViewController: UIViewController {
     
     var documentImageStorage: SBSDKIndexedImageStorage?
     var originalImageStorage: SBSDKIndexedImageStorage?

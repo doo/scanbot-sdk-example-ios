@@ -10,7 +10,7 @@ import UIKit
 import PDFKit
 import ScanbotSDK
 
-class DemoPDFViewController: UIViewController {
+final class DemoPDFViewController: UIViewController {
     @IBOutlet private var pdfView: PDFView?
     private var pdfUrl: URL?
     

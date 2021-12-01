@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class AdjustableFiltersTableViewController: UIViewController {
+final class AdjustableFiltersTableViewController: UIViewController {
     
     @IBOutlet private var filteredImageView: UIImageView?
     @IBOutlet private var processingIndicator: UIActivityIndicatorView?

@@ -8,6 +8,6 @@
 
 import UIKit
 
-class PassportReaderResultImageTableViewCell: UITableViewCell {
+final class PassportReaderResultImageTableViewCell: UITableViewCell {
     @IBOutlet var photoView: UIImageView?
 }

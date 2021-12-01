@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class TIFFDemoViewController: UIViewController {
+final class TIFFDemoViewController: UIViewController {
     @IBOutlet private var imagesCountLabel: UILabel?
     private var images: [UIImage] = []
     

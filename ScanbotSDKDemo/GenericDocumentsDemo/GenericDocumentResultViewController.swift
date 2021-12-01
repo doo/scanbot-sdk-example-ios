@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class GenericDocumentResultViewController: UIViewController {
+final class GenericDocumentResultViewController: UIViewController {
     var document: SBSDKGenericDocument?
     var fratDocument: [SBSDKGenericDocument]?
     var sourceImage: UIImage?

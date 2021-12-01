@@ -8,7 +8,7 @@
 
 import UIKit
 
-class AdjustableFilterTableViewCell: UITableViewCell {
+final class AdjustableFilterTableViewCell: UITableViewCell {
     
     @IBOutlet private var label: UILabel?
     @IBOutlet private var slider: UISlider?

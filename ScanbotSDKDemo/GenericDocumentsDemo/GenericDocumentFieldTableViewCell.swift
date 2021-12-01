@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenericDocumentFieldTableViewCell: UITableViewCell {
+final class GenericDocumentFieldTableViewCell: UITableViewCell {
     @IBOutlet var fieldTypeLabel: UILabel!
     @IBOutlet var fieldImageView: UIImageView!
     @IBOutlet var recognizedTextInfoLabel: UILabel!

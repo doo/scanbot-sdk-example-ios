@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DemoSelectionTableViewController: UITableViewController {
+final class DemoSelectionTableViewController: UITableViewController {
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return .portrait
     }

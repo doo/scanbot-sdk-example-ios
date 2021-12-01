@@ -1,5 +1,5 @@
 //
-//  BusinessCardsDemoViewController.swift
+//  MultipleObjectsDemoViewController.swift
 //  ScanbotSDKDemo
 //
 //  Created by Danil Voitenko on 26.11.21.
@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class BusinessCardsDemoViewController: UIViewController {
+final class MultipleObjectsDemoViewController: UIViewController {
     private var scannerViewController: SBSDKMultipleObjectScannerViewController?
     private var imageProcessor = SBSDKBusinessCardsImageProcessor()
     
@@ -32,9 +32,9 @@ class BusinessCardsDemoViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let destination = segue.destination as? BusinessCardDetailDemoViewController {
-            destination.image = selectedImage
-            destination.text = selectedText
+        if let destination = segue.destination as? MultipleObjectsDetailDemoViewController {
+            destination.imageView?.image = selectedImage
+            destination.textView?.text = selectedText
         }
     }
     
@@ -94,15 +94,15 @@ class BusinessCardsDemoViewController: UIViewController {
     }
 }
 
-extension BusinessCardsDemoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension MultipleObjectsDemoViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return Int(storage?.imageCount ?? 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BusinessCardCell", for: indexPath) as!
-        BusinessCardDemoCell
-        cell.image = storage?.image(at: UInt(indexPath.row))
+        MultipleObjectsDemoCell
+        cell.imageView?.image = storage?.image(at: UInt(indexPath.row))
         return cell
     }
     
@@ -113,7 +113,7 @@ extension BusinessCardsDemoViewController: UICollectionViewDataSource, UICollect
     }
 }
 
-extension BusinessCardsDemoViewController: SBSDKMultipleObjectScannerViewControllerDelegate {
+extension MultipleObjectsDemoViewController: SBSDKMultipleObjectScannerViewControllerDelegate {
     func scannerController(_ controller: SBSDKMultipleObjectScannerViewController,
                            didCaptureOriginalImage originalImage: UIImage) {
         

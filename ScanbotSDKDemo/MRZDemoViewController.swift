@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-class MRZDemoViewController: UIViewController {
+final class MRZDemoViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView?
     @IBOutlet private var blackView: UIView?
     @IBOutlet private var cameraView: UIView?

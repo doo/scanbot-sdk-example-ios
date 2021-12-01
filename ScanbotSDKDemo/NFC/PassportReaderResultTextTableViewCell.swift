@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PassportReaderResultTextTableViewCell: UITableViewCell {
+final class PassportReaderResultTextTableViewCell: UITableViewCell {
     @IBOutlet var keyLabel: UILabel?
     @IBOutlet var valueLabel: UILabel?
 }
