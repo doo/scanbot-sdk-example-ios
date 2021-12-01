@@ -50,7 +50,7 @@ class DocumentScannerViewController: UIViewController {
     }
     
     private func updateUI() {
-        pageCountButton?.isEnabled = documentImageStorage.imageCount > 0
+        pageCountButton?.isEnabled = ScanbotSDK.isLicenseValid() && documentImageStorage.imageCount > 0
         pageCountButton?.title = "\(documentImageStorage.imageCount) pages"
     }
         
