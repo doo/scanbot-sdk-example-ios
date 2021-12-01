@@ -202,11 +202,62 @@
 		28002718273400BE00E11311 /* DocumentScanner */ = {
 			isa = PBXGroup;
 			children = (
+				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
+			sourceTree = "<group>";
+		};
+		286FF1CF2757B76F007D47EF /* Document Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				28002718273400BE00E11311 /* DocumentScanner */,
+				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
+				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
+				2869C49D274E63790036F44D /* ChequeViewController.swift */,
+			);
+			path = "Document Scanners";
+			sourceTree = "<group>";
+		};
+		286FF1D02757B783007D47EF /* Data Detectors */ = {
+			isa = PBXGroup;
+			children = (
+				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
+				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
+				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
+				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
+			);
+			path = "Data Detectors";
+			sourceTree = "<group>";
+		};
+		286FF1D12757B79F007D47EF /* Health Documents Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
+				28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */,
+			);
+			path = "Health Documents Scanners";
+			sourceTree = "<group>";
+		};
+		286FF1D22757B7CD007D47EF /* Identity Detectors */ = {
+			isa = PBXGroup;
+			children = (
+				6954AE9B24E52E7D00005627 /* NFC */,
+				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
+			);
+			path = "Identity Detectors";
+			sourceTree = "<group>";
+		};
+		286FF1D32757B7FC007D47EF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */,
+				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
+				28B21DBC23E31200002D2621 /* AdjustableFilter */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		288F0D48273C2A0900BF615C /* Managers */ = {
@@ -300,23 +351,12 @@
 			isa = PBXGroup;
 			children = (
 				288F0D48273C2A0900BF615C /* Managers */,
-				28002718273400BE00E11311 /* DocumentScanner */,
-				6954AE9B24E52E7D00005627 /* NFC */,
-				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
-				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
-				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
-				28B21DBC23E31200002D2621 /* AdjustableFilter */,
-				28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */,
-				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
-				2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */,
-				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
-				2869C49D274E63790036F44D /* ChequeViewController.swift */,
-				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
-				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
-				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
-				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
+				286FF1CF2757B76F007D47EF /* Document Scanners */,
+				286FF1D02757B783007D47EF /* Data Detectors */,
+				286FF1D12757B79F007D47EF /* Health Documents Scanners */,
+				286FF1D22757B7CD007D47EF /* Identity Detectors */,
+				286FF1D32757B7FC007D47EF /* Utilities */,
 				2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */,
-				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
 				28E71F4427568CDC0061B433 /* AppDelegate.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
