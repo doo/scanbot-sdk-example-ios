@@ -9,7 +9,7 @@
 import UIKit
 import ScanbotSDK
 
-final class MultipleObjectsDemoViewController: UIViewController {
+class MultipleObjectsDemoViewController: UIViewController {
     private var scannerViewController: SBSDKMultipleObjectScannerViewController?
     private var imageProcessor = SBSDKBusinessCardsImageProcessor()
     
@@ -33,8 +33,8 @@ final class MultipleObjectsDemoViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if let destination = segue.destination as? MultipleObjectsDetailDemoViewController {
-            destination.imageView?.image = selectedImage
-            destination.textView?.text = selectedText
+            destination.image = selectedImage
+            destination.text = selectedText
         }
     }
     

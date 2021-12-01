@@ -11,10 +11,10 @@ import ScanbotSDK
 
 class DocumentScannerViewController: UIViewController {
     
-    private var scanner: SBSDKScannerViewController?
+    var scannerViewController: SBSDKScannerViewController?
     
-    private let documentImageStorage = ImageStorageManager.shared.documentImageStorage
-    private let originalImageStorage = ImageStorageManager.shared.originalImageStorage
+    let documentImageStorage = ImageStorageManager.shared.documentImageStorage
+    let originalImageStorage = ImageStorageManager.shared.originalImageStorage
     
     @IBOutlet private var pageCountButton: UIBarButtonItem?
     @IBOutlet private var scannerContainerView: UIView?
@@ -26,7 +26,7 @@ class DocumentScannerViewController: UIViewController {
             presentErrorAlert()
             return
         }
-        scanner = SBSDKScannerViewController(parentViewController: self,
+        scannerViewController = SBSDKScannerViewController(parentViewController: self,
                                              parentView: self.scannerContainerView,
                                              imageStorage: nil,
                                              enableQRCodeDetection: false)
@@ -55,12 +55,10 @@ class DocumentScannerViewController: UIViewController {
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "documentReviewSegue" {
-            if documentImageStorage.imageCount > 0 {
-                if let controller = segue.destination as? ReviewDocumentsViewController {
-                    controller.documentImageStorage = documentImageStorage
-                    controller.originalImageStorage = originalImageStorage
-                }
+        if documentImageStorage.imageCount > 0 {
+            if let controller = segue.destination as? ReviewDocumentsViewController {
+                controller.documentImageStorage = documentImageStorage
+                controller.originalImageStorage = originalImageStorage
             }
         }
     }

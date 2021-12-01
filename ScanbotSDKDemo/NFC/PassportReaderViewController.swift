@@ -37,8 +37,8 @@ final class PassportReaderViewController: UIViewController {
         mrzController = SBSDKUIMRZScannerViewController.createNew(with: configuration, andDelegate: self)
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         mrzController?.isRecognitionEnabled = true
         guard let mrzController = mrzController, let progressView = progressView else { return }
