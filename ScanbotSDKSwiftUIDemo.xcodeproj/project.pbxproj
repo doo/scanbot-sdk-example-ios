@@ -32,7 +32,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08072F742721754C00863F12 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; };
 		285AE383271ED06300B5F728 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE380271ED06300B5F728 /* BarcodeScanner.swift */; };
 		285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */; };
 		285AE38C271ED0A000B5F728 /* BarcodeScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */; };
@@ -47,6 +46,8 @@
 		285AE3A2271F05FD00B5F728 /* DocumentPageEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE39E271F05FD00B5F728 /* DocumentPageEditingView.swift */; };
 		285AE3A3271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE39F271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift */; };
 		285AE3A5271F060600B5F728 /* DocumentPagesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE3A4271F060600B5F728 /* DocumentPagesContainer.swift */; };
+		286FF1D92757D998007D47EF /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; };
+		286FF1DA2757D998007D47EF /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2878D92527185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */; };
 		2878D92727185E530045F7EE /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92627185E530045F7EE /* MainListView.swift */; };
 		2878D92927185E540045F7EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2878D92827185E540045F7EE /* Assets.xcassets */; };
@@ -69,6 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				286FF1DA2757D998007D47EF /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -103,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				08072F742721754C00863F12 /* ScanbotSDK.framework in Frameworks */,
+				286FF1D92757D998007D47EF /* ScanbotSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
