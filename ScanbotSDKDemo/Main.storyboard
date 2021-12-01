@@ -524,21 +524,21 @@
         <!--Document Scanner View Controller-->
         <scene sceneID="Fw0-m7-lgp">
             <objects>
-                <viewController storyboardIdentifier="DocumentDetectionDemoViewController" extendedLayoutIncludesOpaqueBars="YES" id="YcZ-Bd-Nef" customClass="DocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentDetectionDemoViewController" id="YcZ-Bd-Nef" customClass="DocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="BmT-Ci-TEy"/>
                         <viewControllerLayoutGuide type="bottom" id="8KW-v4-aGv"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="vhN-XA-swO">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="crU-Tt-zg2" userLabel="ScannerContainer">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </view>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ecs-az-OQW">
-                                <rect key="frame" x="0.0" y="813" width="414" height="49"/>
+                                <rect key="frame" x="0.0" y="725" width="414" height="49"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="71h-CA-1B1"/>
                                     <barButtonItem title="Item" id="IPL-yV-m8h" userLabel="CountButton">
@@ -736,7 +736,7 @@
         <!--Generated PDF-->
         <scene sceneID="M96-tg-FQY">
             <objects>
-                <viewController storyboardIdentifier="DemoPDFViewController" title="Generated PDF" automaticallyAdjustsScrollViewInsets="NO" id="UbA-6j-j0s" customClass="DemoPDFViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DemoPDFViewController" title="Generated PDF" id="UbA-6j-j0s" customClass="DemoPDFViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="M4u-rz-Wn3"/>
                         <viewControllerLayoutGuide type="bottom" id="6ox-qv-4ad"/>
@@ -746,7 +746,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Kh-xc-1Ph" customClass="PDFView">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -765,7 +765,6 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="pdfView" destination="3Kh-xc-1Ph" id="nhj-Nb-2Z3"/>
                     </connections>
@@ -880,10 +879,10 @@ MRZ code at the from of your document:</string>
             </objects>
             <point key="canvasLocation" x="1607" y="605"/>
         </scene>
-        <!--Demo View Controller-->
+        <!--TIFF Demo View Controller-->
         <scene sceneID="8b8-Sm-fTk">
             <objects>
-                <viewController id="kA5-fG-Aau" customClass="TIFFDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kA5-fG-Aau" userLabel="TIFF Demo View Controller" customClass="TIFFDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zkt-U6-h2C"/>
                         <viewControllerLayoutGuide type="bottom" id="LWL-Yh-fkN"/>
@@ -945,13 +944,13 @@ MRZ code at the from of your document:</string>
         <!--Aspect Ratio Document Scanner View Controller-->
         <scene sceneID="fKS-VG-mLo">
             <objects>
-                <viewController storyboardIdentifier="DocumentDetectionDemoViewControllerA4" extendedLayoutIncludesOpaqueBars="YES" id="qHT-ux-UUs" customClass="AspectRatioDocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentDetectionDemoViewControllerA4" id="qHT-ux-UUs" customClass="AspectRatioDocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FUe-6e-tfP"/>
                         <viewControllerLayoutGuide type="bottom" id="nht-AB-4sa"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CPe-aI-5jv">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -1615,20 +1614,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="93" width="414" height="44"/>
+                                        <rect key="frame" x="0.0" y="93" width="414" height="44.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14.5" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="353.5" y="12" width="40.5" height="20"/>
+                                                    <rect key="frame" x="353.5" y="12" width="40.5" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
