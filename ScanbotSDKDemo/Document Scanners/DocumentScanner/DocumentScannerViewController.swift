@@ -55,7 +55,7 @@ class DocumentScannerViewController: UIViewController {
     }
         
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if documentImageStorage.imageCount > 0 {
+        if documentImageStorage.imageCount > 0 && originalImageStorage.imageCount > 0 {
             if let controller = segue.destination as? ReviewDocumentsViewController {
                 controller.documentImageStorage = documentImageStorage
                 controller.originalImageStorage = originalImageStorage

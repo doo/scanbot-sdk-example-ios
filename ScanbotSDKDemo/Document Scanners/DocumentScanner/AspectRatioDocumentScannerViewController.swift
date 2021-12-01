@@ -17,18 +17,8 @@ final class AspectRatioDocumentScannerViewController: DocumentScannerViewControl
         scannerViewController?.finderMode = .aspectRatioAlways
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let controller = segue.destination as? ReviewDocumentsViewController {
-            controller.documentImageStorage = documentImageStorage
-            controller.originalImageStorage = originalImageStorage
-        }
-    }
-    
-    override func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
-        originalImageStorage.add(image)
-    }
-    
-    override func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+    override func scannerController(_ controller: SBSDKScannerViewController,
+                                    didCaptureDocumentImage documentImage: UIImage) {
         documentImageStorage.add(documentImage)
         performSegue(withIdentifier: "documentReviewSegue", sender: nil)
     }
