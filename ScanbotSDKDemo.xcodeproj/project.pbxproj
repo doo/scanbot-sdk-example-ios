@@ -202,9 +202,9 @@
 		28002718273400BE00E11311 /* DocumentScanner */ = {
 			isa = PBXGroup;
 			children = (
-				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
-				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
+				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
+				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
 			path = DocumentScanner;
