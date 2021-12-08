@@ -65,7 +65,7 @@ class ScanbotSDKDemoUITests: XCTestCase {
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
 
-        tablesQuery.cells.staticTexts["Europian Health Insurance Card Demo"].tap()
+        tablesQuery.cells.staticTexts["European Health Insurance Card Demo"].tap()
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
 
