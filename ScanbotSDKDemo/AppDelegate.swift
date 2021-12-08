@@ -31,10 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func applicationWillTerminate(_ application: UIApplication) {
-        let imageStorageManager = ImageStorageManager.shared
-        imageStorageManager.originalImageStorage.removeAllImages()
-        imageStorageManager.documentImageStorage.removeAllImages()
-        print("Original Image Storage: \(imageStorageManager.originalImageStorage.imageCount)\n" +
-              "Document Image Storage: \(imageStorageManager.documentImageStorage.imageCount)")
+        ImageManager.shared.removeAllImages()
     }
 }

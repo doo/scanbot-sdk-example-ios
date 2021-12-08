@@ -11,8 +11,6 @@ import ScanbotSDK
 
 final class ReviewDocumentsViewController: UIViewController {
     
-    var documentImageStorage: SBSDKIndexedImageStorage?
-    var originalImageStorage: SBSDKIndexedImageStorage?
 
     @IBOutlet private var collectionView: UICollectionView?
     @IBOutlet private var importButton: UIBarButtonItem?
@@ -47,20 +45,15 @@ final class ReviewDocumentsViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         FilterManager.filters.forEach { filterType in
             let action = UIAlertAction(title: FilterManager.name(for: filterType), style: .default) { _ in
-                let smartFilter = SBSDKSmartFilter()
-                smartFilter.filterType = filterType
-                let compoundFilter = SBSDKCompoundFilter(filters: [smartFilter])
                 DispatchQueue(label: "FilterQueue").async { [weak self] in
-                    guard let self = self,
-                    let documentImageStorage = self.documentImageStorage,
-                    let originalImageStorage = self.originalImageStorage else { return }
-                    for index in 0..<documentImageStorage.imageCount {
-                        if let filteredImage = compoundFilter.run(on: originalImageStorage.image(at: index)!) {
-                            documentImageStorage.replaceImage(at: index, with: filteredImage)
+                    for index in 0..<ImageManager.shared.numberOfImages {
+                        let parameters = ImageManager.shared.processingParametersAt(index: index)!
+                        parameters.filter = filterType
+                        if ImageManager.shared.processImageAt(index, processingParameters: parameters) {
+                            DispatchQueue.main.async {
+                                self?.reloadData()
+                            }
                         }
-                    }
-                    DispatchQueue.main.async {
-                        self.reloadData()
                     }
                 }
             }
@@ -77,20 +70,18 @@ final class ReviewDocumentsViewController: UIViewController {
     }
     
     @IBAction private func deleteAllButtonDidPress(_ sender: Any) {
-        documentImageStorage?.removeAllImages()
-        originalImageStorage?.removeAllImages()
+        ImageManager.shared.removeAllImages()
         reloadData()
     }
     
     @IBAction private func exportButtonDidPress(_ sender: Any) {
-        guard let documentImageStorage = documentImageStorage else { return }
         activityIndicator?.startAnimating()
         DispatchQueue(label: "exportToPDF_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
             do {
-                let pdf = try SBSDKPDFRenderer.renderImageStorage(documentImageStorage,
+                let pdf = try SBSDKPDFRenderer.renderImageStorage(ImageManager.shared.processedImageStorage,
                                                                   indexSet: nil,
                                                                   with: .auto,
                                                                   output: url)
@@ -110,7 +101,7 @@ final class ReviewDocumentsViewController: UIViewController {
     private func reloadData() {
         collectionView?.reloadData()
         [importButton, deleteAllButton, filterButton, exportButton]
-            .forEach({ $0?.isEnabled = (documentImageStorage?.imageCount ?? 0) > 0 })
+            .forEach({ $0?.isEnabled = ImageManager.shared.numberOfImages > 0 })
     }
         
     private func sharePDF(at url: URL) {
@@ -123,7 +114,7 @@ final class ReviewDocumentsViewController: UIViewController {
            if let navigationController = segue.destination as? UINavigationController,
               let controller = navigationController.viewControllers.first as? AdjustableFiltersTableViewController {
                navigationController.modalPresentationStyle = .fullScreen
-               controller.selectedImage = documentImageStorage?.image(at: 0)
+               controller.selectedImage = ImageManager.shared.processedImageStorage.image(at: 0)
            }
        }
     }
@@ -133,12 +124,12 @@ final class ReviewDocumentsViewController: UIViewController {
 extension ReviewDocumentsViewController: UICollectionViewDataSource {
      
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return Int(documentImageStorage?.imageCount ?? 0)
+        return ImageManager.shared.numberOfImages
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let image = documentImageStorage?.image(at: UInt(indexPath.item))
+        let image = ImageManager.shared.processedImageAt(index: indexPath.item)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCollectionCell",
                                                       for: indexPath) as! ReviewDocumentsCollectionViewCell
         cell.previewImageView?.image = image
@@ -150,13 +141,13 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ReviewDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let image = originalImageStorage?.image(at: UInt(indexPath.item)) else { return }
-        
+        guard let image = ImageManager.shared.originalImageAt(index: indexPath.item) else { return }
+
         selectedImageIndex = indexPath.item
         
         let editingViewController = SBSDKImageEditingViewController()
-        editingViewController.image = image
         editingViewController.delegate = self
+        editingViewController.image = image
         
         navigationController?.pushViewController(editingViewController, animated: true)
     }
@@ -166,11 +157,20 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
 extension ReviewDocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+
         guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
         
-        documentImageStorage?.add(image)
-        originalImageStorage?.add(image)
-        reloadData()
+        DispatchQueue(label: "FilterQueue").async { [weak self] in
+            let result = SBSDKDocumentDetector().detectDocumentPolygon(on: image,
+                                                                       visibleImageRect: .zero,
+                                                                       smoothingEnabled: false,
+                                                                       useLiveDetectionParameters: false)
+
+            ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
+            DispatchQueue.main.async {
+                self?.reloadData()
+            }
+        }
         picker.dismiss(animated: true, completion: nil)
     }
     
@@ -184,9 +184,19 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
     func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
                                     didApplyChangesWith polygon: SBSDKPolygon,
                                     croppedImage: UIImage) {
+     
         guard let selectedImageIndex = selectedImageIndex else { return }
-        
-        documentImageStorage?.replaceImage(at: UInt(selectedImageIndex), with: croppedImage)
+        guard let parameters = ImageManager.shared.processingParametersAt(index: selectedImageIndex) else { return }
+        parameters.polygon = polygon
+        parameters.counterClockwiseRotations = -editingViewController.rotations
+        DispatchQueue(label: "FilterQueue").async { [weak self] in
+            if ImageManager.shared.processImageAt(selectedImageIndex, processingParameters: parameters) {
+                DispatchQueue.main.async {
+                    self?.reloadData()
+                }
+            }
+        }
+        self.selectedImageIndex = nil
         editingViewController.navigationController?.popViewController(animated: true)
     }
     

@@ -13,8 +13,6 @@ class DocumentScannerViewController: UIViewController {
     
     var scannerViewController: SBSDKScannerViewController?
     
-    let documentImageStorage = ImageStorageManager.shared.documentImageStorage
-    let originalImageStorage = ImageStorageManager.shared.originalImageStorage
     
     @IBOutlet private var pageCountButton: UIBarButtonItem?
     @IBOutlet private var scannerContainerView: UIView?
@@ -50,28 +48,19 @@ class DocumentScannerViewController: UIViewController {
     }
     
     private func updateUI() {
-        pageCountButton?.isEnabled = ScanbotSDK.isLicenseValid() && documentImageStorage.imageCount > 0
-        pageCountButton?.title = "\(documentImageStorage.imageCount) pages"
-    }
-        
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if documentImageStorage.imageCount > 0 && originalImageStorage.imageCount > 0 {
-            if let controller = segue.destination as? ReviewDocumentsViewController {
-                controller.documentImageStorage = documentImageStorage
-                controller.originalImageStorage = originalImageStorage
-            }
-        }
+        pageCountButton?.isEnabled = ScanbotSDK.isLicenseValid() && ImageManager.shared.numberOfImages > 0
+        pageCountButton?.title = "\(ImageManager.shared.numberOfImages) pages"
     }
 }
 
 extension DocumentScannerViewController: SBSDKScannerViewControllerDelegate {
-    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
-        documentImageStorage.add(documentImage)
-        updateUI()
-    }
     
-    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
-        originalImageStorage.add(image)
+    func scannerController(_ controller: SBSDKScannerViewController,
+                           didCapture image: UIImage,
+                           with info: SBSDKCaptureInfo) {
+        
+        ImageManager.shared.add(image: image, polygon: info.detectionResult?.polygon ?? SBSDKPolygon())
+        self.updateUI()
     }
 }
 

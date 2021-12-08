@@ -56,7 +56,7 @@
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
-		288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* StorageManager.swift */; };
+		288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* ImageManager.swift */; };
 		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
 		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
@@ -143,7 +143,7 @@
 		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
-		288F0D41273C0A1E00BF615C /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		288F0D41273C0A1E00BF615C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
 		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
 		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
@@ -264,7 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				2884E28527455B9200C0ABA2 /* FiltersManager.swift */,
-				288F0D41273C0A1E00BF615C /* StorageManager.swift */,
+				288F0D41273C0A1E00BF615C /* ImageManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -570,7 +570,7 @@
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
-				288F0D42273C0A1E00BF615C /* StorageManager.swift in Sources */,
+				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
 				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
