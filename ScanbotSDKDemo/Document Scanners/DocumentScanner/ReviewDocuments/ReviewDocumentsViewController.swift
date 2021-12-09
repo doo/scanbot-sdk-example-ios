@@ -49,7 +49,7 @@ final class ReviewDocumentsViewController: UIViewController {
                     for index in 0..<ImageManager.shared.numberOfImages {
                         let parameters = ImageManager.shared.processingParametersAt(index: index)!
                         parameters.filter = filterType
-                        if ImageManager.shared.processImageAt(index, processingParameters: parameters) {
+                        if ImageManager.shared.processImageAt(index, withParameters: parameters) {
                             DispatchQueue.main.async {
                                 self?.reloadData()
                             }
@@ -141,14 +141,18 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension ReviewDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let image = ImageManager.shared.originalImageAt(index: indexPath.item) else { return }
+
+        guard let image = ImageManager.shared.originalImageAt(index: indexPath.item),
+              let params = ImageManager.shared.processingParametersAt(index: indexPath.item) else {
+                  return
+        }
 
         selectedImageIndex = indexPath.item
         
         let editingViewController = SBSDKImageEditingViewController()
         editingViewController.delegate = self
         editingViewController.image = image
-        
+        editingViewController.polygon = params.polygon
         navigationController?.pushViewController(editingViewController, animated: true)
     }
 }
@@ -190,7 +194,7 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
         parameters.polygon = polygon
         parameters.counterClockwiseRotations = -editingViewController.rotations
         DispatchQueue(label: "FilterQueue").async { [weak self] in
-            if ImageManager.shared.processImageAt(selectedImageIndex, processingParameters: parameters) {
+            if ImageManager.shared.processImageAt(selectedImageIndex, withParameters: parameters) {
                 DispatchQueue.main.async {
                     self?.reloadData()
                 }

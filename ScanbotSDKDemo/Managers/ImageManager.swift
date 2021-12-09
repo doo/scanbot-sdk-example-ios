@@ -57,7 +57,7 @@ final class ImageManager {
             let parameters = ImageProcessingParameters(polygon: polygon,
                                                        filter: SBSDKImageFilterTypeNone,
                                                        counterClockwiseRotations: 0)
-            if processImageAt(Int(originalImageStorage.imageCount-1), processingParameters: parameters) {
+            if processImageAt(Int(originalImageStorage.imageCount-1), withParameters: parameters) {
                 return true
             } else {
                 originalImageStorage.removeImage(at: originalImageStorage.imageCount - 1)
@@ -95,29 +95,35 @@ final class ImageManager {
         processingParameters.removeAll()
     }
     
-    func processImageAt(_ index: Int, processingParameters: ImageProcessingParameters) -> Bool {
+    func processImageAt(_ index: Int, withParameters parameters: ImageProcessingParameters) -> Bool {
         if index < 0 || index >= numberOfImages { return false }
         
-        var image = originalImageStorage.image(at: UInt(index))
-        
-        image = image?.sbsdk_imageRotatedClockwise(-processingParameters.counterClockwiseRotations)
-        image = image?.sbsdk_imageWarped(by: processingParameters.polygon,
-                                         andFilteredBy: processingParameters.filter,
-                                         imageScale: 1.0)
-        
-        guard let processedImage = image else {
+        guard let image = originalImageStorage.image(at: UInt(index)) else {
             return false
         }
         
+        guard let rotImage = image.sbsdk_imageRotatedCounterClockwise(parameters.counterClockwiseRotations) else {
+            return false
+        }
+        
+        guard let processedImage = rotImage.sbsdk_imageWarped(by: parameters.polygon,
+                                                              andFilteredBy: parameters.filter,
+                                                              imageScale: 1.0) else {
+            return false
+        }
+        
+        parameters.counterClockwiseRotations = 0
+        originalImageStorage.replaceImage(at: UInt(index), with: rotImage)
+
         while self.processingParameters.count < originalImageStorage.imageCount {
             self.processingParameters.append(ImageProcessingParameters())
         }
         
         if index < processedImageStorage.imageCount {
-            self.processingParameters[index] = processingParameters
+            self.processingParameters[index] = parameters
             return processedImageStorage.replaceImage(at: UInt(index), with: processedImage)
         } else {
-            self.processingParameters.append(processingParameters)
+            self.processingParameters.append(parameters)
             return processedImageStorage.add(processedImage)
         }
     }
