@@ -41,6 +41,6 @@ struct ResultDetailsView_Previews: PreviewProvider {
                                                                     type: SBSDKBarcodeTypeAztec,
                                                                     barcodeImage: UIImage(systemName: "sun.dust")!,
                                                                     rawTextString: "Test Test Test\nTest Test\nTest",
-                                                                    rawBytes: Data()))
+                                                                           rawBytes: Data(), metadata: [AnyHashable:Any]()))
     }
 }
