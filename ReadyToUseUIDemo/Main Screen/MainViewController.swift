@@ -34,8 +34,8 @@ extension MainViewController: UINavigationControllerDelegate {
                               willShow viewController: UIViewController,
                               animated: Bool) {
         
-        let barHidden = (viewController != self)
-        navigationController.setNavigationBarHidden(barHidden, animated: true)
+        let barHidden = viewController != self
+        navigationController.setNavigationBarHidden(barHidden, animated: animated)
     }
 }
 

@@ -17,6 +17,9 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
         let configuration = SBSDKUIBarcodeScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 2, andHeight: 1)
+        configuration.uiConfiguration.allowedInterfaceOrientations = .landscape
+        
+        
         let codeTypes = SBSDKUIMachineCodesCollection.oneDimensionalBarcodes()
         
         let scanner = SBSDKUIBarcodeScannerViewController.createNew(withAcceptedMachineCodeTypes: codeTypes,

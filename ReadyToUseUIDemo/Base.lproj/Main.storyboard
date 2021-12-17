@@ -79,7 +79,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3Wc-9A-pLW"/>
                         <constraints>
-                            <constraint firstItem="v3U-MT-Cbr" firstAttribute="top" secondItem="3Wc-9A-pLW" secondAttribute="top" id="Z6W-Ht-zL6"/>
+                            <constraint firstItem="v3U-MT-Cbr" firstAttribute="top" secondItem="nB9-64-z1n" secondAttribute="top" id="SI7-ul-3vL"/>
                             <constraint firstItem="v3U-MT-Cbr" firstAttribute="leading" secondItem="nB9-64-z1n" secondAttribute="leading" id="cpt-7O-rhH"/>
                             <constraint firstAttribute="trailing" secondItem="v3U-MT-Cbr" secondAttribute="trailing" id="jmt-AI-xSy"/>
                             <constraint firstAttribute="bottom" secondItem="v3U-MT-Cbr" secondAttribute="bottom" id="mx3-rd-cpD"/>
@@ -94,10 +94,10 @@
             </objects>
             <point key="canvasLocation" x="16.800000000000001" y="-358.37438423645324"/>
         </scene>
-        <!--Main Navigation Controller-->
+        <!--Navigation Controller-->
         <scene sceneID="JPU-v2-NKa">
             <objects>
-                <navigationController id="wxo-uD-KuP" customClass="MainNavigationController" customModule="ReadyToUseUIDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController id="wxo-uD-KuP" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nwm-aR-7ds">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>

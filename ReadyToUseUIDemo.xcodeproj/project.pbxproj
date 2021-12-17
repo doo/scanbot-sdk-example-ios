@@ -65,7 +65,6 @@
 		08B6F2FD20EA8D0800691231 /* FilteringScreenConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2F820EA8D0800691231 /* FilteringScreenConfiguration.m */; };
 		08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FA20EA8D0800691231 /* FilteringViewController.m */; };
 		08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */; };
-		08DBA504276C8BD800630F68 /* MainNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DBA503276C8BD800630F68 /* MainNavigationController.swift */; };
 		28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */; };
 		690CD22B242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */; };
 		690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */; };
@@ -156,7 +155,6 @@
 		08B6F2F920EA8D0800691231 /* FilteringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FilteringViewController.h; sourceTree = "<group>"; };
 		08B6F2FA20EA8D0800691231 /* FilteringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FilteringViewController.m; sourceTree = "<group>"; };
 		08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFilterPage.swift; sourceTree = "<group>"; };
-		08DBA503276C8BD800630F68 /* MainNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigationController.swift; sourceTree = "<group>"; };
 		28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanLicensePlate.swift; sourceTree = "<group>"; };
 		690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMultipleObjects.swift; sourceTree = "<group>"; };
 		690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanBarcodeBatch.swift; sourceTree = "<group>"; };
@@ -256,7 +254,6 @@
 				082D0A5B20C81760009B1A7A /* MainViewController.swift */,
 				082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */,
 				082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */,
-				08DBA503276C8BD800630F68 /* MainNavigationController.swift */,
 			);
 			path = "Main Screen";
 			sourceTree = "<group>";
@@ -533,7 +530,6 @@
 				0889D10120EA632800A36316 /* PageReviewScreenConfiguration.m in Sources */,
 				080F3A8B20EB9ABB00E2A3CC /* FilterTableViewCell.m in Sources */,
 				690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */,
-				08DBA504276C8BD800630F68 /* MainNavigationController.swift in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
 				08B6F2FE20EA8D0800691231 /* FilteringViewController.m in Sources */,
 				080F3A8E20EB9B2300E2A3CC /* FilterTableItem.m in Sources */,

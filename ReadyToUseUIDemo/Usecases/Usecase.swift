@@ -25,11 +25,13 @@ class Usecase: NSObject {
     }
     
     func presentViewController(_ viewController: UIViewController) {
-        if let navigationController = self.presenter as? UINavigationController {
-            navigationController.pushViewController(viewController, animated: true)
-        } else {
-            self.presenter?.present(viewController, animated: true, completion: nil)
-        }
+        viewController.modalPresentationStyle = .overFullScreen
+        self.presenter?.present(viewController, animated: true, completion: nil)
+//        if let navigationController = self.presenter as? UINavigationController {
+//            navigationController.pushViewController(viewController, animated: true)
+//        } else {
+//            self.presenter?.present(viewController, animated: true, completion: nil)
+//        }
     }
     
     func didStart() {
