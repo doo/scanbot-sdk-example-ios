@@ -89,5 +89,9 @@ class ScanbotSDKDemoUITests: XCTestCase {
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
 
+        sleep(60)
+        tablesQuery.cells.staticTexts["Document Scanner Demo"].tap()
+        XCTAssert(app.alerts["Error"].waitForExistence(timeout: 1))
+        app.alerts["Error"].buttons["OK"].tap()
     }
 }
