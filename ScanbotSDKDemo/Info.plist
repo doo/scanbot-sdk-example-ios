@@ -31,9 +31,9 @@
 	<key>NFCReaderUsageDescription</key>
 	<string>Please allow NFC usage.</string>
 	<key>NSCameraUsageDescription</key>
-	<string>&quot;Please allow access to camera&quot;</string>
+	<string>"Please allow access to camera"</string>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>&quot;Please allow access to photo library&quot;</string>
+	<string>"Please allow access to photo library"</string>
 	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
@@ -53,6 +53,7 @@
 		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
