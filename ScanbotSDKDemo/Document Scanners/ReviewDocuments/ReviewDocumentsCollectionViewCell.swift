@@ -11,6 +11,14 @@ import UIKit
 final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewImageView: UIImageView?
     @IBOutlet private var highlightView: UIView?
+    @IBOutlet private var infoLabel: UILabel!
+    
+    var infoLabelText: String? {
+        didSet {
+            infoLabel?.text = infoLabelText
+            infoLabel?.isHidden = (infoLabelText?.count ?? 0) == 0
+        }
+    }
     
     override var isHighlighted: Bool {
         get { return super.isHighlighted }
@@ -23,6 +31,13 @@ final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
                            animations: { self.highlightView?.alpha = newValue ? 1.0 : 0.0 },
                            completion: nil)
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        self.infoLabel.clipsToBounds = true
+        self.infoLabel.layer.cornerRadius = 8.0
+        self.infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     override func layoutSubviews() {

@@ -32,6 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
@@ -120,6 +121,7 @@
 
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
+		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
@@ -199,24 +201,12 @@
 			path = MultipleObjectsDemo;
 			sourceTree = "<group>";
 		};
-		28002718273400BE00E11311 /* DocumentScanner */ = {
+		286FF1CF2757B76F007D47EF /* Document Scanners */ = {
 			isa = PBXGroup;
 			children = (
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
-				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
-			);
-			path = DocumentScanner;
-			sourceTree = "<group>";
-		};
-		286FF1CF2757B76F007D47EF /* Document Scanners */ = {
-			isa = PBXGroup;
-			children = (
-				28002718273400BE00E11311 /* DocumentScanner */,
-				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
-				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
-				2869C49D274E63790036F44D /* ChequeViewController.swift */,
 			);
 			path = "Document Scanners";
 			sourceTree = "<group>";
@@ -226,6 +216,9 @@
 			children = (
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
 				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
+				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
+				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
+				2869C49D274E63790036F44D /* ChequeViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
 				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
 			);
@@ -300,8 +293,10 @@
 		28E2736D27356EB600B3F7F4 /* ReviewDocuments */ = {
 			isa = PBXGroup;
 			children = (
-				28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */,
 				28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */,
+				28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */,
+				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
+				087C563B2772175F003440A9 /* ExportAction.swift */,
 			);
 			path = ReviewDocuments;
 			sourceTree = "<group>";
@@ -571,6 +566,7 @@
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
 				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
+				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
 				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,

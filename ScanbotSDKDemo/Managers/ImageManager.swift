@@ -71,6 +71,11 @@ final class ImageManager {
         return originalImageStorage.image(at: UInt(index))
     }
 
+    func originalImageURLAt(index: Int) -> URL? {
+        if index < 0 || index >= numberOfImages { return nil }
+        return originalImageStorage.imageURL(at: UInt(index))
+    }
+
     func processedImageAt(index: Int) -> UIImage? {
         if index < 0 || index >= numberOfImages { return nil }
         return processedImageStorage.image(at: UInt(index))
