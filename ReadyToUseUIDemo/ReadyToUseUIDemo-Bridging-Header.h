@@ -11,7 +11,5 @@
 
 #import "PageReviewViewController.h"
 #import "FilteringViewController.h"
-#import "WorkflowFactory.h"
-#import "WorkflowResultsViewController.h"
 
 #endif /* ReadyToUseUIDemo_Bridging_Header_h */

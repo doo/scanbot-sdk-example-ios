@@ -43,6 +43,10 @@ extension MainViewController: UINavigationControllerDelegate {
 //MARK: UITableViewDatasource
 extension MainViewController: UITableViewDataSource {
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.itemProvider.sections[section].title
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.itemProvider.sections.count
     }

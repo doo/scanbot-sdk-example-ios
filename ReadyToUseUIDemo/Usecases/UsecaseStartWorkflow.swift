@@ -46,7 +46,7 @@ class UsecaseStartWorkflow: Usecase {
     }
     
     func showWorkflowResults(_ results: [SBSDKUIWorkflowStepResult], on presenter: UIViewController) {
-        let controller = WorkflowResultsViewController.instantiate(with: results)
+        let controller = WorkflowResultsViewController(with: results)
         self.presentViewController(controller)
     }
     

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxo-uD-KuP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxo-uD-KuP">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -55,11 +55,11 @@
                                         <rect key="frame" x="0.0" y="49" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bJs-qp-AHH" id="lQm-ci-Vs7">
-                                            <rect key="frame" x="0.0" y="0.0" width="349.33333333333331" height="58"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="350.33333333333331" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0nl-Zv-Uuu">
-                                                    <rect key="frame" x="16" y="0.0" width="325.33333333333331" height="58"/>
+                                                    <rect key="frame" x="16" y="0.0" width="326.33333333333331" height="58"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -537,6 +537,10 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="jm8-Nv-K5g" id="PHY-oH-z4w"/>
+                                    <outlet property="delegate" destination="jm8-Nv-K5g" id="Qv1-rs-umP"/>
+                                </connections>
                             </collectionView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="VF3-Qz-Tnq">
                                 <rect key="frame" x="16" y="204" width="343" height="470"/>
@@ -556,7 +560,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Copy to Pasteboard"/>
                                         <connections>
-                                            <action selector="toPasteboardButtonTapped:" destination="jm8-Nv-K5g" eventType="touchUpInside" id="1zg-6P-Pz2"/>
+                                            <action selector="toPasteboardButtonDidPress:" destination="jm8-Nv-K5g" eventType="touchUpInside" id="8Hk-EP-GwG"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="B0r-PD-vgN">
@@ -567,7 +571,7 @@
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                         <state key="normal" title="Close"/>
                                         <connections>
-                                            <action selector="closeButtonTapped:" destination="jm8-Nv-K5g" eventType="touchUpInside" id="yne-TX-Ls9"/>
+                                            <action selector="closeButtonDidPress:" destination="jm8-Nv-K5g" eventType="touchUpInside" id="Ov0-mG-U5V"/>
                                         </connections>
                                     </button>
                                 </subviews>
