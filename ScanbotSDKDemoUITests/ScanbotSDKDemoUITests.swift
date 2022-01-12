@@ -85,10 +85,6 @@ class ScanbotSDKDemoUITests: XCTestCase {
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         
-        tablesQuery.cells.staticTexts["TIFF Demo"].tap()
-        _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
-        app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
-        
         tablesQuery.cells.staticTexts["Adjustable Filters Demo"].tap()
         _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 1)
         app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
