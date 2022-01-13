@@ -11,6 +11,10 @@ import ScanbotSDK
 @main
 struct ScanbotSDKSwiftUIDemoApp: App {
         
+    init() {
+        ScanbotSDK.setupDefaultLicenseFailureHandler()
+    }
+    
     var body: some Scene {
         WindowGroup {
             MainListView()
