@@ -88,6 +88,7 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
+        // Test the license failure alert appears after 60 seconds.
         sleep(60)
         tablesQuery.cells.staticTexts["Scan Document"].tap()
         XCTAssert(app.alerts["Demo expired"].waitForExistence(timeout: 1))

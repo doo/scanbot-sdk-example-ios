@@ -32,56 +32,50 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 08299BC11FC5822F00E01F0E /* UnfoldTransition.m */; };
-		086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */; };
-		08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */; };
-		08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */; };
-		08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */; };
+		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
-		08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */; };
+		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
+		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
+		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
+		2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */; };
+		2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */; };
+		2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */; };
+		2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */; };
+		2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */; };
+		2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */; };
+		2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */; };
+		2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */; };
+		2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */; };
+		2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */; };
+		2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */; };
+		2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C491274D49DC0036F44D /* MRZDemoViewController.swift */; };
+		2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */; };
+		2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C496274E49BE0036F44D /* EHICDemoViewController.swift */; };
+		2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C49D274E63790036F44D /* ChequeViewController.swift */; };
+		2869C4A1274E8D480036F44D /* PayformDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */; };
+		2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */; };
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */; };
-		28B21DBF23E31219002D2621 /* FilterModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DBE23E31219002D2621 /* FilterModel.m */; };
-		28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28B21DC123E313C2002D2621 /* FilterTableViewCell.m */; };
-		28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */; };
-		28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */; };
-		28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */; };
-		28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */; };
-		6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */; };
-		6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */; };
-		6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA024E52EF600005627 /* PassportReaderViewController.m */; };
-		6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */; };
+		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
+		288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* ImageManager.swift */; };
+		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
+		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
+		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
+		28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */; };
+		28A116C72746B192006E75D6 /* PassportReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C62746B192006E75D6 /* PassportReaderViewController.swift */; };
+		28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */; };
+		28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */; };
+		28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */; };
+		28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */; };
+		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
+		28E71F3C275672660061B433 /* DisabilityCertificateScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */; };
+		28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F4427568CDC0061B433 /* AppDelegate.swift */; };
+		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
+		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6991C575256C179A008188AD /* ScanbotSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */; };
-		69CF30B923015C7800AA5A07 /* EHICDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */; };
-		6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */; };
-		6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */; };
-		C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0522FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.m */; };
-		C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0822FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.m */; };
-		C22FFF1522FAEA7B006E0862 /* BarCodesResultDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */; };
-		C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */; };
-		C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */; };
-		C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C22FFF1022FAEA7A006E0862 /* BarCodeScannerViewController.m */; };
-		C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562781DE45368003F5FE0 /* AppDelegate.m */; };
-		C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627A1DE45368003F5FE0 /* ChequeViewController.m */; };
-		C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275627E1DE45368003F5FE0 /* DemoViewController.m */; };
-		C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */; };
-		C27562941DE45368003F5FE0 /* DocumentDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */; };
+		6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
-		C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562891DE45368003F5FE0 /* PayformDemoViewController.m */; };
-		C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */; };
-		C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275628E1DE45368003F5FE0 /* TextViewController.m */; };
-		C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */; };
-		C27562A81DE453B2003F5FE0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C27562A51DE453B2003F5FE0 /* main.m */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
-		C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C29DC070204D915900059670 /* TIFFDemoViewController.m */; };
-		C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */; };
-		C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */; };
-		C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */; };
-		C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */; };
-		C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */; };
-		C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */; };
-		C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C2F131F02034237A00FFF96B /* MRZDemoViewController.m */; };
 		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
 /* End PBXBuildFile section */
 
@@ -127,103 +121,54 @@
 
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
-		08299BC01FC5822F00E01F0E /* UnfoldTransition.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UnfoldTransition.h; sourceTree = "<group>"; };
-		08299BC11FC5822F00E01F0E /* UnfoldTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UnfoldTransition.m; sourceTree = "<group>"; };
-		086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericTextLineRecognizerDemoViewController.m; sourceTree = "<group>"; };
-		086AF337251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericTextLineRecognizerDemoViewController.h; sourceTree = "<group>"; };
-		08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardsDemoViewController.m; sourceTree = "<group>"; };
-		08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDetailDemoViewController.m; sourceTree = "<group>"; };
-		08716C7D220DC4D600119B9C /* BusinessCardDemoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDemoCell.h; sourceTree = "<group>"; };
-		08716C7E220DC4D600119B9C /* BusinessCardDetailDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardDetailDemoViewController.h; sourceTree = "<group>"; };
-		08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BusinessCardDemoCell.m; sourceTree = "<group>"; };
-		08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BusinessCardsDemoViewController.h; sourceTree = "<group>"; };
+		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
-		08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BlurrinessEstimatorDemoViewController.m; sourceTree = "<group>"; };
-		08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BlurrinessEstimatorDemoViewController.h; sourceTree = "<group>"; };
+		2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoViewController.swift; sourceTree = "<group>"; };
+		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
+		28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePlateDemoViewController.swift; sourceTree = "<group>"; };
+		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
+		2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoCell.swift; sourceTree = "<group>"; };
+		2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDetailDemoViewController.swift; sourceTree = "<group>"; };
+		2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsTableViewCell.swift; sourceTree = "<group>"; };
+		2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsViewController.swift; sourceTree = "<group>"; };
+		2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
+		2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerWithFinderViewController.swift; sourceTree = "<group>"; };
+		2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeResultDetailsViewController.swift; sourceTree = "<group>"; };
+		2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTypesViewController.swift; sourceTree = "<group>"; };
+		2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentViewController.swift; sourceTree = "<group>"; };
+		2869C491274D49DC0036F44D /* MRZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZDemoViewController.swift; sourceTree = "<group>"; };
+		2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlurrinessEstimatorDemoViewController.swift; sourceTree = "<group>"; };
+		2869C496274E49BE0036F44D /* EHICDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHICDemoViewController.swift; sourceTree = "<group>"; };
+		2869C49D274E63790036F44D /* ChequeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChequeViewController.swift; sourceTree = "<group>"; };
+		2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayformDemoViewController.swift; sourceTree = "<group>"; };
+		2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPDFViewController.swift; sourceTree = "<group>"; };
+		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
-		289AB67226011D2400D9197A /* LicensePlateDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LicensePlateDemoViewController.h; sourceTree = "<group>"; };
-		289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LicensePlateDemoViewController.m; sourceTree = "<group>"; };
-		28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdjustableFiltersTableViewController.h; sourceTree = "<group>"; };
-		28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AdjustableFiltersTableViewController.m; sourceTree = "<group>"; };
-		28B21DBD23E31219002D2621 /* FilterModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterModel.h; sourceTree = "<group>"; };
-		28B21DBE23E31219002D2621 /* FilterModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterModel.m; sourceTree = "<group>"; };
-		28B21DC023E313C2002D2621 /* FilterTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FilterTableViewCell.h; sourceTree = "<group>"; };
-		28B21DC123E313C2002D2621 /* FilterTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FilterTableViewCell.m; sourceTree = "<group>"; };
-		28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentResultViewController.m; sourceTree = "<group>"; };
-		28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentFieldTableViewCell.h; sourceTree = "<group>"; };
-		28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentFieldTableViewCell.m; sourceTree = "<group>"; };
-		28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GenericDocumentViewController.m; sourceTree = "<group>"; };
-		28D7360D24AE2D8100A0B821 /* GenericDocumentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentViewController.h; sourceTree = "<group>"; };
-		28D7360E24AE2D8100A0B821 /* GenericDocumentResultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GenericDocumentResultViewController.h; sourceTree = "<group>"; };
-		6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultTextTableViewCell.m; sourceTree = "<group>"; };
-		6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultsViewController.h; sourceTree = "<group>"; };
-		6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultImageTableViewCell.h; sourceTree = "<group>"; };
-		6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultsViewController.m; sourceTree = "<group>"; };
-		6954AEA024E52EF600005627 /* PassportReaderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderViewController.m; sourceTree = "<group>"; };
-		6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderResultTextTableViewCell.h; sourceTree = "<group>"; };
-		6954AEA224E52EF600005627 /* PassportReaderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PassportReaderViewController.h; sourceTree = "<group>"; };
-		6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PassportReaderResultImageTableViewCell.m; sourceTree = "<group>"; };
+		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
+		288F0D41273C0A1E00BF615C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
+		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
+		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
+		28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultTextTableViewCell.swift; sourceTree = "<group>"; };
+		28A116C62746B192006E75D6 /* PassportReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderViewController.swift; sourceTree = "<group>"; };
+		28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultImageTableViewCell.swift; sourceTree = "<group>"; };
+		28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultsViewController.swift; sourceTree = "<group>"; };
+		28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentFieldTableViewCell.swift; sourceTree = "<group>"; };
+		28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultViewController.swift; sourceTree = "<group>"; };
+		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
+		28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DisabilityCertificateScannerViewController.swift; sourceTree = "<group>"; };
+		28E71F4427568CDC0061B433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
+		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
 		6991C572256C179A008188AD /* ScanbotSDKDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ScanbotSDKDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanbotSDKDemoUITests.swift; sourceTree = "<group>"; };
 		6991C576256C179A008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69CF30B723015C7700AA5A07 /* EHICDemoViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = EHICDemoViewController.h; sourceTree = "<group>"; };
-		69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EHICDemoViewController.m; sourceTree = "<group>"; };
-		6EE9904B21ECD74F00182A94 /* ScanbotSDKDemo-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScanbotSDKDemo-Bridging-Header.h"; sourceTree = "<group>"; };
-		6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioDocumentDemoViewController.swift; sourceTree = "<group>"; };
-		6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultViewController.swift; sourceTree = "<group>"; };
+		6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioDocumentScannerViewController.swift; sourceTree = "<group>"; };
 		9ED845811AE670CC008B2731 /* ScanbotSDK Demo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ScanbotSDK Demo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		C22FFF0522FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerResultsTableViewController.m; sourceTree = "<group>"; };
-		C22FFF0722FAEA7A006E0862 /* BarCodeScannerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerViewController.h; sourceTree = "<group>"; };
-		C22FFF0822FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerResultsTableViewCell.m; sourceTree = "<group>"; };
-		C22FFF0922FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerResultsTableViewController.h; sourceTree = "<group>"; };
-		C22FFF0A22FAEA7A006E0862 /* BarCodesResultDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodesResultDetailsViewController.h; sourceTree = "<group>"; };
-		C22FFF0B22FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerResultsTableViewCell.h; sourceTree = "<group>"; };
-		C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodesResultDetailsViewController.m; sourceTree = "<group>"; };
-		C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerWithFinderViewController.m; sourceTree = "<group>"; };
-		C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeTypesListViewController.m; sourceTree = "<group>"; };
-		C22FFF1022FAEA7A006E0862 /* BarCodeScannerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BarCodeScannerViewController.m; sourceTree = "<group>"; };
-		C22FFF1122FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeScannerWithFinderViewController.h; sourceTree = "<group>"; };
-		C22FFF1222FAEA7B006E0862 /* BarCodeTypesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BarCodeTypesListViewController.h; sourceTree = "<group>"; };
-		C27562771DE45368003F5FE0 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = ScanbotSDKDemo/AppDelegate.h; sourceTree = SOURCE_ROOT; };
-		C27562781DE45368003F5FE0 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = ScanbotSDKDemo/AppDelegate.m; sourceTree = SOURCE_ROOT; };
-		C27562791DE45368003F5FE0 /* ChequeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ChequeViewController.h; path = ScanbotSDKDemo/ChequeViewController.h; sourceTree = SOURCE_ROOT; };
-		C275627A1DE45368003F5FE0 /* ChequeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ChequeViewController.m; path = ScanbotSDKDemo/ChequeViewController.m; sourceTree = SOURCE_ROOT; };
-		C275627D1DE45368003F5FE0 /* DemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoViewController.h; path = ScanbotSDKDemo/DemoViewController.h; sourceTree = SOURCE_ROOT; };
-		C275627E1DE45368003F5FE0 /* DemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoViewController.m; path = ScanbotSDKDemo/DemoViewController.m; sourceTree = SOURCE_ROOT; };
-		C275627F1DE45368003F5FE0 /* DocumentDemoNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoNavigationViewController.h; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.h; sourceTree = SOURCE_ROOT; };
-		C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoNavigationViewController.m; path = ScanbotSDKDemo/DocumentDemoNavigationViewController.m; sourceTree = SOURCE_ROOT; };
-		C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DocumentDemoViewController.h; path = ScanbotSDKDemo/DocumentDemoViewController.h; sourceTree = SOURCE_ROOT; };
-		C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DocumentDemoViewController.m; path = ScanbotSDKDemo/DocumentDemoViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
-		C27562881DE45368003F5FE0 /* PayformDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PayformDemoViewController.h; path = ScanbotSDKDemo/PayformDemoViewController.h; sourceTree = SOURCE_ROOT; };
-		C27562891DE45368003F5FE0 /* PayformDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PayformDemoViewController.m; path = ScanbotSDKDemo/PayformDemoViewController.m; sourceTree = SOURCE_ROOT; };
-		C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoPDFViewController.h; path = ScanbotSDKDemo/DemoPDFViewController.h; sourceTree = SOURCE_ROOT; };
-		C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoPDFViewController.m; path = ScanbotSDKDemo/DemoPDFViewController.m; sourceTree = SOURCE_ROOT; };
-		C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ScanbotSDKInclude.h; path = ScanbotSDKDemo/ScanbotSDKInclude.h; sourceTree = SOURCE_ROOT; };
-		C275628D1DE45368003F5FE0 /* TextViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TextViewController.h; path = ScanbotSDKDemo/TextViewController.h; sourceTree = SOURCE_ROOT; };
-		C275628E1DE45368003F5FE0 /* TextViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TextViewController.m; path = ScanbotSDKDemo/TextViewController.m; sourceTree = SOURCE_ROOT; };
-		C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DemoSelectionTableViewController.h; path = ScanbotSDKDemo/DemoSelectionTableViewController.h; sourceTree = SOURCE_ROOT; };
-		C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DemoSelectionTableViewController.m; path = ScanbotSDKDemo/DemoSelectionTableViewController.m; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
-		C27562A51DE453B2003F5FE0 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = ScanbotSDKDemo/main.m; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
-		C29DC06F204D915900059670 /* TIFFDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TIFFDemoViewController.h; sourceTree = "<group>"; };
-		C29DC070204D915900059670 /* TIFFDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TIFFDemoViewController.m; sourceTree = "<group>"; };
-		C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesLiveDemoViewController.m; sourceTree = "<group>"; };
-		C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognitionDemoViewController.m; sourceTree = "<group>"; };
-		C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognitionDemoViewController.h; sourceTree = "<group>"; };
-		C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesLiveDemoViewController.h; sourceTree = "<group>"; };
-		C2B8AC662035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesRecognizerResultViewController.h; sourceTree = "<group>"; };
-		C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesRecognizerResultViewController.m; sourceTree = "<group>"; };
-		C2B8AC692035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsImageTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsImageTableViewCell.m; sourceTree = "<group>"; };
-		C2B8AC6C2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m; sourceTree = "<group>"; };
-		C2B8AC6F2035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisabilityCertificatesResultsDatesInfoTableViewCell.h; sourceTree = "<group>"; };
-		C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DisabilityCertificatesResultsDatesInfoTableViewCell.m; sourceTree = "<group>"; };
-		C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRZDemoViewController.h; sourceTree = "<group>"; };
-		C2F131F02034237A00FFF96B /* MRZDemoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRZDemoViewController.m; sourceTree = "<group>"; };
 		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
@@ -246,50 +191,93 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08299BBB1FC5822F00E01F0E /* Helpers */ = {
+		08716C7A220DC49400119B9C /* MultipleObjectsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				08299BC01FC5822F00E01F0E /* UnfoldTransition.h */,
-				08299BC11FC5822F00E01F0E /* UnfoldTransition.m */,
+				2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */,
+				2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */,
+				2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */,
 			);
-			path = Helpers;
+			path = MultipleObjectsDemo;
 			sourceTree = "<group>";
 		};
-		08716C7A220DC49400119B9C /* BusinessCardDemo */ = {
+		286FF1CF2757B76F007D47EF /* Document Scanners */ = {
 			isa = PBXGroup;
 			children = (
-				08716C7D220DC4D600119B9C /* BusinessCardDemoCell.h */,
-				08716C7F220DC4D600119B9C /* BusinessCardDemoCell.m */,
-				08716C7E220DC4D600119B9C /* BusinessCardDetailDemoViewController.h */,
-				08716C7C220DC4D600119B9C /* BusinessCardDetailDemoViewController.m */,
-				08716C80220DC4D600119B9C /* BusinessCardsDemoViewController.h */,
-				08716C7B220DC4D600119B9C /* BusinessCardsDemoViewController.m */,
+				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
+				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
+				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
 			);
-			path = BusinessCardDemo;
+			path = "Document Scanners";
 			sourceTree = "<group>";
 		};
-		28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */ = {
+		286FF1D02757B783007D47EF /* Data Detectors */ = {
 			isa = PBXGroup;
 			children = (
-				28B21DB923E3000E002D2621 /* AdjustableFiltersTableViewController.h */,
-				28B21DBA23E3000E002D2621 /* AdjustableFiltersTableViewController.m */,
-				28B21DBD23E31219002D2621 /* FilterModel.h */,
-				28B21DBE23E31219002D2621 /* FilterModel.m */,
-				28B21DC023E313C2002D2621 /* FilterTableViewCell.h */,
-				28B21DC123E313C2002D2621 /* FilterTableViewCell.m */,
+				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
+				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
+				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
+				2869C4A0274E8D480036F44D /* PayformDemoViewController.swift */,
+				2869C49D274E63790036F44D /* ChequeViewController.swift */,
+				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
+				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
 			);
-			path = AdjustableFiltersDemo;
+			path = "Data Detectors";
+			sourceTree = "<group>";
+		};
+		286FF1D12757B79F007D47EF /* Health Documents Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
+				28E71F3B275672660061B433 /* DisabilityCertificateScannerViewController.swift */,
+			);
+			path = "Health Documents Scanners";
+			sourceTree = "<group>";
+		};
+		286FF1D22757B7CD007D47EF /* Identity Detectors */ = {
+			isa = PBXGroup;
+			children = (
+				6954AE9B24E52E7D00005627 /* NFC */,
+				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
+			);
+			path = "Identity Detectors";
+			sourceTree = "<group>";
+		};
+		286FF1D32757B7FC007D47EF /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				2869C494274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift */,
+				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
+				28B21DBC23E31200002D2621 /* AdjustableFilter */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		288F0D48273C2A0900BF615C /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				2884E28527455B9200C0ABA2 /* FiltersManager.swift */,
+				288F0D41273C0A1E00BF615C /* ImageManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		28B21DBC23E31200002D2621 /* AdjustableFilter */ = {
+			isa = PBXGroup;
+			children = (
+				288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */,
+				288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */,
+				288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */,
+			);
+			path = AdjustableFilter;
 			sourceTree = "<group>";
 		};
 		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
 			isa = PBXGroup;
 			children = (
-				28D7360924AE2D8000A0B821 /* GenericDocumentFieldTableViewCell.h */,
-				28D7360B24AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m */,
-				28D7360E24AE2D8100A0B821 /* GenericDocumentResultViewController.h */,
-				28D7360824AE2D8000A0B821 /* GenericDocumentResultViewController.m */,
-				28D7360D24AE2D8100A0B821 /* GenericDocumentViewController.h */,
-				28D7360C24AE2D8100A0B821 /* GenericDocumentViewController.m */,
+				28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */,
+				28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */,
+				2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */,
 			);
 			path = GenericDocumentsDemo;
 			sourceTree = "<group>";
@@ -302,17 +290,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		28E2736D27356EB600B3F7F4 /* ReviewDocuments */ = {
+			isa = PBXGroup;
+			children = (
+				28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */,
+				28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */,
+				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
+				087C563B2772175F003440A9 /* ExportAction.swift */,
+			);
+			path = ReviewDocuments;
+			sourceTree = "<group>";
+		};
 		6954AE9B24E52E7D00005627 /* NFC */ = {
 			isa = PBXGroup;
 			children = (
-				6954AE9E24E52EF500005627 /* PassportReaderResultImageTableViewCell.h */,
-				6954AEA324E52EF600005627 /* PassportReaderResultImageTableViewCell.m */,
-				6954AE9D24E52EF500005627 /* PassportReaderResultsViewController.h */,
-				6954AE9F24E52EF500005627 /* PassportReaderResultsViewController.m */,
-				6954AEA124E52EF600005627 /* PassportReaderResultTextTableViewCell.h */,
-				6954AE9C24E52EF500005627 /* PassportReaderResultTextTableViewCell.m */,
-				6954AEA224E52EF600005627 /* PassportReaderViewController.h */,
-				6954AEA024E52EF600005627 /* PassportReaderViewController.m */,
+				28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */,
+				28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */,
+				28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */,
+				28A116C62746B192006E75D6 /* PassportReaderViewController.swift */,
 			);
 			path = NFC;
 			sourceTree = "<group>";
@@ -350,47 +345,15 @@
 		9ED845831AE670CC008B2731 /* DemoApp */ = {
 			isa = PBXGroup;
 			children = (
-				6954AE9B24E52E7D00005627 /* NFC */,
-				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
-				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
-				08716C7A220DC49400119B9C /* BusinessCardDemo */,
-				C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */,
-				28B21DBC23E31200002D2621 /* AdjustableFiltersDemo */,
-				08299BBB1FC5822F00E01F0E /* Helpers */,
-				C2F131EF2034237A00FFF96B /* MRZDemoViewController.h */,
-				C2F131F02034237A00FFF96B /* MRZDemoViewController.m */,
-				08F1452B24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.h */,
-				08F1452A24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m */,
-				69CF30B723015C7700AA5A07 /* EHICDemoViewController.h */,
-				69CF30B823015C7800AA5A07 /* EHICDemoViewController.m */,
-				C27562771DE45368003F5FE0 /* AppDelegate.h */,
-				C27562781DE45368003F5FE0 /* AppDelegate.m */,
-				C275629B1DE45393003F5FE0 /* DemoSelectionTableViewController.h */,
-				C275629C1DE45393003F5FE0 /* DemoSelectionTableViewController.m */,
-				C27562791DE45368003F5FE0 /* ChequeViewController.h */,
-				C275627A1DE45368003F5FE0 /* ChequeViewController.m */,
-				C275627D1DE45368003F5FE0 /* DemoViewController.h */,
-				C275627E1DE45368003F5FE0 /* DemoViewController.m */,
-				C275627F1DE45368003F5FE0 /* DocumentDemoNavigationViewController.h */,
-				C27562801DE45368003F5FE0 /* DocumentDemoNavigationViewController.m */,
-				C27562811DE45368003F5FE0 /* DocumentDemoViewController.h */,
-				C27562821DE45368003F5FE0 /* DocumentDemoViewController.m */,
-				6EE9904C21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift */,
-				6EE9904E21ECED1D00182A94 /* ScanResultViewController.swift */,
+				288F0D48273C2A0900BF615C /* Managers */,
+				286FF1CF2757B76F007D47EF /* Document Scanners */,
+				286FF1D02757B783007D47EF /* Data Detectors */,
+				286FF1D12757B79F007D47EF /* Health Documents Scanners */,
+				286FF1D22757B7CD007D47EF /* Identity Detectors */,
+				286FF1D32757B7FC007D47EF /* Utilities */,
+				2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */,
+				28E71F4427568CDC0061B433 /* AppDelegate.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
-				C27562881DE45368003F5FE0 /* PayformDemoViewController.h */,
-				C27562891DE45368003F5FE0 /* PayformDemoViewController.m */,
-				C275628A1DE45368003F5FE0 /* DemoPDFViewController.h */,
-				C275628B1DE45368003F5FE0 /* DemoPDFViewController.m */,
-				C29DC06F204D915900059670 /* TIFFDemoViewController.h */,
-				C29DC070204D915900059670 /* TIFFDemoViewController.m */,
-				C275628C1DE45368003F5FE0 /* ScanbotSDKInclude.h */,
-				C275628D1DE45368003F5FE0 /* TextViewController.h */,
-				C275628E1DE45368003F5FE0 /* TextViewController.m */,
-				086AF337251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.h */,
-				086AF336251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m */,
-				289AB67226011D2400D9197A /* LicensePlateDemoViewController.h */,
-				289AB67326011D2400D9197A /* LicensePlateDemoViewController.m */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
 			);
 			name = DemoApp;
@@ -403,9 +366,7 @@
 				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
 				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
-				C27562A51DE453B2003F5FE0 /* main.m */,
 				C27562A61DE453B2003F5FE0 /* Media.xcassets */,
-				6EE9904B21ECD74F00182A94 /* ScanbotSDKDemo-Bridging-Header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -413,47 +374,14 @@
 		C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */ = {
 			isa = PBXGroup;
 			children = (
-				C22FFF0B22FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.h */,
-				C22FFF0822FAEA7A006E0862 /* BarCodeScannerResultsTableViewCell.m */,
-				C22FFF0922FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.h */,
-				C22FFF0522FAEA7A006E0862 /* BarCodeScannerResultsTableViewController.m */,
-				C22FFF0722FAEA7A006E0862 /* BarCodeScannerViewController.h */,
-				C22FFF1022FAEA7A006E0862 /* BarCodeScannerViewController.m */,
-				C22FFF1122FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.h */,
-				C22FFF0D22FAEA7A006E0862 /* BarCodeScannerWithFinderViewController.m */,
-				C22FFF0A22FAEA7A006E0862 /* BarCodesResultDetailsViewController.h */,
-				C22FFF0C22FAEA7A006E0862 /* BarCodesResultDetailsViewController.m */,
-				C22FFF1222FAEA7B006E0862 /* BarCodeTypesListViewController.h */,
-				C22FFF0F22FAEA7A006E0862 /* BarCodeTypesListViewController.m */,
+				2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */,
+				2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */,
+				2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */,
+				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
+				2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */,
+				2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */,
 			);
 			path = BarcodeScannerDemo;
-			sourceTree = "<group>";
-		};
-		C2B8AC5F2035C5A400F4F48E /* DisabilityCertificatesDemo */ = {
-			isa = PBXGroup;
-			children = (
-				C2B8AC632035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.h */,
-				C2B8AC602035C5A400F4F48E /* DisabilityCertificatesLiveDemoViewController.m */,
-				C2B8AC612035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m */,
-				C2B8AC622035C5A400F4F48E /* DisabilityCertificatesRecognitionDemoViewController.h */,
-				C2B8AC722035C86C00F4F48E /* Results */,
-			);
-			path = DisabilityCertificatesDemo;
-			sourceTree = "<group>";
-		};
-		C2B8AC722035C86C00F4F48E /* Results */ = {
-			isa = PBXGroup;
-			children = (
-				C2B8AC662035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.h */,
-				C2B8AC672035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m */,
-				C2B8AC692035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.h */,
-				C2B8AC6A2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m */,
-				C2B8AC6C2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.h */,
-				C2B8AC6D2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m */,
-				C2B8AC6F2035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.h */,
-				C2B8AC702035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m */,
-			);
-			name = Results;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -504,7 +432,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1310;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					08E3396C23E2EC8000699471 = {
@@ -623,50 +551,44 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69CF30B923015C7800AA5A07 /* EHICDemoViewController.m in Sources */,
-				C22FFF1622FAEA7B006E0862 /* BarCodeScannerWithFinderViewController.m in Sources */,
-				C275629A1DE45368003F5FE0 /* TextViewController.m in Sources */,
-				C27562A11DE45393003F5FE0 /* DemoSelectionTableViewController.m in Sources */,
-				28D7361324AE2D8100A0B821 /* GenericDocumentViewController.m in Sources */,
-				C22FFF1422FAEA7B006E0862 /* BarCodeScannerResultsTableViewCell.m in Sources */,
-				08716C81220DC4D700119B9C /* BusinessCardsDemoViewController.m in Sources */,
-				C27562991DE45368003F5FE0 /* DemoPDFViewController.m in Sources */,
-				28B21DBB23E3000E002D2621 /* AdjustableFiltersTableViewController.m in Sources */,
-				C27562A81DE453B2003F5FE0 /* main.m in Sources */,
-				C275628F1DE45368003F5FE0 /* AppDelegate.m in Sources */,
-				28D7361024AE2D8100A0B821 /* GenericDocumentResultViewController.m in Sources */,
-				08299BC41FC5822F00E01F0E /* UnfoldTransition.m in Sources */,
-				C22FFF1922FAEA7B006E0862 /* BarCodeScannerViewController.m in Sources */,
-				28B21DC223E313C2002D2621 /* FilterTableViewCell.m in Sources */,
-				C2B8AC652035C5A500F4F48E /* DisabilityCertificatesRecognitionDemoViewController.m in Sources */,
-				C27562981DE45368003F5FE0 /* PayformDemoViewController.m in Sources */,
-				C2B8AC6E2035C63100F4F48E /* DisabilityCertificatesResultsCheckboxesInfoTableViewCell.m in Sources */,
-				C2B8AC682035C5DB00F4F48E /* DisabilityCertificatesRecognizerResultViewController.m in Sources */,
-				C27562941DE45368003F5FE0 /* DocumentDemoViewController.m in Sources */,
-				6EE9904F21ECED1D00182A94 /* ScanResultViewController.swift in Sources */,
-				08716C82220DC4D700119B9C /* BusinessCardDetailDemoViewController.m in Sources */,
-				C27562901DE45368003F5FE0 /* ChequeViewController.m in Sources */,
-				C2B8AC6B2035C61900F4F48E /* DisabilityCertificatesResultsImageTableViewCell.m in Sources */,
-				C27562931DE45368003F5FE0 /* DocumentDemoNavigationViewController.m in Sources */,
-				C22FFF1522FAEA7B006E0862 /* BarCodesResultDetailsViewController.m in Sources */,
-				086AF338251105BA00EDC379 /* GenericTextLineRecognizerDemoViewController.m in Sources */,
-				C27562921DE45368003F5FE0 /* DemoViewController.m in Sources */,
-				08716C83220DC4D700119B9C /* BusinessCardDemoCell.m in Sources */,
-				C22FFF1322FAEA7B006E0862 /* BarCodeScannerResultsTableViewController.m in Sources */,
-				28B21DBF23E31219002D2621 /* FilterModel.m in Sources */,
-				6954AEA624E52EF600005627 /* PassportReaderViewController.m in Sources */,
-				28DC6EB626021E110033E6DE /* LicensePlateDemoViewController.m in Sources */,
-				C22FFF1822FAEA7B006E0862 /* BarCodeTypesListViewController.m in Sources */,
-				6954AEA424E52EF600005627 /* PassportReaderResultTextTableViewCell.m in Sources */,
-				C2B8AC642035C5A500F4F48E /* DisabilityCertificatesLiveDemoViewController.m in Sources */,
-				C29DC071204D915900059670 /* TIFFDemoViewController.m in Sources */,
-				6954AEA724E52EF600005627 /* PassportReaderResultImageTableViewCell.m in Sources */,
-				6EE9904D21ECD75000182A94 /* AspectRatioDocumentDemoViewController.swift in Sources */,
-				6954AEA524E52EF600005627 /* PassportReaderResultsViewController.m in Sources */,
-				C2B8AC712035C64400F4F48E /* DisabilityCertificatesResultsDatesInfoTableViewCell.m in Sources */,
-				08F1452C24B491E900B7E244 /* BlurrinessEstimatorDemoViewController.m in Sources */,
-				C2F131F12034237A00FFF96B /* MRZDemoViewController.m in Sources */,
-				28D7361224AE2D8100A0B821 /* GenericDocumentFieldTableViewCell.m in Sources */,
+				28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */,
+				2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */,
+				2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */,
+				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
+				28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */,
+				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
+				2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */,
+				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
+				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
+				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
+				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
+				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
+				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
+				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
+				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
+				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
+				28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */,
+				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
+				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
+				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
+				2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */,
+				2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */,
+				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
+				2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */,
+				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
+				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
+				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
+				2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */,
+				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
+				28E71F3C275672660061B433 /* DisabilityCertificateScannerViewController.swift in Sources */,
+				28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */,
+				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
+				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
+				2869C4A1274E8D480036F44D /* PayformDemoViewController.swift in Sources */,
+				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
+				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
+				28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */,
+				28A116C72746B192006E75D6 /* PassportReaderViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -911,7 +833,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios.classic;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "";
@@ -943,7 +864,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.sdk.ios.classic;
 				PRODUCT_NAME = "ScanbotSDK Demo";
 				PROVISIONING_PROFILE = "";
-				SWIFT_OBJC_BRIDGING_HEADER = "ScanbotSDKDemo/ScanbotSDKDemo-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				USER_HEADER_SEARCH_PATHS = "";
 				VALIDATE_WORKSPACE = NO;
