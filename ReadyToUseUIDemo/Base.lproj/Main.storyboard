@@ -11,13 +11,13 @@
         <!--Main View Controller-->
         <scene sceneID="URn-1b-RQM">
             <objects>
-                <viewController id="GVM-pe-KbQ" customClass="MainViewController" customModule="ReadyToUseUIDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController extendedLayoutIncludesOpaqueBars="YES" id="GVM-pe-KbQ" customClass="MainViewController" customModule="ReadyToUseUIDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="nB9-64-z1n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" style="grouped" rowHeight="58" estimatedRowHeight="58" sectionHeaderHeight="18" sectionFooterHeight="18" translatesAutoresizingMaskIntoConstraints="NO" id="v3U-MT-Cbr">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="724"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="jaP-6E-5CU">
                                     <rect key="frame" x="0.0" y="125" width="375" height="200"/>
