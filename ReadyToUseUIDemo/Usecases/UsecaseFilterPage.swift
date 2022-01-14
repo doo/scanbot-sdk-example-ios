@@ -7,31 +7,100 @@
 //
 
 import Foundation
+import ScanbotSDK
 
-class UsecaseFilterPage: Usecase, FilteringViewControllerDelegate {
+class UsecaseFilterPage: Usecase {
     
-    private let page: SBSDKUIPage
+    private let document: SBSDKUIDocument
+    private var completion: (()->())?
+
     
-    init(page: SBSDKUIPage) {
-        self.page = page
+    init(document: SBSDKUIDocument, completion: (()->())? = nil) {
+        self.document = document
+        self.completion = completion
         super.init()
     }
     
     override func start(presenter: UIViewController) {
-        
         super.start(presenter: presenter)
         
-        let configuration = FilteringScreenConfiguration.default()
-        let editor = FilteringViewController.createNew(with: self.page, with: configuration, andDelegate: self)
-        editor.modalPresentationStyle = .fullScreen
-        self.presenter?.present(editor, animated: true, completion: nil)
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        
+        FilterManager.filters.forEach { filterType in
+            let action = UIAlertAction(title: FilterManager.name(for: filterType),
+                                       style: .default) { [weak self] _ in
+                DispatchQueue(label: "FilterQueue").async {
+                    for index in 0..<(self?.document.numberOfPages() ?? 0) {
+                        self?.document.page(at: index)?.filter = filterType
+                    }
+                }
+                DispatchQueue.main.async {
+                    self?.completion?()
+                    self?.didFinish()
+                }
+            }
+            alert.addAction(action)
+        }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { [weak self] _ in
+            self?.didFinish()
+        }
+        alert.addAction(cancelAction)
+        alert.popoverPresentationController?.sourceView = self.presenter?.view
+        alert.popoverPresentationController?.sourceRect = self.presenter?.view.bounds ?? .zero
+        alert.popoverPresentationController?.permittedArrowDirections = []
+        self.presentViewController(alert)
     }
-
-    func filteringViewController(_ viewController: FilteringViewController, didFinish changedPage: SBSDKUIPage) {
-        self.didFinish()
-    }
-
-    func filteringViewControllerDidCancel(_ viewController: FilteringViewController) {
-        self.didFinish()
+    
+    private struct FilterManager {
+        static let filters: [SBSDKImageFilterType] = [
+            SBSDKImageFilterTypeNone,
+            SBSDKImageFilterTypeColor,
+            SBSDKImageFilterTypeGray,
+            SBSDKImageFilterTypePureGray,
+            SBSDKImageFilterTypeBinarized,
+            SBSDKImageFilterTypeColorDocument,
+            SBSDKImageFilterTypePureBinarized,
+            SBSDKImageFilterTypeBackgroundClean,
+            SBSDKImageFilterTypeBlackAndWhite,
+            SBSDKImageFilterTypeOtsuBinarization,
+            SBSDKImageFilterTypeDeepBinarization,
+            SBSDKImageFilterTypeEdgeHighlight,
+            SBSDKImageFilterTypeLowLightBinarization,
+            SBSDKImageFilterTypeLowLightBinarization2
+        ]
+        
+        static func name(for filter: SBSDKImageFilterType) -> String {
+            switch filter {
+            case SBSDKImageFilterTypeNone:
+                return "None"
+            case SBSDKImageFilterTypeColor:
+                return "Color"
+            case SBSDKImageFilterTypeGray:
+                return "Optimized greyscale"
+            case SBSDKImageFilterTypePureGray:
+                return "Pure greyscale"
+            case SBSDKImageFilterTypeBinarized:
+                return "Binarized"
+            case SBSDKImageFilterTypeColorDocument:
+                return "Color document"
+            case SBSDKImageFilterTypePureBinarized:
+                return "Pure binarized"
+            case SBSDKImageFilterTypeBackgroundClean:
+                return "Background clean"
+            case SBSDKImageFilterTypeBlackAndWhite:
+                return "Black & white"
+            case SBSDKImageFilterTypeOtsuBinarization:
+                return "Otsu binarization"
+            case SBSDKImageFilterTypeDeepBinarization:
+                return "Deep binarization"
+            case SBSDKImageFilterTypeEdgeHighlight:
+                return "Edge highlight"
+            case SBSDKImageFilterTypeLowLightBinarization:
+                return "Low light binarization"
+            case SBSDKImageFilterTypeLowLightBinarization2:
+                return "Low light binarization 2"
+            default: return "UNKNOWN"
+            }
+        }
     }
 }

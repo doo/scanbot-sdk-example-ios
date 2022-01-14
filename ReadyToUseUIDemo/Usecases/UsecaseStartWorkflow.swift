@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 class UsecaseStartWorkflow: Usecase {
     
@@ -24,6 +25,10 @@ class UsecaseStartWorkflow: Usecase {
                                            handler: { _ in self.showWorkflow(workflow, on: presenter) })
                 dialog.addAction(action)
         }
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+            dialog.dismiss(animated: true, completion: nil)
+        }
+        dialog.addAction(cancel)
         
         dialog.popoverPresentationController?.sourceView = presenter.view
         dialog.popoverPresentationController?.sourceRect = CGRect(x: presenter.view.center.x,
@@ -44,12 +49,7 @@ class UsecaseStartWorkflow: Usecase {
         
         self.presentViewController(controller)
     }
-    
-    func showWorkflowResults(_ results: [SBSDKUIWorkflowStepResult], on presenter: UIViewController) {
-        let controller = WorkflowResultsViewController(with: results)
-        self.presentViewController(controller)
-    }
-    
+        
     func showErrorAlert(title: String, message: String?, on viewController: UIViewController) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK", style: .default)
@@ -82,6 +82,11 @@ extension UsecaseStartWorkflow: SBSDKUIWorkflowScannerViewControllerDelegate {
     func workflowScanViewController(_ viewController: SBSDKUIWorkflowScannerViewController,
                                     didFinish workflow: SBSDKUIWorkflow,
                                     with results: [SBSDKUIWorkflowStepResult]) {
-        self.showWorkflowResults(results, on: viewController)
+        if let navigationController = self.presenter as? UINavigationController, !results.isEmpty {
+            viewController.dismiss(animated: true) {
+                let controller = WorkflowResultsViewController.make(with: results)
+                navigationController.pushViewController(controller, animated: true)
+            }
+        }
     }
 }

@@ -36,13 +36,10 @@ class MainTableViewItemProvider {
         let multipleObjectsItem = MainTableViewItem(title: "Multiple objects scanner",
                                                     action: { actionHandler.showMultipleObjectsScanning() })
         
-        let importImageItem = MainTableViewItem(title: "Import Image",
-                                                action: { actionHandler.showImportImages() })
-
         let viewImagesItem = MainTableViewItem(title: "View Images",
                                                action: { actionHandler.showAllImages() })
         
-        let items1 = [docScanItem, multipleObjectsItem, importImageItem, viewImagesItem]
+        let items1 = [docScanItem, multipleObjectsItem, viewImagesItem]
         
 
         let barcode2DScanItem = MainTableViewItem(title: "Scan 2D Barcodes",
@@ -84,7 +81,7 @@ class MainTableViewItemProvider {
         let items4 = [idCardItem, driverLicenseItem]
 
         
-        let workflowItem = MainTableViewItem(title: "Workflow",
+        let workflowItem = MainTableViewItem(title: "Select a Workflow",
                                              action: { actionHandler.showWorkflow()})
         
         

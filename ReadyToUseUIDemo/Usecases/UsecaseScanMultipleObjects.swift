@@ -7,8 +7,11 @@
 //
 
 import Foundation
+import ScanbotSDK
 
-class UsecaseScanMultipleObjects: Usecase, SBSDKUIMultipleObjectScannerViewControllerDelegate {
+class UsecaseScanMultipleObjects: Usecase,
+                                  SBSDKUIMultipleObjectScannerViewControllerDelegate,
+                                  UINavigationControllerDelegate {
     private let document: SBSDKUIDocument
     
     init(document: SBSDKUIDocument) {
@@ -38,8 +41,11 @@ class UsecaseScanMultipleObjects: Usecase, SBSDKUIMultipleObjectScannerViewContr
     }
     
     func viewControllerShouldFinish(_ viewController: SBSDKUIViewController) -> Bool {
-        if let presenter = self.presenter, self.document.numberOfPages() > 0 {
-            UsecaseBrowseDocumentPages(document: self.document, mode: .scanning).start(presenter: presenter)
+        if let navigationController = self.presenter as? UINavigationController,
+           self.document.numberOfPages() > 0 {
+            viewController.dismiss(animated: true) {
+                UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
+            }
             return false
         }
         return true

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {

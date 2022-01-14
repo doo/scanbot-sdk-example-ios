@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControllerDelegate {
     
@@ -40,6 +41,13 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
     
     func barcodesBatchScannerViewController(_ viewController: SBSDKUIBarcodesBatchScannerViewController,
                                             didFinishWith barcodeResults: [SBSDKUIBarcodeMappedResult]) {
+        viewController.dismiss(animated: true) {
+            if let navigationController = self.presenter as? UINavigationController,
+               !barcodeResults.isEmpty {
+                let controller = BarcodeResultListViewController.make(with: barcodeResults.compactMap({ $0.barcode }))
+                navigationController.pushViewController(controller, animated: true)
+            }
+        }
         self.didFinish()
     }
 }

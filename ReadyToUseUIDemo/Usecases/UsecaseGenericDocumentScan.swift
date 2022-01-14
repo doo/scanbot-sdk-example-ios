@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
     
@@ -32,6 +33,12 @@ class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     
     func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController,
                                                  didFinishWith documents: [SBSDKGenericDocument]) {
+        if let navigationController = self.presenter as? UINavigationController, !documents.isEmpty {
+            viewController.dismiss(animated: true) {
+                let controller = GenericDocumentResultListViewController.make(with: documents)
+                navigationController.pushViewController(controller, animated: true)
+            }
+        }
         self.didFinish()
     }
 }

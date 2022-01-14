@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseScanTwoDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewControllerDelegate {
     
@@ -29,18 +30,15 @@ class UsecaseScanTwoDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
     func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
                                           didDetect barcodeResults: [SBSDKBarcodeScannerResult]) {
         
-        guard let code = barcodeResults.first else {
-            return
-        }
-        
-        let message = code.rawTextString
-        let title = code.type == SBSDKBarcodeTypeQRCode ? "QR code detected" : "Barcode detected"
-        
         viewController.isRecognitionEnabled = false
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            viewController.isRecognitionEnabled = true
+        
+        viewController.dismiss(animated: true) {
+            if let navigationController = self.presenter as? UINavigationController,
+               !barcodeResults.isEmpty {
+                let controller = BarcodeResultListViewController.make(with: barcodeResults)
+                navigationController.pushViewController(controller, animated: true)
+            }
         }
-
     }
         
     func qrBarcodeDetectionViewControllerDidCancel(_ viewController: SBSDKUIBarcodeScannerViewController) {

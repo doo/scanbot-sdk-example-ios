@@ -96,15 +96,13 @@ class MainTableActionHandler: NSObject {
     
     func showImportImages() {
         self.guardLicense {
-            UsecaseBrowseDocumentPages(document: self.scannedDocument,
-                                       mode: .importing).start(presenter: self.presenter)
+            UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
         }
     }
     
     func showAllImages() {
         self.guardLicense {
-            UsecaseBrowseDocumentPages(document: self.scannedDocument,
-                                       mode: .viewing).start(presenter: self.presenter)
+            UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
         }
     }
     

@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
     
     private let page: SBSDKUIPage
+    private let didFinishHandler: ()->()
     
-    init(page: SBSDKUIPage) {
+    init(page: SBSDKUIPage, didFinishHandler: @escaping ()->()) {
         self.page = page
+        self.didFinishHandler = didFinishHandler
         super.init()
     }
 
@@ -35,6 +38,7 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
     }
 
     func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKUIPage) {
+        self.didFinishHandler()
         self.didFinish()
     }
     

@@ -20,19 +20,17 @@ class WorkflowResultsViewController: UIViewController {
     @IBOutlet private var toPasteboardButton: UIButton?
     @IBOutlet private var closeButton: UIButton?
     
-    private(set) var workflowsResults: [SBSDKUIWorkflowStepResult]
+    private var workflowsResults: [SBSDKUIWorkflowStepResult] = []
     
-    init(with results: [SBSDKUIWorkflowStepResult]) {
-//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-//
-//        let controller = storyboard.instantiateViewController(withIdentifier: "WorkflowResultsViewController") as!
-//        WorkflowResultsViewController
-        workflowsResults = results
-        super.init(nibName: nil, bundle: nil)
-    }
     
-    required convenience init?(coder: NSCoder) {
-        self.init(with: [])
+    static func make(with results: [SBSDKUIWorkflowStepResult]) -> WorkflowResultsViewController {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let controller = storyboard.instantiateViewController(withIdentifier: "WorkflowResultsViewController") as!
+        WorkflowResultsViewController
+        controller.workflowsResults = results
+        
+        return controller
     }
     
     override func viewDidLoad() {
@@ -98,7 +96,7 @@ extension WorkflowResultsViewController: UICollectionViewDataSource, UICollectio
             image = UIImage(named: "Scanbot QRCode")
         }
         cell.imageView?.image = image
-        return WorkflowResultsCollectionViewCell()
+        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView,

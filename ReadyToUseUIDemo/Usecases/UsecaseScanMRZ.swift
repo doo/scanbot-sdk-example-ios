@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     
