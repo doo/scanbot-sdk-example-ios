@@ -246,7 +246,7 @@
 				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
 				690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */,
 				6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */,
-				28BDF614279572DB00CC34C8 /* Helper Usecases */,
+				28BDF614279572DB00CC34C8 /* Other Usecases */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -284,7 +284,7 @@
 			path = "Data Detect Usecases";
 			sourceTree = "<group>";
 		};
-		28BDF614279572DB00CC34C8 /* Helper Usecases */ = {
+		28BDF614279572DB00CC34C8 /* Other Usecases */ = {
 			isa = PBXGroup;
 			children = (
 				08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */,
@@ -292,7 +292,7 @@
 				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
 				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
 			);
-			path = "Helper Usecases";
+			path = "Other Usecases";
 			sourceTree = "<group>";
 		};
 		28F273082791903E00C424AC /* Generic Document results */ = {
