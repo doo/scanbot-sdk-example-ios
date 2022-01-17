@@ -32,6 +32,8 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		0880493127919FAF005BE275 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; };
+		0880493227919FAF005BE275 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		285AE383271ED06300B5F728 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE380271ED06300B5F728 /* BarcodeScanner.swift */; };
 		285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */; };
 		285AE38C271ED0A000B5F728 /* BarcodeScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */; };
@@ -46,8 +48,6 @@
 		285AE3A2271F05FD00B5F728 /* DocumentPageEditingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE39E271F05FD00B5F728 /* DocumentPageEditingView.swift */; };
 		285AE3A3271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE39F271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift */; };
 		285AE3A5271F060600B5F728 /* DocumentPagesContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE3A4271F060600B5F728 /* DocumentPagesContainer.swift */; };
-		286FF1D92757D998007D47EF /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; };
-		286FF1DA2757D998007D47EF /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2878D92527185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */; };
 		2878D92727185E530045F7EE /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92627185E530045F7EE /* MainListView.swift */; };
 		2878D92927185E540045F7EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2878D92827185E540045F7EE /* Assets.xcassets */; };
@@ -70,7 +70,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				085A0FF6276A3B1E0097607B /* ScanbotSDK.framework in Embed Frameworks */,
+				0880493227919FAF005BE275 /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -105,7 +105,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				085A0FF5276A3B1E0097607B /* ScanbotSDK.framework in Frameworks */,
+				0880493127919FAF005BE275 /* ScanbotSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,7 +336,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.22.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.24.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"Beta2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		08072F6827216B9700863F12 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;

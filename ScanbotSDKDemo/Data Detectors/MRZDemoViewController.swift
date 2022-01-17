@@ -150,7 +150,6 @@ extension MRZDemoViewController: SBSDKCameraSessionDelegate {
         if shouldRecognize {
             if let result = recognizer.recognizePersonalIdentity(from: sampleBuffer,
                                                                  orientation: cameraSession.videoOrientation,
-                                                                 searchMachineReadableZone: false,
                                                                  machineReadableZoneRect: mrzRect),
                result.recognitionSuccessful {
                 DispatchQueue.main.async { [weak self] in
