@@ -22,23 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         // Setup the default license failure handler. In case of expired license or expired trial period it will present an alert and terminate the app.
         // See also ScanbotSDK.setLicenseFailureHandler(handler) to setup a custom handler.
-//        ScanbotSDK.setupDefaultLicenseFailureHandler()
-        ScanbotSDK.setLicense(
-          "PnPrJT2pOHCWDb4RP8i+g7fFrgRQbf" +
-          "hGKQMceA9+GIJwh1AaPUQDlZ9wfzqd" +
-          "kfujWstFL2QxEif5cyadXO40Dt1wwK" +
-          "AQl6/r8PQkz9WFZ7mfrvK6bhM9bBeT" +
-          "+vpPXs0BOXx50Iq0AoG15QzKMglGNe" +
-          "ziHZUFt+AqdekORIfFAT06mSAnpIEG" +
-          "KPcXMIAskNt02T3NUTDyUOY+5jxeBi" +
-          "WCiFQnyDBTLt+4y2xXFpnrg4IJLopS" +
-          "/U9rdWmGqhMA6k9FH/4R4jsnNut1ux" +
-          "8HGl6IHHOXE2f67eWus2lWC1xOAPVO" +
-          "kdo8o+kriWGBXcFwl9V1hTdGDGB7XW" +
-          "MRM4IINiqvTw==\nU2NhbmJvdFNESw" +
-          "ppby5zY2FuYm90LmV4YW1wbGUuc2Rr" +
-          "Lmlvcy5ydHV1aQoxNjQ0NzEwMzk5Cj" +
-          "gzODg2MDcKMQ==\n")
+        ScanbotSDK.setupDefaultLicenseFailureHandler()
         
         // Demonstration of global SBSDKUI image storage encryption.
         let encrypter = SBSDKAESEncrypter(password: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
