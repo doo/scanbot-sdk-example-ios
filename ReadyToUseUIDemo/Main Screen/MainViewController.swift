@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet var tableView: UITableView!
     
@@ -26,16 +26,6 @@ class MainViewController: UIViewController {
         self.tableView.reloadData()
     }
 }
-
-//MARK: UINavigationControllerDelegate
-extension MainViewController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController,
-                              willShow viewController: UIViewController,
-                              animated: Bool) {
-    }
-}
-
 
 //MARK: UITableViewDatasource
 extension MainViewController: UITableViewDataSource {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="wxo-uD-KuP">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3O-sE-Idz">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -107,26 +107,20 @@
             <point key="canvasLocation" x="16.800000000000001" y="-358.37438423645324"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="JPU-v2-NKa">
+        <scene sceneID="f5b-DQ-1uu">
             <objects>
-                <navigationController id="wxo-uD-KuP" sceneMemberID="viewController">
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="nwm-aR-7ds">
+                <navigationController id="O3O-sE-Idz" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="fmN-Ld-tDP">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <textAttributes key="titleTextAttributes">
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        </textAttributes>
                     </navigationBar>
-                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="EhF-vq-yHm">
-                        <autoresizingMask key="autoresizingMask"/>
-                    </toolbar>
                     <connections>
-                        <segue destination="GVM-pe-KbQ" kind="relationship" relationship="rootViewController" id="q9I-UU-wY8"/>
+                        <segue destination="GVM-pe-KbQ" kind="relationship" relationship="rootViewController" id="sEO-mP-Nrc"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bLl-wu-Cga" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iEr-7j-ilW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-748" y="-358"/>
+            <point key="canvasLocation" x="-743" y="-358"/>
         </scene>
         <!--Workflow Results View Controller-->
         <scene sceneID="jes-cr-geQ">
@@ -645,7 +639,7 @@
         <!--Barcode Result Details View Controller-->
         <scene sceneID="xc2-pK-0Ci">
             <objects>
-                <tableViewController id="Jgy-JL-Ib7" customClass="BarcodeResultDetailsViewController" customModule="PublicSDKDemo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="Jgy-JL-Ib7" customClass="BarcodeResultDetailsViewController" customModule="ReadyToUseUIDemo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="KE8-MW-MV9">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

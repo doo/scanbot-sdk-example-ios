@@ -29,6 +29,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         ScanbotSDKUI.setDefaultImageStoreEncrypter(encrypter)
         // Now all images written to the disk are encrypted.
         
+        if #available(iOS 15.0, *) {
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithOpaqueBackground()
+                //Configure additional customizations here
+                UINavigationBar.appearance().standardAppearance = navBarAppearance
+                UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        }
         return true
     }
 
