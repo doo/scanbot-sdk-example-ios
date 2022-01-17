@@ -32,7 +32,6 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
-		080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */; };
 		082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A3220C801AA009B1A7A /* AppDelegate.swift */; };
 		082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3620C801AB009B1A7A /* Main.storyboard */; };
 		082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 082D0A3920C801AB009B1A7A /* Assets.xcassets */; };
@@ -107,7 +106,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageViewExtensions.swift; sourceTree = "<group>"; };
 		082D0A2F20C801AA009B1A7A /* ReadyToUseUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReadyToUseUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		082D0A3220C801AA009B1A7A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		082D0A3720C801AB009B1A7A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -196,7 +194,7 @@
 			children = (
 				0889D10D20EA6FA500A36316 /* Usecases */,
 				082D0A5A20C81760009B1A7A /* Main Screen */,
-				0889D0F420EA632800A36316 /* Review Screen */,
+				0889D0F420EA632800A36316 /* Document Review Screen */,
 				28F273082791903E00C424AC /* Generic Document results */,
 				6E2DA8BC226487830043B2F0 /* Workflow Screen */,
 				28BDF60B2791DD2800CC34C8 /* Barcode results */,
@@ -223,7 +221,6 @@
 			isa = PBXGroup;
 			children = (
 				082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */,
-				080F3A9420EBA6EB00E2A3CC /* UIImageViewExtensions.swift */,
 				082D0A5B20C81760009B1A7A /* MainViewController.swift */,
 				082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */,
 				082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */,
@@ -231,35 +228,25 @@
 			path = "Main Screen";
 			sourceTree = "<group>";
 		};
-		0889D0F420EA632800A36316 /* Review Screen */ = {
+		0889D0F420EA632800A36316 /* Document Review Screen */ = {
 			isa = PBXGroup;
 			children = (
 				28A650E52788966200CFD548 /* DocumentReviewViewController.swift */,
 				28A650E72788968500CFD548 /* DocumentReviewCollectionViewCell.swift */,
 			);
-			path = "Review Screen";
+			path = "Document Review Screen";
 			sourceTree = "<group>";
 		};
 		0889D10D20EA6FA500A36316 /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
 				0889D10E20EA700C00A36316 /* Usecase.swift */,
-				0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */,
-				690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */,
-				08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */,
-				08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */,
-				28F27302279059BD00C424AC /* UsecaseExportImage.swift */,
-				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
-				0889D11020EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift */,
-				0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */,
-				690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */,
-				0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */,
+				28BDF6122795707400CC34C8 /* Document Scan Usecases */,
+				28BDF613279570EA00CC34C8 /* Data Detect Usecases */,
 				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
-				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
 				690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */,
-				692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */,
-				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
 				6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */,
+				28BDF614279572DB00CC34C8 /* Helper Usecases */,
 			);
 			path = Usecases;
 			sourceTree = "<group>";
@@ -272,6 +259,40 @@
 				28BDF6102791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift */,
 			);
 			path = "Barcode results";
+			sourceTree = "<group>";
+		};
+		28BDF6122795707400CC34C8 /* Document Scan Usecases */ = {
+			isa = PBXGroup;
+			children = (
+				0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */,
+				690CD22A242E31E300C1E5A0 /* UsecaseScanMultipleObjects.swift */,
+				08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */,
+			);
+			path = "Document Scan Usecases";
+			sourceTree = "<group>";
+		};
+		28BDF613279570EA00CC34C8 /* Data Detect Usecases */ = {
+			isa = PBXGroup;
+			children = (
+				0889D11020EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift */,
+				0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */,
+				690DCE7624E5595300160876 /* UsecaseScanBarcodeBatch.swift */,
+				0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */,
+				692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */,
+				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
+			);
+			path = "Data Detect Usecases";
+			sourceTree = "<group>";
+		};
+		28BDF614279572DB00CC34C8 /* Helper Usecases */ = {
+			isa = PBXGroup;
+			children = (
+				08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */,
+				28F27302279059BD00C424AC /* UsecaseExportImage.swift */,
+				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
+				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
+			);
+			path = "Helper Usecases";
 			sourceTree = "<group>";
 		};
 		28F273082791903E00C424AC /* Generic Document results */ = {
@@ -467,7 +488,6 @@
 				28A650E82788968500CFD548 /* DocumentReviewCollectionViewCell.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseGenericDocumentScan.swift in Sources */,
 				28F2730527918DEF00C424AC /* GenericDocumentResultListViewController.swift in Sources */,
-				080F3A9520EBA6EB00E2A3CC /* UIImageViewExtensions.swift in Sources */,
 				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
 				28F273072791903200C424AC /* GenericDocumentResultTextListCell.swift in Sources */,
 				08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */,
