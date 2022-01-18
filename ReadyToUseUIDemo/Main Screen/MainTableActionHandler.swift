@@ -33,7 +33,7 @@ class MainTableActionHandler: NSObject {
                                       preferredStyle: .alert)
         
         let closeAction = UIAlertAction(title: "Close App", style: .default) { (_) in
-            objc_terminate()
+            self.presenter.dismiss(animated: true)
         }
         
         let getLicenseAction = UIAlertAction(title: "Get License", style: .cancel) { (_) in
