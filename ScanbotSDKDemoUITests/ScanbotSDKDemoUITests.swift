@@ -91,5 +91,11 @@ class ScanbotSDKDemoUITests: XCTestCase {
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
         }
+        
+        // Test the license failure alert appears after 60 seconds.
+        sleep(60)
+        tablesQuery.cells.staticTexts["Document Scanner Demo"].tap()
+        XCTAssert(app.alerts["Error"].waitForExistence(timeout: 1))
+        app.alerts["Error"].buttons["Ok"].tap()
     }
 }
