@@ -22,12 +22,12 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
     }
     
     override func start(presenter: UIViewController) {
-
+        
         super.start(presenter: presenter)
-
+        
         let configuration = SBSDKUIBarcodesBatchScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
-                
+        
         configuration.behaviorConfiguration.engineMode = self.engineMode
         if let additionalParameters = self.additionalParameters {
             configuration.behaviorConfiguration.additionalDetectionParameters = additionalParameters
@@ -41,13 +41,12 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
     
     func barcodesBatchScannerViewController(_ viewController: SBSDKUIBarcodesBatchScannerViewController,
                                             didFinishWith barcodeResults: [SBSDKUIBarcodeMappedResult]) {
-        viewController.dismiss(animated: true) {
-            if let navigationController = self.presenter as? UINavigationController,
-               !barcodeResults.isEmpty {
+        if !barcodeResults.isEmpty {
+            if let navigationController = self.presenter as? UINavigationController {
                 let controller = BarcodeResultListViewController.make(with: barcodeResults.compactMap({ $0.barcode }))
                 navigationController.pushViewController(controller, animated: true)
             }
+            self.didFinish()
         }
-        self.didFinish()
     }
 }

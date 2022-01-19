@@ -71,7 +71,7 @@ final class GenericDocumentResultListViewController: UIViewController {
                                       preferredStyle: .alert)
         self.present(alert, animated: true, completion: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            alert.dismiss(animated: true, completion: nil)
+            alert.presentingViewController?.dismiss(animated: true, completion: nil)
         }
     }
 }
@@ -142,10 +142,10 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
             return 0
         }
         if let value = field.value, !value.text.isEmpty {
-            return max(44, calculateTextCellHeight(valueText: value.text, typeText: fieldTypeText))
+            return max(44, self.calculateTextCellHeight(valueText: value.text, typeText: fieldTypeText))
         } else {
             guard let image = field.image else { return 0 }
-            return calculatedImageCellHeight(image)
+            return self.calculatedImageCellHeight(image)
         }
     }
     

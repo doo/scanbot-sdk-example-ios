@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 final class DocumentReviewCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewImageView: UIImageView?
@@ -56,12 +57,12 @@ final class DocumentReviewCollectionViewCell: UICollectionViewCell {
         let imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
         switch imageView.contentMode {
         case .scaleAspectFit:
-            return .zero//RectFitInRect(imageRect, imageView.frame)
+            return RectFitInRect(imageRect, imageView.frame)
         case .center:
             var centerRect = imageRect
             centerRect.size.width = min(centerRect.size.width, imageView.frame.size.width)
             centerRect.size.height = min(centerRect.size.height, imageView.frame.size.height)
-            return .zero//RectCenterInRect(centerRect, imageView.frame)
+            return RectCenterInRect(centerRect, imageView.frame)
         default:
             return imageView.frame
         }

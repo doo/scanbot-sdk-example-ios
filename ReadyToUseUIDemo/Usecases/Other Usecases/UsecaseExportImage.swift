@@ -54,7 +54,7 @@ class UsecaseExportImage: Usecase {
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            alert.dismiss(animated: true, completion: nil)
+            alert.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         
         alert.addAction(exportPDF)

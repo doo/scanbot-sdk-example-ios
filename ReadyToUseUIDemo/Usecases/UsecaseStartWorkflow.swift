@@ -15,7 +15,7 @@ class UsecaseStartWorkflow: Usecase {
         
         super.start(presenter: presenter)
         
-        let dialog = UIAlertController(title: "Select a Workflow", message: nil, preferredStyle: .actionSheet)
+        let alert = UIAlertController(title: "Select a Workflow", message: nil, preferredStyle: .actionSheet)
         
         WorkflowFactory
             .allWorkflows()
@@ -23,21 +23,21 @@ class UsecaseStartWorkflow: Usecase {
                 let action = UIAlertAction(title: workflow.name,
                                            style: .default,
                                            handler: { _ in self.showWorkflow(workflow, on: presenter) })
-                dialog.addAction(action)
+                alert.addAction(action)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
-            dialog.dismiss(animated: true, completion: nil)
+            alert.presentingViewController?.dismiss(animated: true, completion: nil)
         }
-        dialog.addAction(cancel)
+        alert.addAction(cancel)
         
-        dialog.popoverPresentationController?.sourceView = presenter.view
-        dialog.popoverPresentationController?.sourceRect = CGRect(x: presenter.view.center.x,
+        alert.popoverPresentationController?.sourceView = presenter.view
+        alert.popoverPresentationController?.sourceRect = CGRect(x: presenter.view.center.x,
                                                                   y: presenter.view.center.y,
                                                                   width: 0,
                                                                   height: 0)
-        dialog.popoverPresentationController?.permittedArrowDirections = []
+        alert.popoverPresentationController?.permittedArrowDirections = []
         
-        presenter.present(dialog, animated: true)
+        presenter.present(alert, animated: true)
     }
     
     func showWorkflow(_ workflow: SBSDKUIWorkflow, on presenter: UIViewController) {
@@ -82,10 +82,12 @@ extension UsecaseStartWorkflow: SBSDKUIWorkflowScannerViewControllerDelegate {
     func workflowScanViewController(_ viewController: SBSDKUIWorkflowScannerViewController,
                                     didFinish workflow: SBSDKUIWorkflow,
                                     with results: [SBSDKUIWorkflowStepResult]) {
-        if let navigationController = self.presenter as? UINavigationController, !results.isEmpty {
-            viewController.dismiss(animated: true) {
-                let controller = WorkflowResultsViewController.make(with: results)
-                navigationController.pushViewController(controller, animated: true)
+        if !results.isEmpty {
+            if let navigationController = self.presenter as? UINavigationController {
+                viewController.presentingViewController?.dismiss(animated: true) {
+                    let controller = WorkflowResultsViewController.make(with: results)
+                    navigationController.pushViewController(controller, animated: true)
+                }
             }
         }
     }

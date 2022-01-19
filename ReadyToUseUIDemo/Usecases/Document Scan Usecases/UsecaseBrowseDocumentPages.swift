@@ -21,8 +21,8 @@ class UsecaseBrowseDocumentPages: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
                 
-        let viewController = DocumentReviewViewController.make(with: self.document)
         if let presenter = presenter as? UINavigationController {
+            let viewController = DocumentReviewViewController.make(with: self.document)
             presenter.pushViewController(viewController, animated: true)
         }
     }

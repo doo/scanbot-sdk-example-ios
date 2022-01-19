@@ -51,6 +51,6 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
+        picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

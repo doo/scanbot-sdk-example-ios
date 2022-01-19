@@ -128,7 +128,7 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
                     cell.infoLabelText = String(format: "Blur = %0.2f", bluriness)
                 } else {
                     cell.infoLabelText = "Calculating..."
-                    calculateBlurrinessFor(indexPath.item)
+                    self.calculateBlurrinessFor(indexPath.item)
                 }
             }
         }
