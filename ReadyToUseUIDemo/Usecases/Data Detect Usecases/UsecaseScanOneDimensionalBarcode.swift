@@ -18,8 +18,6 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
         let configuration = SBSDKUIBarcodeScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 2, andHeight: 1)
-        configuration.uiConfiguration.allowedInterfaceOrientations = .landscape
-        
         
         let codeTypes = SBSDKUIMachineCodesCollection.oneDimensionalBarcodes()
         
@@ -34,11 +32,10 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
                                           didDetect barcodeResults: [SBSDKBarcodeScannerResult]) {
         if !barcodeResults.isEmpty {
             viewController.isRecognitionEnabled = false
-            viewController.presentingViewController?.dismiss(animated: true) {
-                if let navigationController = self.presenter as? UINavigationController {
-                    let controller = BarcodeResultListViewController.make(with: barcodeResults)
-                    navigationController.pushViewController(controller, animated: true)
-                }
+            if let navigationController = self.presenter as? UINavigationController {
+                let controller = BarcodeResultListViewController.make(with: barcodeResults)
+                navigationController.pushViewController(controller, animated: false)
+                viewController.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }
     }

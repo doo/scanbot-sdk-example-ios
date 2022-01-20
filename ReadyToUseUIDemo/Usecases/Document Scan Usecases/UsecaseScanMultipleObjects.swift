@@ -43,9 +43,8 @@ class UsecaseScanMultipleObjects: Usecase,
     func viewControllerShouldFinish(_ viewController: SBSDKUIViewController) -> Bool {
         if self.document.numberOfPages() > 0 {
             if let navigationController = self.presenter as? UINavigationController {
-                viewController.presentingViewController?.dismiss(animated: true) {
-                    UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
-                }
+                UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
+                viewController.presentingViewController?.dismiss(animated: true, completion: nil)
                 return false
             }
         }

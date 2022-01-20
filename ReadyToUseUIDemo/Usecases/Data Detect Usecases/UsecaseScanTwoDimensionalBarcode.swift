@@ -29,14 +29,12 @@ class UsecaseScanTwoDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
     
     func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
                                           didDetect barcodeResults: [SBSDKBarcodeScannerResult]) {
-        
         if !barcodeResults.isEmpty {
             viewController.isRecognitionEnabled = false
-            viewController.presentingViewController?.dismiss(animated: true) {
-                if let navigationController = self.presenter as? UINavigationController {
-                    let controller = BarcodeResultListViewController.make(with: barcodeResults)
-                    navigationController.pushViewController(controller, animated: true)
-                }
+            if let navigationController = self.presenter as? UINavigationController {
+                let controller = BarcodeResultListViewController.make(with: barcodeResults)
+                navigationController.pushViewController(controller, animated: false)
+                viewController.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }
     }
