@@ -1,0 +1,20 @@
+//
+//  GenericDocumentResultImageListCell.swift
+//  ReadyToUseUIDemo
+//
+//  Created by Danil Voitenko on 14.01.22.
+//  Copyright © 2022 doo GmbH. All rights reserved.
+//
+
+import Foundation
+import UIKit
+
+final class GenericDocumentResultImageListCell: UITableViewCell {
+    @IBOutlet private var titleLabel: UILabel?
+    @IBOutlet private var resultImageView: UIImageView?
+        
+    func configure(title: String?, image: UIImage?) {
+        self.titleLabel?.text = title
+        self.resultImageView?.image = image
+    }
+}

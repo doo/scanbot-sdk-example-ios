@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
     
@@ -18,9 +19,9 @@ class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     }
     
     override func start(presenter: UIViewController) {
-
+        
         super.start(presenter: presenter)
-
+        
         let configuration = SBSDKUIGenericDocumentRecognizerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.behaviorConfiguration.documentType = self.documentType
@@ -32,6 +33,12 @@ class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     
     func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController,
                                                  didFinishWith documents: [SBSDKGenericDocument]) {
-        self.didFinish()
+        if !documents.isEmpty {
+            if let navigationController = self.presenter as? UINavigationController {
+                let controller = GenericDocumentResultListViewController.make(with: documents)
+                navigationController.pushViewController(controller, animated: true)
+            }
+            self.didFinish()
+        }
     }
 }

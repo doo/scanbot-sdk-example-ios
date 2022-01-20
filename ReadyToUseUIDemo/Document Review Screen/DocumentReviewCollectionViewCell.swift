@@ -1,15 +1,15 @@
 //
-//  ReviewDocumentsCollectionViewCell.swift
-//  ScanbotSDKDemo
+//  DocumentReviewCollectionViewCell.swift
+//  ReadyToUseUIDemo
 //
-//  Created by Danil Voitenko on 05.11.21.
-//  Copyright © 2021 doo GmbH. All rights reserved.
+//  Created by Danil Voitenko on 07.01.22.
+//  Copyright © 2022 doo GmbH. All rights reserved.
 //
 
 import UIKit
 import ScanbotSDK
 
-final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
+final class DocumentReviewCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewImageView: UIImageView?
     @IBOutlet private var highlightView: UIView?
     @IBOutlet private var infoLabel: UILabel!
@@ -68,3 +68,4 @@ final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
         }
     }
 }
+

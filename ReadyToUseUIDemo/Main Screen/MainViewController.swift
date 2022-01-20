@@ -8,7 +8,7 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+class MainViewController: UIViewController, UINavigationControllerDelegate {
     
     @IBOutlet var tableView: UITableView!
     
@@ -27,21 +27,12 @@ class MainViewController: UIViewController {
     }
 }
 
-//MARK: UINavigationControllerDelegate
-extension MainViewController: UINavigationControllerDelegate {
-    
-    func navigationController(_ navigationController: UINavigationController,
-                              willShow viewController: UIViewController,
-                              animated: Bool) {
-        
-        let barHidden = viewController != self
-        navigationController.setNavigationBarHidden(barHidden, animated: animated)
-    }
-}
-
-
 //MARK: UITableViewDatasource
 extension MainViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return self.itemProvider.sections[section].title
+    }
     
     func numberOfSections(in tableView: UITableView) -> Int {
         return self.itemProvider.sections.count

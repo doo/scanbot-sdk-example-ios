@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -626,9 +626,9 @@
                                             <constraint firstItem="6fR-eL-yxI" firstAttribute="leading" secondItem="SOL-dU-IoB" secondAttribute="leading" id="bvI-9q-dAh"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="highlightView" destination="W3H-Kh-xNP" id="p1V-uM-uge"/>
-                                            <outlet property="infoLabel" destination="6fR-eL-yxI" id="mHm-Aa-av3"/>
-                                            <outlet property="previewImageView" destination="EPn-YV-5vR" id="Ulu-FF-OAX"/>
+                                            <outlet property="highlightView" destination="W3H-Kh-xNP" id="jja-Bc-O0p"/>
+                                            <outlet property="infoLabel" destination="6fR-eL-yxI" id="HnD-Lq-kP1"/>
+                                            <outlet property="previewImageView" destination="EPn-YV-5vR" id="v3d-aF-cMC"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -796,7 +796,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="azl-eU-f1R" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-7252" y="2026"/>
+            <point key="canvasLocation" x="-7330" y="2052"/>
         </scene>
         <!--MRZ Demo View Controller-->
         <scene sceneID="ekv-9A-Uqf">

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ScanbotSDK
 
 class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {

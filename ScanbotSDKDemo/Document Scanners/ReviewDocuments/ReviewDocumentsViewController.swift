@@ -95,7 +95,7 @@ final class ReviewDocumentsViewController: UIViewController {
             }
         }
 
-        let epxortBinarizedTIFF = UIAlertAction(title: "Export to Binarized TIFF", style: .default) { [weak self] _ in
+        let exportBinarizedTIFF = UIAlertAction(title: "Export to Binarized TIFF", style: .default) { [weak self] _ in
             self?.activityIndicator?.startAnimating()
             ExportAction.exportToTIFF(ImageManager.shared.processedImageStorage, binarize: true) { [weak self] url in
                 self?.activityIndicator?.stopAnimating()
@@ -124,7 +124,7 @@ final class ReviewDocumentsViewController: UIViewController {
         }
         
         alert.addAction(exportPDF)
-        alert.addAction(epxortBinarizedTIFF)
+        alert.addAction(exportBinarizedTIFF)
         alert.addAction(exportColorTIFF)
         alert.addAction(cancel)
         alert.popoverPresentationController?.barButtonItem = item
@@ -138,7 +138,7 @@ final class ReviewDocumentsViewController: UIViewController {
     
     private func reloadData() {
         collectionView?.reloadData()
-        [importButton, clearButton, filterButton, exportButton, blurButton]
+        [clearButton, filterButton, exportButton, blurButton]
             .forEach({ $0?.isEnabled = ImageManager.shared.numberOfImages > 0 })
     }
         
