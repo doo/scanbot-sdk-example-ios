@@ -26,7 +26,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // the Bundle Identifier "io.scanbot.example.sdk.ios.classic" of this example app.
 
         //ScanbotSDK.setLicense("YOUR_LICENSE_KEY")
-        
+        if #available(iOS 15.0, *) {
+                let navBarAppearance = UINavigationBarAppearance()
+                navBarAppearance.configureWithOpaqueBackground()
+                //Configure additional customizations here
+                UINavigationBar.appearance().standardAppearance = navBarAppearance
+                UINavigationBar.appearance().scrollEdgeAppearance = navBarAppearance
+        }
         return true
     }
     

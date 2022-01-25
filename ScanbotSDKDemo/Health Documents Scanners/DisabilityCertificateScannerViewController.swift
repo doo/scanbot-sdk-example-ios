@@ -12,6 +12,7 @@ import ScanbotSDK
 final class DisabilityCertificateScannerViewController: UIViewController {
     private var scannerViewController: SBSDKScannerViewController?
     private var disabilityCertificateRecognizer = SBSDKDisabilityCertificatesRecognizer()
+    private var alertsManager: AlertsManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,32 +22,16 @@ final class DisabilityCertificateScannerViewController: UIViewController {
         scannerViewController?.delegate = self
         scannerViewController?.requiredAspectRatios = [SBSDKAspectRatio(width: 148, andHeight: 105)]
         scannerViewController?.finderMode = .aspectRatioAlways
+        
+        alertsManager = AlertsManager(presenter: self)
     }
     
     private func show(recognizedResult: SBSDKDisabilityCertificatesRecognizerResult?) {
-        let alert = UIAlertController(title: "Disability Certificate",
-                                      message: "Recognition failed",
-                                      preferredStyle: .alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            alert.dismiss(animated: true, completion: nil)
-        }
-        alert.addAction(okAction)
         if let recognizedResult = recognizedResult, recognizedResult.recognitionSuccessful {
-            alert.message = recognizedResult.stringRepresentation()
-            let copiedAlert = UIAlertController(title: "Copied", message: nil, preferredStyle: .alert)
-            let copyAction = UIAlertAction(title: "Copy", style: .default) { _ in
-                UIPasteboard.general.string = recognizedResult.stringRepresentation()
-                alert.dismiss(animated: true) { [weak self] in
-                    self?.present(copiedAlert, animated: true) {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-                            copiedAlert.dismiss(animated: true, completion: nil)
-                        }
-                    }
-                }
-            }
-            alert.addAction(copyAction)
+            alertsManager?.showSuccessAlert(with: recognizedResult.stringRepresentation())
+        } else {
+            alertsManager?.showFailureAlert()
         }
-        present(alert, animated: true, completion: nil)
     }
 }
 

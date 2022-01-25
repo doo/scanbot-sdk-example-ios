@@ -20,6 +20,7 @@ final class ReviewDocumentsViewController: UIViewController {
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
 
     private var selectedImageIndex: Int?
+    private var importAction: ImportAction?
     private static var showsBlurriness: Bool = false
     private static let blurinessCache = NSCache<NSURL, NSNumber>()
 
@@ -42,11 +43,21 @@ final class ReviewDocumentsViewController: UIViewController {
     }
     
     @IBAction private func importButtonTapped(_ item: UIBarButtonItem) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.sourceType = .photoLibrary
-        imagePicker.delegate = self
-        imagePicker.allowsEditing = false
-        present(imagePicker, animated: true)
+        importAction = ImportAction { image in
+            guard let image = image else { return }
+            DispatchQueue(label: "FilterQueue").async { [weak self] in
+                let result = SBSDKDocumentDetector().detectDocumentPolygon(on: image,
+                                                                           visibleImageRect: .zero,
+                                                                           smoothingEnabled: false,
+                                                                           useLiveDetectionParameters: false)
+
+                ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
+                DispatchQueue.main.async {
+                    self?.reloadData()
+                }
+            }
+        }
+        importAction?.showImagePicker(on: self)
     }
     
     @IBAction private func filterButtonTapped(_ item: UIBarButtonItem) {
@@ -223,32 +234,6 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
         editingViewController.image = image
         editingViewController.polygon = params.polygon
         navigationController?.pushViewController(editingViewController, animated: true)
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-extension ReviewDocumentsViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController,
-                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-
-        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-        
-        DispatchQueue(label: "FilterQueue").async { [weak self] in
-            let result = SBSDKDocumentDetector().detectDocumentPolygon(on: image,
-                                                                       visibleImageRect: .zero,
-                                                                       smoothingEnabled: false,
-                                                                       useLiveDetectionParameters: false)
-
-            ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
-            DispatchQueue.main.async {
-                self?.reloadData()
-            }
-        }
-        picker.dismiss(animated: true, completion: nil)
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        picker.dismiss(animated: true, completion: nil)
     }
 }
 

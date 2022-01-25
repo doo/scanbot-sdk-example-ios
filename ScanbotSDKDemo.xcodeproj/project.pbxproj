@@ -63,6 +63,11 @@
 		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
 		28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */; };
 		28A116C72746B192006E75D6 /* PassportReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A116C62746B192006E75D6 /* PassportReaderViewController.swift */; };
+		28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A146642799BF95003B831E /* StaticImageDetectionViewController.swift */; };
+		28AF0457279ACE4900C00B33 /* ImportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0456279ACE4900C00B33 /* ImportAction.swift */; };
+		28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */; };
+		28AF046D279EE90200C00B33 /* DetectorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF046C279EE90200C00B33 /* DetectorsManager.swift */; };
+		28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF046E27A0270200C00B33 /* AlertsManager.swift */; };
 		28B1A8EF274681000013F415 /* PassportReaderResultImageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */; };
 		28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */; };
 		28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */; };
@@ -151,6 +156,11 @@
 		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
 		28A116C42746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultTextTableViewCell.swift; sourceTree = "<group>"; };
 		28A116C62746B192006E75D6 /* PassportReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderViewController.swift; sourceTree = "<group>"; };
+		28A146642799BF95003B831E /* StaticImageDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticImageDetectionViewController.swift; sourceTree = "<group>"; };
+		28AF0456279ACE4900C00B33 /* ImportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportAction.swift; sourceTree = "<group>"; };
+		28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerCameraViewController.swift; sourceTree = "<group>"; };
+		28AF046C279EE90200C00B33 /* DetectorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorsManager.swift; sourceTree = "<group>"; };
+		28AF046E27A0270200C00B33 /* AlertsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
 		28B1A8EE274681000013F415 /* PassportReaderResultImageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultImageTableViewCell.swift; sourceTree = "<group>"; };
 		28B1A8F0274681780013F415 /* PassportReaderResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassportReaderResultsViewController.swift; sourceTree = "<group>"; };
 		28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentFieldTableViewCell.swift; sourceTree = "<group>"; };
@@ -207,6 +217,7 @@
 				28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */,
 				6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */,
 				28E2736D27356EB600B3F7F4 /* ReviewDocuments */,
+				28A146662799C17C003B831E /* Static Image Detection */,
 			);
 			path = "Document Scanners";
 			sourceTree = "<group>";
@@ -258,8 +269,19 @@
 			children = (
 				2884E28527455B9200C0ABA2 /* FiltersManager.swift */,
 				288F0D41273C0A1E00BF615C /* ImageManager.swift */,
+				28AF046C279EE90200C00B33 /* DetectorsManager.swift */,
+				28AF046E27A0270200C00B33 /* AlertsManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		28A146662799C17C003B831E /* Static Image Detection */ = {
+			isa = PBXGroup;
+			children = (
+				28A146642799BF95003B831E /* StaticImageDetectionViewController.swift */,
+				28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */,
+			);
+			path = "Static Image Detection";
 			sourceTree = "<group>";
 		};
 		28B21DBC23E31200002D2621 /* AdjustableFilter */ = {
@@ -297,6 +319,7 @@
 				28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */,
 				2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */,
 				087C563B2772175F003440A9 /* ExportAction.swift */,
+				28AF0456279ACE4900C00B33 /* ImportAction.swift */,
 			);
 			path = ReviewDocuments;
 			sourceTree = "<group>";
@@ -557,10 +580,13 @@
 				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
 				28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */,
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
+				28AF046D279EE90200C00B33 /* DetectorsManager.swift in Sources */,
+				28AF0457279ACE4900C00B33 /* ImportAction.swift in Sources */,
 				2869C49E274E63790036F44D /* ChequeViewController.swift in Sources */,
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
+				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
@@ -572,6 +598,7 @@
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28B1A8F1274681780013F415 /* PassportReaderResultsViewController.swift in Sources */,
 				2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */,
+				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
 				2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
 				2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */,
@@ -584,6 +611,7 @@
 				28A116C52746A0B3006E75D6 /* PassportReaderResultTextTableViewCell.swift in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
 				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
+				28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */,
 				2869C4A1274E8D480036F44D /* PayformDemoViewController.swift in Sources */,
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
