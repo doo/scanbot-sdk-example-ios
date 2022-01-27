@@ -1,0 +1,12 @@
+.DS_Store
+
+ScanbotSDK/
+/ScanbotSDKDemo.xcodeproj/xcuserdata/
+/ScanbotSDKDemo.xcodeproj/project.xcworkspace/xcuserdata
+/ReadyToUseUIDemo.xcodeproj/xcuserdata/
+/ReadyToUseUIDemo.xcodeproj/project.xcworkspace/xcuserdata
+.idea/
+*.xcuserstate
+DownloadTemp/
+
+/ScanbotSDKSwiftUIDemo.xcodeproj/xcuserdata

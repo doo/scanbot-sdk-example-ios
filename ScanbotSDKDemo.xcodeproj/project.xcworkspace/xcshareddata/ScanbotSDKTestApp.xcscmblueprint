@@ -1,0 +1,121 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++4B69376",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "5A4D3EFA645548AC8E485561A48AFCDBC80E8FD2+++944879D" : 0,
+    "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++36ABB0E" : 0,
+    "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++87A54CA" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++01F2377" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++32870C5" : 0,
+    "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++9E1D465" : 0,
+    "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++4B69376" : 0,
+    "E6D6613AC60865F59AF74D12E57930847BB6BEF0+++692901F" : 0,
+    "6E2837EED14C92C44B441DBA303563EF0B769CF8+++D6598FC" : 0,
+    "672AE60E445839B849F6878E990A754A76B7499A+++6A2D968" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++F42F2DD" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++1F2F129" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++A82C30E" : 0,
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++57DFF8E" : 0,
+    "672AE60E445839B849F6878E990A754A76B7499A+++4DB5499" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C9FBEA11-B049-4288-92A3-2612C4A315DB",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "5A4D3EFA645548AC8E485561A48AFCDBC80E8FD2+++944879D" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/MachineLearningTools\/",
+    "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++36ABB0E" : "ScanbotSDK\/iOS\/G8Tesseract\/",
+    "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++87A54CA" : "ScanbotSDKInternal\/iOS\/G8Tesseract\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++01F2377" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/googletest\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++32870C5" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/googletest\/",
+    "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++9E1D465" : "ScanbotSDK\/",
+    "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++4B69376" : "ScanbotSDKInternal\/",
+    "E6D6613AC60865F59AF74D12E57930847BB6BEF0+++692901F" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/CppUtils\/",
+    "6E2837EED14C92C44B441DBA303563EF0B769CF8+++D6598FC" : "ScanbotSDKInternal\/Common\/Decollage\/",
+    "672AE60E445839B849F6878E990A754A76B7499A+++6A2D968" : "ScanbotSDKInternal\/Common\/EdgeDetectionSDK\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++F42F2DD" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/googletest\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++1F2F129" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/MachineLearningTools\/TextSearcher\/src\/cpp\/modules\/googletest\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++A82C30E" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/googletest\/",
+    "76A15575C5B740800EF8E92EA66B97A276AEF659+++57DFF8E" : "ScanbotSDKInternal\/Common\/Invoice\/src\/cpp\/modules\/googletest\/",
+    "672AE60E445839B849F6878E990A754A76B7499A+++4DB5499" : "ScanbotSDK\/Common\/EdgeDetectionSDK\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "ScanbotSDKTestApp",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iOS\/Development Application\/ScanbotSDKTestApp.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/MachineLearningTools.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "5A4D3EFA645548AC8E485561A48AFCDBC80E8FD2+++944879D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/EdgeDetectionSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "672AE60E445839B849F6878E990A754A76B7499A+++4DB5499"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/EdgeDetectionSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "672AE60E445839B849F6878E990A754A76B7499A+++6A2D968"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/doo\/decollage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "6E2837EED14C92C44B441DBA303563EF0B769CF8+++D6598FC"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++01F2377"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++1F2F129"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++32870C5"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++57DFF8E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++A82C30E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/google\/googletest.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76A15575C5B740800EF8E92EA66B97A276AEF659+++F42F2DD"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/ScanbotSDKInternal.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++4B69376"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/ScanbotSDK.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8AF9CE6B3D85E1FF6ED5EFACDF9B688DA7E8FC48+++9E1D465"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/Tesseract-OCR-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++36ABB0E"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/Tesseract-OCR-iOS.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "B191E73CD355A8EA7C8CCCDC6B07B6A7DE020437+++87A54CA"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:doo\/CppUtils.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E6D6613AC60865F59AF74D12E57930847BB6BEF0+++692901F"
+    }
+  ]
+}
