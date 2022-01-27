@@ -27,8 +27,8 @@ final class ScannerCameraViewController: UIViewController, SBSDKScannerViewContr
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
-        delegate?.cameraViewController(self, didCapture: image)
+    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+        delegate?.cameraViewController(self, didCapture: documentImage)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
 }

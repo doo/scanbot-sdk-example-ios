@@ -202,13 +202,13 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
                                                       for: indexPath) as! ReviewDocumentsCollectionViewCell
         cell.previewImageView?.image = image
         
-        if self.showsBlurriness {
+        if showsBlurriness {
             if let imageURL = ImageManager.shared.originalImageURLAt(index: indexPath.item) {
                 if let blurriness = Self.blurinessCache.object(forKey: imageURL as NSURL)?.doubleValue {
                     cell.infoLabelText = String(format: "Blur = %0.2f", blurriness)
                 } else {
                     cell.infoLabelText = "Calculating..."
-                    self.calculateBlurrinessFor(indexPath.item)
+                    calculateBlurrinessFor(indexPath.item)
                 }
             }
         } else {
@@ -243,18 +243,18 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
                                     didApplyChangesWith polygon: SBSDKPolygon,
                                     croppedImage: UIImage) {
      
-        guard let selectedImageIndex = selectedImageIndex else { return }
-        guard let parameters = ImageManager.shared.processingParametersAt(index: selectedImageIndex) else { return }
+        guard let imageIndex = selectedImageIndex else { return }
+        guard let parameters = ImageManager.shared.processingParametersAt(index: imageIndex) else { return }
         parameters.polygon = polygon
         parameters.counterClockwiseRotations = -editingViewController.rotations
         DispatchQueue(label: "FilterQueue").async { [weak self] in
-            if ImageManager.shared.processImageAt(selectedImageIndex, withParameters: parameters) {
+            if ImageManager.shared.processImageAt(imageIndex, withParameters: parameters) {
                 DispatchQueue.main.async {
                     self?.reloadData()
                 }
             }
         }
-        self.selectedImageIndex = nil
+        selectedImageIndex = nil
         editingViewController.navigationController?.popViewController(animated: true)
     }
     

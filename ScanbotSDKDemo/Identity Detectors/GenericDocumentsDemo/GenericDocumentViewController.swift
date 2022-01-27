@@ -17,7 +17,7 @@ class GenericDocumentViewController: UIViewController {
         super.viewDidLoad()
         
         scannerViewController = SBSDKGenericDocumentRecognizerViewController(parentViewController: self,
-                                                                             parentView: self.view,
+                                                                             parentView: view,
                                                                              acceptedDocumentTypes: documentTypes(),
                                                                              delegate: self)
         

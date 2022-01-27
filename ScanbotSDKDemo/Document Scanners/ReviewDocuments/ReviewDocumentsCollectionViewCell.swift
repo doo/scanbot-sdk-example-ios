@@ -24,7 +24,7 @@ final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         get { return super.isHighlighted }
         set {
-            self.layoutHighlightView()
+            layoutHighlightView()
             super.isHighlighted = newValue
             UIView.animate(withDuration: 0.01,
                            delay: 0.0,
@@ -36,22 +36,22 @@ final class ReviewDocumentsCollectionViewCell: UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.infoLabel.clipsToBounds = true
-        self.infoLabel.layer.cornerRadius = 8.0
-        self.infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+        infoLabel.clipsToBounds = true
+        infoLabel.layer.cornerRadius = 8.0
+        infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.layoutHighlightView()
+        layoutHighlightView()
     }
     
     private func layoutHighlightView() {
-        self.highlightView?.frame = self.highlightFrame
+        highlightView?.frame = highlightFrame
     }
     
     private var highlightFrame: CGRect {
-        guard let imageView = self.previewImageView else { return .zero }
+        guard let imageView = previewImageView else { return .zero }
         guard let image = imageView.image else { return imageView.frame }
         
         let imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)

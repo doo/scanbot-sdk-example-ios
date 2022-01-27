@@ -62,13 +62,13 @@ final class PassportReaderViewController: UIViewController {
     }
     
     private func showResultsIfNeeded() {
-        guard let currentResults = currentResults, !currentResults.isEmpty else {
+        guard let results = currentResults, !results.isEmpty else {
             mrzController?.isRecognitionEnabled = true
             return
         }
-        let controller = PassportReaderResultsViewController.make(with: currentResults)
+        let controller = PassportReaderResultsViewController.make(with: results)
         navigationController?.pushViewController(controller, animated: true)
-        self.currentResults = nil
+        currentResults = nil
     }
 }
 

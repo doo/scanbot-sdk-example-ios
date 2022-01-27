@@ -15,9 +15,9 @@ class ImageProcessingParameters {
     var counterClockwiseRotations: Int
     
     init() {
-        self.polygon = SBSDKPolygon()
-        self.filter = SBSDKImageFilterTypeNone
-        self.counterClockwiseRotations = 0
+        polygon = SBSDKPolygon()
+        filter = SBSDKImageFilterTypeNone
+        counterClockwiseRotations = 0
     }
     
     init(polygon: SBSDKPolygon, filter: SBSDKImageFilterType, counterClockwiseRotations: Int) {

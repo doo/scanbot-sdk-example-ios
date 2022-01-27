@@ -18,7 +18,7 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
         super.viewDidLoad()
         
         scannerViewController = SBSDKScannerViewController(parentViewController: self,
-                                                           parentView: self.containerView,
+                                                           parentView: containerView,
                                                            imageStorage: nil,
                                                            enableQRCodeDetection: false)
         estimator = SBSDKBlurrinessEstimator()

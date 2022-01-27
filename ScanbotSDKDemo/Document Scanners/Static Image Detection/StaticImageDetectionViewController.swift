@@ -17,9 +17,15 @@ final class StaticImageDetectionViewController: UIViewController {
     }
     
     @IBOutlet private var imageView: UIImageView!
-    @IBOutlet private var selectImageButton: UIButton!
+    @IBOutlet private var importPhotoButton: UIButton!
     @IBOutlet private var selectDetectorButton: UIButton!
 
+    private var image: UIImage? {
+        didSet {
+            updateUI()
+        }
+    }
+    
     private var importAction: ImportAction?
     private var detectorsManager: DetectorsManager?
     private var alertsManager: AlertsManager?
@@ -30,42 +36,43 @@ final class StaticImageDetectionViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         importAction = ImportAction(completionHandler: { [weak self] image in
-            self?.imageView.image = image
+            self?.image = image
         })
         detectorsManager = DetectorsManager(delegate: self)
         alertsManager = AlertsManager(presenter: self)
+        updateUI()
     }
     
-    @IBAction private func takePhotoDidPress(_ sender: Any?) {
+    @IBAction private func importPhotoButtonPressed(_ sender: Any?) {
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .actionSheet)
-        let takePhotoAction = UIAlertAction(title: "Take a photo", style: .default) { [weak self] _ in
+        let fromCameraAction = UIAlertAction(title: "From Camera", style: .default) { [weak self] _ in
             self?.performSegue(withIdentifier: Segue.presentScannerCamera.rawValue, sender: self)
         }
-        let importImageAction = UIAlertAction(title: "Import an image", style: .default) { [weak self] _ in
+        let fromLibraryAction = UIAlertAction(title: "From Photo Library", style: .default) { [weak self] _ in
             guard let self = self else { return }
             self.importAction?.showImagePicker(on: self)
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel) { _ in
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel) { _ in
             alert.presentingViewController?.dismiss(animated: true, completion: nil)
         }
-        alert.addAction(takePhotoAction)
-        alert.addAction(importImageAction)
-        alert.addAction(cancel)
-        alert.popoverPresentationController?.sourceView = selectImageButton
+        alert.addAction(fromCameraAction)
+        alert.addAction(fromLibraryAction)
+        alert.addAction(cancelAction)
+        alert.popoverPresentationController?.sourceView = importPhotoButton
         
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction private func selectDetectorDidPress(_ sender: Any?) {
+    @IBAction private func selectDetectorButtonPressed(_ sender: Any?) {
         let alert = UIAlertController(title: nil,
                                       message: nil,
                                       preferredStyle: .actionSheet)
         guard let detectorsManager = detectorsManager else { return }
         for detector in detectorsManager.allDetectors {
             let action = UIAlertAction(title: detector.detectorName, style: .default) { [weak self] _ in
-                guard let image = self?.imageView.image else { return }
+                guard let image = self?.image else { return }
                 detectorsManager.detectInfo(on: image, using: detector)
             }
             alert.addAction(action)
@@ -77,6 +84,11 @@ final class StaticImageDetectionViewController: UIViewController {
         alert.popoverPresentationController?.sourceView = selectDetectorButton
         
         present(alert, animated: true, completion: nil)
+    }
+    
+    func updateUI() {
+        imageView.image = image
+        selectDetectorButton.isEnabled = image != nil
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -98,7 +110,7 @@ final class StaticImageDetectionViewController: UIViewController {
 
 extension StaticImageDetectionViewController: ScannerCameraViewControllerDelegate {
     func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: UIImage) {
-        imageView.image = image
+        self.image = image
     }
 }
 
@@ -153,7 +165,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
     
     func scanner(_ scanner: SBSDKLicensePlateScanner,
                  didFindLicensePlate result: SBSDKLicensePlateScannerResult?) {
-        guard let result = result else {
+        guard let result = result, !result.rawString.isEmpty else {
             alertsManager?.showFailureAlert()
             return
         }

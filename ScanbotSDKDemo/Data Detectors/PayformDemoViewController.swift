@@ -27,26 +27,22 @@ final class PayformDemoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         cameraSession.start()
         isDetectionEnabled = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        self.isDetectionEnabled = false
+        isDetectionEnabled = false
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         cameraSession.previewLayer.frame = view.bounds
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
         super.traitCollectionDidChange(previousTraitCollection)
-        
         cameraSession.videoOrientation = videoOrientationFromInterfaceOrientation()
     }
     

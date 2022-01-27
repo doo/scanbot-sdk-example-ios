@@ -128,7 +128,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detect data on image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3H-bY-HD8">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Detect Data on Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="w3H-bY-HD8">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="74"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -544,21 +544,21 @@
                                 <rect key="frame" x="0.0" y="0.0" width="390" height="619"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1GA-DC-Q4h">
-                                <rect key="frame" x="16" y="664" width="128" height="34"/>
+                                <rect key="frame" x="16" y="664" width="105" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Select an image"/>
+                                <state key="normal" title="Import Photo"/>
                                 <connections>
-                                    <action selector="takePhotoDidPress:" destination="7kN-y7-8S4" eventType="touchUpInside" id="etm-SK-RYT"/>
+                                    <action selector="importPhotoButtonPressed:" destination="7kN-y7-8S4" eventType="touchUpInside" id="Ime-tJ-HD9"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iSi-aH-sRc">
-                                <rect key="frame" x="236" y="664" width="138" height="34"/>
+                                <rect key="frame" x="248" y="664" width="126" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                <state key="normal" title="Select a detector"/>
+                                <state key="normal" title="Select Detector"/>
                                 <connections>
-                                    <action selector="selectDetectorDidPress:" destination="7kN-y7-8S4" eventType="touchUpInside" id="ove-NZ-dis"/>
+                                    <action selector="selectDetectorButtonPressed:" destination="7kN-y7-8S4" eventType="touchUpInside" id="P4b-ey-DQW"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -580,8 +580,8 @@
                     <navigationItem key="navigationItem" id="Bsy-q2-Pdy"/>
                     <connections>
                         <outlet property="imageView" destination="hfi-cx-dhm" id="qUD-vE-aud"/>
+                        <outlet property="importPhotoButton" destination="1GA-DC-Q4h" id="w0a-ch-Sbu"/>
                         <outlet property="selectDetectorButton" destination="iSi-aH-sRc" id="fBs-Ew-YBw"/>
-                        <outlet property="selectImageButton" destination="1GA-DC-Q4h" id="w0a-ch-Sbu"/>
                         <segue destination="YQi-iQ-jVq" kind="presentation" identifier="presentScannerCamera" modalPresentationStyle="fullScreen" id="0xo-IR-YB0"/>
                         <segue destination="JT2-2c-YSO" kind="show" identifier="showBarcodeResults" id="JxE-5D-hr3"/>
                         <segue destination="U50-5h-EhL" kind="show" identifier="showGenericDocumentResult" id="h4g-sy-k1K"/>
@@ -1699,20 +1699,20 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="390" height="43.666667938232422"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="390" height="44.333332061767578"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="43.666667938232422"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44.333332061767578"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
-                                                    <rect key="frame" x="20" y="14" width="33" height="16"/>
+                                                    <rect key="frame" x="20" y="14.333333333333336" width="33" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="329.66666666666669" y="12.000000000000002" width="40.333333333333314" height="19.666666666666671"/>
+                                                    <rect key="frame" x="329.66666666666669" y="11.999999999999998" width="40.333333333333314" height="20.333333333333329"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

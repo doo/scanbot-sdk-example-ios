@@ -25,7 +25,7 @@ class DocumentScannerViewController: UIViewController {
             return
         }
         scannerViewController = SBSDKScannerViewController(parentViewController: self,
-                                             parentView: self.scannerContainerView,
+                                             parentView: scannerContainerView,
                                              imageStorage: nil,
                                              enableQRCodeDetection: false)
     }
@@ -60,7 +60,7 @@ extension DocumentScannerViewController: SBSDKScannerViewControllerDelegate {
                            with info: SBSDKCaptureInfo) {
         
         ImageManager.shared.add(image: image, polygon: info.detectionResult?.polygon ?? SBSDKPolygon())
-        self.updateUI()
+        updateUI()
     }
 }
 

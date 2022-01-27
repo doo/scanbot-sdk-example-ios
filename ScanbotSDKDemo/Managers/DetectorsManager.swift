@@ -38,11 +38,11 @@ final class DetectorsManager {
             case .barcode:
                 return "Barcode"
             case .ehic:
-                return "EHIC"
+                return "EU Health Card (EHIC)"
             case .genericDocument:
-                return "Generic Document"
+                return "ID Card, Passport, Drivers License"
             case .mrz:
-                return "MRZ"
+                return "Machine Readable Zone"
             case .medicalCertificate:
                 return "Medical Certificate"
             case .licensePlate:
