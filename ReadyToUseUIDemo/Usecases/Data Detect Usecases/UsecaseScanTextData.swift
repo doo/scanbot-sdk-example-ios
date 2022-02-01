@@ -11,7 +11,6 @@ import ScanbotSDK
 
 class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {
-        
         super.start(presenter: presenter)
         
         let configuration = SBSDKUITextDataScannerConfiguration.default()
@@ -22,7 +21,7 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
                                                                      recognitionStep: step,
                                                                      andDelegate: self)
         
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func textLineRecognizerViewController(_ viewController: SBSDKUITextDataScannerViewController,
@@ -44,6 +43,6 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
     }
     
     func textLineRecognizerViewControllerDidCancel(_ viewController: SBSDKUITextDataScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

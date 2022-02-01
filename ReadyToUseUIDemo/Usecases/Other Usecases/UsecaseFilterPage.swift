@@ -48,7 +48,7 @@ class UsecaseFilterPage: Usecase {
         alert.popoverPresentationController?.sourceView = self.presenter?.view
         alert.popoverPresentationController?.sourceRect = self.presenter?.view.bounds ?? .zero
         alert.popoverPresentationController?.permittedArrowDirections = []
-        self.presentViewController(alert)
+        presentViewController(alert)
     }
     
     private struct FilterManager {

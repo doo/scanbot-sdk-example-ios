@@ -16,15 +16,15 @@ class UsecaseScanLicensePlate: Usecase, SBSDKUILicensePlateScannerViewController
         let configuration = SBSDKUILicensePlateScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         let scanner = SBSDKUILicensePlateScannerViewController.createNew(with: configuration, andDelegate: self)
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
 
     func licensePlateScanner(_ controller: SBSDKUILicensePlateScannerViewController,
                              didRecognizeLicensePlate result: SBSDKLicensePlateScannerResult) {
-        self.didFinish()
+        didFinish()
     }
 
     func licensePlateScannerDidCancel(_ controller: SBSDKUILicensePlateScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

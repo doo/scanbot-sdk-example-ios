@@ -61,6 +61,7 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
                                   didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
+        shouldDetect = false
         currentResults = codes
         performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
     }

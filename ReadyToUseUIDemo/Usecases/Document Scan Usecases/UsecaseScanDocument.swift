@@ -19,7 +19,6 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
     }
     
     override func start(presenter: UIViewController) {
-
         super.start(presenter: presenter)
 
         let configuration = SBSDKUIDocumentScannerConfiguration.default()
@@ -35,7 +34,7 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
                                                                      configuration: configuration,
                                                                      andDelegate: self)
         
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func viewControllerShouldCancel(_ viewController: SBSDKUIViewController) -> Bool {
@@ -43,8 +42,8 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
     }
     
     func viewControllerShouldFinish(_ viewController: SBSDKUIViewController) -> Bool {
-        if self.document.numberOfPages() > 0 {
-            if let navigationController = self.presenter as? UINavigationController {
+        if document.numberOfPages() > 0 {
+            if let navigationController = presenter as? UINavigationController {
                 UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
                 viewController.presentingViewController?.dismiss(animated: true, completion: nil)
                 return false
@@ -58,7 +57,7 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
     }
     
     func scanningViewControllerDidCancel(_ viewController: SBSDKUIDocumentScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 
 }

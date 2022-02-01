@@ -15,8 +15,8 @@ class BarcodeResultDetailsViewController: UITableViewController {
     
     var barcode: SBSDKBarcodeScannerResult? {
         didSet {
-            if self.isViewLoaded {
-                self.updateUI()
+            if isViewLoaded {
+                updateUI()
             }
         }
     }
@@ -24,22 +24,20 @@ class BarcodeResultDetailsViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tableView.rowHeight = UITableView.automaticDimension
-        self.tableView.estimatedRowHeight = 600
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 600
         
-        self.updateUI()
+        updateUI()
     }
     
     private func updateUI() {
-        guard let barcode = self.barcode else { return }
-        self.imageView?.image = barcode.barcodeImage
+        guard let barcode = barcode else { return }
+        imageView?.image = barcode.barcodeImage
         var text = barcode.rawTextString
         
-        if let rawBytes = self.barcode?.rawBytes {
-            let hexString = rawBytes.map({ String(format: "%02hhx", $0) }).joined()
-            text = text + "\n\nRaw bytes:\n" + hexString
-        }
+        let hexString = barcode.rawBytes.map({ String(format: "%02hhx", $0) }).joined()
+        text = text + "\n\nRaw bytes:\n" + hexString
         
-        self.label?.text = text
+        label?.text = text
     }
 }

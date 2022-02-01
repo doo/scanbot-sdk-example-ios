@@ -95,8 +95,8 @@ class WorkflowFactory {
         let ratios = [SBSDKAspectRatio(width: 148, andHeight: 210), // DC form A5 portrait (e.g. white sheet, AUB Muster 1b/E (1/2018))
                       SBSDKAspectRatio(width: 148, andHeight: 105)] // DC form A6 landscape (e.g. yellow sheet, AUB Muster 1b (1.2018))
         
-        let step = SBSDKUIScanDisabilityCertificateWorkflowStep(title: "Scan ID card or passport",
-                                                                  message: "Please align your ID card or passport in the frame.",
+        let step = SBSDKUIScanDisabilityCertificateWorkflowStep(title: "Scan Disability Certificate",
+                                                                  message: "Please align your Disability Certificate in the frame.",
                                                                   requiredAspectRatios: ratios,
                                                                   wantsCapturedPage: true) { result in
             guard let dc = result.disabilityCertificateResult, dc.recognitionSuccessful else {

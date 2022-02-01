@@ -21,37 +21,8 @@ final class DocumentReviewCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    override var isHighlighted: Bool {
-        get { return super.isHighlighted }
-        set {
-            self.layoutHighlightView()
-            super.isHighlighted = newValue
-            UIView.animate(withDuration: 0.01,
-                           delay: 0.0,
-                           options: [.allowUserInteraction, .beginFromCurrentState, .curveEaseInOut],
-                           animations: { self.highlightView?.alpha = newValue ? 1.0 : 0.0 },
-                           completion: nil)
-        }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        self.infoLabel.clipsToBounds = true
-        self.infoLabel.layer.cornerRadius = 8.0
-        self.infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    }
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        self.layoutHighlightView()
-    }
-    
-    private func layoutHighlightView() {
-        self.highlightView?.frame = self.highlightFrame
-    }
-    
     private var highlightFrame: CGRect {
-        guard let imageView = self.previewImageView else { return .zero }
+        guard let imageView = previewImageView else { return .zero }
         guard let image = imageView.image else { return imageView.frame }
         
         let imageRect = CGRect(x: 0, y: 0, width: image.size.width, height: image.size.height)
@@ -66,6 +37,37 @@ final class DocumentReviewCollectionViewCell: UICollectionViewCell {
         default:
             return imageView.frame
         }
+    }
+    
+    override var isHighlighted: Bool {
+        get { return super.isHighlighted }
+        set {
+            layoutHighlightView()
+            super.isHighlighted = newValue
+            UIView.animate(withDuration: 0.01,
+                           delay: 0.0,
+                           options: [.allowUserInteraction, .beginFromCurrentState, .curveEaseInOut],
+                           animations: { self.highlightView?.alpha = newValue ? 1.0 : 0.0 },
+                           completion: nil)
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        infoLabel.clipsToBounds = true
+        infoLabel.layer.cornerRadius = 8.0
+        infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        layoutHighlightView()
+    }
+    
+    private func layoutHighlightView() {
+        highlightView?.frame = highlightFrame
     }
 }
 

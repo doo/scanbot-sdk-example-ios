@@ -17,7 +17,7 @@ final class EHICDemoViewController: UIViewController {
         cameraSession.videoDelegate = self
         return cameraSession
     }()
-    private var isRecognitionEnabled: Bool = false
+    private var isRecognitionEnabled: Bool = true
     private var machineReadableZoneRect: CGRect = .zero
     
     override func viewDidLoad() {
@@ -82,7 +82,9 @@ extension EHICDemoViewController: SBSDKCameraSessionDelegate {
                        didOutput sampleBuffer: CMSampleBuffer,
                        from connection: AVCaptureConnection) {
         if isRecognitionEnabled {
-            if let result = recognizer.recognize(from: sampleBuffer, orientation: cameraSession.videoOrientation) {
+            if let result = recognizer.recognize(from: sampleBuffer,
+                                                 orientation: cameraSession.videoOrientation),
+               result.status == SBSDKHealthInsuranceCardDetectionStatus.success {
                 DispatchQueue.main.async { [weak self] in
                     self?.show(result: result)
                 }

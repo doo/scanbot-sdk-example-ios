@@ -21,7 +21,6 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
     }
 
     override func start(presenter: UIViewController) {
-
         super.start(presenter: presenter)
         
         let configuration = SBSDKUICroppingScreenConfiguration.default()
@@ -32,17 +31,17 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
         //configuration.uiConfiguration.isDetectResetButtonHidden = true
         // Customize further colors, text resources, behavior flags ...
         
-        let editor = SBSDKUICroppingViewController.createNew(with: self.page, with: configuration, andDelegate: self)
+        let editor = SBSDKUICroppingViewController.createNew(with: page, with: configuration, andDelegate: self)
         editor.modalPresentationStyle = .fullScreen
-        self.presenter?.present(editor, animated: true, completion: nil)
+        presenter.present(editor, animated: true, completion: nil)
     }
 
     func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKUIPage) {
-        self.didFinishHandler()
-        self.didFinish()
+        didFinishHandler()
+        didFinish()
     }
     
     func croppingViewControllerDidCancel(_ viewController: SBSDKUICroppingViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

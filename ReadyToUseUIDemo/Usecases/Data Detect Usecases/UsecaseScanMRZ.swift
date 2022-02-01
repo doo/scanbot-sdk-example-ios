@@ -12,7 +12,6 @@ import ScanbotSDK
 class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     
     override func start(presenter: UIViewController) {
-
         super.start(presenter: presenter)
 
         let configuration = SBSDKUIMRZScannerConfiguration.default()
@@ -22,7 +21,7 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
 
         let scanner = SBSDKUIMRZScannerViewController.createNew(with: configuration, andDelegate: self)
 
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func mrzDetectionViewController(_ viewController: SBSDKUIMRZScannerViewController,
@@ -36,6 +35,6 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     }
 
     func mrzDetectionViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

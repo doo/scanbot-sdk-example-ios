@@ -12,19 +12,19 @@ import ScanbotSDK
 class BarcodeResultListViewController: UIViewController {
     @IBOutlet private var tableView: UITableView?
     @IBOutlet private var noBarcodesView: UIView?
-
+    
     var barcodeImage: UIImage? {
         didSet {
-            if self.isViewLoaded {
-                self.reloadData()
+            if isViewLoaded {
+                reloadData()
             }
         }
     }
     
     var barcodes: [SBSDKBarcodeScannerResult] = [] {
         didSet {
-            if self.isViewLoaded {
-                self.reloadData()
+            if isViewLoaded {
+                reloadData()
             }
         }
     }
@@ -36,7 +36,7 @@ class BarcodeResultListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.reloadData()
+        reloadData()
     }
     
     static func make(with barcodes: [SBSDKBarcodeScannerResult]) -> BarcodeResultListViewController {
@@ -49,22 +49,22 @@ class BarcodeResultListViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "BarcodeResultDetailsViewController",
-            let destination = segue.destination as? BarcodeResultDetailsViewController,
-            let selectedBarcode = self.selectedBarcode {
+           let destination = segue.destination as? BarcodeResultDetailsViewController,
+           let selectedBarcode = self.selectedBarcode {
             
             destination.barcode = selectedBarcode
         }
     }
     
     private func reloadData() {
-        self.noBarcodesView?.isHidden = !self.barcodes.isEmpty
-        self.tableView?.reloadData()
+        noBarcodesView?.isHidden = !barcodes.isEmpty
+        tableView?.reloadData()
     }
 }
 
 extension BarcodeResultListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        if indexPath.section == self.imageSection {
+        if indexPath.section == imageSection {
             return 250
         }
         return 100
@@ -75,23 +75,23 @@ extension BarcodeResultListViewController: UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == self.imageSection {
-            return self.barcodeImage == nil ? 0 : 1
+        if section == imageSection {
+            return barcodeImage == nil ? 0 : 1
         }
-        return self.barcodes.count
+        return barcodes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-
-        if indexPath.section == self.imageSection {
+        
+        if indexPath.section == imageSection {
             let cell = tableView.dequeueReusableCell(withIdentifier: "BarcodeResultListCellImage",
                                                      for: indexPath) as! BarcodeResultListCell
-            cell.barcodeImageView?.image = self.barcodeImage
+            cell.barcodeImageView?.image = barcodeImage
             return cell
         }
         let cell = tableView.dequeueReusableCell(withIdentifier: "BarcodeResultListCell",
                                                  for: indexPath) as! BarcodeResultListCell
-        let barcode = self.barcodes[indexPath.row]
+        let barcode = barcodes[indexPath.row]
         cell.infoLabel?.text = barcode.rawTextString
         cell.typeLabel?.text = barcode.type.name
         cell.barcodeImageView?.image = barcode.barcodeImage
@@ -99,11 +99,11 @@ extension BarcodeResultListViewController: UITableViewDataSource, UITableViewDel
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == self.imageSection {
+        if indexPath.section == imageSection {
             return
         }
-        self.tableView?.deselectRow(at: indexPath, animated: true)
-        self.selectedBarcode = self.barcodes[indexPath.row]
-        self.performSegue(withIdentifier: "BarcodeResultDetailsViewController", sender: self)
+        tableView.deselectRow(at: indexPath, animated: true)
+        selectedBarcode = barcodes[indexPath.row]
+        performSegue(withIdentifier: "BarcodeResultDetailsViewController", sender: self)
     }
 }

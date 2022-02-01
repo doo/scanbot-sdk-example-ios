@@ -23,7 +23,7 @@ final class DocumentReviewViewController: UIViewController {
     
     private static var showsBlurriness: Bool = false
     private static let blurinessCache = NSCache<NSURL, NSNumber>()
-
+    
     private var showsBlurriness: Bool = showsBlurriness {
         didSet {
             Self.showsBlurriness = showsBlurriness
@@ -44,7 +44,7 @@ final class DocumentReviewViewController: UIViewController {
         super.viewDidLoad()
         navigationController?.navigationBar.isTranslucent = false
         toolbar?.isTranslucent = false
-        self.reloadData()
+        reloadData()
     }
     
     @IBAction private func importButtonDidPress(_ sender: Any) {
@@ -69,7 +69,7 @@ final class DocumentReviewViewController: UIViewController {
     private func shareFile(at url: URL) {
         let activityViewController = UIActivityViewController(activityItems: [url],
                                                               applicationActivities: nil)
-        self.present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction private func filterButtonDidPress(_ sender: Any) {
@@ -79,7 +79,7 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func blurButtonDidPress(_ sender: Any) {
-        showsBlurriness = !showsBlurriness
+        showsBlurriness.toggle()
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
@@ -87,7 +87,7 @@ final class DocumentReviewViewController: UIViewController {
             document.removePage(at: 0)
         }
         SBSDKUIPageFileStorage.default().removeAll()
-        self.reloadData()
+        reloadData()
     }
     
     private func reloadData() {
@@ -120,7 +120,7 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentReviewCollectionViewCell", for: indexPath) as!
         DocumentReviewCollectionViewCell
-        let page = self.document.page(at: indexPath.item)
+        let page = document.page(at: indexPath.item)
         cell.previewImageView?.image = page?.documentImage()
         if showsBlurriness {
             if let imageURL = document.page(at: indexPath.item)?.originalImageURL() {
@@ -131,6 +131,8 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
                     self.calculateBlurrinessFor(indexPath.item)
                 }
             }
+        } else {
+            cell.infoLabelText = nil
         }
         
         return cell
@@ -140,7 +142,7 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension DocumentReviewViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let page = self.document.page(at: indexPath.item) {
+        if let page = document.page(at: indexPath.item) {
             UsecaseCropPage(page: page) { [weak self] in
                 self?.reloadData()
             }.start(presenter: self)

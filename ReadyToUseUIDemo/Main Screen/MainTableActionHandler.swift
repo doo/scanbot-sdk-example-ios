@@ -18,12 +18,12 @@ class MainTableActionHandler: NSObject {
     init(presenter: UIViewController) {
         self.presenter = presenter
     }
-
+    
     private func guardLicense(_ block: () -> ()) {
         if ScanbotSDK.isLicenseValid() {
             block()
         } else {
-            self.showLicenseAlert()
+            showLicenseAlert()
         }
     }
     
@@ -49,91 +49,91 @@ class MainTableActionHandler: NSObject {
             action.setValue(UIColor.black, forKey: "titleTextColor")
         }
         
-        self.presenter.present(alert, animated: true, completion: nil)
+        presenter.present(alert, animated: true, completion: nil)
     }
     
     func showDocumentScanning() {
-        self.guardLicense {
-            UsecaseScanDocument(document: self.scannedDocument).start(presenter: self.presenter)
+        guardLicense {
+            UsecaseScanDocument(document: scannedDocument).start(presenter: self.presenter)
         }
     }
     
     func showMultipleObjectsScanning() {
-        self.guardLicense {
-            UsecaseScanMultipleObjects(document: self.scannedDocument).start(presenter: self.presenter)
+        guardLicense {
+            UsecaseScanMultipleObjects(document: scannedDocument).start(presenter: self.presenter)
         }
     }
     
     func showTwoDimensionalBarcodeScanning() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanTwoDimensionalBarcode().start(presenter: self.presenter)
         }
     }
     
     func showTextDataScanner() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanTextData().start(presenter: self.presenter)
         }
     }
     
     func showOneDimensionalBarcodeScanning() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanOneDimensionalBarcode().start(presenter: self.presenter)
         }
     }
     
     func showMRZScanning() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanMRZ().start(presenter: self.presenter)
         }
     }
     
     func showEHICScanning() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanEHIC().start(presenter: self.presenter)
         }
     }
     
     func showImportImages() {
-        self.guardLicense {
+        guardLicense {
             UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
         }
     }
     
     func showAllImages() {
-        self.guardLicense {
+        guardLicense {
             UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
         }
     }
     
     func showWorkflow() {
-        self.guardLicense {
+        guardLicense {
             UsecaseStartWorkflow().start(presenter: self.presenter)
         }
     }
     
     func showBarcodeBatchScanner(engineMode: SBSDKBarcodeEngineMode,
                                  additionalParameters: SBSDKBarcodeAdditionalParameters? = nil) {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanBarcodeBatch(engineMode: engineMode,
                                     additionalParameters: additionalParameters).start(presenter: self.presenter)
         }
     }
     
     func showIDCardScanner() {
-        self.guardLicense {
+        guardLicense {
             UsecaseGenericDocumentScan(documentType: .idCardFrontBackDE()).start(presenter: self.presenter)
         }
     }
-
+    
     func showDriverLicenseScanner() {
-        self.guardLicense {
+        guardLicense {
             UsecaseGenericDocumentScan(documentType: .driverLicenseFrontBackDE()).start(presenter: self.presenter)
         }
     }
-
+    
     func showLicensePlateScanner() {
-        self.guardLicense {
+        guardLicense {
             UsecaseScanLicensePlate().start(presenter: self.presenter)
         }
     }
