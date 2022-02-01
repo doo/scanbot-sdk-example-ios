@@ -20,7 +20,8 @@ final class DisabilityCertificateScannerViewController: UIViewController {
         scannerViewController = SBSDKScannerViewController(parentViewController: self,
                                                            imageStorage: nil)
         scannerViewController?.delegate = self
-        scannerViewController?.requiredAspectRatios = [SBSDKAspectRatio(width: 148, andHeight: 105)]
+        scannerViewController?.requiredAspectRatios = [SBSDKAspectRatio(width: 148, andHeight: 210),
+                                                       SBSDKAspectRatio(width: 148, andHeight: 105)]
         scannerViewController?.finderMode = .aspectRatioAlways
         
         alertsManager = AlertsManager(presenter: self)
@@ -36,7 +37,8 @@ final class DisabilityCertificateScannerViewController: UIViewController {
 }
 
 extension DisabilityCertificateScannerViewController: SBSDKScannerViewControllerDelegate {
-    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
-        show(recognizedResult:disabilityCertificateRecognizer.recognize(from: image))
+    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+        let result = disabilityCertificateRecognizer.recognize(from: documentImage)
+        show(recognizedResult: result)
     }
 }

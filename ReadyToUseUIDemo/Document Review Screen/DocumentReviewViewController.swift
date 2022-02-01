@@ -79,7 +79,7 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func blurButtonDidPress(_ sender: Any) {
-        showsBlurriness = !showsBlurriness
+        showsBlurriness.toggle()
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
@@ -131,6 +131,8 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
                     self.calculateBlurrinessFor(indexPath.item)
                 }
             }
+        } else {
+            cell.infoLabelText = nil
         }
         
         return cell
