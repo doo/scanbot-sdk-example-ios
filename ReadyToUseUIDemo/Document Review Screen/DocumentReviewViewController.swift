@@ -42,8 +42,8 @@ final class DocumentReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.isTranslucent = false
-        toolbar?.isTranslucent = false
+        self.navigationController?.navigationBar.isTranslucent = false
+        self.toolbar?.isTranslucent = false
         self.reloadData()
     }
     
@@ -79,19 +79,19 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func blurButtonDidPress(_ sender: Any) {
-        showsBlurriness.toggle()
+        self.showsBlurriness.toggle()
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
-        while document.numberOfPages() > 0 {
-            document.removePage(at: 0)
+        while self.document.numberOfPages() > 0 {
+            self.document.removePage(at: 0)
         }
         SBSDKUIPageFileStorage.default().removeAll()
         self.reloadData()
     }
     
     private func reloadData() {
-        collectionView?.reloadData()
+        self.collectionView?.reloadData()
         [exportButton, filterButton, blurButton, clearButton]
             .forEach({ $0?.isEnabled = document.numberOfPages() > 0 })
     }
@@ -122,8 +122,8 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
         DocumentReviewCollectionViewCell
         let page = self.document.page(at: indexPath.item)
         cell.previewImageView?.image = page?.documentImage()
-        if showsBlurriness {
-            if let imageURL = document.page(at: indexPath.item)?.originalImageURL() {
+        if self.showsBlurriness {
+            if let imageURL = self.document.page(at: indexPath.item)?.originalImageURL() {
                 if let bluriness = Self.blurinessCache.object(forKey: imageURL as NSURL)?.doubleValue {
                     cell.infoLabelText = String(format: "Blur = %0.2f", bluriness)
                 } else {
