@@ -21,12 +21,12 @@ class Usecase: NSObject {
             fatalError("Usescases must be called on main thread.")
         }
         self.presenter = presenter
-        self.didStart()
+        didStart()
     }
     
     func presentViewController(_ viewController: UIViewController) {
         viewController.modalPresentationStyle = .overFullScreen
-        self.presenter?.present(viewController, animated: true, completion: nil)
+        presenter?.present(viewController, animated: true, completion: nil)
     }
     
     func didStart() {
@@ -40,7 +40,7 @@ class Usecase: NSObject {
         if Thread.current != Thread.main {
             fatalError("Usescases must be called on main thread.")
         }
-        self.presenter = nil
+        presenter = nil
         Usecase.activeUsecases.removeValue(forKey: self.id)
     }
 }

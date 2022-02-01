@@ -62,7 +62,7 @@ class UsecaseExportImage: Usecase {
         alert.addAction(exportColorTIFF)
         alert.addAction(cancel)
         alert.popoverPresentationController?.permittedArrowDirections = [.any]
-        self.presenter?.present(alert, animated: true, completion: nil)
+        presenter?.present(alert, animated: true, completion: nil)
     }
     
     func exportToPDF(completion: @escaping (Error?, URL?) -> ()) {

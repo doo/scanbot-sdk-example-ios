@@ -12,9 +12,9 @@ import UIKit
 final class GenericDocumentResultImageListCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel?
     @IBOutlet private var resultImageView: UIImageView?
-        
+    
     func configure(title: String?, image: UIImage?) {
-        self.titleLabel?.text = title
-        self.resultImageView?.image = image
+        titleLabel?.text = title
+        resultImageView?.image = image
     }
 }

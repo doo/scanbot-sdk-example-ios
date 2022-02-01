@@ -12,7 +12,6 @@ import ScanbotSDK
 class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewControllerDelegate {
     
     override func start(presenter: UIViewController) {
-
         super.start(presenter: presenter)
 
         let configuration = SBSDKUIBarcodeScannerConfiguration.default()
@@ -25,14 +24,14 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
                                                                     configuration: configuration,
                                                                     andDelegate: self)
         
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
                                           didDetect barcodeResults: [SBSDKBarcodeScannerResult]) {
         if !barcodeResults.isEmpty {
             viewController.isRecognitionEnabled = false
-            if let navigationController = self.presenter as? UINavigationController {
+            if let navigationController = presenter as? UINavigationController {
                 let controller = BarcodeResultListViewController.make(with: barcodeResults)
                 navigationController.pushViewController(controller, animated: false)
                 viewController.presentingViewController?.dismiss(animated: true, completion: nil)
@@ -41,6 +40,6 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
     }
     
     func qrBarcodeDetectionViewControllerDidCancel(_ viewController: SBSDKUIBarcodeScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

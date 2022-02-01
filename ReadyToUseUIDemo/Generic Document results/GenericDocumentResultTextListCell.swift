@@ -14,8 +14,8 @@ final class GenericDocumentResultTextListCell: UITableViewCell {
     @IBOutlet private var percentageLabel: UILabel?
     
     func configure(title: String, value: String, confidence: Int) {
-        self.titleLabel?.text = title
-        self.valueLabel?.text = value
-        self.percentageLabel?.text = "\(confidence)%"
+        titleLabel?.text = title
+        valueLabel?.text = value
+        percentageLabel?.text = "\(confidence)%"
     }
 }

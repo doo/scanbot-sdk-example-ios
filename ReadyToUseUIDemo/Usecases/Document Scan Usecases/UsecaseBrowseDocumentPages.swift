@@ -22,7 +22,7 @@ class UsecaseBrowseDocumentPages: Usecase {
         super.start(presenter: presenter)
                 
         if let presenter = presenter as? UINavigationController {
-            let viewController = DocumentReviewViewController.make(with: self.document)
+            let viewController = DocumentReviewViewController.make(with: document)
             presenter.pushViewController(viewController, animated: true)
         }
     }

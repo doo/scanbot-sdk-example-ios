@@ -23,7 +23,7 @@ final class DocumentReviewViewController: UIViewController {
     
     private static var showsBlurriness: Bool = false
     private static let blurinessCache = NSCache<NSURL, NSNumber>()
-
+    
     private var showsBlurriness: Bool = showsBlurriness {
         didSet {
             Self.showsBlurriness = showsBlurriness
@@ -42,9 +42,9 @@ final class DocumentReviewViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.isTranslucent = false
-        self.toolbar?.isTranslucent = false
-        self.reloadData()
+        navigationController?.navigationBar.isTranslucent = false
+        toolbar?.isTranslucent = false
+        reloadData()
     }
     
     @IBAction private func importButtonDidPress(_ sender: Any) {
@@ -69,7 +69,7 @@ final class DocumentReviewViewController: UIViewController {
     private func shareFile(at url: URL) {
         let activityViewController = UIActivityViewController(activityItems: [url],
                                                               applicationActivities: nil)
-        self.present(activityViewController, animated: true, completion: nil)
+        present(activityViewController, animated: true, completion: nil)
     }
     
     @IBAction private func filterButtonDidPress(_ sender: Any) {
@@ -79,19 +79,19 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func blurButtonDidPress(_ sender: Any) {
-        self.showsBlurriness.toggle()
+        showsBlurriness.toggle()
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
-        while self.document.numberOfPages() > 0 {
-            self.document.removePage(at: 0)
+        while document.numberOfPages() > 0 {
+            document.removePage(at: 0)
         }
         SBSDKUIPageFileStorage.default().removeAll()
-        self.reloadData()
+        reloadData()
     }
     
     private func reloadData() {
-        self.collectionView?.reloadData()
+        collectionView?.reloadData()
         [exportButton, filterButton, blurButton, clearButton]
             .forEach({ $0?.isEnabled = document.numberOfPages() > 0 })
     }
@@ -120,10 +120,10 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentReviewCollectionViewCell", for: indexPath) as!
         DocumentReviewCollectionViewCell
-        let page = self.document.page(at: indexPath.item)
+        let page = document.page(at: indexPath.item)
         cell.previewImageView?.image = page?.documentImage()
-        if self.showsBlurriness {
-            if let imageURL = self.document.page(at: indexPath.item)?.originalImageURL() {
+        if showsBlurriness {
+            if let imageURL = document.page(at: indexPath.item)?.originalImageURL() {
                 if let bluriness = Self.blurinessCache.object(forKey: imageURL as NSURL)?.doubleValue {
                     cell.infoLabelText = String(format: "Blur = %0.2f", bluriness)
                 } else {
@@ -142,7 +142,7 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 extension DocumentReviewViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let page = self.document.page(at: indexPath.item) {
+        if let page = document.page(at: indexPath.item) {
             UsecaseCropPage(page: page) { [weak self] in
                 self?.reloadData()
             }.start(presenter: self)

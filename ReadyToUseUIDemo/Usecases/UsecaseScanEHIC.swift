@@ -11,7 +11,6 @@ import ScanbotSDK
 
 class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {
-        
         super.start(presenter: presenter)
         
         let configuration = SBSDKUIHealthInsuranceCardScannerConfiguration.default()
@@ -19,7 +18,7 @@ class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerD
         
         let scanner = SBSDKUIHealthInsuranceCardScannerViewController.createNew(with: configuration, andDelegate: self)
         
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func healthInsuranceCardDetectionViewController(_ viewController: SBSDKUIHealthInsuranceCardScannerViewController,
@@ -33,6 +32,6 @@ class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerD
     }
     
     func healthInsuranceCardDetectionViewControllerDidCancel(_ viewController: SBSDKUIHealthInsuranceCardScannerViewController) {
-        self.didFinish()
+        didFinish()
     }
 }

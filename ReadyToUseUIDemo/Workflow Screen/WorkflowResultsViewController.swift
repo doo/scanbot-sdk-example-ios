@@ -35,13 +35,12 @@ class WorkflowResultsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.updateResults()
+        updateResults()
     }
     
     private func resultsText() -> String {
         var texts: [String] = []
-        for result in self.workflowsResults {
+        for result in workflowsResults {
             if let mrzResult = result.mrzResult {
                 texts.append(mrzResult.stringRepresentation())
             }
@@ -66,31 +65,31 @@ class WorkflowResultsViewController: UIViewController {
     }
     
     private func updateResults() {
-        self.collectionView?.reloadData()
-        let resultsText = self.resultsText()
-        self.textView?.text = resultsText
-        self.toPasteboardButton?.isEnabled = resultsText.count > 0
+        collectionView?.reloadData()
+        let resultsText = resultsText()
+        textView?.text = resultsText
+        toPasteboardButton?.isEnabled = resultsText.count > 0
     }
     
     @IBAction private func toPasteboardButtonDidPress(_ sender: Any) {
-        UIPasteboard.general.string = self.resultsText()
+        UIPasteboard.general.string = resultsText()
     }
     
     @IBAction private func closeButtonDidPress(_ sender: Any) {
-        self.navigationController?.popViewController(animated: true)
+        navigationController?.popViewController(animated: true)
     }
 }
 
 extension WorkflowResultsViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.workflowsResults.count
+        return workflowsResults.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "resultsCell", for: indexPath) as!
         WorkflowResultsCollectionViewCell
-        let result = self.workflowsResults[indexPath.item]
+        let result = workflowsResults[indexPath.item]
         var image = result.thumbnail()
         if image == nil && result.step.acceptedMachineCodeTypes?.isEmpty != true {
             image = UIImage(named: "Scanbot QRCode")

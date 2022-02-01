@@ -21,8 +21,8 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
     }
 
     override func start(presenter: UIViewController) {
-
         super.start(presenter: presenter)
+        
         let picker = UIImagePickerController()
         picker.allowsEditing = false
         picker.sourceType = .photoLibrary

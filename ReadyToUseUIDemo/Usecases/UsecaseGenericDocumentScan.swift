@@ -19,7 +19,6 @@ class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     }
     
     override func start(presenter: UIViewController) {
-        
         super.start(presenter: presenter)
         
         let configuration = SBSDKUIGenericDocumentRecognizerConfiguration.default()
@@ -28,17 +27,17 @@ class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewC
         
         let scanner = SBSDKUIGenericDocumentRecognizerViewController.createNew(with: configuration, andDelegate: self)
         
-        self.presentViewController(scanner)
+        presentViewController(scanner)
     }
     
     func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController,
                                                  didFinishWith documents: [SBSDKGenericDocument]) {
         if !documents.isEmpty {
-            if let navigationController = self.presenter as? UINavigationController {
+            if let navigationController = presenter as? UINavigationController {
                 let controller = GenericDocumentResultListViewController.make(with: documents)
                 navigationController.pushViewController(controller, animated: true)
             }
-            self.didFinish()
+            didFinish()
         }
     }
 }
