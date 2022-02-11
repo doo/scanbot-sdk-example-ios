@@ -154,8 +154,8 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
         alertsManager?.showSuccessAlert(with: result.stringRepresentation())
     }
     
-    func recognizer(_ recognizer: SBSDKDisabilityCertificatesRecognizer,
-                    didFindMedicalCertificate result: SBSDKDisabilityCertificatesRecognizerResult?) {
+    func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
+                    didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?) {
         guard let result = result, result.recognitionSuccessful else {
             alertsManager?.showFailureAlert()
             return

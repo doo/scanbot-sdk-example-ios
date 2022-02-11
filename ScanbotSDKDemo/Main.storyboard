@@ -386,7 +386,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disability Certificates Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5W-Gv-GDH">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Medical Certificate Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="J5W-Gv-GDH">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="74"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1007,10 +1007,10 @@ MRZ code at the from of your document:</string>
             </objects>
             <point key="canvasLocation" x="-854" y="605"/>
         </scene>
-        <!--Disability Certificate Scanner View Controller-->
+        <!--Medical Certificate Scanner View Controller-->
         <scene sceneID="nFK-OP-JJG">
             <objects>
-                <viewController storyboardIdentifier="AURecognitionDemoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BF3-Mr-5J6" customClass="DisabilityCertificateScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AURecognitionDemoViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BF3-Mr-5J6" customClass="MedicalCertificateScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Gc4-65-XJX"/>
                         <viewControllerLayoutGuide type="bottom" id="Lbj-gM-u0n"/>
@@ -1979,7 +1979,7 @@ MRZ code at the from of your document:</string>
     <inferredMetricsTieBreakers>
         <segue reference="XHT-es-9nv"/>
         <segue reference="JxE-5D-hr3"/>
-        <segue reference="gJc-KH-hZI"/>
+        <segue reference="AqV-OW-qqH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="mrz_template" width="1000" height="681"/>
