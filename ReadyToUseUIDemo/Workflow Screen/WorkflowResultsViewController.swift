@@ -44,9 +44,6 @@ class WorkflowResultsViewController: UIViewController {
             if let mrzResult = result.mrzResult {
                 texts.append(mrzResult.stringRepresentation())
             }
-            if let dcResult = result.disabilityCertificateResult {
-                texts.append(dcResult.stringRepresentation())
-            }
             if let barcodeResults = result.barcodeResults, barcodeResults.isEmpty != true {
                 for code in barcodeResults {
                     texts.append(code.rawTextString)

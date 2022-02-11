@@ -13,14 +13,12 @@ enum WorkflowError: Error {
     case backSideRecognitionFailed
     case notIDCard
     case noPayformData
-    case notDC
     
     var description: String {
         switch self {
         case .backSideRecognitionFailed: return "This does not seem to be the correct side. Please scan the side containing MRZ lines."
         case .notIDCard: return "This does not seem to be an ID card."
         case .noPayformData: return "No payform data detected."
-        case .notDC: return "This does not seem to be a valid certificate."
         }
     }
 }
@@ -28,7 +26,7 @@ enum WorkflowError: Error {
 class WorkflowFactory {
     
     static func allWorkflows() -> [SBSDKUIWorkflow] {
-        return [idCard(), idCardOrPassport(), payform(), disabilityCertificate(), qrCodeAndDocument()]
+        return [idCard(), idCardOrPassport(), payform(), qrCodeAndDocument()]
     }
     
     static func idCard() -> SBSDKUIWorkflow {
@@ -90,26 +88,7 @@ class WorkflowFactory {
                                name: "SEPA Payform",
                                validationHandler: nil)!
     }
-    
-    static func disabilityCertificate() -> SBSDKUIWorkflow {
-        let ratios = [SBSDKAspectRatio(width: 148, andHeight: 210), // DC form A5 portrait (e.g. white sheet, AUB Muster 1b/E (1/2018))
-                      SBSDKAspectRatio(width: 148, andHeight: 105)] // DC form A6 landscape (e.g. yellow sheet, AUB Muster 1b (1.2018))
         
-        let step = SBSDKUIScanDisabilityCertificateWorkflowStep(title: "Scan Disability Certificate",
-                                                                  message: "Please align your Disability Certificate in the frame.",
-                                                                  requiredAspectRatios: ratios,
-                                                                  wantsCapturedPage: true) { result in
-            guard let dc = result.disabilityCertificateResult, dc.recognitionSuccessful else {
-                return WorkflowError.notDC
-            }
-            return nil
-        }
-        
-        return SBSDKUIWorkflow(steps: [step],
-                               name: "Disability Certificate",
-                               validationHandler: nil)!
-    }
-    
     static func qrCodeAndDocument() -> SBSDKUIWorkflow {
         
         let qrCodeStep = SBSDKUIScanBarCodeWorkflowStep(title: "Step 1 of 2",

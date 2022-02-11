@@ -44,6 +44,7 @@
 		082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */; };
 		082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */; };
 		082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */; };
+		0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */; };
 		0889D10F20EA700C00A36316 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D10E20EA700C00A36316 /* Usecase.swift */; };
 		0889D11120EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11020EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift */; };
 		0889D11320EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */; };
@@ -119,6 +120,7 @@
 		082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableActionHandler.swift; sourceTree = "<group>"; };
 		082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewItemProvider.swift; sourceTree = "<group>"; };
 		082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
+		0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMedicalCertificate.swift; sourceTree = "<group>"; };
 		0889D10E20EA700C00A36316 /* Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		0889D11020EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTwoDimensionalBarcode.swift; sourceTree = "<group>"; };
 		0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanOneDimensionalBarcode.swift; sourceTree = "<group>"; };
@@ -244,6 +246,7 @@
 				28BDF6122795707400CC34C8 /* Document Scan Usecases */,
 				28BDF613279570EA00CC34C8 /* Data Detect Usecases */,
 				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
+				0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */,
 				690DCE7824E5597400160876 /* UsecaseGenericDocumentScan.swift */,
 				6E2DA8C42264AB420043B2F0 /* UsecaseStartWorkflow.swift */,
 				28BDF614279572DB00CC34C8 /* Other Usecases */,
@@ -370,7 +373,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1310;
+				LastUpgradeCheck = 1320;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					082D0A2E20C801AA009B1A7A = {
@@ -448,7 +451,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.24.1\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"Beta2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.25.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"Beta2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C58E256C27D3008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -486,6 +489,7 @@
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
 				28A650E82788968500CFD548 /* DocumentReviewCollectionViewCell.swift in Sources */,
+				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseGenericDocumentScan.swift in Sources */,
 				28F2730527918DEF00C424AC /* GenericDocumentResultListViewController.swift in Sources */,
 				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
