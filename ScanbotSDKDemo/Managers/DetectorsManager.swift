@@ -22,8 +22,8 @@ protocol DetectorsManagerDelegate: AnyObject {
     func recognizer(_ recognizer: SBSDKMachineReadableZoneRecognizer,
                     didFindMRZ result: SBSDKMachineReadableZoneRecognizerResult?)
     
-    func recognizer(_ recognizer: SBSDKDisabilityCertificatesRecognizer,
-                    didFindMedicalCertificate result: SBSDKDisabilityCertificatesRecognizerResult?)
+    func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
+                    didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?)
     
     func scanner(_ scanner: SBSDKLicensePlateScanner,
                  didFindLicensePlate result: SBSDKLicensePlateScannerResult?)
@@ -78,8 +78,8 @@ final class DetectorsManager {
             let result = recognizer.recognizePersonalIdentity(from: image)
             delegate?.recognizer(recognizer, didFindMRZ: result)
         case .medicalCertificate:
-            let recognizer = SBSDKDisabilityCertificatesRecognizer()
-            let result = recognizer.detectAndRecognize(from: image)
+            let recognizer = SBSDKMedicalCertificateRecognizer()
+            let result = recognizer.recognize(from: image, detectDocument: true)
             delegate?.recognizer(recognizer, didFindMedicalCertificate: result)
         case .licensePlate:
             let scanner = SBSDKLicensePlateScanner(configuration: SBSDKLicensePlateScannerConfiguration())

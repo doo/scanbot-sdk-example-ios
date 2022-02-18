@@ -94,6 +94,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showMedicalCertificateScanning() {
+        guardLicense {
+            UsecaseScanMedicalCertificate().start(presenter: self.presenter)
+        }
+    }
+    
     func showImportImages() {
         guardLicense {
             UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
