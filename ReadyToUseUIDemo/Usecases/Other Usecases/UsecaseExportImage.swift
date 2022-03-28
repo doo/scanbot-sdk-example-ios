@@ -13,13 +13,16 @@ class UsecaseExportImage: Usecase {
     private let document: SBSDKUIDocument
     private let processingHandler: (()->())
     private let completionHandler: ((Error?, URL?)->())
+    private var barButtonItem: UIBarButtonItem?
     
     init(document: SBSDKUIDocument,
+         barButtonItem: UIBarButtonItem?,
          processingHandler: @escaping (()->()),
          completionHandler: @escaping ((Error?, URL?)->())) {
         self.document = document
         self.processingHandler = processingHandler
         self.completionHandler = completionHandler
+        self.barButtonItem = barButtonItem
         
         super.init()
     }
@@ -27,11 +30,12 @@ class UsecaseExportImage: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        self.showExportAlert()
+        self.showExportAlert(from: self.barButtonItem)
     }
     
-    private func showExportAlert() {
+    private func showExportAlert(from barButtonItem: UIBarButtonItem?) {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alert.popoverPresentationController?.barButtonItem = barButtonItem
         let exportPDF = UIAlertAction(title: "Export to PDF", style: .default) { [weak self] _ in
             self?.processingHandler()
             self?.exportToPDF() { [weak self] (error, url) in

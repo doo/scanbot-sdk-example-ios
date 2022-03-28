@@ -53,8 +53,8 @@ final class DocumentReviewViewController: UIViewController {
         }.start(presenter: self)
     }
     
-    @IBAction private func exportButtonDidPress(_ sender: Any) {
-        UsecaseExportImage(document: document) { [weak self] in
+    @IBAction private func exportButtonDidPress(_ sender: UIBarButtonItem) {
+        UsecaseExportImage(document: document, barButtonItem: sender) { [weak self] in
             self?.activityIndicator?.startAnimating()
         } completionHandler: { [weak self] error, url in
             self?.activityIndicator?.stopAnimating()
