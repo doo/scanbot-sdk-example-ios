@@ -13,11 +13,14 @@ class UsecaseFilterPage: Usecase {
     
     private let document: SBSDKUIDocument
     private var completion: (()->())?
-
+    private var barButtonItem: UIBarButtonItem?
     
-    init(document: SBSDKUIDocument, completion: (()->())? = nil) {
+    init(document: SBSDKUIDocument,
+         barButtonItem: UIBarButtonItem?,
+         completion: (()->())? = nil) {
         self.document = document
         self.completion = completion
+        self.barButtonItem = barButtonItem
         super.init()
     }
     
@@ -45,9 +48,8 @@ class UsecaseFilterPage: Usecase {
             self?.didFinish()
         }
         alert.addAction(cancelAction)
-        alert.popoverPresentationController?.sourceView = self.presenter?.view
-        alert.popoverPresentationController?.sourceRect = self.presenter?.view.bounds ?? .zero
-        alert.popoverPresentationController?.permittedArrowDirections = []
+        alert.popoverPresentationController?.barButtonItem = self.barButtonItem
+
         presentViewController(alert)
     }
     
