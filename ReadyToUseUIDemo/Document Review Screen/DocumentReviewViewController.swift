@@ -69,11 +69,12 @@ final class DocumentReviewViewController: UIViewController {
     private func shareFile(at url: URL) {
         let activityViewController = UIActivityViewController(activityItems: [url],
                                                               applicationActivities: nil)
+        activityViewController.popoverPresentationController?.barButtonItem = self.exportButton
         present(activityViewController, animated: true, completion: nil)
     }
     
-    @IBAction private func filterButtonDidPress(_ sender: Any) {
-        UsecaseFilterPage(document: self.document, completion: { [weak self] in
+    @IBAction private func filterButtonDidPress(_ sender: UIBarButtonItem?) {
+        UsecaseFilterPage(document: self.document, barButtonItem: sender, completion: { [weak self] in
             self?.reloadData()
         }).start(presenter: self)
     }
