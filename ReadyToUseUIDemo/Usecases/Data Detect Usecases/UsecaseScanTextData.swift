@@ -31,15 +31,10 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
         guard let text = result.text, text.count > 0, viewController.isRecognitionEnabled == true else {
             return
         }
-        viewController.isRecognitionEnabled = false
-
         let message = text
         let title = "Text found"
         
-        viewController.isRecognitionEnabled = false
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            viewController.isRecognitionEnabled = true
-        }
+        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
     
     func textLineRecognizerViewControllerDidCancel(_ viewController: SBSDKUITextDataScannerViewController) {

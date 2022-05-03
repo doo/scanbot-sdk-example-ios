@@ -25,10 +25,7 @@ class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerD
                                                     didDetectCard card: SBSDKHealthInsuranceCardRecognitionResult) {
         let title = "Health card detected"
         let message = card.stringRepresentation()
-        viewController.isRecognitionEnabled = false
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            viewController.isRecognitionEnabled = true
-        }
+        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
     
     func healthInsuranceCardDetectionViewControllerDidCancel(_ viewController: SBSDKUIHealthInsuranceCardScannerViewController) {

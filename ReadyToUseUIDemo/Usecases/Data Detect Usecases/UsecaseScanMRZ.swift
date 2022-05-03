@@ -28,10 +28,7 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
                                     didDetect zone: SBSDKMachineReadableZoneRecognizerResult) {
         let title = "MRZ detected"
         let message = zone.stringRepresentation()
-        viewController.isRecognitionEnabled = false
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            viewController.isRecognitionEnabled = true
-        }
+        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
 
     func mrzDetectionViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {

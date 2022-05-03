@@ -31,6 +31,4 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
     func checkRecognizerViewControllerDidCancel(_ viewController: SBSDKUICheckRecognizerViewController) {
         didFinish()
     }
-    
-    
 }
