@@ -1,5 +1,5 @@
 //
-//  UsecaseGenericDocumentScan.swift
+//  UsecaseScanGenericDocument.swift
 //  ReadyToUseUIDemo
 //
 //  Created by Yevgeniy Knizhnik on 13.08.20.
@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseGenericDocumentScan: Usecase, SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
+class UsecaseScanGenericDocument: Usecase, SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
     
     private let documentType: SBSDKUIDocumentType
     

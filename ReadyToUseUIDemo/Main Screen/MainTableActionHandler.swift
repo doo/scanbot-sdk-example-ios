@@ -76,6 +76,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showCheckRecognizer() {
+        guardLicense {
+            UsecaseRecognizeCheck().start(presenter: self.presenter)
+        }
+    }
+    
     func showOneDimensionalBarcodeScanning() {
         guardLicense {
             UsecaseScanOneDimensionalBarcode().start(presenter: self.presenter)
@@ -128,13 +134,13 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         guardLicense {
-            UsecaseGenericDocumentScan(documentType: .idCardFrontBackDE()).start(presenter: self.presenter)
+            UsecaseScanGenericDocument(documentType: .idCardFrontBackDE()).start(presenter: self.presenter)
         }
     }
     
     func showDriverLicenseScanner() {
         guardLicense {
-            UsecaseGenericDocumentScan(documentType: .driverLicenseFrontBackDE()).start(presenter: self.presenter)
+            UsecaseScanGenericDocument(documentType: .driverLicenseFrontBackDE()).start(presenter: self.presenter)
         }
     }
     
