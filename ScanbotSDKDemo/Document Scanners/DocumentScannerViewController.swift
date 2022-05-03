@@ -11,7 +11,7 @@ import ScanbotSDK
 
 class DocumentScannerViewController: UIViewController {
     
-    var scannerViewController: SBSDKScannerViewController?
+    var scannerViewController: SBSDKDocumentScannerViewController?
     
     
     @IBOutlet private var pageCountButton: UIBarButtonItem?
@@ -24,10 +24,9 @@ class DocumentScannerViewController: UIViewController {
             presentErrorAlert()
             return
         }
-        scannerViewController = SBSDKScannerViewController(parentViewController: self,
-                                             parentView: scannerContainerView,
-                                             imageStorage: nil,
-                                             enableQRCodeDetection: false)
+        scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
+                                                                   parentView: scannerContainerView,
+                                                                   delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -53,13 +52,13 @@ class DocumentScannerViewController: UIViewController {
     }
 }
 
-extension DocumentScannerViewController: SBSDKScannerViewControllerDelegate {
-    
-    func scannerController(_ controller: SBSDKScannerViewController,
-                           didCapture image: UIImage,
-                           with info: SBSDKCaptureInfo) {
-        
-        ImageManager.shared.add(image: image, polygon: info.detectionResult?.polygon ?? SBSDKPolygon())
+extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
+                                       didSnapDocumentImage documentImage: UIImage,
+                                       on originalImage: UIImage,
+                                       with result: SBSDKDocumentDetectorResult,
+                                       autoSnapped: Bool) {
+        ImageManager.shared.add(image: originalImage, polygon: result.polygon ?? SBSDKPolygon())
         updateUI()
     }
 }
