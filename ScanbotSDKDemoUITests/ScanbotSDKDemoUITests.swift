@@ -43,7 +43,7 @@ class ScanbotSDKDemoUITests: XCTestCase {
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             
-            tablesQuery.cells.staticTexts["Cheque Demo"].tap()
+            tablesQuery.cells.staticTexts["Check Demo"].tap()
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             
@@ -71,7 +71,7 @@ class ScanbotSDKDemoUITests: XCTestCase {
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             
-            tablesQuery.cells.staticTexts["Disability Certificates Demo"].tap()
+            tablesQuery.cells.staticTexts["Medical Certificate Demo"].tap()
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             
