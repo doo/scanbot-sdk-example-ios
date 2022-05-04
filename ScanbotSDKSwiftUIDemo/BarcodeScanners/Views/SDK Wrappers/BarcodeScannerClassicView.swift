@@ -28,22 +28,22 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let rootViewController = UIViewController()
         guard let viewController = SBSDKBarcodeScannerViewController(parentViewController: rootViewController,
-                                                                     parentView: nil) else {
+                                                                     parentView: nil,
+                                                                     delegate: context.coordinator) else {
             fatalError("Error occurred during SBSDKBarcodeScannerViewController Initialization")
         }
-        viewController.viewFinderLineColor = .green
-        viewController.viewFinderLineWidth = 5
-        viewController.finderAspectRatio = SBSDKAspectRatio(width: 1, andHeight: 0.5)
-        viewController.finderMinimumInset = UIEdgeInsets(top: 100, left: 50, bottom: 100, right: 50)
-        viewController.shouldUseFinderFrame = true
-        viewController.delegate = context.coordinator
-        
+        let configuration = viewController.viewFinderConfiguration
+        configuration.lineColor = UIColor.green
+        configuration.lineWidth = 5
+        configuration.aspectRatio = SBSDKAspectRatio(width: 1, andHeight: 0.5)
+        configuration.minimumInset = UIEdgeInsets(top: 100, left: 50, bottom: 100, right: 50)
+        configuration.isViewFinderEnabled = true
+        viewController.viewFinderConfiguration = configuration
+                
         return rootViewController
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
-        
-    }
+    func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
 }
 
 extension BarcodeScannerClassicView {
@@ -60,7 +60,8 @@ extension BarcodeScannerClassicView {
         }
         
         func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                      didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
+                                      didDetectBarcodes codes: [SBSDKBarcodeScannerResult],
+                                      on image: UIImage) {
             if parent.presentationMode.wrappedValue.isPresented {
                 self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Classic Barcode Scanner",
                                                             scannedBarcodes: codes)
