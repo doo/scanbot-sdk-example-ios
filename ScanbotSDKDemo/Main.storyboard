@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -36,8 +36,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1643"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2018 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1534.6666641235354" width="375" height="108"/>
+                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
+                            <rect key="frame" x="0.0" y="1534.6666641235352" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <nil key="textColor"/>
@@ -409,7 +409,7 @@
                             <tableViewSection headerTitle="Identity Detectors" id="Sky-Od-pUP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="Ob7-5m-T2v" userLabel="NFC Reader">
-                                        <rect key="frame" x="0.0" y="1201.9999980926516" width="375" height="74"/>
+                                        <rect key="frame" x="0.0" y="1201.9999980926514" width="375" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ob7-5m-T2v" id="eKm-ao-EM4">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
@@ -434,7 +434,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="n39-Yo-ENL" userLabel="Generic Documents Scanner">
-                                        <rect key="frame" x="0.0" y="1275.9999980926516" width="375" height="58"/>
+                                        <rect key="frame" x="0.0" y="1275.9999980926514" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n39-Yo-ENL" id="zO5-aK-oKo">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
@@ -463,7 +463,7 @@
                             <tableViewSection headerTitle="Utilities" id="EGY-pa-TYu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Nad-bm-cdX" userLabel="Bluriness Estimator">
-                                        <rect key="frame" x="0.0" y="1383.6666641235354" width="375" height="58"/>
+                                        <rect key="frame" x="0.0" y="1383.6666641235352" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nad-bm-cdX" id="3vf-5b-HSj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
@@ -488,7 +488,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="EH5-Ux-Gir" userLabel="Adjustable Filters">
-                                        <rect key="frame" x="0.0" y="1441.6666641235354" width="375" height="75"/>
+                                        <rect key="frame" x="0.0" y="1441.6666641235352" width="375" height="75"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EH5-Ux-Gir" id="7ja-TI-vr0">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
@@ -1699,10 +1699,10 @@ MRZ code at the from of your document:</string>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="textCell" id="ghJ-r0-WvV" customClass="PassportReaderResultTextTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92.666667938232422" width="390" height="44.333332061767578"/>
+                                        <rect key="frame" x="0.0" y="92.666667938232422" width="390" height="44.666667938232422"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ghJ-r0-WvV" id="X8b-YQ-EjG">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44.333332061767578"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="44.666667938232422"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rxe-Cd-WWP">
@@ -1712,7 +1712,7 @@ MRZ code at the from of your document:</string>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TGd-Ar-oKq">
-                                                    <rect key="frame" x="329.66666666666669" y="11.999999999999998" width="40.333333333333314" height="20.333333333333329"/>
+                                                    <rect key="frame" x="329.66666666666669" y="12.000000000000002" width="40.333333333333314" height="20.666666666666671"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
