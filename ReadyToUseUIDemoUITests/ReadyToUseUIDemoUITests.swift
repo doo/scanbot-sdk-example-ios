@@ -37,17 +37,6 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         XCTAssert(app.buttons["Scanbot SDK Demo"].waitForExistence(timeout: 1))
         app.buttons["Scanbot SDK Demo"].tap()
         
-        tablesQuery.cells.staticTexts["Select a Workflow"].tap()
-        let elementsQuery = app.sheets["Select a Workflow"].scrollViews.otherElements
-        elementsQuery.buttons["ID Card - Front + Back Image + MRZ"].tap()
-        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
-        app.buttons["Cancel"].tap()
-        
-        tablesQuery.cells.staticTexts["Select a Workflow"].tap()
-        elementsQuery.buttons["SEPA Payform"].tap()
-        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
-        app.buttons["Cancel"].tap()
-        
         tablesQuery.cells.staticTexts["Scan 2D Barcodes"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()

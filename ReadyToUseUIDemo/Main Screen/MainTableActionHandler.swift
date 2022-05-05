@@ -118,12 +118,6 @@ class MainTableActionHandler: NSObject {
         }
     }
     
-    func showWorkflow() {
-        guardLicense {
-            UsecaseStartWorkflow().start(presenter: self.presenter)
-        }
-    }
-    
     func showBarcodeBatchScanner(engineMode: SBSDKBarcodeEngineMode,
                                  additionalParameters: SBSDKBarcodeAdditionalParameters? = nil) {
         guardLicense {
