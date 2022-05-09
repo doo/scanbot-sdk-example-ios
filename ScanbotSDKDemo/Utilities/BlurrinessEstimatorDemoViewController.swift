@@ -11,19 +11,19 @@ import ScanbotSDK
 
 final class BlurrinessEstimatorDemoViewController: UIViewController {
     @IBOutlet private var containerView: UIView?
-    private var scannerViewController: SBSDKScannerViewController?
+    private var scannerViewController: SBSDKDocumentScannerViewController?
     private var estimator: SBSDKBlurrinessEstimator?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scannerViewController = SBSDKScannerViewController(parentViewController: self,
-                                                           parentView: containerView,
-                                                           imageStorage: nil,
-                                                           enableQRCodeDetection: false)
+        scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
+                                                                   parentView: containerView,
+                                                                   delegate: self)
         estimator = SBSDKBlurrinessEstimator()
         scannerViewController?.delegate = self
-        scannerViewController?.detectionStatusHidden = true
+        scannerViewController?.isAutoSnappingEnabled = false
+        scannerViewController?.hideDetectionStatusLabel = true
     }
     
     @IBAction private func selectImageButtonDidPress(_ sender: Any) {
@@ -44,13 +44,15 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
     
     private func darkenScreen() {
         UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.scannerViewController?.hudView.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+            self?.scannerViewController?.view.backgroundColor = UIColor.black.withAlphaComponent(0.8)
+            
         }
     }
     
     private func lightenScreen() {
         UIView.animate(withDuration: 0.2) { [weak self] in
-            self?.scannerViewController?.hudView.backgroundColor = UIColor.clear
+            self?.scannerViewController?.view.backgroundColor = UIColor.clear
+            
         }
     }
     
@@ -60,8 +62,8 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
                                       message: resultString,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
-                                     style: .default) { [weak self] action in
-            self?.lightenScreen()
+                                     style: .default) { _ in
+            alert.presentedViewController?.dismiss(animated: true)
         }
         alert.addAction(okAction)
         present(alert, animated: true, completion: nil)
@@ -70,21 +72,13 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
     
 }
 
-extension BlurrinessEstimatorDemoViewController: SBSDKScannerViewControllerDelegate {
-    func scannerControllerShouldAnalyseVideoFrame(_ controller: SBSDKScannerViewController) -> Bool {
-        return false
-    }
-    
-    func scannerControllerWillCaptureStillImage(_ controller: SBSDKScannerViewController) {
-        darkenScreen()
-    }
-    
-    func scannerController(_ controller: SBSDKScannerViewController, didCapture image: UIImage) {
-        estimateAndShowResults(from: image)
-    }
-    
-    func scannerController(_ controller: SBSDKScannerViewController, didFailCapturingImage error: Error) {
-        lightenScreen()
+extension BlurrinessEstimatorDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
+                                       didSnapDocumentImage documentImage: UIImage,
+                                       on originalImage: UIImage,
+                                       with result: SBSDKDocumentDetectorResult,
+                                       autoSnapped: Bool) {
+        estimateAndShowResults(from: originalImage)
     }
 }
 
@@ -97,12 +91,6 @@ extension BlurrinessEstimatorDemoViewController: UIImagePickerControllerDelegate
             }
         } else {
             dismiss(animated: true, completion: nil)
-        }
-    }
-    
-    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true) { [weak self] in
-            self?.lightenScreen()
         }
     }
 }
