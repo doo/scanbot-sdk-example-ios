@@ -23,19 +23,8 @@ final class CheckViewController: UIViewController {
     }
         
     private func show(result: SBSDKCheckRecognizerResult) {
-        
-        var messageString = ""
-//        if let value = result.routingNumberField?.value, !value.isEmpty {
-//            messageString += "Routing number: \(value)"
-//        }
-//        if let value = result.accountNumberField?.value, !value.isEmpty {
-//            messageString += "Account number: \(value)"
-//        }
-//        if let value = result.checkNumberField?.value, !value.isEmpty {
-//            messageString += "Cheque number: \(value)"
-//        }
         let alert = UIAlertController(title: "Recognized Cheque",
-                                      message: messageString,
+                                      message: result.stringRepresentation,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
                                      style: .default,
