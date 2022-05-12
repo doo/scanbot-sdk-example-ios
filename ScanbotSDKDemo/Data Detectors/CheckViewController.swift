@@ -23,7 +23,7 @@ final class CheckViewController: UIViewController {
     }
         
     private func show(result: SBSDKCheckRecognizerResult) {
-        let alert = UIAlertController(title: "Recognized Cheque",
+        let alert = UIAlertController(title: "Recognized check",
                                       message: result.stringRepresentation,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
