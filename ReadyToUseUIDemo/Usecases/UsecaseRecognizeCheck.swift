@@ -21,7 +21,8 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
         presentViewController(recognizer)
     }
     
-    func checkRecognizerViewController(_ viewController: SBSDKUICheckRecognizerViewController, didRecognizeCheck result: SBSDKCheckRecognizerResult) {
+    func checkRecognizerViewController(_ viewController: SBSDKUICheckRecognizerViewController,
+                                       didRecognizeCheck result: SBSDKCheckRecognizerResult) {
         let title = "Check recognized"
         let message = result.stringRepresentation
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
