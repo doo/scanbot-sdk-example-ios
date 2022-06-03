@@ -12,7 +12,6 @@ import ScanbotSDK
 final class GenericTextLineRecognizerDemoViewController: UIViewController {
     @IBOutlet private var cameraContainer: UIView?
     @IBOutlet private var resultLabel: UILabel?
-    @IBOutlet private var zoomButton: UIButton?
     
     private var textLineRecognizerController: SBSDKGenericTextLineRecognizerViewController?
     private var shouldRecognize: Bool = false
@@ -56,10 +55,6 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
     private func show(result: SBSDKGenericTextLineRecognizerResult) {
         resultLabel?.textColor = result.validationSuccessful ? UIColor.green : UIColor.red
         resultLabel?.text = result.text
-    }
-    
-    @IBAction private func zoomButtonDidPress(_ sender: Any) {
-        textLineRecognizerController?.toggleZoom(sender)
     }
 }
 

@@ -282,7 +282,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="74"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cheque Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bax-3U-mCf">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Check Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bax-3U-mCf">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="74"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -624,10 +624,10 @@
             </objects>
             <point key="canvasLocation" x="5634" y="1292"/>
         </scene>
-        <!--Cheque View Controller-->
+        <!--Check View Controller-->
         <scene sceneID="1Ls-j1-Z6W">
             <objects>
-                <viewController id="kzX-sm-ynm" customClass="ChequeViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kzX-sm-ynm" customClass="CheckViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="oCa-11-gf8"/>
                         <viewControllerLayoutGuide type="bottom" id="RRl-LJ-z1l"/>
@@ -930,78 +930,8 @@
                     <view key="view" contentMode="scaleToFill" id="wQR-gx-2S1">
                         <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="898-lo-aiP">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="756"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KXZ-uY-ab3">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
-                                <subviews>
-                                    <view hidden="YES" alpha="0.69999998807907104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAg-vd-ZGF">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                    </view>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CkE-Ne-Nxq">
-                                        <rect key="frame" x="16" y="340.66666666666669" width="358" height="40.666666666666686"/>
-                                        <string key="text">Please hold your phone over 2- or 3-line
-MRZ code at the from of your document:</string>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="F4S-Rt-EzA">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="mrz_template" translatesAutoresizingMaskIntoConstraints="NO" id="z72-zg-LMG">
-                                        <rect key="frame" x="0.0" y="0.0" width="390" height="722"/>
-                                    </imageView>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstItem="CkE-Ne-Nxq" firstAttribute="leading" secondItem="KXZ-uY-ab3" secondAttribute="leading" constant="16" id="2WX-c7-SdF"/>
-                                    <constraint firstAttribute="trailing" secondItem="F4S-Rt-EzA" secondAttribute="trailing" id="76X-AI-UY3"/>
-                                    <constraint firstAttribute="trailing" secondItem="CkE-Ne-Nxq" secondAttribute="trailing" constant="16" id="9zB-TH-o5N"/>
-                                    <constraint firstItem="F4S-Rt-EzA" firstAttribute="leading" secondItem="KXZ-uY-ab3" secondAttribute="leading" id="ARw-bR-qfM"/>
-                                    <constraint firstItem="zAg-vd-ZGF" firstAttribute="leading" secondItem="KXZ-uY-ab3" secondAttribute="leading" id="EGd-gV-bDQ"/>
-                                    <constraint firstItem="z72-zg-LMG" firstAttribute="top" secondItem="KXZ-uY-ab3" secondAttribute="top" id="LHt-05-LT6"/>
-                                    <constraint firstItem="z72-zg-LMG" firstAttribute="leading" secondItem="KXZ-uY-ab3" secondAttribute="leading" id="MAI-La-6lo"/>
-                                    <constraint firstAttribute="trailing" secondItem="z72-zg-LMG" secondAttribute="trailing" id="TqK-MB-OPM"/>
-                                    <constraint firstAttribute="bottom" secondItem="z72-zg-LMG" secondAttribute="bottom" id="ZWt-4A-UEv"/>
-                                    <constraint firstAttribute="bottom" secondItem="zAg-vd-ZGF" secondAttribute="bottom" id="ZrC-VV-hsG"/>
-                                    <constraint firstItem="zAg-vd-ZGF" firstAttribute="top" secondItem="KXZ-uY-ab3" secondAttribute="top" id="ayf-jK-dPn"/>
-                                    <constraint firstAttribute="trailing" secondItem="zAg-vd-ZGF" secondAttribute="trailing" id="mla-7z-MvW"/>
-                                    <constraint firstItem="F4S-Rt-EzA" firstAttribute="top" secondItem="KXZ-uY-ab3" secondAttribute="top" id="r6b-7Z-rPj"/>
-                                    <constraint firstAttribute="bottom" secondItem="F4S-Rt-EzA" secondAttribute="bottom" id="sVu-Hs-3ll"/>
-                                    <constraint firstItem="CkE-Ne-Nxq" firstAttribute="centerY" secondItem="KXZ-uY-ab3" secondAttribute="centerY" id="zk9-8g-XPN"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="KXZ-uY-ab3" secondAttribute="trailing" id="725-R2-5Rs"/>
-                            <constraint firstItem="KXZ-uY-ab3" firstAttribute="leading" secondItem="wQR-gx-2S1" secondAttribute="leading" id="IbC-b2-9ag"/>
-                            <constraint firstItem="KXZ-uY-ab3" firstAttribute="top" secondItem="fQK-l4-NKk" secondAttribute="bottom" id="aSg-Md-8EG"/>
-                            <constraint firstAttribute="bottomMargin" secondItem="KXZ-uY-ab3" secondAttribute="bottom" id="eDv-uY-B4r"/>
-                            <constraint firstItem="898-lo-aiP" firstAttribute="top" secondItem="fQK-l4-NKk" secondAttribute="bottom" id="p3n-mq-YKO"/>
-                            <constraint firstItem="898-lo-aiP" firstAttribute="leading" secondItem="wQR-gx-2S1" secondAttribute="leading" id="wQt-xb-mca"/>
-                            <constraint firstAttribute="bottom" secondItem="898-lo-aiP" secondAttribute="bottom" id="x7i-HJ-Hti"/>
-                            <constraint firstAttribute="trailing" secondItem="898-lo-aiP" secondAttribute="trailing" id="xoe-RU-JX2"/>
-                        </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="xoP-bi-t8b">
-                        <barButtonItem key="rightBarButtonItem" title="Select image" id="eO7-9S-AP6">
-                            <connections>
-                                <action selector="selectImageButtonDidPress:" destination="kwz-bW-V9c" id="n5K-Ee-FAb"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="blackView" destination="zAg-vd-ZGF" id="12d-gy-yAz"/>
-                        <outlet property="cameraView" destination="898-lo-aiP" id="ULL-Ol-73k"/>
-                        <outlet property="imageView" destination="F4S-Rt-EzA" id="nlN-vc-xAl"/>
-                        <outlet property="textHintLabel" destination="CkE-Ne-Nxq" id="fnU-h7-dDN"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ZH-aG-ftj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1779,20 +1709,11 @@ MRZ code at the from of your document:</string>
                                 <color key="shadowColor" white="0.0" alpha="0.3554955051" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mf7-4L-19y">
-                                <rect key="frame" x="280" y="672" width="90" height="30"/>
-                                <state key="normal" title="Toggle Zoom"/>
-                                <connections>
-                                    <action selector="zoomButtonDidPress:" destination="DOu-rx-fzf" eventType="touchUpInside" id="mdh-GW-Zts"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="mf7-4L-19y" secondAttribute="trailing" constant="20" id="K0d-8L-C2B"/>
                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="8cA-1N-Wrj" secondAttribute="trailing" constant="12" id="Lo8-xL-eLL"/>
                             <constraint firstItem="a7R-Rd-oCN" firstAttribute="top" secondItem="8cA-1N-Wrj" secondAttribute="bottom" constant="64" id="XkM-ck-5a8"/>
-                            <constraint firstItem="a7R-Rd-oCN" firstAttribute="top" secondItem="mf7-4L-19y" secondAttribute="bottom" constant="20" id="aPU-nH-NFC"/>
                             <constraint firstAttribute="trailing" secondItem="r6I-8P-P0p" secondAttribute="trailing" id="bLM-3q-uSo"/>
                             <constraint firstItem="r6I-8P-P0p" firstAttribute="leading" secondItem="bBH-UC-pMT" secondAttribute="leading" id="nuH-X1-xt0"/>
                             <constraint firstItem="a7R-Rd-oCN" firstAttribute="top" secondItem="r6I-8P-P0p" secondAttribute="bottom" id="uej-ge-rT6"/>
@@ -1804,7 +1725,6 @@ MRZ code at the from of your document:</string>
                     <connections>
                         <outlet property="cameraContainer" destination="r6I-8P-P0p" id="uvb-BR-koi"/>
                         <outlet property="resultLabel" destination="8cA-1N-Wrj" id="smR-lD-p3P"/>
-                        <outlet property="zoomButton" destination="mf7-4L-19y" id="4Gb-AP-7tf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Pie-Fx-pGe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1982,7 +1902,6 @@ MRZ code at the from of your document:</string>
         <segue reference="AqV-OW-qqH"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="mrz_template" width="1000" height="681"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

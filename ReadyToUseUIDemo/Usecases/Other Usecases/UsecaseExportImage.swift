@@ -30,7 +30,7 @@ class UsecaseExportImage: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        self.showExportAlert(from: self.barButtonItem)
+        showExportAlert(from: barButtonItem)
     }
     
     private func showExportAlert(from barButtonItem: UIBarButtonItem?) {

@@ -57,6 +57,9 @@ class MainTableViewItemProvider {
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
         
+        let checkRecognizeItem = MainTableViewItem(title: "Recognize Check",
+                                              action: { actionHandler.showCheckRecognizer() })
+        
         let mrzScanItem = MainTableViewItem(title: "Scan Machine Readable Zone",
                                             action: { actionHandler.showMRZScanning() })
 
@@ -64,7 +67,7 @@ class MainTableViewItemProvider {
                                                      action: { actionHandler.showLicensePlateScanner() })
         
         let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItemV3, batchBarcodesItemV2,
-                      mrzScanItem, textScanItem, licensePlateScanItem]
+                      mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem]
         
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
@@ -86,17 +89,12 @@ class MainTableViewItemProvider {
         let items4 = [idCardItem, driverLicenseItem]
 
         
-        let workflowItem = MainTableViewItem(title: "Select a Workflow",
-                                             action: { actionHandler.showWorkflow()})
-        
-        
         let documentScannersSection = MainTableViewSection(title: "Document Scanners", items: items1)
         let dataDetectorsSection = MainTableViewSection(title: "Data Detectors", items: items2)
         let healthDocumentsScannersSection = MainTableViewSection(title: "Health Documents Scanners", items: items3)
         let identityDetectorsSection = MainTableViewSection(title: "Identity Detectors", items: items4)
-        let workflowsSection = MainTableViewSection(title: "Workflows", items: [workflowItem])
-        
+                
         return [documentScannersSection, dataDetectorsSection, healthDocumentsScannersSection,
-                identityDetectorsSection, workflowsSection]
+                identityDetectorsSection]
     }
 }
