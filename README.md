@@ -33,7 +33,8 @@ selectable text
 
 ## Documentation
 
-[View Scanbot SDK Online documentation](https://docs.scanbot.io/document-scanner-sdk/ios/introduction/)
+- [Developer Guide](https://docs.scanbot.io/document-scanner-sdk/ios/introduction/)
+- [API Docs](https://scanbotsdk.github.io/documentation/ios/)
 
 
 
