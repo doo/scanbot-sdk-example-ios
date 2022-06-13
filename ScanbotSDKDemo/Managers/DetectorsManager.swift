@@ -25,13 +25,11 @@ protocol DetectorsManagerDelegate: AnyObject {
     func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
                     didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?)
     
-    func scanner(_ scanner: SBSDKLicensePlateScanner,
-                 didFindLicensePlate result: SBSDKLicensePlateScannerResult?)
 }
 
 final class DetectorsManager {
     enum Detector: CaseIterable {
-        case barcode, ehic, genericDocument, mrz, medicalCertificate, licensePlate
+        case barcode, ehic, genericDocument, mrz, medicalCertificate
         
         var detectorName: String {
             switch self {
@@ -45,8 +43,6 @@ final class DetectorsManager {
                 return "Machine Readable Zone"
             case .medicalCertificate:
                 return "Medical Certificate"
-            case .licensePlate:
-                return "License Plate"
             }
         }
     }
@@ -81,11 +77,6 @@ final class DetectorsManager {
             let recognizer = SBSDKMedicalCertificateRecognizer()
             let result = recognizer.recognize(from: image, detectDocument: true)
             delegate?.recognizer(recognizer, didFindMedicalCertificate: result)
-        case .licensePlate:
-            let scanner = SBSDKLicensePlateScanner(configuration: SBSDKLicensePlateScannerConfiguration())
-            let result = scanner.scanVideoFrameImage(image,
-                                                     in: makeFinderRect(for: image))
-            delegate?.scanner(scanner, didFindLicensePlate: result)
         }
     }
     
