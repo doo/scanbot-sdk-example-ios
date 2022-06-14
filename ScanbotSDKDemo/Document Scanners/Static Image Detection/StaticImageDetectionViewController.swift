@@ -171,4 +171,18 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
         }
         alertsManager?.showSuccessAlert(with: result.rawString)
     }
+    
+    func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result: SBSDKDocumentDetectorResult?) {
+        guard let result = result, result.isDetectionStatusOK, result.polygon != nil, let image = image else {
+            alertsManager?.showFailureAlert()
+            return
+        }
+        SBSDKImageProcessor.warpImage(image, polygon: result.polygon!) { finished, error, resultInfo in
+            if finished && error == nil {
+                self.imageView.image = resultInfo?[SBSDKResultInfoDestinationImageKey] as? UIImage
+            }else {
+                self.alertsManager?.showFailureAlert()
+            }
+        }
+    }
 }
