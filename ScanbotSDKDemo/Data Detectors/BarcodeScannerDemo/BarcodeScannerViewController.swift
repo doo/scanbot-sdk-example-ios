@@ -18,7 +18,7 @@ class BarcodeScannerViewController: UIViewController {
     private var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes()
     private var currentResults: [SBSDKBarcodeScannerResult]?
     
-    private var shouldDetect: Bool = true
+    private var shouldDetect: Bool = false
         
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,8 +29,8 @@ class BarcodeScannerViewController: UIViewController {
         scannerViewController?.acceptedBarcodeTypes = selectedBarcodeTypes
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         shouldDetect = true
     }
     
@@ -43,6 +43,7 @@ class BarcodeScannerViewController: UIViewController {
         if segue.identifier == Segue.showResults.rawValue {
             if let controller = segue.destination as? BarcodeScannerResultsViewController {
                 controller.results = currentResults
+                currentResults = nil
             }
         } else if segue.identifier == Segue.showTypesSelection.rawValue {
             if let controller = segue.destination as? BarcodeTypesViewController {
@@ -62,6 +63,10 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
                                   didDetectBarcodes codes: [SBSDKBarcodeScannerResult],
                                   on image: UIImage) {
+        
+        scannerViewController?.isRecognitionEnabled = false
+        if !shouldDetect { return }
+        shouldDetect = false
         currentResults = codes
         performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
     }
