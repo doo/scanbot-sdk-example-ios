@@ -22,7 +22,6 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
                                                                    delegate: self)
         estimator = SBSDKBlurrinessEstimator()
         scannerViewController?.delegate = self
-        scannerViewController?.isAutoSnappingEnabled = false
         scannerViewController?.hideDetectionStatusLabel = true
     }
     
