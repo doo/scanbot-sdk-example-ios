@@ -2,7 +2,7 @@
 
 ## Scanbot SDK example apps for iOS
 
-These example apps show how to integrate the [Scanbot SDK](https://scanbot.io) for iOS.
+These example apps show how to integrate the [Scanbot Document Scanner SDK for iOS](https://scanbot.io/developer/ios-document-scanner/).
 
 
 ## What is Scanbot SDK?
