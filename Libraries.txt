@@ -1,10 +1,10 @@
-Open Source libraries used in the Scanbot SDK for iOS version 1.27.1:
+Open Source libraries used in the Scanbot SDK for iOS version 1.28.0:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
 Boost C++
 
-Version 1.75.0
+Version 1.79.0
 (https://github.com/boostorg/boost)
 
 Boost Software License - Version 1.0 - August 17th, 2003
@@ -1123,7 +1123,7 @@ and users must comply to its license: https://github.com/fmtlib/fmt/blob/master/
 
 Tensorflow
 
-Version 2.6.1
+Version v2.6.1
 (https://github.com/tensorflow/tensorflow)
 
                                  Apache License
