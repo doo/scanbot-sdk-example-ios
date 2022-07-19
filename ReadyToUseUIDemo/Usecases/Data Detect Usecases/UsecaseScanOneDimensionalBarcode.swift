@@ -19,9 +19,9 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 2, andHeight: 1)
         
         let codeTypes = SBSDKUIMachineCodesCollection.oneDimensionalBarcodes()
+        configuration.behaviorConfiguration.acceptedMachineCodeTypes = codeTypes
         
-        let scanner = SBSDKUIBarcodeScannerViewController.createNew(withAcceptedMachineCodeTypes: codeTypes,
-                                                                    configuration: configuration,
+        let scanner = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
                                                                     andDelegate: self)
         
         presentViewController(scanner)

@@ -24,8 +24,9 @@ struct BarcodeScannerRTUUIView: UIViewControllerRepresentable {
         
         let acceptedTypes = SBSDKBarcodeType.allTypes()
         let configuration = SBSDKUIBarcodeScannerConfiguration.default()
-        self.scannerViewController = SBSDKUIBarcodeScannerViewController.createNew(withAcceptedMachineCodeTypes: acceptedTypes,
-                                                                                   configuration: configuration,
+        configuration.behaviorConfiguration.acceptedMachineCodeTypes = acceptedTypes
+        
+        self.scannerViewController = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
                                                                                    andDelegate: nil)
     }
     

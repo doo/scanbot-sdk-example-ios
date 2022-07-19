@@ -13,21 +13,26 @@ protocol ScannerCameraViewControllerDelegate: AnyObject {
     func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: UIImage)
 }
 
-final class ScannerCameraViewController: UIViewController, SBSDKScannerViewControllerDelegate {
+final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerViewControllerDelegate {
     
     weak var delegate: ScannerCameraViewControllerDelegate?
-    private var scanner: SBSDKScannerViewController?
+    private var scanner: SBSDKDocumentScannerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scanner = SBSDKScannerViewController(parentViewController: self, imageStorage: nil)
+        scanner = SBSDKDocumentScannerViewController(parentViewController: self, parentView: nil, delegate: self)
     }
     
     @IBAction private func cancelButtonDidPress(_ sender: Any?) {
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
     
-    func scannerController(_ controller: SBSDKScannerViewController, didCaptureDocumentImage documentImage: UIImage) {
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
+                                       didSnapDocumentImage documentImage: UIImage,
+                                       on originalImage: UIImage,
+                                       with result: SBSDKDocumentDetectorResult,
+                                       autoSnapped: Bool) {
+        
         delegate?.cameraViewController(self, didCapture: documentImage)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }

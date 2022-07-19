@@ -18,9 +18,9 @@ class UsecaseScanTwoDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.behaviorConfiguration.barcodeImageGenerationType = SBSDKBarcodeImageGenerationType.fromVideoFrame
         let codeTypes = SBSDKUIMachineCodesCollection.twoDimensionalBarcodes()
+        configuration.behaviorConfiguration.acceptedMachineCodeTypes = codeTypes
         
-        let scanner = SBSDKUIBarcodeScannerViewController.createNew(withAcceptedMachineCodeTypes: codeTypes,
-                                                                    configuration: configuration,
+        let scanner = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
                                                                     andDelegate: self)
         
         presentViewController(scanner)

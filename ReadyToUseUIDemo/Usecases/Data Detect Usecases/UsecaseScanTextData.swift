@@ -15,10 +15,7 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
         
         let configuration = SBSDKUITextDataScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
-        let step = SBSDKUITextDataScannerStep()
-        
         let scanner = SBSDKUITextDataScannerViewController.createNew(with: configuration,
-                                                                     recognitionStep: step,
                                                                      andDelegate: self)
         
         presentViewController(scanner)
