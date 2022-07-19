@@ -29,7 +29,7 @@ selectable text
 - Recognition and Data Extraction from German Medical Certificate forms (also known as Disability Certificate or AU-Bescheinigung)
 - MRZ Scanner - Provides the ability to find and extract Machine Readable Zone (MRZ) content from ID cards, passports and travel documents
 
-
+ 
 
 ## Documentation
 
