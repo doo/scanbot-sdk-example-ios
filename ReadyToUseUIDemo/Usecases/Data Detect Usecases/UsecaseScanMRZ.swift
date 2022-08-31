@@ -17,8 +17,8 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
         let configuration = SBSDKUIMRZScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
 
-        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 3, andHeight: 1)
-
+        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 5, andHeight: 1)
+        
         let scanner = SBSDKUIMRZScannerViewController.createNew(with: configuration, andDelegate: self)
 
         presentViewController(scanner)
