@@ -26,7 +26,7 @@ struct BarcodeScanResultDetailsView: View {
                 Text(scanResult.type.name)
                     .foregroundColor(.secondary)
                     .padding(.vertical, 8)
-                Text(scanResult.rawTextString)
+                Text(scanResult.rawTextStringWithExtension)
                 Spacer()
             }
         }
