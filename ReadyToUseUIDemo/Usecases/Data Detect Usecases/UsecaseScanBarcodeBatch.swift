@@ -11,12 +11,9 @@ import ScanbotSDK
 
 class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControllerDelegate {
     
-    private var engineMode: SBSDKBarcodeEngineMode
     private var additionalParameters: SBSDKBarcodeAdditionalParameters?
     
-    init(engineMode: SBSDKBarcodeEngineMode = .nextGen,
-         additionalParameters: SBSDKBarcodeAdditionalParameters? = nil) {
-        self.engineMode = engineMode
+    init(additionalParameters: SBSDKBarcodeAdditionalParameters? = nil) {
         self.additionalParameters = additionalParameters
         super.init()
     }
@@ -27,7 +24,7 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
         let configuration = SBSDKUIBarcodesBatchScannerConfiguration.default()
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        configuration.behaviorConfiguration.engineMode = engineMode
+        configuration.behaviorConfiguration.engineMode = .nextGen
         if let additionalParameters = additionalParameters {
             configuration.behaviorConfiguration.additionalDetectionParameters = additionalParameters
         }
