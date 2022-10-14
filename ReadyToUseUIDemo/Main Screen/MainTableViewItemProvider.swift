@@ -48,11 +48,8 @@ class MainTableViewItemProvider {
         let barcode1DScanItem = MainTableViewItem(title: "Scan 1D Barcodes",
                                                 action: { actionHandler.showOneDimensionalBarcodeScanning() })
         
-        let batchBarcodesItemV3 = MainTableViewItem(title: "Scan Barcodes in batch (V3 Next Gen)",
-                                                    action: { actionHandler.showBarcodeBatchScanner(engineMode: .nextGen) })
-        
-        let batchBarcodesItemV2 = MainTableViewItem(title: "Scan Barcodes in batch (V2 Legacy)",
-                                                    action: { actionHandler.showBarcodeBatchScanner(engineMode: .legacy) })
+        let batchBarcodesItem = MainTableViewItem(title: "Scan Barcodes in batch",
+                                                    action: { actionHandler.showBarcodeBatchScanner() })
         
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
@@ -66,7 +63,7 @@ class MainTableViewItemProvider {
         let licensePlateScanItem = MainTableViewItem(title: "Scan EU License Plate",
                                                      action: { actionHandler.showLicensePlateScanner() })
         
-        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItemV3, batchBarcodesItemV2,
+        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItem,
                       mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem]
         
         
