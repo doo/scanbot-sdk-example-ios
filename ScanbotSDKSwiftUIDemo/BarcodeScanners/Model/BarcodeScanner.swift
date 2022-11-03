@@ -13,9 +13,7 @@ enum BarcodeScanner: Identifiable, CaseIterable {
     case classic
     case manuallyComposed
     
-    var id: String {
-        title.replacingOccurrences(of: " ", with: "")
-    }
+    var id: Self { self }
     
     var title: String {
         switch self {
