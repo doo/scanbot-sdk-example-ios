@@ -11,36 +11,30 @@ import ScanbotSDK
 struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-
-    @Binding private var scanningResult: BarcodeScanningResult
-    @Binding private var isRecognitionEnabled: Bool
-
-    init(scanningResult: Binding<BarcodeScanningResult>,
-         isRecognitionEnabled: Binding<Bool>) {
-        _scanningResult = scanningResult
-        _isRecognitionEnabled = isRecognitionEnabled
-    }
+    
+    @Binding var scanningResult: BarcodeScanningResult
+    @Binding var isRecognitionEnabled: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        let rootViewController = UIViewController()
-        guard let viewController = SBSDKBarcodeScannerViewController(parentViewController: rootViewController,
-                                                                     parentView: nil,
-                                                                     delegate: context.coordinator) else {
+        let parentViewController = UIViewController()
+        guard let scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: parentViewController,
+                                                                            parentView: nil,
+                                                                            delegate: context.coordinator) else {
             fatalError("Error occurred during SBSDKBarcodeScannerViewController Initialization")
         }
-        let configuration = viewController.viewFinderConfiguration
+        let configuration = scannerViewController.viewFinderConfiguration
         configuration.lineColor = UIColor.green
         configuration.lineWidth = 5
         configuration.aspectRatio = SBSDKAspectRatio(width: 1, andHeight: 0.5)
         configuration.minimumInset = UIEdgeInsets(top: 100, left: 50, bottom: 100, right: 50)
         configuration.isViewFinderEnabled = true
-        viewController.viewFinderConfiguration = configuration
-                
-        return rootViewController
+        scannerViewController.viewFinderConfiguration = configuration
+        
+        return parentViewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
@@ -64,7 +58,7 @@ extension BarcodeScannerClassicView {
                                       on image: UIImage) {
             if parent.presentationMode.wrappedValue.isPresented {
                 self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Classic Barcode Scanner",
-                                                            scannedBarcodes: codes)
+                                                                   scannedBarcodes: codes)
                 self.parent.presentationMode.wrappedValue.dismiss()
             }
         }

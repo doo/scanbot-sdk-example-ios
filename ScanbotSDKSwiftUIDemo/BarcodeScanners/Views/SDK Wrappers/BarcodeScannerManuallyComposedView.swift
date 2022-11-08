@@ -11,16 +11,11 @@ import ScanbotSDK
 struct BarcodeScannerManuallyComposedView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-
-    @Binding private var scanningResult: BarcodeScanningResult
-
+    @Binding var scanningResult: BarcodeScanningResult
+    
     private let cameraSession: SBSDKCameraSession = SBSDKCameraSession(for: FeatureQRCode)
     private let barcodeScanner: SBSDKBarcodeScanner = SBSDKBarcodeScanner()
-
-    init(scanningResult: Binding<BarcodeScanningResult>) {
-        _scanningResult = scanningResult
-    }
-
+        
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -42,18 +37,18 @@ extension BarcodeScannerManuallyComposedView {
         init(_ parent: BarcodeScannerManuallyComposedView) {
             self.parent = parent
         }
-                
+        
         func captureOutput(_ output: AVCaptureOutput,
                            didOutput sampleBuffer: CMSampleBuffer,
                            from connection: AVCaptureConnection) {
             if let results = parent.barcodeScanner.detectBarCodes(on: sampleBuffer,
-                                                    orientation: parent.cameraSession.videoOrientation),
+                                                                  orientation: parent.cameraSession.videoOrientation),
                !results.isEmpty {
                 DispatchQueue.main.async { [weak self] in
                     guard let self = self else { return }
                     if self.parent.presentationMode.wrappedValue.isPresented {
                         self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Manually Built Scanner",
-                                                                    scannedBarcodes: results)
+                                                                           scannedBarcodes: results)
                         self.parent.presentationMode.wrappedValue.dismiss()
                     }
                 }
@@ -91,7 +86,7 @@ extension BarcodeScannerManuallyComposedView {
             super.viewWillDisappear(animated)
             cameraSession.stop()
         }
-            
+        
         override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
             cameraSession.previewLayer.frame = view.bounds
