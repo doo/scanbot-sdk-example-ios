@@ -22,7 +22,8 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
                                                                    delegate: self)
         estimator = SBSDKBlurrinessEstimator()
         scannerViewController?.delegate = self
-        scannerViewController?.hideDetectionStatusLabel = true
+        scannerViewController?.suppressDetectionStatusLabel = true
+        scannerViewController?.suppressPolygonLayer = true
     }
     
     @IBAction private func selectImageButtonDidPress(_ sender: Any) {
