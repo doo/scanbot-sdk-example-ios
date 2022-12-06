@@ -25,13 +25,16 @@ protocol DetectorsManagerDelegate: AnyObject {
     func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
                     didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?)
     
+    func recognizer(_ recognizer: SBSDKCheckRecognizer,
+                    didFindCheck result: SBSDKCheckRecognizerResult?)
+    
     func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result : SBSDKDocumentDetectorResult?)
     
 }
 
 final class DetectorsManager {
     enum Detector: CaseIterable {
-        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner
+        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check
         
         var detectorName: String {
             switch self {
@@ -47,6 +50,8 @@ final class DetectorsManager {
                 return "Medical Certificate"
             case .documentScanner:
                 return "Document Scanner"
+            case .check:
+                return "Check Scanner"
             }
         }
     }
@@ -85,7 +90,10 @@ final class DetectorsManager {
             let scanner =  SBSDKDocumentDetector(mode: .machineLearning)
             let result = scanner.detectDocumentPolygon(on: image, visibleImageRect: CGRect.zero, smoothingEnabled: false, useLiveDetectionParameters: false)
             delegate?.detector(scanner, didFindPolygon: result)
-            
+        case .check:
+            let recognizer = SBSDKCheckRecognizer()
+            let result = recognizer.recognize(on: image)
+            delegate?.recognizer(recognizer, didFindCheck: result)
         }
     }
     
