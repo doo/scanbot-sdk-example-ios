@@ -172,6 +172,16 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
         alertsManager?.showSuccessAlert(with: result.rawString)
     }
     
+    func recognizer(_ recognizer: SBSDKCheckRecognizer,
+                    didFindCheck result: SBSDKCheckRecognizerResult?) {
+        guard let result = result,
+        result.status == SBSDKCheckRecognitionResultStatus.success else {
+            alertsManager?.showFailureAlert()
+            return
+        }
+        alertsManager?.showSuccessAlert(with: result.stringRepresentation)
+    }
+    
     func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result: SBSDKDocumentDetectorResult?) {
         guard let result = result, result.isDetectionStatusOK, result.polygon != nil, let image = image else {
             alertsManager?.showFailureAlert()
