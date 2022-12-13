@@ -50,6 +50,7 @@
 		0889D11320EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */; };
 		0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */; };
 		0889D11720EA74B600A36316 /* UsecaseScanDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */; };
+		088F38652948A4FA00CD2B58 /* BarcodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */; };
 		08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */; };
 		08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */; };
 		08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */; };
@@ -124,6 +125,7 @@
 		0889D11220EA729D00A36316 /* UsecaseScanOneDimensionalBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanOneDimensionalBarcode.swift; sourceTree = "<group>"; };
 		0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMRZ.swift; sourceTree = "<group>"; };
 		0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocument.swift; sourceTree = "<group>"; };
+		088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeFormatter.swift; sourceTree = "<group>"; };
 		08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseImportImage.swift; sourceTree = "<group>"; };
 		08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseBrowseDocumentPages.swift; sourceTree = "<group>"; };
 		08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseCropPage.swift; sourceTree = "<group>"; };
@@ -252,6 +254,7 @@
 		28BDF60B2791DD2800CC34C8 /* Barcode results */ = {
 			isa = PBXGroup;
 			children = (
+				088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */,
 				28BDF60C2791DD7300CC34C8 /* BarcodeResultListViewController.swift */,
 				28BDF60E2791DD8400CC34C8 /* BarcodeResultListCell.swift */,
 				28BDF6102791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift */,
@@ -437,7 +440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.31.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"1.31.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC3\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C58E256C27D3008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -484,6 +487,7 @@
 				690DCE7724E5595300160876 /* UsecaseScanBarcodeBatch.swift in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
 				08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */,
+				088F38652948A4FA00CD2B58 /* BarcodeFormatter.swift in Sources */,
 				692227BC2524A95E00E81886 /* UsecaseScanTextData.swift in Sources */,
 				0889D11120EA718400A36316 /* UsecaseScanTwoDimensionalBarcode.swift in Sources */,
 				08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */,

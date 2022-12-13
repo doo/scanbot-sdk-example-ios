@@ -4,7 +4,7 @@ Open Source libraries used in the Scanbot SDK for iOS version 1.31.0:
 
 backward-cpp
 
-Version no-rev
+Version v1.6
 (https://github.com/bombela/backward-cpp)
 
 Copyright 2013 Google Inc. All Rights Reserved.
@@ -326,7 +326,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 JSON for Modern C++
 
-Version no-rev
+Version v3.10.2
 (https://github.com/nlohmann/json)
 
 MIT License 
@@ -705,7 +705,7 @@ OF THIS SOFTWARE.
 
 magic-enum
 
-Version no-rev
+Version v0.8.1
 (https://github.com/Neargye/magic_enum)
 
 MIT License
@@ -735,7 +735,7 @@ SOFTWARE.
 
 Nameof C++
 
-Version no-rev
+Version v0.10.1
 (https://github.com/Neargye/nameof)
 
 MIT License
@@ -1148,7 +1148,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 spdlog
 
-Version no-rev
+Version v1.9.2
 (https://github.com/gabime/spdlog)
 
 The MIT License (MIT)
@@ -1693,7 +1693,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xsimd
 
-Version no-rev
+Version 7.4.9-18-g3d17850
 (https://github.com/xtensor-stack/xsimd)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay, Wolf Vollprecht and Martin Renou
@@ -1730,7 +1730,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtensor
 
-Version no-rev
+Version 0.23.4-35-gbe35a267
 (https://github.com/doo/xtensor)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay and Wolf Vollprecht
@@ -1767,7 +1767,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtl
 
-Version no-rev
+Version 0.7.2
 (https://github.com/xtensor-stack/xtl)
 
 BSD 3-Clause License
