@@ -45,11 +45,7 @@ class ReadyToUseUIDemoUITests: XCTestCase {
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
 
-        tablesQuery.cells.staticTexts["Scan Barcodes in batch (V3 Next Gen)"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
-
-        tablesQuery.cells.staticTexts["Scan Barcodes in batch (V2 Legacy)"].tap()
+        tablesQuery.cells.staticTexts["Scan Barcodes in batch"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
 
