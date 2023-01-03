@@ -38,6 +38,11 @@ class BarcodeResultDetailsViewController: UITableViewController {
         let hexString = barcode.rawBytes.map({ String(format: "%02hhx", $0) }).joined()
         text = text + "\n\nRaw bytes:\n" + hexString
         
+        if let formattedText = BarcodeFormatter().formattedBarcodeText(barcode: barcode), barcode.formattedResult.parsedSuccessful {
+            text = text + formattedText
+        }
+        
+        
         label?.text = text
     }
 }
