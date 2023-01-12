@@ -55,15 +55,12 @@ class BarcodeScannerViewController: UIViewController {
 }
 
 extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {
-
+        
     func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return shouldDetect
     }
-    
-    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                  didDetectBarcodes codes: [SBSDKBarcodeScannerResult],
-                                  on image: UIImage) {
-        
+
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
         scannerViewController?.isRecognitionEnabled = false
         if !shouldDetect { return }
         shouldDetect = false
