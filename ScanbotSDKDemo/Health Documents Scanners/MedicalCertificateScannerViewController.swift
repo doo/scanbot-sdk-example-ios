@@ -18,7 +18,6 @@ final class MedicalCertificateScannerViewController: UIViewController {
         
         scannerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
                                                                              parentView: nil,
-                                                                             device: nil,
                                                                              delegate: self)
 
         
