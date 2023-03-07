@@ -64,6 +64,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showFinderDocumentScanning() {
+        guardLicense {
+            UsecaseScanFinderDocument().start(presenter: self.presenter)
+        }
+    }
+    
     func showTwoDimensionalBarcodeScanning() {
         guardLicense {
             UsecaseScanTwoDimensionalBarcode().start(presenter: self.presenter)
