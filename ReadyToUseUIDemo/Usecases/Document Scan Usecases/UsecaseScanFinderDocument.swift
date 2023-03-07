@@ -15,6 +15,7 @@ class UsecaseScanFinderDocument: Usecase, SBSDKUIFinderDocumentScannerViewContro
         super.start(presenter: presenter)
         
         let configuration = SBSDKUIFinderDocumentScannerConfiguration.default()
+        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 1, andHeight: 1.41)
         
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
