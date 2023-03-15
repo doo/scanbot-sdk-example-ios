@@ -61,7 +61,6 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     }
 
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
-        scannerViewController?.isRecognitionEnabled = false
         if !shouldDetect { return }
         shouldDetect = false
         currentResults = codes
