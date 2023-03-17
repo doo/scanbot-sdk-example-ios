@@ -27,10 +27,6 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="zFr-Hd-vC0">
-                                <rect key="frame" x="164" y="42" width="20" height="20"/>
-                                <color key="color" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.2491738023" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
@@ -38,13 +34,12 @@
                             <constraint firstItem="0Vv-0F-59o" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zed-k0-F5h" secondAttribute="top" constant="8" id="EdQ-7V-kjX"/>
                             <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="0Vv-0F-59o" secondAttribute="bottom" constant="8" id="QMr-D1-jkN"/>
                             <constraint firstAttribute="trailing" secondItem="0Vv-0F-59o" secondAttribute="trailing" constant="8" id="Rdr-gF-At1"/>
-                            <constraint firstItem="zFr-Hd-vC0" firstAttribute="centerY" secondItem="zed-k0-F5h" secondAttribute="centerY" id="Xzi-oO-bBR"/>
                             <constraint firstItem="0Vv-0F-59o" firstAttribute="centerX" secondItem="zed-k0-F5h" secondAttribute="centerX" id="jhy-28-i1O"/>
-                            <constraint firstItem="zFr-Hd-vC0" firstAttribute="centerX" secondItem="zed-k0-F5h" secondAttribute="centerX" id="qMR-D5-53w"/>
                             <constraint firstItem="0Vv-0F-59o" firstAttribute="centerY" secondItem="zed-k0-F5h" secondAttribute="centerY" id="qey-tb-rad"/>
                         </constraints>
                     </view>
                 </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.25388038079470199" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                 <constraints>
                     <constraint firstItem="zed-k0-F5h" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="3rk-md-kF5"/>
                     <constraint firstAttribute="bottom" secondItem="zed-k0-F5h" secondAttribute="bottom" id="SjY-ab-Qtb"/>
@@ -55,7 +50,6 @@
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
                 <outlet property="cellBGView" destination="H2p-sc-9uM" id="SXX-Jm-x2C"/>
-                <outlet property="indicator" destination="zFr-Hd-vC0" id="2xv-1U-UMB"/>
                 <outlet property="titleLabel" destination="0Vv-0F-59o" id="h5n-7N-wwk"/>
             </connections>
             <point key="canvasLocation" x="160.30534351145039" y="40.845070422535215"/>

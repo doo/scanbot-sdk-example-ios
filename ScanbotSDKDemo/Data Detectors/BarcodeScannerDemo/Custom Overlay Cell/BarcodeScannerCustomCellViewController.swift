@@ -33,14 +33,7 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
         
         let customCell = cell as! BarcodeCustomCell
         if let item: BarcodeItem = itemForBarcode(code) {
-            switch item.contentStatus {
-            case .loaded (let content):
-                customCell.titleLabel.text = content
-                customCell.indicator.stopAnimating()
-            case .loading, .unloaded:
-                customCell.titleLabel.text = ""
-                customCell.indicator.startAnimating()
-            }
+            customCell.titleLabel.text = item.content
         }
     }
     
@@ -81,26 +74,12 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
 
 class BarcodeItem: Equatable, Hashable {
     
-    enum ContentStatus {
-        case unloaded
-        case loading
-        case loaded(String)
-    }
-    
     var barcode: SBSDKBarcodeScannerResult
-    var contentStatus: ContentStatus
+    var content: String
     
     init(barcode: SBSDKBarcodeScannerResult) {
         self.barcode = barcode
-        self.contentStatus = .unloaded
-        self.loadContents()
-    }
-    
-    private func loadContents() {
-        contentStatus = .loading
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
-            self.contentStatus = .loaded(self.barcode.rawTextStringWithExtension + "\n(\(self.barcode.type.name))")
-        }
+        self.content = barcode.rawTextStringWithExtension + "\n(\(barcode.type.name))"
     }
     
     static func == (lhs: BarcodeItem, rhs: BarcodeItem) -> Bool {

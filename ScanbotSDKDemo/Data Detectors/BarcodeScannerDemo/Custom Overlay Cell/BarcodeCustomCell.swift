@@ -11,12 +11,9 @@ import UIKit
 class BarcodeCustomCell: UICollectionViewCell {
     @IBOutlet var cellBGView: UIView!
     @IBOutlet var titleLabel: UILabel!
-    @IBOutlet var indicator: UIActivityIndicatorView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         cellBGView.layer.cornerRadius = 8.0
-        indicator.hidesWhenStopped = true
-        indicator.stopAnimating()
     }
 }
