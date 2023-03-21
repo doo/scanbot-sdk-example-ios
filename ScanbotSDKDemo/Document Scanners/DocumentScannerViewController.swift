@@ -14,8 +14,8 @@ class DocumentScannerViewController: UIViewController {
     var scannerViewController: SBSDKDocumentScannerViewController?
     
     
-    @IBOutlet private var pageCountButton: UIBarButtonItem?
-    @IBOutlet private var scannerContainerView: UIView?
+    @IBOutlet private var pageCountButton: UIBarButtonItem!
+    @IBOutlet private var scannerContainerView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

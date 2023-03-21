@@ -19,6 +19,7 @@ class GenericDocumentViewController: UIViewController {
         scannerViewController = SBSDKGenericDocumentRecognizerViewController(parentViewController: self,
                                                                              parentView: view,
                                                                              acceptedDocumentTypes: documentTypes(),
+                                                                             excludedFieldTypes: nil,
                                                                              delegate: self)
         
         indicator = UIActivityIndicatorView(style: .whiteLarge)

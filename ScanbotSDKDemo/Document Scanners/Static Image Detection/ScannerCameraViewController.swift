@@ -20,7 +20,7 @@ final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerV
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scanner = SBSDKDocumentScannerViewController(parentViewController: self, parentView: nil, delegate: self)
+        scanner = SBSDKDocumentScannerViewController(parentViewController: self, parentView: self.view, delegate: self)
     }
     
     @IBAction private func cancelButtonDidPress(_ sender: Any?) {
