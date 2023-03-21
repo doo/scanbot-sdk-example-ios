@@ -22,7 +22,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let parentViewController = UIViewController()
         guard let scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: parentViewController,
-                                                                            parentView: nil,
+                                                                            parentView: parentViewController.view,
                                                                             delegate: context.coordinator) else {
             fatalError("Error occurred during SBSDKBarcodeScannerViewController Initialization")
         }
