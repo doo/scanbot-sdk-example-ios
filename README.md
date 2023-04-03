@@ -30,6 +30,12 @@ selectable text
 - MRZ Scanner - Provides the ability to find and extract Machine Readable Zone (MRZ) content from ID cards, passports and travel documents
 
 
+## Free Developer Support
+
+We provide free "no-strings-attached" developer support for the implementation & testing of the Scanbot SDK.
+If you encounter technical issues with integrating the Scanbot SDK or need advice on choosing the appropriate
+framework or features, please visit our [Support Page](https://docs.scanbot.io/support/).
+
 
 ## Documentation
 
