@@ -1,6 +1,6 @@
 # Scanbot Barcode & Document Scanning Example App for iOS
 
-This example app shows how to integrate the [Scanbot Barcode Scanner SDK](https://scanbot.io/developer/android-barcode-scanner/), [Scanbot Document Scanner SDK](https://scanbot.io/developer/android-document-scanner-sdk/), and [Scanbot Data Capture SDK](https://scanbot.io/developer/android-data-capture/) for iOS.
+This example app shows how to integrate the [Scanbot Barcode Scanner SDK](https://scanbot.io/developer/ios-barcode-scanner-sdk/), [Scanbot Document Scanner SDK](https://scanbot.io/developer/ios-document-scanner/), and [Scanbot Data Capture SDK](https://scanbot.io/developer/ios-data-capture/) for iOS.
 
 ## What is the Scanbot SDK?
 
