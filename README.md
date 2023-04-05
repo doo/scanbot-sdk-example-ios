@@ -1,34 +1,19 @@
-# Document scanner SDK and MRZ, QR code, barcode scanner
+# Scanbot Barcode & Document Scanning Example App for iOS
 
-## Scanbot SDK example apps for iOS
-
-These example apps show how to integrate the [Scanbot Document Scanner SDK for iOS](https://scanbot.io/developer/ios-document-scanner/).
-
+This example app shows how to integrateshows to integrate the [Scanbot Barcode Scanner SDK](https://scanbot.io/developer/android-barcode-scanner/), [Scanbot Document Scanner SDK](https://scanbot.io/developer/android-document-scanner-sdk/), and [Scanbot Data Capture SDK](https://scanbot.io/developer/android-data-capture/) for iOS.
 
 ## What is Scanbot SDK?
 
-Scanbot SDK for iOS is a simple to use high level API, providing a collection of classes and functions
-for scanning and processing documents from your mobile device's camera or other image sources like your photo library.
+The Scanbot SDK lets you integrate barcode & document scanning, as well as data extraction functionalities, into your mobile apps and website. It contains different modules that are licensable for an annual fixed price. For more details, visit our website https://scanbot.io.
 
-Integrate our Ready-To-Use UI Components with only a few lines of code.
-Benefit from a proven user experience, super fast integration time and customizable colors and text to match your brand.
-Or dive into our Classical UI Components and build your fully customized scanning experience.
 
-Scanbot SDK consists of a collection of modules, each individually licensable or available in license packages.
+## Trial License
 
-Currently, the following modules and features are available:
-- Document Detection in digital images
-- User interface for guided, automatic document scanning using the document detection module
-- Image Processing for rotating, cropping, filtering and perspective correction, optimized for the needs of document
-scanning
-- PDF Creation - merge a collection of processed or unprocessed document images and write them into a PDF document with
-one image per page
-- Optical Character Recognition - recognize text in document images and create searchable PDF documents with
-selectable text
-- Payform Recognition - detect and recognize SEPA payforms in images and extract the important data fields via OCR
-- Recognition and Data Extraction from German Medical Certificate forms (also known as Disability Certificate or AU-Bescheinigung)
-- MRZ Scanner - Provides the ability to find and extract Machine Readable Zone (MRZ) content from ID cards, passports and travel documents
+The Scanbot SDK will run without a license for one minute per session!
 
+After the trial period has expired, all SDK functions and UI components will stop working. You have to restart the app to get another one-minute trial period.
+
+To test the Scanbot SDK without crashing, you can get a free “no-strings-attached” trial license. Please submit the [Trial License Form](https://scanbot.io/trial/) on our website.
 
 ## Free Developer Support
 
@@ -36,12 +21,9 @@ We provide free "no-strings-attached" developer support for the implementation &
 If you encounter technical issues with integrating the Scanbot SDK or need advice on choosing the appropriate
 framework or features, please visit our [Support Page](https://docs.scanbot.io/support/).
 
-
 ## Documentation
-
 - [Developer Guide](https://docs.scanbot.io/document-scanner-sdk/ios/introduction/)
 - [API Docs](https://scanbotsdk.github.io/documentation/ios/)
-
 
 
 ## How to run this example app?
@@ -54,13 +36,3 @@ framework or features, please visit our [Support Page](https://docs.scanbot.io/s
   * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
   * For Classical UI open `ScanbotSDKDemo.xcodeproj` with Xcode, build and run
   * For Ready-To-Use UI open `ReadyToUseUIDemo.xcodeproj` with Xcode, build and run
-
-
-## Please note
-
-The Scanbot SDK will run without a license for one minute per session!
-
-After the trial period has expired, all Scanbot SDK functions as well as the UI components (like Document Scanner UI) will stop working or may be terminated.
-You have to restart the app to get another trial period.
-
-To get a free "no-strings-attached" trial license, please submit the [Trial License Form](https://scanbot.io/trial/) on our website.
