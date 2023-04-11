@@ -98,13 +98,13 @@ class BarcodeStableImageCounterViewController: UIViewController {
     }
     
     private func refreshState(withDelay delay: Int = 0) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) {
-            self.barcodeResults?.removeAll()
-            self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
-            self.barcodePolygonShapeLayers.removeAll()
-            self.tableView.reloadData()
-            self.scannerViewController?.unfreezeCamera()
-            self.isShowingResult = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak self] in
+            self?.barcodeResults?.removeAll()
+            self?.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
+            self?.barcodePolygonShapeLayers.removeAll()
+            self?.tableView.reloadData()
+            self?.scannerViewController?.unfreezeCamera()
+            self?.isShowingResult = false
         }
     }
 }
