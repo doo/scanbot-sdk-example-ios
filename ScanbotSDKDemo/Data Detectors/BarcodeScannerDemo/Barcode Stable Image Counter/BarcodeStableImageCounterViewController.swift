@@ -58,9 +58,9 @@ class BarcodeStableImageCounterViewController: UIViewController {
                     self.barcodeResults?.removeAll()
                     self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
                     self.barcodePolygonShapeLayers.removeAll()
-                    self.showingResult = false
                     self.listTableView.reloadData()
                     self.scannerViewController?.unfreezeCamera()
+                    self.showingResult = false
                 }
             }
         })
