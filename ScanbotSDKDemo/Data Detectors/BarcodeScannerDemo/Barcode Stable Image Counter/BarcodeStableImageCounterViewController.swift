@@ -67,7 +67,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
     }
     
     private func drawPolygons(for barcodes: [SBSDKBarcodeScannerResult]?, on image: UIImage) {
-        self.barcodeResults?.forEach({ result in
+        barcodes?.forEach({ result in
             DispatchQueue.main.async { [weak self] in
                 
                 // bezier path of barcode on image
