@@ -19,6 +19,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
     private var barcodeScannerTypes = SBSDKBarcodeType.allTypes()
     private var barcodeResults: [SBSDKBarcodeScannerResult]?
     private var barcodePolygonShapeLayers = [CAShapeLayer]()
+    private var showingResult = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,13 +29,15 @@ class BarcodeStableImageCounterViewController: UIViewController {
         scannerViewController?.acceptedBarcodeTypes = barcodeScannerTypes
         scannerViewController?.selectionOverlayEnabled = false
         scannerViewController?.automaticSelectionEnabled = false
-        
         barcodeScanner = SBSDKBarcodeScanner(types: barcodeScannerTypes)
     }
     
     @IBAction func captureCountBtn(sender: UIButton) {
+        print(showingResult)
+        guard !showingResult else { return }
         scannerViewController?.captureJPEGStillImage(completionHandler: { image, _ in
             if let image {
+                self.showingResult = true
                 
                 // freeze the camera
                 self.scannerViewController?.freezeCamera()
@@ -55,6 +58,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
                     self.barcodeResults?.removeAll()
                     self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
                     self.barcodePolygonShapeLayers.removeAll()
+                    self.showingResult = false
                     self.listTableView.reloadData()
                     self.scannerViewController?.unfreezeCamera()
                 }
