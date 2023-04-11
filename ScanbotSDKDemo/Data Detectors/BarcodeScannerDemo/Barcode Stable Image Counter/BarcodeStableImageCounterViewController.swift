@@ -54,14 +54,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
                 }
                 
                 // unfreeze camera after 3 seconds and refresh scanner
-                DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                    self.barcodeResults?.removeAll()
-                    self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
-                    self.barcodePolygonShapeLayers.removeAll()
-                    self.listTableView.reloadData()
-                    self.scannerViewController?.unfreezeCamera()
-                    self.showingResult = false
-                }
+                self.refresh()
             }
         })
     }
@@ -94,6 +87,17 @@ class BarcodeStableImageCounterViewController: UIViewController {
         shapeLayer.fillColor = UIColor.clear.cgColor
         shapeLayer.lineWidth = 2.0
         return shapeLayer
+    }
+    
+    private func refresh() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.barcodeResults?.removeAll()
+            self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
+            self.barcodePolygonShapeLayers.removeAll()
+            self.listTableView.reloadData()
+            self.scannerViewController?.unfreezeCamera()
+            self.showingResult = false
+        }
     }
 }
 
