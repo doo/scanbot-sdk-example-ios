@@ -9,61 +9,63 @@
 import UIKit
 import ScanbotSDK
 
-class BarcodeStableImageCounterViewController: UIViewController {
+class BarcodeStableImageCounterViewController: UIViewController, SBSDKDocumentScannerViewControllerDelegate {
     
     @IBOutlet private var cameraView: UIView!
     @IBOutlet private var tableView: UITableView!
     
-    private var scannerViewController: SBSDKBarcodeScannerViewController?
+    private var scannerViewController: SBSDKDocumentScannerViewController?
     private var barcodeScanner: SBSDKBarcodeScanner?
     private var barcodeScannerTypes = SBSDKBarcodeType.allTypes()
     private var barcodeResults = [SBSDKBarcodeScannerResult]()
     private var barcodePolygonShapeLayers = [CAShapeLayer]()
-    private var isShowingResult = false
+    
+    private var isShowingResult = false {
+        didSet { scannerViewController?.hideSnapButton = isShowingResult }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
-                                                                  parentView: cameraView)
-        
-        scannerViewController?.acceptedBarcodeTypes = barcodeScannerTypes
-        scannerViewController?.selectionOverlayEnabled = false
-        scannerViewController?.automaticSelectionEnabled = false
+        scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
+                                                                   parentView: cameraView, 
+                                                                   delegate: self)
+
+        scannerViewController?.autoSnappingMode = .disabled
+        scannerViewController?.suppressDetectionStatusLabel = true
+        if let configuration = scannerViewController?.generalConfiguration {
+            configuration.photoQualityPriorization = .speed
+            scannerViewController?.generalConfiguration = configuration
+        } 
         
         barcodeScanner = SBSDKBarcodeScanner(types: barcodeScannerTypes)
     }
     
-    @IBAction func captureButtonTapped(sender: UIButton) {
-        guard !isShowingResult else { return }
-        isShowingResult = true
-        scannerViewController?.captureJPEGStillImage(completionHandler: { [weak self] image, _ in
-            guard let image = image, let self else {
-                self?.reset()
-                return
-            }  
-                        
-            // freeze the camera
-            DispatchQueue.main.async { self.scannerViewController?.freezeCamera() }
-            
-            // get results from the detector
-            let results = self.barcodeScanner?.detectBarCodes(on: image)
-            
-            guard let results = results, !results.isEmpty else {
-                self.reset()
-                return
-            }
-            
-            // populate barcode results on the list
-            DispatchQueue.main.async {
-                self.drawPolygons(for: results, on: image)
-                self.barcodeResults = results
-                self.tableView.reloadData()
-            }
-            
-            // refresh after 3 seconds
-            self.reset(withDelay: 3)
-        })
+    func documentScannerViewControllerShouldDetectDocument(_ controller: SBSDKDocumentScannerViewController) -> Bool {
+        return false
+    }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, 
+                                       didSnapDocumentImage documentImage: UIImage, 
+                                       on originalImage: UIImage, 
+                                       with result: SBSDKDocumentDetectorResult, 
+                                       autoSnapped: Bool) {
+        
+        scannerViewController?.freezeCamera()
+
+        let results = self.barcodeScanner?.detectBarCodes(on: originalImage)
+        
+        guard let results = results, !results.isEmpty else {
+            self.reset()
+            return
+        }
+        
+        isShowingResult = true 
+        
+        drawPolygons(for: results, on: originalImage)
+        barcodeResults = results
+        tableView.reloadData()
+        reset(withDelay: 3)
     }
     
     private func drawPolygons(for barcodes: [SBSDKBarcodeScannerResult], on image: UIImage) {
@@ -126,6 +128,6 @@ extension BarcodeStableImageCounterViewController: UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        100.0
+        44.0
     }
 }
