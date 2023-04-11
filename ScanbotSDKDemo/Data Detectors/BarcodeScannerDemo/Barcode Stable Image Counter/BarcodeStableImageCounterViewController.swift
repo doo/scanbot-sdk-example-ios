@@ -17,7 +17,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
     private var scannerViewController: SBSDKBarcodeScannerViewController?
     private var barcodeScanner: SBSDKBarcodeScanner?
     private var barcodeScannerTypes = SBSDKBarcodeType.allTypes()
-    private var barcodeResults: [SBSDKBarcodeScannerResult]?
+    private var barcodeResults = [SBSDKBarcodeScannerResult]()
     private var barcodePolygonShapeLayers = [CAShapeLayer]()
     private var isShowingResult = false
 
@@ -26,9 +26,11 @@ class BarcodeStableImageCounterViewController: UIViewController {
 
         scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                   parentView: cameraView)
+        
         scannerViewController?.acceptedBarcodeTypes = barcodeScannerTypes
         scannerViewController?.selectionOverlayEnabled = false
         scannerViewController?.automaticSelectionEnabled = false
+        
         barcodeScanner = SBSDKBarcodeScanner(types: barcodeScannerTypes)
     }
     
@@ -36,56 +38,50 @@ class BarcodeStableImageCounterViewController: UIViewController {
         guard !isShowingResult else { return }
         isShowingResult = true
         scannerViewController?.captureJPEGStillImage(completionHandler: { [weak self] image, _ in
-            
-            guard let image else {
-                self?.refreshState()
+            guard let image = image, let self else {
+                self?.reset()
                 return
-            }
-            
+            }  
+                        
             // freeze the camera
-            self?.scannerViewController?.freezeCamera()
+            DispatchQueue.main.async { self.scannerViewController?.freezeCamera() }
             
             // get results from the detector
-            self?.barcodeResults = self?.barcodeScanner?.detectBarCodes(on: image)
+            let results = self.barcodeScanner?.detectBarCodes(on: image)
             
-            guard let results = self?.barcodeResults, !results.isEmpty else {
-                self?.refreshState()
+            guard let results = results, !results.isEmpty else {
+                self.reset()
                 return
             }
-            
-            // draw polygons present on the image, onto to the camera view
-            self?.drawPolygons(for: self?.barcodeResults, on: image)
             
             // populate barcode results on the list
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.drawPolygons(for: results, on: image)
+                self.barcodeResults = results
+                self.tableView.reloadData()
             }
             
             // refresh after 3 seconds
-            self?.refreshState(withDelay: 3)
+            self.reset(withDelay: 3)
         })
     }
     
-    private func drawPolygons(for barcodes: [SBSDKBarcodeScannerResult]?, on image: UIImage) {
-        barcodes?.forEach({ result in
-            DispatchQueue.main.async { [weak self] in
+    private func drawPolygons(for barcodes: [SBSDKBarcodeScannerResult], on image: UIImage) {
+        barcodes.forEach { result in
+            // bezier path of barcode on image
+            guard let bezierPath = result.polygon.bezierPath(for: image.size) else { return }
+            
+            // transform to camera view coordinate system
+            let transform = CGAffineTransform(scaleX: cameraView.bounds.size.width/image.size.width,
+                                                  y: cameraView.bounds.size.height/image.size.height)
+            bezierPath.apply(transform)
                 
-                // bezier path of barcode on image
-                guard let bezierPath = result.polygon.bezierPath(for: image.size),
-                      let self else { return }
-                
-                // transform to camera view coordinate system
-                let transform = CGAffineTransform(scaleX: self.cameraView.bounds.size.width/image.size.width,
-                                                  y: self.cameraView.bounds.size.height/image.size.height)
-                bezierPath.apply(transform)
-                
-                // show polygon on camera view
-                let shapeLayer = self.shapeLayer(for: bezierPath)
-                self.barcodePolygonShapeLayers.append(shapeLayer)
-                self.cameraView.layer.insertSublayer(shapeLayer,
-                                                     at: UInt32(self.cameraView.layer.sublayers?.count ?? 0))
-            }
-        })
+            // show polygon on camera view
+            let shapeLayer = self.shapeLayer(for: bezierPath)
+            barcodePolygonShapeLayers.append(shapeLayer)
+            cameraView.layer.insertSublayer(shapeLayer,
+                                            at: UInt32(cameraView.layer.sublayers?.count ?? 0))
+        }
     }
     
     private func shapeLayer(for bezierPath: UIBezierPath) -> CAShapeLayer {
@@ -97,10 +93,10 @@ class BarcodeStableImageCounterViewController: UIViewController {
         return shapeLayer
     }
     
-    private func refreshState(withDelay delay: Int = 0) {
+    private func reset(withDelay delay: Int = 0) {
         DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(delay)) { [weak self] in
-            self?.barcodeResults?.removeAll()
-            self?.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
+            self?.barcodeResults.removeAll()
+            self?.barcodePolygonShapeLayers.forEach { $0.removeFromSuperlayer() }
             self?.barcodePolygonShapeLayers.removeAll()
             self?.tableView.reloadData()
             self?.scannerViewController?.unfreezeCamera()
@@ -112,16 +108,19 @@ class BarcodeStableImageCounterViewController: UIViewController {
 extension BarcodeStableImageCounterViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        barcodeResults?.count ?? 0
+        return barcodeResults.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "barCodeResultCell", for: indexPath) as!
         BarcodeScannerResultsTableViewCell
         
-        cell.barcodeTextLabel?.text = barcodeResults?[indexPath.row].rawTextStringWithExtension
-        cell.barcodeTypeLabel?.text = barcodeResults?[indexPath.row].type.name
-        cell.barcodeImageView?.image = barcodeResults?[indexPath.row].barcodeImage
+        let result = barcodeResults[indexPath.row]
+        
+        cell.barcodeTextLabel?.text = result.rawTextStringWithExtension
+        cell.barcodeTypeLabel?.text = result.type.name
+        cell.barcodeImageView?.image = result.barcodeImage
         
         return cell
     }
