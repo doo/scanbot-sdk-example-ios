@@ -35,7 +35,6 @@ class BarcodeStableImageCounterViewController: UIViewController {
     @IBAction func captureButtonTapped(sender: UIButton) {
         guard !isShowingResult else { return }
         isShowingResult = true
-        print(isShowingResult)
         scannerViewController?.captureJPEGStillImage(completionHandler: { [weak self] image, _ in
             
             guard let image else {
