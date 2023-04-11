@@ -77,6 +77,7 @@
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
 		C2F131F92034280300FFF96B /* ScanbotSDKMRZData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */; };
+		F115120A29E5432000C94E65 /* BarcodeStableImageCounterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F115120929E5432000C94E65 /* BarcodeStableImageCounterViewController.swift */; };
 		F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */; };
 		F19EFE8B29C4AB5E00128396 /* BarcodeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */; };
 		F19EFE8C29C4AB5E00128396 /* BarcodeCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */; };
@@ -173,6 +174,7 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
 		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
+		F115120929E5432000C94E65 /* BarcodeStableImageCounterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeStableImageCounterViewController.swift; sourceTree = "<group>"; };
 		F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCustomCellViewController.swift; sourceTree = "<group>"; };
 		F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCustomCell.swift; sourceTree = "<group>"; };
 		F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeCustomCell.xib; sourceTree = "<group>"; };
@@ -387,8 +389,17 @@
 				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
 				2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */,
 				2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */,
+				F115120829E542DE00C94E65 /* Barcode Stable Image Counter */,
 			);
 			path = BarcodeScannerDemo;
+			sourceTree = "<group>";
+		};
+		F115120829E542DE00C94E65 /* Barcode Stable Image Counter */ = {
+			isa = PBXGroup;
+			children = (
+				F115120929E5432000C94E65 /* BarcodeStableImageCounterViewController.swift */,
+			);
+			path = "Barcode Stable Image Counter";
 			sourceTree = "<group>";
 		};
 		F19EFE8829C4AAF900128396 /* Custom Overlay Cell */ = {
@@ -594,6 +605,7 @@
 				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
 				2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
+				F115120A29E5432000C94E65 /* BarcodeStableImageCounterViewController.swift in Sources */,
 				2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */,
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
