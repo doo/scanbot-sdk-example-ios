@@ -43,24 +43,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
                 self.barcodeResults = self.barcodeScanner?.detectBarCodes(on: image)
                 
                 // draw polygons
-                self.barcodeResults?.forEach({ result in
-                    DispatchQueue.main.async {
-                        
-                        // bezier path of barcode on image
-                        guard let bezierPath = result.polygon.bezierPath(for: image.size) else { return }
-                        
-                        // transform to camera view coordinate system
-                        let transform = CGAffineTransform(scaleX: self.cameraView.bounds.size.width/image.size.width,
-                                                          y: self.cameraView.bounds.size.height/image.size.height)
-                        bezierPath.apply(transform)
-                        
-                        // show polygon on camera view
-                        let shapeLayer = self.shapeLayerFor(bezierPath: bezierPath)
-                        self.barcodePolygonShapeLayers.append(shapeLayer)
-                        self.cameraView.layer.insertSublayer(shapeLayer,
-                                                             at: UInt32(self.cameraView.layer.sublayers?.count ?? 0))
-                    }
-                })
+                self.drawPolygonsFrom(image: image)
                 
                 // populate barcode results on the list
                 DispatchQueue.main.async {
@@ -75,6 +58,27 @@ class BarcodeStableImageCounterViewController: UIViewController {
                     self.listTableView.reloadData()
                     self.scannerViewController?.unfreezeCamera()
                 }
+            }
+        })
+    }
+    
+    private func drawPolygonsFrom(image: UIImage) {
+        self.barcodeResults?.forEach({ result in
+            DispatchQueue.main.async {
+                
+                // bezier path of barcode on image
+                guard let bezierPath = result.polygon.bezierPath(for: image.size) else { return }
+                
+                // transform to camera view coordinate system
+                let transform = CGAffineTransform(scaleX: self.cameraView.bounds.size.width/image.size.width,
+                                                  y: self.cameraView.bounds.size.height/image.size.height)
+                bezierPath.apply(transform)
+                
+                // show polygon on camera view
+                let shapeLayer = self.shapeLayerFor(bezierPath: bezierPath)
+                self.barcodePolygonShapeLayers.append(shapeLayer)
+                self.cameraView.layer.insertSublayer(shapeLayer,
+                                                     at: UInt32(self.cameraView.layer.sublayers?.count ?? 0))
             }
         })
     }
