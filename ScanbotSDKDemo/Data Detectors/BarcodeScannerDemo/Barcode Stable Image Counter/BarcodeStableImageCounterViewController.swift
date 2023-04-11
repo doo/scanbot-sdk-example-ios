@@ -50,7 +50,7 @@ class BarcodeStableImageCounterViewController: UIViewController {
                     self.listTableView.reloadData()
                 }
                 
-                // unfreeze camera after 3 seconds
+                // unfreeze camera after 3 seconds and refresh scanner
                 DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                     self.barcodeResults?.removeAll()
                     self.barcodePolygonShapeLayers.forEach({$0.removeFromSuperlayer()})
