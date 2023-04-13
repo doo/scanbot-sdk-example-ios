@@ -21,12 +21,9 @@ struct DocumentScannerView: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        let parentViewController = UIViewController()
-        let scannerViewController = SBSDKDocumentScannerViewController(parentViewController: parentViewController,
-                                                                        parentView: parentViewController.view,
-                                                                        delegate: nil)!
+        let scannerViewController = SBSDKDocumentScannerViewController()
         scannerViewController.delegate = context.coordinator
-        return parentViewController
+        return scannerViewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }

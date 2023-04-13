@@ -20,12 +20,9 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        let parentViewController = UIViewController()
-        guard let scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: parentViewController,
-                                                                            parentView: parentViewController.view,
-                                                                            delegate: context.coordinator) else {
-            fatalError("Error occurred during SBSDKBarcodeScannerViewController Initialization")
-        }
+        let scannerViewController = SBSDKBarcodeScannerViewController()
+        scannerViewController.delegate = context.coordinator
+
         let configuration = scannerViewController.viewFinderConfiguration
         configuration.lineColor = UIColor.green
         configuration.lineWidth = 5
@@ -34,7 +31,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
         configuration.isViewFinderEnabled = true
         scannerViewController.viewFinderConfiguration = configuration
         
-        return parentViewController
+        return scannerViewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
