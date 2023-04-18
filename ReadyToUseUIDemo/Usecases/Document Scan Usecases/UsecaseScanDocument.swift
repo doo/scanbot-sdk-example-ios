@@ -12,6 +12,7 @@ import ScanbotSDK
 class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate, UINavigationControllerDelegate {
     
     private let document: SBSDKUIDocument
+    private static var currentSettings: SBSDKUIDocumentScannerSettings?
     
     init(document: SBSDKUIDocument) {
         self.document = document
@@ -30,33 +31,35 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
         //configuration.uiConfiguration.bottomBarBackgroundColor = UIColor.blue
         // see further configs ...
         
+        // Restore last settings
+        if let currentSettings = Self.currentSettings {
+            configuration.behaviorConfiguration.isFlashEnabled = currentSettings.flashEnabled
+            configuration.behaviorConfiguration.isAutoSnappingEnabled = currentSettings.autoSnappingEnabled
+            configuration.behaviorConfiguration.isMultiPageEnabled = currentSettings.multiPageEnabled
+        }
+        
         let scanner = SBSDKUIDocumentScannerViewController.createNew(with: self.document,
                                                                      configuration: configuration,
                                                                      andDelegate: self)
         
         presentViewController(scanner)
     }
-    
-    func viewControllerShouldCancel(_ viewController: SBSDKUIViewController) -> Bool {
-        return true
-    }
-    
-    func viewControllerShouldFinish(_ viewController: SBSDKUIViewController) -> Bool {
+        
+    func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
+                                didFinishWith document: SBSDKUIDocument) {
+        
+        Self.currentSettings = viewController.currentSettings
         if document.numberOfPages() > 0 {
             if let navigationController = presenter as? UINavigationController {
                 UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
                 viewController.presentingViewController?.dismiss(animated: true, completion: nil)
-                return false
             }
+            self.didFinish()
         }
-        return true
-    }
-    
-    func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
-                                didFinishWith document: SBSDKUIDocument) {
     }
     
     func scanningViewControllerDidCancel(_ viewController: SBSDKUIDocumentScannerViewController) {
+        Self.currentSettings = viewController.currentSettings
         didFinish()
     }
 
