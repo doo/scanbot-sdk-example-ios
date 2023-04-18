@@ -36,7 +36,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1640"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
+                        <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute. 
+
+Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
                             <rect key="frame" x="0.0" y="1566.3333301544189" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
@@ -93,7 +95,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="qHT-ux-UUs" kind="show" id="AG9-SQ-RbE"/>
+                                            <segue destination="Egz-SQ-4vp" kind="show" id="ZRQ-WY-n9B"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="HlK-yR-iVs" userLabel="Scanned Documents">
@@ -683,8 +685,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="pageCountButton" destination="IPL-yV-m8h" id="VMj-0K-dCB"/>
-                        <outlet property="scannerContainerView" destination="crU-Tt-zg2" id="KIC-89-ETT"/>
+                        <outlet property="pageCountButton" destination="IPL-yV-m8h" id="O4t-cK-2Qa"/>
+                        <outlet property="scannerContainerView" destination="crU-Tt-zg2" id="p0j-Am-hdb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AtU-44-tfw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -935,27 +937,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Tl-vH-RFJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1607" y="605"/>
-        </scene>
-        <!--Aspect Ratio Document Scanner View Controller-->
-        <scene sceneID="fKS-VG-mLo">
-            <objects>
-                <viewController storyboardIdentifier="DocumentDetectionDemoViewControllerA4" id="qHT-ux-UUs" customClass="AspectRatioDocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="FUe-6e-tfP"/>
-                        <viewControllerLayoutGuide type="bottom" id="nht-AB-4sa"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="CPe-aI-5jv">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </view>
-                    <connections>
-                        <segue destination="xfQ-6p-F5C" kind="show" identifier="documentReviewSegue" id="S1o-VU-9nm"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hdK-0k-nes" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-6877" y="605"/>
         </scene>
         <!--Multiple Objects Demo-->
         <scene sceneID="HRZ-Ep-bFV">
@@ -1893,11 +1874,60 @@
             </objects>
             <point key="canvasLocation" x="-3057" y="605"/>
         </scene>
+        <!--Aspect Ratio Document Scanner View Controller-->
+        <scene sceneID="F7N-Wi-9El">
+            <objects>
+                <viewController storyboardIdentifier="DocumentDetectionDemoViewControllerA4" id="Egz-SQ-4vp" customClass="AspectRatioDocumentScannerViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qlC-zB-KoM"/>
+                        <viewControllerLayoutGuide type="bottom" id="rfq-Su-e9b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhf-vn-9ea">
+                        <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0GJ-vG-gfr" userLabel="ScannerContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="390" height="670"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XV8-3A-Zxh">
+                                <rect key="frame" x="0.0" y="670" width="390" height="49"/>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UIK-qn-ex1"/>
+                                    <barButtonItem title="Item" id="MPP-nb-vvg" userLabel="CountButton">
+                                        <connections>
+                                            <segue destination="xfQ-6p-F5C" kind="show" identifier="documentReviewSegue" id="dce-sc-oHh"/>
+                                        </connections>
+                                    </barButtonItem>
+                                </items>
+                            </toolbar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="XV8-3A-Zxh" firstAttribute="leading" secondItem="0GJ-vG-gfr" secondAttribute="leading" id="1Zw-dL-NvQ"/>
+                            <constraint firstItem="0GJ-vG-gfr" firstAttribute="top" secondItem="qlC-zB-KoM" secondAttribute="bottom" id="Fak-FW-UY7"/>
+                            <constraint firstItem="XV8-3A-Zxh" firstAttribute="trailing" secondItem="0GJ-vG-gfr" secondAttribute="trailing" id="Mwg-vZ-2Jd"/>
+                            <constraint firstItem="XV8-3A-Zxh" firstAttribute="top" secondItem="0GJ-vG-gfr" secondAttribute="bottom" id="Pbv-R4-hpf"/>
+                            <constraint firstItem="rfq-Su-e9b" firstAttribute="top" secondItem="XV8-3A-Zxh" secondAttribute="bottom" id="Sdc-JR-rfJ"/>
+                            <constraint firstItem="0GJ-vG-gfr" firstAttribute="leading" secondItem="uhf-vn-9ea" secondAttribute="leading" id="ZqO-ES-Q5f"/>
+                            <constraint firstAttribute="trailing" secondItem="0GJ-vG-gfr" secondAttribute="trailing" id="s7D-ud-bMg"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="CjG-2h-CzM"/>
+                    <connections>
+                        <outlet property="pageCountButton" destination="MPP-nb-vvg" id="Dkz-Ub-WFp"/>
+                        <outlet property="scannerContainerView" destination="0GJ-vG-gfr" id="qAe-FC-TZv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="XBf-pu-by2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-6878" y="610"/>
+        </scene>
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="XHT-es-9nv"/>
-        <segue reference="aIj-8j-G7M"/>
-        <segue reference="AqV-OW-qqH"/>
+        <segue reference="s3a-if-ZVy"/>
+        <segue reference="dce-sc-oHh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <systemColor name="labelColor">

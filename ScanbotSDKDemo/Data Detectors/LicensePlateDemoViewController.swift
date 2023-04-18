@@ -10,9 +10,9 @@ import UIKit
 import ScanbotSDK
 
 final class LicensePlateDemoViewController: UIViewController {
-    @IBOutlet private var cameraContainer: UIView?
-    @IBOutlet private var resultLabel: UILabel?
-    @IBOutlet private var resultImageView: UIImageView?
+    @IBOutlet private var cameraContainer: UIView!
+    @IBOutlet private var resultLabel: UILabel!
+    @IBOutlet private var resultImageView: UIImageView!
     
     private var scannerViewController: SBSDKLicensePlateScannerViewController?
     
@@ -28,8 +28,8 @@ final class LicensePlateDemoViewController: UIViewController {
         show(result: nil)
         scannerViewController = SBSDKLicensePlateScannerViewController(parentViewController: self,
                                                                        parentView: cameraContainer,
-                                                                       delegate: self,
-                                                                       configuration: nil)
+                                                                       configuration: nil,
+                                                                       delegate: self)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -48,16 +48,16 @@ final class LicensePlateDemoViewController: UIViewController {
             "Plate: \(result.licensePlate)\n" +
             "Confidence: \(result.confidence)"
             
-            if resultString != resultLabel?.text {
-                resultLabel?.text = resultString
+            if resultString != resultLabel.text {
+                resultLabel.text = resultString
                 resultImageView?.image = result.croppedImage
             }
         } else {
-            resultLabel?.text = nil
-            resultImageView?.image = nil
+            resultLabel.text = nil
+            resultImageView.image = nil
         }
-        resultLabel?.isHidden = result == nil ? true : false
-        resultImageView?.isHidden = result == nil ? true : false
+        resultLabel.isHidden = result == nil ? true : false
+        resultImageView.isHidden = result == nil ? true : false
     }
 }
 
