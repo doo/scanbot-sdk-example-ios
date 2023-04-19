@@ -21,12 +21,9 @@ struct DocumentScannerView: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> UIViewController {
-        let parentViewController = UIViewController()
-        let scannerViewController = SBSDKDocumentScannerViewController(parentViewController: parentViewController,
-                                                                        parentView: parentViewController.view,
-                                                                        delegate: nil)!
+        let scannerViewController = SBSDKDocumentScannerViewController()
         scannerViewController.delegate = context.coordinator
-        return parentViewController
+        return scannerViewController
     }
     
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
@@ -45,7 +42,7 @@ extension DocumentScannerView {
                                            didSnapDocumentImage documentImage: UIImage,
                                            on originalImage: UIImage,
                                            with result: SBSDKDocumentDetectorResult, autoSnapped: Bool) {
-            let documentPage = SBSDKUIPage(image: documentImage,
+            let documentPage = SBSDKUIPage(image: originalImage,
                                            polygon: result.polygon,
                                            filter: SBSDKImageFilterTypeNone)
             parent.pagesContainer.add(page: documentPage)

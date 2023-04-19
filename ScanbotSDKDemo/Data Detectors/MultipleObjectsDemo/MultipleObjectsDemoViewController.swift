@@ -28,7 +28,9 @@ class MultipleObjectsDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scannerViewController = SBSDKMultipleObjectScannerViewController(parentViewController: self, parentView: view)
+        scannerViewController = SBSDKMultipleObjectScannerViewController(parentViewController: self, 
+                                                                         parentView: self.view,
+                                                                         delegate: self)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

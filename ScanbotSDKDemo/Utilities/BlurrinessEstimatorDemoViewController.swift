@@ -10,7 +10,7 @@ import UIKit
 import ScanbotSDK
 
 final class BlurrinessEstimatorDemoViewController: UIViewController {
-    @IBOutlet private var containerView: UIView?
+    @IBOutlet private var containerView: UIView!
     private var scannerViewController: SBSDKDocumentScannerViewController?
     private var estimator: SBSDKBlurrinessEstimator?
     

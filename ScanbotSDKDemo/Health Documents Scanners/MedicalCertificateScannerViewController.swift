@@ -17,7 +17,7 @@ final class MedicalCertificateScannerViewController: UIViewController {
         super.viewDidLoad()
         
         scannerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
-                                                                             parentView: nil,
+                                                                             parentView: self.view,
                                                                              delegate: self)
 
         
