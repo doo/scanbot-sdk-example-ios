@@ -103,6 +103,7 @@ final class StaticImageDetectionViewController: UIViewController {
         } else if segue.identifier == Segue.showGenericDocumentResult.rawValue {
             if let controller = segue.destination as? GenericDocumentResultViewController {
                 controller.document = genericDocumentResult?.document
+                controller.sourceImage = image
             }
         }
     }
