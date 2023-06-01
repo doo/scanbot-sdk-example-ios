@@ -1,4 +1,4 @@
-Open Source libraries used in the Scanbot SDK for iOS version 2.2.0:
+Open Source libraries used in the Scanbot SDK for iOS version 2.2.1:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
