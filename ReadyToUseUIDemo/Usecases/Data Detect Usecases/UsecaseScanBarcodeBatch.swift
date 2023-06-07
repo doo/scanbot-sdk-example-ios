@@ -28,7 +28,7 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
         if let additionalParameters = additionalParameters {
             configuration.behaviorConfiguration.additionalDetectionParameters = additionalParameters
         }
-        configuration.behaviorConfiguration.acceptedMachineCodeTypes = SBSDKBarcodeType.commonTypes()
+        configuration.behaviorConfiguration.acceptedBarcodeTypes = SBSDKBarcodeType.commonTypes()
         
         let scanner = SBSDKUIBarcodesBatchScannerViewController.createNew(with: configuration,
                                                                           andDelegate: self)

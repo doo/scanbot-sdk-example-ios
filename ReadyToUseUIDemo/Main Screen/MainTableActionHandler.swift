@@ -57,13 +57,7 @@ class MainTableActionHandler: NSObject {
             UsecaseScanDocument(document: scannedDocument).start(presenter: self.presenter)
         }
     }
-    
-    func showMultipleObjectsScanning() {
-        guardLicense {
-            UsecaseScanMultipleObjects(document: scannedDocument).start(presenter: self.presenter)
-        }
-    }
-    
+        
     func showFinderDocumentScanning() {
         guardLicense {
             UsecaseScanFinderDocument().start(presenter: self.presenter)

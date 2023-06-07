@@ -36,13 +36,10 @@ class MainTableViewItemProvider {
         let finderDocScanItem = MainTableViewItem(title: "Scan document with finder",
                                                   action: { actionHandler.showFinderDocumentScanning() })
         
-        let multipleObjectsItem = MainTableViewItem(title: "Multiple objects scanner",
-                                                    action: { actionHandler.showMultipleObjectsScanning() })
-        
         let viewImagesItem = MainTableViewItem(title: "View Images",
                                                action: { actionHandler.showAllImages() })
         
-        let items1 = [docScanItem, finderDocScanItem, multipleObjectsItem, viewImagesItem]
+        let items1 = [docScanItem, finderDocScanItem, viewImagesItem]
         
 
         let barcode2DScanItem = MainTableViewItem(title: "Scan 2D Barcodes",
