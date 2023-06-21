@@ -67,6 +67,7 @@
 		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
 		28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */; };
 		28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F4427568CDC0061B433 /* AppDelegate.swift */; };
+		28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */; };
 		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6991C575256C179A008188AD /* ScanbotSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */; };
@@ -154,6 +155,7 @@
 		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCertificateScannerViewController.swift; sourceTree = "<group>"; };
 		28E71F4427568CDC0061B433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAndCountViewController.swift; sourceTree = "<group>"; };
 		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
@@ -165,7 +167,6 @@
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
-		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
 		F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCustomCellViewController.swift; sourceTree = "<group>"; };
 		F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCustomCell.swift; sourceTree = "<group>"; };
 		F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeCustomCell.xib; sourceTree = "<group>"; };
@@ -352,7 +353,6 @@
 			isa = PBXGroup;
 			children = (
 				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
-				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
 				C27562A61DE453B2003F5FE0 /* Media.xcassets */,
 			);
@@ -364,6 +364,7 @@
 			children = (
 				2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */,
 				2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */,
+				28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */,
 				F19EFE8829C4AAF900128396 /* Custom Overlay Cell */,
 				2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */,
 				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
@@ -516,7 +517,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"2.3.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n#PRERELEASE=\"RC2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"2.3.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC8\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -564,6 +565,7 @@
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
+				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
@@ -745,7 +747,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -794,7 +796,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -824,7 +826,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -855,7 +857,7 @@
 					"$(PROJECT_DIR)/ScanbotSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
