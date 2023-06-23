@@ -53,6 +53,8 @@
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
+		288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */; };
+		288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */; };
 		288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* ImageManager.swift */; };
 		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
@@ -141,6 +143,8 @@
 		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
+		288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountBarcodeDetailsCell.swift; sourceTree = "<group>"; };
+		288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountResultsViewController.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
 		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
@@ -365,6 +369,8 @@
 				2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */,
 				2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */,
 				28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */,
+				288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */,
+				288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */,
 				F19EFE8829C4AAF900128396 /* Custom Overlay Cell */,
 				2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */,
 				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
@@ -555,6 +561,7 @@
 				2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */,
 				2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */,
 				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
+				288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */,
 				28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */,
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
 				28AF046D279EE90200C00B33 /* DetectorsManager.swift in Sources */,
@@ -563,6 +570,7 @@
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
+				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,

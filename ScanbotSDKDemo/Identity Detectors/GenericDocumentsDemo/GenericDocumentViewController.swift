@@ -22,7 +22,7 @@ class GenericDocumentViewController: UIViewController {
                                                                              excludedFieldTypes: nil,
                                                                              delegate: self)
         
-        indicator = UIActivityIndicatorView(style: .whiteLarge)
+        indicator = UIActivityIndicatorView(style: .large)
         indicator?.hidesWhenStopped = true
         view.addSubview(indicator!)
     }
