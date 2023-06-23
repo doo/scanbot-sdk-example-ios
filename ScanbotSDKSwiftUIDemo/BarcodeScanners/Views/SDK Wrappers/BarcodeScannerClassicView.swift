@@ -14,7 +14,8 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     
     @Binding var scanningResult: BarcodeScanningResult
     @Binding var isRecognitionEnabled: Bool
-    
+    @Binding var selectedBarcode: SBSDKBarcodeScannerResult?
+
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
@@ -57,6 +58,15 @@ extension BarcodeScannerClassicView {
                                                                    scannedBarcodes: codes)
                 self.parent.presentationMode.wrappedValue.dismiss()
             }
+        }
+        
+        func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didTapOnBarcode code: SBSDKBarcodeScannerResult) {
+            self.parent.selectedBarcode = code
+        }
+        
+        func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, shouldHighlight code: SBSDKBarcodeScannerResult) -> Bool {
+            guard let selectedBarcode = self.parent.selectedBarcode else { return false }
+            return selectedBarcode == code
         }
     }
 }

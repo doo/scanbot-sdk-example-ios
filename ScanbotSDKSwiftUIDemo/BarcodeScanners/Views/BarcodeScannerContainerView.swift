@@ -14,6 +14,7 @@ struct BarcodeScannerContainerView: View {
 
     @Binding private var scanningResult: BarcodeScanningResult
     @State private var isRecognitionEnabled = true
+    @State private var selectedBarcode: SBSDKBarcodeScannerResult? = nil
     
     init(scanner: BarcodeScanner, scanningResult: Binding<BarcodeScanningResult>) {
         self.scanner = scanner
@@ -36,7 +37,8 @@ struct BarcodeScannerContainerView: View {
                                         isRecognitionEnabled: $isRecognitionEnabled)
             case .classic:
                 BarcodeScannerClassicView(scanningResult: $scanningResult,
-                                          isRecognitionEnabled: $isRecognitionEnabled)
+                                          isRecognitionEnabled: $isRecognitionEnabled,
+                                          selectedBarcode: $selectedBarcode)
             case .manuallyComposed:
                 BarcodeScannerManuallyComposedView(scanningResult: $scanningResult)
             }

@@ -37,9 +37,6 @@
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
 		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
-		2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */; };
-		2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */; };
-		2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */; };
 		2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */; };
 		2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */; };
 		2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */; };
@@ -56,6 +53,8 @@
 		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
 		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
+		288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */; };
+		288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */; };
 		288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* ImageManager.swift */; };
 		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
 		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
@@ -70,6 +69,7 @@
 		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
 		28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */; };
 		28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F4427568CDC0061B433 /* AppDelegate.swift */; };
+		28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */; };
 		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6991C575256C179A008188AD /* ScanbotSDKDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ScanbotSDKDemoUITests.swift */; };
@@ -125,12 +125,9 @@
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
-		2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
 		28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePlateDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
-		2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDemoCell.swift; sourceTree = "<group>"; };
-		2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipleObjectsDetailDemoViewController.swift; sourceTree = "<group>"; };
 		2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsTableViewCell.swift; sourceTree = "<group>"; };
 		2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsViewController.swift; sourceTree = "<group>"; };
 		2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +143,8 @@
 		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
 		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
+		288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountBarcodeDetailsCell.swift; sourceTree = "<group>"; };
+		288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountResultsViewController.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
 		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
@@ -160,6 +159,7 @@
 		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCertificateScannerViewController.swift; sourceTree = "<group>"; };
 		28E71F4427568CDC0061B433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanAndCountViewController.swift; sourceTree = "<group>"; };
 		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ScanbotSDK Demo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = "ScanbotSDK Demo.entitlements"; path = "ScanbotSDKDemo/ScanbotSDK Demo.entitlements"; sourceTree = "<group>"; };
@@ -171,7 +171,6 @@
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
-		C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKMRZData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKMRZData.bundle; sourceTree = SOURCE_ROOT; };
 		F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCustomCellViewController.swift; sourceTree = "<group>"; };
 		F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCustomCell.swift; sourceTree = "<group>"; };
 		F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeCustomCell.xib; sourceTree = "<group>"; };
@@ -196,16 +195,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		08716C7A220DC49400119B9C /* MultipleObjectsDemo */ = {
-			isa = PBXGroup;
-			children = (
-				2849C02C27513BA600D9760C /* MultipleObjectsDemoCell.swift */,
-				2849C02E27513C7E00D9760C /* MultipleObjectsDetailDemoViewController.swift */,
-				2803648527513FA900C76910 /* MultipleObjectsDemoViewController.swift */,
-			);
-			path = MultipleObjectsDemo;
-			sourceTree = "<group>";
-		};
 		286FF1CF2757B76F007D47EF /* Document Scanners */ = {
 			isa = PBXGroup;
 			children = (
@@ -222,7 +211,6 @@
 			children = (
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
 				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
-				08716C7A220DC49400119B9C /* MultipleObjectsDemo */,
 				2869C49D274E63790036F44D /* CheckViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
 				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
@@ -369,7 +357,6 @@
 			isa = PBXGroup;
 			children = (
 				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
-				C2F131F82034280300FFF96B /* ScanbotSDKMRZData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
 				C27562A61DE453B2003F5FE0 /* Media.xcassets */,
 			);
@@ -381,6 +368,9 @@
 			children = (
 				2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */,
 				2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */,
+				28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */,
+				288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */,
+				288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */,
 				F19EFE8829C4AAF900128396 /* Custom Overlay Cell */,
 				2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */,
 				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
@@ -533,7 +523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n#set -x\nTARGETSDKVERSION=\"2.2.1\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Info.plist\n\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"2.3.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC8\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -571,6 +561,7 @@
 				2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */,
 				2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */,
 				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
+				288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */,
 				28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */,
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,
 				28AF046D279EE90200C00B33 /* DetectorsManager.swift in Sources */,
@@ -579,8 +570,10 @@
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
+				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
+				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
@@ -588,11 +581,8 @@
 				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
 				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
-				2839FE722754FA2600E2DCDA /* MultipleObjectsDetailDemoViewController.swift in Sources */,
 				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
-				2839FE712754FA2200E2DCDA /* MultipleObjectsDemoCell.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
-				2839FE732754FA2D00E2DCDA /* MultipleObjectsDemoViewController.swift in Sources */,
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
@@ -765,7 +755,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -814,7 +804,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -844,7 +834,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";
@@ -875,7 +865,7 @@
 					"$(PROJECT_DIR)/ScanbotSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ScanbotSDKDemo/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = "-ObjC";

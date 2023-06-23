@@ -19,7 +19,9 @@ class BarcodeScannerViewController: UIViewController {
     private var currentResults: [SBSDKBarcodeScannerResult]?
     
     private var shouldDetect: Bool = false
-        
+    
+    private var selectedBarcode: SBSDKBarcodeScannerResult?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -32,6 +34,7 @@ class BarcodeScannerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shouldDetect = true
+        selectedBarcode = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -65,6 +68,15 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
         shouldDetect = false
         currentResults = codes
         performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
+    }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didTapOnBarcode code: SBSDKBarcodeScannerResult) {
+        self.selectedBarcode = code
+    }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, shouldHighlight code: SBSDKBarcodeScannerResult) -> Bool {
+        guard let selectedBarcode else { return false }
+        return selectedBarcode == code
     }
 }
 
