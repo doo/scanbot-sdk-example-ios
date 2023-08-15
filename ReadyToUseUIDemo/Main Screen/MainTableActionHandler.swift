@@ -20,7 +20,7 @@ class MainTableActionHandler: NSObject {
     }
     
     private func guardLicense(_ block: () -> ()) {
-        if ScanbotSDK.isLicenseValid() {
+        if Scanbot.isLicenseValid() {
             block()
         } else {
             showLicenseAlert()

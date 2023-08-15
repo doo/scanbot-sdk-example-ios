@@ -21,8 +21,6 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
         
         let configuration = SBSDKGenericTextLineRecognizerConfiguration.default()
         
-        configuration.textRecognitionLanguages = "en+de"
-        
         var characterSet = CharacterSet.alphanumerics
         characterSet.formUnion(.whitespaces)
         characterSet.formUnion(.punctuationCharacters)

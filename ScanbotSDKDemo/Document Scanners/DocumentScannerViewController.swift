@@ -20,7 +20,7 @@ class DocumentScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard ScanbotSDK.isLicenseValid() else {
+        guard Scanbot.isLicenseValid() else {
             presentErrorAlert()
             return
         }
@@ -47,7 +47,7 @@ class DocumentScannerViewController: UIViewController {
     }
     
     private func updateUI() {
-        pageCountButton?.isEnabled = ScanbotSDK.isLicenseValid() && ImageManager.shared.numberOfImages > 0
+        pageCountButton?.isEnabled = Scanbot.isLicenseValid() && ImageManager.shared.numberOfImages > 0
         pageCountButton?.title = "\(ImageManager.shared.numberOfImages) pages"
     }
 }

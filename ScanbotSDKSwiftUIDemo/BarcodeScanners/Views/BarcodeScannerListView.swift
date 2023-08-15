@@ -8,6 +8,12 @@
 import SwiftUI
 import ScanbotSDK
 
+extension SBSDKBarcodeScannerResult {
+    var identifier: String {
+        return self.rawTextStringWithExtension + "_" + self.type.name
+    }
+}
+
 struct BarcodeScannerListView: View {
     
     private let scanners = BarcodeScanner.allCases
@@ -38,7 +44,7 @@ struct BarcodeScannerListView: View {
             }
             if !scannedResult.scannedBarcodes.isEmpty {
                 Section(header: Text("Results by \(scannedResult.barcodeScannerName)")) {
-                    ForEach(scannedResult.scannedBarcodes, id: \.rawTextStringWithExtension) { barcode in
+                    ForEach(scannedResult.scannedBarcodes, id: \.identifier) { barcode in
                         NavigationLink(destination: BarcodeScanResultDetailsView(scanResult: barcode)) {
                             BarcodeScannerResultsCellView(barcode: barcode)
                         }

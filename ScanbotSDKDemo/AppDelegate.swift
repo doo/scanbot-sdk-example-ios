@@ -16,7 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        ScanbotSDK.setupDefaultLicenseFailureHandler()
+        Scanbot.setupDefaultLicenseFailureHandler()
         
         // TODO Add your Scanbot SDK license here.
         // Please note: The Scanbot SDK will run without a license key for one minute per session!

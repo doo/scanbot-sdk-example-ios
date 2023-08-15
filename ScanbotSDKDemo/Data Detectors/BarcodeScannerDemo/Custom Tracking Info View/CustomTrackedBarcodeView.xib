@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21679"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view autoresizesSubviews="NO" opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="G0l-sf-A0r" customClass="CustomTrackedBarcodeView" customModule="ScanbotSDK_Demo" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="393" height="82"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TitlelabelTitlelabel" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="xXC-dQ-47h">
+                    <rect key="frame" x="4" y="57.666666666666664" width="385" height="20.333333333333336"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="1xN-WC-GCB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="xXC-dQ-47h" secondAttribute="trailing" constant="4" id="4wK-zT-UAF"/>
+                <constraint firstItem="xXC-dQ-47h" firstAttribute="leading" secondItem="G0l-sf-A0r" secondAttribute="leading" constant="4" id="6T8-5s-BIU"/>
+                <constraint firstAttribute="bottom" secondItem="xXC-dQ-47h" secondAttribute="bottom" constant="4" id="fNS-rc-9fh"/>
+                <constraint firstItem="xXC-dQ-47h" firstAttribute="top" relation="greaterThanOrEqual" secondItem="G0l-sf-A0r" secondAttribute="top" priority="900" constant="4" id="j4J-mE-kJO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="titleLabel" destination="xXC-dQ-47h" id="vYc-nh-wfi"/>
+            </connections>
+            <point key="canvasLocation" x="-364" y="-606"/>
+        </view>
+    </objects>
+</document>
