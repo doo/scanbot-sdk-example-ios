@@ -141,4 +141,10 @@ class MainTableActionHandler: NSObject {
             UsecaseScanLicensePlate().start(presenter: self.presenter)
         }
     }
+    
+    func showVinScanner() {
+        guardLicense {
+            UsecaseScanVIN().start(presenter: self.presenter)
+        }
+    }
 }
