@@ -12,7 +12,7 @@ import ScanbotSDK
 struct ScanbotSDKSwiftUIDemoApp: App {
         
     init() {
-        ScanbotSDK.setupDefaultLicenseFailureHandler()
+        Scanbot.setupDefaultLicenseFailureHandler()
     }
     
     var body: some Scene {

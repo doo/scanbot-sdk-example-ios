@@ -1,4 +1,4 @@
-Open Source libraries used in ScanbotSDK for iOS version 2.3.0:
+Open Source libraries used in ScanbotSDK for iOS version 3.0.0:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -2229,7 +2229,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtensor
 
-Version 0.23.9-1-gbe35a267
+Version 0.23.4-35-gbe35a267
 (https://github.com/doo/xtensor)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay and Wolf Vollprecht

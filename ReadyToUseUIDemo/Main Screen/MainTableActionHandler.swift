@@ -20,7 +20,7 @@ class MainTableActionHandler: NSObject {
     }
     
     private func guardLicense(_ block: () -> ()) {
-        if ScanbotSDK.isLicenseValid() {
+        if Scanbot.isLicenseValid() {
             block()
         } else {
             showLicenseAlert()
@@ -139,6 +139,12 @@ class MainTableActionHandler: NSObject {
     func showLicensePlateScanner() {
         guardLicense {
             UsecaseScanLicensePlate().start(presenter: self.presenter)
+        }
+    }
+    
+    func showVinScanner() {
+        guardLicense {
+            UsecaseScanVIN().start(presenter: self.presenter)
         }
     }
 }

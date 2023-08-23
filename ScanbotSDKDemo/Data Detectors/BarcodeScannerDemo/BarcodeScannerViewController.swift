@@ -10,17 +10,17 @@ import UIKit
 import ScanbotSDK
 
 class BarcodeScannerViewController: UIViewController {
+    
     private enum Segue: String {
         case showResults
         case showTypesSelection
     }
+    
     var scannerViewController: SBSDKBarcodeScannerViewController?
-    private var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes()
-    private var currentResults: [SBSDKBarcodeScannerResult]?
     
-    private var shouldDetect: Bool = false
-    
-    private var selectedBarcode: SBSDKBarcodeScannerResult?
+    var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes()
+    var currentResults: [SBSDKBarcodeScannerResult]?
+    var shouldDetect: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,7 +34,6 @@ class BarcodeScannerViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         shouldDetect = true
-        selectedBarcode = nil
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -55,6 +54,11 @@ class BarcodeScannerViewController: UIViewController {
             }
         }
     }
+    
+    func displayResults(_ codes: [SBSDKBarcodeScannerResult]) {
+        currentResults = codes
+        performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
+    }
 }
 
 extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {
@@ -65,18 +69,10 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
 
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
         if !shouldDetect { return }
-        shouldDetect = false
-        currentResults = codes
-        performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
-    }
-    
-    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didTapOnBarcode code: SBSDKBarcodeScannerResult) {
-        self.selectedBarcode = code
-    }
-    
-    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, shouldHighlight code: SBSDKBarcodeScannerResult) -> Bool {
-        guard let selectedBarcode else { return false }
-        return selectedBarcode == code
+        if (!controller.isTrackingOverlayEnabled) {
+            shouldDetect = false
+            displayResults(codes)
+        }
     }
 }
 

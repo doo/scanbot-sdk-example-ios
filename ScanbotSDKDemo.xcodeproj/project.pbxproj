@@ -76,9 +76,10 @@
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
+		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
 		F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */; };
-		F19EFE8B29C4AB5E00128396 /* BarcodeCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */; };
-		F19EFE8C29C4AB5E00128396 /* BarcodeCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */; };
+		F19EFE8B29C4AB5E00128396 /* CustomTrackedBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8929C4AB5E00128396 /* CustomTrackedBarcodeView.swift */; };
+		F19EFE8C29C4AB5E00128396 /* CustomTrackedBarcodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19EFE8A29C4AB5E00128396 /* CustomTrackedBarcodeView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,9 +172,10 @@
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ScanbotSDKDemo/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ScanbotSDKDemo/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ScanbotSDKDemo/Media.xcassets; sourceTree = SOURCE_ROOT; };
+		F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDemoViewController.swift; sourceTree = "<group>"; };
 		F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCustomCellViewController.swift; sourceTree = "<group>"; };
-		F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeCustomCell.swift; sourceTree = "<group>"; };
-		F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BarcodeCustomCell.xib; sourceTree = "<group>"; };
+		F19EFE8929C4AB5E00128396 /* CustomTrackedBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTrackedBarcodeView.swift; sourceTree = "<group>"; };
+		F19EFE8A29C4AB5E00128396 /* CustomTrackedBarcodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTrackedBarcodeView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,6 +212,7 @@
 			isa = PBXGroup;
 			children = (
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
+				F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */,
 				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
 				2869C49D274E63790036F44D /* CheckViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
@@ -371,7 +374,7 @@
 				28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */,
 				288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */,
 				288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */,
-				F19EFE8829C4AAF900128396 /* Custom Overlay Cell */,
+				F19EFE8829C4AAF900128396 /* Custom Tracking Info View */,
 				2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */,
 				2866E4092755298C00490CC8 /* BarcodeScannerResultsViewController.swift */,
 				2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */,
@@ -380,14 +383,14 @@
 			path = BarcodeScannerDemo;
 			sourceTree = "<group>";
 		};
-		F19EFE8829C4AAF900128396 /* Custom Overlay Cell */ = {
+		F19EFE8829C4AAF900128396 /* Custom Tracking Info View */ = {
 			isa = PBXGroup;
 			children = (
 				F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */,
-				F19EFE8929C4AB5E00128396 /* BarcodeCustomCell.swift */,
-				F19EFE8A29C4AB5E00128396 /* BarcodeCustomCell.xib */,
+				F19EFE8929C4AB5E00128396 /* CustomTrackedBarcodeView.swift */,
+				F19EFE8A29C4AB5E00128396 /* CustomTrackedBarcodeView.xib */,
 			);
-			path = "Custom Overlay Cell";
+			path = "Custom Tracking Info View";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -498,7 +501,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F19EFE8C29C4AB5E00128396 /* BarcodeCustomCell.xib in Resources */,
+				F19EFE8C29C4AB5E00128396 /* CustomTrackedBarcodeView.xib in Resources */,
 				C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */,
 				C27562961DE45368003F5FE0 /* Main.storyboard in Resources */,
 				08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */,
@@ -523,7 +526,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"2.3.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC8\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"3.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -572,6 +575,7 @@
 				2869C495274E3C9B0036F44D /* BlurrinessEstimatorDemoViewController.swift in Sources */,
 				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
+				F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
@@ -586,7 +590,7 @@
 				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
-				F19EFE8B29C4AB5E00128396 /* BarcodeCustomCell.swift in Sources */,
+				F19EFE8B29C4AB5E00128396 /* CustomTrackedBarcodeView.swift in Sources */,
 				2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */,
 				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
 				28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */,
