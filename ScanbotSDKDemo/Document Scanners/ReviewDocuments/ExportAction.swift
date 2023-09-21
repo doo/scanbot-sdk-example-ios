@@ -16,15 +16,17 @@ class ExportAction {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
-            
-            let config = SBSDKOpticalCharacterRecognizerConfiguration(mode: .ML, languages: nil)
-            
-            SBSDKPDFRenderer(ocrConfiguration: config).renderImageStorage(storage,
-                                                                          indexSet: nil,
-                                                                          pageSize: .custom,
-                                                                          output: url) { finished, error in 
+            do {
+                let pdfURL = try SBSDKPDFRenderer.renderImageStorage(storage,
+                                                                     indexSet: nil,
+                                                                     with: .auto,
+                                                                     output: url)
                 DispatchQueue.main.async {
-                    completion(error, url)
+                    completion(nil, pdfURL)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(error, nil)
                 }
             }
         }
