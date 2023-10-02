@@ -17,12 +17,12 @@ class ExportAction {
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
             
-            let config = SBSDKOpticalCharacterRecognizerConfiguration(mode: .ML, languages: nil)
+            let config = SBSDKOpticalCharacterRecognizerConfiguration.ml()
+            let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
             
-            SBSDKPDFRenderer(ocrConfiguration: config).renderImageStorage(storage,
-                                                                          indexSet: nil,
-                                                                          pageSize: .custom,
-                                                                          output: url) { finished, error in 
+            SBSDKPDFRenderer(options: options).renderImageStorage(storage,
+                                                                  indexSet: nil,
+                                                                  output: url) { finished, error in 
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
