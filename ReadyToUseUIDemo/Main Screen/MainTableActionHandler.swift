@@ -51,13 +51,19 @@ class MainTableActionHandler: NSObject {
         
         presenter.present(alert, animated: true, completion: nil)
     }
-    
+
     func showDocumentScanning() {
         guardLicense {
             UsecaseScanDocument(document: scannedDocument).start(presenter: self.presenter)
         }
     }
         
+    func showDocumentScanningWithPDF() {
+        guardLicense {
+            UsecaseScanDocumentWithPDF(document: scannedDocument).start(presenter: self.presenter)
+        }
+    }
+
     func showFinderDocumentScanning() {
         guardLicense {
             UsecaseScanFinderDocument().start(presenter: self.presenter)

@@ -30,6 +30,10 @@ class MainTableViewItemProvider {
     
     private class func createItems(_ actionHandler: MainTableActionHandler) -> [MainTableViewSection] {
 
+        let ocrItem = MainTableViewItem(title: "Scan Document, OCR, PDF",
+                                        action: { actionHandler.showDocumentScanningWithPDF() })
+
+        
         let docScanItem = MainTableViewItem(title: "Scan Document",
                                             action: { actionHandler.showDocumentScanning() })
         
@@ -39,7 +43,7 @@ class MainTableViewItemProvider {
         let viewImagesItem = MainTableViewItem(title: "View Images",
                                                action: { actionHandler.showAllImages() })
         
-        let items1 = [docScanItem, finderDocScanItem, viewImagesItem]
+        let items1 = [ocrItem, docScanItem, finderDocScanItem, viewImagesItem]
         
 
         let barcode2DScanItem = MainTableViewItem(title: "Scan 2D Barcodes",
@@ -87,7 +91,6 @@ class MainTableViewItemProvider {
                                                   action: { actionHandler.showDriverLicenseScanner() })
         
         let items4 = [idCardItem, driverLicenseItem]
-
         
         let documentScannersSection = MainTableViewSection(title: "Document Scanners", items: items1)
         let dataDetectorsSection = MainTableViewSection(title: "Data Detectors", items: items2)
