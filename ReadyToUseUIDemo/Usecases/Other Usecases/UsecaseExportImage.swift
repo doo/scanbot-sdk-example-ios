@@ -74,7 +74,11 @@ class UsecaseExportImage: Usecase {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
-            let error = SBSDKUIPDFRenderer.renderDocument(self.document, with: .auto, output: url)
+            let config = SBSDKOpticalCharacterRecognizerConfiguration.ml()
+            let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
+            let error = SBSDKUIPDFRenderer.renderDocument(self.document,
+                                                          with: options,
+                                                          output: url)
             DispatchQueue.main.async {
                 completion(error, url)
             }
