@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="22154" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="n0X-1i-Nq8">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1550.3333301544189" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1550.3333301544192" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <nil key="textColor"/>
@@ -467,14 +467,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Utilities" id="EGY-pa-TYu">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Nad-bm-cdX" userLabel="Bluriness Estimator">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Nad-bm-cdX" userLabel="Quality Analyzer">
                                         <rect key="frame" x="0.0" y="1399.3333301544189" width="375" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nad-bm-cdX" id="3vf-5b-HSj">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Blurriness Estimator Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa4-qW-owL">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Quality Analyzer Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fa4-qW-owL">
                                                     <rect key="frame" x="24" y="0.0" width="327" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -787,9 +787,9 @@
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="55S-q1-zF8"/>
-                                    <barButtonItem title="Est. Blur" id="7X8-kf-bKw">
+                                    <barButtonItem title="Show Quality" id="7X8-kf-bKw">
                                         <connections>
-                                            <action selector="blurButtonTapped:" destination="xfQ-6p-F5C" id="HGO-7b-MVo"/>
+                                            <action selector="qualityButtonTapped:" destination="xfQ-6p-F5C" id="byG-7O-jwi"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Aam-NM-uMi"/>
@@ -817,12 +817,12 @@
                     <navigationItem key="navigationItem" id="8R6-RC-apW"/>
                     <connections>
                         <outlet property="activityIndicator" destination="6G5-aO-Vzw" id="zBe-zX-Ymn"/>
-                        <outlet property="blurButton" destination="7X8-kf-bKw" id="IM0-LX-m5c"/>
                         <outlet property="clearButton" destination="goE-KE-WeB" id="STC-Gw-3SG"/>
                         <outlet property="collectionView" destination="oTb-Ne-skE" id="bMC-33-Ydq"/>
                         <outlet property="exportButton" destination="3r2-wf-KCD" id="RoS-7N-V5b"/>
                         <outlet property="filterButton" destination="zik-y2-VKY" id="zzz-px-5Dj"/>
                         <outlet property="importButton" destination="uGR-i5-pZQ" id="5cg-yw-YL8"/>
+                        <outlet property="qualityButton" destination="7X8-kf-bKw" id="frj-qa-fon"/>
                         <outlet property="toolbar" destination="qNG-bM-XWY" id="zTj-Ja-O6h"/>
                     </connections>
                 </viewController>
@@ -1381,10 +1381,10 @@
             </objects>
             <point key="canvasLocation" x="3886" y="611"/>
         </scene>
-        <!--Blurriness Estimator Demo View Controller-->
+        <!--Quality Analyzer Demo View Controller-->
         <scene sceneID="AYy-Wd-hzr">
             <objects>
-                <viewController storyboardIdentifier="BlurrinessEstimatorDemoViewController" id="BT7-Vp-MF5" customClass="BlurrinessEstimatorDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QualityAnalyzerDemoViewController" id="BT7-Vp-MF5" customClass="QualityAnalyzerDemoViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="b5k-Q9-tQ5"/>
                         <viewControllerLayoutGuide type="bottom" id="s3E-p7-JPg"/>
@@ -1865,10 +1865,10 @@
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>
         <systemColor name="labelColor">
-            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

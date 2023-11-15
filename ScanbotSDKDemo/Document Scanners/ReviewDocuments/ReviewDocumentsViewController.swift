@@ -15,18 +15,18 @@ final class ReviewDocumentsViewController: UIViewController {
     @IBOutlet private var clearButton: UIBarButtonItem?
     @IBOutlet private var filterButton: UIBarButtonItem?
     @IBOutlet private var exportButton: UIBarButtonItem?
-    @IBOutlet private var blurButton: UIBarButtonItem!
+    @IBOutlet private var qualityButton: UIBarButtonItem!
     @IBOutlet private var toolbar: UIToolbar?
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
 
     private var selectedImageIndex: Int?
     private var importAction: ImportAction?
-    private static var showsBlurriness: Bool = false
-    private static let blurinessCache = NSCache<NSURL, NSNumber>()
+    private static var showsQuality: Bool = false
+    private static var qualityCache = [URL: SBSDKDocumentQuality]()
 
-    private var showsBlurriness: Bool = showsBlurriness {
+    private var showsQuality: Bool = showsQuality {
         didSet {
-            Self.showsBlurriness = showsBlurriness
+            Self.showsQuality = showsQuality
             if isViewLoaded { reloadData() }
         }
     }
@@ -143,13 +143,13 @@ final class ReviewDocumentsViewController: UIViewController {
         present(alert, animated: true, completion: nil)
     }
     
-    @IBAction func blurButtonTapped(_ item: UIBarButtonItem) {
-        showsBlurriness = !showsBlurriness
+    @IBAction func qualityButtonTapped(_ item: UIBarButtonItem) {
+        showsQuality = !showsQuality
     }
     
     private func reloadData() {
         collectionView?.reloadData()
-        [clearButton, filterButton, exportButton, blurButton]
+        [clearButton, filterButton, exportButton, qualityButton]
             .forEach({ $0?.isEnabled = ImageManager.shared.numberOfImages > 0 })
     }
         
@@ -173,13 +173,12 @@ final class ReviewDocumentsViewController: UIViewController {
        }
     }
     
-    private func calculateBlurrinessFor(_ item: Int) {
+    private func calculateQualityFor(_ item: Int) {
         DispatchQueue(label: "FilterQueue").async { [weak self] in
             if let image = ImageManager.shared.originalImageAt(index: item),
                 let url = ImageManager.shared.originalImageURLAt(index: item) {
-                
-                let blurriness = SBSDKBlurrinessEstimator().estimateImageBlurriness(image)
-                Self.blurinessCache.setObject(NSNumber(value: blurriness), forKey: url as NSURL)
+                let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
+                Self.qualityCache[url] = quality
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])
@@ -202,13 +201,13 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
                                                       for: indexPath) as! ReviewDocumentsCollectionViewCell
         cell.previewImageView?.image = image
         
-        if showsBlurriness {
+        if showsQuality {
             if let imageURL = ImageManager.shared.originalImageURLAt(index: indexPath.item) {
-                if let blurriness = Self.blurinessCache.object(forKey: imageURL as NSURL)?.doubleValue {
-                    cell.infoLabelText = String(format: "Blur = %0.2f", blurriness)
+                if let quality = Self.qualityCache[imageURL] {
+                    cell.infoLabelText = String(format: "Q: \(quality.stringValue)")
                 } else {
                     cell.infoLabelText = "Calculating..."
-                    calculateBlurrinessFor(indexPath.item)
+                    calculateQualityFor(indexPath.item)
                 }
             }
         } else {

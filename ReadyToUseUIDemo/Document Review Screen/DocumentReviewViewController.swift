@@ -14,19 +14,19 @@ final class DocumentReviewViewController: UIViewController {
     @IBOutlet private var importButton: UIBarButtonItem?
     @IBOutlet private var exportButton: UIBarButtonItem?
     @IBOutlet private var filterButton: UIBarButtonItem?
-    @IBOutlet private var blurButton: UIBarButtonItem!
+    @IBOutlet private var qualityButton: UIBarButtonItem!
     @IBOutlet private var clearButton: UIBarButtonItem?
     @IBOutlet private var toolbar: UIToolbar?
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
     
     var document: SBSDKUIDocument!
     
-    private static var showsBlurriness: Bool = false
-    private static let blurinessCache = NSCache<NSURL, NSNumber>()
+    private static var showsQuality: Bool = false
+    private static var qualityCache = [URL: SBSDKDocumentQuality]()
     
-    private var showsBlurriness: Bool = showsBlurriness {
+    private var showsQuality: Bool = showsQuality {
         didSet {
-            Self.showsBlurriness = showsBlurriness
+            Self.showsQuality = showsQuality
             if isViewLoaded { reloadData() }
         }
     }
@@ -79,8 +79,8 @@ final class DocumentReviewViewController: UIViewController {
         }).start(presenter: self)
     }
     
-    @IBAction private func blurButtonDidPress(_ sender: Any) {
-        showsBlurriness.toggle()
+    @IBAction private func qualityButtonDidPress(_ sender: Any) {
+        showsQuality.toggle()
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
@@ -93,21 +93,42 @@ final class DocumentReviewViewController: UIViewController {
     
     private func reloadData() {
         collectionView?.reloadData()
-        [exportButton, filterButton, blurButton, clearButton]
+        [exportButton, filterButton, qualityButton, clearButton]
             .forEach({ $0?.isEnabled = document.numberOfPages() > 0 })
     }
     
-    private func calculateBlurrinessFor(_ item: Int) {
+    private func calculateQualityFor(_ item: Int) {
         DispatchQueue(label: "FilterQueue").async { [weak self] in
             if let image = self?.document.page(at: item)?.originalImage(),
                let url = self?.document.page(at: item)?.originalImageURL() {
                 
-                let blurriness = SBSDKBlurrinessEstimator().estimateImageBlurriness(image)
-                Self.blurinessCache.setObject(NSNumber(value: blurriness), forKey: url as NSURL)
+                let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
+                Self.qualityCache[url] = quality
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])
             }
+        }
+    }
+}
+
+extension SBSDKDocumentQuality {
+    var stringValue: String {
+        switch self {
+        case .noDocument:
+            return "No Document"
+        case .veryPoor:
+            return "Very Poor"
+        case .poor:
+            return "Poor"
+        case .reasonable:
+            return "Reasonable"
+        case .good:
+            return "Good"
+        case .excellent:
+            return "Excellent"
+        @unknown default:
+            return ""
         }
     }
 }
@@ -123,13 +144,13 @@ extension DocumentReviewViewController: UICollectionViewDataSource {
         DocumentReviewCollectionViewCell
         let page = document.page(at: indexPath.item)
         cell.previewImageView?.image = page?.documentImage()
-        if showsBlurriness {
+        if showsQuality {
             if let imageURL = document.page(at: indexPath.item)?.originalImageURL() {
-                if let bluriness = Self.blurinessCache.object(forKey: imageURL as NSURL)?.doubleValue {
-                    cell.infoLabelText = String(format: "Blur = %0.2f", bluriness)
+                if let quality = Self.qualityCache[imageURL] {
+                    cell.infoLabelText = String(format: "Q: \(quality.stringValue)")
                 } else {
                     cell.infoLabelText = "Calculating..."
-                    self.calculateBlurrinessFor(indexPath.item)
+                    self.calculateQualityFor(indexPath.item)
                 }
             }
         } else {
