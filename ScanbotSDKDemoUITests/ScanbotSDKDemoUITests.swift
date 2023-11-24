@@ -83,7 +83,7 @@ class ScanbotSDKDemoUITests: XCTestCase {
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             
-            tablesQuery.cells.staticTexts["Blurriness Estimator Demo"].tap()
+            tablesQuery.cells.staticTexts["Quality Analyzer Demo"].tap()
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a ScanbotSDK Demo"].tap()
             

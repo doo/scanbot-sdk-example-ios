@@ -1,5 +1,5 @@
 //
-//  BlurrinessEstimatorDemoViewController.swift
+//  QualityAnalyzerDemoViewController.swift
 //  ScanbotSDKDemo
 //
 //  Created by Danil Voitenko on 24.11.21.
@@ -9,10 +9,10 @@
 import UIKit
 import ScanbotSDK
 
-final class BlurrinessEstimatorDemoViewController: UIViewController {
+final class QualityAnalyzerDemoViewController: UIViewController {
     @IBOutlet private var containerView: UIView!
     private var scannerViewController: SBSDKDocumentScannerViewController?
-    private var estimator: SBSDKBlurrinessEstimator?
+    private var analyzer: SBSDKDocumentQualityAnalyzer?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
         scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                    parentView: containerView,
                                                                    delegate: self)
-        estimator = SBSDKBlurrinessEstimator()
+        analyzer = SBSDKDocumentQualityAnalyzer()
         scannerViewController?.delegate = self
         scannerViewController?.suppressDetectionStatusLabel = true
         scannerViewController?.suppressPolygonLayer = true
@@ -35,7 +35,7 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
     }
     
     private func estimateAndShowResults(from image: UIImage) {
-        if let result = estimator?.estimateImageBlurriness(image) {
+        if let result = analyzer?.analyze(on: image) {
             DispatchQueue.main.async { [weak self] in
                 self?.show(result: result)
             }
@@ -56,9 +56,9 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
         }
     }
     
-    private func show(result: Double) {
-        let resultString = "Bluriness = \(result * 100)"
-        let alert = UIAlertController(title: "Bluriness Estimation",
+    private func show(result: SBSDKDocumentQuality) {
+        let resultString = "Quality = \(result.stringValue)"
+        let alert = UIAlertController(title: "Quality Analysis",
                                       message: resultString,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
@@ -72,7 +72,7 @@ final class BlurrinessEstimatorDemoViewController: UIViewController {
     
 }
 
-extension BlurrinessEstimatorDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
+extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: UIImage,
                                        on originalImage: UIImage,
@@ -82,7 +82,7 @@ extension BlurrinessEstimatorDemoViewController: SBSDKDocumentScannerViewControl
     }
 }
 
-extension BlurrinessEstimatorDemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension QualityAnalyzerDemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
@@ -91,6 +91,27 @@ extension BlurrinessEstimatorDemoViewController: UIImagePickerControllerDelegate
             }
         } else {
             dismiss(animated: true, completion: nil)
+        }
+    }
+}
+
+extension SBSDKDocumentQuality {
+    var stringValue: String {
+        switch self {
+        case .noDocument:
+            return "No Document"
+        case .veryPoor:
+            return "Very Poor"
+        case .poor:
+            return "Poor"
+        case .reasonable:
+            return "Reasonable"
+        case .good:
+            return "Good"
+        case .excellent:
+            return "Excellent"
+        @unknown default:
+            return ""
         }
     }
 }
