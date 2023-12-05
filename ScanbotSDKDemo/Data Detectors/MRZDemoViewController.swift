@@ -21,6 +21,12 @@ final class MRZDemoViewController: UIViewController {
         scannerViewController = SBSDKMRZScannerViewController(parentViewController: self,
                                                               parentView: view,
                                                               delegate: self)
+        
+        if let scanner = scannerViewController {
+            let config = scanner.viewFinderConfiguration
+            config.isViewFinderEnabled = false
+            scanner.viewFinderConfiguration = config
+        }
     }
     
     private func show(result: SBSDKMachineReadableZoneRecognizerResult?) {
