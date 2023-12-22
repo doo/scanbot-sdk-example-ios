@@ -188,7 +188,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
             alertsManager?.showFailureAlert()
             return
         }
-        let _ = SBSDKImageProcessor.warp(image: image, polygon: result.polygon!) { (finished, error, resultInfo, _)  in
+        let _ = SBSDKImageProcessor.warp(image: image, polygon: result.polygon!) { (finished, error, resultInfo)  in
             if finished && error == nil {
                 self.imageView.image = resultInfo?[SBSDKResultInfoKey.DestinationImage] as? UIImage
             }else {
