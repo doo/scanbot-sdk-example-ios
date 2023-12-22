@@ -124,6 +124,12 @@ class MainTableActionHandler: NSObject {
         }
     }
     
+    func showRTUUIv2BarcodeScanner() {
+        guardLicense {
+            UsecaseScanBarcodeRTUUIv2().start(presenter: self.presenter)
+        }
+    }
+    
     func showIDCardScanner() {
         guardLicense {
             UsecaseScanGenericDocument(documentType: .idCardFrontBackDE).start(presenter: self.presenter)

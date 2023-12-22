@@ -51,6 +51,9 @@ class MainTableViewItemProvider {
         let batchBarcodesItem = MainTableViewItem(title: "Scan Barcodes in batch",
                                                     action: { actionHandler.showBarcodeBatchScanner() })
         
+        let rtuv2BarcodesItem = MainTableViewItem(title: "Scan Barcodes with RTU-UI v2",
+                                                  action: { actionHandler.showRTUUIv2BarcodeScanner() })
+        
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
         
@@ -66,7 +69,7 @@ class MainTableViewItemProvider {
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItem,
+        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItem, rtuv2BarcodesItem,
                       mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem, vinScanItem]
         
         
