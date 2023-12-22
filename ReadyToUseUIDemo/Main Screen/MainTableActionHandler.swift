@@ -13,14 +13,14 @@ class MainTableActionHandler: NSObject {
     
     let presenter: UIViewController
     
-    private(set) var scannedDocument = SBSDKUIDocument()
+    private(set) var scannedDocument = SBSDKDocument()
     
     init(presenter: UIViewController) {
         self.presenter = presenter
     }
     
     private func guardLicense(_ block: () -> ()) {
-        if Scanbot.isLicenseValid() {
+        if Scanbot.isLicenseValid {
             block()
         } else {
             showLicenseAlert()
@@ -126,13 +126,13 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         guardLicense {
-            UsecaseScanGenericDocument(documentType: .idCardFrontBackDE()).start(presenter: self.presenter)
+            UsecaseScanGenericDocument(documentType: .idCardFrontBackDE).start(presenter: self.presenter)
         }
     }
     
     func showDriverLicenseScanner() {
         guardLicense {
-            UsecaseScanGenericDocument(documentType: .driverLicenseFrontBackDE()).start(presenter: self.presenter)
+            UsecaseScanGenericDocument(documentType: .driverLicenseFrontBackDE).start(presenter: self.presenter)
         }
     }
     

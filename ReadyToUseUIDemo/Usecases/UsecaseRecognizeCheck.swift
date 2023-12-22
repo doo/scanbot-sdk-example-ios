@@ -13,11 +13,11 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUICheckRecognizerConfiguration.default()
+        let configuration = SBSDKUICheckRecognizerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let recognizer = SBSDKUICheckRecognizerViewController.createNew(with: configuration,
-                                                                        andDelegate: self)
+        let recognizer = SBSDKUICheckRecognizerViewController.create(configuration: configuration,
+                                                                     delegate: self)
         presentViewController(recognizer)
     }
     

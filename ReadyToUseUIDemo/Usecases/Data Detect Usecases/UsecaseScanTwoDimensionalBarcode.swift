@@ -14,14 +14,14 @@ class UsecaseScanTwoDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIBarcodeScannerConfiguration.default()
+        let configuration = SBSDKUIBarcodeScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.behaviorConfiguration.barcodeImageGenerationType = SBSDKBarcodeImageGenerationType.fromVideoFrame
-        let codeTypes = SBSDKBarcodeType.twoDTypes()
+        let codeTypes = SBSDKBarcodeType.twoDTypes
         configuration.behaviorConfiguration.acceptedBarcodeTypes = codeTypes
         
-        let scanner = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
-                                                                    andDelegate: self)
+        let scanner = SBSDKUIBarcodeScannerViewController.create(configuration: configuration, 
+                                                                 delegate: self)
         
         presentViewController(scanner)
     }

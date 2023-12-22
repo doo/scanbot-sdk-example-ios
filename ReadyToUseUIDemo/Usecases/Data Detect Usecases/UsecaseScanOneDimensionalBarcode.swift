@@ -14,15 +14,15 @@ class UsecaseScanOneDimensionalBarcode: Usecase, SBSDKUIBarcodeScannerViewContro
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUIBarcodeScannerConfiguration.default()
+        let configuration = SBSDKUIBarcodeScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
-        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 2, andHeight: 1)
+        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 2, height: 1)
         
-        let codeTypes = SBSDKBarcodeType.oneDTypes()
+        let codeTypes = SBSDKBarcodeType.oneDTypes
         configuration.behaviorConfiguration.acceptedBarcodeTypes = codeTypes
         
-        let scanner = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
-                                                                    andDelegate: self)
+        let scanner = SBSDKUIBarcodeScannerViewController.create(configuration: configuration,
+                                                                 delegate: self)
         
         presentViewController(scanner)
     }

@@ -14,10 +14,10 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUIVINScannerConfiguration.default()
+        let configuration = SBSDKUIVINScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIVINScannerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUIVINScannerViewController.create(configuration: configuration, delegate: self)
         presentViewController(scanner)
     }
     

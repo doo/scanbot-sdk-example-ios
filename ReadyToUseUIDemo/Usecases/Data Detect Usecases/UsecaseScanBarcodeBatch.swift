@@ -21,17 +21,17 @@ class UsecaseScanBarcodeBatch: Usecase, SBSDKUIBarcodesBatchScannerViewControlle
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIBarcodesBatchScannerConfiguration.default()
+        let configuration = SBSDKUIBarcodesBatchScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
         configuration.behaviorConfiguration.engineMode = .nextGen
         if let additionalParameters = additionalParameters {
             configuration.behaviorConfiguration.additionalDetectionParameters = additionalParameters
         }
-        configuration.behaviorConfiguration.acceptedBarcodeTypes = SBSDKBarcodeType.commonTypes()
+        configuration.behaviorConfiguration.acceptedBarcodeTypes = SBSDKBarcodeType.commonTypes
         
-        let scanner = SBSDKUIBarcodesBatchScannerViewController.createNew(with: configuration,
-                                                                          andDelegate: self)
+        let scanner = SBSDKUIBarcodesBatchScannerViewController.create(configuration: configuration,
+                                                                       delegate: self)
         
         presentViewController(scanner)
     }

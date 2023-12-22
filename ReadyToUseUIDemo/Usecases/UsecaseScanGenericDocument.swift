@@ -21,11 +21,11 @@ class UsecaseScanGenericDocument: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIGenericDocumentRecognizerConfiguration.default()
+        let configuration = SBSDKUIGenericDocumentRecognizerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.behaviorConfiguration.documentType = self.documentType
         
-        let scanner = SBSDKUIGenericDocumentRecognizerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUIGenericDocumentRecognizerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
