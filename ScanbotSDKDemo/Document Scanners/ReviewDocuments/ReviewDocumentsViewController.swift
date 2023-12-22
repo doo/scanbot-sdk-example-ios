@@ -51,7 +51,7 @@ final class ReviewDocumentsViewController: UIViewController {
                                                                            smoothingEnabled: false,
                                                                            useLiveDetectionParameters: false)
 
-                ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
+                ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {
                     self?.reloadData()
                 }
@@ -228,10 +228,8 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
 
         selectedImageIndex = indexPath.item
         
-        let editingViewController = SBSDKImageEditingViewController()
+        let editingViewController = SBSDKImageEditingViewController.create(image: image, polygon: params.polygon)
         editingViewController.delegate = self
-        editingViewController.image = image
-        editingViewController.polygon = params.polygon
         navigationController?.pushViewController(editingViewController, animated: true)
     }
 }

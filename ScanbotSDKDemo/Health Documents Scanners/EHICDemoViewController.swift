@@ -45,7 +45,7 @@ final class EHICDemoViewController: UIViewController {
     
     private func showScannedCard(_ card: SBSDKHealthInsuranceCardRecognitionResult) {
         let alert = UIAlertController(title: "Result",
-                                      message: card.stringRepresentation(),
+                                      message: card.stringRepresentation,
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
                                      style: .default) { _ in

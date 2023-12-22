@@ -73,10 +73,11 @@ final class QualityAnalyzerDemoViewController: UIViewController {
 }
 
 extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
+    
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: UIImage,
                                        on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectorResult,
+                                       with result: SBSDKDocumentDetectorResult?,
                                        autoSnapped: Bool) {
         estimateAndShowResults(from: originalImage)
     }

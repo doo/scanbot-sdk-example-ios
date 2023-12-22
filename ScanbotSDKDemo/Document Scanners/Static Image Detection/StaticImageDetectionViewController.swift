@@ -133,7 +133,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
             alertsManager?.showFailureAlert()
             return
         }
-        alertsManager?.showSuccessAlert(with: result.stringRepresentation())
+        alertsManager?.showSuccessAlert(with: result.stringRepresentation)
     }
     
     func recognizer(_ recognizer: SBSDKGenericDocumentRecognizer,
@@ -157,11 +157,11 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
     
     func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
                     didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?) {
-        guard let result = result, result.recognitionSuccessful else {
+        guard let result = result, result.isRecognitionSuccessful else {
             alertsManager?.showFailureAlert()
             return
         }
-        alertsManager?.showSuccessAlert(with: result.stringRepresentation())
+        alertsManager?.showSuccessAlert(with: result.stringRepresentation)
     }
     
     func scanner(_ scanner: SBSDKLicensePlateScanner,
@@ -188,9 +188,9 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
             alertsManager?.showFailureAlert()
             return
         }
-        SBSDKImageProcessor.warpImage(image, polygon: result.polygon!) { finished, error, resultInfo in
+        let _ = SBSDKImageProcessor.warp(image: image, polygon: result.polygon!) { (finished, error, resultInfo, _)  in
             if finished && error == nil {
-                self.imageView.image = resultInfo?[SBSDKResultInfoDestinationImageKey] as? UIImage
+                self.imageView.image = resultInfo?[SBSDKResultInfoKey.DestinationImage] as? UIImage
             }else {
                 self.alertsManager?.showFailureAlert()
             }

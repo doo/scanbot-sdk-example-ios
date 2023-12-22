@@ -28,7 +28,7 @@ final class LicensePlateDemoViewController: UIViewController {
         show(result: nil)
         scannerViewController = SBSDKLicensePlateScannerViewController(parentViewController: self,
                                                                        parentView: cameraContainer,
-                                                                       configuration: nil,
+                                                                       configuration: SBSDKLicensePlateScannerConfiguration.defaultConfiguration,
                                                                        delegate: self)
     }
     

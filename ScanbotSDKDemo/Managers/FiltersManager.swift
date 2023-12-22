@@ -11,51 +11,51 @@ import ScanbotSDK
 
 struct FilterManager {
     static let filters: [SBSDKImageFilterType] = [
-        SBSDKImageFilterTypeNone,
-        SBSDKImageFilterTypeColor,
-        SBSDKImageFilterTypeGray,
-        SBSDKImageFilterTypePureGray,
-        SBSDKImageFilterTypeBinarized,
-        SBSDKImageFilterTypeColorDocument,
-        SBSDKImageFilterTypePureBinarized,
-        SBSDKImageFilterTypeBackgroundClean,
-        SBSDKImageFilterTypeBlackAndWhite,
-        SBSDKImageFilterTypeOtsuBinarization,
-        SBSDKImageFilterTypeDeepBinarization,
-        SBSDKImageFilterTypeEdgeHighlight,
-        SBSDKImageFilterTypeLowLightBinarization,
-        SBSDKImageFilterTypeLowLightBinarization2
+        .none,
+        .color,
+        .gray,
+        .pureGray,
+        .binarized,
+        .colorDocument,
+        .pureBinarized,
+        .backgroundClean,
+        .blackAndWhite,
+        .otsuBinarization,
+        .deepBinarization,
+        .edgeHighlight,
+        .lowLightBinarization,
+        .lowLightBinarization2
     ]
     
     static func name(for filter: SBSDKImageFilterType) -> String {
         switch filter {
-        case SBSDKImageFilterTypeNone:
+        case .none:
             return "None"
-        case SBSDKImageFilterTypeColor:
+        case .color:
             return "Color"
-        case SBSDKImageFilterTypeGray:
+        case .gray:
             return "Optimized greyscale"
-        case SBSDKImageFilterTypePureGray:
+        case .pureGray:
             return "Pure greyscale"
-        case SBSDKImageFilterTypeBinarized:
+        case .binarized:
             return "Binarized"
-        case SBSDKImageFilterTypeColorDocument:
+        case .colorDocument:
             return "Color document"
-        case SBSDKImageFilterTypePureBinarized:
+        case .pureBinarized:
             return "Pure binarized"
-        case SBSDKImageFilterTypeBackgroundClean:
+        case .backgroundClean:
             return "Background clean"
-        case SBSDKImageFilterTypeBlackAndWhite:
+        case .blackAndWhite:
             return "Black & white"
-        case SBSDKImageFilterTypeOtsuBinarization:
+        case .otsuBinarization:
             return "Otsu binarization"
-        case SBSDKImageFilterTypeDeepBinarization:
+        case .deepBinarization:
             return "Deep binarization"
-        case SBSDKImageFilterTypeEdgeHighlight:
+        case .edgeHighlight:
             return "Edge highlight"
-        case SBSDKImageFilterTypeLowLightBinarization:
+        case .lowLightBinarization:
             return "Low light binarization"
-        case SBSDKImageFilterTypeLowLightBinarization2:
+        case .lowLightBinarization2:
             return "Low light binarization 2"
         default: return "UNKNOWN"
         }

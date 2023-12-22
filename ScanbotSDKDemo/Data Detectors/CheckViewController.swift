@@ -44,5 +44,5 @@ extension CheckViewController: SBSDKCheckRecognizerViewControllerDelegate {
     }
     
     func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didChange state: SBSDKCheckRecognizerState) { }
+                                       didChangeState state: SBSDKCheckRecognizerState) { }
 }

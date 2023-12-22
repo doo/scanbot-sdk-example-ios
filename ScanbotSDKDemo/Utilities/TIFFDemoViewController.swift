@@ -38,24 +38,22 @@ final class TIFFDemoViewController: UIViewController {
                                                                    in: .userDomainMask).last?.path else { return }
         let filePath = "\(documentsDirectory)/\(UUID().uuidString.lowercased()).tiff"
         guard let fileURL = URL(string: filePath) else { return }
-        let parameters = SBSDKTIFFImageWriterParameters.default()
+        let parameters = SBSDKTIFFImageWriterParameters.defaultParameters
         parameters.dpi = 200
         if isBinarized {
             parameters.binarize = true
-            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.COMPRESSION_CCITT_T6
-            parameters.userDefinedFields = [SBSDKTIFFImageWriterUserDefinedField(stringValue: "String value",
-                                                                                 fieldName: "SomeStringField",
-                                                                                 fieldTag: 65000),
-                                            SBSDKTIFFImageWriterUserDefinedField(numericValue: NSNumber(value: 123),
-                                                                                 fieldName: "SomeIntField",
-                                                                                 fieldTag: 65001),
-                                            SBSDKTIFFImageWriterUserDefinedField(numericValue: NSNumber(value: 123.5),
-                                                                                 fieldName: "SomeDoubleField",
-                                                                                 fieldTag: 65535)]
+            
+            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.ccitt_t6
+            parameters.userDefinedFields = [
+                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeStringField", fieldTag: 65000, stringValue: "String value"),
+                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeIntField", fieldTag: 65001, numericValue: NSNumber(value: 123.5)),
+                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeDoubleField", fieldTag: 65535, numericValue: NSNumber(value: 123.5))
+            ]
         } else {
-            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.COMPRESSION_LZW
+            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.lzw
         }
-        if SBSDKTIFFImageWriter.writeTIFF(images, fileURL: fileURL, parameters: parameters) {
+        let writer = SBSDKTIFFImageWriter(parameters: parameters)
+        if writer.writeTIFF(with: images, toFile: fileURL) {
             let alert = UIAlertController(title: "File saved",
                                           message: "At path: \(fileURL.path)",
                                           preferredStyle: .alert)
