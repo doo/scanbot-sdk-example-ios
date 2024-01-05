@@ -41,13 +41,14 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
                                                                        useLiveDetectionParameters: false)
             let page = SBSDKUIPage(image: image, polygon: detectionResult.polygon, filter: SBSDKImageFilterTypeNone)
             self?.document.add(page)
+            DispatchQueue.main.async {
+                picker.presentingViewController?.dismiss(animated: true, completion: {
+                    self?.completionHandler?()
+                    self?.didFinish()
+                })
+            }
         }
-        DispatchQueue.main.async {
-            picker.presentingViewController?.dismiss(animated: true, completion: {
-                self.didFinish()
-                self.completionHandler?()
-            })
-        }
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
