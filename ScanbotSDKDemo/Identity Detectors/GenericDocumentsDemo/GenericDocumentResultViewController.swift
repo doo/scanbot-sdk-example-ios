@@ -11,7 +11,7 @@ import ScanbotSDK
 
 final class GenericDocumentResultViewController: UIViewController {
     var document: SBSDKGenericDocument?
-    var fratDocument: [SBSDKGenericDocument]?
+    var flatDocument: [SBSDKGenericDocument]?
     var sourceImage: UIImage?
     @IBOutlet var tableView: UITableView?
     
@@ -27,7 +27,7 @@ final class GenericDocumentResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        fratDocument = document?.flatDocument(includingEmptyChildren: false, includingEmptyFields: false)
+        flatDocument = document?.flatDocument(includingEmptyChildren: false, includingEmptyFields: false)
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 100.0
         tableView?.reloadData()
@@ -52,21 +52,21 @@ final class GenericDocumentResultViewController: UIViewController {
 
 extension GenericDocumentResultViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return fratDocument?.count ?? 0
+        return flatDocument?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return fratDocument?[section].type.displayText()
+        return flatDocument?[section].type.displayText()
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return fratDocument?[section].fields.count ?? 0
+        return flatDocument?[section].fields.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fieldCell", for: indexPath) as!
         GenericDocumentFieldTableViewCell
-        let field = fratDocument?[indexPath.section].fields[indexPath.row]
+        let field = flatDocument?[indexPath.section].fields[indexPath.row]
         cell.fieldTypeLabel.text = field?.type.name
         
         let image = field?.image?.sbsdk_limited(to: CGSize(width: 10000.0, height: 80.0))
