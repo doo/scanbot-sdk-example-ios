@@ -41,18 +41,17 @@ class MainTableViewItemProvider {
         
         let items1 = [docScanItem, finderDocScanItem, viewImagesItem]
         
+        let barcodesSingleItem = MainTableViewItem(title: "Scan a barcode",
+                                                  action: { actionHandler.showSingleBarcodeScanner() })
 
-        let barcode2DScanItem = MainTableViewItem(title: "Scan 2D Barcodes",
-                                           action: { actionHandler.showTwoDimensionalBarcodeScanning() })
-        
-        let barcode1DScanItem = MainTableViewItem(title: "Scan 1D Barcodes",
-                                                action: { actionHandler.showOneDimensionalBarcodeScanning() })
-        
-        let batchBarcodesItem = MainTableViewItem(title: "Scan Barcodes in batch",
-                                                    action: { actionHandler.showBarcodeBatchScanner() })
-        
-        let rtuv2BarcodesItem = MainTableViewItem(title: "Scan Barcodes with RTU-UI v2",
-                                                  action: { actionHandler.showRTUUIv2BarcodeScanner() })
+        let barcodesSingleARItem = MainTableViewItem(title: "Scan a barcode with AR overlay",
+                                                     action: { actionHandler.showSingleARBarcodeScanner() })
+
+        let barcodesMultiItem = MainTableViewItem(title: "Scan barcodes with Counting and Mapping",
+                                                  action: { actionHandler.showMultiBarcodeScanner() })
+
+        let barcodesMultiARItem = MainTableViewItem(title: "Scan unique barcodes with AR overlay",
+                                                    action: { actionHandler.showMultiARBarcodeScanner() })
         
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
@@ -69,7 +68,7 @@ class MainTableViewItemProvider {
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [barcode2DScanItem, barcode1DScanItem, batchBarcodesItem, rtuv2BarcodesItem,
+        let items2 = [barcodesSingleItem, barcodesSingleARItem, barcodesMultiItem, barcodesMultiARItem,
                       mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem, vinScanItem]
         
         
