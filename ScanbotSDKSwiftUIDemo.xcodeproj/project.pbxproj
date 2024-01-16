@@ -51,6 +51,7 @@
 		2878D92527185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */; };
 		2878D92727185E530045F7EE /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92627185E530045F7EE /* MainListView.swift */; };
 		2878D92927185E540045F7EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2878D92827185E540045F7EE /* Assets.xcassets */; };
+		F1DF71D12B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -98,6 +99,7 @@
 		2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanbotSDKSwiftUIDemoApp.swift; sourceTree = "<group>"; };
 		2878D92627185E530045F7EE /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		2878D92827185E540045F7EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKUI2BarcodeFormat+BarcodeType.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 			children = (
 				285AE380271ED06300B5F728 /* BarcodeScanner.swift */,
 				285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */,
+				F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -379,6 +382,7 @@
 				285AE397271ED0D300B5F728 /* BarcodeScannerListView.swift in Sources */,
 				285AE3A1271F05FD00B5F728 /* DocumentScannerView.swift in Sources */,
 				285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */,
+				F1DF71D12B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

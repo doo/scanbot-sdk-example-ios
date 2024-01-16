@@ -22,7 +22,8 @@ struct BarcodeScanResultDetailsView: View {
                 Image(uiImage: scanResult.barcodeImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100,
+                           height: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100)
                 Text(scanResult.type.name)
                     .foregroundColor(.secondary)
                     .padding(.vertical, 8)

@@ -18,7 +18,8 @@ struct BarcodeScannerResultsCellView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(8)
-                .frame(width: 50, height: 50)
+                .frame(width: barcode.barcodeImage.size.equalTo(.zero) ? 0 : 50,
+                       height: barcode.barcodeImage.size.equalTo(.zero) ? 0 : 50)
             VStack(alignment: .leading) {
                 Text(barcode.rawTextStringWithExtension)
                     .lineLimit(2)
