@@ -10,7 +10,7 @@ import ScanbotSDK
 
 struct BarcodeScannerResultsCellView: View {
 
-    var barcode: SBSDKBarcodeScannerResult
+    var barcode: BarcodeResult
 
     var body: some View {
         HStack {
@@ -33,12 +33,9 @@ struct BarcodeScannerResultsCellView: View {
 
 struct ScannerResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScannerResultsCellView(barcode: SBSDKBarcodeScannerResult(polygon: SBSDKPolygon(),
-                                                                         type: SBSDKBarcodeType.aztec,
-                                                                         barcodeImage: UIImage(systemName: "sun.dust")!, 
-                                                                         sourceImage: nil,
-                                                                         rawTextString: "Some Different Text",
-                                                                         rawBytes: Data(),
-                                                                         metadata: [String: String]()))
+        BarcodeScannerResultsCellView(barcode: BarcodeResult(type: SBSDKBarcodeType.aztec,
+                                                             rawTextString: "Some Different Text",
+                                                             rawTextStringWithExtension: "",
+                                                             barcodeImage: UIImage(systemName: "sun.dust")!))
     }
 }

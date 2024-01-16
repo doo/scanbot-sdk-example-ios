@@ -44,7 +44,7 @@ struct BarcodeScannerListView: View {
             }
             if !scannedResult.scannedBarcodes.isEmpty {
                 Section(header: Text("Results by \(scannedResult.barcodeScannerName)")) {
-                    ForEach(scannedResult.scannedBarcodes, id: \.identifier) { barcode in
+                    ForEach(scannedResult.scannedBarcodes, id: \.id) { barcode in
                         NavigationLink(destination: BarcodeScanResultDetailsView(scanResult: barcode)) {
                             BarcodeScannerResultsCellView(barcode: barcode)
                         }
