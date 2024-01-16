@@ -8,12 +8,6 @@
 import SwiftUI
 import ScanbotSDK
 
-extension SBSDKBarcodeScannerResult {
-    var identifier: String {
-        return self.rawTextStringWithExtension + "_" + self.type.name
-    }
-}
-
 struct BarcodeScannerListView: View {
     
     private let scanners = BarcodeScanner.allCases
