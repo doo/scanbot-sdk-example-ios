@@ -25,7 +25,7 @@ class Usecase: NSObject {
     }
     
     func presentViewController(_ viewController: UIViewController) {
-        viewController.modalPresentationStyle = .overFullScreen
+        viewController.modalPresentationStyle = .fullScreen
         presenter?.present(viewController, animated: true, completion: nil)
     }
     

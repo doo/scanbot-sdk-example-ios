@@ -38,10 +38,11 @@ struct BarcodeScanResultDetailsView: View {
 struct ResultDetailsView_Previews: PreviewProvider {
     static var previews: some View {
         BarcodeScanResultDetailsView(scanResult: SBSDKBarcodeScannerResult(polygon: SBSDKPolygon(),
-                                                                           type: SBSDKBarcodeTypeAztec,
+                                                                           type: SBSDKBarcodeType.aztec,
                                                                            barcodeImage: UIImage(systemName: "sun.dust")!,
                                                                            sourceImage: nil,
                                                                            rawTextString: "Test Test Test\nTest Test\nTest",
-                                                                           rawBytes: Data(), metadata: [AnyHashable:Any]()))
+                                                                           rawBytes: Data(), 
+                                                                           metadata: [String: String]()))
     }
 }

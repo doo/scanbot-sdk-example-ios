@@ -10,12 +10,12 @@ import UIKit
 import ScanbotSDK
 
 class UsecaseExportImage: Usecase {
-    private let document: SBSDKUIDocument
+    private let document: SBSDKDocument
     private let processingHandler: (()->())
     private let completionHandler: ((Error?, URL?)->())
     private var barButtonItem: UIBarButtonItem?
     
-    init(document: SBSDKUIDocument,
+    init(document: SBSDKDocument,
          barButtonItem: UIBarButtonItem?,
          processingHandler: @escaping (()->()),
          completionHandler: @escaping ((Error?, URL?)->())) {
@@ -74,13 +74,19 @@ class UsecaseExportImage: Usecase {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
-            let config = SBSDKOpticalCharacterRecognizerConfiguration.ml()
+            let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
             let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
-            let error = SBSDKUIPDFRenderer.renderDocument(self.document,
-                                                          with: options,
-                                                          output: url)
-            DispatchQueue.main.async {
-                completion(error, url)
+            do {
+                try SBSDKUIPDFRenderer.renderDocument(self.document,
+                                                      with: options,
+                                                      to: url)
+                DispatchQueue.main.async {
+                    completion(nil, url)
+                }
+            } catch {
+                DispatchQueue.main.async {
+                    completion(error, url)
+                }
             }
         }
     }
@@ -94,15 +100,18 @@ class UsecaseExportImage: Usecase {
                 .appendingPathExtension("tiff")
             
             var images: [UIImage] = []
-            for i in 0..<self.document.numberOfPages() {
-                if let page = self.document.page(at: i), let url = page.documentImage() {
+            for i in 0..<self.document.numberOfPages {
+                if let page = self.document.page(at: i), let url = page.documentImage {
                     images.append(url)
                 }
             }
-            let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages()
-            : SBSDKTIFFImageWriterParameters.default()
             
-            let result = SBSDKTIFFImageWriter.writeTIFF(images, fileURL: url, parameters: params)
+            
+            let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
+            : SBSDKTIFFImageWriterParameters.defaultParameters
+            
+            let writer = SBSDKTIFFImageWriter(parameters: params)
+            let result = writer.writeTIFF(with: images, toFile: url)
 
             DispatchQueue.main.async {
                 completion(result == true ? url : nil)

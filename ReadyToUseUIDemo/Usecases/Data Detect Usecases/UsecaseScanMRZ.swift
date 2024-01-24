@@ -14,10 +14,10 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUIMRZScannerConfiguration.default()
+        let configuration = SBSDKUIMRZScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIMRZScannerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUIMRZScannerViewController.create(configuration: configuration, delegate: self)
 
         presentViewController(scanner)
     }

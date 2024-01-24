@@ -10,16 +10,16 @@ import ScanbotSDK
 
 final class DocumentPagesContainer: ObservableObject {
         
-    @Published private(set) var pages: [SBSDKUIPage]
-    @Published var selectedPage: SBSDKUIPage?
+    @Published private(set) var pages: [SBSDKDocumentPage]
+    @Published var selectedPage: SBSDKDocumentPage?
     
     private let accessQueue: DispatchQueue = DispatchQueue(label: "PagesViewModel.access")
     
-    init(_ pages: [SBSDKUIPage] = []) {
+    init(_ pages: [SBSDKDocumentPage] = []) {
         self.pages = pages
     }
     
-    func add(page: SBSDKUIPage) {
+    func add(page: SBSDKDocumentPage) {
         accessQueue.sync {
             if !pages.contains(page) {
                 pages.insert(page, at: 0)
@@ -36,7 +36,7 @@ final class DocumentPagesContainer: ObservableObject {
     }
 }
 
-extension SBSDKUIPage: Identifiable {
+extension SBSDKDocumentPage: Identifiable {
     public var id: UUID {
         return self.pageFileUUID
     }

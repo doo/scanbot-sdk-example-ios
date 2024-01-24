@@ -20,13 +20,12 @@ struct BarcodeScannerRTUUIView: UIViewControllerRepresentable {
     }
     
     func makeUIViewController(context: Context) -> SBSDKUIBarcodeScannerViewController {
-        let acceptedTypes = SBSDKBarcodeType.allTypes()
-        let configuration = SBSDKUIBarcodeScannerConfiguration.default()
+        let acceptedTypes = SBSDKBarcodeType.allTypes
+        let configuration = SBSDKUIBarcodeScannerConfiguration.defaultConfiguration
         configuration.behaviorConfiguration.acceptedBarcodeTypes = acceptedTypes
         
-        let scannerViewController = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
-                                                                                   andDelegate: nil)
-        scannerViewController.delegate = context.coordinator
+        let scannerViewController = SBSDKUIBarcodeScannerViewController.create(configuration: configuration,
+                                                                               delegate: context.coordinator)
         return scannerViewController
     }
     

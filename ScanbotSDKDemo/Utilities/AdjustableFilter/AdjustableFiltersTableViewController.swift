@@ -15,15 +15,15 @@ final class AdjustableFiltersTableViewController: UIViewController {
     @IBOutlet private var processingIndicator: UIActivityIndicatorView?
     @IBOutlet private var tableView: UITableView?
     
-    private let brightnessFilter = SBSDKBrightnessFilter()
-    private let contrastFilter = SBSDKContrastFilter()
-    private let saturationFilter = SBSDKSaturationFilter()
-    private let vibranceFilter = SBSDKVibranceFilter()
-    private let temperatureFilter = SBSDKTemperatureFilter()
-    private let tintFilter = SBSDKTintAdjustFilter()
-    private let whiteAndBlackPointFilter = SBSDKWhiteAndBlackPointFilter()
-    private let shadowsHighlightsFilter = SBSDKShadowsHighlightsFilter()
-    private let specialContrastFilter = SBSDKSpecialContrastFilter()
+    private let brightnessFilter = SBSDKBrightnessFilter(brightness: 0.0)
+    private let contrastFilter = SBSDKContrastFilter(contrast: 0.0)
+    private let saturationFilter = SBSDKSaturationFilter(saturation: 0.0)
+    private let vibranceFilter = SBSDKVibranceFilter(vibrance: 0.0)
+    private let temperatureFilter = SBSDKTemperatureFilter(temperature: 0.0)
+    private let tintFilter = SBSDKTintAdjustFilter(tint: 0.0)
+    private let whiteAndBlackPointFilter = SBSDKWhiteAndBlackPointFilter(whitePointOffset: 0.0, blackPointOffset: 0.0)
+    private let shadowsHighlightsFilter = SBSDKShadowsHighlightsFilter(highlights: 0.0, shadows: 0.0)
+    private let specialContrastFilter = SBSDKSpecialContrastFilter(amount: 0.0)
     
     private lazy var compoundFilter = {
         SBSDKCompoundFilter(filters: [brightnessFilter, contrastFilter, saturationFilter, vibranceFilter,

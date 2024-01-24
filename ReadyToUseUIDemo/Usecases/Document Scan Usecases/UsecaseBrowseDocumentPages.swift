@@ -11,9 +11,9 @@ import ScanbotSDK
 
 class UsecaseBrowseDocumentPages: Usecase {
 
-    private let document: SBSDKUIDocument
+    private let document: SBSDKDocument
     
-    init(document: SBSDKUIDocument) {
+    init(document: SBSDKDocument) {
         self.document = document
         super.init()
     }

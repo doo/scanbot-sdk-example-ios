@@ -34,7 +34,7 @@ class GenericDocumentViewController: UIViewController {
     }
     
     private func documentTypes() -> [SBSDKGenericDocumentRootType] {
-        return SBSDKGenericDocumentRootType.allDocumentTypes()
+        return SBSDKGenericDocumentRootType.allDocumentTypes
     }
     
     private func display(document: SBSDKGenericDocument, with sourceImage: UIImage) {
@@ -53,7 +53,7 @@ class GenericDocumentViewController: UIViewController {
 
 extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewControllerDelegate {
     func documentRecognizerViewController(_ controller: SBSDKGenericDocumentRecognizerViewController,
-                                          didRecognizeResult result: SBSDKGenericDocumentRecognitionResult,
+                                          didRecognize result: SBSDKGenericDocumentRecognitionResult,
                                           on image: UIImage) {
         if result.status == .success {
             indicator?.stopAnimating()
@@ -75,9 +75,9 @@ extension GenericDocumentViewController: UIImagePickerControllerDelegate, UINavi
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             let recognizer = SBSDKGenericDocumentRecognizer(acceptedDocumentTypes: self.documentTypes())
-            recognizer.accumulatesDocuments = false
+            recognizer.isAccumulatingDocuments = false
             
-            if let image = image, let document = recognizer.recognizeDocument(on: image)?.document {
+            if let image = image, let document = recognizer.recognize(on: image)?.document {
                 self.display(document: document, with: image)
             }
         }

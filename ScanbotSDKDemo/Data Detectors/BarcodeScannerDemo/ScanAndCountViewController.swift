@@ -18,7 +18,7 @@ final class ScanAndCountViewController: UIViewController {
     @IBOutlet private var listCountLabel: UILabel!
     
     private var countedBarcodes = [SBSDKBarcodeScannerAccumulatingResult]()
-    private var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes()
+    private var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes
     private var scannerViewController: SBSDKBarcodeScanAndCountViewController!
     
     override func viewDidLoad() {

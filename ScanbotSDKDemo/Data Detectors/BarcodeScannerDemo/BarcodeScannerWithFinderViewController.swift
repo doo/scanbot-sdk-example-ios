@@ -15,9 +15,9 @@ final class BarcodeScannerWithFinderViewController: BarcodeScannerViewController
         super.viewDidLoad()
         
         let configuration = scannerViewController?.viewFinderConfiguration ??
-        SBSDKBaseScannerViewFinderConfiguration.default()
+        SBSDKBaseScannerViewFinderConfiguration.defaultConfiguration
         
-        configuration.aspectRatio = SBSDKAspectRatio(width: 2, andHeight: 1)
+        configuration.aspectRatio = SBSDKAspectRatio(width: 2, height: 1)
         configuration.isViewFinderEnabled = true
         scannerViewController?.viewFinderConfiguration = configuration
     }

@@ -18,7 +18,7 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
         case textForeground
         
         func colorForCode(_ code: SBSDKBarcodeScannerResult) -> UIColor {
-            let isTwoD = SBSDKBarcodeType.twoDTypes().contains(code.type)
+            let isTwoD = SBSDKBarcodeType.twoDTypes.contains(code.type)
             let baseColor = isTwoD ? UIColor.systemRed : UIColor.systemBlue
             switch self {
             case .polygonBackground:

@@ -18,7 +18,7 @@ class BarcodeScannerViewController: UIViewController {
     
     var scannerViewController: SBSDKBarcodeScannerViewController?
     
-    var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes()
+    var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes
     var currentResults: [SBSDKBarcodeScannerResult]?
     var shouldDetect: Bool = false
     

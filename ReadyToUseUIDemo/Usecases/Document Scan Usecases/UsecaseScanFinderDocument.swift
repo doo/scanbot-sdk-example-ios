@@ -14,12 +14,12 @@ class UsecaseScanFinderDocument: Usecase, SBSDKUIFinderDocumentScannerViewContro
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIFinderDocumentScannerConfiguration.default()
-        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 1, andHeight: 1.41)
+        let configuration = SBSDKUIFinderDocumentScannerConfiguration.defaultConfiguration
+        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 1, height: 1.41)
         
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIFinderDocumentScannerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUIFinderDocumentScannerViewController.createNew(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
@@ -29,7 +29,7 @@ class UsecaseScanFinderDocument: Usecase, SBSDKUIFinderDocumentScannerViewContro
     }
     
     func finderScanningViewController(_ viewController: SBSDKUIFinderDocumentScannerViewController,
-                                      didFinishWith document: SBSDKUIDocument) {
+                                      didFinishWith document: SBSDKDocument) {
         if let presenter = presenter as? UINavigationController {
             let viewController = DocumentReviewViewController.make(with: document)
             presenter.pushViewController(viewController, animated: true)

@@ -27,7 +27,7 @@ final class GenericDocumentResultViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        flatDocument = document?.flatDocument(includingEmptyChildren: false, includingEmptyFields: false)
+        flatDocument = document?.flatDocument(includeEmptyChildren: false, includeEmptyFields: false)
         tableView?.rowHeight = UITableView.automaticDimension
         tableView?.estimatedRowHeight = 100.0
         tableView?.reloadData()
@@ -43,7 +43,7 @@ final class GenericDocumentResultViewController: UIViewController {
     }
     
     private func text(for type: SBSDKGenericDocumentType) -> String {
-        if let displayText = type.displayText() {
+        if let displayText = type.displayText {
             return displayText
         }
         return type.name
@@ -56,7 +56,7 @@ extension GenericDocumentResultViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return flatDocument?[section].type.displayText()
+        return flatDocument?[section].type.displayText
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

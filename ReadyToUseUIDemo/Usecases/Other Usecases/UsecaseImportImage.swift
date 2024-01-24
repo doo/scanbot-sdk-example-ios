@@ -11,10 +11,10 @@ import ScanbotSDK
 
 class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private let document: SBSDKUIDocument
+    private let document: SBSDKDocument
     private var completionHandler: (() -> ())?
     
-    init(document: SBSDKUIDocument, completion: (() -> ())?) {
+    init(document: SBSDKDocument, completion: (() -> ())?) {
         self.document = document
         self.completionHandler = completion
         super.init()
@@ -39,7 +39,7 @@ class UsecaseImportImage: Usecase, UIImagePickerControllerDelegate, UINavigation
                                                                        visibleImageRect: .zero,
                                                                        smoothingEnabled: false,
                                                                        useLiveDetectionParameters: false)
-            let page = SBSDKUIPage(image: image, polygon: detectionResult.polygon, filter: SBSDKImageFilterTypeNone)
+            let page = SBSDKDocumentPage(image: image, polygon: detectionResult?.polygon, filter: .none)
             self?.document.add(page)
             DispatchQueue.main.async {
                 picker.presentingViewController?.dismiss(animated: true, completion: {

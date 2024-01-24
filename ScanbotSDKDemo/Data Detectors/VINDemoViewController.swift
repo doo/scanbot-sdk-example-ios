@@ -19,7 +19,7 @@ final class VINDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let configuration = SBSDKVehicleIdentificationNumberScannerConfiguration.default()
+        let configuration = SBSDKVehicleIdentificationNumberScannerConfiguration.defaultConfiguration
         
         scannerViewController = SBSDKVINScannerViewController(parentViewController: self,
                                                               parentView: cameraContainer,
