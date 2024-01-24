@@ -14,7 +14,7 @@ class UsecaseSingleARScanBarcode: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUI2BarcodeScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUI2BarcodeScannerConfiguration()
         configuration.arOverlay.visible = true
         configuration.arOverlay.automaticSelectionEnabled = false
         configuration.viewFinder.visible = false

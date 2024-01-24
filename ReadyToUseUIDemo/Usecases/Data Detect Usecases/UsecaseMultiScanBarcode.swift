@@ -14,9 +14,9 @@ class UsecaseMultiScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUI2BarcodeScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUI2BarcodeScannerConfiguration()
         
-        let useCase = SBSDKUI2MultipleScanningMode.defaultConfiguration
+        let useCase = SBSDKUI2BarcodeUseCase.multipleScanningMode()
         configuration.useCase = useCase
         
         configuration.barcodeInfoMapping.barcodeItemMapper = self

@@ -125,8 +125,9 @@ final class ImageManager {
             return false
         }
         
-        guard let processedImage = rotImage.sbsdk_imageWarped(by: parameters.polygon, 
-                                                              filter: parameters.filter,
+        let filter = SBSDKLegacyFilter(legacyFilter: parameters.filter)
+        guard let processedImage = rotImage.sbsdk_imageWarped(by: parameters.polygon,
+                                                              filter: filter,
                                                               imageScale: 1.0) else {
             return false
         }

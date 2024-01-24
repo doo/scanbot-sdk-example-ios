@@ -162,16 +162,6 @@ final class ReviewDocumentsViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "adjustableFiltersSegue" {
-           if let navigationController = segue.destination as? UINavigationController,
-              let controller = navigationController.viewControllers.first as? AdjustableFiltersTableViewController {
-               navigationController.modalPresentationStyle = .fullScreen
-               controller.selectedImage = ImageManager.shared.processedImageStorage.image(at: 0)
-           }
-       }
-    }
     
     private func calculateQualityFor(_ item: Int) {
         DispatchQueue(label: "FilterQueue").async { [weak self] in

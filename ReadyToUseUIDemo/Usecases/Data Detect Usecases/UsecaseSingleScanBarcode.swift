@@ -14,7 +14,7 @@ class UsecaseSingleScanBarcode: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUI2BarcodeScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUI2BarcodeScannerConfiguration()
         configuration.userGuidance.title.text = "Please align the QR-/Barcode in the frame above to scan it."
         
         let scanner = SBSDKUI2BarcodeScannerViewController.create(with: configuration) { controller, cancelled, error, result in
