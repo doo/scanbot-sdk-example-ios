@@ -37,10 +37,10 @@ extension SBSDKUI2BarcodeFormat {
             return SBSDKBarcodeType.qrCode
         case .microQrCode:
             return SBSDKBarcodeType.microQrCode
-        case .rss14:
-            return SBSDKBarcodeType.rss14
-        case .rssExpanded:
-            return SBSDKBarcodeType.rssExpanded
+        case .databar:
+            return SBSDKBarcodeType.databar
+        case .databarLimited:
+            return SBSDKBarcodeType.databarLimited
         case .upcA:
             return SBSDKBarcodeType.upcA
         case .upcE:
