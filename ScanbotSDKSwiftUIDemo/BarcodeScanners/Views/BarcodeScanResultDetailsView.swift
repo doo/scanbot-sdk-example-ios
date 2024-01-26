@@ -10,9 +10,9 @@ import ScanbotSDK
 
 struct BarcodeScanResultDetailsView: View {
     
-    private let scanResult: SBSDKBarcodeScannerResult
+    private let scanResult: BarcodeResult
     
-    init(scanResult: SBSDKBarcodeScannerResult) {
+    init(scanResult: BarcodeResult) {
         self.scanResult = scanResult
     }
     
@@ -22,7 +22,8 @@ struct BarcodeScanResultDetailsView: View {
                 Image(uiImage: scanResult.barcodeImage)
                     .resizable()
                     .scaledToFit()
-                    .frame(width: 100, height: 100)
+                    .frame(width: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100,
+                           height: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100)
                 Text(scanResult.type.name)
                     .foregroundColor(.secondary)
                     .padding(.vertical, 8)
@@ -37,12 +38,9 @@ struct BarcodeScanResultDetailsView: View {
 
 struct ResultDetailsView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScanResultDetailsView(scanResult: SBSDKBarcodeScannerResult(polygon: SBSDKPolygon(),
-                                                                           type: SBSDKBarcodeType.aztec,
-                                                                           barcodeImage: UIImage(systemName: "sun.dust")!,
-                                                                           sourceImage: nil,
-                                                                           rawTextString: "Test Test Test\nTest Test\nTest",
-                                                                           rawBytes: Data(), 
-                                                                           metadata: [String: String]()))
+        BarcodeScanResultDetailsView(scanResult: BarcodeResult(type: SBSDKBarcodeType.aztec,
+                                                               rawTextString: "Test Test Test\nTest Test\nTest",
+                                                               rawTextStringWithExtension: "",
+                                                               barcodeImage: UIImage(systemName: "sun.dust")!))
     }
 }

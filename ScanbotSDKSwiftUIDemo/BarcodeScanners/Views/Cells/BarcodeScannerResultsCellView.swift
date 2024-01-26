@@ -10,7 +10,7 @@ import ScanbotSDK
 
 struct BarcodeScannerResultsCellView: View {
 
-    var barcode: SBSDKBarcodeScannerResult
+    var barcode: BarcodeResult
 
     var body: some View {
         HStack {
@@ -18,7 +18,8 @@ struct BarcodeScannerResultsCellView: View {
                 .resizable()
                 .scaledToFit()
                 .padding(8)
-                .frame(width: 50, height: 50)
+                .frame(width: barcode.barcodeImage.size.equalTo(.zero) ? 0 : 50,
+                       height: barcode.barcodeImage.size.equalTo(.zero) ? 0 : 50)
             VStack(alignment: .leading) {
                 Text(barcode.rawTextStringWithExtension)
                     .lineLimit(2)
@@ -32,12 +33,9 @@ struct BarcodeScannerResultsCellView: View {
 
 struct ScannerResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScannerResultsCellView(barcode: SBSDKBarcodeScannerResult(polygon: SBSDKPolygon(),
-                                                                         type: SBSDKBarcodeType.aztec,
-                                                                         barcodeImage: UIImage(systemName: "sun.dust")!, 
-                                                                         sourceImage: nil,
-                                                                         rawTextString: "Some Different Text",
-                                                                         rawBytes: Data(),
-                                                                         metadata: [String: String]()))
+        BarcodeScannerResultsCellView(barcode: BarcodeResult(type: SBSDKBarcodeType.aztec,
+                                                             rawTextString: "Some Different Text",
+                                                             rawTextStringWithExtension: "",
+                                                             barcodeImage: UIImage(systemName: "sun.dust")!))
     }
 }

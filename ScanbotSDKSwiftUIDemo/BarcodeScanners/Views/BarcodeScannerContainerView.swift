@@ -33,8 +33,7 @@ struct BarcodeScannerContainerView: View {
         Group {
             switch scanner {
             case .rtuUI:
-                BarcodeScannerRTUUIView(scanningResult: $scanningResult,
-                                        isRecognitionEnabled: $isRecognitionEnabled)
+                BarcodeScannerRTUUIView(scanningResult: $scanningResult)
             case .classic:
                 BarcodeScannerClassicView(scanningResult: $scanningResult,
                                           isRecognitionEnabled: $isRecognitionEnabled,
@@ -48,6 +47,7 @@ struct BarcodeScannerContainerView: View {
 
 struct ScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScannerContainerView(scanner: .rtuUI, scanningResult: .constant(BarcodeScanningResult()))
+        BarcodeScannerContainerView(scanner: .rtuUI, 
+                                    scanningResult: .constant(BarcodeScanningResult(scannedBarcodes: [])))
     }
 }
