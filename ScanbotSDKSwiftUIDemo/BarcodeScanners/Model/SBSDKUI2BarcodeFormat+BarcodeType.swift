@@ -61,10 +61,10 @@ extension SBSDKUI2BarcodeFormat {
             return SBSDKBarcodeType.royalTNTPpost
         case .australiaPost:
             return SBSDKBarcodeType.australiaPost
-        case .databarLimited:
-            return SBSDKBarcodeType.databarLimited
         case .gs1Composite:
             return SBSDKBarcodeType.gs1Composite
+        case .databarExpanded:
+            return SBSDKBarcodeType.databarExpanded
         @unknown default: fatalError("Unknown barcode format")
         }
     }
