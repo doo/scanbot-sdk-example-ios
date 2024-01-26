@@ -57,9 +57,6 @@
 		288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */; };
 		288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */; };
 		288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D41273C0A1E00BF615C /* ImageManager.swift */; };
-		288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */; };
-		288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */; };
-		288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */; };
 		28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A146642799BF95003B831E /* StaticImageDetectionViewController.swift */; };
 		28AF0457279ACE4900C00B33 /* ImportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0456279ACE4900C00B33 /* ImportAction.swift */; };
 		28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */; };
@@ -149,9 +146,6 @@
 		288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountBarcodeDetailsCell.swift; sourceTree = "<group>"; };
 		288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountResultsViewController.swift; sourceTree = "<group>"; };
 		288F0D41273C0A1E00BF615C /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
-		288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterTableViewCell.swift; sourceTree = "<group>"; };
-		288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFilterModel.swift; sourceTree = "<group>"; };
-		288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdjustableFiltersTableViewController.swift; sourceTree = "<group>"; };
 		28A146642799BF95003B831E /* StaticImageDetectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticImageDetectionViewController.swift; sourceTree = "<group>"; };
 		28AF0456279ACE4900C00B33 /* ImportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImportAction.swift; sourceTree = "<group>"; };
 		28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerCameraViewController.swift; sourceTree = "<group>"; };
@@ -246,7 +240,6 @@
 				082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */,
 				2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */,
 				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
-				28B21DBC23E31200002D2621 /* AdjustableFilter */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -269,16 +262,6 @@
 				28AF0464279EB78E00C00B33 /* ScannerCameraViewController.swift */,
 			);
 			path = "Static Image Detection";
-			sourceTree = "<group>";
-		};
-		28B21DBC23E31200002D2621 /* AdjustableFilter */ = {
-			isa = PBXGroup;
-			children = (
-				288F0D4D274293EF00BF615C /* AdjustableFiltersTableViewController.swift */,
-				288F0D4927428D8D00BF615C /* AdjustableFilterTableViewCell.swift */,
-				288F0D4B27428DE100BF615C /* AdjustableFilterModel.swift */,
-			);
-			path = AdjustableFilter;
 			sourceTree = "<group>";
 		};
 		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
@@ -529,7 +512,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"5.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"Beta13\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"5.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -586,12 +569,10 @@
 				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
 				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
 				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
-				288F0D4E274293EF00BF615C /* AdjustableFiltersTableViewController.swift in Sources */,
 				082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
-				288F0D4A27428D8D00BF615C /* AdjustableFilterTableViewCell.swift in Sources */,
 				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
 				F19EFE8B29C4AB5E00128396 /* CustomTrackedBarcodeView.swift in Sources */,
@@ -600,7 +581,6 @@
 				28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
 				F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */,
-				288F0D4C27428DE100BF615C /* AdjustableFilterModel.swift in Sources */,
 				28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */,
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
