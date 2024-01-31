@@ -75,7 +75,13 @@ class UsecaseExportImage: Usecase {
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
             let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
-            let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
+            let options = SBSDKPDFRendererOptions(pageSize: .custom,
+                                                  pageFitMode: .fitIn,
+                                                  pageOrientation: .auto,
+                                                  dpi: 200,
+                                                  resample: true,
+                                                  jpegQuality: 80,
+                                                  ocrConfiguration: config)
             do {
                 try SBSDKUIPDFRenderer.renderDocument(self.document,
                                                       with: options,

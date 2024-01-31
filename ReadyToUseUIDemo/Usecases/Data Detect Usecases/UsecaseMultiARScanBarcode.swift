@@ -18,10 +18,10 @@ class UsecaseMultiARScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
         
         let useCase = SBSDKUI2BarcodeUseCase.multipleScanningMode()
         useCase.mode = .unique
+        useCase.arOverlay.visible = true
+        useCase.arOverlay.automaticSelectionEnabled = false
+
         configuration.useCase = useCase
-        
-        configuration.arOverlay.visible = true
-        configuration.arOverlay.automaticSelectionEnabled = false
         configuration.barcodeInfoMapping.barcodeItemMapper = self
         configuration.cameraConfiguration.defaultZoomFactor = 1.0
         configuration.viewFinder.visible = false

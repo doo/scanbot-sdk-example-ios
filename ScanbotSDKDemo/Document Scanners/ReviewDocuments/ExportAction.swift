@@ -18,7 +18,13 @@ class ExportAction {
                 .appendingPathExtension("pdf")
             
             let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
-            let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
+            let options = SBSDKPDFRendererOptions(pageSize: .custom,
+                                                  pageFitMode: .fitIn,
+                                                  pageOrientation: .auto,
+                                                  dpi: 200,
+                                                  resample: true,
+                                                  jpegQuality: 80,
+                                                  ocrConfiguration: config)
             
             let _ = SBSDKPDFRenderer(options: options).renderImageStorage(storage,
                                                                           indexSet: nil,

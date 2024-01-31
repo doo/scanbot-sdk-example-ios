@@ -15,8 +15,12 @@ class UsecaseSingleARScanBarcode: Usecase {
         super.start(presenter: presenter)
         
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
-        configuration.arOverlay.visible = true
-        configuration.arOverlay.automaticSelectionEnabled = false
+        
+        let useCase = SBSDKUI2BarcodeUseCase.singleScanningMode()
+        useCase.arOverlay.visible = true
+        useCase.arOverlay.automaticSelectionEnabled = false
+        configuration.useCase = useCase
+        
         configuration.viewFinder.visible = false
         
         let scanner = SBSDKUI2BarcodeScannerViewController.create(with: configuration) { controller, cancelled, error, result in
