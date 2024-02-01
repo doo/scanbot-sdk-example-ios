@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
         // the Bundle Identifier "io.scanbot.example.sdk.ios.classic" of this example app.
 
-        //ScanbotSDK.setLicense("YOUR_LICENSE_KEY")
+        //Scanbot.setLicense("YOUR_LICENSE_KEY")
         if #available(iOS 15.0, *) {
                 let navBarAppearance = UINavigationBarAppearance()
                 navBarAppearance.configureWithOpaqueBackground()
