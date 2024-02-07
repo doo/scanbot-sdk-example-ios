@@ -20,9 +20,9 @@ class UsecaseMultiARScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
         useCase.mode = .unique
         useCase.arOverlay.visible = true
         useCase.arOverlay.automaticSelectionEnabled = false
+        useCase.barcodeInfoMapping.barcodeItemMapper = self
 
         configuration.useCase = useCase
-        configuration.barcodeInfoMapping.barcodeItemMapper = self
         configuration.cameraConfiguration.defaultZoomFactor = 1.0
         configuration.viewFinder.visible = false
         configuration.userGuidance.title.text = "Please align the QR-/Barcode in the frame above to scan it."

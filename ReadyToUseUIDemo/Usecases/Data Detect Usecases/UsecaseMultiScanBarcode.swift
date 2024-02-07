@@ -17,9 +17,9 @@ class UsecaseMultiScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
         
         let useCase = SBSDKUI2BarcodeUseCase.multipleScanningMode()
+        useCase.barcodeInfoMapping.barcodeItemMapper = self
+
         configuration.useCase = useCase
-        
-        configuration.barcodeInfoMapping.barcodeItemMapper = self
         
         configuration.cameraConfiguration.defaultZoomFactor = 1.0
         configuration.viewFinder.visible = true
