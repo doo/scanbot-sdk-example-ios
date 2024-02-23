@@ -14,6 +14,11 @@ class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerD
         super.start(presenter: presenter)
         
         let configuration = SBSDKUIHealthInsuranceCardScannerConfiguration.defaultConfiguration
+        
+        let recognizerParameters = configuration.behaviorConfiguration.recognizerParameters
+        recognizerParameters.minBirthYear = 1920
+        configuration.behaviorConfiguration.recognizerParameters = recognizerParameters
+        
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
         let scanner = SBSDKUIHealthInsuranceCardScannerViewController.create(configuration: configuration, delegate: self)
