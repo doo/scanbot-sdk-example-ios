@@ -1,4 +1,4 @@
-Open Source libraries used in ScanbotSDK for iOS version 4.2.0:
+Open Source libraries used in ScanbotSDK for iOS version 5.0.0:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
@@ -1231,6 +1231,18 @@ OF THIS SOFTWARE.
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
+libzueci
+
+Version 1.0.0
+(https://sourceforge.net/projects/libzueci/)
+
+A simple, standalone, BSD-3-Clause C library for converting UTF-8 to/from Extended Channel Interpretations, as
+defined by AIM ITS/04-023 International Technical Standard - Extended Channel Interpretations Part 3: Register
+(Version 2, February 2022).
+
+
++-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+
 magic-enum
 
 Version v0.8.1
@@ -2220,7 +2232,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtensor
 
-Version 0.23.9-1-gbe35a267
+Version 0.23.4-35-gbe35a267
 (https://github.com/doo/xtensor)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay and Wolf Vollprecht
@@ -2500,6 +2512,7 @@ Version 1.1.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
 
 
 
