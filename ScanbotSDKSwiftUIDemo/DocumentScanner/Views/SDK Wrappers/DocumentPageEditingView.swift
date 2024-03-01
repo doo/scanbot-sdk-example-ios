@@ -11,7 +11,7 @@ import ScanbotSDK
 struct DocumentPageEditingView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
-    @Binding var editingPage: SBSDKUIPage?
+    @Binding var editingPage: SBSDKDocumentPage?
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -20,10 +20,10 @@ struct DocumentPageEditingView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         guard let editingPage = editingPage else { fatalError("There must be the page to edit") }
 
-        let configuration = SBSDKUICroppingScreenConfiguration.default()
-        let viewController = SBSDKUICroppingViewController.createNew(with: editingPage,
-                                                                     with: configuration,
-                                                                     andDelegate: context.coordinator)
+        let configuration = SBSDKUICroppingScreenConfiguration.defaultConfiguration
+        let viewController = SBSDKUICroppingViewController.create(page: editingPage,
+                                                                  configuration: configuration,
+                                                                  delegate: context.coordinator)
         return viewController
     }
     
@@ -40,7 +40,7 @@ extension DocumentPageEditingView {
         }
         
         func croppingViewController(_ viewController: SBSDKUICroppingViewController,
-                                    didFinish changedPage: SBSDKUIPage) {
+                                    didFinish changedPage: SBSDKDocumentPage) {
             parent.editingPage = changedPage
             parent.presentationMode.wrappedValue.dismiss()
         }

@@ -17,8 +17,8 @@ final class GenericDocumentResultListViewController: UIViewController {
     private var flattenedDocuments: [SBSDKGenericDocument] {
         var result: [SBSDKGenericDocument] = []
         documents.forEach { document in
-            if let flattenedDocuments = document.flatDocument(includingEmptyChildren: false,
-                                                              includingEmptyFields: true) {
+            if let flattenedDocuments = document.flatDocument(includeEmptyChildren: false,
+                                                              includeEmptyFields: true) {
                 result.append(contentsOf: flattenedDocuments.filter({ $0.type.normalizedName != "MRZ" }))
             }
         }
@@ -28,10 +28,10 @@ final class GenericDocumentResultListViewController: UIViewController {
     lazy private var resultsText: String = {
         var result = ""
         flattenedDocuments.forEach { document in
-            if let title = document.type.displayText() {
+            if let title = document.type.displayText {
                 result += "\(title)\n"
             }
-            if let allFields = document.allFields(includingEmptyFields: false) {
+            if let allFields = document.allFields(includeEmptyFields: false) {
                 allFields.forEach { field in
                     if let displayText = field.type.displayText,
                        let value = field.value,
@@ -83,11 +83,11 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return flattenedDocuments[section].allFields(includingEmptyFields: true)?.count ?? 0
+        return flattenedDocuments[section].allFields(includeEmptyFields: true)?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let field = flattenedDocuments[indexPath.section].allFields(includingEmptyFields: true)?[indexPath.row]
+        guard let field = flattenedDocuments[indexPath.section].allFields(includeEmptyFields: true)?[indexPath.row]
         else {
             return UITableViewCell()
         }
@@ -112,16 +112,16 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let document = flattenedDocuments[section]
-        var headerName = document.type.displayText()
+        var headerName = document.type.displayText
         
         let label = UILabel(frame: CGRect(x: 15,
                                           y: 0,
                                           width: view.bounds.size.width,
                                           height: 44))
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        let categoryName = documents.last?.children.first?.type.displayText() ?? ""
+        let categoryName = documents.last?.children.first?.type.displayText ?? ""
         if section >= 2 && !categoryName.isEmpty {
-            headerName = categoryName + " -> " + (document.type.displayText() ?? "")
+            headerName = categoryName + " -> " + (document.type.displayText ?? "")
             label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         }
         label.text = headerName
@@ -138,7 +138,7 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        guard let field = flattenedDocuments[indexPath.section].allFields(includingEmptyFields: true)?[indexPath.row],
+        guard let field = flattenedDocuments[indexPath.section].allFields(includeEmptyFields: true)?[indexPath.row],
               let fieldTypeText = field.type.displayText else {
                   return 0
               }

@@ -17,12 +17,18 @@ class ExportAction {
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
             
-            let config = SBSDKOpticalCharacterRecognizerConfiguration.ml()
-            let options = SBSDKPDFRendererOptions(pageSize: .custom, pageOrientation: .auto, ocrConfiguration: config)
+            let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+            let options = SBSDKPDFRendererOptions(pageSize: .custom,
+                                                  pageFitMode: .fitIn,
+                                                  pageOrientation: .auto,
+                                                  dpi: 200,
+                                                  resample: true,
+                                                  jpegQuality: 80,
+                                                  ocrConfiguration: config)
             
-            SBSDKPDFRenderer(options: options).renderImageStorage(storage,
-                                                                  indexSet: nil,
-                                                                  output: url) { finished, error in 
+            let _ = SBSDKPDFRenderer(options: options).renderImageStorage(storage,
+                                                                          indexSet: nil,
+                                                                          output: url) { finished, error in
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
@@ -37,10 +43,12 @@ class ExportAction {
                 .appendingPathExtension("tiff")
             
             let imageURLs = storage.imageURLs
-            let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages()
-            : SBSDKTIFFImageWriterParameters.default()
+            let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
+            : SBSDKTIFFImageWriterParameters.defaultParameters
             
-            let result = SBSDKTIFFImageWriter.writeTIFF(from: imageURLs, fileURL: url, parameters: params)
+            let writer = SBSDKTIFFImageWriter(parameters: params)
+            
+            let result = writer.writeTIFF(from: imageURLs, toFile: url)
             DispatchQueue.main.async {
                 completion(result == true ? url : nil)
             }

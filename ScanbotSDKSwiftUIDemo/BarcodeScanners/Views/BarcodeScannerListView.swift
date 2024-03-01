@@ -8,17 +8,11 @@
 import SwiftUI
 import ScanbotSDK
 
-extension SBSDKBarcodeScannerResult {
-    var identifier: String {
-        return self.rawTextStringWithExtension + "_" + self.type.name
-    }
-}
-
 struct BarcodeScannerListView: View {
     
     private let scanners = BarcodeScanner.allCases
     
-    @State private var scannedResult = BarcodeScanningResult()
+    @State private var scannedResult = BarcodeScanningResult(scannedBarcodes: [])
     @State private var selectedScanner: BarcodeScanner?
     @State private var shouldCleanResults = false
     
@@ -44,7 +38,7 @@ struct BarcodeScannerListView: View {
             }
             if !scannedResult.scannedBarcodes.isEmpty {
                 Section(header: Text("Results by \(scannedResult.barcodeScannerName)")) {
-                    ForEach(scannedResult.scannedBarcodes, id: \.identifier) { barcode in
+                    ForEach(scannedResult.scannedBarcodes, id: \.id) { barcode in
                         NavigationLink(destination: BarcodeScanResultDetailsView(scanResult: barcode)) {
                             BarcodeScannerResultsCellView(barcode: barcode)
                         }
@@ -56,14 +50,14 @@ struct BarcodeScannerListView: View {
             BarcodeScannerContainerView(scanner: scanner,
                                         scanningResult: $scannedResult)
                 .onAppear {
-                    scannedResult = BarcodeScanningResult()
+                    scannedResult = BarcodeScanningResult(scannedBarcodes: [])
                 }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle(Text("Barcode scanners"), displayMode: .inline)
         .onDisappear {
             if shouldCleanResults {
-                scannedResult = BarcodeScanningResult()
+                scannedResult = BarcodeScanningResult(scannedBarcodes: [])
             }
         }
     }

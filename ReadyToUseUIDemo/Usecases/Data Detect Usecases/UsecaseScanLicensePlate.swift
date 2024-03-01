@@ -13,9 +13,9 @@ class UsecaseScanLicensePlate: Usecase, SBSDKUILicensePlateScannerViewController
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUILicensePlateScannerConfiguration.default()
+        let configuration = SBSDKUILicensePlateScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
-        let scanner = SBSDKUILicensePlateScannerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUILicensePlateScannerViewController.create(configuration: configuration, delegate: self)
         presentViewController(scanner)
     }
 

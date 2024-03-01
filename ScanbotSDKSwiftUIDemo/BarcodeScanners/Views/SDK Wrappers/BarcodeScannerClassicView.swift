@@ -27,7 +27,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
         let configuration = scannerViewController.viewFinderConfiguration
         configuration.lineColor = UIColor.green
         configuration.lineWidth = 5
-        configuration.aspectRatio = SBSDKAspectRatio(width: 1, andHeight: 0.5)
+        configuration.aspectRatio = SBSDKAspectRatio(width: 1, height: 0.5)
         configuration.minimumInset = UIEdgeInsets(top: 100, left: 50, bottom: 100, right: 50)
         configuration.isViewFinderEnabled = true
         scannerViewController.viewFinderConfiguration = configuration

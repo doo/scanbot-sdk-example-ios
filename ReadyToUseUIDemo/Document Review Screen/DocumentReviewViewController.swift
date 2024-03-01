@@ -19,7 +19,7 @@ final class DocumentReviewViewController: UIViewController {
     @IBOutlet private var toolbar: UIToolbar?
     @IBOutlet private var activityIndicator: UIActivityIndicatorView?
     
-    var document: SBSDKUIDocument!
+    var document: SBSDKDocument!
     
     private static var showsQuality: Bool = false
     private static var qualityCache = [URL: SBSDKDocumentQuality]()
@@ -31,7 +31,7 @@ final class DocumentReviewViewController: UIViewController {
         }
     }
     
-    class func make(with document: SBSDKUIDocument) -> DocumentReviewViewController {
+    class func make(with document: SBSDKDocument) -> DocumentReviewViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "DocumentReviewViewController")
         as! DocumentReviewViewController
@@ -84,23 +84,23 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
-        while document.numberOfPages() > 0 {
+        while document.numberOfPages > 0 {
             document.removePage(at: 0)
         }
-        SBSDKUIPageFileStorage.default().removeAll()
+        SBSDKDocumentPageFileStorage.defaultStorage.removeAll()
         reloadData()
     }
     
     private func reloadData() {
         collectionView?.reloadData()
         [exportButton, filterButton, qualityButton, clearButton]
-            .forEach({ $0?.isEnabled = document.numberOfPages() > 0 })
+            .forEach({ $0?.isEnabled = document.numberOfPages > 0 })
     }
     
     private func calculateQualityFor(_ item: Int) {
         DispatchQueue(label: "FilterQueue").async { [weak self] in
-            if let image = self?.document.page(at: item)?.originalImage(),
-               let url = self?.document.page(at: item)?.originalImageURL() {
+            if let image = self?.document.page(at: item)?.originalImage,
+               let url = self?.document.page(at: item)?.originalImageURL {
                 
                 let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
                 Self.qualityCache[url] = quality
@@ -136,16 +136,16 @@ extension SBSDKDocumentQuality {
 // MARK: - UICollectionViewDataSource
 extension DocumentReviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return document.numberOfPages()
+        return document.numberOfPages
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DocumentReviewCollectionViewCell", for: indexPath) as!
         DocumentReviewCollectionViewCell
         let page = document.page(at: indexPath.item)
-        cell.previewImageView?.image = page?.documentImage()
+        cell.previewImageView?.image = page?.documentImage
         if showsQuality {
-            if let imageURL = document.page(at: indexPath.item)?.originalImageURL() {
+            if let imageURL = document.page(at: indexPath.item)?.originalImageURL {
                 if let quality = Self.qualityCache[imageURL] {
                     cell.infoLabelText = String(format: "Q: \(quality.stringValue)")
                 } else {

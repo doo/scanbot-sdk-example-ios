@@ -11,10 +11,10 @@ import ScanbotSDK
 
 class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
     
-    private let page: SBSDKUIPage
+    private let page: SBSDKDocumentPage
     private let didFinishHandler: ()->()
     
-    init(page: SBSDKUIPage, didFinishHandler: @escaping ()->()) {
+    init(page: SBSDKDocumentPage, didFinishHandler: @escaping ()->()) {
         self.page = page
         self.didFinishHandler = didFinishHandler
         super.init()
@@ -23,7 +23,7 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUICroppingScreenConfiguration.default()
+        let configuration = SBSDKUICroppingScreenConfiguration.defaultConfiguration
         configuration.uiConfiguration.backgroundColor = UIColor.darkGray
         configuration.uiConfiguration.polygonColor = UIColor.red
         configuration.uiConfiguration.polygonColorMagnetic = UIColor.blue
@@ -31,12 +31,12 @@ class UsecaseCropPage: Usecase, SBSDKUICroppingViewControllerDelegate {
         //configuration.uiConfiguration.isDetectResetButtonHidden = true
         // Customize further colors, text resources, behavior flags ...
         
-        let editor = SBSDKUICroppingViewController.createNew(with: page, with: configuration, andDelegate: self)
+        let editor = SBSDKUICroppingViewController.create(page: page, configuration: configuration, delegate: self)
         editor.modalPresentationStyle = .fullScreen
         presenter.present(editor, animated: true, completion: nil)
     }
 
-    func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKUIPage) {
+    func croppingViewController(_ viewController: SBSDKUICroppingViewController, didFinish changedPage: SBSDKDocumentPage) {
         didFinishHandler()
         didFinish()
     }

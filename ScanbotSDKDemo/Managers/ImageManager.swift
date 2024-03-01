@@ -16,7 +16,7 @@ class ImageProcessingParameters {
     
     init() {
         polygon = SBSDKPolygon()
-        filter = SBSDKImageFilterTypeNone
+        filter = .none
         counterClockwiseRotations = 0
     }
     
@@ -40,7 +40,7 @@ final class ImageManager {
     }
     
     static private func storageForDirectory(_ directory: String) -> SBSDKIndexedImageStorage {
-        let url = SBSDKStorageLocation.applicationDocumentsFolderURL().appendingPathComponent(directory)
+        let url = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(directory)
         let location = SBSDKStorageLocation(baseURL: url)
         guard let storage = SBSDKIndexedImageStorage(storageLocation: location) else {
             fatalError("Failed to create the storage")
@@ -56,7 +56,7 @@ final class ImageManager {
     func add(image: UIImage, polygon: SBSDKPolygon) -> Bool {
         if originalImageStorage.add(image) {
             let parameters = ImageProcessingParameters(polygon: polygon,
-                                                       filter: SBSDKImageFilterTypeNone,
+                                                       filter: .none,
                                                        counterClockwiseRotations: 0)
             if processImageAt(Int(originalImageStorage.imageCount-1), withParameters: parameters) {
                 return true
@@ -69,21 +69,21 @@ final class ImageManager {
     
     func originalImageAt(index: Int) -> UIImage? {
         if index < 0 || index >= numberOfImages { return nil }
-        return originalImageStorage.image(at: UInt(index))
+        return originalImageStorage.image(at: index)
     }
 
     func originalImageURLAt(index: Int) -> URL? {
         if index < 0 || index >= numberOfImages { return nil }
-        return originalImageStorage.imageURL(at: UInt(index))
+        return originalImageStorage.imageURL(at: index)
     }
 
     func processedImageAt(index: Int) -> UIImage? {
         if index < 0 || index >= numberOfImages { return nil }
-        return processedImageStorage.image(at: UInt(index))
+        return processedImageStorage.image(at: index)
     }
     
     func processingParametersAt(index: Int) -> ImageProcessingParameters? {
-        guard let url = originalImageStorage.imageURL(at: UInt(index)) else {
+        guard let url = originalImageStorage.imageURL(at: index) else {
             return nil
         }
         
@@ -101,23 +101,23 @@ final class ImageManager {
     }
     
     func removeImageAt(index: Int) {
-        originalImageStorage.removeImage(at: UInt(index))
-        processedImageStorage.removeImage(at: UInt(index))
-        if let url = originalImageStorage.imageURL(at: UInt(index)) {
+        originalImageStorage.removeImage(at: index)
+        processedImageStorage.removeImage(at: index)
+        if let url = originalImageStorage.imageURL(at: index) {
             processingParameters.removeValue(forKey: url)
         }
     }
     
     func removeAllImages() {
-        originalImageStorage.removeAllImages()
-        processedImageStorage.removeAllImages()
+        originalImageStorage.removeAll()
+        processedImageStorage.removeAll()
         processingParameters.removeAll()
     }
     
     func processImageAt(_ index: Int, withParameters parameters: ImageProcessingParameters) -> Bool {
         if index < 0 || index >= numberOfImages { return false }
         
-        guard let image = originalImageStorage.image(at: UInt(index)) else {
+        guard let image = originalImageStorage.image(at: index) else {
             return false
         }
         
@@ -125,18 +125,19 @@ final class ImageManager {
             return false
         }
         
+        let filter = SBSDKLegacyFilter(legacyFilter: parameters.filter)
         guard let processedImage = rotImage.sbsdk_imageWarped(by: parameters.polygon,
-                                                              andFilteredBy: parameters.filter,
+                                                              filters: [filter],
                                                               imageScale: 1.0) else {
             return false
         }
         
         parameters.counterClockwiseRotations = 0
-        originalImageStorage.replaceImage(at: UInt(index), with: rotImage)
+        let _ = originalImageStorage.replaceImage(at: index, with: rotImage)
 
         var success = true
         if index < processedImageStorage.imageCount {
-            success = processedImageStorage.replaceImage(at: UInt(index), with: processedImage)
+            success = processedImageStorage.replaceImage(at: index, with: processedImage)
         } else {
             success = processedImageStorage.add(processedImage)
         }
@@ -145,7 +146,7 @@ final class ImageManager {
             return false
         }
         
-        guard let url = originalImageStorage.imageURL(at: UInt(index)) else {
+        guard let url = originalImageStorage.imageURL(at: index) else {
             return false
         }
         storeParameters(parameters, at: url)

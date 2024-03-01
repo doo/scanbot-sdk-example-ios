@@ -42,7 +42,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1550.3333301544192" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1475.3333301544192" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <nil key="textColor"/>
@@ -490,31 +490,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="BT7-Vp-MF5" kind="show" id="u0Y-mq-npl"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="75" id="EH5-Ux-Gir" userLabel="Adjustable Filters">
-                                        <rect key="frame" x="0.0" y="1457.3333301544189" width="375" height="75"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EH5-Ux-Gir" id="7ja-TI-vr0">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="75"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adjustable Filters Demo" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="X00-HX-JoN" userLabel="Adjustable filters demo">
-                                                    <rect key="frame" x="24" y="0.0" width="327" height="75"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="X00-HX-JoN" firstAttribute="top" secondItem="7ja-TI-vr0" secondAttribute="top" id="ZB2-cx-xDC"/>
-                                                <constraint firstAttribute="trailing" secondItem="X00-HX-JoN" secondAttribute="trailing" constant="24" id="e8W-NQ-BT6"/>
-                                                <constraint firstAttribute="bottom" secondItem="X00-HX-JoN" secondAttribute="bottom" id="hk5-BD-jSR"/>
-                                                <constraint firstItem="X00-HX-JoN" firstAttribute="leading" secondItem="7ja-TI-vr0" secondAttribute="leading" constant="24" id="oKo-Fh-qsw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="hdw-mI-mPW" kind="show" id="qpq-E0-6Um"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1171,110 +1146,6 @@
             </objects>
             <point key="canvasLocation" x="-3838" y="605"/>
         </scene>
-        <!--Adjustable Filters Table View Controller-->
-        <scene sceneID="Okl-gq-eXK">
-            <objects>
-                <viewController id="hdw-mI-mPW" customClass="AdjustableFiltersTableViewController" customModule="ScanbotSDK_Demo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6Dh-U7-T8P"/>
-                        <viewControllerLayoutGuide type="bottom" id="J2D-2e-BVU"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="NdE-n1-30n">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1rx-oP-NFM">
-                                <rect key="frame" x="12" y="12" width="366" height="200"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="200" id="m5F-PY-OAH"/>
-                                </constraints>
-                            </imageView>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="NoW-q5-8MQ">
-                                <rect key="frame" x="185" y="102" width="20" height="20"/>
-                            </activityIndicatorView>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="64" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="-1" contentViewInsetsToSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AIa-7T-AGl">
-                                <rect key="frame" x="0.0" y="224" width="390" height="529"/>
-                                <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FilterCell" id="vnT-0P-5MV" customClass="AdjustableFilterTableViewCell" customModule="ScanbotSDK_Demo" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="390" height="64"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vnT-0P-5MV" id="Npf-fx-xR1">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="64"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Brightness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3eP-LT-1bI">
-                                                    <rect key="frame" x="12" y="8" width="52" height="12"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                                    <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" minValue="-1" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="zD5-J9-IGc">
-                                                    <rect key="frame" x="10" y="26" width="319" height="31"/>
-                                                    <connections>
-                                                        <action selector="sliderChanged:" destination="vnT-0P-5MV" eventType="valueChanged" id="dz7-aR-1Gm"/>
-                                                    </connections>
-                                                </slider>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVy-pg-G5O">
-                                                    <rect key="frame" x="339" y="26" width="39" height="30"/>
-                                                    <state key="normal" title="Reset"/>
-                                                    <connections>
-                                                        <action selector="resetButtonPressed:" destination="vnT-0P-5MV" eventType="touchUpInside" id="rRs-yP-Tbu"/>
-                                                    </connections>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailing" secondItem="cVy-pg-G5O" secondAttribute="trailing" constant="12" id="5gv-Rj-jaw"/>
-                                                <constraint firstItem="3eP-LT-1bI" firstAttribute="leading" secondItem="Npf-fx-xR1" secondAttribute="leading" constant="12" id="9ao-SN-elD"/>
-                                                <constraint firstItem="3eP-LT-1bI" firstAttribute="top" secondItem="Npf-fx-xR1" secondAttribute="top" constant="8" id="Bhx-ee-7UU"/>
-                                                <constraint firstItem="cVy-pg-G5O" firstAttribute="centerY" secondItem="zD5-J9-IGc" secondAttribute="centerY" id="BnD-Xm-zaR"/>
-                                                <constraint firstItem="cVy-pg-G5O" firstAttribute="leading" secondItem="zD5-J9-IGc" secondAttribute="trailing" constant="12" id="EyK-uz-1nF"/>
-                                                <constraint firstItem="zD5-J9-IGc" firstAttribute="leading" secondItem="Npf-fx-xR1" secondAttribute="leading" constant="12" id="ItH-Oe-JHs"/>
-                                                <constraint firstAttribute="bottom" secondItem="zD5-J9-IGc" secondAttribute="bottom" constant="8" id="RRf-sv-biw"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="label" destination="3eP-LT-1bI" id="rfe-rc-H9y"/>
-                                            <outlet property="slider" destination="zD5-J9-IGc" id="5hr-2S-Yzh"/>
-                                        </connections>
-                                    </tableViewCell>
-                                </prototypes>
-                                <connections>
-                                    <outlet property="dataSource" destination="hdw-mI-mPW" id="k4m-kU-qVZ"/>
-                                </connections>
-                            </tableView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="1rx-oP-NFM" secondAttribute="trailing" constant="12" id="4Q3-qf-imu"/>
-                            <constraint firstItem="1rx-oP-NFM" firstAttribute="leading" secondItem="NdE-n1-30n" secondAttribute="leading" constant="12" id="FOt-Ug-MTz"/>
-                            <constraint firstItem="1rx-oP-NFM" firstAttribute="top" secondItem="6Dh-U7-T8P" secondAttribute="bottom" constant="12" id="Kf6-GO-ymW"/>
-                            <constraint firstAttribute="bottom" secondItem="AIa-7T-AGl" secondAttribute="bottom" id="M5d-Y9-Ls0"/>
-                            <constraint firstItem="AIa-7T-AGl" firstAttribute="top" secondItem="1rx-oP-NFM" secondAttribute="bottom" constant="12" id="VhM-a1-Msj"/>
-                            <constraint firstItem="AIa-7T-AGl" firstAttribute="leading" secondItem="NdE-n1-30n" secondAttribute="leading" id="Zq7-dd-vCy"/>
-                            <constraint firstAttribute="trailing" secondItem="AIa-7T-AGl" secondAttribute="trailing" id="ceE-1z-g6e"/>
-                            <constraint firstItem="NoW-q5-8MQ" firstAttribute="centerX" secondItem="1rx-oP-NFM" secondAttribute="centerX" id="jpO-rC-R4a"/>
-                            <constraint firstItem="NoW-q5-8MQ" firstAttribute="centerY" secondItem="1rx-oP-NFM" secondAttribute="centerY" id="ysb-pG-flh"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" id="SXM-n7-sOl">
-                        <barButtonItem key="rightBarButtonItem" title="Select Image" id="2U0-bA-vdv">
-                            <connections>
-                                <action selector="importButtonDidPress:" destination="hdw-mI-mPW" id="5Ja-Ix-S89"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="filteredImageView" destination="1rx-oP-NFM" id="Fzt-k1-HzG"/>
-                        <outlet property="processingIndicator" destination="NoW-q5-8MQ" id="ix5-70-z2B"/>
-                        <outlet property="tableView" destination="AIa-7T-AGl" id="ngN-8L-wQR"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="NaA-F6-qKh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5458" y="611"/>
-        </scene>
         <!--Scan And Count View Controller-->
         <scene sceneID="ddk-D7-CDF">
             <objects>
@@ -1868,7 +1739,7 @@
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="linkColor">
-            <color red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

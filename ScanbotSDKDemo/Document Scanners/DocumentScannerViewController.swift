@@ -20,7 +20,7 @@ class DocumentScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        guard Scanbot.isLicenseValid() else {
+        guard Scanbot.isLicenseValid else {
             presentErrorAlert()
             return
         }
@@ -47,7 +47,7 @@ class DocumentScannerViewController: UIViewController {
     }
     
     private func updateUI() {
-        pageCountButton?.isEnabled = Scanbot.isLicenseValid() && ImageManager.shared.numberOfImages > 0
+        pageCountButton?.isEnabled = Scanbot.isLicenseValid && ImageManager.shared.numberOfImages > 0
         pageCountButton?.title = "\(ImageManager.shared.numberOfImages) pages"
     }
 }
@@ -56,9 +56,9 @@ extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDeleg
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: UIImage,
                                        on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectorResult,
+                                       with result: SBSDKDocumentDetectorResult?,
                                        autoSnapped: Bool) {
-        ImageManager.shared.add(image: originalImage, polygon: result.polygon ?? SBSDKPolygon())
+        ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
         updateUI()
     }
 }

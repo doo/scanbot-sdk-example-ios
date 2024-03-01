@@ -7,13 +7,14 @@
 
 import SwiftUI
 import ScanbotSDK
+import AVFoundation
 
 struct BarcodeScannerManuallyComposedView: UIViewControllerRepresentable {
     
     @Environment(\.presentationMode) var presentationMode
     @Binding var scanningResult: BarcodeScanningResult
     
-    private let cameraSession: SBSDKCameraSession = SBSDKCameraSession(for: FeatureQRCode)
+    private let cameraSession: SBSDKCameraSession = SBSDKCameraSession(feature: SBSDKFeature.barcodeDetection)!
     private let barcodeScanner: SBSDKBarcodeScanner = SBSDKBarcodeScanner()
         
     func makeCoordinator() -> Coordinator {
@@ -74,12 +75,14 @@ extension BarcodeScannerManuallyComposedView {
         override func viewDidLoad() {
             super.viewDidLoad()
             cameraSession.captureSession?.sessionPreset = .photo
-            view.layer.addSublayer(cameraSession.previewLayer)
+            if let previewLayer = cameraSession.previewLayer {
+                view.layer.addSublayer(previewLayer)
+            }
         }
         
         override func viewWillAppear(_ animated: Bool) {
             super.viewWillAppear(animated)
-            cameraSession.start()
+            cameraSession.start(completion: nil)
         }
         
         override func viewWillDisappear(_ animated: Bool) {
@@ -89,7 +92,7 @@ extension BarcodeScannerManuallyComposedView {
         
         override func viewDidLayoutSubviews() {
             super.viewDidLayoutSubviews()
-            cameraSession.previewLayer.frame = view.bounds
+            cameraSession.previewLayer?.frame = view.bounds
         }
         
         override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

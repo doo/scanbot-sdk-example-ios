@@ -13,10 +13,9 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUITextDataScannerConfiguration.default()
+        let configuration = SBSDKUITextDataScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
-        let scanner = SBSDKUITextDataScannerViewController.createNew(with: configuration,
-                                                                     andDelegate: self)
+        let scanner = SBSDKUITextDataScannerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
@@ -25,10 +24,10 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
                                           didFinish step: SBSDKUITextDataScannerStep,
                                           with result: SBSDKUITextDataScannerStepResult) {
         
-        guard let text = result.text, text.count > 0, viewController.isRecognitionEnabled == true else {
+        guard result.text.count > 0, viewController.isRecognitionEnabled == true else {
             return
         }
-        let message = text
+        let message = result.text
         let title = "Text found"
         
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)

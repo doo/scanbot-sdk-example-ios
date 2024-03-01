@@ -21,7 +21,7 @@ struct DocumentPagesOverviewScreen: View {
                         pagesContainer.selectedPage = page
                         isShowingModal.toggle()
                     }){
-                        if let image = page.documentImage() {
+                        if let image = page.documentImage {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()

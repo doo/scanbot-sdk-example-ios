@@ -26,8 +26,8 @@ final class MedicalCertificateScannerViewController: UIViewController {
     
     private func show(recognizedResult: SBSDKMedicalCertificateRecognizerResult?) {
         scannerViewController?.isRecognitionEnabled = false
-        if let recognizedResult = recognizedResult, recognizedResult.recognitionSuccessful {
-            alertsManager?.showSuccessAlert(with: recognizedResult.stringRepresentation(), completionHandler: {
+        if let recognizedResult = recognizedResult, recognizedResult.isRecognitionSuccessful {
+            alertsManager?.showSuccessAlert(with: recognizedResult.stringRepresentation, completionHandler: {
                 self.scannerViewController?.isRecognitionEnabled = true
             })
         } else {
@@ -43,7 +43,7 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
     func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController,
                                                  didRecognizeMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult) {
         
-        if result.recognitionSuccessful {
+        if result.isRecognitionSuccessful {
             self.show(recognizedResult: result)
         }
     }

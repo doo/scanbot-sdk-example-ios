@@ -45,7 +45,7 @@ class BarcodeFormatter {
         
         result = result + "\n\nDoctor information:"
         for field in plan.doctor.fields {
-            result = result + "\n\(field.typeHumanReadableString): \(field.value)"
+            result = result + "\n\(field.typeHumanReadableString): \(field.value ?? "-")"
         }
 
         if plan.subheadings.count > 0 {
@@ -120,7 +120,7 @@ class BarcodeFormatter {
         var result = "\n\n\nDetected AAMVA document:\n\nRaw header string: \(document.headerRawString)"
         result = result + "\nFile type: \(document.fileType)"
         result = result + "\nIssuer ID number: \(document.issuerIdentificationNumber)"
-        result = result + "\nAAMVA version: \(document.aamvaVersionNumber)"
+        result = result + "\nAAMVA version: \(document.AAMVAVersionNumber)"
         result = result + "\nJurisdiction version: \(document.jurisdictionVersionNumber)"
         
         if document.subfiles.count > 0 {

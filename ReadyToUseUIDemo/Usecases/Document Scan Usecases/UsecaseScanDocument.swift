@@ -11,10 +11,10 @@ import ScanbotSDK
 
 class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate, UINavigationControllerDelegate {
     
-    private let document: SBSDKUIDocument
+    private let document: SBSDKDocument
     private static var currentSettings: SBSDKUIDocumentScannerSettings?
     
-    init(document: SBSDKUIDocument) {
+    init(document: SBSDKDocument) {
         self.document = document
         super.init()
     }
@@ -22,7 +22,7 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
 
-        let configuration = SBSDKUIDocumentScannerConfiguration.default()
+        let configuration = SBSDKUIDocumentScannerConfiguration.defaultConfiguration
         // Customize text resources, behavior and UI:
         configuration.behaviorConfiguration.ignoreBadAspectRatio = true
         //configuration.textConfiguration.cancelButtonTitle = "Abort"
@@ -38,18 +38,18 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
             configuration.behaviorConfiguration.isMultiPageEnabled = currentSettings.multiPageEnabled
         }
         
-        let scanner = SBSDKUIDocumentScannerViewController.createNew(with: self.document,
-                                                                     configuration: configuration,
-                                                                     andDelegate: self)
+        let scanner = SBSDKUIDocumentScannerViewController.create(document: self.document,
+                                                                  configuration: configuration,
+                                                                  delegate: self)
         
         presentViewController(scanner)
     }
         
     func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
-                                didFinishWith document: SBSDKUIDocument) {
+                                didFinishWith document: SBSDKDocument) {
         
         Self.currentSettings = viewController.currentSettings
-        if document.numberOfPages() > 0 {
+        if document.numberOfPages > 0 {
             if let navigationController = presenter as? UINavigationController {
                 UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
                 viewController.presentingViewController?.dismiss(animated: true, completion: nil)

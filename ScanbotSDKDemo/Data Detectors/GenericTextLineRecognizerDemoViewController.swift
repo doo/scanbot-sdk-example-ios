@@ -19,18 +19,19 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let configuration = SBSDKGenericTextLineRecognizerConfiguration.default()
+        let configuration = SBSDKGenericTextLineRecognizerConfiguration.defaultConfiguration
         
         var characterSet = CharacterSet.alphanumerics
         characterSet.formUnion(.whitespaces)
         characterSet.formUnion(.punctuationCharacters)
         characterSet.invert()
         
-        let sanitizerBlock: SBSDKTextLineRecognizerTextSanitizerBlock = { rawText in
-            let components = rawText.components(separatedBy: characterSet).filter({ !$0.isEmpty })
+        
+        
+        configuration.stringSanitizerBlock = { string in
+            let components = string.components(separatedBy: characterSet).filter({ !$0.isEmpty })
             return components.joined(separator: "")
         }
-        configuration.stringSanitizerBlock = sanitizerBlock
         
         textLineRecognizerController = SBSDKGenericTextLineRecognizerViewController(parentViewController: self,
                                                                                     parentView: cameraContainer,

@@ -51,7 +51,7 @@ final class ReviewDocumentsViewController: UIViewController {
                                                                            smoothingEnabled: false,
                                                                            useLiveDetectionParameters: false)
 
-                ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
+                ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {
                     self?.reloadData()
                 }
@@ -162,16 +162,6 @@ final class ReviewDocumentsViewController: UIViewController {
         let activityViewController = UIActivityViewController(activityItems: [url], applicationActivities: nil)
         present(activityViewController, animated: true, completion: nil)
     }
-
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "adjustableFiltersSegue" {
-           if let navigationController = segue.destination as? UINavigationController,
-              let controller = navigationController.viewControllers.first as? AdjustableFiltersTableViewController {
-               navigationController.modalPresentationStyle = .fullScreen
-               controller.selectedImage = ImageManager.shared.processedImageStorage.image(at: 0)
-           }
-       }
-    }
     
     private func calculateQualityFor(_ item: Int) {
         DispatchQueue(label: "FilterQueue").async { [weak self] in
@@ -228,10 +218,8 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
 
         selectedImageIndex = indexPath.item
         
-        let editingViewController = SBSDKImageEditingViewController()
+        let editingViewController = SBSDKImageEditingViewController.create(image: image, polygon: params.polygon)
         editingViewController.delegate = self
-        editingViewController.image = image
-        editingViewController.polygon = params.polygon
         navigationController?.pushViewController(editingViewController, animated: true)
     }
 }

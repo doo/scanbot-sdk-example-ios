@@ -13,10 +13,10 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerVi
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIMedicalCertificateScannerConfiguration.default()
+        let configuration = SBSDKUIMedicalCertificateScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIMedicalCertificateScannerViewController.createNew(with: configuration, andDelegate: self)
+        let scanner = SBSDKUIMedicalCertificateScannerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
@@ -29,11 +29,11 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerVi
                                       didFinishWith result: SBSDKMedicalCertificateRecognizerResult) {
 
         let title = "Medical certificate detected"
-        let message = result.stringRepresentation()
+        let message = result.stringRepresentation
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
             if let image = result.image {
-                let page = SBSDKUIPage(image: image, polygon: nil, filter: SBSDKImageFilterTypeNone)
-                let document = SBSDKUIDocument()
+                let page = SBSDKDocumentPage(image: image, polygon: nil, filter: .none)
+                let document = SBSDKDocument()
                 document.add(page)
                 if let navigationController = self.presenter as? UINavigationController {
                     UsecaseBrowseDocumentPages(document: document).start(presenter: navigationController)

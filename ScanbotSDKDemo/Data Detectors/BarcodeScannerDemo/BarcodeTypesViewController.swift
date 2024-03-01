@@ -19,7 +19,7 @@ final class BarcodeTypesViewController: UITableViewController {
     weak var delegate: BarcodeTypesViewControllerDelegate?
     
     var selectedTypes: [SBSDKBarcodeType] = []
-    private var allTypes = SBSDKBarcodeType.allTypes()
+    private var allTypes = SBSDKBarcodeType.allTypes
     
     override func viewDidLoad() {
         super.viewDidLoad()

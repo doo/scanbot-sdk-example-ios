@@ -71,12 +71,12 @@ final class DetectorsManager {
             delegate?.scanner(scanner, didFindBarcodes: result)
         case .ehic:
             let recognizer = SBSDKHealthInsuranceCardRecognizer()
-            let result = recognizer.recognize(fromStillImage: image)
+            let result = recognizer.recognize(onStillImage: image)
             delegate?.recognizer(recognizer, didFindEHIC: result)
         case .genericDocument:
             let recognizer = SBSDKGenericDocumentRecognizer(
-                acceptedDocumentTypes: SBSDKGenericDocumentRootType.allDocumentTypes())
-            let result = recognizer.recognizeDocument(on: image)
+                acceptedDocumentTypes: SBSDKGenericDocumentRootType.allDocumentTypes)
+            let result = recognizer.recognize(on: image)
             delegate?.recognizer(recognizer, didFindDocument: result)
         case .mrz:
             let recognizer = SBSDKMachineReadableZoneRecognizer()

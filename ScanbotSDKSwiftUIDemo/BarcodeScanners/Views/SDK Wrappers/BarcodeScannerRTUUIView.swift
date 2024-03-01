@@ -13,49 +13,45 @@ struct BarcodeScannerRTUUIView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var scanningResult: BarcodeScanningResult
-    @Binding var isRecognitionEnabled: Bool
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
     }
     
-    func makeUIViewController(context: Context) -> SBSDKUIBarcodeScannerViewController {
-        let acceptedTypes = SBSDKBarcodeType.allTypes()
-        let configuration = SBSDKUIBarcodeScannerConfiguration.default()
-        configuration.behaviorConfiguration.acceptedBarcodeTypes = acceptedTypes
+    func makeUIViewController(context: Context) -> SBSDKUI2BarcodeScannerViewController {
         
-        let scannerViewController = SBSDKUIBarcodeScannerViewController.createNew(with: configuration,
-                                                                                   andDelegate: nil)
-        scannerViewController.delegate = context.coordinator
+        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        
+        let acceptedTypes = SBSDKBarcodeType.allTypes
+        configuration.recognizerConfiguration.barcodeTypes = acceptedTypes
+        
+        let scannerViewController = SBSDKUI2BarcodeScannerViewController.create(with: configuration,
+                                                                                handler: { controller, cancelled, error, result in
+            
+            if let barcodeResults = result?.items,
+               presentationMode.wrappedValue.isPresented {
+                scanningResult = BarcodeScanningResult(barcodeScannerName: "RTU UI Barcode Scanner",
+                                                       scannedItems: barcodeResults)
+                presentationMode.wrappedValue.dismiss()
+                
+            } else if cancelled {
+                
+                presentationMode.wrappedValue.dismiss()
+            }
+        })
         return scannerViewController
     }
     
-    func updateUIViewController(_ uiViewController: SBSDKUIBarcodeScannerViewController, context: Context) {
-        uiViewController.isRecognitionEnabled = isRecognitionEnabled
-    }
+    func updateUIViewController(_ uiViewController: SBSDKUI2BarcodeScannerViewController, context: Context) { }
 }
 
 extension BarcodeScannerRTUUIView {
-    final class Coordinator: NSObject, SBSDKUIBarcodeScannerViewControllerDelegate, UINavigationControllerDelegate {
+    final class Coordinator: NSObject, UINavigationControllerDelegate {
         
         private var parent: BarcodeScannerRTUUIView
         
         init(_ parent: BarcodeScannerRTUUIView) {
             self.parent = parent
-        }
-        
-        func qrBarcodeDetectionViewController(_ viewController: SBSDKUIBarcodeScannerViewController,
-                                              didDetect barcodeResults: [SBSDKBarcodeScannerResult]) {
-            if parent.presentationMode.wrappedValue.isPresented {
-                parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "RTU UI Barcode Scanner",
-                                                       scannedBarcodes: barcodeResults)
-                parent.presentationMode.wrappedValue.dismiss()
-                parent.isRecognitionEnabled = false
-            }
-        }
-        
-        func qrBarcodeDetectionViewControllerDidCancel(_ viewController: SBSDKUIBarcodeScannerViewController) {
-            parent.presentationMode.wrappedValue.dismiss()
         }
     }
 }
