@@ -59,6 +59,7 @@ extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewContr
             indicator?.stopAnimating()
         }
         if let document = result.document, let sourceImage = result.croppedImage {
+            controller.resetDocumentAccumulation()
             display(document: document, with: sourceImage)
         }
     }
