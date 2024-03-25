@@ -49,7 +49,7 @@ class UsecaseScanDocument: Usecase, SBSDKUIDocumentScannerViewControllerDelegate
                                 didFinishWith document: SBSDKDocument) {
         
         Self.currentSettings = viewController.currentSettings
-        if document.numberOfPages > 0 {
+        if document.pages.count > 0 {
             if let navigationController = presenter as? UINavigationController {
                 UsecaseBrowseDocumentPages(document: self.document).start(presenter: navigationController)
                 viewController.presentingViewController?.dismiss(animated: true, completion: nil)

@@ -53,6 +53,9 @@ class MainTableViewItemProvider {
         let barcodesMultiARItem = MainTableViewItem(title: "Scan unique barcodes with AR overlay",
                                                     action: { actionHandler.showMultiARBarcodeScanner() })
         
+        let barcodesFindAndPickItem = MainTableViewItem(title: "Scan a barcode using Find-and-Pick",
+                                                  action: { actionHandler.showFindAndPickBarcodeScanner() })
+
         let textScanItem = MainTableViewItem(title: "Extract text data",
                                              action: { actionHandler.showTextDataScanner() })
         
@@ -68,9 +71,9 @@ class MainTableViewItemProvider {
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [barcodesSingleItem, barcodesSingleARItem, barcodesMultiItem, barcodesMultiARItem,
+        let items2 = [barcodesSingleItem, barcodesSingleARItem, barcodesMultiItem, barcodesMultiARItem, 
+                      barcodesFindAndPickItem, 
                       mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem, vinScanItem]
-        
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })

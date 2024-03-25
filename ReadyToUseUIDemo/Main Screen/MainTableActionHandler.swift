@@ -136,6 +136,12 @@ class MainTableActionHandler: NSObject {
         }        
     }
 
+    func showFindAndPickBarcodeScanner() {
+        guardLicense {
+            UsecaseFindAndPickScanBarcode().start(presenter: self.presenter)
+        }        
+    }
+
     func showSingleARBarcodeScanner() {
         guardLicense {
             UsecaseSingleARScanBarcode().start(presenter: self.presenter)

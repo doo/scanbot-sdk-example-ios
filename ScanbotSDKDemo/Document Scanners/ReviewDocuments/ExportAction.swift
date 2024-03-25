@@ -48,9 +48,11 @@ class ExportAction {
             
             let writer = SBSDKTIFFImageWriter(parameters: params)
             
-            let result = writer.writeTIFF(from: imageURLs, toFile: url)
-            DispatchQueue.main.async {
-                completion(result == true ? url : nil)
+            Task {
+                let result = await writer.writeTIFFAsync(from: imageURLs, toFile: url)
+                DispatchQueue.main.async { 
+                    completion(result) 
+                }
             }
         }
     }
