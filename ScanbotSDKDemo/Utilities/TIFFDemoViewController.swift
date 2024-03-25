@@ -56,7 +56,7 @@ final class TIFFDemoViewController: UIViewController {
             let writer = SBSDKTIFFImageWriter(parameters: parameters)
             if let result = await writer.writeTIFFAsync(with: images, toFile: fileURL) {
                 let alert = UIAlertController(title: "File saved",
-                                              message: "At path: \(fileURL.path)",
+                                              message: "At path: \(result.path)",
                                               preferredStyle: .alert)
                 let okAction = UIAlertAction(title: "OK",
                                              style: .default,
