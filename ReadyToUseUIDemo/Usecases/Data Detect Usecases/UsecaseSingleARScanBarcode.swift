@@ -16,7 +16,7 @@ class UsecaseSingleARScanBarcode: Usecase {
         
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
         
-        let useCase = SBSDKUI2BarcodeUseCase.singleScanningMode()
+        let useCase = SBSDKUI2SingleScanningMode()
         useCase.arOverlay.visible = true
         useCase.arOverlay.automaticSelectionEnabled = false
         configuration.useCase = useCase
