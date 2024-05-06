@@ -60,7 +60,7 @@ class MainTableActionHandler: NSObject {
         
     func showFinderDocumentScanning() {
         guardLicense {
-            UsecaseScanFinderDocument().start(presenter: self.presenter)
+            UsecaseScanFinderDocument(document: scannedDocument).start(presenter: self.presenter)
         }
     }
         
