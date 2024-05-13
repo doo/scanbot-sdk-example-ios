@@ -11,7 +11,7 @@ import ScanbotSDK
 
 class ExportAction {
     
-    static func exportToPDF(_ storage: SBSDKIndexedImageStorage, completion: @escaping (Error?, URL?) -> ()) {
+    static func exportToPDF(_ document: SBSDKDocument, completion: @escaping (Error?, URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
@@ -26,9 +26,7 @@ class ExportAction {
                                                   jpegQuality: 80,
                                                   ocrConfiguration: config)
             
-            let _ = SBSDKPDFRenderer(options: options).renderImageStorage(storage,
-                                                                          indexSet: nil,
-                                                                          output: url) { finished, error in
+            let _ = SBSDKPDFRenderer(options: options).renderDocument(document, output: url) { finished, error in
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
@@ -36,20 +34,19 @@ class ExportAction {
         }
     }
     
-    static func exportToTIFF(_ storage: SBSDKIndexedImageStorage, binarize: Bool, completion: @escaping (URL?) -> ()) {
+    static func exportToTIFF(_ document: SBSDKDocument, binarize: Bool, completion: @escaping (URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("tiff")
             
-            let imageURLs = storage.imageURLs
             let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
             : SBSDKTIFFImageWriterParameters.defaultParameters
             
             let writer = SBSDKTIFFImageWriter(parameters: params)
             
             Task {
-                let result = await writer.writeTIFFAsync(from: imageURLs, toFile: url)
+                let result = await writer.writeTIFFAsync(document: document, toFile: url)
                 DispatchQueue.main.async { 
                     completion(result) 
                 }
