@@ -84,7 +84,7 @@ final class ImageManager {
             page.polygon = polygon
         }
         if let filter = parameters.filter {
-            page.filter = filter
+            page.parametricFilters = [SBSDKLegacyFilter(filterType: filter.rawValue)]
         }
         return true
     }

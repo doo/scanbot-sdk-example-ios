@@ -34,7 +34,7 @@ class UsecaseFilterPage: Usecase {
                                        style: .default) { [weak self] _ in
                 DispatchQueue(label: "FilterQueue").async {
                     for index in 0..<(self?.document.pages.count ?? 0) {
-                        self?.document.page(at: index)?.filter = filterType
+                        self?.document.page(at: index)?.parametricFilters = [SBSDKLegacyFilter(filterType: filterType.rawValue)]
                     }
                 }
                 DispatchQueue.main.async {
