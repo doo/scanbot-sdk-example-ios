@@ -33,8 +33,8 @@ class UsecaseFilterPage: Usecase {
             let action = UIAlertAction(title: FilterManager.name(for: filterType),
                                        style: .default) { [weak self] _ in
                 DispatchQueue(label: "FilterQueue").async {
-                    for index in 0..<(self?.document.numberOfPages ?? 0) {
-                        self?.document.page(at: index)?.filter = filterType
+                    for index in 0..<(self?.document.pages.count ?? 0) {
+                        self?.document.page(at: index)?.parametricFilters = [SBSDKLegacyFilter(filterType: filterType.rawValue)]
                     }
                 }
                 DispatchQueue.main.async {

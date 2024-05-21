@@ -66,8 +66,7 @@ final class ReviewDocumentsViewController: UIViewController {
             let action = UIAlertAction(title: FilterManager.name(for: filterType), style: .default) { _ in
                 DispatchQueue(label: "FilterQueue").async { [weak self] in
                     for index in 0..<ImageManager.shared.numberOfImages {
-                        let parameters = ImageManager.shared.processingParametersAt(index: index) ?? ImageProcessingParameters()
-                        parameters.filter = filterType
+                        let parameters = ImageProcessingParameters(polygon: nil, filter: filterType, counterClockwiseRotations: nil)
                         if ImageManager.shared.processImageAt(index, withParameters: parameters) {
                             DispatchQueue.main.async {
                                 self?.reloadData()
@@ -96,7 +95,7 @@ final class ReviewDocumentsViewController: UIViewController {
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let exportPDF = UIAlertAction(title: "Export to PDF", style: .default) { [weak self] _ in
             self?.activityIndicator?.startAnimating()
-            ExportAction.exportToPDF(ImageManager.shared.processedImageStorage) { [weak self] (error, url) in
+            ExportAction.exportToPDF(ImageManager.shared.document) { [weak self] (error, url) in
                 self?.activityIndicator?.stopAnimating()
                 guard let url = url else {
                     print("Failed to render PDF. Description: \(error?.localizedDescription ?? "")")
@@ -108,7 +107,7 @@ final class ReviewDocumentsViewController: UIViewController {
 
         let exportBinarizedTIFF = UIAlertAction(title: "Export to Binarized TIFF", style: .default) { [weak self] _ in
             self?.activityIndicator?.startAnimating()
-            ExportAction.exportToTIFF(ImageManager.shared.processedImageStorage, binarize: true) { [weak self] url in
+            ExportAction.exportToTIFF(ImageManager.shared.document, binarize: true) { [weak self] url in
                 self?.activityIndicator?.stopAnimating()
                 guard let url = url else {
                     print("Failed to render TIFF.")
@@ -120,7 +119,7 @@ final class ReviewDocumentsViewController: UIViewController {
 
         let exportColorTIFF = UIAlertAction(title: "Export to Colored TIFF", style: .default) { [weak self] _ in
             self?.activityIndicator?.startAnimating()
-            ExportAction.exportToTIFF(ImageManager.shared.processedImageStorage, binarize: false) { [weak self] url in
+            ExportAction.exportToTIFF(ImageManager.shared.document, binarize: false) { [weak self] url in
                 self?.activityIndicator?.stopAnimating()
                 guard let url = url else {
                     print("Failed to render TIFF.")
@@ -211,14 +210,13 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
 extension ReviewDocumentsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 
-        guard let image = ImageManager.shared.originalImageAt(index: indexPath.item),
-              let params = ImageManager.shared.processingParametersAt(index: indexPath.item) else {
-                  return
+        guard let page = ImageManager.shared.pageAt(index: indexPath.item) else {
+            return
         }
 
         selectedImageIndex = indexPath.item
         
-        let editingViewController = SBSDKImageEditingViewController.create(image: image, polygon: params.polygon)
+        let editingViewController = SBSDKImageEditingViewController.create(page: page)
         editingViewController.delegate = self
         navigationController?.pushViewController(editingViewController, animated: true)
     }
@@ -231,16 +229,20 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
                                     croppedImage: UIImage) {
      
         guard let imageIndex = selectedImageIndex else { return }
-        guard let parameters = ImageManager.shared.processingParametersAt(index: imageIndex) else { return }
-        parameters.polygon = polygon
-        parameters.counterClockwiseRotations = -editingViewController.rotations
-        DispatchQueue(label: "FilterQueue").async { [weak self] in
-            if ImageManager.shared.processImageAt(imageIndex, withParameters: parameters) {
-                DispatchQueue.main.async {
-                    self?.reloadData()
-                }
-            }
+        guard let page = ImageManager.shared.pageAt(index: imageIndex) else { return }
+        guard let size = page.originalImage?.size else { return }
+        
+        var rotations = editingViewController.rotations
+        while rotations < 0 {
+            rotations += 4
         }
+        
+        polygon.rotateCCW(UInt(rotations), with: size)
+        
+        page.polygon = polygon
+        page.rotateClockwise(editingViewController.rotations)
+        
+        self.reloadData()
         selectedImageIndex = nil
         editingViewController.navigationController?.popViewController(animated: true)
     }

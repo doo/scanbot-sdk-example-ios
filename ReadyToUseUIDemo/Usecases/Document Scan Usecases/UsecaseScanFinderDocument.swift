@@ -11,6 +11,13 @@ import ScanbotSDK
 
 class UsecaseScanFinderDocument: Usecase, SBSDKUIFinderDocumentScannerViewControllerDelegate {
     
+    private let document: SBSDKDocument
+    
+    init(document: SBSDKDocument) {
+        self.document = document
+        super.init()
+    }
+    
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
@@ -18,8 +25,9 @@ class UsecaseScanFinderDocument: Usecase, SBSDKUIFinderDocumentScannerViewContro
         configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 1, height: 1.41)
         
         configuration.textConfiguration.cancelButtonTitle = "Done"
-        
-        let scanner = SBSDKUIFinderDocumentScannerViewController.createNew(configuration: configuration, delegate: self)
+        let scanner = SBSDKUIFinderDocumentScannerViewController.create(document: document,
+                                                                        configuration: configuration,
+                                                                        delegate: self)
         
         presentViewController(scanner)
     }

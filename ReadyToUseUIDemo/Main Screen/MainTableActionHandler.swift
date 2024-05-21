@@ -60,7 +60,7 @@ class MainTableActionHandler: NSObject {
         
     func showFinderDocumentScanning() {
         guardLicense {
-            UsecaseScanFinderDocument().start(presenter: self.presenter)
+            UsecaseScanFinderDocument(document: scannedDocument).start(presenter: self.presenter)
         }
     }
         
@@ -133,6 +133,12 @@ class MainTableActionHandler: NSObject {
     func showSingleBarcodeScanner() {
         guardLicense {
             UsecaseSingleScanBarcode().start(presenter: self.presenter)
+        }        
+    }
+
+    func showFindAndPickBarcodeScanner() {
+        guardLicense {
+            UsecaseFindAndPickScanBarcode().start(presenter: self.presenter)
         }        
     }
 

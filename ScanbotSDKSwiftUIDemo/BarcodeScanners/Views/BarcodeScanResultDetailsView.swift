@@ -24,7 +24,7 @@ struct BarcodeScanResultDetailsView: View {
                     .scaledToFit()
                     .frame(width: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100,
                            height: scanResult.barcodeImage.size.equalTo(.zero) ? 0 : 100)
-                Text(scanResult.type.name)
+                Text(scanResult.type?.name ?? "")
                     .foregroundColor(.secondary)
                     .padding(.vertical, 8)
                 Text(scanResult.rawTextStringWithExtension)

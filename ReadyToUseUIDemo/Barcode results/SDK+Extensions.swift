@@ -1,8 +1,9 @@
 //
-//  SBSDKUI2BarcodeFormat+extention.swift
-//  ScanbotSDKSwiftUIDemo
+//  BarcodeFormat+Type.swift
+//  ScanbotBarcodeScannerSDKDemo
 //
-//  Created by Rana Sohaib on 16.01.24.
+//  Created by Rana Sohaib on 26.02.24.
+//  Copyright © 2024 doo GmbH. All rights reserved.
 //
 
 import ScanbotSDK
@@ -66,7 +67,7 @@ extension SBSDKUI2BarcodeFormat {
         case .databarExpanded:
             return SBSDKBarcodeType.databarExpanded
         case .microPdf417:
-            return SBSDKBarcodeType.microPdf417
+            return .microPdf417
         default: fatalError("Unknown barcode format")
         }
     }

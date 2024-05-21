@@ -84,7 +84,7 @@ final class DocumentReviewViewController: UIViewController {
     }
     
     @IBAction private func clearButtonDidPress(_ sender: Any) {
-        while document.numberOfPages > 0 {
+        while document.pages.count > 0 {
             document.removePage(at: 0)
         }
         SBSDKDocumentPageFileStorage.defaultStorage.removeAll()
@@ -94,7 +94,7 @@ final class DocumentReviewViewController: UIViewController {
     private func reloadData() {
         collectionView?.reloadData()
         [exportButton, filterButton, qualityButton, clearButton]
-            .forEach({ $0?.isEnabled = document.numberOfPages > 0 })
+            .forEach({ $0?.isEnabled = document.pages.count > 0 })
     }
     
     private func calculateQualityFor(_ item: Int) {
@@ -136,7 +136,7 @@ extension SBSDKDocumentQuality {
 // MARK: - UICollectionViewDataSource
 extension DocumentReviewViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return document.numberOfPages
+        return document.pages.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

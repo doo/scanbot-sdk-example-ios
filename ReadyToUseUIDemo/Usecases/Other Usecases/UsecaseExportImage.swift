@@ -106,7 +106,7 @@ class UsecaseExportImage: Usecase {
                 .appendingPathExtension("tiff")
             
             var images: [UIImage] = []
-            for i in 0..<self.document.numberOfPages {
+            for i in 0..<self.document.pages.count {
                 if let page = self.document.page(at: i), let url = page.documentImage {
                     images.append(url)
                 }
@@ -117,11 +117,7 @@ class UsecaseExportImage: Usecase {
             : SBSDKTIFFImageWriterParameters.defaultParameters
             
             let writer = SBSDKTIFFImageWriter(parameters: params)
-            let result = writer.writeTIFF(with: images, toFile: url)
-
-            DispatchQueue.main.async {
-                completion(result == true ? url : nil)
-            }
+            writer.writeTIFF(with: images, toFile: url, completion: completion)
         }
     }
 }

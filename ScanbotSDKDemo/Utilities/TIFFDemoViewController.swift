@@ -52,16 +52,18 @@ final class TIFFDemoViewController: UIViewController {
         } else {
             parameters.compression = SBSDKTIFFImageWriterCompressionOptions.lzw
         }
-        let writer = SBSDKTIFFImageWriter(parameters: parameters)
-        if writer.writeTIFF(with: images, toFile: fileURL) {
-            let alert = UIAlertController(title: "File saved",
-                                          message: "At path: \(fileURL.path)",
-                                          preferredStyle: .alert)
-            let okAction = UIAlertAction(title: "OK",
-                                         style: .default,
-                                         handler: nil)
-            alert.addAction(okAction)
-            present(alert, animated: true, completion: nil)
+        Task {
+            let writer = SBSDKTIFFImageWriter(parameters: parameters)
+            if let result = await writer.writeTIFFAsync(with: images, toFile: fileURL) {
+                let alert = UIAlertController(title: "File saved",
+                                              message: "At path: \(result.path)",
+                                              preferredStyle: .alert)
+                let okAction = UIAlertAction(title: "OK",
+                                             style: .default,
+                                             handler: nil)
+                alert.addAction(okAction)
+                present(alert, animated: true, completion: nil)
+            }
         }
     }
 }

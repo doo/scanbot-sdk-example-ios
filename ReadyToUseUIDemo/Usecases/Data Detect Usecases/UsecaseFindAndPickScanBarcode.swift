@@ -1,27 +1,33 @@
 //
-//  UsecaseSingleARScanBarcode.swift
+//  UsecaseFindAndPickScanBarcode.swift
 //  ReadyToUseUIDemo
 //
-//  Created by Sebastian Husche on 22.12.23.
-//  Copyright © 2023 doo GmbH. All rights reserved.
+//  Created by Sebastian Husche on 25.03.24.
+//  Copyright © 2024 doo GmbH. All rights reserved.
 //
 
 import Foundation
 import ScanbotSDK
 
-class UsecaseSingleARScanBarcode: Usecase {
+class UsecaseFindAndPickScanBarcode: Usecase {
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        configuration.userGuidance.title.text = "Please align the QR-/Barcode in the frame above to scan it."
         
-        let useCase = SBSDKUI2SingleScanningMode()
-        useCase.arOverlay.visible = true
-        useCase.arOverlay.automaticSelectionEnabled = false
-        configuration.useCase = useCase
+        let usecase = SBSDKUI2FindAndPickScanningMode()
+        usecase.arOverlay.automaticSelectionEnabled = false
+        usecase.arOverlay.visible = true
+        usecase.allowPartialScan = true
         
-        configuration.viewFinder.visible = false
+        usecase.expectedBarcodes = [
+            SBSDKUI2ExpectedBarcode(barcodeValue: "ScanbotSDK", title: "ScanbotSDK", image: "https://avatars.githubusercontent.com/u/1454920?s=280&v=4", count: 4),
+            SBSDKUI2ExpectedBarcode(barcodeValue: "Hello world!", title: "Hello world!", image: "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/HelloWorld_in_black_and_white.svg/240px-HelloWorld_in_black_and_white.svg.png", count: 3)
+        ]
+        
+        configuration.useCase = usecase
         
         let scanner = SBSDKUI2BarcodeScannerViewController.create(with: configuration) { controller, cancelled, error, result in
             

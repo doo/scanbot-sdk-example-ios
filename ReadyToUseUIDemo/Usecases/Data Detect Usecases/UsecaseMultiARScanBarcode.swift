@@ -16,7 +16,7 @@ class UsecaseMultiARScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
         
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
         
-        let useCase = SBSDKUI2BarcodeUseCase.multipleScanningMode()
+        let useCase = SBSDKUI2MultipleScanningMode()
         useCase.mode = .unique
         useCase.arOverlay.visible = true
         useCase.arOverlay.automaticSelectionEnabled = false
@@ -42,8 +42,11 @@ class UsecaseMultiARScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
     
     func mapBarcodeItem(item: SBSDKUI2BarcodeItem, onResult: @escaping (SBSDKUI2BarcodeMappedData) -> Void, onError: @escaping () -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+            
+            let subtitle = item.type?.toBarcodeType().name ?? "---"
+            
             let mappedData = SBSDKUI2BarcodeMappedData(title: item.textWithExtension, 
-                                                       subtitle: "\(item.type)", 
+                                                       subtitle: subtitle, 
                                                        barcodeImage: "")
             onResult(mappedData)
         }
