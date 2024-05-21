@@ -29,6 +29,7 @@ struct BarcodeScannerContainerView: View {
             .onDisappear { self.isRecognitionEnabled = false }
     }
     
+    @ViewBuilder
     private func viewForScanner(_ scanner: BarcodeScanner) -> some View {
         Group {
             switch scanner {
@@ -38,8 +39,8 @@ struct BarcodeScannerContainerView: View {
                 BarcodeScannerClassicView(scanningResult: $scanningResult,
                                           isRecognitionEnabled: $isRecognitionEnabled,
                                           selectedBarcode: $selectedBarcode)
-            case .manuallyComposed:
-                BarcodeScannerManuallyComposedView(scanningResult: $scanningResult)
+            case .swiftUI:
+                BarcodeScannerSwiftUIView(scanningResult: $scanningResult)
             }
         }
     }

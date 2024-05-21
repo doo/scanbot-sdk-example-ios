@@ -32,12 +32,12 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		08087B262BFCFC2000D4E6F5 /* BarcodeScannerSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08087B252BFCFC2000D4E6F5 /* BarcodeScannerSwiftUIView.swift */; };
 		0880493127919FAF005BE275 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; };
 		0880493227919FAF005BE275 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08072F732721754B00863F12 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		285AE383271ED06300B5F728 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE380271ED06300B5F728 /* BarcodeScanner.swift */; };
 		285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */; };
 		285AE38C271ED0A000B5F728 /* BarcodeScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */; };
-		285AE38D271ED0A000B5F728 /* BarcodeScannerManuallyComposedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE38A271ED0A000B5F728 /* BarcodeScannerManuallyComposedView.swift */; };
 		285AE38E271ED0A000B5F728 /* BarcodeScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE38B271ED0A000B5F728 /* BarcodeScannerRTUUIView.swift */; };
 		285AE391271ED0C500B5F728 /* BarcodeScannerResultsCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE38F271ED0C500B5F728 /* BarcodeScannerResultsCellView.swift */; };
 		285AE396271ED0D300B5F728 /* BarcodeScannerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE393271ED0D300B5F728 /* BarcodeScannerContainerView.swift */; };
@@ -81,10 +81,10 @@
 /* Begin PBXFileReference section */
 		08072F5A27215CA200863F12 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08072F732721754B00863F12 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
+		08087B252BFCFC2000D4E6F5 /* BarcodeScannerSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerSwiftUIView.swift; sourceTree = "<group>"; };
 		285AE380271ED06300B5F728 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanningResult.swift; sourceTree = "<group>"; };
 		285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerClassicView.swift; sourceTree = "<group>"; };
-		285AE38A271ED0A000B5F728 /* BarcodeScannerManuallyComposedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerManuallyComposedView.swift; sourceTree = "<group>"; };
 		285AE38B271ED0A000B5F728 /* BarcodeScannerRTUUIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerRTUUIView.swift; sourceTree = "<group>"; };
 		285AE38F271ED0C500B5F728 /* BarcodeScannerResultsCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsCellView.swift; sourceTree = "<group>"; };
 		285AE393271ED0D300B5F728 /* BarcodeScannerContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerContainerView.swift; sourceTree = "<group>"; };
@@ -158,7 +158,7 @@
 			children = (
 				285AE38B271ED0A000B5F728 /* BarcodeScannerRTUUIView.swift */,
 				285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */,
-				285AE38A271ED0A000B5F728 /* BarcodeScannerManuallyComposedView.swift */,
+				08087B252BFCFC2000D4E6F5 /* BarcodeScannerSwiftUIView.swift */,
 			);
 			path = "SDK Wrappers";
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					08072F5D27216B4200863F12 = {
 						CreatedOnToolsVersion = 13.0;
@@ -340,7 +340,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"5.1.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"5.1.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC14\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		08072F6827216B9700863F12 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -370,10 +370,10 @@
 				285AE3A5271F060600B5F728 /* DocumentPagesContainer.swift in Sources */,
 				285AE391271ED0C500B5F728 /* BarcodeScannerResultsCellView.swift in Sources */,
 				285AE38E271ED0A000B5F728 /* BarcodeScannerRTUUIView.swift in Sources */,
-				285AE38D271ED0A000B5F728 /* BarcodeScannerManuallyComposedView.swift in Sources */,
 				2878D92727185E530045F7EE /* MainListView.swift in Sources */,
 				285AE3A2271F05FD00B5F728 /* DocumentPageEditingView.swift in Sources */,
 				285AE3A3271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift in Sources */,
+				08087B262BFCFC2000D4E6F5 /* BarcodeScannerSwiftUIView.swift in Sources */,
 				285AE38C271ED0A000B5F728 /* BarcodeScannerClassicView.swift in Sources */,
 				285AE396271ED0D300B5F728 /* BarcodeScannerContainerView.swift in Sources */,
 				285AE383271ED06300B5F728 /* BarcodeScanner.swift in Sources */,

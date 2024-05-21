@@ -11,7 +11,7 @@ import ScanbotSDK
 enum BarcodeScanner: Identifiable, CaseIterable {
     case rtuUI
     case classic
-    case manuallyComposed
+    case swiftUI
     
     var id: Self { self }
     
@@ -21,15 +21,15 @@ enum BarcodeScanner: Identifiable, CaseIterable {
             return "RTU UI Barcode Scanner"
         case .classic:
             return "Classic Barcode Scanner"
-        case .manuallyComposed:
-            return "Manually Built Barcode Scanner"
+        case .swiftUI:
+            return "Swift UI component"
         }
     }
     
     var shouldPresentModally: Bool {
         switch self {
-        case .rtuUI: return true
-        case .classic, .manuallyComposed: return false
+        case .rtuUI, .swiftUI: return true
+        case .classic: return false
         }
     }
 }

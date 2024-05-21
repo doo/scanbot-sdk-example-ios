@@ -10,7 +10,7 @@ import ScanbotSDK
 struct BarcodeResult: Identifiable {
     let id = UUID()
     
-    let type: SBSDKBarcodeType
+    let type: SBSDKBarcodeType?
     let rawTextString: String
     let rawTextStringWithExtension: String
     let barcodeImage: UIImage
@@ -33,7 +33,7 @@ struct BarcodeScanningResult {
     init(barcodeScannerName: String = "", scannedItems: [SBSDKUI2BarcodeItem] = []) {
         self.barcodeScannerName = barcodeScannerName
         self.scannedBarcodes = scannedItems.map({ barcode in
-            return BarcodeResult(type: barcode.type.toBarcodeType(),
+            return BarcodeResult(type: barcode.type?.toBarcodeType(),
                                  rawTextString: barcode.text,
                                  rawTextStringWithExtension: barcode.textWithExtension,
                                  barcodeImage: UIImage())

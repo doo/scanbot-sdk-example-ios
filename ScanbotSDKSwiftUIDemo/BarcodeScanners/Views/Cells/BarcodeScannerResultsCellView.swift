@@ -23,7 +23,7 @@ struct BarcodeScannerResultsCellView: View {
             VStack(alignment: .leading) {
                 Text(barcode.rawTextStringWithExtension)
                     .lineLimit(2)
-                Text(barcode.type.name)
+                Text(barcode.type?.name ?? "")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
             }
