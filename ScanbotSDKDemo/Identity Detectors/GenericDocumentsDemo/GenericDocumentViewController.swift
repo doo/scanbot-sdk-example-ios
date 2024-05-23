@@ -58,7 +58,7 @@ extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewContr
         if result.status == .success {
             indicator?.stopAnimating()
         }
-        if let document = result.document, let sourceImage = result.croppedImage {
+        if let document = result.document, let sourceImage = document.crop {
             controller.resetDocumentAccumulation()
             display(document: document, with: sourceImage)
         }
@@ -76,7 +76,6 @@ extension GenericDocumentViewController: UIImagePickerControllerDelegate, UINavi
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
             let recognizer = SBSDKGenericDocumentRecognizer(acceptedDocumentTypes: self.documentTypes())
-            recognizer.isAccumulatingDocuments = false
             
             if let image = image, let document = recognizer.recognize(on: image)?.document {
                 self.display(document: document, with: image)
