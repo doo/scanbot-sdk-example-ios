@@ -81,7 +81,8 @@ class UsecaseExportImage: Usecase {
                                                   dpi: 200,
                                                   resample: true,
                                                   jpegQuality: 80,
-                                                  ocrConfiguration: config)
+                                                  ocrConfiguration: config,
+                                                  pdfAttributes: nil)
             do {
                 try SBSDKUIPDFRenderer.renderDocument(self.document,
                                                       with: options,

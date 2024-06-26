@@ -17,14 +17,24 @@ class ExportAction {
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
             
+            
             let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+            
+            let attributes = SBSDKPDFAttributes(author: "Scanbot SDK Example App", 
+                                                creator: "Scanbot SDK", 
+                                                title: "Demo", 
+                                                subject: "PDF Attributes", 
+                                                keywords: ["Scanbot", "SDK", "Demo", "Example"])
+            
+            
             let options = SBSDKPDFRendererOptions(pageSize: .custom,
                                                   pageFitMode: .fitIn,
                                                   pageOrientation: .auto,
                                                   dpi: 200,
                                                   resample: true,
                                                   jpegQuality: 80,
-                                                  ocrConfiguration: config)
+                                                  ocrConfiguration: config,
+                                                  pdfAttributes: attributes)
             
             let _ = SBSDKPDFRenderer(options: options).renderDocument(document, output: url) { finished, error in
                 DispatchQueue.main.async {

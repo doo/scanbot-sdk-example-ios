@@ -13,18 +13,23 @@ struct BarcodeScannerSwiftUIView: View {
     
     @Binding var scanningResult: BarcodeScanningResult
     
-    @State private var isCancelled: Bool = false
+    @State private var isShown: Bool = true
     @State private var scanError: Error? = nil
     @State private var result: SBSDKUI2BarcodeScannerResult? = nil
 
     var body: some View {
-        SBSDKUI2BarcodeScannerView(configuration: SBSDKUI2BarcodeScannerConfiguration(), 
-                                   isCancelled: $isCancelled, 
-                                   error: $scanError, 
-                                   result: $result)
-        .onDisappear() {
-            if let result, !isCancelled {
-                scanningResult = BarcodeScanningResult(barcodeScannerName: "SwiftUI Barcode Scanner", scannedItems: result.items)
+        if isShown {
+            SBSDKUI2BarcodeScannerView(configuration: SBSDKUI2BarcodeScannerConfiguration(),
+                                       isShown: $isShown,
+                                       error: $scanError,
+                                       result: $result)
+            .onDisappear() {
+                withAnimation {
+                    presentationMode.wrappedValue.dismiss()
+                    if let result {
+                        scanningResult = BarcodeScanningResult(barcodeScannerName: "SwiftUI Barcode Scanner", scannedItems: result.items)
+                    }
+                }
             }
         }
     }

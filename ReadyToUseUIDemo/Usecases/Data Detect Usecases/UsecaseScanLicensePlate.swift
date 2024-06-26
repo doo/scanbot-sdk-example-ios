@@ -21,7 +21,12 @@ class UsecaseScanLicensePlate: Usecase, SBSDKUILicensePlateScannerViewController
 
     func licensePlateScanner(_ controller: SBSDKUILicensePlateScannerViewController,
                              didRecognizeLicensePlate result: SBSDKLicensePlateScannerResult) {
-        didFinish()
+        guard result.isValidationSuccessful else {
+            return
+        }
+        let message = result.licensePlate
+        let title = "License plate found"
+        UIAlertController.showInfoAlert(title, message: message, presenter: presenter!, completion: nil)
     }
 
     func licensePlateScannerDidCancel(_ controller: SBSDKUILicensePlateScannerViewController) {

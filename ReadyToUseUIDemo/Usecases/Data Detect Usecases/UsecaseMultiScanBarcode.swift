@@ -52,7 +52,7 @@ class UsecaseMultiScanBarcode: Usecase, SBSDKUI2BarcodeItemMapper {
     }
     
     func showResult(_ presenter: UIViewController, result: SBSDKUI2BarcodeScannerResult) {
-        let message = result.items.map { $0.text + " (\($0.count))"  }.joined(separator: "\n")
+        let message = result.items.map { $0.textWithExtension + " (\($0.count))"  }.joined(separator: "\n")
         let alert = UIAlertController(title: "\(result.items.count) barcodes found", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Okay", style: .default))
         presenter.present(alert, animated: true)
