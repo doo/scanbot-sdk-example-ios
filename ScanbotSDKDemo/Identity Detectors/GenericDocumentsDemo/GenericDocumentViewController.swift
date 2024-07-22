@@ -21,6 +21,7 @@ class GenericDocumentViewController: UIViewController {
                                                                              acceptedDocumentTypes: documentTypes(),
                                                                              excludedFieldTypes: nil,
                                                                              delegate: self)
+        scannerViewController?.resultAccumulatorConfiguration = SBSDKGenericDocumentRecogizerAccumulationConfiguration()
         
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.hidesWhenStopped = true
