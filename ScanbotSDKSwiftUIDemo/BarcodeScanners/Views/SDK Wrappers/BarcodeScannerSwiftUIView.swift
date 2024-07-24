@@ -19,10 +19,14 @@ struct BarcodeScannerSwiftUIView: View {
 
     var body: some View {
         if isShown {
-            SBSDKUI2BarcodeScannerView(configuration: SBSDKUI2BarcodeScannerConfiguration(),
-                                       isShown: $isShown,
-                                       error: $scanError,
-                                       result: $result)
+            SBSDKUI2BarcodeScannerView(configuration: SBSDKUI2BarcodeScannerConfiguration()) { result in
+                self.result = result
+                isShown.toggle()
+            } onCancel: { 
+                
+            } onError: { error in
+                scanError = error
+            }
             .onDisappear() {
                 withAnimation {
                     presentationMode.wrappedValue.dismiss()
