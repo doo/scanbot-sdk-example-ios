@@ -95,7 +95,7 @@
 		285AE39E271F05FD00B5F728 /* DocumentPageEditingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPageEditingView.swift; sourceTree = "<group>"; };
 		285AE39F271F05FD00B5F728 /* DocumentPagesOverviewScreen.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPagesOverviewScreen.swift; sourceTree = "<group>"; };
 		285AE3A4271F060600B5F728 /* DocumentPagesContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentPagesContainer.swift; sourceTree = "<group>"; };
-		2878D92127185E530045F7EE /* ScanbotSDKSwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ScanbotSDKSwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2878D92127185E530045F7EE /* SwiftUIComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUIComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanbotSDKSwiftUIDemoApp.swift; sourceTree = "<group>"; };
 		2878D92627185E530045F7EE /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		2878D92827185E540045F7EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 		2878D91827185E530045F7EE = {
 			isa = PBXGroup;
 			children = (
-				2878D92327185E530045F7EE /* ScanbotSDKSwiftUIDemo */,
+				2878D92327185E530045F7EE /* SwiftUIComponentsExample */,
 				08072F722721752A00863F12 /* Frameworks */,
 				2878D92227185E530045F7EE /* Products */,
 			);
@@ -219,12 +219,12 @@
 		2878D92227185E530045F7EE /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2878D92127185E530045F7EE /* ScanbotSDKSwiftUIDemo.app */,
+				2878D92127185E530045F7EE /* SwiftUIComponentsExample.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2878D92327185E530045F7EE /* ScanbotSDKSwiftUIDemo */ = {
+		2878D92327185E530045F7EE /* SwiftUIComponentsExample */ = {
 			isa = PBXGroup;
 			children = (
 				2878D92427185E530045F7EE /* ScanbotSDKSwiftUIDemoApp.swift */,
@@ -233,7 +233,7 @@
 				285AE338271ECF9100B5F728 /* BarcodeScanners */,
 				2897307C271DBEDF00D1AFFC /* Resources */,
 			);
-			path = ScanbotSDKSwiftUIDemo;
+			path = SwiftUIComponentsExample;
 			sourceTree = "<group>";
 		};
 		2897307C271DBEDF00D1AFFC /* Resources */ = {
@@ -248,9 +248,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2878D92027185E530045F7EE /* ScanbotSDKSwiftUIDemo */ = {
+		2878D92027185E530045F7EE /* SwiftUIComponentsExample */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2878D92F27185E540045F7EE /* Build configuration list for PBXNativeTarget "ScanbotSDKSwiftUIDemo" */;
+			buildConfigurationList = 2878D92F27185E540045F7EE /* Build configuration list for PBXNativeTarget "SwiftUIComponentsExample" */;
 			buildPhases = (
 				2878D91D27185E530045F7EE /* Sources */,
 				2878D91E27185E530045F7EE /* Frameworks */,
@@ -262,11 +262,11 @@
 			dependencies = (
 				08072F6327216B5900863F12 /* PBXTargetDependency */,
 			);
-			name = ScanbotSDKSwiftUIDemo;
+			name = SwiftUIComponentsExample;
 			packageProductDependencies = (
 			);
 			productName = ScanbotSDKSwiftUIDemo;
-			productReference = 2878D92127185E530045F7EE /* ScanbotSDKSwiftUIDemo.app */;
+			productReference = 2878D92127185E530045F7EE /* SwiftUIComponentsExample.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -290,7 +290,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2878D91C27185E530045F7EE /* Build configuration list for PBXProject "ScanbotSDKSwiftUIDemo" */;
+			buildConfigurationList = 2878D91C27185E530045F7EE /* Build configuration list for PBXProject "SwiftUIComponentsExample" */;
 			compatibilityVersion = "Xcode 13.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -305,7 +305,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2878D92027185E530045F7EE /* ScanbotSDKSwiftUIDemo */,
+				2878D92027185E530045F7EE /* SwiftUIComponentsExample */,
 				08072F5D27216B4200863F12 /* Download SDK */,
 				08072F6427216B9000863F12 /* Delete SDK */,
 			);
@@ -564,7 +564,7 @@
 					"$(PROJECT_DIR)/ScanbotSDK",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScanbotSDKSwiftUIDemo/Resources/Info.plist;
+				INFOPLIST_FILE = SwiftUIComponentsExample/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This demo needs access to the camera to scan documents and machine readable codes.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -605,7 +605,7 @@
 					"$(PROJECT_DIR)/ScanbotSDK",
 				);
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = ScanbotSDKSwiftUIDemo/Resources/Info.plist;
+				INFOPLIST_FILE = SwiftUIComponentsExample/Resources/Info.plist;
 				INFOPLIST_KEY_NSCameraUsageDescription = "This demo needs access to the camera to scan documents and machine readable codes.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -652,7 +652,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2878D91C27185E530045F7EE /* Build configuration list for PBXProject "ScanbotSDKSwiftUIDemo" */ = {
+		2878D91C27185E530045F7EE /* Build configuration list for PBXProject "SwiftUIComponentsExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2878D92D27185E540045F7EE /* Debug */,
@@ -661,7 +661,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2878D92F27185E540045F7EE /* Build configuration list for PBXNativeTarget "ScanbotSDKSwiftUIDemo" */ = {
+		2878D92F27185E540045F7EE /* Build configuration list for PBXNativeTarget "SwiftUIComponentsExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2878D93027185E540045F7EE /* Debug */,
