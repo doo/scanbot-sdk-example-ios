@@ -10,6 +10,13 @@ import Foundation
 import ScanbotSDK
 
 final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewControllerDelegate {
+    
+    let result: ReviewableScanResult
+    
+    init(result: ReviewableScanResult) {
+        self.result = result
+    }
+    
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
@@ -25,7 +32,15 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
                                        didRecognizeCheck result: SBSDKCheckRecognizerResult) {
         let title = "Check recognized"
         let message = result.stringRepresentation
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
+        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
+            if let image = result.checkImage {
+                self.result.images.append(image)
+                if let navigationController = self.presenter as? UINavigationController {
+                    UsecaseBrowseImages(result: self.result).start(presenter: navigationController)
+                    viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+                }
+            }
+        }
     }
     
     func checkRecognizerViewControllerDidCancel(_ viewController: SBSDKUICheckRecognizerViewController) {

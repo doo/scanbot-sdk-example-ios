@@ -10,6 +10,13 @@ import Foundation
 import ScanbotSDK
 
 class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerViewControllerDelegate {
+    
+    let result: ReviewableScanResult
+    
+    init(result: ReviewableScanResult) {
+        self.result = result
+    }
+    
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
@@ -32,11 +39,9 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerVi
         let message = result.stringRepresentation
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
             if let image = result.image {
-                let page = SBSDKDocumentPage(image: image, polygon: nil, filter: .none)
-                let document = SBSDKDocument()
-                document.add(page)
+                self.result.images.append(image)
                 if let navigationController = self.presenter as? UINavigationController {
-                    UsecaseBrowseDocumentPages(document: document).start(presenter: navigationController)
+                    UsecaseBrowseImages(result: self.result).start(presenter: navigationController)
                     viewController.presentingViewController?.dismiss(animated: true, completion: nil)
                 }
             }

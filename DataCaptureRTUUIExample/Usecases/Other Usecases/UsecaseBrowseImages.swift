@@ -1,5 +1,5 @@
 //
-//  UsecaseBrowseDocumentPages.swift
+//  UsecaseBrowseImages.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Sebastian Husche on 02.07.18.
@@ -9,12 +9,12 @@
 import UIKit
 import ScanbotSDK
 
-class UsecaseBrowseDocumentPages: Usecase {
+class UsecaseBrowseImages: Usecase {
 
-    private let document: SBSDKDocument
+    private let result: ReviewableScanResult
     
-    init(document: SBSDKDocument) {
-        self.document = document
+    init(result: ReviewableScanResult) {
+        self.result = result
         super.init()
     }
 
@@ -22,7 +22,7 @@ class UsecaseBrowseDocumentPages: Usecase {
         super.start(presenter: presenter)
                 
         if let presenter = presenter as? UINavigationController {
-            let viewController = DocumentReviewViewController.make(with: document)
+            let viewController = ReviewViewController.make(with: result)
             presenter.pushViewController(viewController, animated: true)
         }
     }

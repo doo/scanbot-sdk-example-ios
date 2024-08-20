@@ -1,6 +1,6 @@
 //
-//  ScanbotSDKSwiftUIDemoApp.swift
-//  ScanbotSDKSwiftUIDemo
+//  SwiftUIComponentsExample.swift
+//  SwiftUIComponentsExample
 //
 //  Created by Danil Voitenko on 14.10.21.
 //
@@ -9,7 +9,7 @@ import SwiftUI
 import ScanbotSDK
 
 @main
-struct ScanbotSDKSwiftUIDemoApp: App {
+struct SwiftUIComponentsExample: App {
         
     init() {
         Scanbot.setupDefaultLicenseFailureHandler()

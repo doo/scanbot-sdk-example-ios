@@ -1,6 +1,6 @@
 //
 //  BarcodeScannerSwiftUIView.swift
-//  ScanbotSDKSwiftUIDemo
+//  SwiftUIComponentsExample
 //
 //  Created by Sebastian Husche on 21.05.24.
 //

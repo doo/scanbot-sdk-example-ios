@@ -44,29 +44,14 @@
 		082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */; };
 		082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */; };
 		0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */; };
-		086812D62BB1BB6C00860D60 /* UsecaseFindAndPickScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 086812D52BB1BB6C00860D60 /* UsecaseFindAndPickScanBarcode.swift */; };
-		0879C5D92BF650BD0094FCF5 /* SDK+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0879C5D82BF650BD0094FCF5 /* SDK+Extensions.swift */; };
-		088816D92B568E9800946F3C /* UsecaseSingleARScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088816D82B568E9800946F3C /* UsecaseSingleARScanBarcode.swift */; };
-		088816DB2B568F0200946F3C /* UsecaseMultiScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088816DA2B568F0200946F3C /* UsecaseMultiScanBarcode.swift */; };
-		088816DD2B5690C200946F3C /* UsecaseMultiARScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088816DC2B5690C200946F3C /* UsecaseMultiARScanBarcode.swift */; };
 		0889D10F20EA700C00A36316 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D10E20EA700C00A36316 /* Usecase.swift */; };
 		0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */; };
-		0889D11720EA74B600A36316 /* UsecaseScanDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */; };
-		088F38652948A4FA00CD2B58 /* BarcodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */; };
-		08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */; };
-		08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */; };
-		08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */; };
-		08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */; };
+		08B6F2EE20EA892D00691231 /* UsecaseBrowseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2ED20EA892C00691231 /* UsecaseBrowseImages.swift */; };
 		08C9A5AD2B358C0D008DE11B /* SBSDKGeometryUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C9A5AC2B358C0D008DE11B /* SBSDKGeometryUtilities.swift */; };
-		08C9B7682B35EA7B008DE11B /* UsecaseSingleScanBarcode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08C9B7672B35EA7B008DE11B /* UsecaseSingleScanBarcode.swift */; };
 		2844F29428214D1E007C6B39 /* UsecaseRecognizeCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844F29328214D1E007C6B39 /* UsecaseRecognizeCheck.swift */; };
-		28A650E62788966200CFD548 /* DocumentReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E52788966200CFD548 /* DocumentReviewViewController.swift */; };
-		28A650E82788968500CFD548 /* DocumentReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E72788968500CFD548 /* DocumentReviewCollectionViewCell.swift */; };
-		28BDF60D2791DD7300CC34C8 /* BarcodeResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDF60C2791DD7300CC34C8 /* BarcodeResultListViewController.swift */; };
-		28BDF60F2791DD8400CC34C8 /* BarcodeResultListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDF60E2791DD8400CC34C8 /* BarcodeResultListCell.swift */; };
-		28BDF6112791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28BDF6102791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift */; };
+		28A650E62788966200CFD548 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E52788966200CFD548 /* ReviewViewController.swift */; };
+		28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E72788968500CFD548 /* ReviewCollectionViewCell.swift */; };
 		28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */; };
-		28F27303279059BD00C424AC /* UsecaseExportImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F27302279059BD00C424AC /* UsecaseExportImage.swift */; };
 		28F2730527918DEF00C424AC /* GenericDocumentResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2730427918DEF00C424AC /* GenericDocumentResultListViewController.swift */; };
 		28F273072791903200C424AC /* GenericDocumentResultTextListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273062791903200C424AC /* GenericDocumentResultTextListCell.swift */; };
 		28F2730A2791908F00C424AC /* GenericDocumentResultImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273092791908F00C424AC /* GenericDocumentResultImageListCell.swift */; };
@@ -75,7 +60,6 @@
 		6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
 		F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */; };
-		F1E439C529B75B4600B5550C /* UsecaseScanFinderDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1E439C429B75B4600B5550C /* UsecaseScanFinderDocument.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -124,29 +108,14 @@
 		082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewItemProvider.swift; sourceTree = "<group>"; };
 		082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
 		0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMedicalCertificate.swift; sourceTree = "<group>"; };
-		086812D52BB1BB6C00860D60 /* UsecaseFindAndPickScanBarcode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UsecaseFindAndPickScanBarcode.swift; sourceTree = "<group>"; };
-		0879C5D82BF650BD0094FCF5 /* SDK+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "SDK+Extensions.swift"; sourceTree = "<group>"; };
-		088816D82B568E9800946F3C /* UsecaseSingleARScanBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseSingleARScanBarcode.swift; sourceTree = "<group>"; };
-		088816DA2B568F0200946F3C /* UsecaseMultiScanBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseMultiScanBarcode.swift; sourceTree = "<group>"; };
-		088816DC2B5690C200946F3C /* UsecaseMultiARScanBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseMultiARScanBarcode.swift; sourceTree = "<group>"; };
 		0889D10E20EA700C00A36316 /* Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMRZ.swift; sourceTree = "<group>"; };
-		0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocument.swift; sourceTree = "<group>"; };
-		088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeFormatter.swift; sourceTree = "<group>"; };
-		08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseImportImage.swift; sourceTree = "<group>"; };
-		08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseBrowseDocumentPages.swift; sourceTree = "<group>"; };
-		08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseCropPage.swift; sourceTree = "<group>"; };
-		08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseFilterPage.swift; sourceTree = "<group>"; };
+		08B6F2ED20EA892C00691231 /* UsecaseBrowseImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseBrowseImages.swift; sourceTree = "<group>"; };
 		08C9A5AC2B358C0D008DE11B /* SBSDKGeometryUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBSDKGeometryUtilities.swift; sourceTree = "<group>"; };
-		08C9B7672B35EA7B008DE11B /* UsecaseSingleScanBarcode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseSingleScanBarcode.swift; sourceTree = "<group>"; };
 		2844F29328214D1E007C6B39 /* UsecaseRecognizeCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseRecognizeCheck.swift; sourceTree = "<group>"; };
-		28A650E52788966200CFD548 /* DocumentReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReviewViewController.swift; sourceTree = "<group>"; };
-		28A650E72788968500CFD548 /* DocumentReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		28BDF60C2791DD7300CC34C8 /* BarcodeResultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeResultListViewController.swift; sourceTree = "<group>"; };
-		28BDF60E2791DD8400CC34C8 /* BarcodeResultListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeResultListCell.swift; sourceTree = "<group>"; };
-		28BDF6102791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeResultDetailsViewController.swift; sourceTree = "<group>"; };
+		28A650E52788966200CFD548 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		28A650E72788968500CFD548 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanLicensePlate.swift; sourceTree = "<group>"; };
-		28F27302279059BD00C424AC /* UsecaseExportImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseExportImage.swift; sourceTree = "<group>"; };
 		28F2730427918DEF00C424AC /* GenericDocumentResultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultListViewController.swift; sourceTree = "<group>"; };
 		28F273062791903200C424AC /* GenericDocumentResultTextListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultTextListCell.swift; sourceTree = "<group>"; };
 		28F273092791908F00C424AC /* GenericDocumentResultImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultImageListCell.swift; sourceTree = "<group>"; };
@@ -157,7 +126,6 @@
 		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
 		F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanVIN.swift; sourceTree = "<group>"; };
-		F1E439C429B75B4600B5550C /* UsecaseScanFinderDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanFinderDocument.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -206,9 +174,8 @@
 				08C9A5AB2B358BFE008DE11B /* Helpers */,
 				0889D10D20EA6FA500A36316 /* Usecases */,
 				082D0A5A20C81760009B1A7A /* Main Screen */,
-				0889D0F420EA632800A36316 /* Document Review Screen */,
+				0889D0F420EA632800A36316 /* Review Screen */,
 				28F273082791903E00C424AC /* Generic Document results */,
-				28BDF60B2791DD2800CC34C8 /* Barcode results */,
 				082D0A3220C801AA009B1A7A /* AppDelegate.swift */,
 				082D0A3620C801AB009B1A7A /* Main.storyboard */,
 				082D0A3920C801AB009B1A7A /* Assets.xcassets */,
@@ -237,20 +204,19 @@
 			path = "Main Screen";
 			sourceTree = "<group>";
 		};
-		0889D0F420EA632800A36316 /* Document Review Screen */ = {
+		0889D0F420EA632800A36316 /* Review Screen */ = {
 			isa = PBXGroup;
 			children = (
-				28A650E52788966200CFD548 /* DocumentReviewViewController.swift */,
-				28A650E72788968500CFD548 /* DocumentReviewCollectionViewCell.swift */,
+				28A650E52788966200CFD548 /* ReviewViewController.swift */,
+				28A650E72788968500CFD548 /* ReviewCollectionViewCell.swift */,
 			);
-			path = "Document Review Screen";
+			path = "Review Screen";
 			sourceTree = "<group>";
 		};
 		0889D10D20EA6FA500A36316 /* Usecases */ = {
 			isa = PBXGroup;
 			children = (
 				0889D10E20EA700C00A36316 /* Usecase.swift */,
-				28BDF6122795707400CC34C8 /* Document Scan Usecases */,
 				28BDF613279570EA00CC34C8 /* Data Detect Usecases */,
 				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
 				2844F29328214D1E007C6B39 /* UsecaseRecognizeCheck.swift */,
@@ -269,36 +235,9 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		28BDF60B2791DD2800CC34C8 /* Barcode results */ = {
-			isa = PBXGroup;
-			children = (
-				0879C5D82BF650BD0094FCF5 /* SDK+Extensions.swift */,
-				088F38642948A4FA00CD2B58 /* BarcodeFormatter.swift */,
-				28BDF60C2791DD7300CC34C8 /* BarcodeResultListViewController.swift */,
-				28BDF60E2791DD8400CC34C8 /* BarcodeResultListCell.swift */,
-				28BDF6102791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift */,
-			);
-			path = "Barcode results";
-			sourceTree = "<group>";
-		};
-		28BDF6122795707400CC34C8 /* Document Scan Usecases */ = {
-			isa = PBXGroup;
-			children = (
-				0889D11620EA74B600A36316 /* UsecaseScanDocument.swift */,
-				F1E439C429B75B4600B5550C /* UsecaseScanFinderDocument.swift */,
-				08B6F2ED20EA892C00691231 /* UsecaseBrowseDocumentPages.swift */,
-			);
-			path = "Document Scan Usecases";
-			sourceTree = "<group>";
-		};
 		28BDF613279570EA00CC34C8 /* Data Detect Usecases */ = {
 			isa = PBXGroup;
 			children = (
-				086812D52BB1BB6C00860D60 /* UsecaseFindAndPickScanBarcode.swift */,
-				08C9B7672B35EA7B008DE11B /* UsecaseSingleScanBarcode.swift */,
-				088816D82B568E9800946F3C /* UsecaseSingleARScanBarcode.swift */,
-				088816DA2B568F0200946F3C /* UsecaseMultiScanBarcode.swift */,
-				088816DC2B5690C200946F3C /* UsecaseMultiARScanBarcode.swift */,
 				0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */,
 				692227BB2524A95E00E81886 /* UsecaseScanTextData.swift */,
 				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
@@ -310,10 +249,7 @@
 		28BDF614279572DB00CC34C8 /* Other Usecases */ = {
 			isa = PBXGroup;
 			children = (
-				08B6F2EB20EA774C00691231 /* UsecaseImportImage.swift */,
-				28F27302279059BD00C424AC /* UsecaseExportImage.swift */,
-				08B6F2EF20EA8BA000691231 /* UsecaseCropPage.swift */,
-				08B6F2FF20EA8DBA00691231 /* UsecaseFilterPage.swift */,
+				08B6F2ED20EA892C00691231 /* UsecaseBrowseImages.swift */,
 			);
 			path = "Other Usecases";
 			sourceTree = "<group>";
@@ -489,42 +425,26 @@
 			buildActionMask = 2147483647;
 			files = (
 				082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */,
-				28BDF60F2791DD8400CC34C8 /* BarcodeResultListCell.swift in Sources */,
-				088816DD2B5690C200946F3C /* UsecaseMultiARScanBarcode.swift in Sources */,
 				28F2730A2791908F00C424AC /* GenericDocumentResultImageListCell.swift in Sources */,
-				0879C5D92BF650BD0094FCF5 /* SDK+Extensions.swift in Sources */,
-				28A650E62788966200CFD548 /* DocumentReviewViewController.swift in Sources */,
+				28A650E62788966200CFD548 /* ReviewViewController.swift in Sources */,
 				69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */,
-				088816D92B568E9800946F3C /* UsecaseSingleARScanBarcode.swift in Sources */,
-				086812D62BB1BB6C00860D60 /* UsecaseFindAndPickScanBarcode.swift in Sources */,
-				28F27303279059BD00C424AC /* UsecaseExportImage.swift in Sources */,
-				28BDF6112791DDBE00CC34C8 /* BarcodeResultDetailsViewController.swift in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
-				28A650E82788968500CFD548 /* DocumentReviewCollectionViewCell.swift in Sources */,
+				28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */,
 				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseScanGenericDocument.swift in Sources */,
 				28F2730527918DEF00C424AC /* GenericDocumentResultListViewController.swift in Sources */,
 				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
 				28F273072791903200C424AC /* GenericDocumentResultTextListCell.swift in Sources */,
-				08B6F2F020EA8BA000691231 /* UsecaseCropPage.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
-				08B6F30020EA8DBA00691231 /* UsecaseFilterPage.swift in Sources */,
-				088F38652948A4FA00CD2B58 /* BarcodeFormatter.swift in Sources */,
-				08C9B7682B35EA7B008DE11B /* UsecaseSingleScanBarcode.swift in Sources */,
 				692227BC2524A95E00E81886 /* UsecaseScanTextData.swift in Sources */,
-				08B6F2EC20EA774C00691231 /* UsecaseImportImage.swift in Sources */,
 				2844F29428214D1E007C6B39 /* UsecaseRecognizeCheck.swift in Sources */,
 				0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */,
 				082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */,
 				08C9A5AD2B358C0D008DE11B /* SBSDKGeometryUtilities.swift in Sources */,
-				F1E439C529B75B4600B5550C /* UsecaseScanFinderDocument.swift in Sources */,
-				088816DB2B568F0200946F3C /* UsecaseMultiScanBarcode.swift in Sources */,
 				F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */,
-				08B6F2EE20EA892D00691231 /* UsecaseBrowseDocumentPages.swift in Sources */,
-				28BDF60D2791DD7300CC34C8 /* BarcodeResultListViewController.swift in Sources */,
-				0889D11720EA74B600A36316 /* UsecaseScanDocument.swift in Sources */,
+				08B6F2EE20EA892D00691231 /* UsecaseBrowseImages.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

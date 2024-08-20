@@ -13,7 +13,7 @@ class MainTableActionHandler: NSObject {
     
     let presenter: UIViewController
     
-    private(set) var scannedDocument = SBSDKDocument()
+    private var result = ReviewableScanResult()
     
     init(presenter: UIViewController) {
         self.presenter = presenter
@@ -51,18 +51,6 @@ class MainTableActionHandler: NSObject {
         
         presenter.present(alert, animated: true, completion: nil)
     }
-    
-    func showDocumentScanning() {
-        guardLicense {
-            UsecaseScanDocument(document: scannedDocument).start(presenter: self.presenter)
-        }
-    }
-        
-    func showFinderDocumentScanning() {
-        guardLicense {
-            UsecaseScanFinderDocument(document: scannedDocument).start(presenter: self.presenter)
-        }
-    }
         
     func showTextDataScanner() {
         guardLicense {
@@ -72,7 +60,7 @@ class MainTableActionHandler: NSObject {
     
     func showCheckRecognizer() {
         guardLicense {
-            UsecaseRecognizeCheck().start(presenter: self.presenter)
+            UsecaseRecognizeCheck(result: result).start(presenter: self.presenter)
         }
     }
     
@@ -90,19 +78,13 @@ class MainTableActionHandler: NSObject {
     
     func showMedicalCertificateScanning() {
         guardLicense {
-            UsecaseScanMedicalCertificate().start(presenter: self.presenter)
-        }
-    }
-    
-    func showImportImages() {
-        guardLicense {
-            UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
+            UsecaseScanMedicalCertificate(result: result).start(presenter: self.presenter)
         }
     }
     
     func showAllImages() {
         guardLicense {
-            UsecaseBrowseDocumentPages(document: self.scannedDocument).start(presenter: self.presenter)
+            UsecaseBrowseImages(result: result).start(presenter: self.presenter)
         }
     }
     
@@ -120,7 +102,7 @@ class MainTableActionHandler: NSObject {
     
     func showLicensePlateScanner() {
         guardLicense {
-            UsecaseScanLicensePlate().start(presenter: self.presenter)
+            UsecaseScanLicensePlate(result: result).start(presenter: self.presenter)
         }
     }
     
@@ -129,36 +111,4 @@ class MainTableActionHandler: NSObject {
             UsecaseScanVIN().start(presenter: self.presenter)
         }
     }
-    
-    func showSingleBarcodeScanner() {
-        guardLicense {
-            UsecaseSingleScanBarcode().start(presenter: self.presenter)
-        }        
-    }
-
-    func showFindAndPickBarcodeScanner() {
-        guardLicense {
-            UsecaseFindAndPickScanBarcode().start(presenter: self.presenter)
-        }        
-    }
-
-    func showSingleARBarcodeScanner() {
-        guardLicense {
-            UsecaseSingleARScanBarcode().start(presenter: self.presenter)
-        }        
-    }
-
-    func showMultiBarcodeScanner() {
-        guardLicense {
-            UsecaseMultiScanBarcode().start(presenter: self.presenter)
-        }        
-    }
-
-    func showMultiARBarcodeScanner() {
-        guardLicense {
-            UsecaseMultiARScanBarcode().start(presenter: self.presenter)
-        }        
-    }
-    
-    
 }

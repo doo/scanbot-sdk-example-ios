@@ -1,5 +1,5 @@
 //
-//  DocumentReviewCollectionViewCell.swift
+//  ReviewCollectionViewCell.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Danil Voitenko on 07.01.22.
@@ -9,17 +9,9 @@
 import UIKit
 import ScanbotSDK
 
-final class DocumentReviewCollectionViewCell: UICollectionViewCell {
+final class ReviewCollectionViewCell: UICollectionViewCell {
     @IBOutlet var previewImageView: UIImageView?
     @IBOutlet private var highlightView: UIView?
-    @IBOutlet private var infoLabel: UILabel!
-    
-    var infoLabelText: String? {
-        didSet {
-            infoLabel?.text = infoLabelText
-            infoLabel?.isHidden = (infoLabelText?.count ?? 0) == 0
-        }
-    }
     
     private var highlightFrame: CGRect {
         guard let imageView = previewImageView else { return .zero }
@@ -50,14 +42,6 @@ final class DocumentReviewCollectionViewCell: UICollectionViewCell {
                            animations: { self.highlightView?.alpha = newValue ? 1.0 : 0.0 },
                            completion: nil)
         }
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        infoLabel.clipsToBounds = true
-        infoLabel.layer.cornerRadius = 8.0
-        infoLabel.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
     }
     
     override func layoutSubviews() {

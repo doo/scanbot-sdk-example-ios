@@ -1,6 +1,6 @@
 //
 //  MainListView.swift
-//  ScanbotSDKSwiftUIDemo
+//  SwiftUIComponentsExample
 //
 //  Created by Danil Voitenko on 14.10.21.
 //
