@@ -35,4 +35,4 @@ framework or features, please visit our [Support Page](https://docs.scanbot.io/s
   * [Download the latest Scanbot SDK for iOS from our website](https://docs.scanbot.io/document-scanner-sdk/ios/getting-started/)
   * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`)
   * For Classical UI open `ClassicComponentsExample.xcodeproj` with Xcode, build and run
-  * For Ready-To-Use UI open `ReadyToUseUIDemo.xcodeproj` with Xcode, build and run
+  * For Ready-To-Use UI open `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run
