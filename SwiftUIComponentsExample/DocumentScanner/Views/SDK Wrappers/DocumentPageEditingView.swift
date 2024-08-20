@@ -1,6 +1,6 @@
 //
 //  DocumentPageEditingView.swift
-//  DocumentScannerSwiftUIDemo (iOS)
+//  SwiftUIComponentsExample
 //
 //  Created by Danil Voitenko on 02.08.21.
 //

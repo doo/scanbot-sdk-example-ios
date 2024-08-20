@@ -1,6 +1,6 @@
 //
 //  DocumentScannerMainView.swift
-//  DocumentScannerSwiftUIDemo (iOS)
+//  SwiftUIComponentsExample
 //
 //  Created by Danil Voitenko on 03.08.21.
 //

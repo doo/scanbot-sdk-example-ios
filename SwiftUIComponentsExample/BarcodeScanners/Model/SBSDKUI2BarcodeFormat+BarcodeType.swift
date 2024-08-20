@@ -1,6 +1,6 @@
 //
 //  SBSDKUI2BarcodeFormat+extention.swift
-//  ScanbotSDKSwiftUIDemo
+//  SwiftUIComponentsExample
 //
 //  Created by Rana Sohaib on 16.01.24.
 //
