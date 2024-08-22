@@ -9,7 +9,7 @@ import ScanbotSDK
 
 final class MultiScanResultViewController: UIViewController {
     
-    var document: SBSDKDocument!
+    var document: SBSDKScannedDocument!
     
     @IBOutlet private var exportButton: UIButton!
     @IBOutlet private var collectionView: UICollectionView!
@@ -23,7 +23,7 @@ final class MultiScanResultViewController: UIViewController {
             
             let numberOfPages = self?.document.pages.count ?? 0
             (0..<numberOfPages).forEach { index in
-                self?.document.page(at: index)?.parametricFilters = [selectedFilter]
+                self?.document.page(at: index)?.filters = [selectedFilter]
             }
             self?.collectionView.reloadData()
         }
@@ -56,7 +56,7 @@ extension MultiScanResultViewController {
         let renderer = SBSDKPDFRenderer(options: options)
         
         // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
-        let progress = renderer.renderDocument(document, output: pdfURL) { finished, error in
+        let progress = renderer.renderScannedDocument(document, output: pdfURL) { finished, error in
             
             if finished && error == nil {
                 
@@ -143,7 +143,7 @@ extension MultiScanResultViewController: UICollectionViewDataSource, UICollectio
         let page = document.page(at: indexPath.row)
         
         // Check detection status
-        if page?.status == .error_NothingDetected {
+        if page?.documentDetectionStatus == .errorNothingDetected {
             
             // Use the full original image if nothing detected
             cell.resultImageView.image = page?.originalImage
@@ -159,7 +159,7 @@ extension MultiScanResultViewController: UICollectionViewDataSource, UICollectio
 }
 
 extension MultiScanResultViewController {
-    static func make(with document: SBSDKDocument) -> MultiScanResultViewController {
+    static func make(with document: SBSDKScannedDocument) -> MultiScanResultViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let resultViewController = storyboard.instantiateViewController(identifier: "MultiScanResultViewController") as! MultiScanResultViewController
         resultViewController.document = document

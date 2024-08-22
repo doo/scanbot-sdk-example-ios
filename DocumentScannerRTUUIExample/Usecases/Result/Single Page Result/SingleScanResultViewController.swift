@@ -13,7 +13,7 @@ final class SingleScanResultViewController: UIViewController {
     @IBOutlet private var singlePageImageView: UIImageView!
     @IBOutlet private var exportButton: UIButton!
     
-    var document: SBSDKDocument!
+    var document: SBSDKScannedDocument!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,7 +21,7 @@ final class SingleScanResultViewController: UIViewController {
         let page = document.page(at: 0)
         
         // Check detection status
-        if page?.status == .error_NothingDetected {
+        if page?.documentDetectionStatus == .errorNothingDetected {
             
             // Use the full original image if nothing detected
             singlePageImageView.image = document.page(at: 0)?.originalImage
@@ -41,7 +41,7 @@ final class SingleScanResultViewController: UIViewController {
         // Filter selection callback handler
         filterListViewController.selectedFilter = { [weak self] selectedFilter in
             
-            self?.document.page(at: 0)?.parametricFilters = [selectedFilter]
+            self?.document.page(at: 0)?.filters = [selectedFilter]
             self?.singlePageImageView.image = self?.document.page(at: 0)?.documentImage
         }
         
@@ -54,20 +54,43 @@ final class SingleScanResultViewController: UIViewController {
         // Get the page
         guard let page = document.page(at: 0) else { return }
         
-        // Initialize the cropping screen configuration object using default configurations
-        let configuration = SBSDKUICroppingScreenConfiguration.defaultConfiguration
+        // Initialize the cropping configuration object using document and page uuids
+        let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid,
+                                                          pageUuid: page.uuid)
         
-        // Set colors
-        configuration.uiConfiguration.topBarBackgroundColor = .appAccentColor
-        configuration.uiConfiguration.topBarButtonsColor = .white
-        configuration.uiConfiguration.bottomBarBackgroundColor = .appAccentColor
-        configuration.uiConfiguration.bottomBarButtonsColor = .white
+        // Set the colors
+        // e.g
+        configuration.palette.sbColorPrimary = SBSDKUI2Color(uiColor: .appAccentColor)
+        configuration.palette.sbColorOnPrimary = SBSDKUI2Color(uiColor: .white)
+        
+        // Initialize the cropping screen configuration object
+        let screenConfig = SBSDKUI2CroppingScreenConfiguration()
+        
+        // Configure the screen
+        // e.g
+        screenConfig.topBarTitle.text = "Cropping Screen"
+        screenConfig.bottomBar.resetButton.visible = true
+        screenConfig.bottomBar.rotateButton.visible = true
+        screenConfig.bottomBar.detectButton.visible = true
+        
+        // Set the configured screen configuration on the cropping configuration
+        configuration.cropping = screenConfig
         
         // Present the cropping view controller
-        SBSDKUICroppingViewController.present(on: self,
-                                              page: page,
-                                              configuration: configuration,
-                                              delegate: self)
+        SBSDKUI2CroppingViewController.present(on: self,
+                                               configuration: configuration) { croppingResult in
+            
+            // Completion handler to process the result.
+            if let error = croppingResult.errorMessage {
+                
+                // There was an error.
+                print(error)
+                
+            } else {
+                
+                self.singlePageImageView.image = page.documentImage
+            }
+        }
     }
     
     // Document Quality analysis
@@ -99,7 +122,7 @@ final class SingleScanResultViewController: UIViewController {
         case .good:
             return "Good"
         case .excellent:
-            return "Excelent"
+            return "Excellent"
         @unknown default:
             return ""
         }
@@ -167,7 +190,7 @@ final class SingleScanResultViewController: UIViewController {
         let renderer = SBSDKPDFRenderer(options: options)
         
         // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
-        let progress = renderer.renderDocument(document, output: pdfURL) { finished, error in
+        let progress = renderer.renderScannedDocument(document, output: pdfURL) { finished, error in
             
             if finished && error == nil {
                 
@@ -208,20 +231,6 @@ final class SingleScanResultViewController: UIViewController {
     }
 }
 
-// Delegate protocol for `SBSDKUICroppingViewController`
-extension SingleScanResultViewController: SBSDKUICroppingViewControllerDelegate {
-    
-    // Informs the delegate that the polygon or orientation of the edited page was changed
-    // and the cropping view controller did dismiss
-    func croppingViewController(_ viewController: SBSDKUICroppingViewController,
-                                didFinish changedPage: SBSDKDocumentPage) {
-        
-        self.document.removePage(at: 0)
-        self.document.insert(changedPage, at: 0)
-        self.singlePageImageView.image = changedPage.documentImage
-    }
-}
-
 extension SingleScanResultViewController {
     
     // To show export dialogue
@@ -255,7 +264,7 @@ extension SingleScanResultViewController {
 }
 
 extension SingleScanResultViewController {
-    static func make(with document: SBSDKDocument) -> SingleScanResultViewController {
+    static func make(with document: SBSDKScannedDocument) -> SingleScanResultViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let resultViewController = storyboard.instantiateViewController(withIdentifier: "SingleScanResultViewController")
         as! SingleScanResultViewController
