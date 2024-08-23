@@ -7,73 +7,63 @@
 
 import ScanbotSDK
 
-final class SinglePageScanning: NSObject, SBSDKUIDocumentScannerViewControllerDelegate {
-    
-    // The view controller on which the scanner is presented on
-    private var presenter: UIViewController?
-    
-    init(presenter: UIViewController? = nil) {
-        self.presenter = presenter
-    }
-    
-    // The scanner view controller calls this delegate method when it has scanned document pages
-    // and the scanner view controller has been dismissed
-    func scanningViewController(_ viewController: SBSDKUIDocumentScannerViewController,
-                                didFinishWith document: SBSDKDocument) {
-        
-        // Process the document
-        let resultViewController = SingleScanResultViewController.make(with: document)
-        presenter?.navigationController?.pushViewController(resultViewController, animated: true)
-    }
-    
-    // The scanner view controller calls this delegate method to inform that it has been cancelled and dismissed
-    func scanningViewControllerDidCancel(_ viewController: SBSDKUIDocumentScannerViewController) {
-        
-    }
-}
-
-extension SinglePageScanning {
-    
-    // To hold an instance of the delegate handler
-    private static var delegateHandler: MultiplePageScanning?
+class SinglePageScanning {
     
     static func present(presenter: UIViewController) {
         
-        // Initialize delegate handler
-        delegateHandler = MultiplePageScanning(presenter: presenter)
-        
         // Initialize document scanner configuration object using default configurations
-        let configuration = SBSDKUIDocumentScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUI2DocumentScanningFlow()
         
         // Disable the multiple page behavior
-        configuration.behaviorConfiguration.isMultiPageEnabled = false
+        configuration.outputSettings.pagesScanLimit = 1
         
-        // Enable Auto Snapping behavior
-        configuration.behaviorConfiguration.isAutoSnappingEnabled = true
+        // Enable/Disable the review screen.
+        configuration.screens.review.enabled = false
         
-        // Hide the multiple page enable/disable button
-        configuration.uiConfiguration.isMultiPageButtonHidden = true
+        // Enable/Disable Auto Snapping behavior
+        configuration.screens.camera.cameraConfiguration.autoSnappingEnabled = true
+        
+        
+        // Configure the animation
+        // You can choose between genie animation or checkmark animation
+        // Note: Both modes can be further configured to your liking
+        
+        // e.g for genie animation
+        configuration.screens.camera.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapFunnelAnimation()
+        // or for checkmark animation
+        configuration.screens.camera.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapCheckMarkAnimation()
         
         // Hide the auto snapping enable/disable button
-        configuration.uiConfiguration.isAutoSnappingButtonHidden = true
+        configuration.screens.camera.bottomBar.autoSnappingModeButton.visible = false
+        configuration.screens.camera.bottomBar.manualSnappingModeButton.visible = false
+        configuration.screens.camera.bottomBar.importButton.title.visible = true
+        configuration.screens.camera.bottomBar.torchOnButton.title.visible = true
+        configuration.screens.camera.bottomBar.torchOffButton.title.visible = true
         
         // Set colors
-        configuration.uiConfiguration.topBarBackgroundColor = .appAccentColor
-        configuration.uiConfiguration.topBarButtonsInactiveColor = .white
-        configuration.uiConfiguration.bottomBarBackgroundColor = .appAccentColor
-        configuration.uiConfiguration.bottomBarButtonsColor = .white
-        
-        // Set the font for the hint text
-        configuration.textConfiguration.textHintFontSize = 16.0
+        configuration.palette.sbColorPrimary = SBSDKUI2Color(uiColor: .appAccentColor)
+        configuration.palette.sbColorOnPrimary = SBSDKUI2Color(uiColor: .white)
         
         // Configure the hint texts for different scenarios
-        configuration.textConfiguration.textHintTooDark = "Need more lighting to detect a document"
-        configuration.textConfiguration.textHintTooSmall = "Document too small"
-        configuration.textConfiguration.textHintNothingDetected = "Could not detect a document"
+        configuration.screens.camera.userGuidance.statesTitles.tooDark = "Need more lighting to detect a document"
+        configuration.screens.camera.userGuidance.statesTitles.tooSmall = "Document too small"
+        configuration.screens.camera.userGuidance.statesTitles.noDocumentFound = "Could not detect a document"
         
         // Present the document scanner on the presenter (presenter in our case is the UsecasesListTableViewController)
-        SBSDKUIDocumentScannerViewController.present(on: presenter,
-                                                     configuration: configuration,
-                                                     delegate: delegateHandler)
+        SBSDKUI2DocumentScannerController.present(on: presenter,
+                                                  configuration: configuration) { document in
+            
+            // Completion handler to process the result.
+                        
+            if let document {
+                
+                // Process the document
+                let resultViewController = SingleScanResultViewController.make(with: document)
+                presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                
+            } else {
+                // Indicates that the cancel button was tapped.
+            }
+        }
     }
 }

@@ -7,66 +7,54 @@
 
 import ScanbotSDK
 
-final class SinglePageFinderOverlayScanning: NSObject, SBSDKUIFinderDocumentScannerViewControllerDelegate {
-    
-    // The view controller on which the scanner is presented on
-    private var presenter: UIViewController?
-    
-    init(presenter: UIViewController? = nil) {
-        self.presenter = presenter
-    }
-    
-    // The scanner view controller calls this delegate method when it has scanned document pages
-    // and the scanner view controller has been dismissed
-    func finderScanningViewController(_ viewController: SBSDKUIFinderDocumentScannerViewController,
-                                      didFinishWith document: SBSDKDocument) {
-        
-        // Process the document
-        let resultViewController = SingleScanResultViewController.make(with: document)
-        presenter?.navigationController?.pushViewController(resultViewController, animated: true)
-    }
-    
-    // The scanner view controller calls this delegate method to inform that it has been cancelled and dismissed
-    func finderScanningViewControllerDidCancel(_ viewController: SBSDKUIFinderDocumentScannerViewController) {
-        
-    }
-}
-
-extension SinglePageFinderOverlayScanning {
-    
-    // To hold an instance of the delegate handler
-    private static var delegateHandler: SinglePageFinderOverlayScanning?
+class SinglePageFinderOverlayScanning {
     
     static func present(presenter: UIViewController) {
         
-        // Initialize delegate handler
-        delegateHandler = SinglePageFinderOverlayScanning(presenter: presenter)
-        
         // Initialize document scanner configuration object using default configurations
-        let configuration = SBSDKUIFinderDocumentScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // Enable Auto Snapping behavior
-        configuration.behaviorConfiguration.isAutoSnappingEnabled = true
+        // Disable the multiple page behavior
+        configuration.outputSettings.pagesScanLimit = 1
         
-        // Set the aspect ratio for the finder overlay
-        configuration.uiConfiguration.finderAspectRatio = SBSDKAspectRatio(width: 3, height: 4)
+        // Enable view finder
+        configuration.screens.camera.viewFinder.visible = true
+        configuration.screens.camera.viewFinder.aspectRatio = SBSDKUI2AspectRatio(width: 3, height: 4)
+        
+        // Enable/Disable the review screen.
+        configuration.screens.review.enabled = false
+        
+        // Enable/Disable Auto Snapping behavior
+        configuration.screens.camera.cameraConfiguration.autoSnappingEnabled = true
+        
+        // Hide the auto snapping enable/disable button
+        configuration.screens.camera.bottomBar.autoSnappingModeButton.visible = false
+        configuration.screens.camera.bottomBar.manualSnappingModeButton.visible = false
         
         // Set colors
-        configuration.uiConfiguration.topBarButtonsActiveColor = .white
-        configuration.uiConfiguration.topBarButtonsInactiveColor = .white
-        configuration.uiConfiguration.topBarBackgroundColor = .appAccentColor
-        
-        // Set the font for the hint text
-        configuration.textConfiguration.textHintFontSize = 16.0
+        configuration.palette.sbColorPrimary = SBSDKUI2Color(uiColor: .appAccentColor)
+        configuration.palette.sbColorOnPrimary = SBSDKUI2Color(uiColor: .white)
         
         // Configure the hint texts for different scenarios
-        configuration.textConfiguration.textHintTooDark = "Need more lighting to detect a document"
-        configuration.textConfiguration.textHintTooSmall = "Document too small"
-        configuration.textConfiguration.textHintNothingDetected = "Could not detect a document"
+        configuration.screens.camera.userGuidance.statesTitles.tooDark = "Need more lighting to detect a document"
+        configuration.screens.camera.userGuidance.statesTitles.tooSmall = "Document too small"
+        configuration.screens.camera.userGuidance.statesTitles.noDocumentFound = "Could not detect a document"
         
         // Present the document scanner on the presenter (presenter in our case is the UsecasesListTableViewController)
-        SBSDKUIFinderDocumentScannerViewController.present(on: presenter,
-                                                           configuration: configuration,
-                                                           delegate: delegateHandler)
+        SBSDKUI2DocumentScannerController.present(on: presenter,
+                                                  configuration: configuration) { document in
+            
+            // Completion handler to process the result.
+                        
+            if let document {
+                
+                // Process the document
+                let resultViewController = SingleScanResultViewController.make(with: document)
+                presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                
+            } else {
+                // Indicates that the cancel button was tapped.
+            }
+        }
     }
 }
