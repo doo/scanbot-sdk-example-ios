@@ -63,7 +63,7 @@ struct BarcodeScannerListView: View {
     }
 }
 
-struct ScannerListView_Previews: PreviewProvider {
+struct BarcodeScannerListView_Previews: PreviewProvider {
     static var previews: some View {
         BarcodeScannerListView()
     }

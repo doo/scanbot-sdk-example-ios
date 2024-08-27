@@ -10,18 +10,18 @@ import ScanbotSDK
 
 struct DocumentPagesOverviewScreen: View {
     
-    @ObservedObject var pagesContainer: DocumentPagesContainer
+    @ObservedObject var scanningResult: DocumentScanningResult
     @State private var isShowingModal = false
     
     var body: some View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible())]) {
-                ForEach(pagesContainer.pages) { page in
-                    Button(action: {
-                        pagesContainer.selectedPage = page
-                        isShowingModal.toggle()
-                    }){
-                        if let image = page.documentImage {
+                ForEach(scanningResult.pages, id: \.uuid) { page in
+                    if let image = page.documentImagePreview {
+                        Button(action: {
+                            scanningResult.selectedPage = page
+                            isShowingModal.toggle()
+                        }){
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFit()
@@ -32,10 +32,14 @@ struct DocumentPagesOverviewScreen: View {
                 }
             }
         }
-        .fullScreenCover(isPresented: $isShowingModal) {
-            DocumentPageEditingView(editingPage: $pagesContainer.selectedPage)
-                .ignoresSafeArea()
-        }
+        .fullScreenCover(item: $scanningResult.selectedPage, content: { page in
+            SBSDKUI2CroppingView(
+                configuration: SBSDKUI2CroppingConfiguration(
+                    documentUuid: scanningResult.documentUUID,
+                    pageUuid: page.uuid
+                ), completion: nil
+            )
+        })
         .frame(height: 120)
     }
 }

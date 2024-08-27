@@ -25,7 +25,7 @@ struct BarcodeScannerContainerView: View {
         viewForScanner(scanner)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle(Text(scanner.title))
-            .onAppear{ self.isRecognitionEnabled = true }
+            .onAppear { self.isRecognitionEnabled = true }
             .onDisappear { self.isRecognitionEnabled = false }
     }
     
@@ -46,7 +46,7 @@ struct BarcodeScannerContainerView: View {
     }
 }
 
-struct ScannerContainerView_Previews: PreviewProvider {
+struct BarcodeScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
         BarcodeScannerContainerView(scanner: .rtuUI, 
                                     scanningResult: .constant(BarcodeScanningResult(scannedBarcodes: [])))

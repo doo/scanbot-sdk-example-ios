@@ -1,5 +1,5 @@
 //
-//  DocumentScannerView.swift
+//  DocumentScannerClassicView.swift
 //  SwiftUIComponentsExample
 //
 //  Created by Danil Voitenko on 02.08.21.
@@ -8,13 +8,12 @@
 import SwiftUI
 import ScanbotSDK
 
-struct DocumentScannerView: UIViewControllerRepresentable {
+struct DocumentScannerClassicView: UIViewControllerRepresentable {
     
-    @ObservedObject var pagesContainer: DocumentPagesContainer
-        
-    init(pagesContainer: DocumentPagesContainer) {
-        self.pagesContainer = pagesContainer
-    }
+    @Binding var scanningResult: DocumentScanningResult
+    @Binding var isRecognitionEnabled: Bool
+    
+    private let document = SBSDKDocument()
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -29,13 +28,17 @@ struct DocumentScannerView: UIViewControllerRepresentable {
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) { }
 }
 
-extension DocumentScannerView {
+extension DocumentScannerClassicView {
     final class Coordinator: NSObject, SBSDKDocumentScannerViewControllerDelegate {
         
-        private let parent: DocumentScannerView
+        private let parent: DocumentScannerClassicView
                         
-        init(_ parent: DocumentScannerView) {
+        init(_ parent: DocumentScannerClassicView) {
             self.parent = parent
+        }
+        
+        func documentScannerViewControllerShouldDetectDocument(_ controller: SBSDKDocumentScannerViewController) -> Bool {
+            return parent.isRecognitionEnabled
         }
         
         func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
@@ -44,7 +47,12 @@ extension DocumentScannerView {
                                            with result: SBSDKDocumentDetectorResult?, autoSnapped: Bool) {
             
             let documentPage = SBSDKDocumentPage(image: originalImage, polygon: result?.polygon, filter: .none)
-            parent.pagesContainer.add(page: documentPage)
+            parent.document.add(documentPage)
+            
+            guard let scannedDocument = SBSDKScannedDocument(document: parent.document, documentImageSizeLimit: 0)
+            else { return }
+            
+            parent.scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)
         }
     }
 }
