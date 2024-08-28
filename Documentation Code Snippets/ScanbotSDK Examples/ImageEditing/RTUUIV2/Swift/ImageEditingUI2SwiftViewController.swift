@@ -16,7 +16,7 @@ class ImageEditingUI2SwiftViewController: UIViewController {
         super.viewDidAppear(animated)
         
         // Retrieve the scanned document
-        guard let document = SBSDKScannedDocument(documentID: "SOME_SAVED_UUID") else { return }
+        guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
         
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }

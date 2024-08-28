@@ -20,7 +20,7 @@
     [super viewWillAppear:animated];
     
     // Retrieve the scanned document
-    SBSDKScannedDocument *document = [[SBSDKScannedDocument alloc] initWithDocumentID:@"SOME_SAVED_UUID"];
+    SBSDKScannedDocument *document = [[SBSDKScannedDocument alloc] initWithDocumentUuid:@"SOME_SAVED_UUID"];
     
     // Retrieve the selected document page.
     SBSDKScannedPage *page = [document pageAt:0];
