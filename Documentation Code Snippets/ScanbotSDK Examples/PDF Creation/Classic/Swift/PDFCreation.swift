@@ -58,6 +58,6 @@ func createPDF(from image: UIImage) {
                                         encrypter: encrypter,
                                         output: outputPDFURL)
     } catch {
-        SBSDKLog.logError("Faile to generate PDF: \(error.localizedDescription).")
+        SBSDKLog.logError("Failed to generate PDF: \(error.localizedDescription).")
     }
 }
