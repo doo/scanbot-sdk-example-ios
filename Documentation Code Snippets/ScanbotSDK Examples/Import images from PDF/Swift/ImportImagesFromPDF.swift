@@ -8,10 +8,7 @@
 import Foundation
 import ScanbotSDK
 
-func createImagesFromPDF() {
-    
-    // The path where the pdf is stored.
-    guard let pdfURL = URL(string: "<path_to_pdf>") else { return }
+func createDocumentsFromPDF(pdfURL: URL) {
     
     // Creates an instance of `SBSDKPDFPagesExtractor`
     let pageExtractor = SBSDKPDFPagesExtractor()
@@ -21,4 +18,13 @@ func createImagesFromPDF() {
     
     // You can also use `images(fromPDF:scaling)` method to extract images with a scaling applied
     let scaledImages = pageExtractor.images(from: pdfURL, scaling: 2.0)
+}
+
+func createImagesFromPDF(pdfURL: URL) {
+    
+    // Creates an instance of `SBSDKPDFPagesExtractor`
+    let pageExtractor = SBSDKPDFPagesExtractor()
+    
+    // Synchronously Extracts pages from PDF and returns them as `SBSDKScannedDocument`. Each page of the PDF will be a separate `SBSDKScannedPage`.
+    let scannedDocument = pageExtractor.scannedDocument(from: pdfURL)
 }
