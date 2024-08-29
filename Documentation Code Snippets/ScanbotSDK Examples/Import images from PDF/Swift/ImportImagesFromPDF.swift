@@ -8,7 +8,7 @@
 import Foundation
 import ScanbotSDK
 
-func createImagesFromPDF(pdfURL: URL) {
+func createScannedDocumentFromPDF(pdfURL: URL) {
     
     // Creates an instance of `SBSDKPDFPagesExtractor`
     let pageExtractor = SBSDKPDFPagesExtractor()
@@ -17,7 +17,7 @@ func createImagesFromPDF(pdfURL: URL) {
     let scannedDocument = pageExtractor.scannedDocument(from: pdfURL)
 }
 
-func createDocumentsFromPDF(pdfURL: URL) {
+func createImagesFromPDF(pdfURL: URL) {
     
     // Creates an instance of `SBSDKPDFPagesExtractor`
     let pageExtractor = SBSDKPDFPagesExtractor()
