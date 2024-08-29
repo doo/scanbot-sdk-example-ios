@@ -8,11 +8,22 @@
 import Foundation
 import ScanbotSDK
 
-func createTIFF() {
+func createTIFF(from scannedDocument: SBSDKScannedDocument) {
+    // The `SBSDKTIFFImageWriter` has parameters where you can define various options,
+    // e.g. compression algorithm or whether the document should be binarized.
+    // For this example we're going to use the default parameters.
+    let parameters = SBSDKTIFFImageWriterParameters.defaultParameters
     
-    // For this example we're using an empty array, but there should be scanned images in it.
-    let scannedImages: [UIImage] = []
+    // Create the tiff image writer using created parameters.
+    let writer = SBSDKTIFFImageWriter(parameters: parameters)
+    
+    // Synchronously converts the scanned document to a multipage-TIFF file and writes it to the specified URL.
+    //If output URL is `nil`the default TIFF location of the scanned document will be used.
+    writer.writeTIFF(scannedDocument: scannedDocument)
+}
 
+func createTIFF(from images: [UIImage]) {
+    
     // Specify the file URL where the TIFF will be saved to. Nil makes no sense here.
     guard let outputTIFFURL = URL(string: "outputTIFF") else { return }
 
@@ -30,7 +41,7 @@ func createTIFF() {
 
     // Asynchronously writes a TIFF file with scanned images into the defined URL.
     // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
-    tiffImageWriter.writeTIFF(with: scannedImages, toFile: outputTIFFURL, completion: { url in
+    tiffImageWriter.writeTIFF(with: images, toFile: outputTIFFURL, completion: { url in
         
         // Handle the URL.
     })

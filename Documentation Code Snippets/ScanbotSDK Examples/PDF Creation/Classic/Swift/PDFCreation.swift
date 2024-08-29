@@ -8,23 +8,8 @@
 import Foundation
 import ScanbotSDK
 
-func createPDF() {
-    // Create an image storage to save the captured document images to
-    let imagesURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent("Images")
-    let imagesLocation = SBSDKStorageLocation.init(baseURL: imagesURL)
-    guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation) else { return }
-
-    // Define the indices of the images in the image storage you want to render into a PDF, e.g. the first 3.
-    // To include all images you can simply pass nil for the indexSet. The indexSet is validated internally.
-    // You don't need to concern yourself with the validity of all the indices.
-    let indexSet = IndexSet(integersIn: 0...2)
-
-    // Specify the file URL where the PDF will be saved to. Nil makes no sense here.
-    guard let outputPDFURL = URL(string: "outputPDF") else { return }
-
-    // In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
-    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
-
+func createPDF(from scannedDocument: SBSDKScannedDocument) {
+    
     // Create the OCR configuration for a searchable PDF (HOCR).
     let ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
     
@@ -36,15 +21,43 @@ func createPDF() {
     
     // Create the PDF renderer and pass the PDF options to it.
     let renderer = SBSDKPDFRenderer(options: options)
-    
-    // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
-    let progress = renderer.renderImageStorage(imageStorage, 
-                                               indexSet: indexSet, 
-                                               encrypter: encrypter, 
-                                               output: outputPDFURL) { finished, error in
+    do {
+        //If output URL is `nil`the default PDF location of the scanned document will be used.
+        try renderer.renderScannedDocument(scannedDocument)
+    } catch {
+        SBSDKLog.logError("Failed to render PDF: \(error.localizedDescription)")
+    }
+}
 
-        if finished && error == nil {
-            // Now you can access the pdf file at outputPDFURL.
-        }        
+func createPDF(from image: UIImage) {
+    // Specify the file URL where the PDF will be saved to. Nil makes no sense here.
+    guard let outputPDFURL = URL(string: "outputPDF") else { return }
+    
+    // Create an image storage to save the captured or imported document image to
+    let imagesURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent("Images")
+    let imagesLocation = SBSDKStorageLocation.init(baseURL: imagesURL)
+    guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation) else { return }
+    
+    // Add the image to the image storage
+    imageStorage.add(image)
+    
+    // In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
+    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+    
+    // Create the default PDF rendering options.
+    let options = SBSDKPDFRendererOptions()
+    
+    // Set the maximum JPEG Quality.
+    options.jpegQuality = 100
+    
+    // Create the PDF renderer and pass the PDF options to it.
+    let renderer = SBSDKPDFRenderer(options: options)
+    do {
+        // Synchronously renders the images from the image storage into a PDF file with the given page size, and saves the PDF to the specified URL.
+        try renderer.renderImageStorage(imageStorage,
+                                        encrypter: encrypter,
+                                        output: outputPDFURL)
+    } catch {
+        SBSDKLog.logError("Failed to generate PDF: \(error.localizedDescription).")
     }
 }
