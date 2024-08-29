@@ -1,5 +1,5 @@
 //
-//  DocumentQualityAnalyzerSwiftViewController.swift
+//  DocumentQualityAnalyzerScannedPageViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Rana Sohaib on 14.11.23.
@@ -8,19 +8,32 @@
 import UIKit
 import ScanbotSDK
 
-class DocumentQualityAnalyzerSwiftViewController: UIViewController {
+class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        analyzeScannedPageQuality()
+    }
+    
+    func analyzeScannedPageQuality() {
+        
+        // Retrieve the scanned document
+        guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
+        
+        // Retrieve the selected document page.
+        guard let page = document.page(at: 0) else { return }
+        
         // Initialize the analyzer.
         let analyzer = SBSDKDocumentQualityAnalyzer()
         
-        // Set the desired image.
-        if let image = UIImage(named: "testDocument") {
+        // Run the analyzer on the document image
+        // If you have a filtered applied and you wish to run the analyzer on the unfiltered image
+        if let unfilteredDocumentImage = page.unfilteredDocumentImage {
+            // otherwise you can just simply use the `page.documentImage`
             
-            // Analyze the quality of the image.
-            let quality = analyzer.analyze(on: image)
+            // Run the quality analyzer on the image.
+            let quality = analyzer.analyze(on: unfilteredDocumentImage)
             
             // Handle the result.
             self.printResult(quality: quality)
