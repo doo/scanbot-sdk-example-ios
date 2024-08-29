@@ -9,7 +9,6 @@ import Foundation
 import ScanbotSDK
 
 func createScannedDocument(with images: [UIImage]) {
-    
     // Create a new document with the specified maximum image size.
     // Setting the limit to 0, effectively disables the size limit.
     let scannedDocument = SBSDKScannedDocument(documentImageSizeLimit: 0)
@@ -87,7 +86,7 @@ func deleteScannedDocument(with scannedDocument: SBSDKScannedDocument) {
         // Try to delete scanned document completely, including all images and generated files from disk.
         try scannedDocument.delete()
     } catch {
-        // Handle error
+        // Handle error.
         SBSDKLog.logError("Failed to delete scanned document: \(error)")
     }
 }
