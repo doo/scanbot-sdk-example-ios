@@ -63,18 +63,12 @@ final class SingleScanResultViewController: UIViewController {
         configuration.palette.sbColorPrimary = SBSDKUI2Color(uiColor: .appAccentColor)
         configuration.palette.sbColorOnPrimary = SBSDKUI2Color(uiColor: .white)
         
-        // Initialize the cropping screen configuration object
-        let screenConfig = SBSDKUI2CroppingScreenConfiguration()
-        
         // Configure the screen
         // e.g
-        screenConfig.topBarTitle.text = "Cropping Screen"
-        screenConfig.bottomBar.resetButton.visible = true
-        screenConfig.bottomBar.rotateButton.visible = true
-        screenConfig.bottomBar.detectButton.visible = true
-        
-        // Set the configured screen configuration on the cropping configuration
-        configuration.cropping = screenConfig
+        configuration.cropping.topBarTitle.text = "Cropping Screen"
+        configuration.cropping.bottomBar.resetButton.visible = true
+        configuration.cropping.bottomBar.rotateButton.visible = true
+        configuration.cropping.bottomBar.detectButton.visible = true
         
         // Present the cropping view controller
         SBSDKUI2CroppingViewController.present(on: self,
