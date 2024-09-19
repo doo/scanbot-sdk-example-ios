@@ -6,8 +6,6 @@
 //
 
 import Foundation
-
-import Foundation
 import ScanbotSDK
 
 class CropScreenUI2SwiftViewController: UIViewController {
