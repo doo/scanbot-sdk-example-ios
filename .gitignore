@@ -8,3 +8,6 @@ ScanbotSDK/
 .idea/
 *.xcuserstate
 DownloadTemp/
+/SwiftUIComponentsExample.xcodeproj/xcuserdata
+/DataCaptureRTUUIExample.xcodeproj/xcuserdata
+
