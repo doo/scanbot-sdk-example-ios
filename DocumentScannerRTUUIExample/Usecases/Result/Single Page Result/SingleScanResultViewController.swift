@@ -214,7 +214,7 @@ final class SingleScanResultViewController: UIViewController {
         
         // Use `SBSDKTIFFImageWriter` to write TIFF at the specified file url
         // and get the result
-        let tiffWriter = SBSDKTIFFImageWriter(parameters: .defaultParameters, encrypter: nil)
+        let tiffWriter = SBSDKTIFFImageWriter(parameters: tiffExportParameters, encrypter: nil)
         let success = tiffWriter.writeTIFF(with: images, toFile: fileURL)
         
         if success == true {
