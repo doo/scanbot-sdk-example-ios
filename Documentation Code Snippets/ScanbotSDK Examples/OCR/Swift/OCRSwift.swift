@@ -92,7 +92,6 @@ class OCRSwiftViewController {
         // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
         let progress = renderer.renderImageStorage(imageStorage, 
                                                    indexSet: nil, 
-                                                   encrypter: nil, 
                                                    output: outputPDFURL) { finished, error in
 
             if finished && error == nil {

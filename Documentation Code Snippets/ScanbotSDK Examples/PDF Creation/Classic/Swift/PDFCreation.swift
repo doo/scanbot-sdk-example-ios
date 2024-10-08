@@ -51,11 +51,10 @@ func createPDF(from image: UIImage) {
     options.jpegQuality = 100
     
     // Create the PDF renderer and pass the PDF options to it.
-    let renderer = SBSDKPDFRenderer(options: options)
+    let renderer = SBSDKPDFRenderer(options: options, encrypter: encrypter)
     do {
         // Synchronously renders the images from the image storage into a PDF file with the given page size, and saves the PDF to the specified URL.
         try renderer.renderImageStorage(imageStorage,
-                                        encrypter: encrypter,
                                         output: outputPDFURL)
     } catch {
         SBSDKLog.logError("Failed to generate PDF: \(error.localizedDescription).")

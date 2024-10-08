@@ -40,13 +40,12 @@
     options.ocrConfiguration = ocrConfiguration; // Comment this line to not generate HOCR
     
     // Create the PDF renderer and pass the pdf rendering options.
-    SBSDKPDFRenderer *renderer = [[SBSDKPDFRenderer alloc] initWithOptions:options];
+    SBSDKPDFRenderer *renderer = [[SBSDKPDFRenderer alloc] initWithOptions:options encrypter:encrypter];
     
     
     // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
     SBSDKProgress *progress = [renderer renderImageStorage:imageStorage 
-                                                  indexSet:indexSet 
-                                                 encrypter:encrypter 
+                                                  indexSet:indexSet
                                                     output:outputPDFURL 
                                                 completion:^(BOOL finished, NSError *error) {
         

@@ -97,12 +97,11 @@
     options.ocrConfiguration = ocrConfiguration;
     
     // Create the PDF renderer and pass the pdf rendering options.
-    SBSDKPDFRenderer *renderer = [[SBSDKPDFRenderer alloc] initWithOptions:options];
+    SBSDKPDFRenderer *renderer = [[SBSDKPDFRenderer alloc] initWithOptions:options encrypter:nil];
 
     // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
     SBSDKProgress *progress = [renderer renderImageStorage:imageStorage 
-                                                  indexSet:nil 
-                                                 encrypter:nil 
+                                                  indexSet:nil
                                                     output:outputPDFURL 
                                                 completion:^(BOOL finished, NSError *error) {
         
