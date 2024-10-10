@@ -34,7 +34,7 @@ class DocumentFinderUI2SwiftViewController: UIViewController {
         configuration.screens.camera.viewFinder.style = style
         
         // Set the desired aspect ratio of the view finder.
-        configuration.screens.camera.viewFinder.aspectRatio = SBSDKUI2AspectRatio(width: 1.0, height: 1.0)
+        configuration.screens.camera.viewFinder.aspectRatio = SBSDKUI2AspectRatio(width: 4.0, height: 5.0)
         
         // Set the overlay color.
         configuration.screens.camera.viewFinder.overlayColor = SBSDKUI2Color(colorString: "#26000000")
