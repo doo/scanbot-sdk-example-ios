@@ -23,11 +23,11 @@ class CropScreenUI2SwiftViewController: UIViewController {
         cropScreenConfiguration.bottomBar.rotateButton.visible = false
         
         // e.g. configure various colors.
-        configuration.appearance.topBarBackgroundColor = SBSDKUI2Color(uiColor: UIColor.red)
+        configuration.appearance.topBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
         cropScreenConfiguration.topBarConfirmButton.foreground.color = SBSDKUI2Color(uiColor: UIColor.white)
         
         // e.g. customize a UI element's text
-        configuration.localization.croppingCancelButtonTitle = "Cancel"
+        configuration.localization.croppingTopBarCancelButtonTitle = "Cancel"
         
         // Present the recognizer view controller modally on this view controller.
         SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration) { document in

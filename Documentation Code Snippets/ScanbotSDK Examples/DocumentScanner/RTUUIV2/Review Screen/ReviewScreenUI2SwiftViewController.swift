@@ -56,7 +56,7 @@ class ReviewScreenUI2SwiftViewController: UIViewController {
         retakeButtonConfiguration.visible = true
         
         // Configure the retake title color.
-        retakeButtonConfiguration.title.color = SBSDKUI2Color(uiColor: UIColor.black)
+        retakeButtonConfiguration.title.color = SBSDKUI2Color(uiColor: UIColor.white)
         
         // Apply the retake configuration button to the review bottom bar configuration.
         configuration.screens.review.bottomBar.retakeButton = retakeButtonConfiguration

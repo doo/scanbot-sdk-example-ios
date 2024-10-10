@@ -51,7 +51,7 @@ class ScanOnImageCroppingUISwiftViewController: UIViewController,
         configuration.cropping.topBarConfirmButton.foreground.color = SBSDKUI2Color(uiColor: UIColor.white)
         
         // e.g. customize a UI element's text
-        configuration.localization.croppingCancelButtonTitle = "Cancel"
+        configuration.localization.croppingTopBarCancelButtonTitle = "Cancel"
         
         // Present the recognizer view controller modally on this view controller.
         SBSDKUI2CroppingViewController.present(on: self, configuration: configuration) { result in
