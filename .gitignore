@@ -1,12 +1,13 @@
 .DS_Store
 
 ScanbotSDK/
-/ScanbotSDKDemo.xcodeproj/xcuserdata/
-/ScanbotSDKDemo.xcodeproj/project.xcworkspace/xcuserdata
-/ReadyToUseUIDemo.xcodeproj/xcuserdata/
-/ReadyToUseUIDemo.xcodeproj/project.xcworkspace/xcuserdata
+/ClassicComponentsExample.xcodeproj/xcuserdata/
+/DataCaptureRTUUIExample.xcodeproj/project.xcworkspace/xcuserdata
+/DocumentScannerRTUUIExample.xcodeproj/xcuserdata/
+/SwiftUIComponentsExample.xcodeproj/project.xcworkspace/xcuserdata
 .idea/
 *.xcuserstate
 DownloadTemp/
+/SwiftUIComponentsExample.xcodeproj/xcuserdata
+/DataCaptureRTUUIExample.xcodeproj/xcuserdata
 
-/ScanbotSDKSwiftUIDemo.xcodeproj/xcuserdata
