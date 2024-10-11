@@ -32,6 +32,7 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		11FB02A22CB90E6800051EB1 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB02A12CB90E6000051EB1 /* UINavigationBar+Extension.swift */; };
 		F106CAF82AAB4E5D00D66DD8 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106CAF72AAB4E5D00D66DD8 /* UIColor+Extension.swift */; };
 		F107A86C2A97739900387B8C /* SingleScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A86B2A97739900387B8C /* SingleScanResultViewController.swift */; };
 		F107A86F2A979D9F00387B8C /* FilterListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A86E2A979D9F00387B8C /* FilterListViewController.swift */; };
@@ -79,6 +80,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		11FB02A12CB90E6000051EB1 /* UINavigationBar+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationBar+Extension.swift"; sourceTree = "<group>"; };
 		F106CAF72AAB4E5D00D66DD8 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		F107A86B2A97739900387B8C /* SingleScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleScanResultViewController.swift; sourceTree = "<group>"; };
 		F107A86E2A979D9F00387B8C /* FilterListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterListViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 		F107A86D2A979D8200387B8C /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				11FB02A12CB90E6000051EB1 /* UINavigationBar+Extension.swift */,
 				F107A86E2A979D9F00387B8C /* FilterListViewController.swift */,
 				F1A681152AA08B1F005EE9E7 /* Cells */,
 				F107A8732A97A2A400387B8C /* Extensions */,
@@ -394,6 +397,7 @@
 				F1B0CCAC2A96332300389EA7 /* AppDelegate.swift in Sources */,
 				F107A8722A97A1A600387B8C /* FilterListTableViewCell.swift in Sources */,
 				F107A86C2A97739900387B8C /* SingleScanResultViewController.swift in Sources */,
+				11FB02A22CB90E6800051EB1 /* UINavigationBar+Extension.swift in Sources */,
 				F1719B132A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift in Sources */,
 				F1B0CCAE2A96332300389EA7 /* SceneDelegate.swift in Sources */,
 				F1DB42662A974F4F00CAE7E5 /* MultiplePageScanning.swift in Sources */,

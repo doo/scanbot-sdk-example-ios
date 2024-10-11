@@ -24,15 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //Scanbot.setLicense("YOUR_LICENSE_KEY")
         
-        let appearance = UINavigationBarAppearance()
-        appearance.configureWithOpaqueBackground()
-        appearance.backgroundColor = UIColor(named: "AccentColor")
-        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
-        
-        let navigationBar = UINavigationBar.appearance()
-        navigationBar.tintColor = .white
-        navigationBar.standardAppearance = appearance
-        navigationBar.scrollEdgeAppearance = navigationBar.standardAppearance
+        // Apply a custom navigation style.
+        UINavigationBar.applyCustomNavigationStyle()
         
         return true
     }
