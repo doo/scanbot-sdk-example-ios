@@ -24,6 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         //Scanbot.setLicense("YOUR_LICENSE_KEY")
         
+        // Apply a custom navigation style.
+        UINavigationBar.applyCustomNavigationStyle()
+        
         return true
     }
 
