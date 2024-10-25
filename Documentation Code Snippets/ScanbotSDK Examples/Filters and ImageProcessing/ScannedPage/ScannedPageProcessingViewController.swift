@@ -1,5 +1,5 @@
 //
-//  ScannedPageProcessingSwiftViewController.swift
+//  ScannedPageProcessingViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Rana Sohaib on 29.08.24.
@@ -8,10 +8,10 @@
 import Foundation
 import ScanbotSDK
 
-class ScannedPageProcessingSwiftViewController: UIViewController {
+class ScannedPageProcessingViewController: UIViewController {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         applyFiltersAndRotateScannedPage()
     }
