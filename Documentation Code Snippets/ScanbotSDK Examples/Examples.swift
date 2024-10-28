@@ -76,7 +76,8 @@ enum ExampleCategory: String, CaseIterable {
                     BarcodeScannerViewController.self,
                     BarcodesBatchViewController.self,
                     BarcodesOverlayViewController.self,
-                    BarcodeScanAndCountViewController.self]
+                    BarcodeScanAndCountViewController.self,
+                    BarcodeDataParserViewController.self]
         case .genericDocument:
             return [GenericDocumentViewController.self,
                     GenericDocumentUIViewController.self]
