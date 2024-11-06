@@ -25,7 +25,7 @@ struct BarcodeScanningResult {
         self.scannedBarcodes = scannedBarcodes.map({ barcode in
             return BarcodeResult(type: barcode.type,
                                  rawTextString: barcode.rawTextString,
-                                 rawTextStringWithExtension: barcode.rawTextStringWithExtension,
+                                 rawTextStringWithExtension: barcode.displayText,
                                  barcodeImage: barcode.barcodeImage)
         })
     }
@@ -35,7 +35,7 @@ struct BarcodeScanningResult {
         self.scannedBarcodes = scannedItems.map({ barcode in
             return BarcodeResult(type: barcode.type?.toBarcodeType(),
                                  rawTextString: barcode.text,
-                                 rawTextStringWithExtension: barcode.textWithExtension,
+                                 rawTextStringWithExtension: barcode.displayText,
                                  barcodeImage: UIImage())
         })
     }
