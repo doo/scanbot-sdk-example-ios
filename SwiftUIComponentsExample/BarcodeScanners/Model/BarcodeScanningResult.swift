@@ -10,7 +10,7 @@ import ScanbotSDK
 struct BarcodeResult: Identifiable {
     let id = UUID()
     
-    let type: SBSDKBarcodeType?
+    let type: SBSDKBarcodeFormat?
     let rawTextString: String
     let rawTextStringWithExtension: String
     let barcodeImage: UIImage
@@ -20,23 +20,23 @@ struct BarcodeScanningResult {
     let barcodeScannerName: String
     let scannedBarcodes: [BarcodeResult]
     
-    init(barcodeScannerName: String = "", scannedBarcodes: [SBSDKBarcodeScannerResult] = []) {
+    init(barcodeScannerName: String = "", scannedItems: [SBSDKBarcodeItem] = []) {
         self.barcodeScannerName = barcodeScannerName
-        self.scannedBarcodes = scannedBarcodes.map({ barcode in
-            return BarcodeResult(type: barcode.type,
-                                 rawTextString: barcode.rawTextString,
-                                 rawTextStringWithExtension: barcode.rawTextStringWithExtension,
-                                 barcodeImage: barcode.barcodeImage)
+        self.scannedBarcodes = scannedItems.map({ barcode in
+            return BarcodeResult(type: barcode.format,
+                                 rawTextString: barcode.text,
+                                 rawTextStringWithExtension: barcode.textWithExtension,
+                                 barcodeImage: barcode.sourceImage?.toUIImage() ?? UIImage())
         })
     }
     
-    init(barcodeScannerName: String = "", scannedItems: [SBSDKUI2BarcodeItem] = []) {
+    init(barcodeScannerName: String = "", scannedResultItems: [SBSDKUI2BarcodeScannerUIItem] = []) {
         self.barcodeScannerName = barcodeScannerName
-        self.scannedBarcodes = scannedItems.map({ barcode in
-            return BarcodeResult(type: barcode.type?.toBarcodeType(),
-                                 rawTextString: barcode.text,
-                                 rawTextStringWithExtension: barcode.textWithExtension,
-                                 barcodeImage: UIImage())
+        self.scannedBarcodes = scannedResultItems.map({ barcodeItem in
+            return BarcodeResult(type: barcodeItem.barcode.format,
+                                 rawTextString: barcodeItem.barcode.text,
+                                 rawTextStringWithExtension: barcodeItem.barcode.textWithExtension,
+                                 barcodeImage: barcodeItem.barcode.sourceImage?.toUIImage() ?? UIImage())
         })
     }
 }

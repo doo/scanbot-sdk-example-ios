@@ -16,12 +16,14 @@ class GenericDocumentViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let builder = SBSDKGenericDocumentRecognizerConfigurationBuilder()
+        
+        builder.setAcceptedDocumentTypes(documentTypes())
+        
         scannerViewController = SBSDKGenericDocumentRecognizerViewController(parentViewController: self,
-                                                                             parentView: view,
-                                                                             acceptedDocumentTypes: documentTypes(),
-                                                                             excludedFieldTypes: nil,
+                                                                             parentView: view, 
+                                                                             configuration: builder.buildConfiguration(),
                                                                              delegate: self)
-        scannerViewController?.resultAccumulatorConfiguration = SBSDKGenericDocumentRecognizerAccumulationConfiguration()
         
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.hidesWhenStopped = true
@@ -34,8 +36,8 @@ class GenericDocumentViewController: UIViewController {
         indicator?.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
     }
     
-    private func documentTypes() -> [SBSDKGenericDocumentRootType] {
-        return SBSDKGenericDocumentRootType.allDocumentTypes
+    private func documentTypes() -> [SBSDKDocumentsModelRootType] {
+        return SBSDKDocumentsModelRootType.allDocumentTypes
     }
     
     private func display(document: SBSDKGenericDocument, with sourceImage: UIImage) {
@@ -59,7 +61,7 @@ extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewContr
         if result.status == .success {
             indicator?.stopAnimating()
         }
-        if let document = result.document, let sourceImage = document.crop {
+        if let document = result.document, let sourceImage = document.crop?.toUIImage() {
             controller.resetDocumentAccumulation()
             display(document: document, with: sourceImage)
         }
@@ -76,9 +78,13 @@ extension GenericDocumentViewController: UIImagePickerControllerDelegate, UINavi
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            let recognizer = SBSDKGenericDocumentRecognizer(acceptedDocumentTypes: self.documentTypes())
+            let builder = SBSDKGenericDocumentRecognizerConfigurationBuilder()
             
-            if let image = image, let document = recognizer.recognize(on: image)?.document {
+            builder.setAcceptedDocumentTypes(self.documentTypes())
+            
+            let recognizer = SBSDKGenericDocumentRecognizer(configuration: builder.buildConfiguration())
+                        
+            if let image = image, let document = recognizer.recognizeDocument(on: image)?.document {
                 self.display(document: document, with: image)
             }
         }

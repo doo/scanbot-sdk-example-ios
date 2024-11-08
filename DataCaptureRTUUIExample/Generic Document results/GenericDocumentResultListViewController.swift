@@ -103,7 +103,7 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
                 let cell = tableView.dequeueReusableCell(withIdentifier: "GenericDocumentResultImageListCell",
                                                          for: indexPath) as! GenericDocumentResultImageListCell
                 cell.configure(title: displayText,
-                               image: field.image)
+                               image: field.image?.toUIImage())
                 return cell
             }
         }
@@ -145,7 +145,7 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
         if let value = field.value, !value.text.isEmpty {
             return max(44, calculateTextCellHeight(valueText: value.text, typeText: fieldTypeText))
         } else {
-            guard let image = field.image else { return 0 }
+            guard let image = field.image?.toUIImage() else { return 0 }
             return calculatedImageCellHeight(image)
         }
     }

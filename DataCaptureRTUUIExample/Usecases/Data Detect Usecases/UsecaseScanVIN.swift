@@ -22,12 +22,12 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     }
     
     func vinScannerViewController(_ viewController: SBSDKUIVINScannerViewController,
-                                  didFinishWith result: SBSDKVehicleIdentificationNumberScannerResult) {
+                                  didFinishWith result: SBSDKGenericTextLineScannerResult) {
         
-        guard result.text.count > 0, viewController.isRecognitionEnabled == true else {
+        guard result.rawText.count > 0, viewController.isRecognitionEnabled == true else {
             return
         }
-        let message = result.text
+        let message = result.rawText
         let title = "VIN detected"
         
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)

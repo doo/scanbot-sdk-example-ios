@@ -28,7 +28,7 @@ final class PickFromGalleryViewController: UIViewController {
             let detector = SBSDKDocumentDetector()
             
             // Run detection on the image
-            let result = detector.detectPhotoPolygon(on: image, visibleImageRect: .zero, smoothingEnabled: false)
+            let result = detector.detectDocument(on: image)
             
             // Create an instance of a document
             let document = SBSDKScannedDocument()
@@ -58,7 +58,7 @@ final class PickFromGalleryViewController: UIViewController {
             pickedImages.forEach { image in
                 
                 // Run detection on the image
-                let result = detector.detectPhotoPolygon(on: image, visibleImageRect: .zero, smoothingEnabled: false)
+                let result = detector.detectDocument(on: image)
                 
                 // Add page to the document using the image and the detected polygon on the image (if any)
                 if let polygon = result?.polygon {

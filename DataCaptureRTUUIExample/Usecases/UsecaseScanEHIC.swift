@@ -9,26 +9,26 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardScannerViewControllerDelegate {
+class UsecaseScanEHIC: Usecase, SBSDKUIHealthInsuranceCardRecognizerViewControllerDelegate {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIHealthInsuranceCardScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUIHealthInsuranceCardRecognizerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIHealthInsuranceCardScannerViewController.create(configuration: configuration, delegate: self)
+        let scanner = SBSDKUIHealthInsuranceCardRecognizerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
     
-    func healthInsuranceCardDetectionViewController(_ viewController: SBSDKUIHealthInsuranceCardScannerViewController,
-                                                    didDetectCard card: SBSDKHealthInsuranceCardRecognitionResult) {
+    func healthInsuranceCardDetectionViewController(_ viewController: SBSDKUIHealthInsuranceCardRecognizerViewController,
+                                                    didDetectCard card: SBSDKEuropeanHealthInsuranceCardRecognitionResult) {
         let title = "Health card detected"
-        let message = card.stringRepresentation
+        let message = card.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
     
-    func healthInsuranceCardDetectionViewControllerDidCancel(_ viewController: SBSDKUIHealthInsuranceCardScannerViewController) {
+    func healthInsuranceCardDetectionViewControllerDidCancel(_ viewController: SBSDKUIHealthInsuranceCardRecognizerViewController) {
         didFinish()
     }
 }

@@ -14,7 +14,7 @@ struct BarcodeScannerContainerView: View {
 
     @Binding private var scanningResult: BarcodeScanningResult
     @State private var isRecognitionEnabled = true
-    @State private var selectedBarcode: SBSDKBarcodeScannerResult? = nil
+    @State private var selectedBarcode: SBSDKBarcodeItem? = nil
     
     init(scanner: BarcodeScanner, scanningResult: Binding<BarcodeScanningResult>) {
         self.scanner = scanner
@@ -49,6 +49,6 @@ struct BarcodeScannerContainerView: View {
 struct BarcodeScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
         BarcodeScannerContainerView(scanner: .rtuUI, 
-                                    scanningResult: .constant(BarcodeScanningResult(scannedBarcodes: [])))
+                                    scanningResult: .constant(BarcodeScanningResult(scannedItems: [])))
     }
 }

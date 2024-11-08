@@ -46,10 +46,7 @@ final class ReviewDocumentsViewController: UIViewController {
         importAction = ImportAction { image in
             guard let image = image else { return }
             DispatchQueue(label: "FilterQueue").async { [weak self] in
-                let result = SBSDKDocumentDetector().detectDocumentPolygon(on: image,
-                                                                           visibleImageRect: .zero,
-                                                                           smoothingEnabled: false,
-                                                                           useLiveDetectionParameters: false)
+                let result = SBSDKDocumentDetector().detectDocument(on: image)
 
                 ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {
@@ -167,7 +164,7 @@ final class ReviewDocumentsViewController: UIViewController {
             if let image = ImageManager.shared.originalImageAt(index: item),
                 let url = ImageManager.shared.originalImageURLAt(index: item) {
                 let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
-                Self.qualityCache[url] = quality
+                Self.qualityCache[url] = quality?.quality
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])

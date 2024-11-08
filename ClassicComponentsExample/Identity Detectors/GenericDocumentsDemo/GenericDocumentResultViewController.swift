@@ -69,7 +69,7 @@ extension GenericDocumentResultViewController: UITableViewDataSource {
         let field = flatDocument?[indexPath.section].fields[indexPath.row]
         cell.fieldTypeLabel.text = field?.type.name
         
-        let image = field?.image?.sbsdk_limited(to: CGSize(width: 10000.0, height: 80.0))
+        let image = field?.image?.toUIImage()?.sbsdk_limited(to: CGSize(width: 10000.0, height: 80.0))
         cell.fieldImageView.image = image
         
         if let value = field?.value, value.text.isEmpty == false {

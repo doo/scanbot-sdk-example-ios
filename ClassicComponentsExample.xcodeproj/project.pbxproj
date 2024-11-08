@@ -35,6 +35,7 @@
 		082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */; };
 		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
+		11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
 		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
@@ -81,7 +82,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		287FE72B24AE43F2002569D9 /* PBXContainerItemProxy */ = {
+		11D852362CDE0EAC0000096B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ED845791AE670CC008B2731 /* Project object */;
 			proxyType = 1;
@@ -125,6 +126,7 @@
 		082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBSDKGeometryUtilities.swift; sourceTree = "<group>"; };
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDemoViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
 		28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePlateDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
 				2869C49D274E63790036F44D /* CheckViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
+				11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */,
 				28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */,
 			);
 			path = "Data Detectors";
@@ -412,7 +415,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				287FE72C24AE43F2002569D9 /* PBXTargetDependency */,
+				11D852372CDE0EAC0000096B /* PBXTargetDependency */,
 			);
 			name = ClassicComponentsExample;
 			productName = PayFormScannerDemo;
@@ -511,7 +514,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"6.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC10\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -583,6 +586,7 @@
 				28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */,
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
+				11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */,
 				28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -590,10 +594,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		287FE72C24AE43F2002569D9 /* PBXTargetDependency */ = {
+		11D852372CDE0EAC0000096B /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 08E3396C23E2EC8000699471 /* Download ScanbotSDK */;
-			targetProxy = 287FE72B24AE43F2002569D9 /* PBXContainerItemProxy */;
+			targetProxy = 11D852362CDE0EAC0000096B /* PBXContainerItemProxy */;
 		};
 		6991C578256C179A008188AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

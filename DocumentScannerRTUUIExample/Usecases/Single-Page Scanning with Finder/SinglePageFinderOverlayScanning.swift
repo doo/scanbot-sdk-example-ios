@@ -19,7 +19,7 @@ class SinglePageFinderOverlayScanning {
         
         // Enable view finder
         configuration.screens.camera.viewFinder.visible = true
-        configuration.screens.camera.viewFinder.aspectRatio = SBSDKUI2AspectRatio(width: 3, height: 4)
+        configuration.screens.camera.viewFinder.aspectRatio = SBSDKAspectRatio(width: 3, height: 4)
         
         // Enable/Disable the review screen.
         configuration.screens.review.enabled = false

@@ -20,20 +20,20 @@ class UsecaseScanTextData: Usecase, SBSDKUITextDataScannerViewControllerDelegate
         presentViewController(scanner)
     }
     
-    func textLineRecognizerViewController(_ viewController: SBSDKUITextDataScannerViewController,
+    func textLineScannerViewController(_ controller: SBSDKUITextDataScannerViewController,
                                           didFinish step: SBSDKUITextDataScannerStep,
                                           with result: SBSDKUITextDataScannerStepResult) {
         
-        guard result.text.count > 0, viewController.isRecognitionEnabled == true else {
+        guard result.text.count > 0, controller.isRecognitionEnabled == true else {
             return
         }
         let message = result.text
         let title = "Text found"
         
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
+        UIAlertController.showInfoAlert(title, message: message, presenter: controller, completion: nil)
     }
     
-    func textLineRecognizerViewControllerDidCancel(_ viewController: SBSDKUITextDataScannerViewController) {
+    func textLineScannerViewControllerDidCancel(_ controller: SBSDKUITextDataScannerViewController) {
         didFinish()
     }
 }

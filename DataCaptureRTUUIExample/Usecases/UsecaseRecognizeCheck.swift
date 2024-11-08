@@ -29,16 +29,13 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
     }
     
     func checkRecognizerViewController(_ viewController: SBSDKUICheckRecognizerViewController,
-                                       didRecognizeCheck result: SBSDKCheckRecognizerResult) {
+                                       didRecognizeCheck result: SBSDKCheckRecognitionResult) {
         let title = "Check recognized"
-        let message = result.stringRepresentation
+        let message = result.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            if let image = result.checkImage {
-                self.result.images.append(image)
-                if let navigationController = self.presenter as? UINavigationController {
-                    UsecaseBrowseImages(result: self.result).start(presenter: navigationController)
-                    viewController.presentingViewController?.dismiss(animated: true, completion: nil)
-                }
+            if let navigationController = self.presenter as? UINavigationController {
+                UsecaseBrowseImages(result: self.result).start(presenter: navigationController)
+                viewController.presentingViewController?.dismiss(animated: true, completion: nil)
             }
         }
     }

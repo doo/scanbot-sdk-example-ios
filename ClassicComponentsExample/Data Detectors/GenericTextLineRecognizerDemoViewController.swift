@@ -13,30 +13,29 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
     @IBOutlet private var cameraContainer: UIView!
     @IBOutlet private var resultLabel: UILabel!
     
-    private var textLineRecognizerController: SBSDKGenericTextLineRecognizerViewController?
+    private var textLineRecognizerController: SBSDKGenericTextLineScannerViewController?
     private var shouldRecognize: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let configuration = SBSDKGenericTextLineRecognizerConfiguration.defaultConfiguration
+        let configuration = SBSDKGenericTextLineScannerConfiguration()
         
         var characterSet = CharacterSet.alphanumerics
         characterSet.formUnion(.whitespaces)
         characterSet.formUnion(.punctuationCharacters)
-        characterSet.invert()
         
         
+        let validator = SBSDKContentValidator.customContentValidator()
         
-        configuration.stringSanitizerBlock = { string in
-            let components = string.components(separatedBy: characterSet).filter({ !$0.isEmpty })
-            return components.joined(separator: "")
-        }
+        validator.allowedCharacters = characterSet.toString()
         
-        textLineRecognizerController = SBSDKGenericTextLineRecognizerViewController(parentViewController: self,
-                                                                                    parentView: cameraContainer,
-                                                                                    configuration: configuration,
-                                                                                    delegate: self)
+        configuration.validator = validator
+        
+        textLineRecognizerController = SBSDKGenericTextLineScannerViewController(parentViewController: self,
+                                                                                 parentView: cameraContainer,
+                                                                                 configuration: configuration,
+                                                                                 delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -51,21 +50,52 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
         shouldRecognize = false
     }
     
-    private func show(result: SBSDKGenericTextLineRecognizerResult) {
+    private func show(result: SBSDKGenericTextLineScannerResult) {
         resultLabel.textColor = result.validationSuccessful ? UIColor.green : UIColor.red
-        resultLabel.text = result.text
+        resultLabel.text = result.rawText
     }
 }
 
-extension GenericTextLineRecognizerDemoViewController: SBSDKGenericTextLineRecognizerViewControllerDelegate {
-    func textLineRecognizerViewControllerShouldRecognize(_ controller: SBSDKGenericTextLineRecognizerViewController) -> Bool {
+extension GenericTextLineRecognizerDemoViewController: SBSDKGenericTextLineScannerViewControllerDelegate {
+    func textLineScannerViewControllerShouldRecognize(_ controller: SBSDKGenericTextLineScannerViewController) -> Bool {
         return shouldRecognize
     }
     
-    func textLineRecognizerViewController(_ controller: SBSDKGenericTextLineRecognizerViewController,
-                                          didValidate result: SBSDKGenericTextLineRecognizerResult) {
+    func textLineScannerViewController(_ controller: SBSDKGenericTextLineScannerViewController,
+                                       didValidate result: SBSDKGenericTextLineScannerResult) {
         DispatchQueue.main.async { [weak self] in
             self?.show(result: result)
         }
+    }
+}
+
+extension CharacterSet {
+    
+    func toString() -> String {
+        return String(self.characters)
+    }
+    
+    var characters: [Character] {
+        // A Unicode scalar is any Unicode code point in the range U+0000 to U+D7FF inclusive or U+E000 to U+10FFFF inclusive.
+        return codePoints.compactMap { UnicodeScalar($0) }.map { Character($0) }
+    }
+    
+    private var codePoints: [Int] {
+        var result: [Int] = []
+        var plane = 0
+        // following documentation at https://developer.apple.com/documentation/foundation/nscharacterset/1417719-bitmaprepresentation
+        for (i, w) in bitmapRepresentation.enumerated() {
+            let k = i % 0x2001
+            if k == 0x2000 {
+                // plane index byte
+                plane = Int(w) << 13
+                continue
+            }
+            let base = (plane + k) << 3
+            for j in 0 ..< 8 where w & 1 << j != 0 {
+                result.append(base + j)
+            }
+        }
+        return result
     }
 }

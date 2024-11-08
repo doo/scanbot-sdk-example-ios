@@ -13,7 +13,7 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
     
     @IBOutlet var titleLabel: UILabel!
 
-    var barcode: SBSDKBarcodeScannerResult?
+    var barcode: SBSDKBarcodeItem?
     
     
     override func awakeFromNib() {
@@ -22,7 +22,7 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
         backgroundColor = UIColor.clear
     }
     
-    static func make(withBarcode: SBSDKBarcodeScannerResult) -> ScanbotSDK.SBSDKTrackedBarcodeInfoView {
+    static func make(withBarcode: SBSDKBarcodeItem) -> ScanbotSDK.SBSDKTrackedBarcodeInfoView {
         let nib = UINib(nibName: "CustomTrackedBarcodeView", bundle: nil)
         guard let view = nib.instantiate(withOwner: nil).first as? CustomTrackedBarcodeView else {
             fatalError("View is not implemented properly.")
@@ -46,9 +46,9 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
         if textStyle.textDrawingEnabled {
             switch textStyle.trackingOverlayTextFormat {
             case .code:
-                text = code.rawTextStringWithExtension
+                text = code.textWithExtension
             case .codeAndType:
-                text = String("\(code.type.name)\n\(code.rawTextStringWithExtension)")
+                text = String("\(code.format.name)\n\(code.textWithExtension)")
             case .none:
                 break
             @unknown default:

@@ -18,25 +18,25 @@ class ExportAction {
                 .appendingPathExtension("pdf")
             
             
-            let config = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+            let ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
             
             let attributes = SBSDKPDFAttributes(author: "Scanbot SDK Example App", 
                                                 creator: "Scanbot SDK", 
                                                 title: "Demo", 
                                                 subject: "PDF Attributes", 
-                                                keywords: ["Scanbot", "SDK", "Demo", "Example"])
+                                                keywords: "Scanbot,SDK,Demo,Example")
             
+            let configuration = SBSDKPDFConfiguration(attributes: attributes, 
+                                                      pageSize: .custom, 
+                                                      pageDirection: .auto,
+                                                      pageFit: .fitIn, 
+                                                      dpi: 200, 
+                                                      jpegQuality: 80,
+                                                      resamplingMethod: .lanczos4)
             
-            let options = SBSDKPDFRendererOptions(pageSize: .custom,
-                                                  pageFitMode: .fitIn,
-                                                  pageOrientation: .auto,
-                                                  dpi: 200,
-                                                  resample: true,
-                                                  jpegQuality: 80,
-                                                  ocrConfiguration: config,
-                                                  pdfAttributes: attributes)
-            
-            let _ = SBSDKPDFRenderer(options: options).renderDocument(document, output: url) { finished, error in
+            let _ = SBSDKPDFRenderer(configuration: configuration, 
+                                     ocrConfiguration: ocrConfiguration,
+                                     encrypter: nil).renderDocument(document, output: url) { finished, error in
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
@@ -49,11 +49,10 @@ class ExportAction {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("tiff")
+            let params = binarize ? SBSDKTIFFWriterParameters.defaultParametersForBinaryImages
+            : SBSDKTIFFWriterParameters.defaultParameters
             
-            let params = binarize ? SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
-            : SBSDKTIFFImageWriterParameters.defaultParameters
-            
-            let writer = SBSDKTIFFImageWriter(parameters: params)
+            let writer = SBSDKTIFFWriter(parameters: params)
             
             Task {
                 let result = await writer.writeTIFFAsync(document: document, toFile: url)

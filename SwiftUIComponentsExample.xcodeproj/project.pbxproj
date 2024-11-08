@@ -54,7 +54,6 @@
 		F17D778F2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D778E2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift */; };
 		F17D77912C7DD474004F4BE3 /* DocumentScannerSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D77902C7DD474004F4BE3 /* DocumentScannerSwiftUIView.swift */; };
 		F17D77932C7DE38C004F4BE3 /* DocumentScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D77922C7DE38C004F4BE3 /* DocumentScanningResult.swift */; };
-		F1DF71D12B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -105,7 +104,6 @@
 		F17D778E2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerRTUUIView.swift; sourceTree = "<group>"; };
 		F17D77902C7DD474004F4BE3 /* DocumentScannerSwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerSwiftUIView.swift; sourceTree = "<group>"; };
 		F17D77922C7DE38C004F4BE3 /* DocumentScanningResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanningResult.swift; sourceTree = "<group>"; };
-		F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKUI2BarcodeFormat+BarcodeType.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,7 +140,6 @@
 			children = (
 				285AE380271ED06300B5F728 /* BarcodeScanner.swift */,
 				285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */,
-				F1DF71D02B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -349,7 +346,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"6.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC10\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.0.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		08072F6827216B9700863F12 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -394,7 +391,6 @@
 				285AE397271ED0D300B5F728 /* BarcodeScannerListView.swift in Sources */,
 				285AE3A1271F05FD00B5F728 /* DocumentScannerClassicView.swift in Sources */,
 				285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */,
-				F1DF71D12B56BAC70044C94B /* SBSDKUI2BarcodeFormat+BarcodeType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

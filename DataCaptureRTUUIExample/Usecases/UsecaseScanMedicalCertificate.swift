@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerViewControllerDelegate {
+class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateRecognizerViewControllerDelegate {
     
     let result: ReviewableScanResult
     
@@ -20,25 +20,25 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerVi
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIMedicalCertificateScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKUIMedicalCertificateRecognizerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIMedicalCertificateScannerViewController.create(configuration: configuration, delegate: self)
+        let scanner = SBSDKUIMedicalCertificateRecognizerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
     
-    func medicalScannerViewControllerDidCancel(_ viewController: SBSDKUIMedicalCertificateScannerViewController) {
+    func medicalScannerViewControllerDidCancel(_ viewController: SBSDKUIMedicalCertificateRecognizerViewController) {
         didFinish()
     }
     
-    func medicalScannerViewController(_ viewController: SBSDKUIMedicalCertificateScannerViewController,
-                                      didFinishWith result: SBSDKMedicalCertificateRecognizerResult) {
+    func medicalScannerViewController(_ viewController: SBSDKUIMedicalCertificateRecognizerViewController,
+                                      didFinishWith result: SBSDKMedicalCertificateRecognitionResult) {
 
         let title = "Medical certificate detected"
-        let message = result.stringRepresentation
+        let message = result.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
-            if let image = result.image {
+            if let image = result.croppedImage?.toUIImage() {
                 self.result.images.append(image)
                 if let navigationController = self.presenter as? UINavigationController {
                     UsecaseBrowseImages(result: self.result).start(presenter: navigationController)

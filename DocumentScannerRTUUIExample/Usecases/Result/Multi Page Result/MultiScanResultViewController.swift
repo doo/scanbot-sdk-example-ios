@@ -47,13 +47,13 @@ extension MultiScanResultViewController {
         let pdfURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
         // Create the PDF rendering options object with default options.
-        let options = SBSDKPDFRendererOptions()
+        let configuration = SBSDKPDFConfiguration()
         
         // Create and set the OCR configuration for HOCR.
-        options.ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+        let options = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
 
         // Renders the document into a searchable PDF at the specified file url
-        let renderer = SBSDKPDFRenderer(options: options)
+        let renderer = SBSDKPDFRenderer(configuration: configuration, ocrConfiguration: options)
         
         // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
         let progress = renderer.renderScannedDocument(document, output: pdfURL) { finished, error in
@@ -79,14 +79,14 @@ extension MultiScanResultViewController {
         // Define export parameters for the TIFF
         // In this case using lowLightBinarization2 filter when exporting as TIFF
         // as an optimal setting
-        let tiffExportParameters = SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
+        let tiffExportParameters = SBSDKTIFFWriterParameters.defaultParametersForBinaryImages
         tiffExportParameters.dpi = 300
-        tiffExportParameters.compression = .ccitt_t6
+        tiffExportParameters.compression = .ccittT6
         tiffExportParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
         
         // Use `SBSDKTIFFImageWriter` to write TIFF at the specified file url
         // and get the result
-        let tiffWriter = SBSDKTIFFImageWriter(parameters: .defaultParameters, encrypter: nil)
+        let tiffWriter = SBSDKTIFFWriter(parameters: tiffExportParameters, encrypter: nil)
         let success = tiffWriter.writeTIFF(with: images, toFile: fileURL)
         
         if success == true {

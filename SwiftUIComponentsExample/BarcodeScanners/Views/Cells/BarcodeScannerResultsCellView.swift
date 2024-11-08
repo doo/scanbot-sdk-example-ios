@@ -33,7 +33,7 @@ struct BarcodeScannerResultsCellView: View {
 
 struct ScannerResultsView_Previews: PreviewProvider {
     static var previews: some View {
-        BarcodeScannerResultsCellView(barcode: BarcodeResult(type: SBSDKBarcodeType.aztec,
+        BarcodeScannerResultsCellView(barcode: BarcodeResult(type: SBSDKBarcodeFormat.aztec,
                                                              rawTextString: "Some Different Text",
                                                              rawTextStringWithExtension: "",
                                                              barcodeImage: UIImage(systemName: "sun.dust")!))

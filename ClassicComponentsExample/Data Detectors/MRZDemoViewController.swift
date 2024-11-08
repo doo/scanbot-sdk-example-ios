@@ -19,12 +19,13 @@ final class MRZDemoViewController: UIViewController {
         view.backgroundColor = .black
         
         scannerViewController = SBSDKMRZScannerViewController(parentViewController: self,
-                                                              parentView: view,
+                                                              parentView: view, 
+                                                              configuration: SBSDKMRZScannerConfiguration(),
                                                               delegate: self)
     }
     
-    private func show(result: SBSDKMachineReadableZoneRecognizerResult?) {
-        let resultMessage = result?.stringRepresentation() ?? "Nothing detected"
+    private func show(result: SBSDKMRZScannerResult?) {
+        let resultMessage = result?.toJson() ?? "Nothing detected"
         let alert = UIAlertController(title: "Result",
                                       message: resultMessage,
                                       preferredStyle: .alert)
@@ -39,7 +40,7 @@ final class MRZDemoViewController: UIViewController {
 
 extension MRZDemoViewController: SBSDKMRZScannerViewControllerDelegate {
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController,
-                              didDetectMRZ result: SBSDKMachineReadableZoneRecognizerResult) {
+                              didDetectMRZ result: SBSDKMRZScannerResult) {
         show(result: result)
     }
 }

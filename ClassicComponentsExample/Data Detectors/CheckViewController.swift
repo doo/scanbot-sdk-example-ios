@@ -22,9 +22,9 @@ final class CheckViewController: UIViewController {
                                                                       delegate: self)
     }
         
-    private func show(result: SBSDKCheckRecognizerResult) {
+    private func show(result: SBSDKCheckRecognitionResult) {
         let alert = UIAlertController(title: "Recognized check",
-                                      message: result.stringRepresentation,
+                                      message: result.toJson(),
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
                                      style: .default,
@@ -39,7 +39,7 @@ final class CheckViewController: UIViewController {
 
 extension CheckViewController: SBSDKCheckRecognizerViewControllerDelegate {
     func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didRecognizeCheck result: SBSDKCheckRecognizerResult) {
+                                       didRecognizeCheck result: SBSDKCheckRecognitionResult) {
         show(result: result)
     }
     

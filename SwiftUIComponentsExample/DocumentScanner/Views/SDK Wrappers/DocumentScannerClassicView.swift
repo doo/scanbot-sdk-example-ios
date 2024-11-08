@@ -44,7 +44,7 @@ extension DocumentScannerClassicView {
         func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                            didSnapDocumentImage documentImage: UIImage,
                                            on originalImage: UIImage,
-                                           with result: SBSDKDocumentDetectorResult?, autoSnapped: Bool) {
+                                           with result: SBSDKDocumentDetectionResult?, autoSnapped: Bool) {
             
             let documentPage = SBSDKDocumentPage(image: originalImage, polygon: result?.polygon, filter: .none)
             parent.document.add(documentPage)

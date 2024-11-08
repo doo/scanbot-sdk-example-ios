@@ -14,7 +14,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     
     @Binding var scanningResult: BarcodeScanningResult
     @Binding var isRecognitionEnabled: Bool
-    @Binding var selectedBarcode: SBSDKBarcodeScannerResult?
+    @Binding var selectedBarcode: SBSDKBarcodeItem?
 
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -23,7 +23,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIViewController {
         let scannerViewController = SBSDKBarcodeScannerViewController()
         scannerViewController.delegate = context.coordinator
-
+        
         let configuration = scannerViewController.viewFinderConfiguration
         configuration.lineColor = UIColor.green
         configuration.lineWidth = 5
@@ -52,21 +52,12 @@ extension BarcodeScannerClassicView {
         }
         
         func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                      didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
+                                      didDetectBarcodes codes: [SBSDKBarcodeItem]) {
             if parent.presentationMode.wrappedValue.isPresented {
                 self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Classic Barcode Scanner",
-                                                                   scannedBarcodes: codes)
+                                                                   scannedItems: codes)
                 self.parent.presentationMode.wrappedValue.dismiss()
             }
-        }
-        
-        func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didTapOnBarcode code: SBSDKBarcodeScannerResult) {
-            self.parent.selectedBarcode = code
-        }
-        
-        func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, shouldHighlight code: SBSDKBarcodeScannerResult) -> Bool {
-            guard let selectedBarcode = self.parent.selectedBarcode else { return false }
-            return selectedBarcode == code
         }
     }
 }
