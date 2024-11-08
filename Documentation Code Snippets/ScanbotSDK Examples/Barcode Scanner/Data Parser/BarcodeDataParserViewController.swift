@@ -1,0 +1,94 @@
+//
+//  BarcodeDataParserViewController.swift
+//  ScanbotSDK Examples
+//
+//  Created by Rana Sohaib on 25.10.24.
+//
+
+import UIKit
+import ScanbotSDK
+
+// This is a simple, empty view controller which acts as a container
+// and delegate for the `SBSDKBarcodeScannerViewController`.
+class BarcodeDataParserViewController: UIViewController {
+
+    // The instance of the scanner view controller.
+    var scannerViewController: SBSDKBarcodeScannerViewController!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Barcode document formats you want to detect.
+        let documentFormatsToDetect = [SBSDKBarcodeDocumentFormat.swissQr]
+        
+        // Get the supported barcode formats for the document formats set above.
+        let barcodeFormats = SBSDKBarcodeDocumentFormat.supportedBarcodeFormats(for: documentFormatsToDetect)
+        
+        // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`.
+        let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: barcodeFormats)
+        
+        // Create an instance of `SBSDKBarcodeScannerConfiguration`.
+        let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration],
+                                                             acceptedDocumentFormats: documentFormatsToDetect)
+        
+        // Create the SBSDKBarcodeScannerViewController instance.
+        self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
+                                                                       parentView: self.view,
+                                                                       configuration: configuration,
+                                                                       delegate: self)
+        
+        // Get current view finder configuration object
+        let config = self.scannerViewController.viewFinderConfiguration
+        
+        // Enable the view finder.
+        config.isViewFinderEnabled = true
+        
+        // Set the finder's aspect ratio.
+        config.aspectRatio = SBSDKAspectRatio(width: 2, height: 1)
+        
+        // Set the finder's minimum insets.
+        config.minimumInset = UIEdgeInsets(top: 100, left: 50, bottom: 100, right: 50)
+        
+        // Configure the view finder colors and line properties.
+        config.lineColor = UIColor.red
+        config.backgroundColor = UIColor.red.withAlphaComponent(0.1)
+        config.lineWidth = 2
+        config.lineCornerRadius = 8
+        
+        // Set the view finder configuration to apply it.
+        self.scannerViewController.viewFinderConfiguration = config
+
+        // Get current energy configuration.
+        let energyConfig = self.scannerViewController.energyConfiguration
+
+        // Set detection rate.
+        energyConfig.detectionRate = 5
+        
+        // Set the energy configuration to apply it.
+        self.scannerViewController.energyConfiguration = energyConfig
+    }
+}
+
+// The implementation of `SBSDKBarcodeScannerViewControllerDelegate`.
+extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDelegate {
+    
+    // Implement this function to process detected barcodes.
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+        
+        // Process the detected barcodes.
+        let barcode = codes.first
+        if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.parsedDocument) {
+            
+            // Enumerate the Swiss QR code data fields.
+            for field in document.document.fields {
+                // Do something with the fields.
+            }
+        }
+    }
+    
+    // Implement this function when you need to pause the detection (e.g. when showing the results).
+    func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+        return true
+    }
+}

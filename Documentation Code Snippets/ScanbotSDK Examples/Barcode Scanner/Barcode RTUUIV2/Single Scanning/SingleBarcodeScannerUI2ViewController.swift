@@ -1,20 +1,23 @@
 //
-//  BarcodeScannerSwiftUIView.swift
+//  SingleBarcodeScannerUI2ViewController.swift
 //  ScanbotSDK Examples
 //
-//  Created by Daniil Voitenko on 10.04.24.
+//  Created by Rana Sohaib on 19.12.23.
 //
 
-import SwiftUI
+import Foundation
 import ScanbotSDK
 
-struct BarcodeScannerSwiftUIView: View {
+class SingleBarcodeScannerUI2ViewController: UIViewController {
     
-    // A boolean state variable indicating whether the barcode scanner interface should be presented.
-    @State var showScan: Bool = false
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Start scanning here. Usually this is an action triggered by some button or menu.
+        self.startScanning()
+    }
     
-    // An instance of `SBSDKUI2BarcodeScannerConfiguration` which contains the configuration settings for the barcode scanner.
-    let configuration: SBSDKUI2BarcodeScannerConfiguration = {
+    func startScanning() {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
@@ -53,33 +56,14 @@ struct BarcodeScannerSwiftUIView: View {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        return configuration
-    }()
-    
-    // An optional error object representing any errors that may occur during the scanning process.
-    @State var scanError: Error?
-    
-    // An optional `SBSDKUI2BarcodeScannerUIResult` object containing the result of the scanning process.
-    @State var scannerResult: SBSDKUI2BarcodeScannerUIResult?
-    
-    var body: some View {
-        if let scannerResult = self.scannerResult {
-            // Process and show the results here.
-
-        } else if let error = self.scanError {
-            // Show error view here.
-
-        } else {
-            // Show the scanner, pass the configuration and the button and error handlers.
-            SBSDKUI2BarcodeScannerView(configuration: configuration, 
-                                       onSubmit: { result in scannerResult = result }, 
-                                       onCancel: { /* Dismiss your view here. */ }, 
-                                       onError: { error in scanError = error })
-            .ignoresSafeArea()
+        // Present the recognizer view controller modally on this view controller.
+        SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                     configuration: configuration) { controller, cancelled, error, result in
+            
+            // Completion handler to process the result.
+            // The `cancelled` parameter indicates if the cancel button was tapped.
+            
+            controller.presentingViewController?.dismiss(animated: true)
         }
     }
-}
-
-#Preview {
-    BarcodeScannerSwiftUIView()
 }
