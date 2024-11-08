@@ -33,6 +33,7 @@
 
 /* Begin PBXBuildFile section */
 		082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */; };
+		0863F46E2CDB8EAB00E00765 /* SBSDKBarcodeItem+DisplayText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */; };
 		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */; };
@@ -124,6 +125,7 @@
 /* Begin PBXFileReference section */
 		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBSDKGeometryUtilities.swift; sourceTree = "<group>"; };
+		0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKBarcodeItem+DisplayText.swift"; sourceTree = "<group>"; };
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDemoViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 		C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */ = {
 			isa = PBXGroup;
 			children = (
+				0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */,
 				2866E40B275533C100490CC8 /* BarcodeScannerViewController.swift */,
 				2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */,
 				28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */,
@@ -552,6 +555,7 @@
 				2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */,
 				2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */,
 				2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */,
+				0863F46E2CDB8EAB00E00765 /* SBSDKBarcodeItem+DisplayText.swift in Sources */,
 				288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */,
 				28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */,
 				2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */,

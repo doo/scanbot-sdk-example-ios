@@ -27,7 +27,7 @@ class ScanAndCountResultsViewController: UIViewController {
             let destination = segue.destination as? BarcodeResultDetailsViewController,
             let selectedBarcode = self.selectedBarcode {
             destination.barcodeImage = selectedBarcode.sourceImage?.toUIImage()
-            destination.barcodeText = selectedBarcode.textWithExtension
+            destination.barcodeText = selectedBarcode.displayText
         }
     }
 }
@@ -45,7 +45,7 @@ extension ScanAndCountResultsViewController: UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAndCountBarcodeDetailsCell",
                                                  for: indexPath) as! ScanAndCountBarcodeDetailsCell
         let barcode = countedBarcodes[indexPath.row]
-        cell.barcodeResult.text = barcode.item.textWithExtension
+        cell.barcodeResult.text = barcode.item.displayText
         cell.barcodeType.text = barcode.item.format.name
         cell.barcodeCountLabel.text = "x\(barcode.scanCount)"
         return cell
