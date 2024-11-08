@@ -46,7 +46,7 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
         if textStyle.textDrawingEnabled {
             switch textStyle.trackingOverlayTextFormat {
             case .code:
-                text = code.displayText
+                text = code.textWithExtension
             case .codeAndType:
                 text = String("\(code.format.name)\n\(code.displayText)")
             case .none:
