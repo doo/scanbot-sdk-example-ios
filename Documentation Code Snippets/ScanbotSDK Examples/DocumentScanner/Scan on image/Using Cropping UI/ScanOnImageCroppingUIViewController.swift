@@ -15,7 +15,7 @@ class ScanOnImageCroppingUIViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -33,27 +33,28 @@ class ScanOnImageCroppingUIViewController: UIViewController,
     
     func presentCroppingScreen(with pickedImage: UIImage) {
         
-        // Create an instance of document
+        // Create an instance of document.
         let document = SBSDKScannedDocument()
         
-        // Add a page in document using the picked image
+        // Add a page in document using the picked image.
         guard let page = document.addPage(with: pickedImage) else { return }
         
         // Create the default configuration object.
         let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid,
                                                           pageUuid: page.uuid)
         
-        // e.g disable the rotation feature.
+        // Modify the configuration to your needs.
+        // E.g. disable the rotation feature.
         configuration.cropping.bottomBar.rotateButton.visible = false
         
-        // e.g. configure various colors.
+        // E.g. configure various colors.
         configuration.appearance.topBarBackgroundColor = SBSDKUI2Color(uiColor: UIColor.red)
         configuration.cropping.topBarConfirmButton.foreground.color = SBSDKUI2Color(uiColor: UIColor.white)
         
-        // e.g. customize a UI element's text
+        // E.g. customize a UI element's text.
         configuration.localization.croppingCancelButtonTitle = "Cancel"
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2CroppingViewController.present(on: self, configuration: configuration) { result in
             
             // Completion handler to process the result.

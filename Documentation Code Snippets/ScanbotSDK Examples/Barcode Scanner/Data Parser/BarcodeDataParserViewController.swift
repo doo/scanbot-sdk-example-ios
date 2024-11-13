@@ -18,7 +18,7 @@ class BarcodeDataParserViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Barcode document formats you want to detect.
+        // The barcode document formats to be scanned.
         let documentFormatsToDetect = [SBSDKBarcodeDocumentFormat.swissQr]
         
         // Get the supported barcode formats for the document formats set above.
@@ -37,7 +37,7 @@ class BarcodeDataParserViewController: UIViewController {
                                                                        configuration: configuration,
                                                                        delegate: self)
         
-        // Get current view finder configuration object
+        // Get the current view finder configuration object.
         let config = self.scannerViewController.viewFinderConfiguration
         
         // Enable the view finder.
@@ -58,10 +58,10 @@ class BarcodeDataParserViewController: UIViewController {
         // Set the view finder configuration to apply it.
         self.scannerViewController.viewFinderConfiguration = config
 
-        // Get current energy configuration.
+        // Get the current energy configuration.
         let energyConfig = self.scannerViewController.energyConfiguration
 
-        // Set detection rate.
+        // Set the detection rate.
         energyConfig.detectionRate = 5
         
         // Set the energy configuration to apply it.
@@ -87,7 +87,7 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
         }
     }
     
-    // Implement this function when you need to pause the detection (e.g. when showing the results).
+    // Implement this function if you need to pause the detection (e.g. when showing the results).
     func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return true
     }

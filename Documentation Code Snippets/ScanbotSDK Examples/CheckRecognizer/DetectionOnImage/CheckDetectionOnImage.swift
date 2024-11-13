@@ -8,20 +8,17 @@
 import Foundation
 import ScanbotSDK
 
-func detectCheckOnImage() {
+func recognizeCheckOnImage() {
     
-    // Image containing Check.
+    // The image containing a check.
     guard let image = UIImage(named: "checkImage") else { return }
     
-    // Creates an instance of `SBSDKCheckRecognizer`.
-    let detector = SBSDKCheckRecognizer()
+    // Create an instance of `SBSDKCheckRecognizer`.
+    let recognizer = SBSDKCheckRecognizer()
     
-    // Type of checks that needs to be detected.
-    let acceptedCheckTypes = SBSDKCheckDocumentModelRootType.allDocumentTypes
+    // Set the desired check types on the recognizer.
+    recognizer.acceptedCheckTypes = SBSDKCheckDocumentModelRootType.allDocumentTypes
     
-    // Set the types of check on detector.
-    detector.acceptedCheckTypes = acceptedCheckTypes
-    
-    // Returns the result after running detector on the image.
-    let result = detector.recognizeCheck(on: image)
+    // Run the recognizer on the image.
+    let result = recognizer.recognizeCheck(on: image)
 }

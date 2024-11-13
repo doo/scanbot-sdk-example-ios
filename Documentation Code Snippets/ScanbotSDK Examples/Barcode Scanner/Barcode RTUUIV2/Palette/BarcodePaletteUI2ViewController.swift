@@ -26,7 +26,7 @@ class BarcodePaletteUI2ViewController: UIViewController {
         let palette = configuration.palette
         
         // Configure the colors.
-        // The palette already has the default colors set, so you don't have to always set all the colors.
+        // The palette already has the default colors set, so you only need to modify the colors you want to change.
         palette.sbColorPrimary = SBSDKUI2Color(colorString: "#C8193C")
         palette.sbColorPrimaryDisabled = SBSDKUI2Color(colorString: "#F5F5F5")
         palette.sbColorNegative = SBSDKUI2Color(colorString: "#FF3737")
@@ -50,7 +50,7 @@ class BarcodePaletteUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

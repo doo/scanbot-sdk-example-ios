@@ -35,7 +35,7 @@ class MedicalCertificateRecognizerUIViewController: UIViewController {
         // e.g. customize UI element's text.
         configuration.textConfiguration.cancelButtonTitle = "Cancel"
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIMedicalCertificateRecognizerViewController.present(on: self,
                                                                   configuration: configuration,
                                                                   delegate: self)

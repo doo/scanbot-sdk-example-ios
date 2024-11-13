@@ -17,7 +17,7 @@ class BarcodeScanAndCountViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Barcode formats you want to detect.
+        // The barcode formats to be detected.
         let formatsToDetect = SBSDKBarcodeFormats.all
         
         // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`.
@@ -26,12 +26,12 @@ class BarcodeScanAndCountViewController: UIViewController {
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
-        // Create the SBSDKBarcodeScanAndCountViewController instance
+        // Create the SBSDKBarcodeScanAndCountViewController instance.
         self.scannerViewController = SBSDKBarcodeScanAndCountViewController(parentViewController: self,
                                                                             parentView: self.view,
                                                                             configuration: configuration)
         
-        // Create new instance of the polygon style.
+        // Create a new instance of the polygon style.
         let polygonStyle = SBSDKScanAndCountPolygonStyle()
         
         // Enable the barcode polygon overlay.
@@ -67,7 +67,7 @@ extension BarcodeScanAndCountViewController: SBSDKBarcodeScanAndCountViewControl
         print(codes)
     }
     
-    // Implement this optional function when you need a custom overlay to be displayed for the detected barcode.
+    // Implement this optional function if you need a custom overlay to be displayed for the detected barcode.
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,
                              overlayForBarcode code: SBSDKBarcodeItem) -> UIView? {
         

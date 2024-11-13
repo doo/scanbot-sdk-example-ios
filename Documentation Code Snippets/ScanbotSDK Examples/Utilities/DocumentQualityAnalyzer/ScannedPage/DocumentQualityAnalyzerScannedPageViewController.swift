@@ -18,7 +18,7 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
     
     func analyzeScannedPageQuality() {
         
-        // Retrieve the scanned document
+        // Retrieve the scanned document.
         guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
         
         // Retrieve the selected document page.
@@ -27,15 +27,15 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         // Initialize the analyzer.
         let analyzer = SBSDKDocumentQualityAnalyzer()
         
-        // Run the analyzer on the document image
-        // If you have a filtered applied and you wish to run the analyzer on the unfiltered image
+        // Run the analyzer on the document image.
+        // If you have a filter applied and you wish to run the analyzer on the unfiltered image.
+        // Otherwise you can just simply use the `page.documentImage`.
         if let unfilteredDocumentImage = page.unfilteredDocumentImage {
-            // otherwise you can just simply use the `page.documentImage`
             
             // Run the quality analyzer on the image.
             let result = analyzer.analyze(on: unfilteredDocumentImage)
             
-            // Handle the result.
+            // Handle the analyzer result.
             if let result {
                 self.printResult(result)
             }

@@ -31,7 +31,7 @@ class DocumentLocalizationUI2ViewController: UIViewController {
         localization.cameraUserGuidanceNoDocumentFound = NSLocalizedString("camera.userGuidance.noDocumentFound", comment: "")
         localization.cameraUserGuidanceTooDark = NSLocalizedString("camera.userGuidance.tooDark", comment: "")
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

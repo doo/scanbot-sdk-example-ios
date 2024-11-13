@@ -10,20 +10,34 @@ import ScanbotSDK
 
 class ImageStoringViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func createIndexedImageStorage() {
         
-        // Initialize a folder URL to persist the images to. 
+        // Initialize a folder URL within the applications documents folder to persist the images to.
         let documentsURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent("Images", isDirectory: true)
         
         // Create a storage location object. This will create the folder on the filesystem if neccessary.
         let documentsLocation = SBSDKStorageLocation(baseURL: documentsURL)
         
         // Initialize an indexed image storage at this location.
-        // The indexed image storage is an array-like storage.
-        let imageStorage = SBSDKIndexedImageStorage(storageLocation: documentsLocation, 
-                                                    fileFormat: .PNG, 
-                                                    encrypter: nil)!
+        // The indexed image storage is an array-like, disk-backed image storage.
+        guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: documentsLocation,
+                                                          fileFormat: .PNG,
+                                                          encrypter: nil) else {
+            return
+        }
+        
+        // Create and attach an encrypter to the storage. This will encrypt the image data, before it is written to disk
+        // and decrypt it after it is read from disk.
+        // Setting the encrypter does not encrypt existing images in the storage, only the images that are added to the
+        // storage after setting the encrypter.
+        imageStorage.encrypter = SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
+    }
+    
+    func basicOperationsOnIndexedImageStorage() {
+        
+        // Create a temporary indexed image storage. 
+        // A temporary storage will delete its stored images upon deallocation.
+        guard let imageStorage = SBSDKIndexedImageStorage.temporary else { return }
         
         if let image = UIImage(named: "testDocument") {
             // Save an image to the storage.
@@ -34,16 +48,9 @@ class ImageStoringViewController: UIViewController {
         // Check the number of images in the storage.
         print("Images in storage: \(imageStorage.imageCount)")
         
-        
-        // Create and attach an encrypter to the storage. This will encrypt the image data, before it is written to disk 
-        // and decrypt it after it is read from disk. 
-        // Setting the encrypter does not encrypt existing images in the storage, only the images that are added to the 
-        // storage after setting the encrypter. 
-        imageStorage.encrypter = SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
-        
-        // Store an image from a URL. This does not load the image and has a very low memory footprint.
+        // Store an image from a URL. This does not decompress the image data and has a lower memory footprint.
         if let url = Bundle.main.url(forResource: "imageDocument", withExtension: "png") {
-            // Copy the image from the URL to the storage.
+            // Add the image from the URL to the storage.
             let isAdded = imageStorage.addImage(from: url)
             // Check the result.
             print("Image from URL was added successfully : \(isAdded)")
@@ -62,9 +69,36 @@ class ImageStoringViewController: UIViewController {
             imageStorage.removeImage(at: 1)
         }
         
-        // The image storage is persisted on disk. 
         // When the images are no longer needed they should be removed to free the disk space. 
-        // Remove all images from the storage.
+        // Remove all images explicitly from the storage. This is not necessary for temporary storages.
         imageStorage.removeAll()
+    }
+    
+    func basicOperationsOnKeyedImageStorage() {
+        
+        // Create a keyed image storage at the default location. 
+        // A keyed image storage is a key-value-based, disk-backed storage for images. Think of it as a dictionary.
+        let imageStorage = SBSDKKeyedImageStorage()!
+        
+        // Create an image.
+        guard let image = UIImage(named: "testImage") else { return }
+
+        // Create a key string.
+        let key = "testKey"
+
+        // Put the image into the storage using the key.
+        imageStorage.set(image: image, for: key)
+
+        // Get the image belonging to the key.
+        let storedImage = imageStorage.image(for: key)
+
+        // Remove the image belonging to the key.
+        imageStorage.removeImage(for: key)
+
+        // Create a prefix.
+        let prefix = "test"
+
+        // Remove the images from the image storage for keys that match the prefix.
+        imageStorage.removeImages(matchingPrefix: prefix)
     }
 }

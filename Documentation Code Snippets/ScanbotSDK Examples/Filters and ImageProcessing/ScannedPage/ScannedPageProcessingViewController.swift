@@ -18,23 +18,22 @@ class ScannedPageProcessingViewController: UIViewController {
     
     func applyFiltersAndRotateScannedPage() {
         
-        // Retrieve the scanned document
+        // Retrieve the scanned document.
         guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
         
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }
         
-        // Apply rotation on the page, and you can also pass the filters here if you want
+        // Apply rotation on the page, and pass the filters, if needed.
         page.apply(rotation: .clockwise90, polygon: nil, filters: nil)
         
         
-        // Or you can also set the filters separately
-        
+        // Or set the filters separately:
         // Create the instances of the filters you want to apply.
         let filter1 = SBSDKScanbotBinarizationFilter(outputMode: .antialiased)
         let filter2 = SBSDKBrightnessFilter(brightness: 0.4)
         
-        // Set the filters
+        // Apply the filters.
         page.filters = [filter1, filter2]
     }
 }

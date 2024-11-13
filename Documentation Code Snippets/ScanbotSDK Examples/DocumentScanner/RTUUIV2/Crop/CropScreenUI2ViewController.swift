@@ -19,17 +19,17 @@ class CropScreenUI2ViewController: UIViewController {
         // Retrieve the instance of the crop configuration from the main configuration object.
         let cropScreenConfiguration = configuration.screens.cropping
         
-        // e.g disable the rotation feature.
+        // For example disable the rotation feature...
         cropScreenConfiguration.bottomBar.rotateButton.visible = false
         
-        // e.g. configure various colors.
+        // ... configure various colors...
         configuration.appearance.topBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
         cropScreenConfiguration.topBarConfirmButton.foreground.color = SBSDKUI2Color(uiColor: UIColor.white)
         
-        // e.g. customize a UI element's text
+        // ... customize a UI element's text.
         configuration.localization.croppingCancelButtonTitle = "Cancel"
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration) { document in
             
             // Completion handler to process the result.

@@ -25,15 +25,16 @@ class CreditCardRecognizerViewController: UIViewController {
         // Disable the validation of the card holder name.
         configuration.requireCardholderName = false
         
-        // Create the SBSDKCreditCardRecognizerViewController instance.
+        // Create the `SBSDKCreditCardRecognizerViewController` instance and embed it.
         self.recognizerViewController = SBSDKCreditCardRecognizerViewController(parentViewController: self,
                                                                                 parentView: self.view,
-                                                                                configuration: SBSDKCreditCardRecognizerConfiguration(),
+                                                                                configuration: configuration,
                                                                                 delegate: self)
     }
 }
 
 extension CreditCardRecognizerViewController: SBSDKCreditCardRecognizerViewControllerDelegate {
+    
     func creditCardRecognizerViewController(_ controller: SBSDKCreditCardRecognizerViewController,
                                             didRecognizeCreditCard result: SBSDKCreditCardRecognitionResult) {
         
@@ -43,10 +44,11 @@ extension CreditCardRecognizerViewController: SBSDKCreditCardRecognizerViewContr
             print("\(field.type.name) = \(field.value?.text ?? "") (Confidence: \(field.value?.confidence ?? 0.0)")
         }
         
-        // Or create a wrapper for the document if needed.
-        // You must cast it to the specific wrapper subclass.
+        // Or create a wrapper for the document if needed to access the fields more easily.
+        // You must cast it to the specific document model wrapper subclass.
         if let wrapper = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
-            // Access the documents fields easily through the wrapper.
+    
+            // Now you can access the documents fields easily through the wrapper.
             
             if let creditCardNumber = wrapper.cardNumber {
                 print("Credit card number: \(creditCardNumber.value?.text ?? "")")

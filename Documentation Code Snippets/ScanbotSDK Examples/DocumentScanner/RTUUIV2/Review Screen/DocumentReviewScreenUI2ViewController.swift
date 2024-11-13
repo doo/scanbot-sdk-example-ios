@@ -25,7 +25,7 @@ class DocumentReviewScreenUI2ViewController: UIViewController {
         // Retrieve the instance of the review configuration from the main configuration object.
         let reviewScreenConfiguration = configuration.screens.review
         
-        // Enable / Disable the review screen.
+        // Enable the review screen.
         reviewScreenConfiguration.enabled = true
         
         // Hide the zoom button.
@@ -66,7 +66,7 @@ class DocumentReviewScreenUI2ViewController: UIViewController {
         configuration.screens.reorderPages = reorderScreenConfiguration
         configuration.screens.cropping = croppingScreenConfiguration
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

@@ -14,14 +14,13 @@ class ImageMetadataProcessorViewController: UIViewController {
         super.viewDidLoad()
         
         // Set the desired image.
-        let image = UIImage(named: "documentImage")
-        if let image {
+        if let image = UIImage(named: "documentImage") {
             
             // Convert the image to data.
-            let imageData = image.jpegData(compressionQuality: 0)
+            guard let imageData = image.jpegData(compressionQuality: 0) else { return }
             
-            // Extract the metadata.
-            if let imageData, let oldExtractedMetadata = SBSDKImageMetadataProcessor.extractMetadata(from: imageData) {
+            // Extract the image's metadata.
+            if let oldExtractedMetadata = SBSDKImageMetadataProcessor.extractMetadata(from: imageData) {
                 
                 self.printExtractedMetadata(metadata: oldExtractedMetadata, withTitle: "OLD metadata")
                 

@@ -44,7 +44,7 @@ class CameraDeviceViewController: UIViewController {
         // Assign the device to the camera configuration.
         cameraConfig.camera = device
         
-        // Assemble the scanner configuration and pass the camera configuration.
+        // Assemble the scanner configuration and pass the camera configuration to it.
         let configuration = 
         SBSDKUIDocumentScannerConfiguration(uiConfiguration: SBSDKUIDocumentScannerUIConfiguration(), 
                                             textConfiguration: SBSDKUIDocumentScannerTextConfiguration(),

@@ -8,12 +8,12 @@
 import Foundation
 import ScanbotSDK
 
-func detectGenericDocumentOnImage() {
+func recognizeGenericDocumentOnImage() {
     
-    // Image containing generic document.
+    // The image containing the generic document.
     guard let image = UIImage(named: "genericDocumentImage") else { return }
     
-    // Types of generic documents you want to detect.
+    // The types of generic documents to be recognized.
     let typesToDetect = SBSDKDocumentsModelRootType.allDocumentTypes
     
     // Create a configuration builder.
@@ -22,9 +22,9 @@ func detectGenericDocumentOnImage() {
     // Pass the above types here as required.
     builder.setAcceptedDocumentTypes(typesToDetect)
     
-    // Creates an instance of `SBSDKGenericDocumentRecognizer`.
-    let detector = SBSDKGenericDocumentRecognizer(configuration: builder.buildConfiguration())
+    // Create an instance of `SBSDKGenericDocumentRecognizer`.
+    let recognizer = SBSDKGenericDocumentRecognizer(configuration: builder.buildConfiguration())
     
-    // Returns the result after running detector on the image.
-    let result = detector.recognizeDocument(on: image)
+    // Run the recognizer on the image.
+    let result = recognizer.recognizeDocument(on: image)
 }

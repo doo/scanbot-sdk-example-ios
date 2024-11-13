@@ -19,10 +19,15 @@ class CheckRecognizerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the SBSDKCheckRecognizerViewController instance.
+        // Create the `SBSDKCheckRecognizerViewController` instance and embed it.
         self.recognizerViewController = SBSDKCheckRecognizerViewController(parentViewController: self,
                                                                            parentView: self.view,
                                                                            delegate: self)
+        
+        // Customize the default accepted check types as needed.
+        // For this example we will use the following types of check.
+        self.recognizerViewController?.acceptedCheckTypes = [.usaCheck, .uaeCheck, .fraCheck, .isrCheck,
+                                                            .kwtCheck, .ausCheck, .indCheck, .canCheck]
     }
 }
 

@@ -61,7 +61,7 @@ class InfoMappingBarcodeScannerUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             
@@ -80,7 +80,7 @@ extension InfoMappingBarcodeScannerUI2ViewController: SBSDKUI2BarcodeItemMapper 
                         onError: @escaping () -> Void) {
         
         // Handle the item .
-        // e.g fetching the product info.
+        // E.g. fetching the product info.
         
         let fetchedSuccessfully = true
         

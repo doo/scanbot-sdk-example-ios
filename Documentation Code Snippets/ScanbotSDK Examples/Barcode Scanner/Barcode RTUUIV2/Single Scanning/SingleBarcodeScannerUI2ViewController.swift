@@ -29,7 +29,7 @@ class SingleBarcodeScannerUI2ViewController: UIViewController {
         singleUsecase.confirmationSheetEnabled = true
         singleUsecase.sheetColor = SBSDKUI2Color(colorString: "#FFFFFF")
         
-        // Hide/unhide the barcode image.
+        // Show the barcode image.
         singleUsecase.barcodeImageVisible = true
         
         // Configure the barcode title of the confirmation sheet.
@@ -56,7 +56,7 @@ class SingleBarcodeScannerUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

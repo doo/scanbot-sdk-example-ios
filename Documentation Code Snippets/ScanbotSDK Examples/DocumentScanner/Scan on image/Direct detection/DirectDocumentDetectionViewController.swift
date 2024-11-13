@@ -15,7 +15,7 @@ class DirectDocumentDetectionViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -33,19 +33,19 @@ class DirectDocumentDetectionViewController: UIViewController,
     
     func detectDocument(on pickedImage: UIImage) {
         
-        // Create an instance of a document detector
+        // Create an instance of a document detector.
         let detector = SBSDKDocumentDetector()
         
-        // Run detection on the picked image
+        // Run detection on the picked image.
         let result = detector.detectDocument(on: pickedImage)
         
         // Check the result and retrieve the detected polygon.
         if result?.status == .ok, let polygon = result?.polygon {
 
-            // If the result is an acceptable polygon, we warp the image into the polygon.
+            // If the result has an acceptable polygon, we warp the image into the polygon.
             let processor = SBSDKImageProcessor(uiImage: pickedImage)
             
-            // You can crop the image using the polygon if you want.
+            // Crop the image to the polygon.
             processor.applyCrop(polygon: polygon)
             
             // Retrieve the processed image.

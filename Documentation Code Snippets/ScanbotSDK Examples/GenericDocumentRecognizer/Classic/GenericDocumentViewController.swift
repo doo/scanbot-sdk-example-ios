@@ -8,10 +8,10 @@
 import UIKit
 import ScanbotSDK
 
-// This is a simple, empty view controller which acts as a container and delegate for the SBSDKGenericDocumentRecognizerViewController.
-class GenericDocumentViewController: UIViewController, SBSDKGenericDocumentRecognizerViewControllerDelegate {
+// This is a simple, empty view controller which acts as a container and delegate for the `SBSDKGenericDocumentRecognizerViewController`.
+class GenericDocumentViewController: UIViewController {
     
-    // The instance of the recognition view controller.
+    // The instance of the view controller.
     var recognizerController: SBSDKGenericDocumentRecognizerViewController!
     
     override func viewDidLoad() {
@@ -54,8 +54,8 @@ class GenericDocumentViewController: UIViewController, SBSDKGenericDocumentRecog
             builder.addExcludedField(excludedField)
         }
         
-        // Create the SBSDKGenericDocumentRecognizerViewController instance
-        // and let it embed into this view controller's view.
+        // Create the `SBSDKGenericDocumentRecognizerViewController` instance and
+        // embed it into this view controller's view.
         self.recognizerController
             = SBSDKGenericDocumentRecognizerViewController(parentViewController: self,
                                                            //Embed the recognizer in this view controller's view.
@@ -87,11 +87,15 @@ class GenericDocumentViewController: UIViewController, SBSDKGenericDocumentRecog
         // Set the view finder configuration to apply it.
         self.recognizerController.viewFinderConfiguration = config
     }
+}
+
+// The delegate implementation of `SBSDKGenericDocumentRecognizerViewControllerDelegate`.
+extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewControllerDelegate {
     
-    // The delegate implementation of SBSDKGenericDocumentViewController.
     func documentRecognizerViewController(_ controller: SBSDKGenericDocumentRecognizerViewController,
                                           didRecognize result: SBSDKGenericDocumentRecognitionResult,
                                           on image: UIImage) {
+        
         // Access the documents fields directly by iterating over the documents fields.
         result.document?.fields.forEach { field in
             // Print field type name, field text and field confidence to the console.
@@ -118,4 +122,3 @@ class GenericDocumentViewController: UIViewController, SBSDKGenericDocumentRecog
         }
     }
 }
-

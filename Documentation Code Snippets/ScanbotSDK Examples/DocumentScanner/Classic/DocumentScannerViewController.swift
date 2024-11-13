@@ -16,12 +16,11 @@ class DocumentScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the SBSDKScannerViewController instance.
+        // Create the SBSDKDocumentScannerViewController instance and embed it.
         self.scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                         parentView: self.view,
                                                                         delegate: self)
     }
-
 }
 
 extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDelegate {

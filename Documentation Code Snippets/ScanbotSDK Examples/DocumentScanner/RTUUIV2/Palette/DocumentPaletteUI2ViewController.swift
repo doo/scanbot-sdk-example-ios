@@ -26,7 +26,7 @@ class DocumentPaletteUI2ViewController: UIViewController {
         let palette = configuration.palette
         
         // Configure the colors.
-        // The palette already has the default colors set, so you don't have to always set all the colors.
+        // The palette already has the default colors set, so you only need to modify the colors that you want to change.
         palette.sbColorPrimary = SBSDKUI2Color(colorString: "#C8193C")
         palette.sbColorPrimaryDisabled = SBSDKUI2Color(colorString: "#F5F5F5")
         palette.sbColorNegative = SBSDKUI2Color(colorString: "#FF3737")
@@ -44,7 +44,7 @@ class DocumentPaletteUI2ViewController: UIViewController {
         palette.sbColorSurfaceHigh = SBSDKUI2Color(colorString: "#7A000000")
         palette.sbColorModalOverlay = SBSDKUI2Color(colorString: "#A3000000")
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

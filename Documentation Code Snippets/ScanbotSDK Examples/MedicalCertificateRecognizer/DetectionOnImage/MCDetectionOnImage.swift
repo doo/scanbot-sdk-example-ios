@@ -8,18 +8,25 @@
 import Foundation
 import ScanbotSDK
     
-func detectMedicalCertificateOnImage() {
+func recognizeMedicalCertificateOnImage() {
     
-    // Image containing Medical Certificate.
+    // The image containing a medical certificate.
     guard let image = UIImage(named: "medicalCertificateImage") else { return }
     
-    // Create the default configuration object.
-    let configuration = SBSDKMedicalCertificateRecognitionParameters()
+    // Create an instance of `SBSDKMedicalCertificateRecognizer`.
+    let recognizer = SBSDKMedicalCertificateRecognizer()
     
-    // Creates an instance of `SBSDKMedicalCertificateRecognizer`.
-    let detector = SBSDKMedicalCertificateRecognizer()
+    // Create an instance of `SBSDKMedicalCertificateRecognitionParameters` with default values.
+    let recognitionParameters = SBSDKMedicalCertificateRecognitionParameters()
+
+    // Customize the parameters as needed.
+    recognitionParameters.shouldCropDocument = true
+    recognitionParameters.recognizePatientInfoBox = true
+    recognitionParameters.recognizeBarcode = true
+    recognitionParameters.extractCroppedImage = false
+    recognitionParameters.preprocessInput = false
     
-    // Returns the result after running detector on the image.
-    let result = detector.recognizeMedicalCertificate(on: image, parameters: configuration)
+    // Run the recognizer on the image using the configured parameters.
+    let result = recognizer.recognizeMedicalCertificate(on: image, parameters: recognitionParameters)
 
 }

@@ -15,7 +15,7 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -26,6 +26,7 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
         
         guard let pickedImage = info[.originalImage] as? UIImage else { return }
         
+        // Retrieve the picked image and analyze its quality.
         picker.dismiss(animated: true) {
             self.analyzeQuality(on: pickedImage)
         }
@@ -36,7 +37,7 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
         // Initialize the analyzer.
         let analyzer = SBSDKDocumentQualityAnalyzer()
         
-        // Analyze the quality of the image.
+        // Run the quality analyzer on the image.
         let result = analyzer.analyze(on: image)
         
         // Handle the result.

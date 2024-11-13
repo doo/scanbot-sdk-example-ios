@@ -16,21 +16,21 @@ class ZoomingImageScrollViewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // We instantiate our new class helper.
+        // Instantiate the zooming image scroll view.
         imageViewWithZoom = SBSDKZoomingImageScrollView()
         
-        // We set the desired image.
+        // Set the image you want to zoom into and scroll.
         imageViewWithZoom?.image = image
         
-        // We can add some margins.
+        // Add some margins if needed. 
         imageViewWithZoom?.margins = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 20)
         
-        // We set an overlay on top of our image.
+        // Place a transparent overlay on top of our image.
         let overlayView = UIView()
         overlayView.backgroundColor = UIColor.white.withAlphaComponent(0.3)
         imageViewWithZoom?.overlayView = overlayView
         
-        // We add our view to the subview with our desired constraints.
+        // Add the zooming image scroll view to the view hierarchy and setup its constraints as needed.
         imageViewWithZoom?.translatesAutoresizingMaskIntoConstraints = false
         if let imageViewWithZoom = imageViewWithZoom {
             self.view.addSubview(imageViewWithZoom)

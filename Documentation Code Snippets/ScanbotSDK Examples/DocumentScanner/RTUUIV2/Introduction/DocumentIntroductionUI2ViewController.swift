@@ -50,14 +50,14 @@ class DocumentIntroductionUI2ViewController: UIViewController {
         // Set the items into the configuration.
         introductionConfiguration.items = [firstExampleEntry, secondExampleEntry]
         
-        // Set a screen title.
+        // Set the screen title.
         introductionConfiguration.title = SBSDKUI2StyledText(text: "Introduction", 
                                                            color: SBSDKUI2Color(colorString: "#000000"))
         
         // Apply the introduction configuration.
         configuration.screens.camera.introduction = introductionConfiguration
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

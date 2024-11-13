@@ -15,7 +15,7 @@ class ImageProcessingViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -43,7 +43,7 @@ class ImageProcessingViewController: UIViewController,
         // Resize the image.
         processor.applyResize(700)
         
-        // Create the instances of the filters you want to apply.
+        // Create the instances of the filters to be applied.
         let filter1 = SBSDKScanbotBinarizationFilter(outputMode: .antialiased)
         let filter2 = SBSDKBrightnessFilter(brightness: 0.4)
         

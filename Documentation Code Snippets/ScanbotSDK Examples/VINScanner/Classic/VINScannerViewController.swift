@@ -16,10 +16,10 @@ class VINScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the default SBSDKGenericTextLineScannerConfiguration object.
+        // Create an instance of the configuration for vehicle identification numbers.
         let configuration = SBSDKGenericTextLineScannerConfiguration.vehicleIdentificationNumber()
         
-        // Create the VINScannerViewController instance.
+        // Create the `VINScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKVINScannerViewController(parentViewController: self,
                                                                    parentView: self.view,
                                                                    configuration: configuration,
@@ -28,6 +28,7 @@ class VINScannerViewController: UIViewController {
 }
 
 extension VINScannerViewController: SBSDKVINScannerViewControllerDelegate {
+    
     func vinScannerViewController(_ controller: SBSDKVINScannerViewController,
                                   didScanValidResult result: SBSDKGenericTextLineScannerResult) {
         // Process the result.

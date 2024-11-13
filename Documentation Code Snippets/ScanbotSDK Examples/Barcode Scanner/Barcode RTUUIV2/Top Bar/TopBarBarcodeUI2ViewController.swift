@@ -22,8 +22,6 @@ class TopBarBarcodeUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2BarcodeScannerConfiguration()
         
-        // Configure the top bar.
-        
         // Set the top bar mode.
         configuration.topBar.mode = .gradient
         
@@ -40,7 +38,7 @@ class TopBarBarcodeUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

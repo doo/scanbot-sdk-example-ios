@@ -16,13 +16,15 @@ class LicensePlateScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the SBSDKLicensePlateScannerConfiguration object.
+        // Create the default configuration object.
         let configuration = SBSDKLicensePlateScannerConfiguration()
 
-        // Set the maximum number of accumulated frames before starting recognition.
-        configuration.maximumNumberOfAccumulatedFrames = 5
+        // Customize the configuration as needed.
+        configuration.scannerStrategy = .ml
+        configuration.maximumNumberOfAccumulatedFrames = 3
+        configuration.minimumNumberOfRequiredFramesWithEqualScanningResult = 2
 
-        // Create the SBSDKLicensePlateScannerViewController instance.
+        // Create the `SBSDKLicensePlateScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKLicensePlateScannerViewController(parentViewController: self,
                                                                             parentView: self.view,
                                                                             configuration: configuration,
@@ -32,6 +34,7 @@ class LicensePlateScannerViewController: UIViewController {
 }
 
 extension LicensePlateScannerViewController: SBSDKLicensePlateScannerViewControllerDelegate {
+    
     func licensePlateScannerViewController(_ controller: SBSDKLicensePlateScannerViewController,
                                            didRecognizeLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
                                            on image: UIImage) {

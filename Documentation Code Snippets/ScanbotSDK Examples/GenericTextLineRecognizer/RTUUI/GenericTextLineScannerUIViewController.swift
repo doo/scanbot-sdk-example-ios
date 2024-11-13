@@ -48,7 +48,7 @@ class GenericTextLineScannerUIViewController: UIViewController {
         step.guidanceText = "Scan a document"
         
         configuration.behaviorConfiguration.recognitionStep = step
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUITextDataScannerViewController.present(on: self,
                                                      configuration: configuration,
                                                      delegate: self)

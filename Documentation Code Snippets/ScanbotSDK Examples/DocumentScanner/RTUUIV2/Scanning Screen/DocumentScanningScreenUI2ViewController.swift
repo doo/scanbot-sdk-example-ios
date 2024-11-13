@@ -22,7 +22,7 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // MARK: Set the limit for the number of pages you want to scan.
+        // Set the limit for the number of pages to be scanned.
         configuration.outputSettings.pagesScanLimit = 30
         
         // Pass the DOCUMENT_UUID here to resume an old session, or pass nil to start a new session or to resume a draft session.
@@ -34,7 +34,6 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         // Retrieve the camera screen configuration.
         let cameraScreenConfig = configuration.screens.camera
         
-        // MARK: Configure the user guidance.
         // Configure the top user guidance.
         cameraScreenConfig.topUserGuidance.visible = true
         cameraScreenConfig.topUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#4A000000")
@@ -66,7 +65,6 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         cameraScreenConfig.userGuidance.statesTitles.captureManual = "The document is ready to be captured"
         
         
-        // MARK: Configure the bottom bar and the bottom bar buttons.
         // Set the background color of the bottom bar.
         configuration.appearance.bottomBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
         
@@ -88,7 +86,6 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         cameraScreenConfig.bottomBar.torchOffButton.title.text = "Off"
         
         
-        // MARK: Configure the document capture feedback.
         // Configure the camera blink behavior when an image is captured.
         cameraScreenConfig.captureFeedback.cameraBlinkEnabled = true
         
@@ -96,10 +93,10 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         // Configure the checkmark animation. You can use the default colors or set your own desired colors for the checkmark.
         cameraScreenConfig.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapCheckMarkAnimation()
         
-        // Or you can choose the funnel animation.
+        // Or choose the funnel animation.
         cameraScreenConfig.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapFunnelAnimation()
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

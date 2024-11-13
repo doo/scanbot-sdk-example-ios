@@ -26,7 +26,7 @@ struct BarcodeScannerSwiftUIView: View {
         singleUsecase.confirmationSheetEnabled = true
         singleUsecase.sheetColor = SBSDKUI2Color(colorString: "#FFFFFF")
         
-        // Hide/unhide the barcode image.
+        // Show the barcode image.
         singleUsecase.barcodeImageVisible = true
         
         // Configure the barcode title of the confirmation sheet.

@@ -13,10 +13,10 @@ class TextOrientationRecognizerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Initialize an instance of the recognizer.
+        // Initialize an instance of the text layout recognizer.
         let recognizer = SBSDKTextLayoutRecognizer()
         
-        // Set the desired image.
+        // Load the desired image.
         if let image = UIImage(named: "testDocument") {
             
             // Recognize the text orientation.
@@ -32,7 +32,7 @@ class TextOrientationRecognizerViewController: UIViewController {
             self.printOrientationResult(orientation: orientationWithConfidence)
             
             // Rotate the image to portrait mode if possible.
-            let newImage = self.rotateImageToPortraitMode(image: image, orientation: orientationWithConfidence)
+            let correctedImage = self.rotateImageToPortraitMode(image: image, orientation: orientationWithConfidence)
         }
     }
     

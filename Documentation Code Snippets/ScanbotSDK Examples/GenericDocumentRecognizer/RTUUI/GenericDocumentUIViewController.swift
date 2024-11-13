@@ -76,7 +76,7 @@ class GenericDocumentUIViewController: UIViewController {
         // Change/localize the display text for the surname field on the front side of a German ID card.
         configuration.textConfiguration.fieldTypeDisplayTexts["DeDriverLicenseFront.Surname"] = "Nachname"
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIGenericDocumentRecognizerViewController.present(on: self,
                                                                // Pass the configuration.
                                                                configuration: configuration,
@@ -86,13 +86,14 @@ class GenericDocumentUIViewController: UIViewController {
 }
 
 extension GenericDocumentUIViewController: SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
+    
     // The delegate function implementation.
-    func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController,
-                                                 didFinishWith documents: [SBSDKGenericDocument]) {
+    func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController, 
+                                                 didFinishWith results: [SBSDKGenericDocumentRecognitionResult]) {
         
         // Get the first document. In case of multiple documents, e.g. front side and back side, you need to
         // handle all of them.
-        guard let document = documents.first else {
+        guard let document = results.first?.document else {
             return
         }
         
@@ -102,7 +103,6 @@ extension GenericDocumentUIViewController: SBSDKUIGenericDocumentRecognizerViewC
             print("\(field.type.name) = \(field.value?.text ?? "") (Confidence: \(field.value?.confidence ?? 0.0)")
         }
         
-        
         // Or get a field by its name.
         if let nameField = document.field(by: "Surname") {
             // Access various properties of the field.
@@ -110,7 +110,6 @@ extension GenericDocumentUIViewController: SBSDKUIGenericDocumentRecognizerViewC
             let fieldValue = nameField.value?.text
             let confidence = nameField.value?.confidence
         }
-        
         
         // Or create a wrapper for the document if needed.
         // You must cast it to the specific wrapper subclass.

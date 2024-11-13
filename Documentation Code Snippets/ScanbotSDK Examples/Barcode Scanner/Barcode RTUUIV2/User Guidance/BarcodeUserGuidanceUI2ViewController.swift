@@ -25,7 +25,7 @@ class BarcodeUserGuidanceUI2ViewController: UIViewController {
         // Retrieve the instance of the user guidance from the configuration object.
         let userGuidance = configuration.userGuidance
         
-        // Hide/unhide the user guidance.
+        // Show the user guidance.
         userGuidance.visible = true
         
         // Configure the title.
@@ -38,7 +38,7 @@ class BarcodeUserGuidanceUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

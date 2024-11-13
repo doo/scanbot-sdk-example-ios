@@ -22,17 +22,17 @@ class ImageEditingViewController: UIViewController {
         // Create the page.
         let page = SBSDKDocumentPage(image: image, polygon: nil, filter: .none)
 
-        // Create editing view controller.
+        // Create the editing view controller.
         let editingViewController = SBSDKImageEditingViewController.create(page: page)
 
-        // Set self as a delegate.
+        // Set self as the delegate.
         editingViewController.delegate = self
 
         // Create and set up a navigation controller to present control buttons.
         let navigationController = UINavigationController(rootViewController: editingViewController)
         navigationController.modalPresentationStyle = .fullScreen
 
-        // Present editing screen modally.
+        // Present the editing screen modally.
         self.present(navigationController, animated: true, completion: nil)
     }
 }
@@ -73,7 +73,7 @@ extension ImageEditingViewController: SBSDKImageEditingViewControllerDelegate {
     // Handle applying the changes.
     func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
                                     didApplyChangesWith polygon: SBSDKPolygon, croppedImage: UIImage) {
-        // Process edited image.
+        // Process the edited image.
         self.dismiss(animated: true, completion: nil)
     }
 }

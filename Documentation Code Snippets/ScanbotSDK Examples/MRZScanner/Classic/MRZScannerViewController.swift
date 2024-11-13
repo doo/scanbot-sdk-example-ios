@@ -16,10 +16,22 @@ class MRZScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the default configuration object.
+        // Create the default configuration.
         let configuration = SBSDKMRZScannerConfiguration()
         
-        // Create the SBSDKMRZScannerViewController instance.
+        // Customize the configuration as needed.
+        
+        // Enable the document detection.
+        configuration.enableDetection = true
+        
+        // Customize the frame accumulation configuration as needed.
+        configuration.frameAccumulationConfiguration.maximumNumberOfAccumulatedFrames = 3
+        configuration.frameAccumulationConfiguration.minimumNumberOfRequiredFramesWithEqualRecognitionResult = 2
+        
+        // Whether to accept or reject incomplete MRZ results.
+        configuration.incompleteResultHandling = .accept
+        
+        // Create the `SBSDKMRZScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKMRZScannerViewController(parentViewController: self,
                                                                    parentView: self.view,
                                                                    configuration: configuration,
@@ -28,6 +40,7 @@ class MRZScannerViewController: UIViewController {
 }
 
 extension MRZScannerViewController: SBSDKMRZScannerViewControllerDelegate {
+    
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didDetectMRZ result: SBSDKMRZScannerResult) {
         // Process the recognized result.
     }

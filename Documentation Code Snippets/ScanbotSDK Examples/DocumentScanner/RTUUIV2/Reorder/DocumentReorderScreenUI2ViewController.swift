@@ -40,7 +40,7 @@ class DocumentReorderScreenUI2ViewController: UIViewController {
         // Apply the configurations.
         configuration.screens.reorderPages = reorderScreenConfiguration
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

@@ -37,7 +37,7 @@ class MRZScannerUIViewController: UIViewController {
         configuration.textConfiguration.cancelButtonTitle = "Cancel"
         configuration.textConfiguration.flashButtonTitle = "Flash"
 
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIMRZScannerViewController.present(on: self, configuration: configuration, delegate: self)
     }
 }

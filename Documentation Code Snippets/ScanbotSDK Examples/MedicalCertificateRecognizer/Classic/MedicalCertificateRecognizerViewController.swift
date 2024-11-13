@@ -10,16 +10,27 @@ import ScanbotSDK
 
 class MedicalCertificateRecognizerViewController: UIViewController {
 
-    // The instance of the scanner view controller.
-    var scannerViewController: SBSDKMedicalCertificateRecognizerViewController?
+    // The instance of the recognizer view controller.
+    var recognizerViewController: SBSDKMedicalCertificateRecognizerViewController?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the SBSDKMedicalCertificateScannerViewController instance.
-        self.scannerViewController = SBSDKMedicalCertificateRecognizerViewController(parentViewController: self,
-                                                                                  parentView: self.view,
-                                                                                  delegate: self)
+        // Create an instance of `SBSDKMedicalCertificateRecognitionParameters` with default values.
+        let recognitionParameters = SBSDKMedicalCertificateRecognitionParameters()
+
+        // Customize the parameters as needed.
+        recognitionParameters.shouldCropDocument = true
+        recognitionParameters.recognizePatientInfoBox = true
+        recognitionParameters.recognizeBarcode = true
+        recognitionParameters.extractCroppedImage = false
+        recognitionParameters.preprocessInput = false
+        
+        // Create the `SBSDKMedicalCertificateRecognizerViewController` instance and embed it.
+        self.recognizerViewController = SBSDKMedicalCertificateRecognizerViewController(parentViewController: self,
+                                                                                        parentView: self.view,
+                                                                                        recognitionParameters: recognitionParameters,
+                                                                                        delegate: self)
     }
 }
 

@@ -22,13 +22,13 @@ class DocumentMultiPageUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // Set the page limit to 0, to disable the limit, or set it to the number of pages you want to scan.
+        // Set the page limit to 0, to disable the limit, or set it to the number of pages to be scanned.
         configuration.outputSettings.pagesScanLimit = 0
         
         // Disable the acknowledgment screen.
         configuration.screens.camera.acknowledgement.acknowledgementMode = .none
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

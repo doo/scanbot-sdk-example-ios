@@ -11,23 +11,24 @@ import ScanbotSDK
 class GenericTextLineScannerViewController: UIViewController {
     
     // The instance of the scanner view controller.
-    var recognizerController: SBSDKGenericTextLineScannerViewController?
+    var scannerViewController: SBSDKGenericTextLineScannerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the default SBSDKGenericTextLineRecognizerConfiguration object.
+        // Create the default `SBSDKGenericTextLineScannerConfiguration` object.
         let configuration = SBSDKGenericTextLineScannerConfiguration()
         
-        // Create the SBSDKGenericTextLineRecognizerViewController instance.
-        self.recognizerController = SBSDKGenericTextLineScannerViewController(parentViewController: self,
-                                                                              parentView: self.view,
-                                                                              configuration: configuration,
-                                                                              delegate: self)
+        // Create the `SBSDKGenericTextLineScannerViewController` instance and embed it.
+        self.scannerViewController = SBSDKGenericTextLineScannerViewController(parentViewController: self,
+                                                                               parentView: self.view,
+                                                                               configuration: configuration,
+                                                                               delegate: self)
     }
 }
 
 extension GenericTextLineScannerViewController: SBSDKGenericTextLineScannerViewControllerDelegate {
+    
     func textLineScannerViewController(_ controller: SBSDKGenericTextLineScannerViewController,
                                        didValidate result: SBSDKGenericTextLineScannerResult) {
         // Process the recognized result.

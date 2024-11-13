@@ -36,7 +36,7 @@ class DocumentScannerUIViewController: UIViewController {
         // e.g. customize a UI element's text.
         configuration.textConfiguration.cancelButtonTitle = "Cancel"
 
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIDocumentScannerViewController.present(on: self,
                                                      configuration: configuration,
                                                      delegate: self)

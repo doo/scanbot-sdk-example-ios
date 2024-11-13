@@ -18,6 +18,7 @@ class EHICRecognizerUIViewController: UIViewController {
     }
 
     func startScanning() {
+        
         // Create the default configuration object.
         let configuration = SBSDKUIHealthInsuranceCardRecognizerConfiguration.defaultConfiguration
 
@@ -35,7 +36,7 @@ class EHICRecognizerUIViewController: UIViewController {
         configuration.textConfiguration.flashButtonTitle = "Flash"
         configuration.textConfiguration.cancelButtonTitle = "Cancel"
 
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIHealthInsuranceCardRecognizerViewController.present(on: self,
                                                                 configuration: configuration,
                                                                 delegate: self)

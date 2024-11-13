@@ -13,46 +13,45 @@ func createScannedDocument(with images: [UIImage]) {
     // Setting the limit to 0, effectively disables the size limit.
     let scannedDocument = SBSDKScannedDocument(documentImageSizeLimit: 0)
     
-    // add images to the document.
+    // Add images to the document.
     images.forEach { scannedDocument.addPage(with: $0) }
 }
 
 func createFromDocument(_ document: SBSDKDocument) -> SBSDKScannedDocument? {
-    // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`
-    // `SBSDKDocument` doesn't support `documentImageSizeLimit`, but you can add it to unify size of the documents.
+    // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`.
     let scannedDocument = SBSDKScannedDocument(document: document, documentImageSizeLimit: 2048)
     
-    // Return newly created scanned document
+    // Return the newly created scanned document.
     return scannedDocument
 }
 
 func accessImageURLs(of scannedDocument: SBSDKScannedDocument) {
-    // get an array of original image URLs from scanned document.
+    // Get an array of URLs to each page's original image.
     let originalImageURIs = scannedDocument.pages.compactMap { $0.originalImageURI }
     
-    // get an array of document image (processed, rotated, cropped and filtered) URLs from scanned document.
+    // Get an array of URLs to each page's document image (processed, rotated, cropped and filtered).
     let documentImageURIs = scannedDocument.pages.compactMap { $0.documentImageURI }
     
-    // get an array of screen-sized preview image URLs from scanned document.
+    // Get an array of URLs to the each page's screen-sized document preview image.
     let previewImageURIs = scannedDocument.pages.compactMap { $0.documentImagePreviewURI }
 }
 
 func reorderPagesInScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
-    // Move last and first images in the scanned document.
-    // Create source index.
+    // Move the last page of the scanned document to the first place.
+    // Create source index of the last page.
     let sourceIndex = scannedDocument.pageCount - 1
     
-    // create destination index.
+    // Create destination index at position 0.
     let destinationIndex = 0
     
-    // Reorder images in the scanned document.
+    // Execute the move operation on the scanned document.
     scannedDocument.movePage(at: sourceIndex, to: destinationIndex)
 }
 
 func removeAllPagesFromScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
     // Call the `removeAllPages(onError:)` to remove all pages from the document, but keep the document itself.
     scannedDocument.removeAllPages { page, error in
-        // Handle error.
+        // Eventually handle the error.
         SBSDKLog.logError("Failed to remove page \(page) with error: \(error)")
     }
 }
@@ -64,7 +63,7 @@ func removePDFFromScannedDocument(with scannedDocument: SBSDKScannedDocument) {
         // Try to remove a PDF file at URL provided by `SBSDKScannedDocument`.
         try fileManager.removeItem(at: scannedDocument.pdfURI)
     } catch {
-        // Handle error.
+        // Eventually handle the error.
         SBSDKLog.logError("Failed to remove a PDF at \(scannedDocument.pdfURI)")
     }
 }
@@ -76,7 +75,7 @@ func removeTIFFFromScannedDocument(with scannedDocument: SBSDKScannedDocument) {
         // Try to remove a TIFF file at URL provided by `SBSDKScannedDocument`.
         try fileManager.removeItem(at: scannedDocument.tiffURI)
     } catch {
-        // Handle error.
+        // Eventually handle the error.
         SBSDKLog.logError("Failed to remove a PDF at \(scannedDocument.tiffURI)")
     }
 }
@@ -86,7 +85,7 @@ func deleteScannedDocument(with scannedDocument: SBSDKScannedDocument) {
         // Try to delete scanned document completely, including all images and generated files from disk.
         try scannedDocument.delete()
     } catch {
-        // Handle error.
+        // Eventually handle the error.
         SBSDKLog.logError("Failed to delete scanned document: \(error)")
     }
 }

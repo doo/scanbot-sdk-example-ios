@@ -20,7 +20,7 @@ class BarcodeScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Barcode formats you want to detect.
+        // The barcode formats to be scanned.
         let formatsToDetect = SBSDKBarcodeFormats.all
         
         // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`.
@@ -35,7 +35,7 @@ class BarcodeScannerViewController: UIViewController {
                                                                        configuration: configuration,
                                                                        delegate: self)
         
-        // Get current view finder configuration object
+        // Get the current view finder configuration object.
         let config = self.scannerViewController.viewFinderConfiguration
         
         // Enable the view finder.
@@ -56,10 +56,10 @@ class BarcodeScannerViewController: UIViewController {
         // Set the view finder configuration to apply it.
         self.scannerViewController.viewFinderConfiguration = config
 
-        // Get current energy configuration.
+        // Get the current energy configuration.
         let energyConfig = self.scannerViewController.energyConfiguration
 
-        // Set detection rate.
+        // Set the detection rate.
         energyConfig.detectionRate = 5
         
         // Set the energy configuration to apply it.

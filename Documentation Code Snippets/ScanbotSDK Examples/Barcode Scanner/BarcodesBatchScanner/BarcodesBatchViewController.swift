@@ -20,13 +20,13 @@ class BarcodesBatchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Barcode formats you want to detect.
+        // The barcode formats to be scanned.
         let formatsToDetect = SBSDKBarcodeFormats.all
         
-        // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`.
+        // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`, passing the desired barcode formats.
         let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: formatsToDetect)
         
-        // Create an instance of `SBSDKBarcodeScannerConfiguration`.
+        // Create an instance of `SBSDKBarcodeScannerConfiguration`, passing the format configuration.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
         // Create the `SBSDKBarcodeScannerViewController` instance
@@ -35,7 +35,7 @@ class BarcodesBatchViewController: UIViewController {
                                                                        configuration: configuration,
                                                                        delegate: self)
         
-        // Get current view finder configuration object
+        // Get current view finder configuration object.
         let config = self.scannerViewController.viewFinderConfiguration
         
         // Enable the view finder.

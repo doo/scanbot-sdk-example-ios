@@ -25,7 +25,7 @@ class ActionBarConfigurationUI2ViewController: UIViewController {
         // Retrieve the instance of the action bar from the configuration object.
         let actionBar = configuration.actionBar
         
-        // Hide/unhide the flash button.
+        // Show the flash button.
         actionBar.flashButton.visible = true
         
         // Configure the inactive state of the flash button.
@@ -36,14 +36,14 @@ class ActionBarConfigurationUI2ViewController: UIViewController {
         actionBar.flashButton.activeBackgroundColor = SBSDKUI2Color(colorString: "#FFCE5C")
         actionBar.flashButton.activeForegroundColor = SBSDKUI2Color(colorString: "#000000")
         
-        // Hide/unhide the zoom button.
+        // Show the zoom button.
         actionBar.zoomButton.visible = true
         
         // Configure the zoom button.
         actionBar.zoomButton.backgroundColor = SBSDKUI2Color(colorString: "#7A000000")
         actionBar.zoomButton.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
         
-        // Hide/unhide the flip camera button.
+        // Show the flip camera button.
         actionBar.flipCameraButton.visible = true
         
         // Configure the flip camera button.
@@ -53,7 +53,7 @@ class ActionBarConfigurationUI2ViewController: UIViewController {
         // Create and set an array of accepted barcode formats.
         configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

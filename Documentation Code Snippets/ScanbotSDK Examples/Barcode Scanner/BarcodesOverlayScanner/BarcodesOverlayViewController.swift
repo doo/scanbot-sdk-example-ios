@@ -17,27 +17,27 @@ class BarcodesOverlayViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Barcode formats you want to detect.
+        // The barcode formats to be detected.
         let formatsToDetect = SBSDKBarcodeFormats.all
         
-        // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`.
+        // Create an instance of `SBSDKBarcodeFormatCommonConfiguration`, passing the desired barcode formats.
         let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: formatsToDetect)
         
-        // Create an instance of `SBSDKBarcodeScannerConfiguration`.
+        // Create an instance of `SBSDKBarcodeScannerConfiguration`, passing the format configuration.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
-        // Create the SBSDKBarcodeScannerViewController instance
+        // Create the SBSDKBarcodeScannerViewController instance, passing the configuration.
         self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                        parentView: self.view,
                                                                        configuration: configuration)
         
-        // Set self as a trackingViewController's delegate
+        // Set self as a trackingViewController's delegate.
         self.scannerViewController.trackingOverlayController.delegate = self
         
         // Enable the barcodes tracking overlay.
         self.scannerViewController.isTrackingOverlayEnabled = true
         
-        // Get current tracking configuration object
+        // Get current tracking configuration object.
         let trackingConfiguration = self.scannerViewController.trackingOverlayController.configuration
         
         // Set the color for the polygons of the tracked barcodes.
@@ -75,7 +75,7 @@ extension BarcodesOverlayViewController: SBSDKBarcodeTrackingOverlayControllerDe
         print(barcode)
     }
     
-    // Implement this method when you need to customize the polygon style individually for every barcode detected.
+    // Implement this method if you need to customize the polygon style individually for each barcode detected.
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, polygonStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewPolygonStyle? {
         let style = SBSDKBarcodeTrackedViewPolygonStyle()
         if barcode.format == SBSDKBarcodeFormat.qrCode {
@@ -85,7 +85,7 @@ extension BarcodesOverlayViewController: SBSDKBarcodeTrackingOverlayControllerDe
         return style
     }
     
-    // Implement this method when you need to customize the text style individually for every barcode detected.
+    // Implement this method if you need to customize the text style individually for each barcode detected.
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, textStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewTextStyle? {
         let style = SBSDKBarcodeTrackedViewTextStyle()
         if barcode.format == SBSDKBarcodeFormat.qrCode {

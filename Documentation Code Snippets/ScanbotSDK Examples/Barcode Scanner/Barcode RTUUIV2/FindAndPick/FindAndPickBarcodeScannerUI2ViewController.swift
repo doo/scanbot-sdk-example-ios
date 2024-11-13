@@ -52,7 +52,7 @@ class FindAndPickBarcodeScannerUI2ViewController: UIViewController {
         // Set the configured usecase.
         configuration.useCase = usecase
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

@@ -37,7 +37,7 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
         configuration.screens.camera.acknowledgement.backgroundColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // You can also configure the buttons in the bottom bar of the acknowledgment screen.
-        // e.g To force the user to retake, if the captured document is not OK.
+        // E.g. to force the user to retake, if the captured document is not OK.
         configuration.screens.camera.acknowledgement.bottomBar.acceptWhenNotOkButton.visible = false
         
         // Hide the titles of the buttons.
@@ -48,7 +48,7 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
         // Configure the acknowledgment screen's hint message which is shown if the least acceptable quality is not met.
         configuration.screens.camera.acknowledgement.badImageHint.visible = true
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

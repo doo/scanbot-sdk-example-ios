@@ -21,7 +21,7 @@ class DocumentLaunchingUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self,
                                                   configuration: configuration) { document in
             

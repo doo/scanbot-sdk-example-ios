@@ -36,7 +36,7 @@ class VINScannerUIViewController: UIViewController {
         configuration.textConfiguration.guidanceText = "Scan Vin"
         configuration.textConfiguration.cancelButtonTitle = "Cancel"
 
-        // Present the scanner view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUIVINScannerViewController.present(on: self,
                                                 configuration: configuration,
                                                 delegate: self)

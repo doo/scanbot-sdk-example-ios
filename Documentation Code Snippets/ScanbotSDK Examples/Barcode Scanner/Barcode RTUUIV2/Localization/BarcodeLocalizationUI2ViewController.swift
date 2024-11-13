@@ -31,7 +31,7 @@ class BarcodeLocalizationUI2ViewController: UIViewController {
         // Set the localization in the barcode scanner configuration object.
         configuration.localization = localization
         
-        // Present the recognizer view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
                                                      configuration: configuration) { controller, cancelled, error, result in
             

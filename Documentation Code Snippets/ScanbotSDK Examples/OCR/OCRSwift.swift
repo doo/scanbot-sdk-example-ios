@@ -11,7 +11,8 @@ import ScanbotSDK
 class OCRSwiftViewController {
     
     func textLayoutRecognition() {
-        // The file URL of the image we want to analyze.
+        
+        // The file URL of the image to be analyzed.
         guard let imageURL = URL(string: "...") else { return }
         
         // Start the text layout recognition by creating an instance of the recognizer and calling 
@@ -22,7 +23,7 @@ class OCRSwiftViewController {
             // In the completion handler check for the error and the result.
             if let result = result, error == nil {
                 
-                // Now we can work with the result.
+                // Check the result.
                 if result.orientation == .up && result.writingDirection == .leftToRight {
                     
                 }
@@ -31,14 +32,16 @@ class OCRSwiftViewController {
         
         // Or if you need the text orientation only...
         let orientation = recognizer.recognizeTextOrientation(on: imageURL)
-        // Now we can work with the result.
+
+        // Check the result.
         if orientation == .up {
-            // Now we can work with the result.
+        
         }
     }
     
     func performTextRecognition() {
-        // The file URL of the image we want to analyze.
+        
+        // The file URL of the image to be analyzed.
         guard let imageURL = URL(string: "...") else { return }
         
         // Create the OCR configuration object, either with the new ML engine...

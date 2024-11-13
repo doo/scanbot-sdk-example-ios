@@ -8,15 +8,17 @@
 import Foundation
 import ScanbotSDK
     
-func detectVinOnImage() {
+func scanVinOnImage() {
     
-    // Image containing Vehicle identification number.
+    // The image containing a vehicle identification number.
     guard let image = UIImage(named: "vinImage") else { return }
     
-    // Creates an instance of `SBSDKVehicleIdentificationNumberScanner` using the default configuration.
+    // Create an instance of the configuration for vehicle identification numbers.
+    let configuration = SBSDKGenericTextLineScannerConfiguration.vehicleIdentificationNumber()
     
-    let scanner = SBSDKGenericTextLineScanner(configuration: .vehicleIdentificationNumber())
+    // Create an instance of `SBSDKGenericTextLineScanner` using the configuration created above.
+    let scanner = SBSDKGenericTextLineScanner(configuration: configuration)
     
-    // Returns the result after running detector on the image.
+    // Run the scanner on the image.
     let result = scanner.scanTextLine(on: image)
 }
