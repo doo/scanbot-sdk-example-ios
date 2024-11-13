@@ -57,9 +57,12 @@ class SinglePageScanning {
                         
             if let document {
                 
-                // Process the document
-                let resultViewController = SingleScanResultViewController.make(with: document)
-                presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                Task {
+                    let tiffParams = SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
+                    let encrypter = ScanbotUI.defaultPDFEncrypter
+                    let tiffWriter = SBSDKTIFFImageWriter(parameters: tiffParams, encrypter: encrypter)
+                    await tiffWriter.writeTIFFAsync(scannedDocument: document)
+                }
                 
             } else {
                 // Indicates that the cancel button was tapped.

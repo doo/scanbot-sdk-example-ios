@@ -14,6 +14,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
         Scanbot.setupDefaultLicenseFailureHandler()
+        let conf = ScanbotSDKConfiguration()
+        conf.fileEncryptionMode = .AES256
+        conf.fileEncryptionPassword = "dsadsa"
+        Scanbot.applyConfiguration(conf)
         
         // TODO Add your Scanbot SDK license here.
         // Please note: The Scanbot SDK will run without a license key for one minute per session!
