@@ -1,4 +1,4 @@
-Open Source libraries used in ScanbotSDK for iOS version 6.1.0:
+Open Source libraries used in ScanbotSDK for iOS version 6.1.1:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
