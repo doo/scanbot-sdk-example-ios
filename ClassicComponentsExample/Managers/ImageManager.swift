@@ -16,7 +16,7 @@ class ImageProcessingParameters {
     
     init() {
         polygon = SBSDKPolygon()
-        filter = .none
+        filter = SBSDKImageFilterType.none
         counterClockwiseRotations = 0
     }
     
