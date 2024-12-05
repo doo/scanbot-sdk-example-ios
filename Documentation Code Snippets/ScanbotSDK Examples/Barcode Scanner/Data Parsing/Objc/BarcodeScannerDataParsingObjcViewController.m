@@ -62,6 +62,9 @@
     // Define and set barcode types that should be accepted by the scanner.
     NSArray <SBSDKBarcodeType *> *commonTypes = [SBSDKBarcodeType commonTypes];
     self.scannerViewController.acceptedBarcodeTypes = commonTypes;
+    
+    // Set Swiss QR as an accepted document type.
+    self.scannerViewController.acceptedDocumentTypes = @[SBSDKBarcodeDocumentRootType.swissQR];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
