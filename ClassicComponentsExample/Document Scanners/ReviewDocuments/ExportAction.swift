@@ -18,7 +18,7 @@ class ExportAction {
                 .appendingPathExtension("pdf")
             
             
-            let ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+            let ocrConfiguration = SBSDKOCREngineConfiguration.scanbotOCR()
             
             let attributes = SBSDKPDFAttributes(author: "Scanbot SDK Example App", 
                                                 creator: "Scanbot SDK", 
@@ -34,9 +34,9 @@ class ExportAction {
                                                       jpegQuality: 80,
                                                       resamplingMethod: .lanczos4)
             
-            let _ = SBSDKPDFRenderer(configuration: configuration, 
-                                     ocrConfiguration: ocrConfiguration,
-                                     encrypter: nil).renderDocument(document, output: url) { finished, error in
+            let _ = SBSDKPDFGenerator(configuration: configuration, 
+                                      ocrConfiguration: ocrConfiguration,
+                                      encrypter: nil).generate(from: document, output: url) { finished, error in
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
@@ -49,13 +49,13 @@ class ExportAction {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("tiff")
-            let params = binarize ? SBSDKTIFFWriterParameters.defaultParametersForBinaryImages
-            : SBSDKTIFFWriterParameters.defaultParameters
+            let params = binarize ? SBSDKTiffGeneratorParameters.defaultParametersForBinaryImages
+            : SBSDKTiffGeneratorParameters.defaultParameters
             
-            let writer = SBSDKTIFFWriter(parameters: params)
+            let generator = SBSDKTIFFGenerator(parameters: params)
             
             Task {
-                let result = await writer.writeTIFFAsync(document: document, toFile: url)
+                let result = await generator.generate(from: document, to: url)
                 DispatchQueue.main.async { 
                     completion(result) 
                 }

@@ -20,7 +20,7 @@ class BarcodeScannerViewController: UIViewController {
     
     var selectedBarcodeTypes: [SBSDKBarcodeFormat] = SBSDKBarcodeFormats.all
     var currentResults: [SBSDKBarcodeItem]?
-    var shouldDetect: Bool = false
+    var shouldScan: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,12 +37,12 @@ class BarcodeScannerViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        shouldDetect = true
+        shouldScan = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        shouldDetect = false
+        shouldScan = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -65,15 +65,15 @@ class BarcodeScannerViewController: UIViewController {
     }
 }
 
-extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {        
-    func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
-        return shouldDetect
+extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {
+    func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+        return shouldScan
     }
     
-    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didDetectBarcodes codes: [SBSDKBarcodeItem]) {
-        if !shouldDetect { return }
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didScanBarcodes codes: [SBSDKBarcodeItem]) {
+        if !shouldScan { return }
         if (!controller.isTrackingOverlayEnabled) {
-            shouldDetect = false
+            shouldScan = false
             displayResults(codes)
         }
     }

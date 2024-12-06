@@ -12,18 +12,18 @@ import ScanbotSDK
 
 final class CheckViewController: UIViewController {
     
-    private var recognizerViewController: SBSDKCheckRecognizerViewController?
+    private var recognizerViewController: SBSDKCheckScannerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recognizerViewController = SBSDKCheckRecognizerViewController(parentViewController: self,
+        recognizerViewController = SBSDKCheckScannerViewController(parentViewController: self,
                                                                       parentView: view,
                                                                       delegate: self)
     }
         
-    private func show(result: SBSDKCheckRecognitionResult) {
-        let alert = UIAlertController(title: "Recognized check",
+    private func show(result: SBSDKCheckScanningResult) {
+        let alert = UIAlertController(title: "Scanned check",
                                       message: result.toJson(),
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
@@ -37,12 +37,12 @@ final class CheckViewController: UIViewController {
     }
 }
 
-extension CheckViewController: SBSDKCheckRecognizerViewControllerDelegate {
-    func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didRecognizeCheck result: SBSDKCheckRecognitionResult) {
+extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didScanCheck result: SBSDKCheckScanningResult) {
         show(result: result)
     }
     
-    func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didChangeState state: SBSDKCheckRecognizerState) { }
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                       didChangeState state: SBSDKCheckScannerState) { }
 }

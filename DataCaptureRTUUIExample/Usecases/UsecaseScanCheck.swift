@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewControllerDelegate {
+final class UsecaseScanCheck: Usecase, SBSDKUICheckScannerViewControllerDelegate {
     
     let result: ReviewableScanResult
     
@@ -20,17 +20,17 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUICheckRecognizerConfiguration.defaultConfiguration
+        let configuration = SBSDKUICheckScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let recognizer = SBSDKUICheckRecognizerViewController.create(configuration: configuration,
+        let Scanner = SBSDKUICheckScannerViewController.create(configuration: configuration,
                                                                      delegate: self)
-        presentViewController(recognizer)
+        presentViewController(Scanner)
     }
     
-    func checkRecognizerViewController(_ viewController: SBSDKUICheckRecognizerViewController,
-                                       didRecognizeCheck result: SBSDKCheckRecognitionResult) {
-        let title = "Check recognized"
+    func checkScannerViewController(_ viewController: SBSDKUICheckScannerViewController,
+                                       didScanCheck result: SBSDKCheckScanningResult) {
+        let title = "Check scanned"
         let message = result.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
             if let navigationController = self.presenter as? UINavigationController {
@@ -40,7 +40,7 @@ final class UsecaseRecognizeCheck: Usecase, SBSDKUICheckRecognizerViewController
         }
     }
     
-    func checkRecognizerViewControllerDidCancel(_ viewController: SBSDKUICheckRecognizerViewController) {
+    func checkScannerViewControllerDidCancel(_ viewController: SBSDKUICheckScannerViewController) {
         didFinish()
     }
 }

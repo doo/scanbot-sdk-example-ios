@@ -35,10 +35,10 @@ final class TIFFDemoViewController: UIViewController {
     
     private func createTIFF(isBinarized: Bool) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                   in: .userDomainMask).last?.path else { return }
+                                                                in: .userDomainMask).last?.path else { return }
         let filePath = "\(documentsDirectory)/\(UUID().uuidString.lowercased()).tiff"
         guard let fileURL = URL(string: filePath) else { return }
-        let parameters = SBSDKTIFFWriterParameters.defaultParameters
+        let parameters = SBSDKTiffGeneratorParameters.defaultParameters
         parameters.dpi = 200
         if isBinarized {
             parameters.binarizationFilter = SBSDKCustomBinarizationFilter()            
@@ -52,8 +52,8 @@ final class TIFFDemoViewController: UIViewController {
             parameters.compression = SBSDKCompressionMode.lzw
         }
         Task {
-            let writer = SBSDKTIFFWriter(parameters: parameters)
-            if let result = await writer.writeTIFFAsync(with: images, toFile: fileURL) {
+            let generator = SBSDKTIFFGenerator(parameters: parameters)
+            if let result = await generator.generate(from: images, to: fileURL) {
                 let alert = UIAlertController(title: "File saved",
                                               message: "At path: \(result.path)",
                                               preferredStyle: .alert)

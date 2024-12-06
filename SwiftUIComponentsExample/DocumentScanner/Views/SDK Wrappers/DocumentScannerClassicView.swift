@@ -11,7 +11,7 @@ import ScanbotSDK
 struct DocumentScannerClassicView: UIViewControllerRepresentable {
     
     @Binding var scanningResult: DocumentScanningResult
-    @Binding var isRecognitionEnabled: Bool
+    @Binding var isScanningEnabled: Bool
     
     private let document = SBSDKDocument()
     
@@ -37,8 +37,8 @@ extension DocumentScannerClassicView {
             self.parent = parent
         }
         
-        func documentScannerViewControllerShouldDetectDocument(_ controller: SBSDKDocumentScannerViewController) -> Bool {
-            return parent.isRecognitionEnabled
+        func documentScannerViewControllerShouldScanDocument(_ controller: SBSDKDocumentScannerViewController) -> Bool {
+            return parent.isScanningEnabled
         }
         
         func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,

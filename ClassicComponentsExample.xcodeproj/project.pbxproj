@@ -38,7 +38,7 @@
 		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
-		28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */; };
+		28101823274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */; };
 		28101825275105FB000350F5 /* LicensePlateDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */; };
 		2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */; };
 		2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */; };
@@ -47,7 +47,7 @@
 		2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */; };
 		2866E41127553B1400490CC8 /* BarcodeResultDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */; };
 		2866E41327553B2B00490CC8 /* BarcodeTypesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */; };
-		2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */; };
+		2869C490274D11A60036F44D /* DocumentDataExtractorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* DocumentDataExtractorViewController.swift */; };
 		2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C491274D49DC0036F44D /* MRZDemoViewController.swift */; };
 		2869C495274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */; };
 		2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C496274E49BE0036F44D /* EHICDemoViewController.swift */; };
@@ -65,7 +65,7 @@
 		28AF046D279EE90200C00B33 /* DetectorsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF046C279EE90200C00B33 /* DetectorsManager.swift */; };
 		28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28AF046E27A0270200C00B33 /* AlertsManager.swift */; };
 		28DD5284274810950024D961 /* GenericDocumentFieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */; };
-		28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */; };
+		28DD5287274D061C0024D961 /* DocumentDataExtractorResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DD5285274CFEAE0024D961 /* DocumentDataExtractorResultViewController.swift */; };
 		28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */; };
 		28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */; };
 		28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E71F4427568CDC0061B433 /* AppDelegate.swift */; };
@@ -129,7 +129,7 @@
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
 		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDemoViewController.swift; sourceTree = "<group>"; };
-		28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericTextLineRecognizerDemoViewController.swift; sourceTree = "<group>"; };
+		28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPatternScannerDemoViewController.swift; sourceTree = "<group>"; };
 		28101824275105FA000350F5 /* LicensePlateDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicensePlateDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
 		2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerResultsTableViewCell.swift; sourceTree = "<group>"; };
@@ -138,7 +138,7 @@
 		2866E40E27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerWithFinderViewController.swift; sourceTree = "<group>"; };
 		2866E41027553B1400490CC8 /* BarcodeResultDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeResultDetailsViewController.swift; sourceTree = "<group>"; };
 		2866E41227553B2B00490CC8 /* BarcodeTypesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTypesViewController.swift; sourceTree = "<group>"; };
-		2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentViewController.swift; sourceTree = "<group>"; };
+		2869C48F274D11A60036F44D /* DocumentDataExtractorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorViewController.swift; sourceTree = "<group>"; };
 		2869C491274D49DC0036F44D /* MRZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZDemoViewController.swift; sourceTree = "<group>"; };
 		2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityAnalyzerDemoViewController.swift; sourceTree = "<group>"; };
 		2869C496274E49BE0036F44D /* EHICDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHICDemoViewController.swift; sourceTree = "<group>"; };
@@ -156,7 +156,7 @@
 		28AF046C279EE90200C00B33 /* DetectorsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectorsManager.swift; sourceTree = "<group>"; };
 		28AF046E27A0270200C00B33 /* AlertsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertsManager.swift; sourceTree = "<group>"; };
 		28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentFieldTableViewCell.swift; sourceTree = "<group>"; };
-		28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenericDocumentResultViewController.swift; sourceTree = "<group>"; };
+		28DD5285274CFEAE0024D961 /* DocumentDataExtractorResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorResultViewController.swift; sourceTree = "<group>"; };
 		28E273702735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsCollectionViewCell.swift; sourceTree = "<group>"; };
 		28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCertificateScannerViewController.swift; sourceTree = "<group>"; };
 		28E71F4427568CDC0061B433 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -213,7 +213,7 @@
 			children = (
 				C22FFEFE22FAE4A6006E0862 /* BarcodeScannerDemo */,
 				F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */,
-				28101822274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift */,
+				28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */,
 				2869C49D274E63790036F44D /* CheckViewController.swift */,
 				2869C491274D49DC0036F44D /* MRZDemoViewController.swift */,
 				11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */,
@@ -234,7 +234,7 @@
 		286FF1D22757B7CD007D47EF /* Identity Detectors */ = {
 			isa = PBXGroup;
 			children = (
-				28D735F424AE214D00A0B821 /* GenericDocumentsDemo */,
+				28D735F424AE214D00A0B821 /* DocumentDataExtractorDemo */,
 			);
 			path = "Identity Detectors";
 			sourceTree = "<group>";
@@ -269,14 +269,14 @@
 			path = "Static Image Detection";
 			sourceTree = "<group>";
 		};
-		28D735F424AE214D00A0B821 /* GenericDocumentsDemo */ = {
+		28D735F424AE214D00A0B821 /* DocumentDataExtractorDemo */ = {
 			isa = PBXGroup;
 			children = (
 				28DD5283274810950024D961 /* GenericDocumentFieldTableViewCell.swift */,
-				28DD5285274CFEAE0024D961 /* GenericDocumentResultViewController.swift */,
-				2869C48F274D11A60036F44D /* GenericDocumentViewController.swift */,
+				28DD5285274CFEAE0024D961 /* DocumentDataExtractorResultViewController.swift */,
+				2869C48F274D11A60036F44D /* DocumentDataExtractorViewController.swift */,
 			);
-			path = GenericDocumentsDemo;
+			path = DocumentDataExtractorDemo;
 			sourceTree = "<group>";
 		};
 		28D7361624AE302000A0B821 /* Frameworks */ = {
@@ -572,14 +572,14 @@
 				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
 				28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */,
 				2866E40D2755359900490CC8 /* BarcodeScannerViewController.swift in Sources */,
-				28101823274FF9DC000350F5 /* GenericTextLineRecognizerDemoViewController.swift in Sources */,
+				28101823274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift in Sources */,
 				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
 				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
 				082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */,
 				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
-				2869C490274D11A60036F44D /* GenericDocumentViewController.swift in Sources */,
+				2869C490274D11A60036F44D /* DocumentDataExtractorViewController.swift in Sources */,
 				2866E408275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift in Sources */,
 				F19EFE8B29C4AB5E00128396 /* CustomTrackedBarcodeView.swift in Sources */,
 				2866E40F27553B0300490CC8 /* BarcodeScannerWithFinderViewController.swift in Sources */,
@@ -591,7 +591,7 @@
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
 				11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */,
-				28DD5287274D061C0024D961 /* GenericDocumentResultViewController.swift in Sources */,
+				28DD5287274D061C0024D961 /* DocumentDataExtractorResultViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

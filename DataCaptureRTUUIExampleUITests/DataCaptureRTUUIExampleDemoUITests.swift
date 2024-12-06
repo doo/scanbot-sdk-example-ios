@@ -65,7 +65,7 @@ class DataCaptureRTUUIExampleUITests: XCTestCase {
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
-        tablesQuery.cells.staticTexts["Recognize Check"].tap()
+        tablesQuery.cells.staticTexts["Scan Check"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         

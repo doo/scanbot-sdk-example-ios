@@ -63,7 +63,7 @@ final class LicensePlateDemoViewController: UIViewController {
 
 extension LicensePlateDemoViewController: SBSDKLicensePlateScannerViewControllerDelegate {
     func licensePlateScannerViewController(_ controller: SBSDKLicensePlateScannerViewController,
-                                           didRecognizeLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
+                                           didScanLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
                                            on image: UIImage) {
         DispatchQueue.main.async { [weak self] in
             self?.show(result: licensePlateResult)

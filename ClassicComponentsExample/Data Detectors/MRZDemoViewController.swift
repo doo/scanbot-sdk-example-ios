@@ -10,9 +10,9 @@ import UIKit
 import ScanbotSDK
 
 final class MRZDemoViewController: UIViewController {
-
+    
     private var scannerViewController: SBSDKMRZScannerViewController?
-            
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +40,7 @@ final class MRZDemoViewController: UIViewController {
 
 extension MRZDemoViewController: SBSDKMRZScannerViewControllerDelegate {
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController,
-                              didDetectMRZ result: SBSDKMRZScannerResult) {
+                              didScanMRZ result: SBSDKMRZScannerResult) {
         show(result: result)
     }
 }

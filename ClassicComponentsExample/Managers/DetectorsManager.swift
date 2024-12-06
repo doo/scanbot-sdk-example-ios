@@ -16,22 +16,22 @@ protocol DetectorsManagerDelegate: AnyObject {
     func recognizer(_ recognizer: SBSDKHealthInsuranceCardRecognizer,
                     didFindEHIC result: SBSDKEuropeanHealthInsuranceCardRecognitionResult?)
     
-    func recognizer(_ recognizer: SBSDKGenericDocumentRecognizer,
-                    didFindDocument result: SBSDKGenericDocumentRecognitionResult?)
+    func extractor(_ extractor: SBSDKDocumentDataExtractor,
+                   didExtractDocument result: SBSDKDocumentDataExtractionResult?)
     
-    func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
-                    didFindMedicalCertificate result: SBSDKMedicalCertificateRecognitionResult?)
+    func scanner(_ scanner: SBSDKMedicalCertificateScanner,
+                 didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult?)
     
-    func recognizer(_ recognizer: SBSDKCheckRecognizer,
-                    didFindCheck result: SBSDKCheckRecognitionResult?)
+    func scanner(_ scanner: SBSDKCheckScanner,
+                 didScanCheck result: SBSDKCheckScanningResult?)
     
-    func recognizer(_ recognizer: SBSDKCreditCardRecognizer, 
-                    didFindCreditCard result: SBSDKCreditCardRecognitionResult?)
+    func scanner(_ scanner: SBSDKCreditCardScanner, 
+                 didScanCreditCard result: SBSDKCreditCardScanningResult?)
     
     func scanner(_ scanner: SBSDKMRZScanner,
-                 didFindMRZ result: SBSDKMRZScannerResult?)
+                 didScanMRZ result: SBSDKMRZScannerResult?)
     
-    func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result : SBSDKDocumentDetectionResult?)
+    func scanner(_ scanner: SBSDKDocumentScanner, didFindPolygon result : SBSDKDocumentDetectionResult?)
     
 }
 
@@ -56,7 +56,7 @@ final class DetectorsManager {
             case .check:
                 return "Check Scanner"
             case.creditCard:
-                return "Credit Card Recognizer"
+                return "Credit Card Scanner"
             }
         }
     }
@@ -72,42 +72,41 @@ final class DetectorsManager {
         switch detector {
         case .barcode:
             let scanner = SBSDKBarcodeScanner()
-            let result = scanner.detectBarcodes(on: image)
+            let result = scanner.scan(from: image)
             delegate?.scanner(scanner, didFindBarcodes: result)
         case .ehic:
             let recognizer = SBSDKHealthInsuranceCardRecognizer()
-            let result = recognizer.recognizeEHIC(on: image)
+            let result = recognizer.recognize(from: image)
             delegate?.recognizer(recognizer, didFindEHIC: result)
         case .genericDocument:
-            let builder = SBSDKGenericDocumentRecognizerConfigurationBuilder()
+            let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
             
-            let recognizer = SBSDKGenericDocumentRecognizer(configuration: builder.buildConfiguration())
-            let result = recognizer.recognizeDocument(on: image)
-            delegate?.recognizer(recognizer, didFindDocument: result)
+            let extractor = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
+            let result = extractor.extract(from: image)
+            delegate?.extractor(extractor, didExtractDocument: result)
         case .mrz:
             let scanner = SBSDKMRZScanner()
-            let result = scanner.scanMRZ(on: image)
-            delegate?.scanner(scanner, didFindMRZ: result)
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanMRZ: result)
         case .medicalCertificate:
-            let recognizer = SBSDKMedicalCertificateRecognizer()
-            let result = recognizer.recognizeMedicalCertificate(on: image,
-                                                                parameters: SBSDKMedicalCertificateRecognitionParameters())
-            delegate?.recognizer(recognizer, didFindMedicalCertificate: result)
+            let scanner = SBSDKMedicalCertificateScanner()
+            let result = scanner.scan(from: image, parameters: SBSDKMedicalCertificateScanningParameters())
+            delegate?.scanner(scanner, didScanMedicalCertificate: result)
         case .documentScanner:
-            let configuration = SBSDKDocumentDetectorConfiguration()
-            let scanner = SBSDKDocumentDetector(configuration: configuration)
-            let result = scanner.detectDocument(on: image)
-            delegate?.detector(scanner, didFindPolygon: result)
+            let configuration = SBSDKDocumentScannerConfiguration()
+            let scanner = SBSDKDocumentScanner(configuration: configuration)
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didFindPolygon: result)
         case .check:
-            let recognizer = SBSDKCheckRecognizer()
-            let result = recognizer.recognizeCheck(on: image)
-            delegate?.recognizer(recognizer, didFindCheck: result)
+            let scanner = SBSDKCheckScanner()
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanCheck: result)
         case .creditCard:
-            let configuration = SBSDKCreditCardRecognizerConfiguration()
-            configuration.recognitionMode = .singleShot
-            let recognizer = SBSDKCreditCardRecognizer(configuration: configuration)
-            let result = recognizer.recognizeCreditCard(on: image)
-            delegate?.recognizer(recognizer, didFindCreditCard: result)
+            let configuration = SBSDKCreditCardScannerConfiguration()
+            configuration.scanningMode = .singleShot
+            let scanner = SBSDKCreditCardScanner(configuration: configuration)
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanCreditCard: result)
         }
     }
     
@@ -162,10 +161,10 @@ extension SBSDKMRZScannerResult {
     }
 }
 
-extension SBSDKCreditCardRecognitionResult {
+extension SBSDKCreditCardScanningResult {
     var stringRepresentation: String {
         let result = [
-            "Credit Card status: \(self.recognitionStatus.name)",
+            "Credit Card status: \(self.scanningStatus.name)",
             self.creditCard?.fields
                 .compactMap { "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }
                 .joined(separator: "\n") ?? ""
@@ -174,13 +173,13 @@ extension SBSDKCreditCardRecognitionResult {
     }
 }
 
-extension SBSDKCreditCardRecognitionStatus {
+extension SBSDKCreditCardScanningStatus {
     var name: String {
         switch self {
         case .errorNothingFound: return "NOTHING_FOUND"
         case .success: return "SUCCESS"
         case .incomplete: return "INCOMPLETE"
-        @unknown default: return "Unknown credit card recognition status"
+        @unknown default: return "Unknown credit card scanning status"
         }
     }
 }

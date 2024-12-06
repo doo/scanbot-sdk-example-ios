@@ -1,5 +1,5 @@
 //
-//  GenericDocumentResultViewController.swift
+//  DocumentDataExtractorResultViewController.swift
 //  ClassicComponentsExample
 //
 //  Created by Danil Voitenko on 23.11.21.
@@ -9,16 +9,16 @@
 import UIKit
 import ScanbotSDK
 
-final class GenericDocumentResultViewController: UIViewController {
+final class DocumentDataExtractorResultViewController: UIViewController {
     var document: SBSDKGenericDocument?
     var flatDocument: [SBSDKGenericDocument]?
     var sourceImage: UIImage?
     @IBOutlet var tableView: UITableView?
     
-    static func make(with document: SBSDKGenericDocument, sourceImage: UIImage) -> GenericDocumentResultViewController {
+    static func make(with document: SBSDKGenericDocument, sourceImage: UIImage) -> DocumentDataExtractorResultViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = storyboard.instantiateViewController(withIdentifier: "GenericDocumentResultViewController") as!
-        GenericDocumentResultViewController
+        let controller = storyboard.instantiateViewController(withIdentifier: "DocumentDataExtractorResultViewController") as!
+        DocumentDataExtractorResultViewController
         controller.document = document
         controller.sourceImage = sourceImage
         return controller
@@ -50,7 +50,7 @@ final class GenericDocumentResultViewController: UIViewController {
     }
 }
 
-extension GenericDocumentResultViewController: UITableViewDataSource {
+extension DocumentDataExtractorResultViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return flatDocument?.count ?? 0
     }
@@ -73,11 +73,11 @@ extension GenericDocumentResultViewController: UITableViewDataSource {
         cell.fieldImageView.image = image
         
         if let value = field?.value, value.text.isEmpty == false {
-            cell.recognizedTextLabel.text = value.text
-            cell.recognizedTextInfoLabel.text = "Recognized text with confidence\(value.confidence * 100)"
+            cell.extractedTextLabel.text = value.text
+            cell.extractedTextInfoLabel.text = "Extracted text with confidence\(value.confidence * 100)"
         } else {
-            cell.recognizedTextLabel.text = ""
-            cell.recognizedTextInfoLabel.text = ""
+            cell.extractedTextLabel.text = ""
+            cell.extractedTextInfoLabel.text = ""
         }
         return cell
     }

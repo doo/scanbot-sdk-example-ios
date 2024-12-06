@@ -1,5 +1,5 @@
 //
-//  GenericDocumentResultTextListCell.swift
+//  DocumentDataExtractorResultTextListCell.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Danil Voitenko on 14.01.22.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-final class GenericDocumentResultTextListCell: UITableViewCell {
+final class DocumentDataExtractorResultTextListCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel?
     @IBOutlet private var valueLabel: UILabel?
     @IBOutlet private var percentageLabel: UILabel?

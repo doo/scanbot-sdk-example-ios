@@ -11,20 +11,20 @@ import ScanbotSDK
 
 final class CreditCardDemoViewController: UIViewController {
     
-    private var scannerViewController: SBSDKCreditCardRecognizerViewController?
+    private var scannerViewController: SBSDKCreditCardScannerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         view.backgroundColor = .black
         
-        scannerViewController = SBSDKCreditCardRecognizerViewController(parentViewController: self,
+        scannerViewController = SBSDKCreditCardScannerViewController(parentViewController: self,
                                                                         parentView: view,
-                                                                        configuration: SBSDKCreditCardRecognizerConfiguration(),
+                                                                        configuration: SBSDKCreditCardScannerConfiguration(),
                                                                         delegate: self)
     }
     
-    private func show(result: SBSDKCreditCardRecognitionResult) {
+    private func show(result: SBSDKCreditCardScanningResult) {
         
         let resultMessage = result.stringRepresentation
         
@@ -40,9 +40,9 @@ final class CreditCardDemoViewController: UIViewController {
     }
 }
 
-extension CreditCardDemoViewController: SBSDKCreditCardRecognizerViewControllerDelegate {
-    func creditCardRecognizerViewController(_ controller: SBSDKCreditCardRecognizerViewController, 
-                                            didRecognizeCreditCard result: SBSDKCreditCardRecognitionResult) {
+extension CreditCardDemoViewController: SBSDKCreditCardScannerViewControllerDelegate {
+    func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController, 
+                                         didScanCreditCard result: SBSDKCreditCardScanningResult) {
         show(result: result)
     }
 }

@@ -22,12 +22,23 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     }
     
     func vinScannerViewController(_ viewController: SBSDKUIVINScannerViewController,
-                                  didFinishWith result: SBSDKGenericTextLineScannerResult) {
+                                  didFinishWith result: SBSDKVINScannerResult) {
         
-        guard result.rawText.count > 0, viewController.isRecognitionEnabled == true else {
+        guard viewController.isRecognitionEnabled else {
             return
         }
-        let message = result.rawText
+        
+        var message = ""
+        if !(result.textResult.validationSuccessful || result.barcodeResult.status == .barcodeExtractionDisabled) {
+            if !(result.barcodeResult.status == .success) {
+                return
+            } else {
+                message = result.barcodeResult.extractedVIN
+            }
+        } else {
+            message = result.textResult.rawText
+        }
+
         let title = "VIN detected"
         
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)

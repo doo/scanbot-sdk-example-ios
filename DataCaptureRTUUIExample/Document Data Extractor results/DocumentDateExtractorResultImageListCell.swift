@@ -1,5 +1,5 @@
 //
-//  GenericDocumentResultImageListCell.swift
+//  DocumentDateExtractorResultImageListCell.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Danil Voitenko on 14.01.22.
@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-final class GenericDocumentResultImageListCell: UITableViewCell {
+final class DocumentDateExtractorResultImageListCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel?
     @IBOutlet private var resultImageView: UIImageView?
     

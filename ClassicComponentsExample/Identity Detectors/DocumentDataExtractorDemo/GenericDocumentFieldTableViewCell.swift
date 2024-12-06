@@ -11,6 +11,6 @@ import UIKit
 final class GenericDocumentFieldTableViewCell: UITableViewCell {
     @IBOutlet var fieldTypeLabel: UILabel!
     @IBOutlet var fieldImageView: UIImageView!
-    @IBOutlet var recognizedTextInfoLabel: UILabel!
-    @IBOutlet var recognizedTextLabel: UILabel!
+    @IBOutlet var extractedTextInfoLabel: UILabel!
+    @IBOutlet var extractedTextLabel: UILabel!
 }

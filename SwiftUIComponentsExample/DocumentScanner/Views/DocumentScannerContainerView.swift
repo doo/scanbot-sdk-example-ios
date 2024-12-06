@@ -15,7 +15,7 @@ struct DocumentScannerContainerView: View {
     private let scanner: DocumentScanner
 
     @Binding private var scanningResult: DocumentScanningResult
-    @State private var isRecognitionEnabled = true
+    @State private var isScanningEnabled = true
     
     init(scanner: DocumentScanner, scanningResult: Binding<DocumentScanningResult>) {
         self.scanner = scanner
@@ -26,8 +26,8 @@ struct DocumentScannerContainerView: View {
         viewForScanner(scanner)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle(Text(scanner.title))
-            .onAppear { self.isRecognitionEnabled = true }
-            .onDisappear { self.isRecognitionEnabled = false }
+            .onAppear { self.isScanningEnabled = true }
+            .onDisappear { self.isScanningEnabled = false }
     }
     
     @ViewBuilder
@@ -38,7 +38,7 @@ struct DocumentScannerContainerView: View {
                 DocumentScannerRTUUIView(scanningResult: $scanningResult)
             case .classic:
                 DocumentScannerClassicView(scanningResult: $scanningResult,
-                                           isRecognitionEnabled: $isRecognitionEnabled)
+                                           isScanningEnabled: $isScanningEnabled)
             case .swiftUI:
                 DocumentScannerSwiftUIView(scanningResult: $scanningResult)
             }

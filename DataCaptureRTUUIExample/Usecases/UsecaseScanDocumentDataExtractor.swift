@@ -1,5 +1,5 @@
 //
-//  UsecaseScanGenericDocument.swift
+//  UsecaseScanDocumentDataExtractor.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Yevgeniy Knizhnik on 13.08.20.
@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseScanGenericDocument: Usecase, SBSDKUIGenericDocumentRecognizerViewControllerDelegate {
+class UsecaseScanDocumentDataExtractor: Usecase, SBSDKUIDocumentDataExtractorViewControllerDelegate {
     
     private let documentType: SBSDKUIDocumentType
     
@@ -21,20 +21,20 @@ class UsecaseScanGenericDocument: Usecase, SBSDKUIGenericDocumentRecognizerViewC
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIGenericDocumentRecognizerConfiguration.defaultConfiguration
+        let configuration = SBSDKUIDocumentDataExtractorConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         configuration.behaviorConfiguration.documentType = self.documentType
         
-        let scanner = SBSDKUIGenericDocumentRecognizerViewController.create(configuration: configuration, delegate: self)
+        let scanner = SBSDKUIDocumentDataExtractorViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
     
-    func genericDocumentRecognizerViewController(_ viewController: SBSDKUIGenericDocumentRecognizerViewController,
-                                                 didFinishWith documents: [SBSDKGenericDocument]) {
-        if !documents.isEmpty {
+    func documentDataExtractorViewController(_ viewController: SBSDKUIDocumentDataExtractorViewController,
+                                                 didFinishWith results: [SBSDKDocumentDataExtractionResult]) {
+        if !results.isEmpty {
             if let navigationController = presenter as? UINavigationController {
-                let controller = GenericDocumentResultListViewController.make(with: documents)
+                let controller = DocumentDataExtractorResultListViewController.make(with: results)
                 navigationController.pushViewController(controller, animated: true)
             }
             didFinish()

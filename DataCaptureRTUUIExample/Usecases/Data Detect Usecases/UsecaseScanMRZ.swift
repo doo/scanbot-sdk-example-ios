@@ -23,13 +23,13 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     }
     
     func mrzScannerViewController(_ viewController: SBSDKUIMRZScannerViewController,
-                                  didDetect zone: SBSDKMRZScannerResult) {
-        let title = "MRZ detected"
+                                  didScan zone: SBSDKMRZScannerResult) {
+        let title = "MRZ scanned"
         let message = zone.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
     
-    func mrzDetectionViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
+    func mrzScanningViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
         didFinish()
     }
 }

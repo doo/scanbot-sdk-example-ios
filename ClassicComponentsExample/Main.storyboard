@@ -256,14 +256,14 @@
                                             <segue destination="Nnf-1n-fYV" kind="show" id="FsA-EV-meD"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Tmz-VT-uJY" userLabel="Text Line Scanner">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Tmz-VT-uJY" userLabel="Text Pattern Scanner">
                                         <rect key="frame" x="20" y="703.33333015441895" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmz-VT-uJY" id="kvl-7v-d4B">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Line Recognizer Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="411-5y-Efc">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Text Pattern Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="411-5y-Efc">
                                                     <rect key="frame" x="24" y="0.0" width="287" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -381,14 +381,14 @@
                                             <segue destination="XcY-Bw-Fgi" kind="show" id="4CT-TL-Qa4"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="MOW-8H-Xlh" userLabel="Credit Card Recognizer">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="MOW-8H-Xlh" userLabel="Credit Card Scanner">
                                         <rect key="frame" x="20" y="1025.3333301544189" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MOW-8H-Xlh" id="ke2-9D-0bU">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Recognizer Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYd-Ol-G9u">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Credit Card Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vYd-Ol-G9u">
                                                     <rect key="frame" x="24" y="0.0" width="287" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -435,7 +435,7 @@
                                             <segue destination="1eX-ba-V8R" kind="show" id="sPc-48-sfW"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="qUN-bI-1tX" userLabel="Disability Certificates Scanner">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="qUN-bI-1tX" userLabel="Medical Certificate Scanner">
                                         <rect key="frame" x="20" y="1213.3333301544189" width="335" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qUN-bI-1tX" id="wzL-94-hRH">
@@ -464,14 +464,14 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Identity Detectors" id="Sky-Od-pUP">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="n39-Yo-ENL" userLabel="Generic Documents Scanner">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="n39-Yo-ENL" userLabel="Document Data Extractor">
                                         <rect key="frame" x="20" y="1343.3333301544189" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n39-Yo-ENL" id="zO5-aK-oKo">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generic Documents Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-jP-L7C">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Document Data Extractor Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Wx-jP-L7C">
                                                     <rect key="frame" x="24" y="0.0" width="287" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -1255,7 +1255,7 @@
         <!--Generic Documents Demo-->
         <scene sceneID="t1o-iX-6hQ">
             <objects>
-                <viewController storyboardIdentifier="GenericDocumentViewController" id="c6A-FK-gkm" userLabel="Generic Documents Demo" customClass="GenericDocumentViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentDataExtractorViewController" id="c6A-FK-gkm" userLabel="Generic Documents Demo" customClass="DocumentDataExtractorViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3eI-yx-D5I"/>
                         <viewControllerLayoutGuide type="bottom" id="r92-T7-hjX"/>
@@ -1317,10 +1317,10 @@
             </objects>
             <point key="canvasLocation" x="4678" y="611"/>
         </scene>
-        <!--Generic Text Line Recognizer Demo View Controller-->
+        <!--Text Pattern Scanner Demo View Controller-->
         <scene sceneID="JYf-1W-mJw">
             <objects>
-                <viewController id="DOu-rx-fzf" customClass="GenericTextLineRecognizerDemoViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="DOu-rx-fzf" customClass="TextPatternScannerDemoViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Q6y-BS-uIw"/>
                         <viewControllerLayoutGuide type="bottom" id="a7R-Rd-oCN"/>
@@ -1430,7 +1430,7 @@
         <!--Generic Documents Result-->
         <scene sceneID="b1m-0N-f4b">
             <objects>
-                <viewController storyboardIdentifier="GenericDocumentResultViewController" title="Identity Card Result" id="U50-5h-EhL" userLabel="Generic Documents Result" customClass="GenericDocumentResultViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentDataExtractorResultViewController" title="Identity Card Result" id="U50-5h-EhL" userLabel="Generic Documents Result" customClass="DocumentDataExtractorResultViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="JdX-da-PnU"/>
                         <viewControllerLayoutGuide type="bottom" id="Xg1-7i-OUK"/>
@@ -1491,10 +1491,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="extractedTextInfoLabel" destination="Lfx-QX-v7x" id="6vv-Mm-E7Z"/>
+                                            <outlet property="extractedTextLabel" destination="50d-2m-lfd" id="KZJ-T0-4FB"/>
                                             <outlet property="fieldImageView" destination="aRe-wT-spK" id="Gy3-wt-vWn"/>
                                             <outlet property="fieldTypeLabel" destination="RS9-kh-WtA" id="WkO-B8-uVX"/>
-                                            <outlet property="recognizedTextInfoLabel" destination="Lfx-QX-v7x" id="6vv-Mm-E7Z"/>
-                                            <outlet property="recognizedTextLabel" destination="50d-2m-lfd" id="KZJ-T0-4FB"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -1752,10 +1752,10 @@
             </objects>
             <point key="canvasLocation" x="-5549" y="605"/>
         </scene>
-        <!--MRZ Demo View Controller-->
+        <!--Credit Card Demo View Controller-->
         <scene sceneID="oVj-97-jkx">
             <objects>
-                <viewController id="7dR-N4-neH" userLabel="MRZ Demo View Controller" customClass="CreditCardDemoViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7dR-N4-neH" customClass="CreditCardDemoViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="dqj-p3-TWm"/>
                         <viewControllerLayoutGuide type="bottom" id="Rn9-kw-D3x"/>
@@ -1776,7 +1776,7 @@
         <segue reference="GTa-wV-u2q"/>
         <segue reference="lCB-kT-sHR"/>
         <segue reference="s3a-if-ZVy"/>
-        <segue reference="AqV-OW-qqH"/>
+        <segue reference="dce-sc-oHh"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>

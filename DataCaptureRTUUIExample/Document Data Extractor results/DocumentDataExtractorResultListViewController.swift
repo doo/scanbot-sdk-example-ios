@@ -1,5 +1,5 @@
 //
-//  GenericDocumentResultListViewController.swift
+//  DocumentDataExtractorResultListViewController.swift
 //  DataCaptureRTUUIExample
 //
 //  Created by Danil Voitenko on 14.01.22.
@@ -9,15 +9,15 @@
 import UIKit
 import ScanbotSDK
 
-final class GenericDocumentResultListViewController: UIViewController {
+final class DocumentDataExtractorResultListViewController: UIViewController {
     @IBOutlet private var tableView: UITableView?
     
-    var documents: [SBSDKGenericDocument] = []
+    var results: [SBSDKDocumentDataExtractionResult] = []
     
     private var flattenedDocuments: [SBSDKGenericDocument] {
         var result: [SBSDKGenericDocument] = []
-        documents.forEach { document in
-            if let flattenedDocuments = document.flatDocument(includeEmptyChildren: false,
+        results.forEach { documentResult in
+            if let flattenedDocuments = documentResult.document?.flatDocument(includeEmptyChildren: false,
                                                               includeEmptyFields: true) {
                 result.append(contentsOf: flattenedDocuments.filter({ $0.type.normalizedName != "MRZ" }))
             }
@@ -44,10 +44,10 @@ final class GenericDocumentResultListViewController: UIViewController {
         return result
     }()
     
-    static func make(with documents: [SBSDKGenericDocument]) -> GenericDocumentResultListViewController {
+    static func make(with results: [SBSDKDocumentDataExtractionResult]) -> DocumentDataExtractorResultListViewController {
         let storyboard = UIStoryboard.init(name: "Main", bundle: Bundle.main)
-        let controller = storyboard.instantiateViewController(withIdentifier: "GenericDocumentResultListViewController") as! GenericDocumentResultListViewController
-        controller.documents = documents
+        let controller = storyboard.instantiateViewController(withIdentifier: "DocumentDataExtractorResultListViewController") as! DocumentDataExtractorResultListViewController
+        controller.results = results
         return controller
     }
     
@@ -77,7 +77,7 @@ final class GenericDocumentResultListViewController: UIViewController {
     }
 }
 
-extension GenericDocumentResultListViewController: UITableViewDataSource, UITableViewDelegate {
+extension DocumentDataExtractorResultListViewController: UITableViewDataSource, UITableViewDelegate {
     func numberOfSections(in tableView: UITableView) -> Int {
         return flattenedDocuments.count
     }
@@ -93,15 +93,15 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
         }
         if let displayText = field.type.displayText {
             if let value = field.value, !value.text.isEmpty {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "GenericDocumentResultTextListCell",
-                                                         for: indexPath) as! GenericDocumentResultTextListCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentDataExtractorResultTextListCell",
+                                                         for: indexPath) as! DocumentDataExtractorResultTextListCell
                 cell.configure(title: displayText,
                                value: value.text,
                                confidence: Int(value.confidence * 100))
                 return cell
             } else {
-                let cell = tableView.dequeueReusableCell(withIdentifier: "GenericDocumentResultImageListCell",
-                                                         for: indexPath) as! GenericDocumentResultImageListCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentDateExtractorResultImageListCell",
+                                                         for: indexPath) as! DocumentDateExtractorResultImageListCell
                 cell.configure(title: displayText,
                                image: field.image?.toUIImage())
                 return cell
@@ -119,7 +119,7 @@ extension GenericDocumentResultListViewController: UITableViewDataSource, UITabl
                                           width: view.bounds.size.width,
                                           height: 44))
         label.font = UIFont.systemFont(ofSize: 18, weight: .medium)
-        let categoryName = documents.last?.children.first?.type.displayText ?? ""
+        let categoryName = results.last?.document?.children.first?.type.displayText ?? ""
         if section >= 2 && !categoryName.isEmpty {
             headerName = categoryName + " -> " + (document.type.displayText ?? "")
             label.font = UIFont.systemFont(ofSize: 16, weight: .medium)

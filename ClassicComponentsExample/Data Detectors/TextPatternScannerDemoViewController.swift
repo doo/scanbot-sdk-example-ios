@@ -1,5 +1,5 @@
 //
-//  GenericTextLineRecognizerDemoViewController.swift
+//  TextPatternScannerDemoViewController.swift
 //  ClassicComponentsExample
 //
 //  Created by Danil Voitenko on 25.11.21.
@@ -9,17 +9,17 @@
 import UIKit
 import ScanbotSDK
 
-final class GenericTextLineRecognizerDemoViewController: UIViewController {
+final class TextPatternScannerDemoViewController: UIViewController {
     @IBOutlet private var cameraContainer: UIView!
     @IBOutlet private var resultLabel: UILabel!
     
-    private var textLineRecognizerController: SBSDKGenericTextLineScannerViewController?
-    private var shouldRecognize: Bool = false
+    private var textPatternScannerController: SBSDKTextPatternScannerViewController?
+    private var shouldScan: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let configuration = SBSDKGenericTextLineScannerConfiguration()
+        let configuration = SBSDKTextPatternScannerConfiguration()
         
         var characterSet = CharacterSet.alphanumerics
         characterSet.formUnion(.whitespaces)
@@ -32,37 +32,37 @@ final class GenericTextLineRecognizerDemoViewController: UIViewController {
         
         configuration.validator = validator
         
-        textLineRecognizerController = SBSDKGenericTextLineScannerViewController(parentViewController: self,
-                                                                                 parentView: cameraContainer,
-                                                                                 configuration: configuration,
-                                                                                 delegate: self)
+        textPatternScannerController = SBSDKTextPatternScannerViewController(parentViewController: self,
+                                                                             parentView: cameraContainer,
+                                                                             configuration: configuration,
+                                                                             delegate: self)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        shouldRecognize = true
+        shouldScan = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        shouldRecognize = false
+        shouldScan = false
     }
     
-    private func show(result: SBSDKGenericTextLineScannerResult) {
+    private func show(result: SBSDKTextPatternScannerResult) {
         resultLabel.textColor = result.validationSuccessful ? UIColor.green : UIColor.red
         resultLabel.text = result.rawText
     }
 }
 
-extension GenericTextLineRecognizerDemoViewController: SBSDKGenericTextLineScannerViewControllerDelegate {
-    func textLineScannerViewControllerShouldRecognize(_ controller: SBSDKGenericTextLineScannerViewController) -> Bool {
-        return shouldRecognize
+extension TextPatternScannerDemoViewController: SBSDKTextPatternScannerViewControllerDelegate {
+    func textPatternScannerViewControllerShouldScan(_ controller: SBSDKTextPatternScannerViewController) -> Bool {
+        return shouldScan
     }
     
-    func textLineScannerViewController(_ controller: SBSDKGenericTextLineScannerViewController,
-                                       didValidate result: SBSDKGenericTextLineScannerResult) {
+    func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController,
+                                          didValidate result: SBSDKTextPatternScannerResult) {
         DispatchQueue.main.async { [weak self] in
             self?.show(result: result)
         }

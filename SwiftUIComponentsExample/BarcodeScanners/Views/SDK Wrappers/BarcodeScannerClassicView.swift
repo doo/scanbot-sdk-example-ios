@@ -13,7 +13,7 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
     @Environment(\.presentationMode) var presentationMode
     
     @Binding var scanningResult: BarcodeScanningResult
-    @Binding var isRecognitionEnabled: Bool
+    @Binding var isScanningEnabled: Bool
     @Binding var selectedBarcode: SBSDKBarcodeItem?
 
     func makeCoordinator() -> Coordinator {
@@ -47,12 +47,12 @@ extension BarcodeScannerClassicView {
             self.parent = parent
         }
         
-        func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
-            return self.parent.isRecognitionEnabled
+        func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+            return self.parent.isScanningEnabled
         }
         
         func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                      didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+                                      didScanBarcodes codes: [SBSDKBarcodeItem]) {
             if parent.presentationMode.wrappedValue.isPresented {
                 self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Classic Barcode Scanner",
                                                                    scannedItems: codes)

@@ -46,7 +46,7 @@ final class ReviewDocumentsViewController: UIViewController {
         importAction = ImportAction { image in
             guard let image = image else { return }
             DispatchQueue(label: "FilterQueue").async { [weak self] in
-                let result = SBSDKDocumentDetector().detectDocument(on: image)
+                let result = SBSDKDocumentScanner().scan(from: image)
 
                 ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {

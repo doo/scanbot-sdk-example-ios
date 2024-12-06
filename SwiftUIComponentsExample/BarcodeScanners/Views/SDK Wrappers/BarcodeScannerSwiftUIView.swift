@@ -38,9 +38,9 @@ struct BarcodeScannerSwiftUIView: View {
         }
     }
     
-    func configure() -> SBSDKUI2BarcodeScannerConfiguration{
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
-        configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.common
+    func configure() -> SBSDKUI2BarcodeScannerScreenConfiguration{
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.common
         return configuration
     }
 }

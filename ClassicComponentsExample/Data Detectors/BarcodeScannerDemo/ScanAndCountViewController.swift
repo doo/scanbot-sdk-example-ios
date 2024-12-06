@@ -55,7 +55,7 @@ final class ScanAndCountViewController: UIViewController {
 
 extension ScanAndCountViewController: SBSDKBarcodeScanAndCountViewControllerDelegate {
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,
-                             didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+                             didScanBarcodes codes: [SBSDKBarcodeItem]) {
         codes.forEach { code in
             guard let existingCode = self.countedBarcodes.first(where: {
                 $0.item.format.name == code.format.name && $0.item.textWithExtension == code.textWithExtension
@@ -64,7 +64,7 @@ extension ScanAndCountViewController: SBSDKBarcodeScanAndCountViewControllerDele
                 return
             }
             existingCode.scanCount += 1
-            existingCode.dateOfLastDetection = Date()
+            existingCode.dateOfLastScanning = Date()
         }
         let count = countedBarcodes.reduce(0) { $0 + $1.scanCount }
         listCountLabel.text = String(count)

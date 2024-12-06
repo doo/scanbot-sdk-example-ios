@@ -1,5 +1,5 @@
 //
-//  GenericDocumentViewController.swift
+//  DocumentDataExtractorViewController.swift
 //  ClassicComponentsExample
 //
 //  Created by Danil Voitenko on 23.11.21.
@@ -9,18 +9,18 @@
 import UIKit
 import ScanbotSDK
 
-class GenericDocumentViewController: UIViewController {
-    var scannerViewController: SBSDKGenericDocumentRecognizerViewController?
+class DocumentDataExtractorViewController: UIViewController {
+    var extractorViewController:  SBSDKDocumentDataExtractorViewController?
     var indicator: UIActivityIndicatorView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let builder = SBSDKGenericDocumentRecognizerConfigurationBuilder()
+        let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
         
         builder.setAcceptedDocumentTypes(documentTypes())
         
-        scannerViewController = SBSDKGenericDocumentRecognizerViewController(parentViewController: self,
+        extractorViewController = SBSDKDocumentDataExtractorViewController(parentViewController: self,
                                                                              parentView: view, 
                                                                              configuration: builder.buildConfiguration(),
                                                                              delegate: self)
@@ -42,7 +42,7 @@ class GenericDocumentViewController: UIViewController {
     
     private func display(document: SBSDKGenericDocument, with sourceImage: UIImage) {
         if navigationController?.topViewController == self {
-            let resultsVC = GenericDocumentResultViewController.make(with: document, sourceImage: sourceImage)
+            let resultsVC = DocumentDataExtractorResultViewController.make(with: document, sourceImage: sourceImage)
             navigationController?.pushViewController(resultsVC, animated: true)
         }
     }
@@ -54,21 +54,22 @@ class GenericDocumentViewController: UIViewController {
     }
 }
 
-extension GenericDocumentViewController: SBSDKGenericDocumentRecognizerViewControllerDelegate {
-    func documentRecognizerViewController(_ controller: SBSDKGenericDocumentRecognizerViewController,
-                                          didRecognize result: SBSDKGenericDocumentRecognitionResult,
+extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewControllerDelegate {
+
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
+                                             didExtract result: SBSDKDocumentDataExtractionResult,
                                           on image: UIImage) {
         if result.status == .success {
             indicator?.stopAnimating()
         }
         if let document = result.document, let sourceImage = document.crop?.toUIImage() {
-            controller.resetDocumentAccumulation()
+            viewController.resetDocumentAccumulation()
             display(document: document, with: sourceImage)
         }
     }
 }
 
-extension GenericDocumentViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension DocumentDataExtractorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
     }
@@ -78,13 +79,13 @@ extension GenericDocumentViewController: UIImagePickerControllerDelegate, UINavi
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            let builder = SBSDKGenericDocumentRecognizerConfigurationBuilder()
+            let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
             
             builder.setAcceptedDocumentTypes(self.documentTypes())
             
-            let recognizer = SBSDKGenericDocumentRecognizer(configuration: builder.buildConfiguration())
+            let recognizer = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
                         
-            if let image = image, let document = recognizer.recognizeDocument(on: image)?.document {
+            if let image = image, let document = recognizer.extract(from: image)?.document {
                 self.display(document: document, with: image)
             }
         }

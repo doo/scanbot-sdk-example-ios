@@ -9,7 +9,7 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateRecognizerViewControllerDelegate {
+class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerViewControllerDelegate {
     
     let result: ReviewableScanResult
     
@@ -20,22 +20,22 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateRecognize
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIMedicalCertificateRecognizerConfiguration.defaultConfiguration
+        let configuration = SBSDKUIMedicalCertificateScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIMedicalCertificateRecognizerViewController.create(configuration: configuration, delegate: self)
+        let scanner = SBSDKUIMedicalCertificateScannerViewController.create(configuration: configuration, delegate: self)
         
         presentViewController(scanner)
     }
     
-    func medicalScannerViewControllerDidCancel(_ viewController: SBSDKUIMedicalCertificateRecognizerViewController) {
+    func medicalScannerViewControllerDidCancel(_ viewController: SBSDKUIMedicalCertificateScannerViewController) {
         didFinish()
     }
     
-    func medicalScannerViewController(_ viewController: SBSDKUIMedicalCertificateRecognizerViewController,
-                                      didFinishWith result: SBSDKMedicalCertificateRecognitionResult) {
+    func medicalScannerViewController(_ viewController: SBSDKUIMedicalCertificateScannerViewController,
+                                      didFinishWith result: SBSDKMedicalCertificateScanningResult) {
 
-        let title = "Medical certificate detected"
+        let title = "Medical certificate scanned"
         let message = result.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
             if let image = result.croppedImage?.toUIImage() {
