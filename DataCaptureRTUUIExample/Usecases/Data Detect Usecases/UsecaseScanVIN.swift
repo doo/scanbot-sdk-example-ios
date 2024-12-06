@@ -13,7 +13,7 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
-
+        
         let configuration = SBSDKUIVINScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
@@ -24,21 +24,19 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     func vinScannerViewController(_ viewController: SBSDKUIVINScannerViewController,
                                   didFinishWith result: SBSDKVINScannerResult) {
         
-        guard viewController.isRecognitionEnabled else {
+        guard viewController.isScanningEnabled else {
             return
         }
         
         var message = ""
-        if !(result.textResult.validationSuccessful || result.barcodeResult.status == .barcodeExtractionDisabled) {
-            if !(result.barcodeResult.status == .success) {
-                return
-            } else {
-                message = result.barcodeResult.extractedVIN
-            }
-        } else {
+        if result.barcodeResult.status == .success && result.barcodeResult.extractedVIN.count > 0 {
+            message = result.barcodeResult.extractedVIN
+        } else if result.textResult.validationSuccessful && !result.textResult.rawText.isEmpty {
             message = result.textResult.rawText
+        } else {
+            return
         }
-
+        
         let title = "VIN detected"
         
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
