@@ -24,10 +24,6 @@ class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
     func vinScannerViewController(_ viewController: SBSDKUIVINScannerViewController,
                                   didFinishWith result: SBSDKVINScannerResult) {
         
-        guard viewController.isScanningEnabled else {
-            return
-        }
-        
         var message = ""
         if result.barcodeResult.status == .success && result.barcodeResult.extractedVIN.count > 0 {
             message = result.barcodeResult.extractedVIN
