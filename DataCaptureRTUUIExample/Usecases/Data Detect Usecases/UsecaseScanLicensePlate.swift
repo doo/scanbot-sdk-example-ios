@@ -27,7 +27,7 @@ class UsecaseScanLicensePlate: Usecase, SBSDKUILicensePlateScannerViewController
     }
 
     func licensePlateScanner(_ controller: SBSDKUILicensePlateScannerViewController,
-                             didRecognizeLicensePlate result: SBSDKLicensePlateScannerResult) {
+                             didScanLicensePlate result: SBSDKLicensePlateScannerResult) {
         guard result.validationSuccessful else {
             return
         }
