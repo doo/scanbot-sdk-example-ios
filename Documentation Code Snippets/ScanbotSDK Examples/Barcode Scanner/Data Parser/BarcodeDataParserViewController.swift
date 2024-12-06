@@ -78,6 +78,8 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
         
         // Process the detected barcodes.
         let barcode = codes.first
+        
+        // Run the parser and check the result.
         if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.extractedDocument) {
             
             // Enumerate the Swiss QR code data fields.
@@ -88,7 +90,7 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
     }
     
     // Implement this function if you need to pause the detection (e.g. when showing the results).
-    func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+    func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return true
     }
 }

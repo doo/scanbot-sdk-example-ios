@@ -10,20 +10,27 @@ import ScanbotSDK
 
 func parseDataManually() {
     
-    // Some barcode raw string.
-    let rawBarcodeString = "..."
-
+    // Some raw barcode string.
+    let rawBarcodeString = "(01)02804086001986(3103)000220(15)220724(30)01(3922)00198"
+    
     // Instantiate the parser.
-    let parser = SBSDKBarcodeDocumentParser(extractedDocumentFormats: [.swissQr])
-
+    let parser = SBSDKBarcodeDocumentParser(extractedDocumentFormats: [.gs1])
+    
     // Run the parser and check the result.
     if let document = parser.parse(from: rawBarcodeString) {
         
-        if let swissDocumentModel = SBSDKBarcodeDocumentModelSwissQR(document: document) {
+        // Parse the resulted document as a GS1 document.
+        if let gs1ParsedDocument = SBSDKBarcodeDocumentModelGS1(document: document) {
             
-            // Enumerate the Swiss QR code data fields.
-            for field in document.fields {
-                // Do something with the fields.
+        // Retrieve the elements.
+           let elements = gs1ParsedDocument.elements
+            
+            // Enumerate over the elements.
+            for element in elements {
+                
+                // Do something with the element.
+                
+                print("\(element.dataTitle?.value?.text) = \(element.rawValue?.value?.text)")
             }
         }
     }
