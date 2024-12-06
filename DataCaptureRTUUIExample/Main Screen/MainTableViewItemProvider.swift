@@ -31,10 +31,10 @@ class MainTableViewItemProvider {
     private class func createItems(_ actionHandler: MainTableActionHandler) -> [MainTableViewSection] {
 
         let textScanItem = MainTableViewItem(title: "Extract text data",
-                                             action: { actionHandler.showTextDataScanner() })
+                                             action: { actionHandler.showTextPatternScanner() })
         
-        let checkRecognizeItem = MainTableViewItem(title: "Recognize Check",
-                                              action: { actionHandler.showCheckRecognizer() })
+        let checkRecognizeItem = MainTableViewItem(title: "Scan Check",
+                                              action: { actionHandler.showCheckScanner() })
         
         let mrzScanItem = MainTableViewItem(title: "Scan Machine Readable Zone",
                                             action: { actionHandler.showMRZScanning() })

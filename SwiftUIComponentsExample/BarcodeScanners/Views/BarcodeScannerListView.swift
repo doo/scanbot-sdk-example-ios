@@ -12,7 +12,7 @@ struct BarcodeScannerListView: View {
     
     private let scanners = BarcodeScanner.allCases
     
-    @State private var scannedResult = BarcodeScanningResult(scannedBarcodes: [])
+    @State private var scannedResult = BarcodeScanningResult(scannedItems: [])
     @State private var selectedScanner: BarcodeScanner?
     @State private var shouldCleanResults = false
     
@@ -50,14 +50,14 @@ struct BarcodeScannerListView: View {
             BarcodeScannerContainerView(scanner: scanner,
                                         scanningResult: $scannedResult)
                 .onAppear {
-                    scannedResult = BarcodeScanningResult(scannedBarcodes: [])
+                    scannedResult = BarcodeScanningResult(scannedItems: [])
                 }
         }
         .listStyle(InsetGroupedListStyle())
         .navigationBarTitle(Text("Barcode scanners"), displayMode: .inline)
         .onDisappear {
             if shouldCleanResults {
-                scannedResult = BarcodeScanningResult(scannedBarcodes: [])
+                scannedResult = BarcodeScanningResult(scannedItems: [])
             }
         }
     }

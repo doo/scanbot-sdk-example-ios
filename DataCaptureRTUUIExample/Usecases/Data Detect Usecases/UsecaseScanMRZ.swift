@@ -13,23 +13,23 @@ class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
-
+        
         let configuration = SBSDKUIMRZScannerConfiguration.defaultConfiguration
         configuration.textConfiguration.cancelButtonTitle = "Done"
         
         let scanner = SBSDKUIMRZScannerViewController.create(configuration: configuration, delegate: self)
-
+        
         presentViewController(scanner)
     }
     
-    func mrzDetectionViewController(_ viewController: SBSDKUIMRZScannerViewController,
-                                    didDetect zone: SBSDKMachineReadableZoneRecognizerResult) {
-        let title = "MRZ detected"
-        let message = zone.stringRepresentation()
+    func mrzScannerViewController(_ viewController: SBSDKUIMRZScannerViewController,
+                                  didScan zone: SBSDKMRZScannerResult) {
+        let title = "MRZ scanned"
+        let message = zone.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
     }
-
-    func mrzDetectionViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
+    
+    func mrzScanningViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
         didFinish()
     }
 }
