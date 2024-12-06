@@ -20,7 +20,7 @@ class AROverlayBarcodeScannerUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Configure the usecase.
         let usecase = SBSDKUI2MultipleScanningMode()
@@ -36,7 +36,7 @@ class AROverlayBarcodeScannerUI2ViewController: UIViewController {
         configuration.useCase = usecase
         
         // Create and set an array of accepted barcode formats.
-        configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
         // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,

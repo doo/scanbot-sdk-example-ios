@@ -36,7 +36,7 @@ class LicensePlateScannerViewController: UIViewController {
 extension LicensePlateScannerViewController: SBSDKLicensePlateScannerViewControllerDelegate {
     
     func licensePlateScannerViewController(_ controller: SBSDKLicensePlateScannerViewController,
-                                           didRecognizeLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
+                                           didScanLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
                                            on image: UIImage) {
         // Process the recognized result.
     }

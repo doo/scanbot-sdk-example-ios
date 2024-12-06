@@ -27,7 +27,7 @@ class CropScreenUI2ViewController: UIViewController {
         cropScreenConfiguration.topBarConfirmButton.foreground.color = SBSDKUI2Color(uiColor: UIColor.white)
         
         // ... customize a UI element's text.
-        configuration.localization.croppingCancelButtonTitle = "Cancel"
+        configuration.localization.croppingTopBarCancelButtonTitle = "Cancel"
         
         // Present the view controller modally.
         SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration) { document in

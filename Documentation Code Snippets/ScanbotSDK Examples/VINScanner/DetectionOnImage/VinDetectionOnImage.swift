@@ -14,11 +14,24 @@ func scanVinOnImage() {
     guard let image = UIImage(named: "vinImage") else { return }
     
     // Create an instance of the configuration for vehicle identification numbers.
-    let configuration = SBSDKGenericTextLineScannerConfiguration.vehicleIdentificationNumber()
+    let configuration = SBSDKVINScannerConfiguration()
     
-    // Create an instance of `SBSDKGenericTextLineScanner` using the configuration created above.
-    let scanner = SBSDKGenericTextLineScanner(configuration: configuration)
+    // Enable extraction of VIN from barcode.
+    configuration.extractVINFromBarcode = true
+    
+    // Create an instance of `SBSDKVINScanner` using the configuration created above.
+    let scanner = SBSDKVINScanner(configuration: configuration)
     
     // Run the scanner on the image.
-    let result = scanner.scanTextLine(on: image)
+    guard let result = scanner.scan(from: image) else { return }
+    
+    
+    // If `extractVINFromBarcode` from the configuration is set to `True`, you must check the barcode result first.
+    if result.barcodeResult.status == .success && !result.barcodeResult.extractedVIN.isEmpty {
+        print(result.barcodeResult.extractedVIN)
+        
+    // else check the text result.
+    } else if result.textResult.validationSuccessful && !result.textResult.rawText.isEmpty {
+        print(result.textResult.rawText)
+    }
 }

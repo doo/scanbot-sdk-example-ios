@@ -25,6 +25,6 @@ func detectBarcodesOnImage() {
     // Create an instance of `SBSDKBarcodeScanner`, passing the configuration.
     let scanner = SBSDKBarcodeScanner(configuration: configuration)
     
-    // Returns the result after running the scanner on the image.
-    let result = scanner.detectBarcodes(on: image)
+    // Returns the barcode scan result.
+    let result = scanner.scan(from: image)
 }

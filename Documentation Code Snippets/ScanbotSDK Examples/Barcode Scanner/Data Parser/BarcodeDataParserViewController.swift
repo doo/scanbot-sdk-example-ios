@@ -29,7 +29,7 @@ class BarcodeDataParserViewController: UIViewController {
         
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration],
-                                                             acceptedDocumentFormats: documentFormatsToDetect)
+                                                             extractedDocumentFormats: documentFormatsToDetect)
         
         // Create the SBSDKBarcodeScannerViewController instance.
         self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
@@ -74,11 +74,11 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
     
     // Implement this function to process detected barcodes.
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                  didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+                                  didScanBarcodes codes: [SBSDKBarcodeItem]) {
         
         // Process the detected barcodes.
         let barcode = codes.first
-        if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.parsedDocument) {
+        if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.extractedDocument) {
             
             // Enumerate the Swiss QR code data fields.
             for field in document.document.fields {

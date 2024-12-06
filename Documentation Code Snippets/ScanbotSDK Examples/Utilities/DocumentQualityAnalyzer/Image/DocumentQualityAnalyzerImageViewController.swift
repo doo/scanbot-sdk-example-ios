@@ -34,8 +34,14 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
     
     func analyzeQuality(on image: UIImage) {
         
+        // Create the configuration.
+        let configuration = SBSDKDocumentQualityAnalyzerConfiguration()
+        
         // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer()
+        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
+        
+        // Set this flag to `True` if you wish to detect orientation.
+        analyzer.configuration.detectOrientation = true
         
         // Run the quality analyzer on the image.
         let result = analyzer.analyze(on: image)

@@ -71,13 +71,13 @@ class BarcodeScannerViewController: UIViewController {
 extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
-                                  didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+                                  didScanBarcodes codes: [SBSDKBarcodeItem]) {
         // Process the detected barcodes.
         print(codes)
     }
     
     // Implement this function when you need to pause the detection (e.g. when showing the results).
-    func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+    func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return self.shouldDetectBarcodes
     }
 }

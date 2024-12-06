@@ -25,6 +25,6 @@ func scanLicensePlateOnImage() {
     let scanner = SBSDKLicensePlateScanner(configuration: configuration)
     
     // Run the scanner on the image.
-    let result = scanner.scanLicensePlate(on: image)
+    let result = scanner.scan(from: image)
 }
 

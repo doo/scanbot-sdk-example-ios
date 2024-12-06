@@ -20,7 +20,7 @@ class ActionBarConfigurationUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Retrieve the instance of the action bar from the configuration object.
         let actionBar = configuration.actionBar
@@ -51,7 +51,7 @@ class ActionBarConfigurationUI2ViewController: UIViewController {
         actionBar.flipCameraButton.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
         
         // Create and set an array of accepted barcode formats.
-        configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
         // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,

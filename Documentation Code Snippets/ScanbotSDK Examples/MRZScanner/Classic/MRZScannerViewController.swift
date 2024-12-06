@@ -10,7 +10,7 @@ import ScanbotSDK
 
 class MRZScannerViewController: UIViewController {
         
-    // The instance of the recognition view controller.
+    // The instance of the scanner view controller.
     private var scannerViewController: SBSDKMRZScannerViewController?
       
     override func viewDidLoad() {
@@ -41,7 +41,7 @@ class MRZScannerViewController: UIViewController {
 
 extension MRZScannerViewController: SBSDKMRZScannerViewControllerDelegate {
     
-    func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didDetectMRZ result: SBSDKMRZScannerResult) {
+    func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didScanMRZ result: SBSDKMRZScannerResult) {
         // Process the recognized result.
     }
 }

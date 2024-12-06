@@ -20,7 +20,7 @@ class BarcodeUserGuidanceUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Retrieve the instance of the user guidance from the configuration object.
         let userGuidance = configuration.userGuidance
@@ -36,7 +36,7 @@ class BarcodeUserGuidanceUI2ViewController: UIViewController {
         userGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
         
         // Create and set an array of accepted barcode formats.
-        configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
         // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,

@@ -33,11 +33,11 @@ class DirectDocumentDetectionViewController: UIViewController,
     
     func detectDocument(on pickedImage: UIImage) {
         
-        // Create an instance of a document detector.
-        let detector = SBSDKDocumentDetector()
+        // Create an instance of a document scanner.
+        let detector = SBSDKDocumentScanner()
         
         // Run detection on the picked image.
-        let result = detector.detectDocument(on: pickedImage)
+        let result = detector.scan(from: pickedImage)
         
         // Check the result and retrieve the detected polygon.
         if result?.status == .ok, let polygon = result?.polygon {

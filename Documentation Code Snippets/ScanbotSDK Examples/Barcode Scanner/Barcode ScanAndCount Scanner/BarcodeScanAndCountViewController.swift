@@ -62,7 +62,7 @@ extension BarcodeScanAndCountViewController: SBSDKBarcodeScanAndCountViewControl
     
     // Implement this function to process detected barcodes.
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,
-                             didDetectBarcodes codes: [SBSDKBarcodeItem]) {
+                             didScanBarcodes codes: [SBSDKBarcodeItem]) {
         // Process the detected barcodes.
         print(codes)
     }

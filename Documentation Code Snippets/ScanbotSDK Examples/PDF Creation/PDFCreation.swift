@@ -21,14 +21,14 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes)
     
-    // Create the PDF renderer.
-    let renderer = SBSDKPDFRenderer(configuration: pdfConfiguration,
-                                    ocrConfiguration: .scanbotOCR(),
-                                    encrypter: nil)
+    // Create the PDF generator.
+    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
+                                      ocrConfiguration: .scanbotOCR(),
+                                      encrypter: nil)
     
     do {
         // If output URL is `nil`the default PDF location of the scanned document will be used.
-        try renderer.renderScannedDocument(scannedDocument)
+        try generator.generate(from: scannedDocument)
     } catch {
         SBSDKLog.logError("Failed to render PDF: \(error.localizedDescription)")
     }
@@ -61,15 +61,15 @@ func createPDF(from image: UIImage) {
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes, jpegQuality: 100)
     
-    // Create the PDF renderer.
-    let renderer = SBSDKPDFRenderer(configuration: pdfConfiguration,
-                                    ocrConfiguration: .scanbotOCR(),
-                                    encrypter: nil)
+    // Create the PDF generator.
+    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
+                                      ocrConfiguration: .scanbotOCR(),
+                                      encrypter: nil)
     do {
-        // Synchronously renders the images from the image storage into a PDF file with the given page size, 
-        // and saves the PDF to the specified URL.
-        try renderer.renderImageStorage(imageStorage,
-                                        output: outputPDFURL)
+        // Synchronously generates the PDF from the image storage into a PDF file with the given page size,
+        // and saves it to the specified URL.
+        try generator.generate(from: imageStorage,
+                                  output: outputPDFURL)
     } catch {
         SBSDKLog.logError("Failed to generate PDF: \(error.localizedDescription).")
     }

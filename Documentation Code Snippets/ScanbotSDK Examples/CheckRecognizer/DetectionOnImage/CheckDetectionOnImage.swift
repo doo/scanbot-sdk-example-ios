@@ -13,12 +13,12 @@ func recognizeCheckOnImage() {
     // The image containing a check.
     guard let image = UIImage(named: "checkImage") else { return }
     
-    // Create an instance of `SBSDKCheckRecognizer`.
-    let recognizer = SBSDKCheckRecognizer()
+    // Create an instance of `SBSDKCheckScanner`.
+    let scanner = SBSDKCheckScanner()
     
-    // Set the desired check types on the recognizer.
-    recognizer.acceptedCheckTypes = SBSDKCheckDocumentModelRootType.allDocumentTypes
+    // Set the desired check types to the scanner.
+    scanner.acceptedCheckTypes = SBSDKCheckDocumentModelRootType.allDocumentTypes
     
-    // Run the recognizer on the image.
-    let result = recognizer.recognizeCheck(on: image)
+    // Scan the check from given image.
+    let result = scanner.scan(from: image)
 }

@@ -19,7 +19,7 @@ class BarcodeLocalizationUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Retrieve the instance of the localization from the configuration object.
         let localization = configuration.localization

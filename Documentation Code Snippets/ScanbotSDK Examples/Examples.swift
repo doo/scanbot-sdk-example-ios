@@ -32,7 +32,6 @@ enum ExampleCategory: String, CaseIterable {
                     ImageStoringViewController.self,
                     DocumentQualityAnalyzerScannedPageViewController.self,
                     DocumentQualityAnalyzerImageViewController.self,
-                    TextOrientationRecognizerViewController.self,
                     PDFAttributesViewController.self,
                     ImageMetadataProcessorViewController.self,
                     CameraDeviceViewController.self,
@@ -79,11 +78,11 @@ enum ExampleCategory: String, CaseIterable {
                     BarcodeScanAndCountViewController.self,
                     BarcodeDataParserViewController.self]
         case .genericDocument:
-            return [GenericDocumentViewController.self,
-                    GenericDocumentUIViewController.self]
+            return [DocumentDataExtractorViewController.self,
+                    DocumentDataExtractorUIViewController.self]
         case .genericTextLine:
-            return [GenericTextLineScannerViewController.self,
-                    GenericTextLineScannerUIViewController.self]
+            return [TextPatternScannerViewController.self,
+                    TextPatternScannerUIViewController.self]
         case .license:
             return [LicensePlateScannerViewController.self,
                     LicensePlateScannerUIViewController.self]
@@ -91,14 +90,14 @@ enum ExampleCategory: String, CaseIterable {
             return [MRZScannerViewController.self,
                     MRZScannerUIViewController.self]
         case .ehic:
-            return [EHICRecognizerViewController.self,
+            return [EHICExtractorViewController.self,
                     EHICRecognizerUIViewController.self]
         case .medical:
-            return [MedicalCertificateRecognizerViewController.self,
-                    MedicalCertificateRecognizerUIViewController.self]
+            return [MedicalCertificateScannerViewController.self,
+                    MedicalCertificateScannerUIViewController.self]
         case .check:
-            return [CheckRecognizerViewController.self,
-                    CheckRecognizerUIViewController.self]
+            return [CheckScannerViewController.self,
+                    CheckScannerUIViewController.self]
         case .vin:
             return [VINScannerViewController.self,
                     VINScannerUIViewController.self]

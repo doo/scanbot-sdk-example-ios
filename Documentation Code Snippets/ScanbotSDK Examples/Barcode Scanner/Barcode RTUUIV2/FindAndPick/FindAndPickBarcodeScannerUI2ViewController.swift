@@ -20,7 +20,7 @@ class FindAndPickBarcodeScannerUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Initialize the find and pick usecase.
         let usecase = SBSDKUI2FindAndPickScanningMode()

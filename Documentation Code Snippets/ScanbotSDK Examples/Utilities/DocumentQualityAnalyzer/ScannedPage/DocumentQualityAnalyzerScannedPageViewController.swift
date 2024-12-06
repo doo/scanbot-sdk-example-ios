@@ -24,8 +24,14 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }
         
+        // Create the configuration.
+        let configuration = SBSDKDocumentQualityAnalyzerConfiguration()
+        
         // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer()
+        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
+        
+        // Set this flag to `True` if you wish to detect orientation.
+        analyzer.configuration.detectOrientation = true
         
         // Run the analyzer on the document image.
         // If you have a filter applied and you wish to run the analyzer on the unfiltered image.

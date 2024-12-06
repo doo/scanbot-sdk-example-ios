@@ -11,7 +11,7 @@ import ScanbotSDK
 func createScannedDocumentFromPDF(pdfURL: URL) {
     
     // Create an instance of the PDF page extractor.
-    let pageExtractor = SBSDKPDFPagesExtractor()
+    let pageExtractor = SBSDKPDFImageExtractor()
     
     // Synchronously extract the pages from PDF and returns them as `SBSDKScannedDocument`.
     // Each page of the PDF will be a separate `SBSDKScannedPage`.
@@ -21,11 +21,11 @@ func createScannedDocumentFromPDF(pdfURL: URL) {
 func createImagesFromPDF(pdfURL: URL) {
     
     // Create an instance of the PDF page extractor.
-    let pageExtractor = SBSDKPDFPagesExtractor()
+    let pageExtractor = SBSDKPDFImageExtractor()
     
     // Extract the pages from the pdf and returns an array of UIImage
-    let images = pageExtractor.images(from: pdfURL)
+    let images = pageExtractor.extract(from: pdfURL)
     
-    // You can also use `images(fromPDF:scaling)` method to extract images with a scaling applied.
-    let scaledImages = pageExtractor.images(from: pdfURL, scaling: 2.0)
+    // You can also use `extract(from:scaling:)` method to extract images with a scaling applied.
+    let scaledImages = pageExtractor.extract(from: pdfURL, scaling: 2.0)
 }

@@ -13,11 +13,11 @@ struct BarcodeScannerSwiftUIView: View {
     // A boolean state variable indicating whether the barcode scanner interface should be presented.
     @State var showScan: Bool = false
     
-    // An instance of `SBSDKUI2BarcodeScannerConfiguration` which contains the configuration settings for the barcode scanner.
-    let configuration: SBSDKUI2BarcodeScannerConfiguration = {
+    // An instance of `SBSDKUI2BarcodeScannerScreenConfiguration` which contains the configuration settings for the barcode scanner.
+    let configuration: SBSDKUI2BarcodeScannerScreenConfiguration = {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerConfiguration()
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
         
         // Initialize the single scan usecase.
         let singleUsecase = SBSDKUI2SingleScanningMode()
@@ -51,7 +51,7 @@ struct BarcodeScannerSwiftUIView: View {
         configuration.useCase = singleUsecase
         
         // Create and set an array of accepted barcode formats.
-        configuration.recognizerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
         
         return configuration
     }()

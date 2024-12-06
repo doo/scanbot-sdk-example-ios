@@ -14,10 +14,10 @@ func parseDataManually() {
     let rawBarcodeString = "..."
 
     // Instantiate the parser.
-    let parser = SBSDKBarcodeDocumentParser(acceptedFormats: [.swissQr])
+    let parser = SBSDKBarcodeDocumentParser(extractedDocumentFormats: [.swissQr])
 
     // Run the parser and check the result.
-    if let document = parser.parseDocument(inputString: rawBarcodeString) {
+    if let document = parser.parse(from: rawBarcodeString) {
         
         if let swissDocumentModel = SBSDKBarcodeDocumentModelSwissQR(document: document) {
             

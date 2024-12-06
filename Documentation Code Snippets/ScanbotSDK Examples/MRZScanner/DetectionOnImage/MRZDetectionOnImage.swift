@@ -31,6 +31,6 @@ func scanMRZOnImage() {
     // Create an instance of `SBSDKMRZScanner` using the configuration.
     let scanner = SBSDKMRZScanner(configuration: configuration)
     
-    // Run the scanner on the image.
-    let result = scanner.scanMRZ(on: image)
+    // Run the scanner from the image.
+    let result = scanner.scan(from: image)
 }
