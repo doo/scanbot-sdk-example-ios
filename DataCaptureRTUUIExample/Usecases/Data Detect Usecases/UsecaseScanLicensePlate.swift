@@ -27,14 +27,14 @@ class UsecaseScanLicensePlate: Usecase, SBSDKUILicensePlateScannerViewController
     }
 
     func licensePlateScanner(_ controller: SBSDKUILicensePlateScannerViewController,
-                             didRecognizeLicensePlate result: SBSDKLicensePlateScannerResult) {
-        guard result.isValidationSuccessful else {
+                             didScanLicensePlate result: SBSDKLicensePlateScannerResult) {
+        guard result.validationSuccessful else {
             return
         }
         let message = result.licensePlate
         let title = "License plate found"
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
-            if let image = result.croppedImage {
+            if let image = result.croppedImage?.toUIImage() {
                 self.result.images.append(image)
                 if let navigationController = self.presenter as? UINavigationController {
                     UsecaseBrowseImages(result: self.result).start(presenter: navigationController)

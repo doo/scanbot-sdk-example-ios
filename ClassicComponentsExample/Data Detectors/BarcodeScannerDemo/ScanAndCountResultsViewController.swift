@@ -13,20 +13,20 @@ class ScanAndCountResultsViewController: UIViewController {
     @IBOutlet private var tableView: UITableView!
     
     var countedBarcodes: [SBSDKBarcodeScannerAccumulatingResult] = []
-    private var selectedBarcode: SBSDKBarcodeScannerResult?
+    private var selectedBarcode: SBSDKBarcodeItem?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
-        countedBarcodes = countedBarcodes.sorted { $0.code.dateOfDetection > $1.code.dateOfDetection }
+        countedBarcodes = countedBarcodes.sorted { $0.dateOfLastScanning > $1.dateOfLastScanning }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "showBarcodeResultDetails",
             let destination = segue.destination as? BarcodeResultDetailsViewController,
             let selectedBarcode = self.selectedBarcode {
-            destination.barcodeImage = selectedBarcode.barcodeImage
+            destination.barcodeImage = selectedBarcode.sourceImage?.toUIImage()
             destination.barcodeText = selectedBarcode.displayText
         }
     }
@@ -45,15 +45,15 @@ extension ScanAndCountResultsViewController: UITableViewDataSource, UITableViewD
         let cell = tableView.dequeueReusableCell(withIdentifier: "ScanAndCountBarcodeDetailsCell",
                                                  for: indexPath) as! ScanAndCountBarcodeDetailsCell
         let barcode = countedBarcodes[indexPath.row]
-        cell.barcodeResult.text = barcode.code.displayText
-        cell.barcodeType.text = barcode.code.type.name
+        cell.barcodeResult.text = barcode.item.displayText
+        cell.barcodeType.text = barcode.item.format.name
         cell.barcodeCountLabel.text = "x\(barcode.scanCount)"
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        self.selectedBarcode = countedBarcodes[indexPath.row].code
+        self.selectedBarcode = countedBarcodes[indexPath.row].item
         performSegue(withIdentifier: "showBarcodeResultDetails", sender: self)
     }
 }
