@@ -28,7 +28,7 @@ final class LicensePlateDemoViewController: UIViewController {
         show(result: nil)
         scannerViewController = SBSDKLicensePlateScannerViewController(parentViewController: self,
                                                                        parentView: cameraContainer,
-                                                                       configuration: SBSDKLicensePlateScannerConfiguration.defaultConfiguration,
+                                                                       configuration: SBSDKLicensePlateScannerConfiguration(),
                                                                        delegate: self)
     }
     
@@ -50,7 +50,7 @@ final class LicensePlateDemoViewController: UIViewController {
             
             if resultString != resultLabel.text {
                 resultLabel.text = resultString
-                resultImageView?.image = result.croppedImage
+                resultImageView?.image = result.croppedImage?.toUIImage()
             }
         } else {
             resultLabel.text = nil
@@ -63,7 +63,7 @@ final class LicensePlateDemoViewController: UIViewController {
 
 extension LicensePlateDemoViewController: SBSDKLicensePlateScannerViewControllerDelegate {
     func licensePlateScannerViewController(_ controller: SBSDKLicensePlateScannerViewController,
-                                           didRecognizeLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
+                                           didScanLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
                                            on image: UIImage) {
         DispatchQueue.main.async { [weak self] in
             self?.show(result: licensePlateResult)

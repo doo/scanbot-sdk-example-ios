@@ -26,19 +26,16 @@ struct DocumentScannerSwiftUIView: View {
         configuration.screens.camera.acknowledgement.acknowledgementMode = .always
         
         // Configure the user guidance.
-        // e.g
         configuration.screens.camera.topUserGuidance.visible = true
         configuration.screens.camera.userGuidance.visibility = .enabled
         configuration.screens.camera.scanAssistanceOverlay.visible = true
         
         // Configure the title of the bottom user guidance for different states.
-        // e.g
         configuration.screens.camera.userGuidance.statesTitles.noDocumentFound = "No Document"
         configuration.screens.camera.userGuidance.statesTitles.badAspectRatio = "Bad Aspect Ratio"
         configuration.screens.camera.userGuidance.statesTitles.badAngles = "Bad angle"
         
         // Configure the bottom bar and the bottom bar buttons.
-        // e.g
         configuration.appearance.bottomBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
         configuration.screens.camera.bottomBar.importButton.title.visible = true
         configuration.screens.camera.bottomBar.autoSnappingModeButton.title.visible = true
@@ -47,7 +44,6 @@ struct DocumentScannerSwiftUIView: View {
         configuration.screens.camera.bottomBar.torchOffButton.title.visible = true
         
         // Configure the document capture feedback.
-        // e.g
         configuration.screens.camera.captureFeedback.cameraBlinkEnabled = true
         configuration.screens.camera.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapFunnelAnimation()
         
