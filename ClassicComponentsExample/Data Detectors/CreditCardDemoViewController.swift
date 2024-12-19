@@ -19,9 +19,9 @@ final class CreditCardDemoViewController: UIViewController {
         view.backgroundColor = .black
         
         scannerViewController = SBSDKCreditCardScannerViewController(parentViewController: self,
-                                                                        parentView: view,
-                                                                        configuration: SBSDKCreditCardScannerConfiguration(),
-                                                                        delegate: self)
+                                                                     parentView: view,
+                                                                     configuration: SBSDKCreditCardScannerConfiguration(),
+                                                                     delegate: self)
     }
     
     private func show(result: SBSDKCreditCardScanningResult) {
