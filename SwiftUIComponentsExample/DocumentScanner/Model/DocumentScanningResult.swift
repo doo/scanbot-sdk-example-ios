@@ -24,4 +24,4 @@ final class DocumentScanningResult: ObservableObject {
     }
 }
 
-extension SBSDKScannedPage: Identifiable { }
+extension SBSDKScannedPage: @retroactive Identifiable { }
