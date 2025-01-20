@@ -60,6 +60,6 @@ extension TextPatternScannerUIViewController: SBSDKUITextPatternScannerViewContr
     func textPatternScannerViewController(_ controller: SBSDKUITextPatternScannerViewController,
                                           didFinish step: SBSDKUITextPatternScannerStep,
                                           with result: SBSDKUITextPatternScannerStepResult) {
-        // Process the recognized result.
+        // Process the scanned result.
     }
 }

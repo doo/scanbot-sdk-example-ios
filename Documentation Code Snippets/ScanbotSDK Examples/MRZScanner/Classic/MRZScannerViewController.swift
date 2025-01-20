@@ -42,7 +42,7 @@ class MRZScannerViewController: UIViewController {
 extension MRZScannerViewController: SBSDKMRZScannerViewControllerDelegate {
     
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didScanMRZ result: SBSDKMRZScannerResult) {
-        // Process the recognized result.
+        // Process the scanned result.
     }
 }
 

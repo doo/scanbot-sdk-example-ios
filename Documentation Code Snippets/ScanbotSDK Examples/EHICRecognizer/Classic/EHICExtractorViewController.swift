@@ -27,7 +27,7 @@ class EHICExtractorViewController: UIViewController {
         // the given country, the result will be IncompleteValidation.
         ehicConfiguration.expectedCountry = .germany
         
-        // Use the builder to construct the generic document configuration to detect european
+        // Use the builder to construct the document data extractor configuration to detect european
         // health insurance card.
         let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
         
@@ -37,7 +37,7 @@ class EHICExtractorViewController: UIViewController {
         // Set the ehic configuration.
         builder.setEuropeanHealthInsuranceCardConfiguration(ehicConfiguration)
         
-        // Get an instance of the constructed generic document configuration.
+        // Get an instance of the constructed document data extractor configuration.
         let configuration = builder.buildConfiguration()
         
         // Create the `SBSDKGenericDocumentRecognizerViewController` instance and embed it.

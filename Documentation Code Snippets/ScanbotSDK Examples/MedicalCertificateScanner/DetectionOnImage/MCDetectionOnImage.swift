@@ -8,7 +8,7 @@
 import Foundation
 import ScanbotSDK
 
-func recognizeMedicalCertificateOnImage() {
+func scanMedicalCertificateFromImage() {
     
     // The image containing a medical certificate.
     guard let image = UIImage(named: "medicalCertificateImage") else { return }

@@ -76,7 +76,7 @@ func removeTIFFFromScannedDocument(with scannedDocument: SBSDKScannedDocument) {
         try fileManager.removeItem(at: scannedDocument.tiffURI)
     } catch {
         // Eventually handle the error.
-        SBSDKLog.logError("Failed to remove a PDF at \(scannedDocument.tiffURI)")
+        SBSDKLog.logError("Failed to remove a TIFF at \(scannedDocument.tiffURI)")
     }
 }
 

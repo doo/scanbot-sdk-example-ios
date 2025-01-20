@@ -45,10 +45,10 @@ class CheckScannerUIViewController: UIViewController {
 extension CheckScannerUIViewController: SBSDKUICheckScannerViewControllerDelegate {
     func checkScannerViewController(_ viewController: SBSDKUICheckScannerViewController,
                                     didScanCheck result: SBSDKCheckScanningResult) {
-        // Process the recognized result.
+        // Process the scanned result.
     }
     
     func checkScannerViewControllerDidCancel(_ viewController: SBSDKUICheckScannerViewController) {
-        // Handle dismissing of the recognizer view controller.
+        // Handle dismissing of the scanner view controller.
     }
 }

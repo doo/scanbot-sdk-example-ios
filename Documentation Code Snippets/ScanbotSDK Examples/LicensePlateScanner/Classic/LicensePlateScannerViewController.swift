@@ -38,6 +38,6 @@ extension LicensePlateScannerViewController: SBSDKLicensePlateScannerViewControl
     func licensePlateScannerViewController(_ controller: SBSDKLicensePlateScannerViewController,
                                            didScanLicensePlate licensePlateResult: SBSDKLicensePlateScannerResult,
                                            on image: UIImage) {
-        // Process the recognized result.
+        // Process the scanned result.
     }
 }

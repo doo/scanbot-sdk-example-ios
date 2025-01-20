@@ -24,7 +24,7 @@ func extractEhicFromImage() {
     // the given country, the result will be IncompleteValidation.
     ehicConfiguration.expectedCountry = .germany
     
-    // Use the builder to construct the generic document configuration to extract european
+    // Use the builder to construct the document data extractor configuration to extract european
     // health insurance card.
     let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
     
@@ -34,7 +34,7 @@ func extractEhicFromImage() {
     // Set the ehic configuration.
     builder.setEuropeanHealthInsuranceCardConfiguration(ehicConfiguration)
     
-    // Get an instance of the constructed generic document configuration.
+    // Get an instance of the constructed document data extractor configuration.
     let configuration = builder.buildConfiguration()
     
     // Create an instance of `SBSDKDocumentDataExtractor`.

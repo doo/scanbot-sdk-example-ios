@@ -8,7 +8,7 @@
 import Foundation
 import ScanbotSDK
 
-func recognizeCheckOnImage() {
+func scanCheckFromImage() {
     
     // The image containing a check.
     guard let image = UIImage(named: "checkImage") else { return }

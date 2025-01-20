@@ -84,7 +84,9 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
             
             // Enumerate the Swiss QR code data fields.
             for field in document.document.fields {
+                
                 // Do something with the fields.
+                print("\(field.type.fullName) = \(field.value?.text)")
             }
         }
     }
