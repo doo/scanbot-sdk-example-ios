@@ -38,7 +38,7 @@ final class TIFFDemoViewController: UIViewController {
                                                                 in: .userDomainMask).last?.path else { return }
         let filePath = "\(documentsDirectory)/\(UUID().uuidString.lowercased()).tiff"
         guard let fileURL = URL(string: filePath) else { return }
-        let parameters = SBSDKTiffGeneratorParameters.defaultParameters
+        let parameters = SBSDKTIFFGeneratorParameters.defaultParameters
         parameters.dpi = 200
         if isBinarized {
             parameters.binarizationFilter = SBSDKCustomBinarizationFilter()            

@@ -79,7 +79,7 @@ extension MultiScanResultViewController {
         // Define the generation parameters for the TIFF
         // In this case using lowLightBinarization2 filter when exporting as TIFF
         // as an optimal setting
-        let tiffGeneratorParameters = SBSDKTiffGeneratorParameters.defaultParametersForBinaryImages
+        let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
         tiffGeneratorParameters.dpi = 300
         tiffGeneratorParameters.compression = .ccittT6
         tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)

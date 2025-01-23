@@ -49,8 +49,8 @@ class ExportAction {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("tiff")
-            let params = binarize ? SBSDKTiffGeneratorParameters.defaultParametersForBinaryImages
-            : SBSDKTiffGeneratorParameters.defaultParameters
+            let params = binarize ? SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
+            : SBSDKTIFFGeneratorParameters.defaultParameters
             
             let generator = SBSDKTIFFGenerator(parameters: params)
             
