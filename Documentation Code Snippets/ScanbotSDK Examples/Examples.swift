@@ -93,7 +93,17 @@ enum ExampleCategory: String, CaseIterable {
                     LicensePlateScannerUIViewController.self]
         case .mrz:
             return [MRZScannerViewController.self,
-                    MRZScannerUIViewController.self]
+                    MRZScannerUIViewController.self,
+                    MRZSwiftUIHostingViewController.self,
+                    MRZLaunchingUI2ViewController.self,
+                    MRZPaletteUI2ViewController.self,
+                    MRZLocalizationUI2ViewController.self,
+                    MRZIntroductionUI2ViewController.self,
+                    MRZUserGuidanceUI2ViewController.self,
+                    MRZTopBarUI2ViewController.self,
+                    MRZActionBarUI2ViewController.self,
+                    MRZFinderOverlayUI2ViewController.self,
+                    MRZScanningUI2ViewController.self]
         case .ehic:
             return [EHICExtractorViewController.self,
                     EHICRecognizerUIViewController.self]
@@ -127,6 +137,17 @@ enum ExampleCategory: String, CaseIterable {
     
     init() {
         super.init(rootView: BarcodeScannerSwiftUIView())
+    }
+    
+    @objc required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+@objcMembers class MRZSwiftUIHostingViewController: UIHostingController<MRZScannerSwiftUIView> {
+    
+    init() {
+        super.init(rootView: MRZScannerSwiftUIView())
     }
     
     @objc required init?(coder aDecoder: NSCoder) {

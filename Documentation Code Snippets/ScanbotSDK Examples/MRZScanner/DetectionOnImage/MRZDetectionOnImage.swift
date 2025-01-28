@@ -23,7 +23,7 @@ func scanMRZOnImage() {
     
     // Customize the frame accumulation configuration as needed.
     configuration.frameAccumulationConfiguration.maximumNumberOfAccumulatedFrames = 3
-    configuration.frameAccumulationConfiguration.minimumNumberOfRequiredFramesWithEqualRecognitionResult = 2
+    configuration.frameAccumulationConfiguration.minimumNumberOfRequiredFramesWithEqualScanningResult = 2
     
     // Whether to accept or reject incomplete MRZ results.
     configuration.incompleteResultHandling = .accept

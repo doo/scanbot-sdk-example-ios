@@ -12,7 +12,7 @@ func createTIFF(from scannedDocument: SBSDKScannedDocument) {
     
     // The `SBSDKTIFFGenerator` has parameters where you can define various options,
     // e.g. compression algorithm or whether the document should be binarized.
-    let parameters = SBSDKTiffGeneratorParameters()
+    let parameters = SBSDKTIFFGeneratorParameters()
     
     // Create the tiff generator using created parameters.
     let generator = SBSDKTIFFGenerator(parameters: parameters)
@@ -28,12 +28,11 @@ func createTIFF(from images: [UIImage]) {
     guard let outputTIFFURL = URL(string: "outputTIFF") else { return }
 
     // In case you want to encrypt your TIFF file, create encrypter using a password and an encryption mode.
-    guard let encrypter = SBSDKAESEncrypter(password: "password_example#42",
-                                            mode: .AES256) else { return }
+    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
     
     // The `SBSDKTIFFGenerator` has parameters where you can define various options,
     // e.g. compression algorithm or whether the document should be binarized.
-    let parameters = SBSDKTiffGeneratorParameters()
+    let parameters = SBSDKTIFFGeneratorParameters()
     
     // Create the tiff generator using created parameters and the encrypter.
     let tiffImageGenerator = SBSDKTIFFGenerator(parameters: parameters, encrypter: encrypter)
