@@ -53,7 +53,6 @@
 		2844F29428214D1E007C6B39 /* UsecaseScanCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2844F29328214D1E007C6B39 /* UsecaseScanCheck.swift */; };
 		28A650E62788966200CFD548 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E52788966200CFD548 /* ReviewViewController.swift */; };
 		28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28A650E72788968500CFD548 /* ReviewCollectionViewCell.swift */; };
-		28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */; };
 		28F2730527918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2730427918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift */; };
 		28F273072791903200C424AC /* DocumentDataExtractorResultTextListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273062791903200C424AC /* DocumentDataExtractorResultTextListCell.swift */; };
 		28F2730A2791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */; };
@@ -119,7 +118,6 @@
 		2844F29328214D1E007C6B39 /* UsecaseScanCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanCheck.swift; sourceTree = "<group>"; };
 		28A650E52788966200CFD548 /* ReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
 		28A650E72788968500CFD548 /* ReviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCollectionViewCell.swift; sourceTree = "<group>"; };
-		28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanLicensePlate.swift; sourceTree = "<group>"; };
 		28F2730427918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorResultListViewController.swift; sourceTree = "<group>"; };
 		28F273062791903200C424AC /* DocumentDataExtractorResultTextListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorResultTextListCell.swift; sourceTree = "<group>"; };
 		28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDateExtractorResultImageListCell.swift; sourceTree = "<group>"; };
@@ -254,7 +252,6 @@
 			children = (
 				0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */,
 				692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */,
-				28DC6DE02601DBFE0033E6DE /* UsecaseScanLicensePlate.swift */,
 				F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */,
 			);
 			path = "Data Detect Usecases";
@@ -449,7 +446,6 @@
 				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseScanDocumentDataExtractor.swift in Sources */,
 				28F2730527918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift in Sources */,
-				28DC6DE12601DBFE0033E6DE /* UsecaseScanLicensePlate.swift in Sources */,
 				28F273072791903200C424AC /* DocumentDataExtractorResultTextListCell.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,

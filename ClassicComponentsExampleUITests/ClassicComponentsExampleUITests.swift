@@ -63,10 +63,6 @@ class ClassicComponentsExampleUITests: XCTestCase {
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a Classic Component Demo"].tap()
             
-            tablesQuery.cells.staticTexts["EU Licence Plate Scanner Demo"].tap()
-            _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
-            app.navigationBars.firstMatch.buttons["Select a Classic Component Demo"].tap()
-            
             tablesQuery.cells.staticTexts["Credit Card Scanner Demo"].tap()
             _ = app.navigationBars.firstMatch.buttons.firstMatch.waitForExistence(timeout: 3)
             app.navigationBars.firstMatch.buttons["Select a Classic Component Demo"].tap()

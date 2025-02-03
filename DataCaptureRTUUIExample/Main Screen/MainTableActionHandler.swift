@@ -100,12 +100,6 @@ class MainTableActionHandler: NSObject {
         }
     }
     
-    func showLicensePlateScanner() {
-        guardLicense {
-            UsecaseScanLicensePlate(result: result).start(presenter: self.presenter)
-        }
-    }
-    
     func showVinScanner() {
         guardLicense {
             UsecaseScanVIN().start(presenter: self.presenter)

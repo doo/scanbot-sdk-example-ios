@@ -38,7 +38,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2022 doo GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1533.3333301544189" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1475.3333301544189" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <nil key="textColor"/>
@@ -351,33 +351,8 @@
                                             <segue destination="kwz-bW-V9c" kind="show" id="zTu-kp-hEl"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="arc-WA-mPF" userLabel="EU License Plate Scanner">
-                                        <rect key="frame" x="20" y="967.33333015441895" width="335" height="58"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="arc-WA-mPF" id="EBf-Ql-Ljj">
-                                            <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EU Licence Plate Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OFg-2e-wXM">
-                                                    <rect key="frame" x="24" y="0.0" width="287" height="58"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="OFg-2e-wXM" firstAttribute="top" secondItem="EBf-Ql-Ljj" secondAttribute="top" id="CRs-ij-xR1"/>
-                                                <constraint firstItem="OFg-2e-wXM" firstAttribute="leading" secondItem="EBf-Ql-Ljj" secondAttribute="leading" constant="24" id="Tlh-Sc-Qlx"/>
-                                                <constraint firstAttribute="trailing" secondItem="OFg-2e-wXM" secondAttribute="trailing" constant="24" id="Ybg-vi-iYt"/>
-                                                <constraint firstAttribute="bottom" secondItem="OFg-2e-wXM" secondAttribute="bottom" id="zdd-qp-M6N"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="XcY-Bw-Fgi" kind="show" id="4CT-TL-Qa4"/>
-                                        </connections>
-                                    </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="MOW-8H-Xlh" userLabel="Credit Card Scanner">
-                                        <rect key="frame" x="20" y="1025.3333301544189" width="335" height="58"/>
+                                        <rect key="frame" x="20" y="967.33333015441895" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MOW-8H-Xlh" id="ke2-9D-0bU">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
@@ -406,7 +381,7 @@
                             <tableViewSection headerTitle="Health documents scanners" id="YGZ-Zg-hf0">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="wUC-Gx-MSW" userLabel="EHIC Scanner">
-                                        <rect key="frame" x="20" y="1139.3333301544189" width="335" height="74"/>
+                                        <rect key="frame" x="20" y="1081.3333301544189" width="335" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wUC-Gx-MSW" id="HKl-Og-ael">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="74"/>
@@ -431,7 +406,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="74" id="qUN-bI-1tX" userLabel="Medical Certificate Scanner">
-                                        <rect key="frame" x="20" y="1213.3333301544189" width="335" height="74"/>
+                                        <rect key="frame" x="20" y="1155.3333301544189" width="335" height="74"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qUN-bI-1tX" id="wzL-94-hRH">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="74"/>
@@ -460,7 +435,7 @@
                             <tableViewSection headerTitle="Identity Detectors" id="Sky-Od-pUP">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="n39-Yo-ENL" userLabel="Document Data Extractor">
-                                        <rect key="frame" x="20" y="1343.3333301544189" width="335" height="58"/>
+                                        <rect key="frame" x="20" y="1285.3333301544189" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="n39-Yo-ENL" id="zO5-aK-oKo">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
@@ -489,7 +464,7 @@
                             <tableViewSection headerTitle="Utilities" id="EGY-pa-TYu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Nad-bm-cdX" userLabel="Quality Analyzer">
-                                        <rect key="frame" x="20" y="1457.3333301544189" width="335" height="58"/>
+                                        <rect key="frame" x="20" y="1399.3333301544189" width="335" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nad-bm-cdX" id="3vf-5b-HSj">
                                             <rect key="frame" x="0.0" y="0.0" width="335" height="58"/>
@@ -1358,70 +1333,6 @@
             </objects>
             <point key="canvasLocation" x="-842" y="611"/>
         </scene>
-        <!--License Plate Demo View Controller-->
-        <scene sceneID="uCw-61-rfe">
-            <objects>
-                <viewController id="XcY-Bw-Fgi" customClass="LicensePlateDemoViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Dqf-Y0-ZiM"/>
-                        <viewControllerLayoutGuide type="bottom" id="ctn-eD-33C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="S8a-Th-nv7">
-                        <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O2z-1O-ExS">
-                                <rect key="frame" x="0.0" y="0.0" width="390" height="753"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="c3c-dm-Ru2" appends="YES" id="ckl-6Y-yyj"/>
-                                </connections>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="h0s-CP-xfM">
-                                <rect key="frame" x="8" y="696.33333333333337" width="374" height="22.666666666666629"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="0.74843199819999995" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <size key="shadowOffset" width="1" height="1"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SkP-ek-Btc">
-                                <rect key="frame" x="50" y="608" width="290" height="72.333333333333371"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="SkP-ek-Btc" secondAttribute="height" multiplier="4:1" id="fV6-Gj-SLj"/>
-                                </constraints>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="O2z-1O-ExS" firstAttribute="leading" secondItem="S8a-Th-nv7" secondAttribute="leading" id="AAD-pf-bIt"/>
-                            <constraint firstItem="h0s-CP-xfM" firstAttribute="leading" secondItem="S8a-Th-nv7" secondAttribute="leading" constant="8" id="AVu-gt-JQh"/>
-                            <constraint firstAttribute="bottom" secondItem="O2z-1O-ExS" secondAttribute="bottom" id="F2h-FW-11D"/>
-                            <constraint firstItem="h0s-CP-xfM" firstAttribute="top" secondItem="SkP-ek-Btc" secondAttribute="bottom" constant="16" id="S0e-Cd-suQ"/>
-                            <constraint firstItem="ctn-eD-33C" firstAttribute="top" secondItem="h0s-CP-xfM" secondAttribute="bottom" id="d0n-yZ-Hmo"/>
-                            <constraint firstAttribute="trailing" secondItem="h0s-CP-xfM" secondAttribute="trailing" constant="8" id="isN-LA-dYw"/>
-                            <constraint firstAttribute="trailing" secondItem="SkP-ek-Btc" secondAttribute="trailing" constant="50" id="jRp-Jm-xX7"/>
-                            <constraint firstAttribute="trailing" secondItem="O2z-1O-ExS" secondAttribute="trailing" id="kKW-rn-qYo"/>
-                            <constraint firstItem="SkP-ek-Btc" firstAttribute="leading" secondItem="S8a-Th-nv7" secondAttribute="leading" constant="50" id="tM9-VK-BMA"/>
-                            <constraint firstItem="O2z-1O-ExS" firstAttribute="top" secondItem="Dqf-Y0-ZiM" secondAttribute="bottom" id="zGg-f8-9Cn"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="cameraContainer" destination="O2z-1O-ExS" id="had-j6-KET"/>
-                        <outlet property="resultImageView" destination="SkP-ek-Btc" id="d6o-eb-rdk"/>
-                        <outlet property="resultLabel" destination="h0s-CP-xfM" id="vex-ef-NbB"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SHN-DJ-yK6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="c3c-dm-Ru2">
-                    <connections>
-                        <action selector="tapGestureRecognized:" destination="XcY-Bw-Fgi" id="Wno-cm-Nqc"/>
-                    </connections>
-                </tapGestureRecognizer>
-            </objects>
-            <point key="canvasLocation" x="862" y="611"/>
-        </scene>
         <!--Generic Documents Result-->
         <scene sceneID="b1m-0N-f4b">
             <objects>
@@ -1771,7 +1682,7 @@
         <segue reference="GTa-wV-u2q"/>
         <segue reference="lCB-kT-sHR"/>
         <segue reference="s3a-if-ZVy"/>
-        <segue reference="dce-sc-oHh"/>
+        <segue reference="AqV-OW-qqH"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="list.bullet" catalog="system" width="128" height="87"/>

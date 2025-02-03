@@ -73,10 +73,6 @@ class DataCaptureRTUUIExampleUITests: XCTestCase {
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
-        tablesQuery.cells.staticTexts["Scan EU License Plate"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
-        
         // Test the license failure alert appears after 60 seconds.
         sleep(60)
         tablesQuery.cells.staticTexts["Scan Document"].tap()

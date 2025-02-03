@@ -38,14 +38,11 @@ class MainTableViewItemProvider {
         
         let mrzScanItem = MainTableViewItem(title: "Scan Machine Readable Zone",
                                             action: { actionHandler.showMRZScanning() })
-
-        let licensePlateScanItem = MainTableViewItem(title: "Scan EU License Plate",
-                                                     action: { actionHandler.showLicensePlateScanner() })
         
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem, vinScanItem]
+        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, vinScanItem]
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
