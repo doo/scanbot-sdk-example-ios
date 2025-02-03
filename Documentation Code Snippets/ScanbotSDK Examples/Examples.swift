@@ -92,9 +92,9 @@ enum ExampleCategory: String, CaseIterable {
             return [LicensePlateScannerViewController.self,
                     LicensePlateScannerUIViewController.self]
         case .mrz:
-            return [MRZScannerViewController.self,
+            return [MRZSwiftUIHostingViewController.self,
+                    MRZScannerViewController.self,
                     MRZScannerUIViewController.self,
-                    MRZSwiftUIHostingViewController.self,
                     MRZLaunchingUI2ViewController.self,
                     MRZPaletteUI2ViewController.self,
                     MRZLocalizationUI2ViewController.self,
@@ -117,7 +117,16 @@ enum ExampleCategory: String, CaseIterable {
             return [VINScannerViewController.self,
                     VINScannerUIViewController.self]
         case .creditCard:
-            return [CreditCardScannerViewController.self]
+            return [CreditCardSwiftUIHostingViewController.self,
+                    CreditCardScannerViewController.self,
+                    CreditCardLaunchingUI2ViewController.self,
+                    CreditCardPaletteUI2ViewController.self,
+                    CreditCardLocalizationUI2ViewController.self,
+                    CreditCardIntroductionUI2ViewController.self,
+                    CreditCardUserGuidanceUI2ViewController.self,
+                    CreditCardTopBarUI2ViewController.self,
+                    CreditCardActionBarUI2ViewController.self,
+                    CreditCardScanningUI2ViewController.self]
         }
     }
 }
@@ -148,6 +157,17 @@ enum ExampleCategory: String, CaseIterable {
     
     init() {
         super.init(rootView: MRZScannerSwiftUIView())
+    }
+    
+    @objc required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+@objcMembers class CreditCardSwiftUIHostingViewController: UIHostingController<CreditCardScannerSwiftUIView> {
+    
+    init() {
+        super.init(rootView: CreditCardScannerSwiftUIView())
     }
     
     @objc required init?(coder aDecoder: NSCoder) {

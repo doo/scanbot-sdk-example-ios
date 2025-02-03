@@ -1,14 +1,14 @@
 //
-//  MRZUserGuidanceUI2ViewController.swift
+//  CreditCardUserGuidanceUI2ViewController.swift
 //  ScanbotSDK Examples
 //
-//  Created by Rana Sohaib on 22.01.25.
+//  Created by Rana Sohaib on 30.01.25.
 //
 
 import UIKit
 import ScanbotSDK
 
-class MRZUserGuidanceUI2ViewController: UIViewController {
+class CreditCardUserGuidanceUI2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class MRZUserGuidanceUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2MRZScannerScreenConfiguration()
+        let configuration = SBSDKUI2CreditCardScannerScreenConfiguration()
         
         // Configure user guidances
         
@@ -35,33 +35,33 @@ class MRZUserGuidanceUI2ViewController: UIViewController {
         // Configure the background.
         topUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
         
-        // Finder overlay user guidance
-        // Retrieve the instance of the finder overlay user guidance from the configuration object.
-        let finderUserGuidance = configuration.finderViewUserGuidance
+        // Scan status user guidance
+        // Retrieve the instance of the user guidance from the configuration object.
+        let scanStatusUserGuidance = configuration.scanStatusUserGuidance
         // Show the user guidance.
-        finderUserGuidance.visible = true
+        scanStatusUserGuidance.visibility = true
         // Configure the title.
-        finderUserGuidance.title.text = "Scan the MRZ"
-        finderUserGuidance.title.color = SBSDKUI2Color(colorString: "#FFFFFF")
+        scanStatusUserGuidance.title.text = "Scan credit card"
+        scanStatusUserGuidance.title.color = SBSDKUI2Color(colorString: "#FFFFFF")
         // Configure the background.
-        finderUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
+        scanStatusUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
         
         // Present the view controller modally.
-        SBSDKUI2MRZScannerViewController.present(on: self,
-                                                 configuration: configuration) { result in
+        SBSDKUI2CreditCardScannerViewController.present(on: self,
+                                                        configuration: configuration) { result in
             if let result {
                 // Handle the result.
                 
-                // Cast the resulted generic document to the MRZ model using the `wrap` method.
-                if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
+                // Cast the resulted generic document to the credit card model using the `wrap` method.
+                if let model = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
                     
                     // Retrieve the values.
                     // e.g
-                    if let birthDate = model.birthDate?.value {
-                        print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
+                    if let cardNumber = model.cardNumber?.value {
+                        print("Card number: \(cardNumber.text), Confidence: \(cardNumber.confidence)")
                     }
-                    if let nationality = model.nationality?.value {
-                        print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                    if let name = model.cardholderName?.value {
+                        print("Name: \(name.text), Confidence: \(name.confidence)")
                     }
                 }
                 

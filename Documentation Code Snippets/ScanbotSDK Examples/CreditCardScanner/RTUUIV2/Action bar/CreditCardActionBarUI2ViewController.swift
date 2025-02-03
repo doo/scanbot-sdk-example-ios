@@ -1,14 +1,14 @@
 //
-//  MRZActionBarUI2ViewController.swift
+//  CreditCardActionBarUI2ViewController.swift
 //  ScanbotSDK Examples
 //
-//  Created by Rana Sohaib on 22.01.25.
+//  Created by Rana Sohaib on 30.01.25.
 //
 
 import UIKit
 import ScanbotSDK
 
-class MRZActionBarUI2ViewController: UIViewController {
+class CreditCardActionBarUI2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +20,7 @@ class MRZActionBarUI2ViewController: UIViewController {
     func startScanning() {
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2MRZScannerScreenConfiguration()
+        let configuration = SBSDKUI2CreditCardScannerScreenConfiguration()
         
         // Retrieve the instance of the action bar from the configuration object.
         let actionBar = configuration.actionBar
@@ -51,21 +51,21 @@ class MRZActionBarUI2ViewController: UIViewController {
         actionBar.flipCameraButton.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
         
         // Present the view controller modally.
-        SBSDKUI2MRZScannerViewController.present(on: self,
-                                                 configuration: configuration) { result in
+        SBSDKUI2CreditCardScannerViewController.present(on: self,
+                                                        configuration: configuration) { result in
             if let result {
                 // Handle the result.
                 
-                // Cast the resulted generic document to the MRZ model using the `wrap` method.
-                if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
+                // Cast the resulted generic document to the credit card model using the `wrap` method.
+                if let model = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
                     
                     // Retrieve the values.
                     // e.g
-                    if let birthDate = model.birthDate?.value {
-                        print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
+                    if let cardNumber = model.cardNumber?.value {
+                        print("Card number: \(cardNumber.text), Confidence: \(cardNumber.confidence)")
                     }
-                    if let nationality = model.nationality?.value {
-                        print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                    if let name = model.cardholderName?.value {
+                        print("Name: \(name.text), Confidence: \(name.confidence)")
                     }
                 }
                 

@@ -27,6 +27,19 @@ struct MRZScannerSwiftUIView: View {
             if let result {
                 scannedMRZ = result
                 
+                // Cast the resulted generic document to the MRZ model using the `wrap` method.
+                if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
+                    
+                    // Retrieve the values.
+                    // e.g
+                    if let birthDate = model.birthDate?.value {
+                        print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
+                    }
+                    if let nationality = model.nationality?.value {
+                        print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                    }
+                }
+                
             } else {
                 
                 // Dismiss your view here.
