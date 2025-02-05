@@ -23,7 +23,7 @@ struct DocumentScannerRTUUIView: UIViewControllerRepresentable {
         let configuration = SBSDKUI2DocumentScanningFlow()
         
         guard let scannerViewController = SBSDKUI2DocumentScannerController(configuration: configuration,
-                                                                            completionHandler: handleResult(scannedDocument:)) 
+                                                                            completion: handleResult(scannedDocument:)) 
         else {
             fatalError("Failed to create SBSDKUI2DocumentScannerView. The documentUuid does not exist.")
         }

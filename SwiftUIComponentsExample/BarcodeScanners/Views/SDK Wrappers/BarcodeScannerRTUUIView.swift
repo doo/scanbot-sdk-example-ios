@@ -25,7 +25,7 @@ struct BarcodeScannerRTUUIView: UIViewControllerRepresentable {
         configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.common
         
         let scannerViewController = SBSDKUI2BarcodeScannerViewController.create(with: configuration,
-                                                                                handler: { controller, cancelled, error, result in
+                                                                                completion: { controller, cancelled, error, result in
             
             if let barcodeResults = result?.items,
                presentationMode.wrappedValue.isPresented {

@@ -164,16 +164,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
         }
         alertsManager?.showSuccessAlert(with: result.toJson())
     }
-    
-    func scanner(_ scanner: SBSDKLicensePlateScanner,
-                 didFindLicensePlate result: SBSDKLicensePlateScannerResult?) {
-        guard let result = result, !result.rawText.isEmpty else {
-            alertsManager?.showFailureAlert()
-            return
-        }
-        alertsManager?.showSuccessAlert(with: result.rawText)
-    }
-    
+        
     func scanner(_ recognizer: SBSDKCheckScanner,
                  didScanCheck result: SBSDKCheckScanningResult?) {
         guard let result = result,
