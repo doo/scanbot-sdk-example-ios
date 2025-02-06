@@ -38,8 +38,6 @@ class MRZIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.image = .mrzIntroCustomImage(uri: "PathToImage")
         // Or you can also use our default image.
         configuration.introScreen.image = .mrzIntroDefaultImage()
-        // You can also set the tint color for the image.
-        configuration.introScreen.imageTintColor = SBSDKUI2Color(uiColor: .clear)
         
         // Configure the color of the handler on top.
         configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")

@@ -13,8 +13,7 @@ enum ExampleCategory: String, CaseIterable {
     case barcode = "Barcode"
     case document = "Document"
     case genericDocument = "Generic document"
-    case genericTextLine = "Generic text line"
-    case license = "License"
+    case textPattern = "Text Pattern"
     case mrz = "MRZ"
     case ehic = "Ehic"
     case medical = "Medical"
@@ -85,12 +84,18 @@ enum ExampleCategory: String, CaseIterable {
         case .genericDocument:
             return [DocumentDataExtractorViewController.self,
                     DocumentDataExtractorUIViewController.self]
-        case .genericTextLine:
-            return [TextPatternScannerViewController.self,
-                    TextPatternScannerUIViewController.self]
-        case .license:
-            return [LicensePlateScannerViewController.self,
-                    LicensePlateScannerUIViewController.self]
+        case .textPattern:
+            return [TextPatternSwiftUIHostingViewController.self,
+                    TextPatternScannerViewController.self,
+                    TextPatternScannerUIViewController.self,
+                    TextPatternLaunchingUI2ViewController.self,
+                    TextPatternPaletteUI2ViewController.self,
+                    TextPatternLocalizationUI2ViewController.self,
+                    TextPatternIntroductionUI2ViewController.self,
+                    TextPatternUserGuidanceUI2ViewController.self,
+                    TextPatternTopBarUI2ViewController.self,
+                    TextPatternActionBarUI2ViewController.self,
+                    TextPatternScanningScreenUI2ViewController.self]
         case .mrz:
             return [MRZSwiftUIHostingViewController.self,
                     MRZScannerViewController.self,
@@ -168,6 +173,17 @@ enum ExampleCategory: String, CaseIterable {
     
     init() {
         super.init(rootView: CreditCardScannerSwiftUIView())
+    }
+    
+    @objc required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+@objcMembers class TextPatternSwiftUIHostingViewController: UIHostingController<TextPatternScannerSwiftUIView> {
+    
+    init() {
+        super.init(rootView: TextPatternScannerSwiftUIView())
     }
     
     @objc required init?(coder aDecoder: NSCoder) {

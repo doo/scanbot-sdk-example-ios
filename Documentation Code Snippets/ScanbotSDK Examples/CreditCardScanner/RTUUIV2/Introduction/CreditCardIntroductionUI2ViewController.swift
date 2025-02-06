@@ -40,8 +40,6 @@ class CreditCardIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.image = .creditCardIntroOneSideImage()
         // Or you can also use our default two sided image.
         configuration.introScreen.image = .creditCardIntroTwoSidesImage()
-        // You can also set the tint color for the image.
-        configuration.introScreen.imageTintColor = SBSDKUI2Color(uiColor: .clear)
         
         // Configure the color of the handler on top.
         configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")
