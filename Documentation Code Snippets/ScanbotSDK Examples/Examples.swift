@@ -131,6 +131,7 @@ enum ExampleCategory: String, CaseIterable {
                     CreditCardUserGuidanceUI2ViewController.self,
                     CreditCardTopBarUI2ViewController.self,
                     CreditCardActionBarUI2ViewController.self,
+                    CreditCardFinderOverlayUI2ViewController.self,
                     CreditCardScanningUI2ViewController.self]
         }
     }
