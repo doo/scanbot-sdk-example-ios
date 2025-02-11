@@ -9,27 +9,22 @@
 import Foundation
 import ScanbotSDK
 
-class UsecaseScanMRZ: Usecase, SBSDKUIMRZScannerViewControllerDelegate {
+class UsecaseScanMRZ: Usecase {
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
-
-        let configuration = SBSDKUIMRZScannerConfiguration.defaultConfiguration
-        configuration.textConfiguration.cancelButtonTitle = "Done"
         
-        let scanner = SBSDKUIMRZScannerViewController.create(configuration: configuration, delegate: self)
-
+        let configuration = SBSDKUI2MRZScannerScreenConfiguration()
+        
+        let scanner = SBSDKUI2MRZScannerViewController.create(with: configuration) { [weak self] result in
+            if let result {
+                let title = "MRZ scanned"
+                let message = result.rawMRZ
+                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+            } else {
+                self?.didFinish()
+            }
+        }        
         presentViewController(scanner)
-    }
-    
-    func mrzDetectionViewController(_ viewController: SBSDKUIMRZScannerViewController,
-                                    didDetect zone: SBSDKMachineReadableZoneRecognizerResult) {
-        let title = "MRZ detected"
-        let message = zone.stringRepresentation()
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
-    }
-
-    func mrzDetectionViewControllerDidCancel(_ viewController: SBSDKUIMRZScannerViewController) {
-        didFinish()
     }
 }

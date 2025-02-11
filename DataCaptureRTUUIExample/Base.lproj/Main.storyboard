@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="32700.99.1234" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3O-sE-Idz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="23094" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="O3O-sE-Idz">
     <device id="retina5_9" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22685"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="23084"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -32,7 +32,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <color key="backgroundColor" systemColor="groupTableViewBackgroundColor"/>
                                 <view key="tableFooterView" opaque="NO" contentMode="scaleToFill" id="jaP-6E-5CU">
-                                    <rect key="frame" x="0.0" y="131.33333015441895" width="375" height="200"/>
+                                    <rect key="frame" x="0.0" y="131.33333015441892" width="375" height="200.00000000000003"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="252" verticalHuggingPriority="252" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" image="ui_sdk_expire" translatesAutoresizingMaskIntoConstraints="NO" id="D9x-RN-mEf">
@@ -319,10 +319,10 @@
             </objects>
             <point key="canvasLocation" x="884" y="-358"/>
         </scene>
-        <!--Generic Document Result List View Controller-->
+        <!--Document Data Extractor Result List View Controller-->
         <scene sceneID="xan-PD-Xr4">
             <objects>
-                <viewController storyboardIdentifier="GenericDocumentResultListViewController" id="Zua-s1-mpx" customClass="GenericDocumentResultListViewController" customModule="DataCaptureRTUUIExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="DocumentDataExtractorResultListViewController" id="Zua-s1-mpx" customClass="DocumentDataExtractorResultListViewController" customModule="DataCaptureRTUUIExample" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0eF-cV-C4y">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -331,7 +331,7 @@
                                 <rect key="frame" x="0.0" y="50" width="375" height="762"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenericDocumentResultTextListCell" id="pWZ-oo-Cb6" customClass="GenericDocumentResultTextListCell" customModule="DataCaptureRTUUIExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenericDocumentResultTextListCell" id="pWZ-oo-Cb6" customClass="DocumentDataExtractorResultTextListCell" customModule="DataCaptureRTUUIExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="pWZ-oo-Cb6" id="AYu-Vu-Ffd">
@@ -382,7 +382,7 @@
                                             <outlet property="valueLabel" destination="2sA-93-WMD" id="Zuq-zN-Hhd"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenericDocumentResultImageListCell" rowHeight="99" id="hMv-D0-4CV" customClass="GenericDocumentResultImageListCell" customModule="DataCaptureRTUUIExample" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="GenericDocumentResultImageListCell" rowHeight="99" id="hMv-D0-4CV" customClass="DocumentDateExtractorResultImageListCell" customModule="DataCaptureRTUUIExample" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="94" width="375" height="99"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="hMv-D0-4CV" id="Zqe-Rm-xNr">

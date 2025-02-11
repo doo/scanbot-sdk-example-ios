@@ -17,8 +17,8 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
         case textBackground
         case textForeground
         
-        func colorForCode(_ code: SBSDKBarcodeScannerResult) -> UIColor {
-            let isTwoD = SBSDKBarcodeType.twoDTypes.contains(code.type)
+        func colorForCode(_ code: SBSDKBarcodeItem) -> UIColor {
+            let isTwoD = SBSDKBarcodeFormats.twod.contains(code.format)
             let baseColor = isTwoD ? UIColor.systemRed : UIColor.systemBlue
             switch self {
             case .polygonBackground:
@@ -44,15 +44,15 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
     }
     
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                didChangeSelectedBarcodes selectedBarcodes: [SBSDKBarcodeScannerResult]) {
+                                didChangeSelectedBarcodes selectedBarcodes: [SBSDKBarcodeItem]) {
         
         if selectedBarcodes.count > 0 {
             displayResults(selectedBarcodes)
         }
     }
-        
+    
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                polygonStyleFor barcode: SBSDKBarcodeScannerResult) -> SBSDKBarcodeTrackedViewPolygonStyle? {
+                                polygonStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewPolygonStyle? {
         
         let style = SBSDKBarcodeTrackedViewPolygonStyle()
         style.polygonDrawingEnabled = true
@@ -64,7 +64,7 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
     }
     
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                textStyleFor barcode: SBSDKBarcodeScannerResult) -> SBSDKBarcodeTrackedViewTextStyle? {
+                                textStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewTextStyle? {
         
         let style = SBSDKBarcodeTrackedViewTextStyle()
         style.textDrawingEnabled = true

@@ -56,8 +56,9 @@ final class QualityAnalyzerDemoViewController: UIViewController {
         }
     }
     
-    private func show(result: SBSDKDocumentQuality) {
-        let resultString = "Quality = \(result.stringValue)"
+    private func show(result: SBSDKDocumentQualityAnalyzerResult) {
+        let quality = result.quality?.stringValue ?? "No document"
+        let resultString = "Quality = \(quality)"
         let alert = UIAlertController(title: "Quality Analysis",
                                       message: resultString,
                                       preferredStyle: .alert)
@@ -73,11 +74,10 @@ final class QualityAnalyzerDemoViewController: UIViewController {
 }
 
 extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
-    
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: UIImage,
                                        on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectorResult?,
+                                       with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
         estimateAndShowResults(from: originalImage)
     }
@@ -99,8 +99,6 @@ extension QualityAnalyzerDemoViewController: UIImagePickerControllerDelegate, UI
 extension SBSDKDocumentQuality {
     var stringValue: String {
         switch self {
-        case .noDocument:
-            return "No Document"
         case .veryPoor:
             return "Very Poor"
         case .poor:
@@ -111,7 +109,7 @@ extension SBSDKDocumentQuality {
             return "Good"
         case .excellent:
             return "Excellent"
-        @unknown default:
+        default:
             return ""
         }
     }

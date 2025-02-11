@@ -6,7 +6,8 @@
 //  Copyright © 2020 doo GmbH. All rights reserved.
 //
 
-import XCTest
+import XCTest 
+import ScanbotSDK
 
 class DataCaptureRTUUIExampleUITests: XCTestCase {
 
@@ -50,8 +51,8 @@ class DataCaptureRTUUIExampleUITests: XCTestCase {
         app.buttons["Done"].tap()
 
         tablesQuery.cells.staticTexts["Scan Machine Readable Zone"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
+        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
+        app.buttons["Cancel"].tap()
         
         tablesQuery.cells.staticTexts["Scan German ID card"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
@@ -62,18 +63,18 @@ class DataCaptureRTUUIExampleUITests: XCTestCase {
         app.buttons["Done"].tap()
 
         tablesQuery.cells.staticTexts["Extract text data"].tap()
+        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
+        app.buttons["Cancel"].tap()
+        
+        tablesQuery.cells.staticTexts["Scan Check"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         
-        tablesQuery.cells.staticTexts["Recognize Check"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
+        tablesQuery.cells.staticTexts["Scan Credit Card"].tap()
+        XCTAssert(app.buttons["Cancel"].waitForExistence(timeout: 1))
+        app.buttons["Cancel"].tap()
         
         tablesQuery.cells.staticTexts["Scan Health Insurance Card"].tap()
-        XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
-        app.buttons["Done"].tap()
-        
-        tablesQuery.cells.staticTexts["Scan EU License Plate"].tap()
         XCTAssert(app.buttons["Done"].waitForExistence(timeout: 1))
         app.buttons["Done"].tap()
         

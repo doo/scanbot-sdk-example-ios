@@ -1,5 +1,5 @@
 //
-//  ImageProcessingSwiftViewController.swift
+//  ImageProcessingViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Danil Voitenko on 12.05.22.
@@ -8,14 +8,14 @@
 import Foundation
 import ScanbotSDK
 
-class ImageProcessingSwiftViewController: UIViewController,
-                                          UIImagePickerControllerDelegate,
-                                          UINavigationControllerDelegate {
+class ImageProcessingViewController: UIViewController,
+                                     UIImagePickerControllerDelegate,
+                                     UINavigationControllerDelegate {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -34,16 +34,16 @@ class ImageProcessingSwiftViewController: UIViewController,
     func applyFiltersAndRotate(image: UIImage) {
         
         // Create an instance of `SBSDKImageProcessor` passing the input image to the initializer.
-        let processor = SBSDKImageProcessor(image: image)
+        let processor = SBSDKImageProcessor(uiImage: image)
         
         // Perform operations like rotating, resizing and applying filters to the image.
         // Rotate the image.
-        processor.rotate(.clockwise90)
+        processor.applyRotation(.clockwise90)
         
         // Resize the image.
-        processor.resize(size: 700)
+        processor.applyResize(700)
         
-        // Create the instances of the filters you want to apply.
+        // Create the instances of the filters to be applied.
         let filter1 = SBSDKScanbotBinarizationFilter(outputMode: .antialiased)
         let filter2 = SBSDKBrightnessFilter(brightness: 0.4)
         

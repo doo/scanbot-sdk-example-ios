@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 extension UIAlertController {
 
     class func showInfoAlert(_ title: String, message: String, presenter: UIViewController, completion: (() -> ())?) {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let action = UIAlertAction(title: "Okay", style: .default) { (_) in
+        let alert = SBSDKModalFormAlert.create(with: title, message: message, confirmButtonTitle: "Done") { 
             completion?()
         }
-        alert.addAction(action)
-        presenter.present(alert, animated: true, completion: nil)
+        presenter.present(alert, animated: true)
     }
 }
