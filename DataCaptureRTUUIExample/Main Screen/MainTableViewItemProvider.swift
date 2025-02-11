@@ -42,7 +42,10 @@ class MainTableViewItemProvider {
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, vinScanItem]
+        let creditCardScanItem = MainTableViewItem(title: "Scan Credit Card",
+                                                   action: { actionHandler.showCreditCardScanner() })
+        
+        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, vinScanItem, creditCardScanItem]
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
