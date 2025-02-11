@@ -105,4 +105,10 @@ class MainTableActionHandler: NSObject {
             UsecaseScanVIN().start(presenter: self.presenter)
         }
     }
+    
+    func showCreditCardScanner() {
+        guardLicense {
+            UsecaseScanCreditCard().start(presenter: self.presenter)
+        }
+    }
 }
