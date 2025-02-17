@@ -17,11 +17,13 @@ final class CheckViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let configuration = SBSDKCheckScannerConfiguration()
         recognizerViewController = SBSDKCheckScannerViewController(parentViewController: self,
-                                                                      parentView: view,
-                                                                      delegate: self)
+                                                                   parentView: view, 
+                                                                   configuration: configuration,
+                                                                   delegate: self)
     }
-        
+    
     private func show(result: SBSDKCheckScanningResult) {
         let alert = UIAlertController(title: "Scanned check",
                                       message: result.toJson(),
@@ -30,7 +32,7 @@ final class CheckViewController: UIViewController {
                                      style: .default,
                                      handler: { _ in
             alert.presentedViewController?.dismiss(animated: true)
-       })
+        })
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
@@ -44,5 +46,5 @@ extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
-                                       didChangeState state: SBSDKCheckScannerState) { }
+                                    didChangeState state: SBSDKCheckScannerState) { }
 }

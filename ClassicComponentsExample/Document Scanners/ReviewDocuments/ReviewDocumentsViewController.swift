@@ -227,14 +227,12 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
      
         guard let imageIndex = selectedImageIndex else { return }
         guard let page = ImageManager.shared.pageAt(index: imageIndex) else { return }
-        guard let size = page.originalImage?.size else { return }
         
         var rotations = editingViewController.rotations
         while rotations < 0 {
             rotations += 4
         }
-        
-        polygon.rotateCCW(UInt(rotations), with: size)
+        polygon.rotateCCW(UInt(rotations))
         
         page.polygon = polygon
         page.rotateClockwise(editingViewController.rotations)
