@@ -75,14 +75,21 @@ final class SingleScanResultViewController: UIViewController {
                                                configuration: configuration) { croppingResult in
             
             // Completion handler to process the result.
-            if let error = croppingResult.errorMessage {
+            if let croppingResult {
                 
-                // There was an error.
-                print(error)
+                if let error = croppingResult.errorMessage {
+                    // There was an error.
+                    print(error)
+                    
+                } else {
+                    
+                    // The screen is dismissed without errors.
+                    
+                    self.singlePageImageView.image = page.documentImage
+                }
                 
             } else {
-                
-                self.singlePageImageView.image = page.documentImage
+                // Indicates that the cancel button was tapped.
             }
         }
     }
