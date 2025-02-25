@@ -37,11 +37,14 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
         // Create the configuration.
         let configuration = SBSDKDocumentQualityAnalyzerConfiguration()
         
+        // Configure the properties.
+        // e.g
+        configuration.detectOrientation = true
+        configuration.maxImageSize = 2000
+        configuration.returnQualityHeatmap = false
+        
         // Initialize the analyzer.
         let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
-        
-        // Set this flag to `True` if you wish to detect orientation.
-        analyzer.configuration.detectOrientation = true
         
         // Run the quality analyzer on the image.
         let result = analyzer.analyze(on: image)
