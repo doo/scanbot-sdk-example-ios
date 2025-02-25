@@ -13,15 +13,19 @@ class CheckScannerViewController: UIViewController {
     // The instance of the scanner view controller.
     private var scannerViewController: SBSDKCheckScannerViewController?
     
-    // The label to present the recognition status updates.
+    // The label to present the scanning status updates.
     @IBOutlet private var statusLabel: UILabel?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the `SBSDKCheckRecognizerViewController` instance and embed it.
+        // Create the default configuration.
+        let configuration = SBSDKCheckScannerConfiguration()
+                
+        // Create the `SBSDKCheckScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKCheckScannerViewController(parentViewController: self,
                                                                      parentView: self.view,
+                                                                     configuration: configuration,
                                                                      delegate: self)
         
         // Customize the default accepted check types as needed.

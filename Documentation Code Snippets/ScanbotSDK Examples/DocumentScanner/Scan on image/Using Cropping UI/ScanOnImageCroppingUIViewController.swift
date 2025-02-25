@@ -58,11 +58,18 @@ class ScanOnImageCroppingUIViewController: UIViewController,
         SBSDKUI2CroppingViewController.present(on: self, configuration: configuration) { result in
             
             // Completion handler to process the result.
-            if let error = result.errorMessage {
-                // There was an error.
-                print(error)
+            if let result {
+                
+                if let error = result.errorMessage {
+                    // There was an error.
+                    print(error)
+                    
+                } else {
+                    // The screen is dismissed without errors.
+                }
+                
             } else {
-                // The screen is dismissed without errors.
+                // Indicates that the cancel button was tapped.
             }
         }
     }

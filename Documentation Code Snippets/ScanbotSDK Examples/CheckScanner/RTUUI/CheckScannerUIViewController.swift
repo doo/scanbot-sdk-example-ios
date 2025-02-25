@@ -23,7 +23,7 @@ class CheckScannerUIViewController: UIViewController {
         let configuration = SBSDKUICheckScannerConfiguration.defaultConfiguration
         
         // Behavior configuration:
-        // e.g. disable capturing the photo to recognize on live video stream
+        // e.g. disable capturing the photo to scan on live video stream
         configuration.behaviorConfiguration.captureHighResolutionImage = false
         
         // UI configuration:
@@ -37,8 +37,8 @@ class CheckScannerUIViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUICheckScannerViewController.present(on: self,
-                                                     configuration: configuration,
-                                                     delegate: self)
+                                                  configuration: configuration,
+                                                  delegate: self)
     }
 }
 
