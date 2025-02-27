@@ -42,7 +42,9 @@ final class CheckViewController: UIViewController {
 extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
                                     didScanCheck result: SBSDKCheckScanningResult) {
-        show(result: result)
+        if result.status == .success {
+            show(result: result)
+        }
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
