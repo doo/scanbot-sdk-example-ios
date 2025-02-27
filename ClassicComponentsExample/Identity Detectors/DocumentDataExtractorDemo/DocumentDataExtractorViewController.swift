@@ -17,13 +17,15 @@ class DocumentDataExtractorViewController: UIViewController {
         super.viewDidLoad()
         
         let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-        
         builder.setAcceptedDocumentTypes(documentTypes())
         
+        let configuration = builder.buildConfiguration()
+        configuration.returnCrops = true
+        
         extractorViewController = SBSDKDocumentDataExtractorViewController(parentViewController: self,
-                                                                             parentView: view, 
-                                                                             configuration: builder.buildConfiguration(),
-                                                                             delegate: self)
+                                                                           parentView: view,
+                                                                           configuration: configuration,
+                                                                           delegate: self)
         
         indicator = UIActivityIndicatorView(style: .large)
         indicator?.hidesWhenStopped = true
