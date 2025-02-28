@@ -84,8 +84,8 @@ extension BarcodeScannerViewController: BarcodeTypesViewControllerDelegate {
                                         didFinishSelectingWith types: [SBSDKBarcodeFormat]) {
         guard let scannerViewController else { return }
         selectedBarcodeTypes = types
-        let configuration = scannerViewController.configuration
+        let configuration = scannerViewController.copyCurrentConfiguration()
         configuration.barcodeFormatConfigurations = [SBSDKBarcodeFormatCommonConfiguration(formats: selectedBarcodeTypes)]
-        scannerViewController.configuration = configuration
+        scannerViewController.setConfiguration(configuration)
     }
 }
