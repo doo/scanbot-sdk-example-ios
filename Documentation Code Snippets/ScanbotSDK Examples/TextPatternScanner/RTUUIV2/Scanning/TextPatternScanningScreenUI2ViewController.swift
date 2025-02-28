@@ -39,8 +39,6 @@ class TextPatternScanningScreenUI2ViewController: UIViewController {
         configuration.topBar.cancelButton.background.fillColor = SBSDKUI2Color(colorString: "#00000000")
         
         // Configure the view finder.
-        // Set the visibility.
-        configuration.viewFinder.visible = true
         // Set the desired aspect ratio.
         configuration.viewFinder.aspectRatio = SBSDKAspectRatio(width: 3.85, height: 1.0)
         // Set the style for the view finder.

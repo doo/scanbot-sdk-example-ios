@@ -57,7 +57,6 @@ class CreditCardScanningUI2ViewController: UIViewController {
         configuration.topBar.cancelButton.background.fillColor = SBSDKUI2Color(colorString: "#00000000")
         
         // Configure the view finder.
-        configuration.viewFinder.visible = true
         configuration.viewFinder.style = SBSDKUI2FinderCorneredStyle(strokeWidth: 3.0)
         
         // Configure the action bar.

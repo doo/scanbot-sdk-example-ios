@@ -26,8 +26,6 @@ class CreditCardFinderOverlayUI2ViewController: UIViewController {
         configuration.exampleOverlayVisible = true
         
         // Configure the view finder.
-        // Set the visibility.
-        configuration.viewFinder.visible = true
         // Set the style for the view finder.
         // Choose between cornered or stroked style.
         // For default stroked style.
