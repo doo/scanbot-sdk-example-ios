@@ -149,7 +149,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
     
     func scanner(_ scanner: SBSDKMRZScanner,
                  didScanMRZ result: SBSDKMRZScannerResult?) {
-        guard let result = result, result.success else {
+        guard let result = result else {
             alertsManager?.showFailureAlert()
             return
         }
@@ -168,7 +168,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
     func scanner(_ recognizer: SBSDKCheckScanner,
                  didScanCheck result: SBSDKCheckScanningResult?) {
         guard let result = result,
-              result.status == SBSDKCheckRecognitionStatus.success else {
+              result.status == .success else {
             alertsManager?.showFailureAlert()
             return
         }
