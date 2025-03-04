@@ -177,8 +177,7 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
     
     func scanner(_ recognizer: SBSDKCreditCardScanner,
                  didScanCreditCard result: SBSDKCreditCardScanningResult?) {
-        guard let result = result,
-              result.scanningStatus == SBSDKCreditCardScanningStatus.success else {
+        guard let result = result, result.creditCard != nil else {
             alertsManager?.showFailureAlert()
             return
         }
