@@ -43,6 +43,8 @@ final class CreditCardDemoViewController: UIViewController {
 extension CreditCardDemoViewController: SBSDKCreditCardScannerViewControllerDelegate {
     func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController, 
                                          didScanCreditCard result: SBSDKCreditCardScanningResult) {
-        show(result: result)
+        if result.creditCard != nil {
+            show(result: result)
+        }
     }
 }
