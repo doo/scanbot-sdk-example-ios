@@ -36,10 +36,15 @@ class TextPatternIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.image = .textPatternIntroNoImage()
         // For a custom image...
         configuration.introScreen.image = .textPatternIntroCustomImage(uri: "PathToImage")
-        // Or you can also use our default meter device image.
+        // Or you can also use one of our default images.
+        // e.g the meter device image.
         configuration.introScreen.image = .textPatternIntroMeterDevice()
-        // Or you can also use our default shipping container image.
+        // shipping container image.
         configuration.introScreen.image = .textPatternIntroShippingContainer()
+        // general text field image.
+        configuration.introScreen.image = .textPatternIntroGeneralField()
+        // alphabetic text field image.
+        configuration.introScreen.image = .textPatternIntroAlphabeticField()
         
         // Configure the color of the handler on top.
         configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")
