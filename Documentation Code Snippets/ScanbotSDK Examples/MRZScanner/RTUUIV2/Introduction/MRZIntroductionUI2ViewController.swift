@@ -46,8 +46,8 @@ class MRZIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // Configure the text.
-        configuration.introScreen.text.color = SBSDKUI2Color(colorString: "#000000")
-        configuration.introScreen.text.text = "The Machine Readable Zone (MRZ) is a special code on your ID document (such as a passport or ID card) that contains your personal information in a machine-readable format.\n\nTo scan it, simply hold your camera over the document, so that it aligns with the MRZ section. Once scanned, the data will be automatically processed, and you will be directed to the results screen.\n\nPress 'Start Scanning' to begin."
+        configuration.introScreen.explanation.color = SBSDKUI2Color(colorString: "#000000")
+        configuration.introScreen.explanation.text = "The Machine Readable Zone (MRZ) is a special code on your ID document (such as a passport or ID card) that contains your personal information in a machine-readable format.\n\nTo scan it, simply hold your camera over the document, so that it aligns with the MRZ section. Once scanned, the data will be automatically processed, and you will be directed to the results screen.\n\nPress 'Start Scanning' to begin."
         
         // Configure the done button.
         // e.g the text or the background color.

@@ -36,10 +36,15 @@ class TextPatternIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.image = .textPatternIntroNoImage()
         // For a custom image...
         configuration.introScreen.image = .textPatternIntroCustomImage(uri: "PathToImage")
-        // Or you can also use our default meter device image.
+        // Or you can also use one of our default images.
+        // e.g the meter device image.
         configuration.introScreen.image = .textPatternIntroMeterDevice()
-        // Or you can also use our default shipping container image.
+        // shipping container image.
         configuration.introScreen.image = .textPatternIntroShippingContainer()
+        // general text field image.
+        configuration.introScreen.image = .textPatternIntroGeneralField()
+        // alphabetic text field image.
+        configuration.introScreen.image = .textPatternIntroAlphabeticField()
         
         // Configure the color of the handler on top.
         configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")
@@ -48,8 +53,8 @@ class TextPatternIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // Configure the text.
-        configuration.introScreen.text.color = SBSDKUI2Color(colorString: "#000000")
-        configuration.introScreen.text.text = "To scan a single line of text, please hold your device so that the camera viewfinder clearly captures the text you want to scan. Please ensure the text is properly aligned. Once the scan is complete, the text will be automatically extracted.\n\nPress 'Start Scanning' to begin."
+        configuration.introScreen.explanation.color = SBSDKUI2Color(colorString: "#000000")
+        configuration.introScreen.explanation.text = "To scan a single line of text, please hold your device so that the camera viewfinder clearly captures the text you want to scan. Please ensure the text is properly aligned. Once the scan is complete, the text will be automatically extracted.\n\nPress 'Start Scanning' to begin."
         
         // Configure the done button.
         // e.g the text or the background color.
