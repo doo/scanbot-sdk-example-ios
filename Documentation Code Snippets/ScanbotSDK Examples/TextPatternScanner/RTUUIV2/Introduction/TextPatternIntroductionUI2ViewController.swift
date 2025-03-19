@@ -53,8 +53,8 @@ class TextPatternIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // Configure the text.
-        configuration.introScreen.text.color = SBSDKUI2Color(colorString: "#000000")
-        configuration.introScreen.text.text = "To scan a single line of text, please hold your device so that the camera viewfinder clearly captures the text you want to scan. Please ensure the text is properly aligned. Once the scan is complete, the text will be automatically extracted.\n\nPress 'Start Scanning' to begin."
+        configuration.introScreen.explanation.color = SBSDKUI2Color(colorString: "#000000")
+        configuration.introScreen.explanation.text = "To scan a single line of text, please hold your device so that the camera viewfinder clearly captures the text you want to scan. Please ensure the text is properly aligned. Once the scan is complete, the text will be automatically extracted.\n\nPress 'Start Scanning' to begin."
         
         // Configure the done button.
         // e.g the text or the background color.

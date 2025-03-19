@@ -48,8 +48,8 @@ class CreditCardIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // Configure the text.
-        configuration.introScreen.text.color = SBSDKUI2Color(colorString: "#000000")
-        configuration.introScreen.text.text = "To quickly and securely input your credit card details, please hold your device over the credit card, so that the camera aligns with the numbers on the front of the card.\n\nThe scanner will guide you to the optimal scanning position. Once the scan is complete, your card details will automatically be extracted and processed.\n\nPress 'Start Scanning' to begin."
+        configuration.introScreen.explanation.color = SBSDKUI2Color(colorString: "#000000")
+        configuration.introScreen.explanation.text = "To quickly and securely input your credit card details, please hold your device over the credit card, so that the camera aligns with the numbers on the front of the card.\n\nThe scanner will guide you to the optimal scanning position. Once the scan is complete, your card details will automatically be extracted and processed.\n\nPress 'Start Scanning' to begin."
         
         // Configure the done button.
         // e.g the text or the background color.
