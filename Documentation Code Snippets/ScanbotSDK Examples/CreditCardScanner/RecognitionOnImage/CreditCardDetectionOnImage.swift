@@ -19,9 +19,16 @@ func scanCreditCardFromImage() {
     // Set the scanning mode to single shot.
     configuration.scanningMode = .singleShot
     
+    // Enable the credit card image extraction.
+    configuration.returnCreditCardImage = true
+    
     // Create an instance of `SBSDKCreditCardScanner`.
     let scanner = SBSDKCreditCardScanner(configuration: configuration)
     
     // Returns the result after running the scanner on the image.
     let result = scanner.scan(from: image)
+    
+    // Get the cropped image.
+    let croppedImage = result?.creditCard?.crop?.toUIImage()
+    
 }

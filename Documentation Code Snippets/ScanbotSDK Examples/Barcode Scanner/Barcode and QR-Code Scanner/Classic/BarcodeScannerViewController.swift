@@ -29,6 +29,9 @@ class BarcodeScannerViewController: UIViewController {
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
+        // Enable the barcode image extraction.
+        configuration.returnBarcodeImage = true
+        
         // Create the `SBSDKBarcodeScannerViewController` instance.
         self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                        parentView: self.view,
@@ -74,6 +77,11 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
                                   didScanBarcodes codes: [SBSDKBarcodeItem]) {
         // Process the detected barcodes.
         print(codes)
+        
+        for code in codes {
+            // Get the source image.
+            let sourceImage = code.sourceImage?.toUIImage()
+        }
     }
     
     // Implement this function when you need to pause the detection (e.g. when showing the results).

@@ -26,6 +26,9 @@ class BarcodesOverlayViewController: UIViewController {
         // Create an instance of `SBSDKBarcodeScannerConfiguration`, passing the format configuration.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
+        // Enable the barcode image extraction.
+        configuration.returnBarcodeImage = true
+        
         // Create the SBSDKBarcodeScannerViewController instance, passing the configuration.
         self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                        parentView: self.view,
@@ -73,6 +76,10 @@ extension BarcodesOverlayViewController: SBSDKBarcodeTrackingOverlayControllerDe
                                 didTapOnBarcode barcode: SBSDKBarcodeItem) {
         // Process the barcode selected by the user.
         print(barcode)
+        
+        // Get the source image.
+        let sourceImage = barcode.sourceImage?.toUIImage()
+        
     }
     
     // Implement this method if you need to customize the polygon style individually for each barcode detected.

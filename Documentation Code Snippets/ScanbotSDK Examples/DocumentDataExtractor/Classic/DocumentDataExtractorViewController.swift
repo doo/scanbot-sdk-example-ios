@@ -49,6 +49,9 @@ class DocumentDataExtractorViewController: UIViewController {
         // Pass the above types here as required.
         builder.setAcceptedDocumentTypes(allTypes)
         
+        // Enable the crops image extraction.
+        builder.setReturnCrops(true)
+        
         // Pass the above excluded types here to exclude them from the extraction process
         for excludedField in excludedTypes {
             builder.addExcludedField(excludedField)
@@ -103,6 +106,9 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
         }
         
         
+        // Get the cropped image.
+        let croppedImage = result.croppedImage?.toUIImage()
+        
         // Or get a field by its name.
         if let nameField = result.document?.field(by: "Surname") {
             // Access various properties of the field.
@@ -120,5 +126,6 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
             let fieldValue = wrapper.surname?.value?.text
             let confidence = wrapper.surname?.value?.confidence
         }
+        
     }
 }

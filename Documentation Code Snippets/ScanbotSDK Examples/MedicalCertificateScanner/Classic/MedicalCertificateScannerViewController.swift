@@ -17,19 +17,22 @@ class MedicalCertificateScannerViewController: UIViewController {
         super.viewDidLoad()
         
         // Create an instance of `SBSDKMedicalCertificateScanningParameters` with default values.
-        let recognitionParameters = SBSDKMedicalCertificateScanningParameters()
+        let scanningParameters = SBSDKMedicalCertificateScanningParameters()
+        
+        // Enable the medical certificate image extraction.
+        scanningParameters.extractCroppedImage = true
         
         // Customize the parameters as needed.
-        recognitionParameters.shouldCropDocument = true
-        recognitionParameters.recognizePatientInfoBox = true
-        recognitionParameters.recognizeBarcode = true
-        recognitionParameters.extractCroppedImage = false
-        recognitionParameters.preprocessInput = false
+        scanningParameters.shouldCropDocument = true
+        scanningParameters.recognizePatientInfoBox = true
+        scanningParameters.recognizeBarcode = true
+        scanningParameters.extractCroppedImage = false
+        scanningParameters.preprocessInput = false
         
         // Create the `SBSDKMedicalCertificateRecognizerViewController` instance and embed it.
         self.scannerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
                                                                                   parentView: self.view,
-                                                                                  scannerParameters: recognitionParameters,
+                                                                                  scannerParameters: scanningParameters,
                                                                                   delegate: self)
     }
 }
@@ -39,5 +42,8 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
     func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController,
                                                  didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult) {
         // Process the scanned result.
+        
+        // Get the cropped image.
+        let croppedImage = result.croppedImage?.toUIImage()
     }
 }

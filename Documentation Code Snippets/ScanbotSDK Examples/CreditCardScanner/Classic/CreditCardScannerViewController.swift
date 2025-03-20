@@ -25,6 +25,9 @@ class CreditCardScannerViewController: UIViewController {
         // Disable the validation of the card holder name.
         configuration.requireCardholderName = false
         
+        // Enable the credit card image extraction.
+        configuration.returnCreditCardImage = true
+        
         // Create the `SBSDKCreditCardScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKCreditCardScannerViewController(parentViewController: self,
                                                                           parentView: self.view,
@@ -43,6 +46,9 @@ extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerD
             // Print field type name, field text and field confidence to the console.
             print("\(field.type.name) = \(field.value?.text ?? "") (Confidence: \(field.value?.confidence ?? 0.0)")
         }
+        
+        // Get the cropped image.
+        let croppedImage = result.creditCard?.crop?.toUIImage()
         
         // Or create a wrapper for the document if needed to access the fields more easily.
         // You must cast it to the specific document model wrapper subclass.

@@ -22,9 +22,15 @@ func extractDocumentDataFromImage() {
     // Pass the above types here as required.
     builder.setAcceptedDocumentTypes(typesToDetect)
     
+    // Enable the crops image extraction.
+    builder.setReturnCrops(true)
+    
     // Create an instance of `SBSDKDocumentDataExtractor`.
     let extractor = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
     
     // Run the extractor on the image.
     let result = extractor.extract(from: image)
+    
+    // Get the cropped image.
+    let croppedImage = result?.croppedImage?.toUIImage()
 }

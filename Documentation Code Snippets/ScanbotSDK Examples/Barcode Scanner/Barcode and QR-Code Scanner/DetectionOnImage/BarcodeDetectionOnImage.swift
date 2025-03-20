@@ -22,9 +22,19 @@ func detectBarcodesOnImage() {
     // Create an instance of `SBSDKBarcodeScannerConfiguration`, passing the format configurations.
     let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
     
+    // Enable the barcode image extraction.
+    configuration.returnBarcodeImage = true
+    
     // Create an instance of `SBSDKBarcodeScanner`, passing the configuration.
     let scanner = SBSDKBarcodeScanner(configuration: configuration)
     
     // Returns the barcode scan result.
     let result = scanner.scan(from: image)
+    
+    guard let result = result else { return }
+    
+    for barcodeItem in result.barcodes {
+        // Get the source image.
+        let sourceImage = barcodeItem.sourceImage?.toUIImage()
+    }
 }

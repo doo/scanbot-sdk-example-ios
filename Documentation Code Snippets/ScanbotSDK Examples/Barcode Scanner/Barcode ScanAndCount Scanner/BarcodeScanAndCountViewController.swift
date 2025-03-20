@@ -26,6 +26,9 @@ class BarcodeScanAndCountViewController: UIViewController {
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
         
+        // Enable the barcode image extraction.
+        configuration.returnBarcodeImage = true
+        
         // Create the SBSDKBarcodeScanAndCountViewController instance.
         self.scannerViewController = SBSDKBarcodeScanAndCountViewController(parentViewController: self,
                                                                             parentView: self.view,
@@ -65,6 +68,11 @@ extension BarcodeScanAndCountViewController: SBSDKBarcodeScanAndCountViewControl
                              didScanBarcodes codes: [SBSDKBarcodeItem]) {
         // Process the detected barcodes.
         print(codes)
+        
+        for code in codes {
+            // Get the source image.
+            let sourceImage = code.sourceImage?.toUIImage()
+        }
     }
     
     // Implement this optional function if you need a custom overlay to be displayed for the detected barcode.

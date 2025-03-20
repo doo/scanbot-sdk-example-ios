@@ -31,6 +31,9 @@ class BarcodeDataParserViewController: UIViewController {
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration],
                                                              extractedDocumentFormats: documentFormatsToDetect)
         
+        // Enable the barcode image extraction.
+        configuration.returnBarcodeImage = true
+        
         // Create the SBSDKBarcodeScannerViewController instance.
         self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                        parentView: self.view,
@@ -78,6 +81,9 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
         
         // Process the detected barcodes.
         let barcode = codes.first
+        
+        // Get the source image.
+        let sourceImage = barcode?.sourceImage?.toUIImage()
         
         // Run the parser and check the result.
         if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.extractedDocument) {

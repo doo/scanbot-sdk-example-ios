@@ -19,9 +19,9 @@ class CheckScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the default configuration.
-        let configuration = SBSDKCheckScannerConfiguration()
-                
+        // Create a configuration with `detectAndCropDocument` to extract the check image.
+        let configuration = SBSDKCheckScannerConfiguration(documentDetectionMode: .detectAndCropDocument)
+        
         // Create the `SBSDKCheckScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKCheckScannerViewController(parentViewController: self,
                                                                      parentView: self.view,
@@ -40,6 +40,9 @@ extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
                                     didScanCheck result: SBSDKCheckScanningResult) {
         // Process the scanned result.
+        
+        // Get the cropped image.
+        let croppedImage = result.croppedImage?.toUIImage()
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
