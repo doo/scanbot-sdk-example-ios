@@ -26,8 +26,8 @@ class MRZFinderOverlayUI2ViewController: UIViewController {
         configuration.mrzExampleOverlay = .noLayoutPreset()
         
         // Configure the finder example overlay. You can choose between the two-line and three-line preset.
-        // Each example preset has a default text for each line, but you can change it accordingly to your liking.
-        // Each preset has a fixed aspect ratio adjusted to it's number of lines. To override, please use 'aspectRatio'
+        // Each example preset has a default text for each line, but you can change it according to your liking.
+        // Each preset has a fixed aspect ratio adjusted to its number of lines. To override, please use 'aspectRatio'
         // parameter in 'viewFinder' field in the main configuration object.
         
         // To use the default ones.
