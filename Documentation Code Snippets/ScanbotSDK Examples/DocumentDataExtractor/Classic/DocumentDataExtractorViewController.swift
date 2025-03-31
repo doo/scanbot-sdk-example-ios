@@ -99,7 +99,7 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
                                              didExtract result: SBSDKDocumentDataExtractionResult,
                                              on image: UIImage) {
         
-        // Access the documents fields directly by iterating over the documents fields.
+        // Access the document's fields directly by iterating over the document's fields.
         result.document?.fields.forEach { field in
             // Print field type name, field text and field confidence to the console.
             print("\(field.type.name) = \(field.value?.text ?? "") (Confidence: \(field.value?.confidence ?? 0.0)")
@@ -121,7 +121,7 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
         // Or create a wrapper for the document if needed.
         // You must cast it to the specific wrapper subclass.
         if let wrapper = result.document?.wrap() as? SBSDKDocumentsModelDeIdCardFront {
-            // Access the documents fields easily through the wrapper.
+            // Access the document's fields easily through the wrapper.
             let fieldTypeName = wrapper.surname?.type.name
             let fieldValue = wrapper.surname?.value?.text
             let confidence = wrapper.surname?.value?.confidence
