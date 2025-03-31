@@ -27,7 +27,7 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
                                       encrypter: nil)
     
     do {
-        // If output URL is `nil`the default PDF location of the scanned document will be used.
+        // If output URL is `nil` the default PDF location of the scanned document will be used.
         try generator.generate(from: scannedDocument)
     } catch {
         SBSDKLog.logError("Failed to render PDF: \(error.localizedDescription)")

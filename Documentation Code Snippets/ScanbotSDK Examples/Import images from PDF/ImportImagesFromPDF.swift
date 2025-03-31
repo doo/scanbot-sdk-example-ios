@@ -23,7 +23,7 @@ func createImagesFromPDF(pdfURL: URL) {
     // Create an instance of the PDF page extractor.
     let pageExtractor = SBSDKPDFImageExtractor()
     
-    // Extract the pages from the pdf and returns an array of UIImage
+    // Extract the pages from the PDF and returns an array of UIImage
     let images = pageExtractor.extract(from: pdfURL)
     
     // You can also use `extract(from:scaling:)` method to extract images with a scaling applied.

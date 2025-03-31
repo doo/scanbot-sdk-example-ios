@@ -44,7 +44,7 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         cameraScreenConfig.userGuidance.background.fillColor = SBSDKUI2Color(colorString: "#4A000000")
         cameraScreenConfig.userGuidance.title.text = "Please hold your device over a document"
         
-        // Configure the the scanning assistance overlay.
+        // Configure the scanning assistance overlay.
         cameraScreenConfig.scanAssistanceOverlay.visible = true
         cameraScreenConfig.scanAssistanceOverlay.backgroundColor = SBSDKUI2Color(colorString: "#4A000000")
         cameraScreenConfig.scanAssistanceOverlay.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
@@ -61,14 +61,14 @@ class DocumentScanningScreenUI2ViewController: UIViewController {
         cameraScreenConfig.userGuidance.statesTitles.readyToCapture = "Ready to capture"
         cameraScreenConfig.userGuidance.statesTitles.capturing = "Capturing the document"
         
-        // The title of the user guidance when the document ready to be captured in manual mode.
+        // The title of the user guidance when the document is ready to be captured in manual mode.
         cameraScreenConfig.userGuidance.statesTitles.captureManual = "The document is ready to be captured"
         
         
         // Set the background color of the bottom bar.
         configuration.appearance.bottomBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
         
-        // Import button is used to import image from the gallery.
+        // Import button used to import image from the gallery.
         cameraScreenConfig.bottomBar.importButton.visible = true
         cameraScreenConfig.bottomBar.importButton.title.visible = true
         cameraScreenConfig.bottomBar.importButton.title.text = "Import"

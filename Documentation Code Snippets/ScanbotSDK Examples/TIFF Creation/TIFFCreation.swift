@@ -14,7 +14,7 @@ func createTIFF(from scannedDocument: SBSDKScannedDocument) {
     // e.g. compression algorithm or whether the document should be binarized.
     let parameters = SBSDKTIFFGeneratorParameters()
     
-    // Create the tiff generator using created parameters.
+    // Create the TIFF generator using created parameters.
     let generator = SBSDKTIFFGenerator(parameters: parameters)
     
     // Synchronously convert the scanned document to a multipage-TIFF file and saves it to the specified URL.
@@ -34,7 +34,7 @@ func createTIFF(from images: [UIImage]) {
     // e.g. compression algorithm or whether the document should be binarized.
     let parameters = SBSDKTIFFGeneratorParameters()
     
-    // Create the tiff generator using created parameters and the encrypter.
+    // Create the TIFF generator using created parameters and the encrypter.
     let tiffImageGenerator = SBSDKTIFFGenerator(parameters: parameters, encrypter: encrypter)
 
     // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.

@@ -56,7 +56,7 @@ class ImageStoringViewController: UIViewController {
             print("Image from URL was added successfully : \(isAdded)")
         }
         
-        // Make sure that the indices are valid before moving an image from index to another.
+        // Make sure that the indices are valid before moving an image from one index to another.
         if imageStorage.imageCount > 1 {
             // Move the image at index 1 to index 0.
             let isMoved = imageStorage.moveImage(from: 1, to: 0)
