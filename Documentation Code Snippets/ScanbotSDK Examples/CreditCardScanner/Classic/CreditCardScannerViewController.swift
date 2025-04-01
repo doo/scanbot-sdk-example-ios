@@ -19,10 +19,10 @@ class CreditCardScannerViewController: UIViewController {
         // Create the default `SBSDKCreditCardScannerConfiguration` object.
         let configuration = SBSDKCreditCardScannerConfiguration()
         
-        // Disable the validation of expiration date.
+        // Disable the requiring of expiration date.
         configuration.requireExpiryDate = false
         
-        // Disable the validation of the card holder name.
+        // Disable the requiring of the card holder name.
         configuration.requireCardholderName = false
         
         // Enable the credit card image extraction.
@@ -41,7 +41,7 @@ extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerD
     func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController,
                                          didScanCreditCard result: SBSDKCreditCardScanningResult) {
         
-        // Access the documents fields directly by iterating over the documents fields.
+        // Access the document's fields directly by iterating over the document's fields.
         result.creditCard?.fields.forEach { field in
             // Print field type name, field text and field confidence to the console.
             print("\(field.type.name) = \(field.value?.text ?? "") (Confidence: \(field.value?.confidence ?? 0.0)")
@@ -54,7 +54,7 @@ extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerD
         // You must cast it to the specific document model wrapper subclass.
         if let wrapper = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
             
-            // Now you can access the documents fields easily through the wrapper.
+            // Now you can access the document's fields easily through the wrapper.
             
             if let creditCardNumber = wrapper.cardNumber {
                 print("Credit card number: \(creditCardNumber.value?.text ?? "")")

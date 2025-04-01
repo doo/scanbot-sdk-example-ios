@@ -26,7 +26,6 @@ class MedicalCertificateScannerViewController: UIViewController {
         scanningParameters.shouldCropDocument = true
         scanningParameters.recognizePatientInfoBox = true
         scanningParameters.recognizeBarcode = true
-        scanningParameters.extractCroppedImage = false
         scanningParameters.preprocessInput = false
         
         // Create the `SBSDKMedicalCertificateRecognizerViewController` instance and embed it.

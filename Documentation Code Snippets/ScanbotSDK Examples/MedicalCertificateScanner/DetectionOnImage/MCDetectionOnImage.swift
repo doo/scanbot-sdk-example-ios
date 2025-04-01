@@ -26,7 +26,6 @@ func scanMedicalCertificateFromImage() {
     scanParameters.shouldCropDocument = true
     scanParameters.recognizePatientInfoBox = true
     scanParameters.recognizeBarcode = true
-    scanParameters.extractCroppedImage = false
     scanParameters.preprocessInput = false
     
     // Run the scanner on the image using the configured parameters.

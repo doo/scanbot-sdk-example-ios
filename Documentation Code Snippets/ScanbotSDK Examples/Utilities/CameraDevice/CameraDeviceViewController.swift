@@ -13,25 +13,25 @@ class CameraDeviceViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Get all the availables camera devices.
+        // Get all the available camera devices.
         let availablesDevices = SBSDKCameraDevice.availableDevices
         
-        // Get all the availables back camera devices.
+        // Get all the available back camera devices.
         let availablesBackDevices = SBSDKCameraDevice.availableDevices(for: .back)
         
-        // Get all the desired camera by providing the type and position. 
+        // Get all the desired cameras by providing the type and position.
         let availableTripeCameraBackDevices = SBSDKCameraDevice.availableDevices(for: .triple, position: .back)
         
         // Get the default back facing camera.
         let defaultBackCamera = SBSDKCameraDevice.defaultBackFacingCamera
         
-        // Get the default front facing camera.  
+        // Get the default front facing camera.
         let defaultFrontCamera = SBSDKCameraDevice.defaultFrontFacingCamera
             
         // Get the first triple back camera and create scanner components.
         if let tripleCamera = availableTripeCameraBackDevices.first {
             createRTUUIScanner(with: tripleCamera)
-            createClassicalScanner(with: tripleCamera)
+            createClassicScanner(with: tripleCamera)
         }  
         
     }
@@ -57,14 +57,14 @@ class CameraDeviceViewController: UIViewController {
     }
 
 
-    func createClassicalScanner(with device: SBSDKCameraDevice) {
+    func createClassicScanner(with device: SBSDKCameraDevice) {
         
-        // Create the classical scanner.
-        let scanner = SBSDKDocumentScannerViewController(parentViewController: self, 
+        // Create the Classic scanner.
+        let scanner = SBSDKDocumentScannerViewController(parentViewController: self,
                                                          parentView: self.view, 
                                                          delegate: nil)
         
-        // Assign the device to the scanner. 
+        // Assign the device to the scanner.
         scanner?.cameraDevice = device
     }    
 }
