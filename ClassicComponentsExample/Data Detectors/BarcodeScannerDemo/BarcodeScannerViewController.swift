@@ -18,27 +18,31 @@ class BarcodeScannerViewController: UIViewController {
     
     var scannerViewController: SBSDKBarcodeScannerViewController?
     
-    var selectedBarcodeTypes: [SBSDKBarcodeType] = SBSDKBarcodeType.allTypes
-    var currentResults: [SBSDKBarcodeScannerResult]?
-    var shouldDetect: Bool = false
+    var selectedBarcodeTypes: [SBSDKBarcodeFormat] = SBSDKBarcodeFormats.all
+    var currentResults: [SBSDKBarcodeItem]?
+    var shouldScan: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: selectedBarcodeTypes)
+        
+        let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
+        
         scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
-                                                                  parentView: view,
+                                                                  parentView: view, 
+                                                                  configuration: configuration,
                                                                   delegate: self)
-        scannerViewController?.acceptedBarcodeTypes = selectedBarcodeTypes
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        shouldDetect = true
+        shouldScan = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        shouldDetect = false
+        shouldScan = false
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -55,22 +59,21 @@ class BarcodeScannerViewController: UIViewController {
         }
     }
     
-    func displayResults(_ codes: [SBSDKBarcodeScannerResult]) {
+    func displayResults(_ codes: [SBSDKBarcodeItem]) {
         currentResults = codes
         performSegue(withIdentifier: Segue.showResults.rawValue, sender: nil)
     }
 }
 
 extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegate {
-        
-    func barcodeScannerControllerShouldDetectBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
-        return shouldDetect
+    func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
+        return shouldScan
     }
-
-    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didDetectBarcodes codes: [SBSDKBarcodeScannerResult]) {
-        if !shouldDetect { return }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didScanBarcodes codes: [SBSDKBarcodeItem]) {
+        if !shouldScan { return }
         if (!controller.isTrackingOverlayEnabled) {
-            shouldDetect = false
+            shouldScan = false
             displayResults(codes)
         }
     }
@@ -78,8 +81,11 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
 
 extension BarcodeScannerViewController: BarcodeTypesViewControllerDelegate {
     func barcodeTypesListViewController(_ controller: BarcodeTypesViewController,
-                                        didFinishSelectingWith types: [SBSDKBarcodeType]) {
+                                        didFinishSelectingWith types: [SBSDKBarcodeFormat]) {
+        guard let scannerViewController else { return }
         selectedBarcodeTypes = types
-        scannerViewController?.acceptedBarcodeTypes = selectedBarcodeTypes
+        let configuration = scannerViewController.copyCurrentConfiguration()
+        configuration.barcodeFormatConfigurations = [SBSDKBarcodeFormatCommonConfiguration(formats: selectedBarcodeTypes)]
+        scannerViewController.setConfiguration(configuration)
     }
 }

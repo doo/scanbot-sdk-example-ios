@@ -12,12 +12,12 @@ import ScanbotSDK
 final class EHICDemoViewController: UIViewController {
     
     @IBOutlet private var statusLabel: UILabel?
-    private var scannerViewController: SBSDKHealthInsuranceCardScannerViewController?
+    private var scannerViewController: SBSDKHealthInsuranceCardRecognizerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scannerViewController = SBSDKHealthInsuranceCardScannerViewController(parentViewController: self,
+        scannerViewController = SBSDKHealthInsuranceCardRecognizerViewController(parentViewController: self,
                                                                               parentView: view,
                                                                               delegate: self)
     }
@@ -29,7 +29,7 @@ final class EHICDemoViewController: UIViewController {
         view.bringSubviewToFront(statusView)
     }
     
-    private func handle(card: SBSDKHealthInsuranceCardRecognitionResult) {
+    private func handle(card: SBSDKEuropeanHealthInsuranceCardRecognitionResult) {
         switch card.status {
         case .success:
             statusLabel?.text = "Card recognized"
@@ -43,7 +43,7 @@ final class EHICDemoViewController: UIViewController {
         }
     }
     
-    private func showScannedCard(_ card: SBSDKHealthInsuranceCardRecognitionResult) {
+    private func showScannedCard(_ card: SBSDKEuropeanHealthInsuranceCardRecognitionResult) {
         let alert = UIAlertController(title: "Result",
                                       message: card.stringRepresentation,
                                       preferredStyle: .alert)
@@ -56,9 +56,9 @@ final class EHICDemoViewController: UIViewController {
     }
 }
 
-extension EHICDemoViewController: SBSDKHealthInsuranceCardScannerViewControllerDelegate {
-    func healthInsuranceCardScannerViewController(_ viewController: SBSDKHealthInsuranceCardScannerViewController,
-                                                  didScanHealthInsuranceCard card: SBSDKHealthInsuranceCardRecognitionResult) {
+extension EHICDemoViewController: SBSDKHealthInsuranceCardRecognizerViewControllerDelegate {
+    func healthInsuranceCardRecognizerViewController(_ viewController: SBSDKHealthInsuranceCardRecognizerViewController,
+                                                     didScanHealthInsuranceCard card: SBSDKEuropeanHealthInsuranceCardRecognitionResult) {
         DispatchQueue.main.async { [weak self] in
             self?.handle(card: card)
         }

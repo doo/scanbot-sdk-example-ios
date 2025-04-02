@@ -12,37 +12,41 @@ import ScanbotSDK
 
 final class CheckViewController: UIViewController {
     
-    private var recognizerViewController: SBSDKCheckRecognizerViewController?
+    private var recognizerViewController: SBSDKCheckScannerViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        recognizerViewController = SBSDKCheckRecognizerViewController(parentViewController: self,
-                                                                      parentView: view,
-                                                                      delegate: self)
+        let configuration = SBSDKCheckScannerConfiguration()
+        recognizerViewController = SBSDKCheckScannerViewController(parentViewController: self,
+                                                                   parentView: view, 
+                                                                   configuration: configuration,
+                                                                   delegate: self)
     }
-        
-    private func show(result: SBSDKCheckRecognizerResult) {
-        let alert = UIAlertController(title: "Recognized check",
-                                      message: result.stringRepresentation,
+    
+    private func show(result: SBSDKCheckScanningResult) {
+        let alert = UIAlertController(title: "Scanned check",
+                                      message: result.toJson(),
                                       preferredStyle: .alert)
         let okAction = UIAlertAction(title: "OK",
                                      style: .default,
                                      handler: { _ in
             alert.presentedViewController?.dismiss(animated: true)
-       })
+        })
         alert.addAction(okAction)
         
         present(alert, animated: true, completion: nil)
     }
 }
 
-extension CheckViewController: SBSDKCheckRecognizerViewControllerDelegate {
-    func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didRecognizeCheck result: SBSDKCheckRecognizerResult) {
-        show(result: result)
+extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didScanCheck result: SBSDKCheckScanningResult) {
+        if result.status == .success {
+            show(result: result)
+        }
     }
     
-    func checkRecognizerViewController(_ controller: SBSDKCheckRecognizerViewController,
-                                       didChangeState state: SBSDKCheckRecognizerState) { }
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didChangeState state: SBSDKCheckScannerState) { }
 }

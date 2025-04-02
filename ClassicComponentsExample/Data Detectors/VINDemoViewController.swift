@@ -19,7 +19,7 @@ final class VINDemoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let configuration = SBSDKVehicleIdentificationNumberScannerConfiguration.defaultConfiguration
+        let configuration = SBSDKVINScannerConfiguration()
         
         scannerViewController = SBSDKVINScannerViewController(parentViewController: self,
                                                               parentView: cameraContainer,
@@ -27,8 +27,8 @@ final class VINDemoViewController: UIViewController {
                                                               delegate: self)
     }
     
-    private func show(result: SBSDKVehicleIdentificationNumberScannerResult) {
-        resultLabel.text = result.text
+    private func show(result: SBSDKVINScannerResult) {
+        resultLabel.text = result.textResult.rawText
     }
 }
 
@@ -39,7 +39,7 @@ extension VINDemoViewController: SBSDKVINScannerViewControllerDelegate {
     }
     
     func vinScannerViewController(_ controller: SBSDKVINScannerViewController,
-                                  didScanValidResult result: SBSDKVehicleIdentificationNumberScannerResult) {
+                                  didScanVIN result: SBSDKVINScannerResult) {
         self.show(result: result)
     }
 }

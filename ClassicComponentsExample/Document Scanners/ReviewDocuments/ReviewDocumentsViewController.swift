@@ -46,10 +46,7 @@ final class ReviewDocumentsViewController: UIViewController {
         importAction = ImportAction { image in
             guard let image = image else { return }
             DispatchQueue(label: "FilterQueue").async { [weak self] in
-                let result = SBSDKDocumentDetector().detectDocumentPolygon(on: image,
-                                                                           visibleImageRect: .zero,
-                                                                           smoothingEnabled: false,
-                                                                           useLiveDetectionParameters: false)
+                let result = SBSDKDocumentScanner().scan(from: image)
 
                 ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {
@@ -167,7 +164,7 @@ final class ReviewDocumentsViewController: UIViewController {
             if let image = ImageManager.shared.originalImageAt(index: item),
                 let url = ImageManager.shared.originalImageURLAt(index: item) {
                 let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
-                Self.qualityCache[url] = quality
+                Self.qualityCache[url] = quality?.quality
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])
@@ -230,14 +227,12 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
      
         guard let imageIndex = selectedImageIndex else { return }
         guard let page = ImageManager.shared.pageAt(index: imageIndex) else { return }
-        guard let size = page.originalImage?.size else { return }
         
         var rotations = editingViewController.rotations
         while rotations < 0 {
             rotations += 4
         }
-        
-        polygon.rotateCCW(UInt(rotations), with: size)
+        polygon.rotateCCW(UInt(rotations))
         
         page.polygon = polygon
         page.rotateClockwise(editingViewController.rotations)

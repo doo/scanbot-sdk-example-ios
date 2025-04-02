@@ -13,8 +13,8 @@ struct BarcodeScannerContainerView: View {
     private let scanner: BarcodeScanner
 
     @Binding private var scanningResult: BarcodeScanningResult
-    @State private var isRecognitionEnabled = true
-    @State private var selectedBarcode: SBSDKBarcodeScannerResult? = nil
+    @State private var isScanningEnabled = true
+    @State private var selectedBarcode: SBSDKBarcodeItem? = nil
     
     init(scanner: BarcodeScanner, scanningResult: Binding<BarcodeScanningResult>) {
         self.scanner = scanner
@@ -25,8 +25,8 @@ struct BarcodeScannerContainerView: View {
         viewForScanner(scanner)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarTitle(Text(scanner.title))
-            .onAppear { self.isRecognitionEnabled = true }
-            .onDisappear { self.isRecognitionEnabled = false }
+            .onAppear { self.isScanningEnabled = true }
+            .onDisappear { self.isScanningEnabled = false }
     }
     
     @ViewBuilder
@@ -37,7 +37,7 @@ struct BarcodeScannerContainerView: View {
                 BarcodeScannerRTUUIView(scanningResult: $scanningResult)
             case .classic:
                 BarcodeScannerClassicView(scanningResult: $scanningResult,
-                                          isRecognitionEnabled: $isRecognitionEnabled,
+                                          isScanningEnabled: $isScanningEnabled,
                                           selectedBarcode: $selectedBarcode)
             case .swiftUI:
                 BarcodeScannerSwiftUIView(scanningResult: $scanningResult)
@@ -49,6 +49,6 @@ struct BarcodeScannerContainerView: View {
 struct BarcodeScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
         BarcodeScannerContainerView(scanner: .rtuUI, 
-                                    scanningResult: .constant(BarcodeScanningResult(scannedBarcodes: [])))
+                                    scanningResult: .constant(BarcodeScanningResult(scannedItems: [])))
     }
 }
