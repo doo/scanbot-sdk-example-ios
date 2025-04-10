@@ -30,32 +30,10 @@ class CameraDeviceViewController: UIViewController {
             
         // Get the first triple back camera and create scanner components.
         if let tripleCamera = availableTripeCameraBackDevices.first {
-            createRTUUIScanner(with: tripleCamera)
             createClassicScanner(with: tripleCamera)
         }  
         
     }
-    
-    func createRTUUIScanner(with device: SBSDKCameraDevice) {
-        
-        // Create the camera configuration.
-        let cameraConfig = SBSDKUICameraConfiguration()
-        
-        // Assign the device to the camera configuration.
-        cameraConfig.camera = device
-        
-        // Assemble the scanner configuration and pass the camera configuration to it.
-        let configuration = 
-        SBSDKUIDocumentScannerConfiguration(uiConfiguration: SBSDKUIDocumentScannerUIConfiguration(), 
-                                            textConfiguration: SBSDKUIDocumentScannerTextConfiguration(),
-                                            behaviorConfiguration: SBSDKUIDocumentScannerBehaviorConfiguration(), 
-                                            cameraConfiguration: cameraConfig)
-        
-        // Create the RTU-UI scanner, passing the scanner configuration.
-        let scanner = SBSDKUIDocumentScannerViewController.createNew(configuration: configuration, delegate: nil)
-        
-    }
-
 
     func createClassicScanner(with device: SBSDKCameraDevice) {
         
