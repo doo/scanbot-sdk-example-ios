@@ -15,7 +15,7 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Present image picker
+        // Present an image picker.
         let picker = UIImagePickerController()
         picker.delegate = self
         present(picker, animated: true)
@@ -26,6 +26,7 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
         
         guard let pickedImage = info[.originalImage] as? UIImage else { return }
         
+        // Retrieve the picked image and analyze its quality.
         picker.dismiss(animated: true) {
             self.analyzeQuality(on: pickedImage)
         }
@@ -33,33 +34,51 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
     
     func analyzeQuality(on image: UIImage) {
         
-        // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer()
+        // Create the configuration.
+        let configuration = SBSDKDocumentQualityAnalyzerConfiguration()
         
-        // Analyze the quality of the image.
-        let quality = analyzer.analyze(on: image)
+        // Configure the properties.
+        // e.g
+        configuration.detectOrientation = true
+        configuration.maxImageSize = 2000
+        configuration.returnQualityHeatmap = false
+        
+        // Initialize the analyzer.
+        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
+        
+        // Run the quality analyzer on the image.
+        let result = analyzer.analyze(on: image)
         
         // Handle the result.
-        self.printResult(quality: quality)
+        if let result {
+            self.printResult(result)
+        }
     }
     
     // Print the result.
-    func printResult(quality: SBSDKDocumentQuality) {
+    func printResult(_ result: SBSDKDocumentQualityAnalyzerResult) {
         
-        switch quality {
-        case .noDocument:
-            print("No document was found")
-        case .veryPoor:
-            print("The quality of the document is very poor")
-        case .poor:
-            print("The quality of the document is poor")
-        case .reasonable:
-            print("The quality of the document is reasonable")
-        case .good:
-            print("The quality of the document is good")
-        case .excellent:
-            print("The quality of the document is excellent")
-        @unknown default: break
+        print("Document found: \(result.documentFound)")
+        print("Cumulative Quality Histogram: \(result.cumulativeQualityHistogram)")
+        
+        if let orientation = result.orientation {
+            print("Orientation of the document: \(orientation)")
+        }
+        
+        if let quality = result.quality {
+            switch quality {
+            case .veryPoor:
+                print("The quality of the document is very poor")
+            case .poor:
+                print("The quality of the document is quite poor")
+            case .reasonable:
+                print("The quality of the document is reasonable")
+            case .good:
+                print("The quality of the document is good")
+            case .excellent:
+                print("The quality of the document is excellent")
+            default: break
+            }
         }
     }
 }

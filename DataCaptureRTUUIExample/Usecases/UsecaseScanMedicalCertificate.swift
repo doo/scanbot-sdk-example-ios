@@ -33,12 +33,12 @@ class UsecaseScanMedicalCertificate: Usecase, SBSDKUIMedicalCertificateScannerVi
     }
     
     func medicalScannerViewController(_ viewController: SBSDKUIMedicalCertificateScannerViewController,
-                                      didFinishWith result: SBSDKMedicalCertificateRecognizerResult) {
+                                      didFinishWith result: SBSDKMedicalCertificateScanningResult) {
 
-        let title = "Medical certificate detected"
-        let message = result.stringRepresentation
+        let title = "Medical certificate scanned"
+        let message = result.toJson()
         UIAlertController.showInfoAlert(title, message: message, presenter: presenter!) {
-            if let image = result.image {
+            if let image = result.croppedImage?.toUIImage() {
                 self.result.images.append(image)
                 if let navigationController = self.presenter as? UINavigationController {
                     UsecaseBrowseImages(result: self.result).start(presenter: navigationController)

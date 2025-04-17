@@ -24,11 +24,11 @@ final class PickFromGalleryViewController: UIViewController {
         if pickedImages.count == 1,
            let image = pickedImages.first {
             
-            // Create an instance of a detector
-            let detector = SBSDKDocumentDetector()
+            // Create an instance of the scanner
+            let scanner = SBSDKDocumentScanner()
             
-            // Run detection on the image
-            let result = detector.detectPhotoPolygon(on: image, visibleImageRect: .zero, smoothingEnabled: false)
+            // Scan from the image
+            let result = scanner.scan(from: image)
             
             // Create an instance of a document
             let document = SBSDKScannedDocument()
@@ -48,8 +48,8 @@ final class PickFromGalleryViewController: UIViewController {
             // If multiple images are picked
         } else if pickedImages.count > 1 {
             
-            // Create an instance of a detector
-            let detector = SBSDKDocumentDetector()
+            // Create an instance of the scanner
+            let scanner = SBSDKDocumentScanner()
             
             // Make an instance of the document
             let document = SBSDKScannedDocument()
@@ -57,8 +57,8 @@ final class PickFromGalleryViewController: UIViewController {
             // Iterate over multiple picked images
             pickedImages.forEach { image in
                 
-                // Run detection on the image
-                let result = detector.detectPhotoPolygon(on: image, visibleImageRect: .zero, smoothingEnabled: false)
+                // Scan from the image
+                let result = scanner.scan(from: image)
                 
                 // Add page to the document using the image and the detected polygon on the image (if any)
                 if let polygon = result?.polygon {

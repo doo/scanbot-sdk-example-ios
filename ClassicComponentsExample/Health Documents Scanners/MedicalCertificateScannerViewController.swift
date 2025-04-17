@@ -10,41 +10,41 @@ import UIKit
 import ScanbotSDK
 
 final class MedicalCertificateScannerViewController: UIViewController {
-    private var scannerViewController: SBSDKMedicalCertificateScannerViewController?
+    private var recognizerViewController: SBSDKMedicalCertificateScannerViewController?
     private var alertsManager: AlertsManager?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        scannerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
-                                                                             parentView: self.view,
-                                                                             delegate: self)
-
+        recognizerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
+                                                                                parentView: self.view,
+                                                                                scannerParameters: SBSDKMedicalCertificateScanningParameters(),
+                                                                                delegate: self)
+        
         
         alertsManager = AlertsManager(presenter: self)
     }
     
-    private func show(recognizedResult: SBSDKMedicalCertificateRecognizerResult?) {
-        scannerViewController?.isRecognitionEnabled = false
-        if let recognizedResult = recognizedResult, recognizedResult.isRecognitionSuccessful {
-            alertsManager?.showSuccessAlert(with: recognizedResult.stringRepresentation, completionHandler: {
-                self.scannerViewController?.isRecognitionEnabled = true
+    private func show(scannedResult: SBSDKMedicalCertificateScanningResult?) {
+        recognizerViewController?.isScanningEnabled = false
+        if let scannedResult = scannedResult, scannedResult.scanningSuccessful {
+            alertsManager?.showSuccessAlert(with: scannedResult.toJson(), completionHandler: {
+                self.recognizerViewController?.isScanningEnabled = true
             })
         } else {
             alertsManager?.showFailureAlert(completionHandler: {
-                self.scannerViewController?.isRecognitionEnabled = true
+                self.recognizerViewController?.isScanningEnabled = true
             })
         }
     }
 }
 
 extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScannerViewControllerDelegate {
-    
     func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController,
-                                                 didRecognizeMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult) {
+                                                 didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult) {
         
-        if result.isRecognitionSuccessful {
-            self.show(recognizedResult: result)
+        if result.scanningSuccessful {
+            self.show(scannedResult: result)
         }
     }
 }

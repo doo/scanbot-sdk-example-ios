@@ -38,9 +38,7 @@ final class FilterListViewController: UIViewController, UITableViewDataSource, U
         case .contrast:
             return SBSDKContrastFilter(contrast: 4)
         case .grayscale:
-            return SBSDKGrayscaleFilter(borderWidthFraction: 0.3,
-                                        blackOutliersFraction: 0.2,
-                                        whiteOutliersFraction: 0.6)
+            return SBSDKGrayscaleFilter()
         case .legacy:
             return SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
         case .whiteBlackPoint:

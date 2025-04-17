@@ -11,15 +11,15 @@ import ScanbotSDK
 
 protocol BarcodeTypesViewControllerDelegate: AnyObject {
     func barcodeTypesListViewController(_ controller: BarcodeTypesViewController,
-                                        didFinishSelectingWith types: [SBSDKBarcodeType])
+                                        didFinishSelectingWith types: [SBSDKBarcodeFormat])
 }
 
 final class BarcodeTypesViewController: UITableViewController {
         
     weak var delegate: BarcodeTypesViewControllerDelegate?
     
-    var selectedTypes: [SBSDKBarcodeType] = []
-    private var allTypes = SBSDKBarcodeType.allTypes
+    var selectedTypes: [SBSDKBarcodeFormat] = []
+    private var allTypes = SBSDKBarcodeFormats.all
     
     override func viewDidLoad() {
         super.viewDidLoad()

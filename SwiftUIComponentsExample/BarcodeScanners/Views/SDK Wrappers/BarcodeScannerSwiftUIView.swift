@@ -15,11 +15,11 @@ struct BarcodeScannerSwiftUIView: View {
     
     @State private var isShown: Bool = true
     @State private var scanError: Error? = nil
-    @State private var result: SBSDKUI2BarcodeScannerResult? = nil
-
+    @State private var result: SBSDKUI2BarcodeScannerUIResult? = nil
+    
     var body: some View {
         if isShown {
-            SBSDKUI2BarcodeScannerView(configuration: SBSDKUI2BarcodeScannerConfiguration()) { result in
+            SBSDKUI2BarcodeScannerView(configuration: configure()) { result in
                 self.result = result
                 isShown.toggle()
             } onCancel: { 
@@ -31,10 +31,16 @@ struct BarcodeScannerSwiftUIView: View {
                 withAnimation {
                     presentationMode.wrappedValue.dismiss()
                     if let result {
-                        scanningResult = BarcodeScanningResult(barcodeScannerName: "SwiftUI Barcode Scanner", scannedItems: result.items)
+                        scanningResult = BarcodeScanningResult(barcodeScannerName: "SwiftUI Barcode Scanner", scannedResultItems: result.items)
                     }
                 }
             }
         }
+    }
+    
+    func configure() -> SBSDKUI2BarcodeScannerScreenConfiguration{
+        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
+        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.common
+        return configuration
     }
 }
