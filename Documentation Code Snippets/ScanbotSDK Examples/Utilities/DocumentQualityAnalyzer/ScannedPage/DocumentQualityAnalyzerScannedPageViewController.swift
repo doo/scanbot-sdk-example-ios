@@ -18,45 +18,63 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
     
     func analyzeScannedPageQuality() {
         
-        // Retrieve the scanned document
+        // Retrieve the scanned document.
         guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
         
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }
         
-        // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer()
+        // Create the configuration.
+        let configuration = SBSDKDocumentQualityAnalyzerConfiguration()
         
-        // Run the analyzer on the document image
-        // If you have a filtered applied and you wish to run the analyzer on the unfiltered image
+        // Configure the properties.
+        // e.g
+        configuration.detectOrientation = true
+        configuration.maxImageSize = 2000
+        configuration.returnQualityHeatmap = false
+        
+        // Initialize the analyzer.
+        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
+        
+        // Run the analyzer on the document image.
+        // If you have a filter applied and you wish to run the analyzer on the unfiltered image.
+        // Otherwise you can just simply use the `page.documentImage`.
         if let unfilteredDocumentImage = page.unfilteredDocumentImage {
-            // otherwise you can just simply use the `page.documentImage`
             
             // Run the quality analyzer on the image.
-            let quality = analyzer.analyze(on: unfilteredDocumentImage)
+            let result = analyzer.analyze(on: unfilteredDocumentImage)
             
-            // Handle the result.
-            self.printResult(quality: quality)
+            // Handle the analyzer result.
+            if let result {
+                self.printResult(result)
+            }
         }
     }
     
     // Print the result.
-    func printResult(quality: SBSDKDocumentQuality) {
+    func printResult(_ result: SBSDKDocumentQualityAnalyzerResult) {
         
-        switch quality {
-        case .noDocument:
-            print("No document was found")
-        case .veryPoor:
-            print("The quality of the document is very poor")
-        case .poor:
-            print("The quality of the document is quite poor")
-        case .reasonable:
-            print("The quality of the document is reasonable")
-        case .good:
-            print("The quality of the document is good")
-        case .excellent:
-            print("The quality of the document is excellent")
-        @unknown default: break
+        print("Document found: \(result.documentFound)")
+        print("Cumulative Quality Histogram: \(result.cumulativeQualityHistogram)")
+        
+        if let orientation = result.orientation {
+            print("Orientation of the document: \(orientation)")
+        }
+        
+        if let quality = result.quality {
+            switch quality {
+            case .veryPoor:
+                print("The quality of the document is very poor")
+            case .poor:
+                print("The quality of the document is quite poor")
+            case .reasonable:
+                print("The quality of the document is reasonable")
+            case .good:
+                print("The quality of the document is good")
+            case .excellent:
+                print("The quality of the document is excellent")
+            default: break
+            }
         }
     }
 }

@@ -35,26 +35,25 @@ final class TIFFDemoViewController: UIViewController {
     
     private func createTIFF(isBinarized: Bool) {
         guard let documentsDirectory = FileManager.default.urls(for: .documentDirectory,
-                                                                   in: .userDomainMask).last?.path else { return }
+                                                                in: .userDomainMask).last?.path else { return }
         let filePath = "\(documentsDirectory)/\(UUID().uuidString.lowercased()).tiff"
         guard let fileURL = URL(string: filePath) else { return }
-        let parameters = SBSDKTIFFImageWriterParameters.defaultParameters
+        let parameters = SBSDKTIFFGeneratorParameters.defaultParameters
         parameters.dpi = 200
         if isBinarized {
-            parameters.binarize = true
-            
-            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.ccitt_t6
-            parameters.userDefinedFields = [
-                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeStringField", fieldTag: 65000, stringValue: "String value"),
-                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeIntField", fieldTag: 65001, numericValue: NSNumber(value: 123.5)),
-                SBSDKTIFFImageWriterUserDefinedField(fieldName: "SomeDoubleField", fieldTag: 65535, numericValue: NSNumber(value: 123.5))
+            parameters.binarizationFilter = SBSDKCustomBinarizationFilter()            
+            parameters.compression = SBSDKCompressionMode.ccittT6
+            parameters.userFields = [
+                SBSDKUserField(tag: 65000, name: "SomeStringField", value: SBSDKUserFieldStringValue(value: "String value")),
+                SBSDKUserField(tag: 65001, name: "SomeIntField", value: SBSDKUserFieldDoubleValue(value: 123.5)),
+                SBSDKUserField(tag: 65535, name: "SomeDoubleField", value: SBSDKUserFieldDoubleValue(value: 123.5))
             ]
         } else {
-            parameters.compression = SBSDKTIFFImageWriterCompressionOptions.lzw
+            parameters.compression = SBSDKCompressionMode.lzw
         }
         Task {
-            let writer = SBSDKTIFFImageWriter(parameters: parameters)
-            if let result = await writer.writeTIFFAsync(with: images, toFile: fileURL) {
+            let generator = SBSDKTIFFGenerator(parameters: parameters)
+            if let result = await generator.generate(from: images, to: fileURL) {
                 let alert = UIAlertController(title: "File saved",
                                               message: "At path: \(result.path)",
                                               preferredStyle: .alert)

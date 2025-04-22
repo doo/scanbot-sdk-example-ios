@@ -1,5 +1,5 @@
 //
-//  ScannedPageProcessingSwiftViewController.swift
+//  ScannedPageProcessingViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Rana Sohaib on 29.08.24.
@@ -8,17 +8,17 @@
 import Foundation
 import ScanbotSDK
 
-class ScannedPageProcessingSwiftViewController: UIViewController {
+class ScannedPageProcessingViewController: UIViewController {
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         
         applyFiltersAndRotateScannedPage()
     }
     
     func applyFiltersAndRotateScannedPage() {
         
-        // Retrieve the scanned document
+        // Retrieve the scanned document.
         guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
         
         // Retrieve the selected document page.

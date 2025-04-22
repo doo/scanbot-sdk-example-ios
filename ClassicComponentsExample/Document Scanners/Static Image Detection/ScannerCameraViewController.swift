@@ -30,7 +30,7 @@ final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerV
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: UIImage,
                                        on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectorResult?,
+                                       with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
         
         delegate?.cameraViewController(self, didCapture: documentImage)

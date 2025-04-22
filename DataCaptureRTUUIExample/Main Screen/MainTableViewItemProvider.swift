@@ -31,21 +31,21 @@ class MainTableViewItemProvider {
     private class func createItems(_ actionHandler: MainTableActionHandler) -> [MainTableViewSection] {
 
         let textScanItem = MainTableViewItem(title: "Extract text data",
-                                             action: { actionHandler.showTextDataScanner() })
+                                             action: { actionHandler.showTextPatternScanner() })
         
-        let checkRecognizeItem = MainTableViewItem(title: "Recognize Check",
-                                              action: { actionHandler.showCheckRecognizer() })
+        let checkRecognizeItem = MainTableViewItem(title: "Scan Check",
+                                              action: { actionHandler.showCheckScanner() })
         
         let mrzScanItem = MainTableViewItem(title: "Scan Machine Readable Zone",
                                             action: { actionHandler.showMRZScanning() })
-
-        let licensePlateScanItem = MainTableViewItem(title: "Scan EU License Plate",
-                                                     action: { actionHandler.showLicensePlateScanner() })
         
         let vinScanItem = MainTableViewItem(title: "Scan Vehicle Identification Number",
                                             action: { actionHandler.showVinScanner() })
         
-        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, licensePlateScanItem, vinScanItem]
+        let creditCardScanItem = MainTableViewItem(title: "Scan Credit Card",
+                                                   action: { actionHandler.showCreditCardScanner() })
+        
+        let items2 = [mrzScanItem, textScanItem, checkRecognizeItem, vinScanItem, creditCardScanItem]
         
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })

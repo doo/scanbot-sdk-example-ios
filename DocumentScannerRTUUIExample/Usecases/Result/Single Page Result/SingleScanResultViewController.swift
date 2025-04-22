@@ -75,14 +75,21 @@ final class SingleScanResultViewController: UIViewController {
                                                configuration: configuration) { croppingResult in
             
             // Completion handler to process the result.
-            if let error = croppingResult.errorMessage {
+            if let croppingResult {
                 
-                // There was an error.
-                print(error)
+                if let error = croppingResult.errorMessage {
+                    // There was an error.
+                    print(error)
+                    
+                } else {
+                    
+                    // The screen is dismissed without errors.
+                    
+                    self.singlePageImageView.image = page.documentImage
+                }
                 
             } else {
-                
-                self.singlePageImageView.image = page.documentImage
+                // Indicates that the cancel button was tapped.
             }
         }
     }
@@ -97,16 +104,15 @@ final class SingleScanResultViewController: UIViewController {
         let documentAnalyzer = SBSDKDocumentQualityAnalyzer()
         
         // Get the document quality analysis result by passing the image to the analyzer
-        let documentQuality = documentAnalyzer.analyze(on: documentPageImage)
+        let documentQualityResult = documentAnalyzer.analyze(on: documentPageImage)
         
-        documentQualityLabel.text = "Document Quality: \(map(documentQuality))"
+        let documentQuality = map(documentQualityResult?.quality)
+        documentQualityLabel.text = "Document Quality: \(documentQuality)"
     }
     
     // Map document quality analysis result into string
-    private func map(_ documentQuality: SBSDKDocumentQuality) -> String {
+    private func map(_ documentQuality: SBSDKDocumentQuality?) -> String {
         switch documentQuality {
-        case .noDocument:
-            return "No Document"
         case .veryPoor:
             return "Very Poor"
         case .poor:
@@ -117,8 +123,8 @@ final class SingleScanResultViewController: UIViewController {
             return "Good"
         case .excellent:
             return "Excellent"
-        @unknown default:
-            return ""
+        default:
+            return "No Document"
         }
     }
     
@@ -175,16 +181,16 @@ final class SingleScanResultViewController: UIViewController {
         let pdfURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
         // Create the PDF rendering options object with default options.
-        let options = SBSDKPDFRendererOptions()
+        let configuration = SBSDKPDFConfiguration()
         
         // Create and set the OCR configuration for HOCR.
-        options.ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+        let options = SBSDKOCREngineConfiguration.scanbotOCR()
 
         // Renders the document into a searchable PDF at the specified file url
-        let renderer = SBSDKPDFRenderer(options: options)
+        let generator = SBSDKPDFGenerator(configuration: configuration, ocrConfiguration: options)
         
         // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
-        let progress = renderer.renderScannedDocument(document, output: pdfURL) { finished, error in
+        let progress = generator.generate(from: document, output: pdfURL) { finished, error in
             
             if finished && error == nil {
                 
@@ -204,18 +210,18 @@ final class SingleScanResultViewController: UIViewController {
         // Get the cropped images of all the pages of the document
         let images = (0..<document.pages.count).compactMap { document.page(at: $0)?.documentImage }
         
-        // Define export parameters for the TIFF
-        // In this case using lowLightBinarization2 filter when exporting as TIFF
+        // Define the generation parameters for the TIFF
+        // In this case using lowLightBinarization2 filter when generating as TIFF
         // as an optimal setting
-        let tiffExportParameters = SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
-        tiffExportParameters.dpi = 300
-        tiffExportParameters.compression = .ccitt_t6
-        tiffExportParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
+        let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
+        tiffGeneratorParameters.dpi = 300
+        tiffGeneratorParameters.compression = .ccittT6
+        tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
         
-        // Use `SBSDKTIFFImageWriter` to write TIFF at the specified file url
+        // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
         // and get the result
-        let tiffWriter = SBSDKTIFFImageWriter(parameters: tiffExportParameters, encrypter: nil)
-        let success = tiffWriter.writeTIFF(with: images, toFile: fileURL)
+        let tiffGenerator = SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, encrypter: nil)
+        let success = tiffGenerator.generate(from: images, to: fileURL)
         
         if success == true {
             

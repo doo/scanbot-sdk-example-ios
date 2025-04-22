@@ -47,16 +47,16 @@ extension MultiScanResultViewController {
         let pdfURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
         // Create the PDF rendering options object with default options.
-        let options = SBSDKPDFRendererOptions()
+        let configuration = SBSDKPDFConfiguration()
         
         // Create and set the OCR configuration for HOCR.
-        options.ocrConfiguration = SBSDKOpticalCharacterRecognizerConfiguration.scanbotOCR()
+        let options = SBSDKOCREngineConfiguration.scanbotOCR()
 
-        // Renders the document into a searchable PDF at the specified file url
-        let renderer = SBSDKPDFRenderer(options: options)
+        // Generate the document into a searchable PDF at the specified file url
+        let generator = SBSDKPDFGenerator(configuration: configuration, ocrConfiguration: options)
         
-        // Start the rendering operation and store the SBSDKProgress to watch the progress or cancel the operation.
-        let progress = renderer.renderScannedDocument(document, output: pdfURL) { finished, error in
+        // Start the generation operation and store the SBSDKProgress to watch the progress or cancel the operation.
+        let progress = generator.generate(from: document, output: pdfURL) { finished, error in
             
             if finished && error == nil {
                 
@@ -76,18 +76,18 @@ extension MultiScanResultViewController {
         // Get the cropped images of all the pages of the document
         let images = (0..<document.pages.count).compactMap { document.page(at: $0)?.documentImage }
         
-        // Define export parameters for the TIFF
+        // Define the generation parameters for the TIFF
         // In this case using lowLightBinarization2 filter when exporting as TIFF
         // as an optimal setting
-        let tiffExportParameters = SBSDKTIFFImageWriterParameters.defaultParametersForBinaryImages
-        tiffExportParameters.dpi = 300
-        tiffExportParameters.compression = .ccitt_t6
-        tiffExportParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
+        let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
+        tiffGeneratorParameters.dpi = 300
+        tiffGeneratorParameters.compression = .ccittT6
+        tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
         
-        // Use `SBSDKTIFFImageWriter` to write TIFF at the specified file url
+        // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
         // and get the result
-        let tiffWriter = SBSDKTIFFImageWriter(parameters: .defaultParameters, encrypter: nil)
-        let success = tiffWriter.writeTIFF(with: images, toFile: fileURL)
+        let tiffGenerator = SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, encrypter: nil)
+        let success = tiffGenerator.generate(from: images, to: fileURL)
         
         if success == true {
             

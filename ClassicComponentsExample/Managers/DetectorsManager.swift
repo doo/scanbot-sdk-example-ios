@@ -11,30 +11,33 @@ import ScanbotSDK
 
 protocol DetectorsManagerDelegate: AnyObject {
     func scanner(_ scanner: SBSDKBarcodeScanner,
-                 didFindBarcodes result: [SBSDKBarcodeScannerResult]?)
+                 didFindBarcodes result: SBSDKBarcodeScannerResult?)
     
     func recognizer(_ recognizer: SBSDKHealthInsuranceCardRecognizer,
-                    didFindEHIC result: SBSDKHealthInsuranceCardRecognitionResult?)
+                    didFindEHIC result: SBSDKEuropeanHealthInsuranceCardRecognitionResult?)
     
-    func recognizer(_ recognizer: SBSDKGenericDocumentRecognizer,
-                    didFindDocument result: SBSDKGenericDocumentRecognitionResult?)
+    func extractor(_ extractor: SBSDKDocumentDataExtractor,
+                   didExtractDocument result: SBSDKDocumentDataExtractionResult?)
     
-    func recognizer(_ recognizer: SBSDKMachineReadableZoneRecognizer,
-                    didFindMRZ result: SBSDKMachineReadableZoneRecognizerResult?)
+    func scanner(_ scanner: SBSDKMedicalCertificateScanner,
+                 didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult?)
     
-    func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
-                    didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?)
+    func scanner(_ scanner: SBSDKCheckScanner,
+                 didScanCheck result: SBSDKCheckScanningResult?)
     
-    func recognizer(_ recognizer: SBSDKCheckRecognizer,
-                    didFindCheck result: SBSDKCheckRecognizerResult?)
+    func scanner(_ scanner: SBSDKCreditCardScanner, 
+                 didScanCreditCard result: SBSDKCreditCardScanningResult?)
     
-    func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result : SBSDKDocumentDetectorResult?)
+    func scanner(_ scanner: SBSDKMRZScanner,
+                 didScanMRZ result: SBSDKMRZScannerResult?)
+    
+    func scanner(_ scanner: SBSDKDocumentScanner, didFindPolygon result : SBSDKDocumentDetectionResult?)
     
 }
 
 final class DetectorsManager {
     enum Detector: CaseIterable {
-        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check
+        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check, creditCard
         
         var detectorName: String {
             switch self {
@@ -52,6 +55,8 @@ final class DetectorsManager {
                 return "Document Scanner"
             case .check:
                 return "Check Scanner"
+            case.creditCard:
+                return "Credit Card Scanner"
             }
         }
     }
@@ -67,33 +72,41 @@ final class DetectorsManager {
         switch detector {
         case .barcode:
             let scanner = SBSDKBarcodeScanner()
-            let result = scanner.detectBarCodes(on: image)
+            let result = scanner.scan(from: image)
             delegate?.scanner(scanner, didFindBarcodes: result)
         case .ehic:
             let recognizer = SBSDKHealthInsuranceCardRecognizer()
-            let result = recognizer.recognize(onStillImage: image)
+            let result = recognizer.recognize(from: image)
             delegate?.recognizer(recognizer, didFindEHIC: result)
         case .genericDocument:
-            let recognizer = SBSDKGenericDocumentRecognizer(
-                acceptedDocumentTypes: SBSDKGenericDocumentRootType.allDocumentTypes)
-            let result = recognizer.recognize(on: image)
-            delegate?.recognizer(recognizer, didFindDocument: result)
+            let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
+            
+            let extractor = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
+            let result = extractor.extract(from: image)
+            delegate?.extractor(extractor, didExtractDocument: result)
         case .mrz:
-            let recognizer = SBSDKMachineReadableZoneRecognizer()
-            let result = recognizer.recognizePersonalIdentity(from: image)
-            delegate?.recognizer(recognizer, didFindMRZ: result)
+            let scanner = SBSDKMRZScanner()
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanMRZ: result)
         case .medicalCertificate:
-            let recognizer = SBSDKMedicalCertificateRecognizer()
-            let result = recognizer.recognize(from: image, detectDocument: true)
-            delegate?.recognizer(recognizer, didFindMedicalCertificate: result)
+            let scanner = SBSDKMedicalCertificateScanner()
+            let result = scanner.scan(from: image, parameters: SBSDKMedicalCertificateScanningParameters())
+            delegate?.scanner(scanner, didScanMedicalCertificate: result)
         case .documentScanner:
-            let scanner =  SBSDKDocumentDetector(mode: .machineLearning)
-            let result = scanner.detectDocumentPolygon(on: image, visibleImageRect: CGRect.zero, smoothingEnabled: false, useLiveDetectionParameters: false)
-            delegate?.detector(scanner, didFindPolygon: result)
+            let configuration = SBSDKDocumentScannerConfiguration()
+            let scanner = SBSDKDocumentScanner(configuration: configuration)
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didFindPolygon: result)
         case .check:
-            let recognizer = SBSDKCheckRecognizer()
-            let result = recognizer.recognize(on: image)
-            delegate?.recognizer(recognizer, didFindCheck: result)
+            let scanner = SBSDKCheckScanner()
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanCheck: result)
+        case .creditCard:
+            let configuration = SBSDKCreditCardScannerConfiguration()
+            configuration.scanningMode = .singleShot
+            let scanner = SBSDKCreditCardScanner(configuration: configuration)
+            let result = scanner.scan(from: image)
+            delegate?.scanner(scanner, didScanCreditCard: result)
         }
     }
     
@@ -102,5 +115,71 @@ final class DetectorsManager {
         let height = image.size.height
         let finderHeight = width / 4
         return CGRect(x: 0, y: (height / 2) - (finderHeight / 2), width: width, height: finderHeight)
+    }
+}
+
+extension SBSDKEuropeanHealthInsuranceCardRecognitionResult {
+    var stringRepresentation: String {
+        var result: String = ""
+        for field in fields {
+            result += "\(field.value)\n"
+        }
+        return result
+    }
+}
+
+extension SBSDKGenericDocumentField {
+    
+    var stringRepresentation: String {
+        if let value {
+            return "\(type.name): \(value.text) \(value.confidence)"
+        } else {
+            return ""
+        }
+    }
+}
+extension SBSDKMRZScannerResult {
+    /// Returns a string representation of all fields.
+    var stringRepresentation: String {
+        var result = ""
+        if !rawMRZ.isEmpty {
+            result += "Raw string:\n"
+            result += rawMRZ + "\n"
+        }
+        
+        guard let document = document else { return result }
+        
+        result += "\(document.type.name)\n"
+        
+        guard let fields = document.allFields(includeEmptyFields: false) else { return result }
+        
+        for field in fields {
+            result.append(field.stringRepresentation)
+        }
+        
+        return result
+    }
+}
+
+extension SBSDKCreditCardScanningResult {
+    var stringRepresentation: String {
+        let result = [
+            "Credit Card status: \(self.scanningStatus.name)",
+            self.creditCard?.fields
+                .compactMap { "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }
+                .joined(separator: "\n") ?? ""
+        ].joined(separator: "\n")
+        return result
+    }
+}
+
+extension SBSDKCreditCardScanningStatus {
+    var name: String {
+        switch self {
+        case .errorNothingFound: return "NOTHING_FOUND"
+        case .success: return "SUCCESS"
+        case .incomplete: return "INCOMPLETE"
+        @unknown default: return "Unknown credit card scanning status"
+        }
     }
 }

@@ -19,7 +19,7 @@ final class StaticImageDetectionViewController: UIViewController {
     @IBOutlet private var imageView: UIImageView!
     @IBOutlet private var importPhotoButton: UIButton!
     @IBOutlet private var selectDetectorButton: UIButton!
-
+    
     private var image: UIImage? {
         didSet {
             updateUI()
@@ -30,8 +30,8 @@ final class StaticImageDetectionViewController: UIViewController {
     private var detectorsManager: DetectorsManager?
     private var alertsManager: AlertsManager?
     
-    private var barcodeResults: [SBSDKBarcodeScannerResult]?
-    private var genericDocumentResult: SBSDKGenericDocumentRecognitionResult?
+    private var barcodeResults: [SBSDKBarcodeItem]?
+    private var documentDataExtractorResult: SBSDKDocumentDataExtractionResult?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,8 +101,8 @@ final class StaticImageDetectionViewController: UIViewController {
                 controller.results = barcodeResults
             }
         } else if segue.identifier == Segue.showGenericDocumentResult.rawValue {
-            if let controller = segue.destination as? GenericDocumentResultViewController {
-                controller.document = genericDocumentResult?.document
+            if let controller = segue.destination as? DocumentDataExtractorResultViewController {
+                controller.document = documentDataExtractorResult?.document
                 controller.sourceImage = image
             }
         }
@@ -116,81 +116,82 @@ extension StaticImageDetectionViewController: ScannerCameraViewControllerDelegat
 }
 
 extension StaticImageDetectionViewController: DetectorsManagerDelegate {
+    
     func scanner(_ scanner: SBSDKBarcodeScanner,
-                 didFindBarcodes result: [SBSDKBarcodeScannerResult]?) {
-        guard let result = result, !result.isEmpty else {
+                 didFindBarcodes result: SBSDKBarcodeScannerResult?) {
+        guard let result = result, !result.barcodes.isEmpty else {
             alertsManager?.showFailureAlert()
             return
         }
-        barcodeResults = result
+        barcodeResults = result.barcodes
         performSegue(withIdentifier: Segue.showBarcodeResults.rawValue, sender: self)
     }
     
     func recognizer(_ recognizer: SBSDKHealthInsuranceCardRecognizer,
-                    didFindEHIC result: SBSDKHealthInsuranceCardRecognitionResult?) {
+                    didFindEHIC result: SBSDKEuropeanHealthInsuranceCardRecognitionResult?) {
         guard let result = result,
-        result.status == SBSDKHealthInsuranceCardDetectionStatus.success else {
+              result.status ==  SBSDKEuropeanHealthInsuranceCardRecognitionResultRecognitionStatus.success else {
             alertsManager?.showFailureAlert()
             return
         }
-        alertsManager?.showSuccessAlert(with: result.stringRepresentation)
+        alertsManager?.showSuccessAlert(with: result.toJson())
     }
     
-    func recognizer(_ recognizer: SBSDKGenericDocumentRecognizer,
-                    didFindDocument result: SBSDKGenericDocumentRecognitionResult?) {
+    func extractor(_ extractor: SBSDKDocumentDataExtractor,
+                   didExtractDocument result: SBSDKDocumentDataExtractionResult?) {
         guard let result = result else {
             alertsManager?.showFailureAlert()
             return
         }
-        genericDocumentResult = result
+        documentDataExtractorResult = result
         performSegue(withIdentifier: Segue.showGenericDocumentResult.rawValue, sender: self)
     }
     
-    func recognizer(_ recognizer: SBSDKMachineReadableZoneRecognizer,
-                    didFindMRZ result: SBSDKMachineReadableZoneRecognizerResult?) {
-        guard let result = result, result.recognitionSuccessful else {
+    func scanner(_ scanner: SBSDKMRZScanner,
+                 didScanMRZ result: SBSDKMRZScannerResult?) {
+        guard let result = result else {
             alertsManager?.showFailureAlert()
             return
         }
-        alertsManager?.showSuccessAlert(with: result.stringRepresentation())
+        alertsManager?.showSuccessAlert(with: result.toJson())
     }
     
-    func recognizer(_ recognizer: SBSDKMedicalCertificateRecognizer,
-                    didFindMedicalCertificate result: SBSDKMedicalCertificateRecognizerResult?) {
-        guard let result = result, result.isRecognitionSuccessful else {
+    func scanner(_ scanner: SBSDKMedicalCertificateScanner,
+                 didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult?) {
+        guard let result = result, result.scanningSuccessful else {
             alertsManager?.showFailureAlert()
             return
         }
-        alertsManager?.showSuccessAlert(with: result.stringRepresentation)
+        alertsManager?.showSuccessAlert(with: result.toJson())
     }
-    
-    func scanner(_ scanner: SBSDKLicensePlateScanner,
-                 didFindLicensePlate result: SBSDKLicensePlateScannerResult?) {
-        guard let result = result, !result.rawString.isEmpty else {
-            alertsManager?.showFailureAlert()
-            return
-        }
-        alertsManager?.showSuccessAlert(with: result.rawString)
-    }
-    
-    func recognizer(_ recognizer: SBSDKCheckRecognizer,
-                    didFindCheck result: SBSDKCheckRecognizerResult?) {
+        
+    func scanner(_ recognizer: SBSDKCheckScanner,
+                 didScanCheck result: SBSDKCheckScanningResult?) {
         guard let result = result,
-        result.status == SBSDKCheckRecognitionResultStatus.success else {
+              result.status == .success else {
+            alertsManager?.showFailureAlert()
+            return
+        }
+        alertsManager?.showSuccessAlert(with: result.toJson())
+    }
+    
+    func scanner(_ recognizer: SBSDKCreditCardScanner,
+                 didScanCreditCard result: SBSDKCreditCardScanningResult?) {
+        guard let result = result, result.creditCard != nil else {
             alertsManager?.showFailureAlert()
             return
         }
         alertsManager?.showSuccessAlert(with: result.stringRepresentation)
     }
     
-    func detector(_ detector: SBSDKDocumentDetector, didFindPolygon result: SBSDKDocumentDetectorResult?) {
-        guard let result = result, result.isDetectionStatusOK, result.polygon != nil, let image = image else {
+    func scanner(_ scanner: SBSDKDocumentScanner, didFindPolygon result: SBSDKDocumentDetectionResult?) {
+        guard let result = result, result.isScanningStatusOK, result.polygon != nil, let image = image else {
             alertsManager?.showFailureAlert()
             return
         }
-        let processor = SBSDKImageProcessor(image: image)
+        let processor = SBSDKImageProcessor(uiImage: image)
         if let polygon = result.polygon {
-            processor.crop(polygon: polygon)
+            processor.applyCrop(polygon: polygon)
         }
         imageView.image = processor.processedImage
     }

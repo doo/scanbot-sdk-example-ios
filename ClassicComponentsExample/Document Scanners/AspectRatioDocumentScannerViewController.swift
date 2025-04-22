@@ -13,14 +13,19 @@ final class AspectRatioDocumentScannerViewController: DocumentScannerViewControl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
         let a4AspectRatio = SBSDKAspectRatio(width: 21, height: 29.7)
-        scannerViewController?.requiredAspectRatios = [a4AspectRatio] // DIN A4
-        
-        let configuration = scannerViewController?.viewFinderConfiguration ??
+        if let configuration = scannerViewController?.copyCurrentConfiguration() {
+            
+            configuration.parameters.aspectRatios = [a4AspectRatio] // DIN A4
+            
+            scannerViewController?.setConfiguration(configuration)
+        }
+        let viewFinderConfiguration = scannerViewController?.viewFinderConfiguration ??
         SBSDKBaseScannerViewFinderConfiguration.defaultConfiguration
         
-        configuration.isViewFinderEnabled = true
-        configuration.aspectRatio = a4AspectRatio
-        scannerViewController?.viewFinderConfiguration = configuration
+        viewFinderConfiguration.isViewFinderEnabled = true
+        viewFinderConfiguration.aspectRatio = a4AspectRatio
+        scannerViewController?.viewFinderConfiguration = viewFinderConfiguration
     }
 }
