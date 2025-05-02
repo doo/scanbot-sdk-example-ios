@@ -17,13 +17,14 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
                                            subject: "Subject",
                                            keywords: "Keywords")
     
-    // Create the default PDF configuration object using above created attributes.
+    // Create the PDF configuration object using above created attributes.
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes)
+    // Or you can also use the default configuration object.
+    let defaultPDFConfiguration = SBSDKPDFConfiguration()
     
     // Create the PDF generator.
     let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                      ocrConfiguration: .scanbotOCR(),
                                       encrypter: nil)
     
     do {
@@ -47,9 +48,6 @@ func createPDF(from image: UIImage) {
     // Add the image to the image storage.
     imageStorage.add(image)
     
-    // In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
-    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
-    
     // Create the PDF attributes.
     let pdfAttributes = SBSDKPDFAttributes(author: "Author",
                                            creator: "Creator",
@@ -57,13 +55,17 @@ func createPDF(from image: UIImage) {
                                            subject: "Subject",
                                            keywords: "Keywords")
     
-    // Create the default PDF configuration object using above created attributes.
+    // Create the PDF configuration object using above created attributes.
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes, jpegQuality: 100)
+    // Or you can also use the default configuration object.
+    let defaultPDFConfiguration = SBSDKPDFConfiguration()
+    
+    // In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
+    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
     
     // Create the PDF generator.
     let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                      ocrConfiguration: .scanbotOCR(),
                                       encrypter: nil)
     do {
         // Synchronously generates the PDF from the image storage into a PDF file with the given page size,
