@@ -44,7 +44,8 @@ class ClassicUIScannerViewController: UIViewController {
         
         // Modify it to your needs.
         generalConfiguration.minimumTimeWithoutDeviceMotionBeforeDetection = 0.5
-        generalConfiguration.stopsCameraSessionWhenDisappeared = false
+        // To keep session alive until deallocated.
+        generalConfiguration.cameraSessionKeepAliveTimeout = TimeInterval.greatestFiniteMagnitude
         
         // After changing the configuration you need to pass it back to the scanner view controller in order to apply it.
         self.scannerViewController.generalConfiguration = generalConfiguration
