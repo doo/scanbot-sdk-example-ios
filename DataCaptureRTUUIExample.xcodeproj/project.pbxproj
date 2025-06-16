@@ -61,6 +61,7 @@
 		692227BC2524A95E00E81886 /* UsecaseScanTextPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */; };
 		6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
+		94F51BF22E007079002EA011 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F51BF12E007077002EA011 /* SceneDelegate.swift */; };
 		F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */; };
 /* End PBXBuildFile section */
 
@@ -129,6 +130,7 @@
 		6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureRTUUIExampleDemoUITests.swift; sourceTree = "<group>"; };
 		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
+		94F51BF12E007077002EA011 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanVIN.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -181,6 +183,7 @@
 				0889D0F420EA632800A36316 /* Review Screen */,
 				28F273082791903E00C424AC /* Document Data Extractor results */,
 				082D0A3220C801AA009B1A7A /* AppDelegate.swift */,
+				94F51BF12E007077002EA011 /* SceneDelegate.swift */,
 				082D0A3620C801AB009B1A7A /* Main.storyboard */,
 				082D0A3920C801AB009B1A7A /* Assets.xcassets */,
 				082D0A3B20C801AB009B1A7A /* LaunchScreen.storyboard */,
@@ -445,6 +448,7 @@
 				69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
+				94F51BF22E007079002EA011 /* SceneDelegate.swift in Sources */,
 				28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */,
 				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseScanDocumentDataExtractor.swift in Sources */,
