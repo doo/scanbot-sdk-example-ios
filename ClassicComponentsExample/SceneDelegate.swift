@@ -18,6 +18,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
         guard let _ = (scene as? UIWindowScene) else { return }
         
+        ImageManager.shared.removeAllImages()
+        
         Scanbot.setupDefaultLicenseFailureHandler()
         
         // TODO Add your Scanbot SDK license here.
