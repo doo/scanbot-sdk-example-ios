@@ -73,6 +73,7 @@
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
 		6991C575256C179A008188AD /* ClassicComponentsExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ClassicComponentsExampleUITests.swift */; };
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */; };
+		94F51BF02E006FB1002EA011 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94F51BEF2E006C98002EA011 /* SceneDelegate.swift */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
 		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
@@ -166,6 +167,7 @@
 		6991C574256C179A008188AD /* ClassicComponentsExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicComponentsExampleUITests.swift; sourceTree = "<group>"; };
 		6991C576256C179A008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioDocumentScannerViewController.swift; sourceTree = "<group>"; };
+		94F51BEF2E006C98002EA011 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9ED845811AE670CC008B2731 /* ClassicComponentsExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ClassicComponentsExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C27562851DE45368003F5FE0 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = Main.storyboard; path = ClassicComponentsExample/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ClassicComponentsExample/Info.plist; sourceTree = SOURCE_ROOT; };
@@ -336,6 +338,7 @@
 				286FF1D22757B7CD007D47EF /* Identity Detectors */,
 				286FF1D32757B7FC007D47EF /* Utilities */,
 				2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */,
+				94F51BEF2E006C98002EA011 /* SceneDelegate.swift */,
 				28E71F4427568CDC0061B433 /* AppDelegate.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
@@ -584,6 +587,7 @@
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
 				F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */,
 				28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */,
+				94F51BF02E006FB1002EA011 /* SceneDelegate.swift in Sources */,
 				2866E40A2755298C00490CC8 /* BarcodeScannerResultsViewController.swift in Sources */,
 				2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */,
 				11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */,

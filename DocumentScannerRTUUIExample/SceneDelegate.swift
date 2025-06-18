@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,33 +17,19 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let _ = (scene as? UIWindowScene) else { return }
-    }
+        
+        Scanbot.setupDefaultLicenseFailureHandler()
+        
+        // TODO Add your Scanbot SDK license here.
+        // Please note: The Scanbot SDK will run without a license key for one minute per session!
+        // After the trial period has expired all Scanbot SDK functions as well as the UI components will stop working.
+        // You can get an unrestricted "no-strings-attached" trial license key for free.
+        // Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
+        // the Bundle Identifier "io.scanbot.example.documentsdk.usecases.ios" of this example app.
 
-    func sceneDidDisconnect(_ scene: UIScene) {
-        // Called as the scene is being released by the system.
-        // This occurs shortly after the scene enters the background, or when its session is discarded.
-        // Release any resources associated with this scene that can be re-created the next time the scene connects.
-        // The scene may re-connect later, as its session was not necessarily discarded (see `application:didDiscardSceneSessions` instead).
-    }
-
-    func sceneDidBecomeActive(_ scene: UIScene) {
-        // Called when the scene has moved from an inactive state to an active state.
-        // Use this method to restart any tasks that were paused (or not yet started) when the scene was inactive.
-    }
-
-    func sceneWillResignActive(_ scene: UIScene) {
-        // Called when the scene will move from an active state to an inactive state.
-        // This may occur due to temporary interruptions (ex. an incoming phone call).
-    }
-
-    func sceneWillEnterForeground(_ scene: UIScene) {
-        // Called as the scene transitions from the background to the foreground.
-        // Use this method to undo the changes made on entering the background.
-    }
-
-    func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        //Scanbot.setLicense("YOUR_LICENSE_KEY")
+        
+        // Apply a custom navigation style.
+        UINavigationBar.applyCustomNavigationStyle()
     }
 }
