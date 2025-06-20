@@ -60,7 +60,7 @@ class MainTableActionHandler: NSObject {
     
     func showCheckScanner() {
         guardLicense {
-            UsecaseScanCheck(result: result).start(presenter: self.presenter)
+            UsecaseScanCheck().start(presenter: self.presenter)
         }
     }
     
@@ -90,13 +90,17 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         guardLicense {
-            UsecaseScanDocumentDataExtractor(documentType: .idCardFrontBackDE).start(presenter: self.presenter)
+            UsecaseScanDocumentDataExtractor(documentTypes: [.deIdCardBack,
+                                                             .deIdCardFront])
+                .start(presenter: self.presenter)
         }
     }
     
     func showDriverLicenseScanner() {
         guardLicense {
-            UsecaseScanDocumentDataExtractor(documentType: .driverLicenseFrontBackDE).start(presenter: self.presenter)
+            UsecaseScanDocumentDataExtractor(documentTypes: [.europeanDriverLicenseBack,
+                                                             .europeanDriverLicenseFront])
+                .start(presenter: self.presenter)
         }
     }
     

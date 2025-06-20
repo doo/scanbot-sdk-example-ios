@@ -57,7 +57,7 @@
 		28F2730527918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F2730427918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift */; };
 		28F273072791903200C424AC /* DocumentDataExtractorResultTextListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273062791903200C424AC /* DocumentDataExtractorResultTextListCell.swift */; };
 		28F2730A2791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */; };
-		690DCE7924E5597400160876 /* UsecaseScanDocumentDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690DCE7824E5597400160876 /* UsecaseScanDocumentDataExtractor.swift */; };
+		28FC46AF2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */; };
 		692227BC2524A95E00E81886 /* UsecaseScanTextPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */; };
 		6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
@@ -124,7 +124,7 @@
 		28F2730427918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorResultListViewController.swift; sourceTree = "<group>"; };
 		28F273062791903200C424AC /* DocumentDataExtractorResultTextListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorResultTextListCell.swift; sourceTree = "<group>"; };
 		28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDateExtractorResultImageListCell.swift; sourceTree = "<group>"; };
-		690DCE7824E5597400160876 /* UsecaseScanDocumentDataExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocumentDataExtractor.swift; sourceTree = "<group>"; };
+		28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocumentDataExtractor.swift; sourceTree = "<group>"; };
 		692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTextPattern.swift; sourceTree = "<group>"; };
 		6991C599256C2989008188AD /* DataCaptureRTUUIExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataCaptureRTUUIExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureRTUUIExampleDemoUITests.swift; sourceTree = "<group>"; };
@@ -228,7 +228,7 @@
 				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
 				2844F29328214D1E007C6B39 /* UsecaseScanCheck.swift */,
 				0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */,
-				690DCE7824E5597400160876 /* UsecaseScanDocumentDataExtractor.swift */,
+				28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */,
 				28BDF614279572DB00CC34C8 /* Other Usecases */,
 			);
 			path = Usecases;
@@ -416,7 +416,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.0.2\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.1.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C58E256C27D3008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -451,12 +451,12 @@
 				94F51BF22E007079002EA011 /* SceneDelegate.swift in Sources */,
 				28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */,
 				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
-				690DCE7924E5597400160876 /* UsecaseScanDocumentDataExtractor.swift in Sources */,
 				11807BD32D5B70B900C21436 /* UsecaseScanCreditCard.swift in Sources */,
 				28F2730527918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift in Sources */,
 				28F273072791903200C424AC /* DocumentDataExtractorResultTextListCell.swift in Sources */,
 				082D0A5E20C81760009B1A7A /* MainViewController.swift in Sources */,
 				0889D10F20EA700C00A36316 /* Usecase.swift in Sources */,
+				28FC46AF2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift in Sources */,
 				1172C6A52CCB8ADF003E1F17 /* SBSDKModalFormAlert.swift in Sources */,
 				692227BC2524A95E00E81886 /* UsecaseScanTextPattern.swift in Sources */,
 				2844F29428214D1E007C6B39 /* UsecaseScanCheck.swift in Sources */,

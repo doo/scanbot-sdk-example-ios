@@ -9,38 +9,43 @@
 import Foundation
 import ScanbotSDK
 
-final class UsecaseScanCheck: Usecase, SBSDKUICheckScannerViewControllerDelegate {
-    
-    let result: ReviewableScanResult
-    
-    init(result: ReviewableScanResult) {
-        self.result = result
-    }
+final class UsecaseScanCheck: Usecase {
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUICheckScannerConfiguration.defaultConfiguration
-        configuration.textConfiguration.cancelButtonTitle = "Done"
+        let configuration = SBSDKUI2CheckScannerScreenConfiguration()
         
-        let Scanner = SBSDKUICheckScannerViewController.create(configuration: configuration,
-                                                                     delegate: self)
-        presentViewController(Scanner)
-    }
-    
-    func checkScannerViewController(_ viewController: SBSDKUICheckScannerViewController,
-                                       didScanCheck result: SBSDKCheckScanningResult) {
-        let title = "Check scanned"
-        let message = result.toJson()
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController) {
-            if let navigationController = self.presenter as? UINavigationController {
-                UsecaseBrowseImages(result: self.result).start(presenter: navigationController)
-                viewController.presentingViewController?.dismiss(animated: true, completion: nil)
+        let scanner = SBSDKUI2CheckScannerViewController.create(with: configuration) { [weak self] result in
+            if let result {
+                let title = "Check found"
+                var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
+                let fields = result.check?.fields.compactMap {
+                    "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
+                } ?? []
+                message += "\n" + fields.joined(separator: "\n")
+                
+                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                
+            } else {
+                self?.didFinish()
             }
         }
+        presentViewController(scanner)
     }
-    
-    func checkScannerViewControllerDidCancel(_ viewController: SBSDKUICheckScannerViewController) {
-        didFinish()
+}
+
+extension SBSDKCheckMagneticInkStripScanningStatus {
+    var stringValue: String {
+        switch self {
+        case .success:
+            return "Success"
+        case .errorNothingFound:
+            return "ErrorNothingFound"
+        case .incompleteValidation:
+            return "Incomplete"
+        @unknown default:
+            return "\(self.rawValue)"
+        }
     }
 }

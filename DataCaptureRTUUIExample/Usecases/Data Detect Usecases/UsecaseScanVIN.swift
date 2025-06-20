@@ -9,36 +9,26 @@
 import UIKit
 import ScanbotSDK
 
-class UsecaseScanVIN: Usecase, SBSDKUIVINScannerViewControllerDelegate {
-    
+class UsecaseScanVIN: Usecase {
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
         
-        let configuration = SBSDKUIVINScannerConfiguration.defaultConfiguration
-        configuration.textConfiguration.cancelButtonTitle = "Done"
+        let configuration = SBSDKUI2VINScannerScreenConfiguration()
         
-        let scanner = SBSDKUIVINScannerViewController.create(configuration: configuration, delegate: self)
-        presentViewController(scanner)
-    }
-    
-    func vinScannerViewController(_ viewController: SBSDKUIVINScannerViewController,
-                                  didFinishWith result: SBSDKVINScannerResult) {
-        
-        var message = ""
-        if result.barcodeResult.status == .success && result.barcodeResult.extractedVIN.count > 0 {
-            message = result.barcodeResult.extractedVIN
-        } else if result.textResult.validationSuccessful && !result.textResult.rawText.isEmpty {
-            message = result.textResult.rawText
-        } else {
-            return
+        let scanner = SBSDKUI2VINScannerViewController.create(with: configuration) { [weak self] result in
+            if let result {
+                guard !result.textResult.rawText.isEmpty || !result.barcodeResult.extractedVIN.isEmpty else {
+                    return
+                }
+                let message = result.textResult.rawText + "\n" + result.barcodeResult.extractedVIN
+                let title = "VIN detected"
+                
+                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+
+            } else {
+                self?.didFinish()
+            }
         }
-        
-        let title = "VIN detected"
-        
-        UIAlertController.showInfoAlert(title, message: message, presenter: viewController, completion: nil)
-    }
-    
-    func vinScannerViewControllerDidCancel(_ viewController: SBSDKUIVINScannerViewController) {
-        didFinish()
+        presentViewController(scanner)
     }
 }
