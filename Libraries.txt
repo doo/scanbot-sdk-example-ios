@@ -1151,7 +1151,7 @@ This work is licensed under a [Creative Commons Attribution-ShareAlike 4.0 Inter
 
 JSON for Modern C++
 
-Version no-rev
+Version v3.11.3
 (https://github.com/nlohmann/json)
 
 MIT License 
@@ -1573,7 +1573,7 @@ defined by AIM ITS/04-023 International Technical Standard - Extended Channel In
 
 magic-enum
 
-Version no-rev
+Version v0.8.1
 (https://github.com/Neargye/magic_enum)
 
 MIT License
@@ -1603,7 +1603,7 @@ SOFTWARE.
 
 Nameof C++
 
-Version no-rev
+Version v0.10.3
 (https://github.com/Neargye/nameof)
 
 MIT License
@@ -1978,7 +1978,7 @@ Version 1.1.1t
 
 spdlog
 
-Version no-rev
+Version v1.15.2
 (https://github.com/gabime/spdlog)
 
 The MIT License (MIT)
@@ -2523,7 +2523,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xsimd
 
-Version no-rev
+Version 13.2.0
 (https://github.com/xtensor-stack/xsimd)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay, Wolf Vollprecht and Martin Renou
@@ -2561,7 +2561,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtensor
 
-Version no-rev
+Version 0.26.0-scanbot
 (https://github.com/doo/xtensor)
 
 Copyright (c) 2016, Johan Mabille, Sylvain Corlay and Wolf Vollprecht
@@ -2598,7 +2598,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 xtl
 
-Version no-rev
+Version 0.8.0
 (https://github.com/xtensor-stack/xtl)
 
 BSD 3-Clause License
@@ -2872,6 +2872,10 @@ Version 1.1.0
    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
    See the License for the specific language governing permissions and
    limitations under the License.
+
+
+
+
 
 
 
