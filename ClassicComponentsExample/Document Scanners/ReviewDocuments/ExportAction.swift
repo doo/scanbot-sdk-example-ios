@@ -11,7 +11,7 @@ import ScanbotSDK
 
 class ExportAction {
     
-    static func exportToPDF(_ document: SBSDKDocument, completion: @escaping (Error?, URL?) -> ()) {
+    static func exportToPDF(_ document: SBSDKScannedDocument, completion: @escaping (Error?, URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
@@ -44,7 +44,7 @@ class ExportAction {
         }
     }
     
-    static func exportToTIFF(_ document: SBSDKDocument, binarize: Bool, completion: @escaping (URL?) -> ()) {
+    static func exportToTIFF(_ document: SBSDKScannedDocument, binarize: Bool, completion: @escaping (URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")

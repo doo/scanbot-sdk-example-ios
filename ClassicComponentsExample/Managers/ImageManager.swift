@@ -31,7 +31,7 @@ final class ImageManager {
     
     public static let shared = ImageManager()
     
-    public let document = SBSDKDocument()
+    public let document = SBSDKScannedDocument()
     
     private init() {
         self.removeAllImages()
@@ -43,11 +43,10 @@ final class ImageManager {
     
     @discardableResult
     func add(image: UIImage, polygon: SBSDKPolygon) -> Bool {
-        let page = SBSDKDocumentPage(image: image, polygon: polygon, filter: .none)
-        return document.add(page)
+        return document.addPage(with: image, polygon: polygon, filters: []) != nil
     }
     
-    func pageAt(index: Int) -> SBSDKDocumentPage? {
+    func pageAt(index: Int) -> SBSDKScannedPage? {
         return document.page(at: index)
     }
     
@@ -56,7 +55,7 @@ final class ImageManager {
     }
 
     func originalImageURLAt(index: Int) -> URL? {
-        return document.page(at: index)?.originalImageURL
+        return document.page(at: index)?.originalImageURI
     }
 
     func processedImageAt(index: Int) -> UIImage? {
@@ -64,7 +63,9 @@ final class ImageManager {
     }
         
     func removeImageAt(index: Int) {
-        document.removePage(at: index)
+        if let page = document.page(at: index) {
+            document.removePage(page)
+        }
     }
     
     func removeAllImages() {
@@ -78,13 +79,13 @@ final class ImageManager {
         }
         
         if let rotations = parameters.counterClockwiseRotations {
-            page.rotateClockwise(-rotations)
+            page.rotation = SBSDKImageRotation.fromRotations(rotations)
         }
         if let polygon = parameters.polygon {
             page.polygon = polygon
         }
         if let filter = parameters.filter {
-            page.parametricFilters = [SBSDKLegacyFilter(filterType: filter.rawValue)]
+            page.filters = [SBSDKLegacyFilter(filterType: filter.rawValue)]
         }
         return true
     }
