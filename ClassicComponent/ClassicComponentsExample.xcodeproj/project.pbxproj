@@ -35,7 +35,6 @@
 		082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */; };
 		0863F46E2CDB8EAB00E00765 /* SBSDKBarcodeItem+DisplayText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */; };
 		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
-		08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */; };
 		11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101823274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */; };
@@ -52,8 +51,6 @@
 		2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C496274E49BE0036F44D /* EHICDemoViewController.swift */; };
 		2869C49E274E63790036F44D /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C49D274E63790036F44D /* CheckViewController.swift */; };
 		2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */; };
-		287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; };
-		287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 287FE72224AE3D71002569D9 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
 		288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */; };
 		288AB3DB2A45A1CE00D6461E /* ScanAndCountResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */; };
@@ -76,6 +73,10 @@
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
 		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
+		F164F2402E09A2A3001F6A5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F164F23F2E09A2A3001F6A5A /* README.md */; };
+		F164F2422E09A2C1001F6A5A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F164F2412E09A2C1001F6A5A /* ScanbotSDKOCRData.bundle */; };
+		F164F2432E09A312001F6A5A /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F164F23B2E09A242001F6A5A /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F164F2462E09A3DE001F6A5A /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F164F23B2E09A242001F6A5A /* ScanbotSDK.framework */; };
 		F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */; };
 		F19EFE8B29C4AB5E00128396 /* CustomTrackedBarcodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F19EFE8929C4AB5E00128396 /* CustomTrackedBarcodeView.swift */; };
 		F19EFE8C29C4AB5E00128396 /* CustomTrackedBarcodeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = F19EFE8A29C4AB5E00128396 /* CustomTrackedBarcodeView.xib */; };
@@ -99,17 +100,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		28D7361A24AE302D00A0B821 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				287FE72424AE3D71002569D9 /* ScanbotSDK.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9E69F5C41AE7E45500E6131A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -119,14 +109,23 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		F164F23E2E09A242001F6A5A /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F164F2432E09A312001F6A5A /* ScanbotSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		082022701F791157005FF9F2 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = SOURCE_ROOT; };
 		082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBSDKGeometryUtilities.swift; sourceTree = "<group>"; };
 		0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKBarcodeItem+DisplayText.swift"; sourceTree = "<group>"; };
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
-		08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDemoViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPatternScannerDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
@@ -143,7 +142,6 @@
 		2869C49D274E63790036F44D /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPDFViewController.swift; sourceTree = "<group>"; };
 		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
-		287FE72224AE3D71002569D9 /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
 		2884E28527455B9200C0ABA2 /* FiltersManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersManager.swift; sourceTree = "<group>"; };
 		288AB3D82A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountBarcodeDetailsCell.swift; sourceTree = "<group>"; };
 		288AB3D92A45A1CE00D6461E /* ScanAndCountResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScanAndCountResultsViewController.swift; sourceTree = "<group>"; };
@@ -171,6 +169,9 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ClassicComponentsExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ClassicComponentsExample/Media.xcassets; sourceTree = SOURCE_ROOT; };
 		F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDemoViewController.swift; sourceTree = "<group>"; };
+		F164F23B2E09A242001F6A5A /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ../ScanbotSDK/ScanbotSDK.framework; sourceTree = "<group>"; };
+		F164F23F2E09A2A3001F6A5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
+		F164F2412E09A2C1001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ../ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		F19EFE8629C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScannerCustomCellViewController.swift; sourceTree = "<group>"; };
 		F19EFE8929C4AB5E00128396 /* CustomTrackedBarcodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTrackedBarcodeView.swift; sourceTree = "<group>"; };
 		F19EFE8A29C4AB5E00128396 /* CustomTrackedBarcodeView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CustomTrackedBarcodeView.xib; sourceTree = "<group>"; };
@@ -188,7 +189,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				287FE72324AE3D71002569D9 /* ScanbotSDK.framework in Frameworks */,
+				F164F2462E09A3DE001F6A5A /* ScanbotSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,7 +280,7 @@
 		28D7361624AE302000A0B821 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				287FE72224AE3D71002569D9 /* ScanbotSDK.framework */,
+				F164F23B2E09A242001F6A5A /* ScanbotSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -309,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				6954AEA824E5434A00005627 /* ClassicComponentsExample.entitlements */,
-				082022701F791157005FF9F2 /* README.md */,
+				F164F23F2E09A2A3001F6A5A /* README.md */,
 				9ED845831AE670CC008B2731 /* ClassicComponentsExample */,
 				6991C573256C179A008188AD /* ClassicComponentsExampleUITests */,
 				9ED845821AE670CC008B2731 /* Products */,
@@ -346,7 +347,7 @@
 		9ED845841AE670CC008B2731 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				08A97DE32090BAEF00F84440 /* ScanbotSDKOCRData.bundle */,
+				F164F2412E09A2C1001F6A5A /* ScanbotSDKOCRData.bundle */,
 				C27562A41DE453B2003F5FE0 /* Info.plist */,
 				C27562A61DE453B2003F5FE0 /* Media.xcassets */,
 			);
@@ -410,7 +411,7 @@
 				9ED8457D1AE670CC008B2731 /* Sources */,
 				9ED8457F1AE670CC008B2731 /* Resources */,
 				9E69F5C41AE7E45500E6131A /* CopyFiles */,
-				28D7361A24AE302D00A0B821 /* Embed Frameworks */,
+				F164F23E2E09A242001F6A5A /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -489,10 +490,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F164F2422E09A2C1001F6A5A /* ScanbotSDKOCRData.bundle in Resources */,
 				F19EFE8C29C4AB5E00128396 /* CustomTrackedBarcodeView.xib in Resources */,
 				C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */,
+				F164F2402E09A2A3001F6A5A /* README.md in Resources */,
 				C27562961DE45368003F5FE0 /* Main.storyboard in Resources */,
-				08A97DE42090BAEF00F84440 /* ScanbotSDKOCRData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -514,7 +516,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.0.2\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
+			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.0.2\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\n# PRERELEASE=\"RC2\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/../ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
 		};
 		6991C567256C1674008188AD /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -531,7 +533,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nSDKFOLDER=${SRCROOT}/ScanbotSDK\nrm -dfr \"${SDKFOLDER}\"\n";
+			shellScript = "#!/bin/bash\n\nSDKFOLDER=${SRCROOT}/../ScanbotSDK\nrm -dfr \"${SDKFOLDER}\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -820,7 +822,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ScanbotSDK",
+					"$(PROJECT_DIR)/../ScanbotSDK",
 				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -855,7 +857,7 @@
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/ScanbotSDK",
+					"$(PROJECT_DIR)/../ScanbotSDK",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/ClassicComponentsExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
