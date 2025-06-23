@@ -34,7 +34,7 @@ final class VINDemoViewController: UIViewController {
 
 extension VINDemoViewController: SBSDKVINScannerViewControllerDelegate {
     
-    func vinScannerViewControllerShouldDetect(_ controller: SBSDKVINScannerViewController) -> Bool {
+    func vinScannerViewControllerShouldScan(_ controller: SBSDKVINScannerViewController) -> Bool {
         return true
     }
     

@@ -62,6 +62,7 @@
 		F164F2592E09ABE5001F6A5A /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F164F25A2E09ABF3001F6A5A /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */; };
 		F164F25D2E09AC46001F6A5A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F164F25B2E09AC37001F6A5A /* ScanbotSDKOCRData.bundle */; };
+		F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,6 +130,7 @@
 		F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanVIN.swift; sourceTree = "<group>"; };
 		F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ../ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		F164F25B2E09AC37001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ../ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
+		F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,6 +181,7 @@
 				0889D0F420EA632800A36316 /* Review Screen */,
 				28F273082791903E00C424AC /* Document Data Extractor results */,
 				082D0A3220C801AA009B1A7A /* AppDelegate.swift */,
+				F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */,
 				082D0A3620C801AB009B1A7A /* Main.storyboard */,
 				082D0A3920C801AB009B1A7A /* Assets.xcassets */,
 				082D0A3B20C801AB009B1A7A /* LaunchScreen.storyboard */,
@@ -443,6 +446,7 @@
 				69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
+				F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */,
 				28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */,
 				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				690DCE7924E5597400160876 /* UsecaseScanDocumentDataExtractor.swift in Sources */,

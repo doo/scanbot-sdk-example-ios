@@ -22,7 +22,7 @@ final class ReviewDocumentsViewController: UIViewController {
     private var selectedImageIndex: Int?
     private var importAction: ImportAction?
     private static var showsQuality: Bool = false
-    private static var qualityCache = [URL: SBSDKDocumentQuality]()
+    private static var qualityCache = [URL: String]()
 
     private var showsQuality: Bool = showsQuality {
         didSet {
@@ -43,11 +43,13 @@ final class ReviewDocumentsViewController: UIViewController {
     }
     
     @IBAction private func importButtonTapped(_ item: UIBarButtonItem) {
-        importAction = ImportAction { image in
-            guard let image = image else { return }
+        importAction = ImportAction { [weak self] image in
+            defer { self?.importAction = nil }
+            guard let image = image else { 
+                return 
+            }
             DispatchQueue(label: "FilterQueue").async { [weak self] in
                 let result = SBSDKDocumentScanner().scan(from: image)
-
                 ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
                 DispatchQueue.main.async {
                     self?.reloadData()
@@ -160,11 +162,11 @@ final class ReviewDocumentsViewController: UIViewController {
     }
     
     private func calculateQualityFor(_ item: Int) {
-        DispatchQueue(label: "FilterQueue").async { [weak self] in
+        DispatchQueue(label: "FilterQueue").sync { [weak self] in
             if let image = ImageManager.shared.originalImageAt(index: item),
                 let url = ImageManager.shared.originalImageURLAt(index: item) {
                 let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
-                Self.qualityCache[url] = quality?.quality
+                Self.qualityCache[url] = quality?.quality?.stringValue ?? "No document"
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])
@@ -190,7 +192,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
         if showsQuality {
             if let imageURL = ImageManager.shared.originalImageURLAt(index: indexPath.item) {
                 if let quality = Self.qualityCache[imageURL] {
-                    cell.infoLabelText = String(format: "Q: \(quality.stringValue)")
+                    cell.infoLabelText = String(format: "Q: \(quality)")
                 } else {
                     cell.infoLabelText = "Calculating..."
                     calculateQualityFor(indexPath.item)
@@ -213,7 +215,7 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
 
         selectedImageIndex = indexPath.item
         
-        let editingViewController = SBSDKImageEditingViewController.create(page: page)
+        let editingViewController = SBSDKImageEditingViewController.create(image: page.originalImage!, polygon: page.polygon)
         editingViewController.delegate = self
         navigationController?.pushViewController(editingViewController, animated: true)
     }
@@ -235,7 +237,7 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
         polygon.rotateCCW(UInt(rotations))
         
         page.polygon = polygon
-        page.rotateClockwise(editingViewController.rotations)
+        page.rotation = SBSDKImageRotation.fromRotations(editingViewController.rotations)
         
         self.reloadData()
         selectedImageIndex = nil
