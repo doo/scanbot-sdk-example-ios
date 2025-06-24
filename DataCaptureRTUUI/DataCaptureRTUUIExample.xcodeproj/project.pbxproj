@@ -323,7 +323,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1610;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					082D0A2E20C801AA009B1A7A = {
@@ -602,6 +602,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -625,6 +626,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -647,7 +649,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -670,7 +672,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

@@ -32,7 +32,7 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
     }
     
     func update(barcodeFrame: CGRect, 
-                isSelected: Bool, 
+                isHighlighted isSelected: Bool, 
                 textStyle: ScanbotSDK.SBSDKBarcodeTrackedViewTextStyle, 
                 polygonStyle: ScanbotSDK.SBSDKBarcodeTrackedViewPolygonStyle) {
         

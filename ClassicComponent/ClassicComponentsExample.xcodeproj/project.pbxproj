@@ -761,6 +761,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				ENABLE_BITCODE = NO;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -796,6 +797,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				ENABLE_BITCODE = NO;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ClassicComponentsExample/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -879,7 +881,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.0.3;
+				version = "7.1.0-RC1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

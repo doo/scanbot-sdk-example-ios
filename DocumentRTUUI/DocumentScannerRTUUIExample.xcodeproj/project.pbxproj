@@ -466,6 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DocumentScannerRTUUIExample/Supporting Files/Info.plist";
@@ -499,6 +500,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
+				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DocumentScannerRTUUIExample/Supporting Files/Info.plist";
@@ -553,7 +555,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.0.3;
+				version = "7.1.0-RC1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
