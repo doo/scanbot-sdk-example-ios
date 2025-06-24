@@ -15,6 +15,9 @@
 		08BEA2E9264426AD00948024 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08BEA2E7264426AD00948024 /* Main.storyboard */; };
 		08BEA2EB264426AE00948024 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 08BEA2EA264426AE00948024 /* Assets.xcassets */; };
 		08BEA2EE264426AE00948024 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 08BEA2EC264426AE00948024 /* LaunchScreen.storyboard */; };
+		08D6210B281C27D600D805C8 /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08D62100281C27BC00D805C8 /* ScanbotSDK.framework */; platformFilter = ios; };
+		08D6210C281C27D600D805C8 /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 08D62100281C27BC00D805C8 /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		08D6210E281C27D600D805C8 /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 08D620FE281C27BC00D805C8 /* ScanbotSDKOCRData.bundle */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		08F0F5A42BF388B500311C66 /* BarcodeLocalizationUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08F0F5A32BF388B500311C66 /* BarcodeLocalizationUI2ViewController.swift */; };
 		11427C2F293A026A007DFBD8 /* document.pdf in Resources */ = {isa = PBXBuildFile; fileRef = 11427C2E293A026A007DFBD8 /* document.pdf */; };
 		11427C48293A4C1E007DFBD8 /* ImageStoringViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11427C47293A4C1E007DFBD8 /* ImageStoringViewController.swift */; };
@@ -23,8 +26,8 @@
 		11427C55293F5743007DFBD8 /* sound.m4a in Resources */ = {isa = PBXBuildFile; fileRef = 11427C54293F5743007DFBD8 /* sound.m4a */; };
 		1147F7D62C5BC11200C25384 /* DocumentReviewScreenUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147F7D52C5BC11200C25384 /* DocumentReviewScreenUI2ViewController.swift */; };
 		1147F7DB2C5BC49A00C25384 /* CropScreenUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1147F7DA2C5BC49A00C25384 /* CropScreenUI2ViewController.swift */; };
+		116535DA2D8C35BE00EBC3B9 /* CreditCardDetectionOnImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 116535D92D8C35BE00EBC3B9 /* CreditCardDetectionOnImage.swift */; };
 		11D857462CE2283F0000096B /* CreditCardScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D857452CE228320000096B /* CreditCardScannerViewController.swift */; };
-		11D857482CE228530000096B /* CreditCardRecognitionOnImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D857472CE228460000096B /* CreditCardRecognitionOnImage.swift */; };
 		11DC96792C623E5500BF081C /* DocumentIntroductionUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DC96772C623E5500BF081C /* DocumentIntroductionUI2ViewController.swift */; };
 		11DF1E2729364AAC00463DE0 /* BarcodesOverlayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF1E2629364AAC00463DE0 /* BarcodesOverlayViewController.swift */; };
 		11DF1E312938AACA00463DE0 /* ZoomingImageScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DF1E302938AACA00463DE0 /* ZoomingImageScrollViewViewController.swift */; };
@@ -57,7 +60,6 @@
 		F103788A2C4683D8007FA0EF /* DocumentAcknowledgmentUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10378892C4683D8007FA0EF /* DocumentAcknowledgmentUI2ViewController.swift */; };
 		F10C08EF2CC7A010006BEA30 /* VinDetectionOnImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10C08EE2CC7A010006BEA30 /* VinDetectionOnImage.swift */; };
 		F10F78F72D5A06ED00974341 /* CreditCardFinderOverlayUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F10F78F62D5A06ED00974341 /* CreditCardFinderOverlayUI2ViewController.swift */; };
-		F10F79E92D5B581100974341 /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F10F79E82D5B581100974341 /* ScanbotSDK */; };
 		F12A43AE2D4B7B5C009C05EC /* CreditCardLaunchingUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A43AD2D4B7B5C009C05EC /* CreditCardLaunchingUI2ViewController.swift */; };
 		F12A43B32D4B7DD1009C05EC /* CreditCardScannerSwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A43B22D4B7DD1009C05EC /* CreditCardScannerSwiftUIView.swift */; };
 		F12A43B62D4B80D7009C05EC /* CreditCardScanningUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F12A43B52D4B80D7009C05EC /* CreditCardScanningUI2ViewController.swift */; };
@@ -125,6 +127,100 @@
 		F1F2A6A92C36FB6E00545064 /* DocumentScanningScreenUI2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1F2A6A82C36FB6E00545064 /* DocumentScanningScreenUI2ViewController.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		08D620FD281C27BC00D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 084736FC222404AB00DCCBAF;
+			remoteInfo = "ScanbotSDKOCRData Tess4";
+		};
+		08D620FF281C27BC00D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 9E9743191B4BFB1F00FB1D1C;
+			remoteInfo = ScanbotSDK;
+		};
+		08D62103281C27BC00D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6E7F84B521F0D71A00A8F4B6;
+			remoteInfo = ScanbotSDKTests;
+		};
+		08D62107281C27BC00D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 6ECDFF2721F0E0B300875358;
+			remoteInfo = ScanbotSDKTestsHostApplication;
+		};
+		08D62109281C27BC00D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 085C178225B07B0900B84B44;
+			remoteInfo = ScanbotSDKPDFHelper;
+		};
+		08D62110281C27E800D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E9743181B4BFB1F00FB1D1C;
+			remoteInfo = ScanbotSDK;
+		};
+		08D62114281C27E800D805C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 084736F2222404AB00DCCBAF;
+			remoteInfo = "ScanbotSDKOCRData Tess4";
+		};
+		F101AAB12A2F9D6D00AEE32F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 082F48A229FBE88600620769;
+			remoteInfo = ScanbotBarcodeScannerSDK;
+		};
+		F101AAB32A2F9D6D00AEE32F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 08586A3B2A03BEA000F11D2D;
+			remoteInfo = ScanbotDocumentScannerSDK;
+		};
+		F15986D92A7D1D8F00D45B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1138DE3E2A38BD1500E5AB51;
+			remoteInfo = ScanbotSDKBarcodeTestsHostApplication;
+		};
+		F15986DB2A7D1D8F00D45B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1138DEE82A39DF1500E5AB51;
+			remoteInfo = ScanbotSDKDocumentTestsHostApplication;
+		};
+		F15986DD2A7D1D8F00D45B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1138DE222A38BB1100E5AB51;
+			remoteInfo = ScanbotSDKBarcodeTests;
+		};
+		F15986DF2A7D1D8F00D45B83 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 1138DEC42A39DA8300E5AB51;
+			remoteInfo = ScanbotSDKDocumentTests;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		2824C22B2722F7F10033BCB8 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -132,6 +228,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				08D6210C281C27D600D805C8 /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -150,6 +247,7 @@
 		08BEA2ED264426AE00948024 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		08BEA2EF264426AE00948024 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		08BEA30026444A9C00948024 /* ScanbotSDK Examples-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "ScanbotSDK Examples-Bridging-Header.h"; sourceTree = "<group>"; };
+		08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ScanbotSDK.xcodeproj; path = ../ScanbotSDK.xcodeproj; sourceTree = "<group>"; };
 		08F0F5A32BF388B500311C66 /* BarcodeLocalizationUI2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeLocalizationUI2ViewController.swift; sourceTree = "<group>"; };
 		11427C2E293A026A007DFBD8 /* document.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = document.pdf; sourceTree = "<group>"; };
 		11427C47293A4C1E007DFBD8 /* ImageStoringViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageStoringViewController.swift; sourceTree = "<group>"; };
@@ -158,8 +256,8 @@
 		11427C54293F5743007DFBD8 /* sound.m4a */ = {isa = PBXFileReference; lastKnownFileType = file; path = sound.m4a; sourceTree = "<group>"; };
 		1147F7D52C5BC11200C25384 /* DocumentReviewScreenUI2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentReviewScreenUI2ViewController.swift; sourceTree = "<group>"; };
 		1147F7DA2C5BC49A00C25384 /* CropScreenUI2ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CropScreenUI2ViewController.swift; sourceTree = "<group>"; };
+		116535D92D8C35BE00EBC3B9 /* CreditCardDetectionOnImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDetectionOnImage.swift; sourceTree = "<group>"; };
 		11D857452CE228320000096B /* CreditCardScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardScannerViewController.swift; sourceTree = "<group>"; };
-		11D857472CE228460000096B /* CreditCardRecognitionOnImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardRecognitionOnImage.swift; sourceTree = "<group>"; };
 		11DC96772C623E5500BF081C /* DocumentIntroductionUI2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentIntroductionUI2ViewController.swift; sourceTree = "<group>"; };
 		11DF1E2629364AAC00463DE0 /* BarcodesOverlayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodesOverlayViewController.swift; sourceTree = "<group>"; };
 		11DF1E302938AACA00463DE0 /* ZoomingImageScrollViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomingImageScrollViewViewController.swift; sourceTree = "<group>"; };
@@ -265,7 +363,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F10F79E92D5B581100974341 /* ScanbotSDK in Frameworks */,
+				08D6210B281C27D600D805C8 /* ScanbotSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -299,6 +397,7 @@
 		08BEA2D5264426AD00948024 = {
 			isa = PBXGroup;
 			children = (
+				08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */,
 				08BEA2E0264426AD00948024 /* ScanbotSDK Examples */,
 				08BEA2DF264426AD00948024 /* Products */,
 				08BEA2F72644270B00948024 /* Frameworks */,
@@ -330,9 +429,9 @@
 				08BEA30426444ABF00948024 /* DocumentDataExtractor */,
 				28175AB6266E1AD20065A83D /* TextPatternScanner */,
 				289EC90E2657FA77007152E4 /* MRZScanner */,
-				289CC6A4265D210500BD3EA4 /* EHICRecognizer */,
+				289CC6A4265D210500BD3EA4 /* EHICExtractor */,
 				289CC6AD265D34E800BD3EA4 /* MedicalCertificateScanner */,
-				28604947281951E500914B72 /* CheckRecognizer */,
+				28604947281951E500914B72 /* CheckScanner */,
 				11D857422CE227F60000096B /* CreditCardScanner */,
 				F15986C52A7D1D8F00D45B83 /* VINScanner */,
 				2879FA6B266E4E74009D7304 /* ScanbotSDK Examples.entitlements */,
@@ -365,6 +464,24 @@
 				F1927E0229D1A68D00AA267D /* DetectionOnImage */,
 			);
 			path = DocumentDataExtractor;
+			sourceTree = "<group>";
+		};
+		08D61FC0281C27BB00D805C8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				08D62100281C27BC00D805C8 /* ScanbotSDK.framework */,
+				F101AAB22A2F9D6D00AEE32F /* ScanbotBarcodeScannerSDK.framework */,
+				F101AAB42A2F9D6D00AEE32F /* ScanbotDocumentScannerSDK.framework */,
+				08D620FE281C27BC00D805C8 /* ScanbotSDKOCRData.bundle */,
+				08D6210A281C27BC00D805C8 /* ScanbotSDKPDFHelper.framework */,
+				08D62108281C27BC00D805C8 /* ScanbotSDKTestsHostApplication.app */,
+				F15986DA2A7D1D8F00D45B83 /* ScanbotSDKBarcodeTestsHostApplication.app */,
+				F15986DC2A7D1D8F00D45B83 /* ScanbotSDKDocumentTestsHostApplication.app */,
+				08D62104281C27BC00D805C8 /* ScanbotSDKTests.xctest */,
+				F15986DE2A7D1D8F00D45B83 /* ScanbotSDKBarcodeTests.xctest */,
+				F15986E02A7D1D8F00D45B83 /* ScanbotSDKDocumentTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		08F0F58B2BF3888500311C66 /* Localization */ = {
@@ -448,7 +565,7 @@
 		11D857442CE228190000096B /* RecognitionOnImage */ = {
 			isa = PBXGroup;
 			children = (
-				11D857472CE228460000096B /* CreditCardRecognitionOnImage.swift */,
+				116535D92D8C35BE00EBC3B9 /* CreditCardDetectionOnImage.swift */,
 			);
 			path = RecognitionOnImage;
 			sourceTree = "<group>";
@@ -582,14 +699,14 @@
 			path = SwiftUI;
 			sourceTree = "<group>";
 		};
-		28604947281951E500914B72 /* CheckRecognizer */ = {
+		28604947281951E500914B72 /* CheckScanner */ = {
 			isa = PBXGroup;
 			children = (
 				286049482819520500914B72 /* RTUUI */,
 				286049492819520E00914B72 /* Classic */,
 				F1927E1229D1B27F00AA267D /* DetectionOnImage */,
 			);
-			path = CheckRecognizer;
+			path = CheckScanner;
 			sourceTree = "<group>";
 		};
 		286049482819520500914B72 /* RTUUI */ = {
@@ -651,14 +768,14 @@
 			path = BarcodesBatchScanner;
 			sourceTree = "<group>";
 		};
-		289CC6A4265D210500BD3EA4 /* EHICRecognizer */ = {
+		289CC6A4265D210500BD3EA4 /* EHICExtractor */ = {
 			isa = PBXGroup;
 			children = (
 				289CC6A5265D212100BD3EA4 /* RTUUI */,
 				28AC6C792726B27D008BD51D /* Classic */,
 				F1927DFA29D19A3400AA267D /* DetectionOnImage */,
 			);
-			path = EHICRecognizer;
+			path = EHICExtractor;
 			sourceTree = "<group>";
 		};
 		289CC6A5265D212100BD3EA4 /* RTUUI */ = {
@@ -1428,10 +1545,11 @@
 			buildRules = (
 			);
 			dependencies = (
+				08D62111281C27E800D805C8 /* PBXTargetDependency */,
+				08D62115281C27E800D805C8 /* PBXTargetDependency */,
 			);
 			name = "ScanbotSDK Examples";
 			packageProductDependencies = (
-				F10F79E82D5B581100974341 /* ScanbotSDK */,
 			);
 			productName = "ScanbotSDK Examples";
 			productReference = 08BEA2DE264426AD00948024 /* ScanbotSDK Examples.app */;
@@ -1462,16 +1580,101 @@
 			);
 			mainGroup = 08BEA2D5264426AD00948024;
 			packageReferences = (
-				F10F79E72D5B581100974341 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
 			);
 			productRefGroup = 08BEA2DF264426AD00948024 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 08D61FC0281C27BB00D805C8 /* Products */;
+					ProjectRef = 08D61FBF281C27BB00D805C8 /* ScanbotSDK.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				08BEA2DD264426AD00948024 /* ScanbotSDK Examples */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		08D620FE281C27BC00D805C8 /* ScanbotSDKOCRData.bundle */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ScanbotSDKOCRData.bundle;
+			remoteRef = 08D620FD281C27BC00D805C8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		08D62100281C27BC00D805C8 /* ScanbotSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ScanbotSDK.framework;
+			remoteRef = 08D620FF281C27BC00D805C8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		08D62104281C27BC00D805C8 /* ScanbotSDKTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ScanbotSDKTests.xctest;
+			remoteRef = 08D62103281C27BC00D805C8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		08D62108281C27BC00D805C8 /* ScanbotSDKTestsHostApplication.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ScanbotSDKTestsHostApplication.app;
+			remoteRef = 08D62107281C27BC00D805C8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		08D6210A281C27BC00D805C8 /* ScanbotSDKPDFHelper.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ScanbotSDKPDFHelper.framework;
+			remoteRef = 08D62109281C27BC00D805C8 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F101AAB22A2F9D6D00AEE32F /* ScanbotBarcodeScannerSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ScanbotBarcodeScannerSDK.framework;
+			remoteRef = F101AAB12A2F9D6D00AEE32F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F101AAB42A2F9D6D00AEE32F /* ScanbotDocumentScannerSDK.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = ScanbotDocumentScannerSDK.framework;
+			remoteRef = F101AAB32A2F9D6D00AEE32F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15986DA2A7D1D8F00D45B83 /* ScanbotSDKBarcodeTestsHostApplication.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ScanbotSDKBarcodeTestsHostApplication.app;
+			remoteRef = F15986D92A7D1D8F00D45B83 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15986DC2A7D1D8F00D45B83 /* ScanbotSDKDocumentTestsHostApplication.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = ScanbotSDKDocumentTestsHostApplication.app;
+			remoteRef = F15986DB2A7D1D8F00D45B83 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15986DE2A7D1D8F00D45B83 /* ScanbotSDKBarcodeTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ScanbotSDKBarcodeTests.xctest;
+			remoteRef = F15986DD2A7D1D8F00D45B83 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F15986E02A7D1D8F00D45B83 /* ScanbotSDKDocumentTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = ScanbotSDKDocumentTests.xctest;
+			remoteRef = F15986DF2A7D1D8F00D45B83 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		08BEA2DC264426AD00948024 /* Resources */ = {
@@ -1484,6 +1687,7 @@
 				08BEA2E9264426AD00948024 /* Main.storyboard in Resources */,
 				11427C4A293A5331007DFBD8 /* imageDocument.png in Resources */,
 				11427C2F293A026A007DFBD8 /* document.pdf in Resources */,
+				08D6210E281C27D600D805C8 /* ScanbotSDKOCRData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1517,7 +1721,6 @@
 				11427C51293F5195007DFBD8 /* SoundControllerViewController.swift in Sources */,
 				F12A43AE2D4B7B5C009C05EC /* CreditCardLaunchingUI2ViewController.swift in Sources */,
 				28AC6C802726B2EC008BD51D /* EHICExtractorViewController.swift in Sources */,
-				11D857482CE228530000096B /* CreditCardRecognitionOnImage.swift in Sources */,
 				11DF1E312938AACA00463DE0 /* ZoomingImageScrollViewViewController.swift in Sources */,
 				F16B85AD2CC91D2B00791084 /* Examples.swift in Sources */,
 				F166A0792D539E3600EBB1AD /* TextPatternScanningScreenUI2ViewController.swift in Sources */,
@@ -1590,6 +1793,7 @@
 				F163A4E52D41275C00116887 /* MRZPaletteUI2ViewController.swift in Sources */,
 				F166A08E2D53A9FD00EBB1AD /* TextPatternLaunchingUI2ViewController.swift in Sources */,
 				F17D65B42C777CDF004F4BE3 /* DocumentScannerSwiftUIView.swift in Sources */,
+				116535DA2D8C35BE00EBC3B9 /* CreditCardDetectionOnImage.swift in Sources */,
 				08F0F5A42BF388B500311C66 /* BarcodeLocalizationUI2ViewController.swift in Sources */,
 				284C6049282D25CC00A85EEE /* ImageProcessingViewController.swift in Sources */,
 				F15DD2C32CC8060B008EF822 /* MainTableViewCell.swift in Sources */,
@@ -1607,6 +1811,19 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		08D62111281C27E800D805C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ScanbotSDK;
+			targetProxy = 08D62110281C27E800D805C8 /* PBXContainerItemProxy */;
+		};
+		08D62115281C27E800D805C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "ScanbotSDKOCRData Tess4";
+			targetProxy = 08D62114281C27E800D805C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		08BEA2E7264426AD00948024 /* Main.storyboard */ = {
@@ -1829,25 +2046,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		F10F79E72D5B581100974341 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
-			requirement = {
-				kind = exactVersion;
-				version = "7.0.0-RC7";
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		F10F79E82D5B581100974341 /* ScanbotSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F10F79E72D5B581100974341 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
-			productName = ScanbotSDK;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 08BEA2D6264426AD00948024 /* Project object */;
 }
