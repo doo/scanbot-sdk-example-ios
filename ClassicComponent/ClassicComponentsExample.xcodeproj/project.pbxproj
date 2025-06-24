@@ -420,7 +420,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1220;
-				LastUpgradeCheck = 1600;
+				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
 					6991C571256C179A008188AD = {
@@ -593,7 +593,7 @@
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ScanbotSDKDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -625,7 +625,7 @@
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = ScanbotSDKDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
