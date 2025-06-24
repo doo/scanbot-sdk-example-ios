@@ -7,27 +7,18 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		08E3397923E2F3A200699471 /* Download ScanbotSDK */ = {
+		F164F7692E0AE8EC001F6A5A /* Copy Bundles */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = 08E3397C23E2F3A200699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */;
+			buildConfigurationList = F164F76A2E0AE8EC001F6A5A /* Build configuration list for PBXAggregateTarget "Copy Bundles" */;
 			buildPhases = (
-				08E3397D23E2F3A800699471 /* ShellScript */,
+				F164F76D2E0AE8F5001F6A5A /* ShellScript */,
 			);
 			dependencies = (
 			);
-			name = "Download ScanbotSDK";
-			productName = "Download ScanbotSDK";
-		};
-		6991C58A256C27CE008188AD /* DeleteSDK */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = 6991C58D256C27CE008188AD /* Build configuration list for PBXAggregateTarget "DeleteSDK" */;
-			buildPhases = (
-				6991C58E256C27D3008188AD /* ShellScript */,
+			name = "Copy Bundles";
+			packageProductDependencies = (
 			);
-			dependencies = (
-			);
-			name = DeleteSDK;
-			productName = DeleteSDK;
+			productName = "Copy Bundles";
 		};
 /* End PBXAggregateTarget section */
 
@@ -59,26 +50,25 @@
 		6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
 		F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */; };
-		F164F2592E09ABE5001F6A5A /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F164F25A2E09ABF3001F6A5A /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */; };
-		F164F25D2E09AC46001F6A5A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F164F25B2E09AC37001F6A5A /* ScanbotSDKOCRData.bundle */; };
 		F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */; };
+		F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F7672E0AE8E1001F6A5A /* ScanbotSDK */; };
+		F164F7712E0AE923001F6A5A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F164F7702E0AE923001F6A5A /* ScanbotSDKOCRData.bundle */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		08E3397E23E2F3BA00699471 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 08E3397923E2F3A200699471;
-			remoteInfo = "Download ScanbotSDK";
-		};
 		6991C59E256C2989008188AD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 082D0A2E20C801AA009B1A7A;
 			remoteInfo = ReadyToUseUIDemo;
+		};
+		F164F76E2E0AE911001F6A5A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = F164F7692E0AE8EC001F6A5A;
+			remoteInfo = "Copy Bundles";
 		};
 /* End PBXContainerItemProxy section */
 
@@ -89,7 +79,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F164F2592E09ABE5001F6A5A /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -128,9 +117,8 @@
 		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
 		F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanVIN.swift; sourceTree = "<group>"; };
-		F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ../ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
-		F164F25B2E09AC37001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = ScanbotSDKOCRData.bundle; path = ../ScanbotSDK/AdditionalData/ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
 		F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		F164F7702E0AE923001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ScanbotSDKOCRData.bundle; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,7 +126,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F164F25A2E09ABF3001F6A5A /* ScanbotSDK.framework in Frameworks */,
+				F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +143,7 @@
 		082D0A2620C801AA009B1A7A = {
 			isa = PBXGroup;
 			children = (
-				F164F25B2E09AC37001F6A5A /* ScanbotSDKOCRData.bundle */,
+				F164F7702E0AE923001F6A5A /* ScanbotSDKOCRData.bundle */,
 				082D0A3120C801AA009B1A7A /* DataCaptureRTUUIExample */,
 				6991C59A256C2989008188AD /* DataCaptureRTUUIExampleUITests */,
 				082D0A4920C80261009B1A7A /* Frameworks */,
@@ -193,7 +181,6 @@
 		082D0A4920C80261009B1A7A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F164F2532E09AA57001F6A5A /* ScanbotSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -303,7 +290,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				08E3397F23E2F3BA00699471 /* PBXTargetDependency */,
+				F164F76F2E0AE911001F6A5A /* PBXTargetDependency */,
 			);
 			name = DataCaptureRTUUIExample;
 			productName = ReadyToUseUIDemo;
@@ -343,15 +330,12 @@
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1130;
 					};
-					08E3397923E2F3A200699471 = {
-						CreatedOnToolsVersion = 11.3;
-					};
-					6991C58A256C27CE008188AD = {
-						CreatedOnToolsVersion = 12.2;
-					};
 					6991C598256C2989008188AD = {
 						CreatedOnToolsVersion = 12.2;
 						TestTargetID = 082D0A2E20C801AA009B1A7A;
+					};
+					F164F7692E0AE8EC001F6A5A = {
+						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
@@ -364,13 +348,15 @@
 				Base,
 			);
 			mainGroup = 082D0A2620C801AA009B1A7A;
+			packageReferences = (
+				F164F7662E0AE8E1001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
+			);
 			productRefGroup = 082D0A3020C801AA009B1A7A /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				082D0A2E20C801AA009B1A7A /* DataCaptureRTUUIExample */,
-				08E3397923E2F3A200699471 /* Download ScanbotSDK */,
-				6991C58A256C27CE008188AD /* DeleteSDK */,
+				F164F7692E0AE8EC001F6A5A /* Copy Bundles */,
 				6991C598256C2989008188AD /* DataCaptureRTUUIExampleUITests */,
 			);
 		};
@@ -381,11 +367,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F164F25D2E09AC46001F6A5A /* ScanbotSDKOCRData.bundle in Resources */,
 				082D0A3D20C801AB009B1A7A /* LaunchScreen.storyboard in Resources */,
 				1172C6A72CCB8B3A003E1F17 /* DefaultUIDialogs.storyboard in Resources */,
 				082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */,
 				082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */,
+				F164F7712E0AE923001F6A5A /* ScanbotSDKOCRData.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -399,7 +385,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		08E3397D23E2F3A800699471 /* ShellScript */ = {
+		F164F76D2E0AE8F5001F6A5A /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -414,24 +400,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.1.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/../ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
-		};
-		6991C58E256C27D3008188AD /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nSDKFOLDER=${SRCROOT}/../ScanbotSDK\nrm -dfr \"${SDKFOLDER}\"\n";
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -af \"${BUILD_DIR%Build/*}/SourcePackages/checkouts/scanbot-sdk-ios-spm/Sources/AdditionalData/ScanbotSDKOCRData.bundle\" \"${PROJECT_DIR}/\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -477,15 +446,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		08E3397F23E2F3BA00699471 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 08E3397923E2F3A200699471 /* Download ScanbotSDK */;
-			targetProxy = 08E3397E23E2F3BA00699471 /* PBXContainerItemProxy */;
-		};
 		6991C59F256C2989008188AD /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 082D0A2E20C801AA009B1A7A /* DataCaptureRTUUIExample */;
 			targetProxy = 6991C59E256C2989008188AD /* PBXContainerItemProxy */;
+		};
+		F164F76F2E0AE911001F6A5A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = F164F7692E0AE8EC001F6A5A /* Copy Bundles */;
+			targetProxy = F164F76E2E0AE911001F6A5A /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -633,10 +602,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../ScanbotSDK",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -659,10 +625,7 @@
 				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../ScanbotSDK",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -674,42 +637,6 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_WORKSPACE = NO;
-			};
-			name = Release;
-		};
-		08E3397A23E2F3A200699471 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ266K5KCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		08E3397B23E2F3A200699471 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = VZ266K5KCR;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		6991C58B256C27CE008188AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		6991C58C256C27CE008188AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
 		};
@@ -758,6 +685,24 @@
 			};
 			name = Release;
 		};
+		F164F76B2E0AE8EC001F6A5A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B7365DM7N3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		F164F76C2E0AE8EC001F6A5A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = B7365DM7N3;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -779,24 +724,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		08E3397C23E2F3A200699471 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				08E3397A23E2F3A200699471 /* Debug */,
-				08E3397B23E2F3A200699471 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		6991C58D256C27CE008188AD /* Build configuration list for PBXAggregateTarget "DeleteSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6991C58B256C27CE008188AD /* Debug */,
-				6991C58C256C27CE008188AD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		6991C5A0256C2989008188AD /* Build configuration list for PBXNativeTarget "DataCaptureRTUUIExampleUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -806,7 +733,35 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		F164F76A2E0AE8EC001F6A5A /* Build configuration list for PBXAggregateTarget "Copy Bundles" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F164F76B2E0AE8EC001F6A5A /* Debug */,
+				F164F76C2E0AE8EC001F6A5A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F164F7662E0AE8E1001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = "7.1.0-RC1";
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F164F7672E0AE8E1001F6A5A /* ScanbotSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F164F7662E0AE8E1001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
+			productName = ScanbotSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 082D0A2720C801AA009B1A7A /* Project object */;
 }
