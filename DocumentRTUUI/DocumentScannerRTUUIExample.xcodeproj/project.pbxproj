@@ -6,31 +6,6 @@
 	objectVersion = 56;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		F17D5E182C74D312004F4BE3 /* Download ScanbotSDK */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = F17D5E1B2C74D312004F4BE3 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */;
-			buildPhases = (
-				F17D5E1C2C74D327004F4BE3 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = "Download ScanbotSDK";
-			productName = "Download ScanbotSDK";
-		};
-		F17D5E1D2C74D368004F4BE3 /* DeleteSDK */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = F17D5E1E2C74D368004F4BE3 /* Build configuration list for PBXAggregateTarget "DeleteSDK" */;
-			buildPhases = (
-				F17D5E212C74D387004F4BE3 /* ShellScript */,
-			);
-			dependencies = (
-			);
-			name = DeleteSDK;
-			productName = DeleteSDK;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		11FB02A22CB90E6800051EB1 /* UINavigationBar+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11FB02A12CB90E6000051EB1 /* UINavigationBar+Extension.swift */; };
 		F106CAF82AAB4E5D00D66DD8 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F106CAF72AAB4E5D00D66DD8 /* UIColor+Extension.swift */; };
@@ -40,8 +15,7 @@
 		F107A8752A97A2BB00387B8C /* ParametricFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A8742A97A2BB00387B8C /* ParametricFilterType.swift */; };
 		F107A8802A9DCFDC00387B8C /* MultiScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A87F2A9DCFDC00387B8C /* MultiScanResultViewController.swift */; };
 		F107A8822A9DD1F100387B8C /* MultiScanResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A8812A9DD1F100387B8C /* MultiScanResultCollectionViewCell.swift */; };
-		F164F24D2E09A6DA001F6A5A /* ScanbotSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F164F24C2E09A6DA001F6A5A /* ScanbotSDK.framework */; };
-		F164F2582E09AB39001F6A5A /* ScanbotSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F164F24C2E09A6DA001F6A5A /* ScanbotSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F164F77B2E0AEA1B001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */; };
 		F1719B132A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1719B122A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift */; };
 		F1A681172AA08B43005EE9E7 /* BannerUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A681162AA08B43005EE9E7 /* BannerUITableViewCell.swift */; };
 		F1A6811B2AA6188B005EE9E7 /* SinglePageScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6811A2AA6188B005EE9E7 /* SinglePageScanning.swift */; };
@@ -55,16 +29,6 @@
 		F1DB426C2A97522700CAE7E5 /* UsecasesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB426B2A97522700CAE7E5 /* UsecasesListTableViewController.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		F17D5E222C74D396004F4BE3 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F1B0CCA02A96332300389EA7 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = F17D5E182C74D312004F4BE3;
-			remoteInfo = "Download ScanbotSDK";
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXCopyFilesBuildPhase section */
 		F17D5E2B2C74D6C3004F4BE3 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -72,7 +36,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F164F2582E09AB39001F6A5A /* ScanbotSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,7 +51,6 @@
 		F107A8742A97A2BB00387B8C /* ParametricFilterType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParametricFilterType.swift; sourceTree = "<group>"; };
 		F107A87F2A9DCFDC00387B8C /* MultiScanResultViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiScanResultViewController.swift; sourceTree = "<group>"; };
 		F107A8812A9DD1F100387B8C /* MultiScanResultCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiScanResultCollectionViewCell.swift; sourceTree = "<group>"; };
-		F164F24C2E09A6DA001F6A5A /* ScanbotSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ScanbotSDK.framework; path = ../ScanbotSDK/ScanbotSDK.framework; sourceTree = SOURCE_ROOT; };
 		F1719B122A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageFinderOverlayScanning.swift; sourceTree = "<group>"; };
 		F1A681162AA08B43005EE9E7 /* BannerUITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerUITableViewCell.swift; sourceTree = "<group>"; };
 		F1A6811A2AA6188B005EE9E7 /* SinglePageScanning.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SinglePageScanning.swift; sourceTree = "<group>"; };
@@ -109,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F164F24D2E09A6DA001F6A5A /* ScanbotSDK.framework in Frameworks */,
+				F164F77B2E0AEA1B001F6A5A /* ScanbotSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +147,6 @@
 		F17D5E242C74D3BE004F4BE3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F164F24C2E09A6DA001F6A5A /* ScanbotSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -279,10 +240,10 @@
 			buildRules = (
 			);
 			dependencies = (
-				F17D5E232C74D396004F4BE3 /* PBXTargetDependency */,
 			);
 			name = DocumentScannerRTUUIExample;
 			packageProductDependencies = (
+				F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */,
 			);
 			productName = "Scanbot Document Usecases";
 			productReference = F1B0CCA82A96332300389EA7 /* DocumentScannerRTUUIExample.app */;
@@ -298,12 +259,6 @@
 				LastSwiftUpdateCheck = 1430;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					F17D5E182C74D312004F4BE3 = {
-						CreatedOnToolsVersion = 15.4;
-					};
-					F17D5E1D2C74D368004F4BE3 = {
-						CreatedOnToolsVersion = 15.4;
-					};
 					F1B0CCA72A96332300389EA7 = {
 						CreatedOnToolsVersion = 14.3;
 					};
@@ -319,14 +274,13 @@
 			);
 			mainGroup = F1B0CC9F2A96332300389EA7;
 			packageReferences = (
+				F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
 			);
 			productRefGroup = F1B0CCA92A96332300389EA7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
 				F1B0CCA72A96332300389EA7 /* DocumentScannerRTUUIExample */,
-				F17D5E182C74D312004F4BE3 /* Download ScanbotSDK */,
-				F17D5E1D2C74D368004F4BE3 /* DeleteSDK */,
 			);
 		};
 /* End PBXProject section */
@@ -343,43 +297,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		F17D5E1C2C74D327004F4BE3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\nset -x\nTARGETSDKVERSION=\"7.1.0\"\n\n# Uncomment, if you wish to use Pre-Releases of Scanbot SDK\nPRERELEASE=\"RC1\"\n\nZIPFILENAME=${TARGETSDKVERSION}\n\nOUTPUTFOLDER=${SRCROOT}/../ScanbotSDK\nDOWNLOADFOLDER=${OUTPUTFOLDER}/DownloadTemp\nZIPNAME=${DOWNLOADFOLDER}/SDK.zip\nPLIST=${OUTPUTFOLDER}/ScanbotSDK.framework/Info.plist\n\nDOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\n\nif [ ! -z \"$PRERELEASE\" ]; then\n    DOWNLOAD_URL=\"https://download.scanbot.io/sdk/ios/pre/${PRERELEASE}/scanbot-ios-sdk-framework-${ZIPFILENAME}.zip\"\nfi\n\nif [ -f \"$PLIST\" ]; then\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nelse \nINSTALLEDVERSION=\"None\"\nfi\n\necho \"Installed ScanbotSDK version = ${INSTALLEDVERSION}\"\necho \"Target ScanbotSDK version = ${TARGETSDKVERSION}\"\n\nif [ \"$INSTALLEDVERSION\" = \"$TARGETSDKVERSION\" ]; then\necho \"Installed ScanbotSDK is already up to date.\"\nexit 0\nfi\n\nrm -dfr \"${DOWNLOADFOLDER}\"\nmkdir -p \"${DOWNLOADFOLDER}\"\n\necho \"Downloading ScanbotSDK...\"\ncurl -s -o ${ZIPNAME} ${DOWNLOAD_URL}\n\necho \"Unzipping ScanbotSDK...\"\nrm -dfr \"${OUTPUTFOLDER}/ScanbotSDK\"\nunzip -q ${ZIPNAME} -d ${OUTPUTFOLDER}/\n\necho \"Cleaning up...\"\nrm -dfr \"${DOWNLOADFOLDER}\"\n\necho \"Verifying version...\"\nINSTALLEDVERSION=$(/usr/libexec/PlistBuddy -c 'print \":CFBundleShortVersionString\"' \"$PLIST\")\nif [ \"$INSTALLEDVERSION\" != \"$TARGETSDKVERSION\" ]; then\necho \"error: ScanbotSDK failed updating.\"\nexit -1\nfi\n\nLICENSE=${OUTPUTFOLDER}/ScanbotSDK/ScanbotSDK.framework/Licenses.txt\ncp \"${LICENSE}\" \"${PROJECT_DIR}/Libraries.txt\"\n\necho \"Finished installing ScanbotSDK\"\n\n# Type a script or drag a script file from your workspace to insert its path.\n";
-		};
-		F17D5E212C74D387004F4BE3 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n\nSDKFOLDER=${SRCROOT}/../ScanbotSDK\nrm -dfr \"${SDKFOLDER}\"\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1B0CCA42A96332300389EA7 /* Sources */ = {
@@ -407,14 +324,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		F17D5E232C74D396004F4BE3 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = F17D5E182C74D312004F4BE3 /* Download ScanbotSDK */;
-			targetProxy = F17D5E222C74D396004F4BE3 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		F1B0CCB12A96332300389EA7 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -435,42 +344,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		F17D5E192C74D312004F4BE3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7365DM7N3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		F17D5E1A2C74D312004F4BE3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7365DM7N3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
-		F17D5E1F2C74D368004F4BE3 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7365DM7N3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		F17D5E202C74D368004F4BE3 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = B7365DM7N3;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 		F1B0CCBA2A96332400389EA7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -593,10 +466,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../ScanbotSDK",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DocumentScannerRTUUIExample/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DocumentScannerRTUUIExample;
@@ -629,10 +499,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				FRAMEWORK_SEARCH_PATHS = (
-					"$(inherited)",
-					"$(PROJECT_DIR)/../ScanbotSDK",
-				);
+				FRAMEWORK_SEARCH_PATHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "DocumentScannerRTUUIExample/Supporting Files/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = DocumentScannerRTUUIExample;
@@ -660,24 +527,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F17D5E1B2C74D312004F4BE3 /* Build configuration list for PBXAggregateTarget "Download ScanbotSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F17D5E192C74D312004F4BE3 /* Debug */,
-				F17D5E1A2C74D312004F4BE3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		F17D5E1E2C74D368004F4BE3 /* Build configuration list for PBXAggregateTarget "DeleteSDK" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				F17D5E1F2C74D368004F4BE3 /* Debug */,
-				F17D5E202C74D368004F4BE3 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F1B0CCA32A96332300389EA7 /* Build configuration list for PBXProject "DocumentScannerRTUUIExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -697,6 +546,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
+			requirement = {
+				kind = exactVersion;
+				version = 7.0.3;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
+			productName = ScanbotSDK;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = F1B0CCA02A96332300389EA7 /* Project object */;
 }
