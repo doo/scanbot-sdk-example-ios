@@ -21,14 +21,14 @@ With our Ready-To-Use UI (RTU UI) components, you can integrate the Scanbot SDK 
 ## How to run this example app?
 
 * Clone this repository to a local folder.
-* Open `ClassicComponentsExample.xcodeproj` with Xcode, build and run. A build script will automatically download ScanbotSDK to your project folder if needed.
+* Open **ClassicComponent** > `ClassicComponentsExample.xcodeproj` with Xcode, build and run. A build script will automatically download ScanbotSDK to your project folder if needed.
 * In case you do not want to automatically download the SDK in the Demo app's target, remove the dependency to the 'Download ScanbotSDK' aggregate target and perform the following steps:
-	* Download the latest Scanbot SDK for iOS from our [docs](https://docs.scanbot.io/document-scanner-sdk/ios/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
-	* Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`).
-	* For Classical UI components open `ClassicComponentsExample.xcodeproj` with Xcode, build and run.
-	* For Document Ready-To-Use UI open `DocumentScannerRTUUIExample.xcodeproj` with Xcode, build and run.
-	* For Data Capture Ready-To-Use UI open `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run.
-	* For SwiftUI Components open `SwiftUIComponentsExample.xcodeproj` with Xcode, build and run.
+    * Download the latest Scanbot SDK for iOS from our [docs](https://docs.scanbot.io/document-scanner-sdk/ios/introduction/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites).
+    * Unzip the downloaded zip file and copy the extracted `ScanbotSDK` folder to your local example app folder (`scanbot-sdk-example-ios/ScanbotSDK`).
+    * For Classical UI components open **ClassicComponent** > `ClassicComponentsExample.xcodeproj` with Xcode, build and run.
+    * For Document Ready-To-Use UI open **DocumentRTUUI** > `DocumentScannerRTUUIExample.xcodeproj` with Xcode, build and run.
+    * For Data Capture Ready-To-Use UI open **DataCaptureRTUUI** > `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run.
+    * For SwiftUI Components open **SwiftUI** > `SwiftUIComponentsExample.xcodeproj` with Xcode, build and run.
 
 ## Overview of the Scanbot SDK
 
