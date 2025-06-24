@@ -1,0 +1,15 @@
+{
+  "originHash" : "62592ccb8c541cceb23c102892b2e197665b13a14f50667499169d28e55419c0",
+  "pins" : [
+    {
+      "identity" : "scanbot-sdk-ios-spm",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/doo/scanbot-sdk-ios-spm.git",
+      "state" : {
+        "revision" : "a41b79122c07ae8c6ab80aa8c2746b92f44deff2",
+        "version" : "7.1.0-RC1"
+      }
+    }
+  ],
+  "version" : 3
+}
