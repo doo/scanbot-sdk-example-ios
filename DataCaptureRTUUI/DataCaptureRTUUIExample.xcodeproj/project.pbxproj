@@ -47,7 +47,6 @@
 		28F2730A2791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */; };
 		28FC46AF2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */; };
 		692227BC2524A95E00E81886 /* UsecaseScanTextPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */; };
-		6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */; };
 		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
 		F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */; };
 		F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */; };
@@ -56,13 +55,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6991C59E256C2989008188AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 082D0A2E20C801AA009B1A7A;
-			remoteInfo = ReadyToUseUIDemo;
-		};
 		F164F76E2E0AE911001F6A5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 082D0A2720C801AA009B1A7A /* Project object */;
@@ -112,7 +104,6 @@
 		28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDateExtractorResultImageListCell.swift; sourceTree = "<group>"; };
 		28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanDocumentDataExtractor.swift; sourceTree = "<group>"; };
 		692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTextPattern.swift; sourceTree = "<group>"; };
-		6991C599256C2989008188AD /* DataCaptureRTUUIExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DataCaptureRTUUIExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureRTUUIExampleDemoUITests.swift; sourceTree = "<group>"; };
 		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
@@ -127,13 +118,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6991C596256C2989008188AD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -155,7 +139,6 @@
 			isa = PBXGroup;
 			children = (
 				082D0A2F20C801AA009B1A7A /* DataCaptureRTUUIExample.app */,
-				6991C599256C2989008188AD /* DataCaptureRTUUIExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -297,24 +280,6 @@
 			productReference = 082D0A2F20C801AA009B1A7A /* DataCaptureRTUUIExample.app */;
 			productType = "com.apple.product-type.application";
 		};
-		6991C598256C2989008188AD /* DataCaptureRTUUIExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6991C5A0256C2989008188AD /* Build configuration list for PBXNativeTarget "DataCaptureRTUUIExampleUITests" */;
-			buildPhases = (
-				6991C595256C2989008188AD /* Sources */,
-				6991C596256C2989008188AD /* Frameworks */,
-				6991C597256C2989008188AD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6991C59F256C2989008188AD /* PBXTargetDependency */,
-			);
-			name = DataCaptureRTUUIExampleUITests;
-			productName = ReadyToUseUIDemoUITests;
-			productReference = 6991C599256C2989008188AD /* DataCaptureRTUUIExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -329,10 +294,6 @@
 					082D0A2E20C801AA009B1A7A = {
 						CreatedOnToolsVersion = 9.4;
 						LastSwiftMigration = 1130;
-					};
-					6991C598256C2989008188AD = {
-						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 082D0A2E20C801AA009B1A7A;
 					};
 					F164F7692E0AE8EC001F6A5A = {
 						CreatedOnToolsVersion = 16.2;
@@ -357,7 +318,6 @@
 			targets = (
 				082D0A2E20C801AA009B1A7A /* DataCaptureRTUUIExample */,
 				F164F7692E0AE8EC001F6A5A /* Copy Bundles */,
-				6991C598256C2989008188AD /* DataCaptureRTUUIExampleUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -372,13 +332,6 @@
 				082D0A3A20C801AB009B1A7A /* Assets.xcassets in Resources */,
 				082D0A3820C801AB009B1A7A /* Main.storyboard in Resources */,
 				F164F7712E0AE923001F6A5A /* ScanbotSDKOCRData.bundle in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		6991C597256C2989008188AD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,22 +388,9 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6991C595256C2989008188AD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6991C59C256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6991C59F256C2989008188AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 082D0A2E20C801AA009B1A7A /* DataCaptureRTUUIExample */;
-			targetProxy = 6991C59E256C2989008188AD /* PBXContainerItemProxy */;
-		};
 		F164F76F2E0AE911001F6A5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F164F7692E0AE8EC001F6A5A /* Copy Bundles */;
@@ -642,51 +582,6 @@
 			};
 			name = Release;
 		};
-		6991C5A1256C2989008188AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.ReadyToUseUIDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ReadyToUseUIDemo;
-			};
-			name = Debug;
-		};
-		6991C5A2256C2989008188AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				INFOPLIST_FILE = ReadyToUseUIDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.scanbot.example.ReadyToUseUIDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ReadyToUseUIDemo;
-			};
-			name = Release;
-		};
 		F164F76B2E0AE8EC001F6A5A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -726,15 +621,6 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		6991C5A0256C2989008188AD /* Build configuration list for PBXNativeTarget "DataCaptureRTUUIExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6991C5A1256C2989008188AD /* Debug */,
-				6991C5A2256C2989008188AD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		F164F76A2E0AE8EC001F6A5A /* Build configuration list for PBXAggregateTarget "Copy Bundles" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -752,7 +638,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = "7.1.0-RC1";
+				version = "7.1.0-RC2";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

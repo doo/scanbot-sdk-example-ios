@@ -59,7 +59,6 @@
 		28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28E8AA1F2A4331A00071539A /* ScanAndCountViewController.swift */; };
 		28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */; };
 		28F65BEF273438E100905E6D /* ReviewDocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */; };
-		6991C575256C179A008188AD /* ClassicComponentsExampleUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6991C574256C179A008188AD /* ClassicComponentsExampleUITests.swift */; };
 		6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */; };
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
@@ -74,13 +73,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6991C577256C179A008188AD /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 9ED845791AE670CC008B2731 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 9ED845801AE670CC008B2731;
-			remoteInfo = ScanbotSDKDemo;
-		};
 		F164F7542E0AE08E001F6A5A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 9ED845791AE670CC008B2731 /* Project object */;
@@ -150,7 +142,6 @@
 		28F65BE7273414BF00905E6D /* DocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerViewController.swift; sourceTree = "<group>"; };
 		28F65BEE273438E100905E6D /* ReviewDocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDocumentsViewController.swift; sourceTree = "<group>"; };
 		6954AEA824E5434A00005627 /* ClassicComponentsExample.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = ClassicComponentsExample.entitlements; path = ClassicComponentsExample/ClassicComponentsExample.entitlements; sourceTree = "<group>"; };
-		6991C572256C179A008188AD /* ClassicComponentsExampleUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ClassicComponentsExampleUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6991C574256C179A008188AD /* ClassicComponentsExampleUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicComponentsExampleUITests.swift; sourceTree = "<group>"; };
 		6991C576256C179A008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6EE9904C21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectRatioDocumentScannerViewController.swift; sourceTree = "<group>"; };
@@ -168,13 +159,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		6991C56F256C179A008188AD /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9ED8457E1AE670CC008B2731 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -311,7 +295,6 @@
 			isa = PBXGroup;
 			children = (
 				9ED845811AE670CC008B2731 /* ClassicComponentsExample.app */,
-				6991C572256C179A008188AD /* ClassicComponentsExampleUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -375,24 +358,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		6991C571256C179A008188AD /* ClassicComponentsExampleUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 6991C579256C179A008188AD /* Build configuration list for PBXNativeTarget "ClassicComponentsExampleUITests" */;
-			buildPhases = (
-				6991C56E256C179A008188AD /* Sources */,
-				6991C56F256C179A008188AD /* Frameworks */,
-				6991C570256C179A008188AD /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				6991C578256C179A008188AD /* PBXTargetDependency */,
-			);
-			name = ClassicComponentsExampleUITests;
-			productName = ScanbotSDKDemoUITests;
-			productReference = 6991C572256C179A008188AD /* ClassicComponentsExampleUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 		9ED845801AE670CC008B2731 /* ClassicComponentsExample */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9ED845A41AE670CD008B2731 /* Build configuration list for PBXNativeTarget "ClassicComponentsExample" */;
@@ -423,12 +388,6 @@
 				LastUpgradeCheck = 1620;
 				ORGANIZATIONNAME = "doo GmbH";
 				TargetAttributes = {
-					6991C571256C179A008188AD = {
-						CreatedOnToolsVersion = 12.2;
-						DevelopmentTeam = FRUPYT6KB3;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9ED845801AE670CC008B2731;
-					};
 					9ED845801AE670CC008B2731 = {
 						CreatedOnToolsVersion = 6.3;
 						DevelopmentTeam = FRUPYT6KB3;
@@ -458,19 +417,11 @@
 			targets = (
 				9ED845801AE670CC008B2731 /* ClassicComponentsExample */,
 				F164F74F2E0AE01F001F6A5A /* Copy Bundles */,
-				6991C571256C179A008188AD /* ClassicComponentsExampleUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		6991C570256C179A008188AD /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9ED8457F1AE670CC008B2731 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -506,14 +457,6 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		6991C56E256C179A008188AD /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6991C575256C179A008188AD /* ClassicComponentsExampleUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9ED8457D1AE670CC008B2731 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -565,11 +508,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		6991C578256C179A008188AD /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 9ED845801AE670CC008B2731 /* ClassicComponentsExample */;
-			targetProxy = 6991C577256C179A008188AD /* PBXContainerItemProxy */;
-		};
 		F164F7552E0AE08E001F6A5A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = F164F74F2E0AE01F001F6A5A /* Copy Bundles */;
@@ -578,69 +516,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		6991C57A256C179A008188AD /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEBUG_INFORMATION_FORMAT = dwarf;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ScanbotSDKDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.krosh.inc.ScanbotSDKDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ScanbotSDKDemo;
-			};
-			name = Debug;
-		};
-		6991C57B256C179A008188AD /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ANALYZER_NONNULL = YES;
-				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
-				CLANG_ENABLE_OBJC_WEAK = YES;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
-				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
-				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FRUPYT6KB3;
-				GCC_C_LANGUAGE_STANDARD = gnu11;
-				INFOPLIST_FILE = ScanbotSDKDemoUITests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MTL_FAST_MATH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = io.krosh.inc.ScanbotSDKDemoUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_TARGET_NAME = ScanbotSDKDemo;
-			};
-			name = Release;
-		};
 		9ED845A21AE670CD008B2731 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -837,15 +712,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		6991C579256C179A008188AD /* Build configuration list for PBXNativeTarget "ClassicComponentsExampleUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				6991C57A256C179A008188AD /* Debug */,
-				6991C57B256C179A008188AD /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		9ED8457C1AE670CC008B2731 /* Build configuration list for PBXProject "ClassicComponentsExample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -881,7 +747,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = "7.1.0-RC1";
+				version = "7.1.0-RC2";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
