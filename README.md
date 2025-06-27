@@ -21,10 +21,12 @@ With our Ready-To-Use UI (RTU UI) components, you can integrate the Scanbot SDK 
 ## How to run this example app?
 
 * Clone this repository to a local folder.
-* For Classical UI components open **ClassicComponent** > `ClassicComponentsExample.xcodeproj` with Xcode, build and run.
-* For Document Ready-To-Use UI open **DocumentRTUUI** > `DocumentScannerRTUUIExample.xcodeproj` with Xcode, build and run.
-* For Data Capture Ready-To-Use UI open **DataCaptureRTUUI** > `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run.
-* For SwiftUI Components open **SwiftUI** > `SwiftUIComponentsExample.xcodeproj` with Xcode, build and run.
+* Open Example Apps.xcworkspace with Xcode to see all four example apps.
+* Or open the individial Xcode projects if you are interested in only one of the example apps: 
+  - For Classical UI components open **ClassicComponent** > `ClassicComponentsExample.xcodeproj` with Xcode, build and run.
+  - For Document Ready-To-Use UI open **DocumentRTUUI** > `DocumentScannerRTUUIExample.xcodeproj` with Xcode, build and run.
+  - For Data Capture Ready-To-Use UI open **DataCaptureRTUUI** > `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run.
+  - For SwiftUI Components open **SwiftUI** > `SwiftUIComponentsExample.xcodeproj` with Xcode, build and run.
 
 ## Overview of the Scanbot SDK
 
