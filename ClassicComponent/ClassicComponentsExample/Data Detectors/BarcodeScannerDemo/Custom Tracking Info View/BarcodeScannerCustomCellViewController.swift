@@ -11,6 +11,8 @@ import ScanbotSDK
 
 final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController, SBSDKBarcodeTrackingOverlayControllerDelegate {
     
+    private var barcodeItemSelection: SBSDKBarcodeItemSelection = SBSDKBarcodeItemSelection()
+    
     enum ColorScheme {
         case polygonForeground
         case polygonBackground
@@ -43,16 +45,22 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
         scannerViewController?.trackingOverlayController.delegate = self
     }
     
-    func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                didChangeSelectedBarcodes selectedBarcodes: [SBSDKBarcodeItem]) {
-        
-        if selectedBarcodes.count > 0 {
-            displayResults(selectedBarcodes)
+    func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController,
+                                didTapOnBarcode barcode: SBSDKBarcodeItem) {
+        barcodeItemSelection.toggleSelection(for: barcode)
+        if barcodeItemSelection.allBarcodes.count > 0 {
+            displayResults(barcodeItemSelection.allBarcodes)
         }
     }
     
+    func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController,
+                                shouldHighlight barcode: SBSDKBarcodeItem) -> Bool {
+        barcodeItemSelection.contains(barcode: barcode)
+    }
+    
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                polygonStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewPolygonStyle? {
+                                polygonStyleFor barcode: SBSDKBarcodeItem,
+                                proposedStyle: SBSDKBarcodeTrackedViewPolygonStyle) -> SBSDKBarcodeTrackedViewPolygonStyle {
         
         let style = SBSDKBarcodeTrackedViewPolygonStyle()
         style.polygonDrawingEnabled = true
@@ -64,7 +72,8 @@ final class BarcodeScannerCustomCellViewController: BarcodeScannerViewController
     }
     
     func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, 
-                                textStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewTextStyle? {
+                                textStyleFor barcode: SBSDKBarcodeItem, 
+                                proposedStyle: SBSDKBarcodeTrackedViewTextStyle) -> SBSDKBarcodeTrackedViewTextStyle {
         
         let style = SBSDKBarcodeTrackedViewTextStyle()
         style.textDrawingEnabled = true
