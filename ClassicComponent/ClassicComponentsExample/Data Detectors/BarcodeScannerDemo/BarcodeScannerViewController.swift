@@ -28,7 +28,7 @@ class BarcodeScannerViewController: UIViewController {
         let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: selectedBarcodeTypes)
         
         let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
-        
+        configuration.returnBarcodeImage = true 
         scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
                                                                   parentView: view, 
                                                                   configuration: configuration,
