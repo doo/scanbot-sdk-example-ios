@@ -30,7 +30,7 @@ class CreditCardUserGuidanceUI2ViewController: UIViewController {
         // Show the user guidance.
         topUserGuidance.visible = true
         // Configure the title.
-        topUserGuidance.title.text = "Scan your Identity Document"
+        topUserGuidance.title.text = "Scan your Credit Card"
         topUserGuidance.title.color = SBSDKUI2Color(colorString: "#FFFFFF")
         // Configure the background.
         topUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")

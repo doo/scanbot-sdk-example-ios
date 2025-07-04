@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <FileRef
+      location = "group:ClassicComponent/ClassicComponentsExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DataCaptureRTUUI/DataCaptureRTUUIExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:DocumentRTUUI/DocumentScannerRTUUIExample.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:SwiftUI/SwiftUIComponentsExample.xcodeproj">
+   </FileRef>
+</Workspace>
