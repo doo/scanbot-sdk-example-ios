@@ -32,10 +32,10 @@ class DocumentDataExtractorViewController: UIViewController {
             SBSDKDocumentsModelRootType.dePassport
         ]
         
-        // Extracts German driver's licenses only. Front and/or back side.
+        // Extracts European driver's licenses only. Front and/or back side.
         let driverLicenseTypes: [SBSDKDocumentsModelRootType] = [
-            SBSDKDocumentsModelRootType.deDriverLicenseFront,
-            SBSDKDocumentsModelRootType.deDriverLicenseBack
+            SBSDKDocumentsModelRootType.europeanDriverLicenseFront,
+            SBSDKDocumentsModelRootType.europeanDriverLicenseBack
         ];
         
         // Exclude these field types from the extraction process.
