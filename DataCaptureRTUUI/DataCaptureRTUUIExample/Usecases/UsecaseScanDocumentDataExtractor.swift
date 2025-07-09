@@ -37,7 +37,7 @@ class UsecaseScanDocumentDataExtractor: Usecase {
                 message += "\n" + fields.joined(separator: "\n")
                 
                 UIAlertController.showInfoAlert(title,
-                                                message: result.description,
+                                                message: message,
                                                 presenter: presenter, completion: nil)
             } else {
                 self?.didFinish()
