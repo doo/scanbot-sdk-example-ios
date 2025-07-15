@@ -56,10 +56,10 @@ class BarcodesOverlayViewController: UIViewController {
         trackingConfiguration.textStyle.textBackgroundColor = UIColor(red:0, green:0.81, blue:0.65, alpha:0.8)
         
         // Set the text color of the selected tracked barcodes.
-        trackingConfiguration.textStyle.selectedTextColor = UIColor.white
+        trackingConfiguration.textStyle.highlightedTextColor = UIColor.white
         
         // Set the text background color of the selected tracked barcodes.
-        trackingConfiguration.textStyle.textBackgroundSelectedColor = UIColor(red:0.784, green:0.1, blue:0.235, alpha:0.8)
+        trackingConfiguration.textStyle.textBackgroundHighlightedColor = UIColor(red:0.784, green:0.1, blue:0.235, alpha:0.8)
         
         // Set the text format of the tracked barcodes.
         trackingConfiguration.textStyle.trackingOverlayTextFormat = .codeAndType
