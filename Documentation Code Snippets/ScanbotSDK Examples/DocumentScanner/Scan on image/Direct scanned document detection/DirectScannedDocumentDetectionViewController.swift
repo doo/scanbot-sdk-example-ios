@@ -10,7 +10,7 @@ import ScanbotSDK
 
 class DirectScannedDocumentDetectionViewController {
     
-    func detectDocument(on scannedDocument: SBSDKScannedDocument) {
+    func detect(on scannedDocument: SBSDKScannedDocument) {
         
         // Iterate over the pages.
         scannedDocument.pages.forEach { page in
