@@ -65,6 +65,8 @@ enum ExampleCategory: String, CaseIterable {
                     ImageProcessingViewController.self]
         case .barcode:
             return [BarcodeSwiftUIHostingViewController.self,
+                    BarcodeViewFinderUI2ViewController.self,
+                    BarcodeGettingStartedUI2ViewController.self,
                     BarcodeLocalizationUI2ViewController.self,
                     BarcodePaletteUI2ViewController.self,
                     SingleBarcodeScannerUI2ViewController.self,
@@ -77,6 +79,9 @@ enum ExampleCategory: String, CaseIterable {
                     TopBarBarcodeUI2ViewController.self,
                     BarcodesSheetModeUI2ViewController.self,
                     BarcodeScannerViewController.self,
+                    BarcodeImageResultHandlingViewController.self,
+                    BarcodeRawResultHandlingViewController.self,
+                    BarcodeHandlingResultViewController.self,
                     BarcodesBatchViewController.self,
                     BarcodesOverlayViewController.self,
                     BarcodeScanAndCountViewController.self,
