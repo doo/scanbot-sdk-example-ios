@@ -51,7 +51,7 @@ class OCRSearchablePDFGeneration {
         }
     }
     
-    func createSearchablePDF(from image: UIImage) {
+    func createSearchablePDF(from images: [UIImage]) {
         
         // Create a PDF configuration object.
         let pdfConfiguration = SBSDKPDFConfiguration(
@@ -82,6 +82,11 @@ class OCRSearchablePDFGeneration {
         // encrptor as a parameter. If not, the default location of `SBSDKStorageLocation` and a default
         // file format of type `SBSDKImageFileFormat.JPEG` is used without an encrypter.
         guard let imageStorage = SBSDKIndexedImageStorage() else { return }
+        
+        // Add your images in the storage.
+        images.forEach { image in
+            imageStorage.add(image)
+        }
         
         // Create an output URL.
         guard let outputUrl = URL(string: "<output_url") else { return }
