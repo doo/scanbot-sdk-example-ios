@@ -52,8 +52,8 @@ extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
         switch state {
         case .searching:
             self.statusLabel?.text = "Looking for the check"
-        case .recognizing:
-            self.statusLabel?.text = "Recognizing the check"
+        case .scanning:
+            self.statusLabel?.text = "Scanning the check"
         case .capturing:
             self.statusLabel?.text = "Capturing the check"
         case .energySaving:
