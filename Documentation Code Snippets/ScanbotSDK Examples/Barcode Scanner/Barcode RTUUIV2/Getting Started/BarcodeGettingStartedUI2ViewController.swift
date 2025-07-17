@@ -17,7 +17,7 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
 
         // Present the scanner view controller modally on this view controller.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                        configuration: configuration) { controller, cancelled, error, result in
+                                                     configuration: configuration) { controller, cancelled, error, result in
             
             // Completion handler to process the result.
             // The `cancelled` parameter indicates if the cancel button was tapped.
@@ -33,7 +33,7 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
         
         // Present the scanner view controller modally on this view controller.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                        configuration: configuration) { controller, cancelled, error, result in
+                                                     configuration: configuration) { controller, cancelled, error, result in
 
             if cancelled {
                             
