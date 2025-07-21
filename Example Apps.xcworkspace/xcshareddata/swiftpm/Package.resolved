@@ -6,8 +6,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/doo/scanbot-sdk-ios-spm.git",
       "state" : {
-        "revision" : "4bb0cf70799e3a639cc36d6b10ab79b57b6411d7",
-        "version" : "7.1.0-RC6"
+        "revision" : "ea83d123898448ed15a9c781347c6708e9226e15",
+        "version" : "7.1.0-RC7"
       }
     }
   ],
