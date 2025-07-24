@@ -22,16 +22,15 @@ class CheckScannerViewController: UIViewController {
         // Create a configuration with `detectAndCropDocument` to extract the check image.
         let configuration = SBSDKCheckScannerConfiguration(documentDetectionMode: .detectAndCropDocument)
         
+        // Customize the default accepted check types as needed.
+        // For this example we will use the following types of check.
+        configuration.acceptedCheckStandards = [.usa, .uae, .fra, .isr, .kwt, .aus, .ind, .can]
+        
         // Create the `SBSDKCheckScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKCheckScannerViewController(parentViewController: self,
                                                                      parentView: self.view,
                                                                      configuration: configuration,
                                                                      delegate: self)
-        
-        // Customize the default accepted check types as needed.
-        // For this example we will use the following types of check.
-        self.scannerViewController?.acceptedCheckTypes = [.usaCheck, .uaeCheck, .fraCheck, .isrCheck,
-                                                          .kwtCheck, .ausCheck, .indCheck, .canCheck]
     }
 }
 
@@ -52,8 +51,8 @@ extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
         switch state {
         case .searching:
             self.statusLabel?.text = "Looking for the check"
-        case .recognizing:
-            self.statusLabel?.text = "Recognizing the check"
+        case .scanning:
+            self.statusLabel?.text = "Scanning the check"
         case .capturing:
             self.statusLabel?.text = "Capturing the check"
         case .energySaving:

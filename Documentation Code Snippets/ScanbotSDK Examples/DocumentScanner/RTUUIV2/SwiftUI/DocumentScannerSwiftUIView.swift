@@ -56,10 +56,14 @@ struct DocumentScannerSwiftUIView: View {
     // An optional `SBSDKScannedDocument` object containing the resulted document of the scanning process.
     @State var scannedDocument: SBSDKScannedDocument?
     
+    @Environment(\.presentationMode) var presentationMode
+    
     var body: some View {
         
         if let document = self.scannedDocument {
+            
             // Process and show the resulted document here.
+            Text("Process the resulted document!")
 
         } else {
             
@@ -72,6 +76,7 @@ struct DocumentScannerSwiftUIView: View {
                 } else {
                     
                     // Dismiss your view here.
+                    presentationMode.wrappedValue.dismiss()
                 }
             })
             .ignoresSafeArea()

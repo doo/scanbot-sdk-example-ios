@@ -16,11 +16,12 @@ func scanCheckFromImage() {
     // Create a configuration with `detectAndCropDocument` to extract the check image.
     let configuration = SBSDKCheckScannerConfiguration(documentDetectionMode: .detectAndCropDocument)
     
-    // Set the desired check types of the scanner.
-    let acceptedCheckTypes = SBSDKCheckDocumentModelRootType.allDocumentTypes
+    // Customize the default accepted check types as needed.
+    // For this example we will use the following types of check.
+    configuration.acceptedCheckStandards = [.usa, .uae, .fra, .isr, .kwt, .aus, .ind, .can]
     
     // Create an instance of `SBSDKCheckScanner`.
-    let scanner = SBSDKCheckScanner(configuration: configuration, acceptedCheckTypes: acceptedCheckTypes)
+    let scanner = SBSDKCheckScanner(configuration: configuration)
     
     // Scan the check from given image.
     let result = scanner.scan(from: image)
