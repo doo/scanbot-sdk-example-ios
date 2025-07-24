@@ -15,7 +15,6 @@
 		F107A8752A97A2BB00387B8C /* ParametricFilterType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A8742A97A2BB00387B8C /* ParametricFilterType.swift */; };
 		F107A8802A9DCFDC00387B8C /* MultiScanResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A87F2A9DCFDC00387B8C /* MultiScanResultViewController.swift */; };
 		F107A8822A9DD1F100387B8C /* MultiScanResultCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F107A8812A9DD1F100387B8C /* MultiScanResultCollectionViewCell.swift */; };
-		F164F77B2E0AEA1B001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */; };
 		F1719B132A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1719B122A9F40A500ED664E /* SinglePageFinderOverlayScanning.swift */; };
 		F1A681172AA08B43005EE9E7 /* BannerUITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A681162AA08B43005EE9E7 /* BannerUITableViewCell.swift */; };
 		F1A6811B2AA6188B005EE9E7 /* SinglePageScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1A6811A2AA6188B005EE9E7 /* SinglePageScanning.swift */; };
@@ -24,6 +23,7 @@
 		F1B0CCB32A96332300389EA7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B0CCB12A96332300389EA7 /* Main.storyboard */; };
 		F1B0CCB52A96332400389EA7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F1B0CCB42A96332400389EA7 /* Assets.xcassets */; };
 		F1B0CCB82A96332400389EA7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F1B0CCB62A96332400389EA7 /* LaunchScreen.storyboard */; };
+		F1CCE09B2E326C1000CBFF7D /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F1CCE09A2E326C1000CBFF7D /* ScanbotSDK */; };
 		F1DB42662A974F4F00CAE7E5 /* MultiplePageScanning.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB42652A974F4F00CAE7E5 /* MultiplePageScanning.swift */; };
 		F1DB42682A974F8C00CAE7E5 /* PickFromGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB42672A974F8C00CAE7E5 /* PickFromGalleryViewController.swift */; };
 		F1DB426C2A97522700CAE7E5 /* UsecasesListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1DB426B2A97522700CAE7E5 /* UsecasesListTableViewController.swift */; };
@@ -71,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F164F77B2E0AEA1B001F6A5A /* ScanbotSDK in Frameworks */,
+				F1CCE09B2E326C1000CBFF7D /* ScanbotSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -243,7 +243,7 @@
 			);
 			name = DocumentScannerRTUUIExample;
 			packageProductDependencies = (
-				F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */,
+				F1CCE09A2E326C1000CBFF7D /* ScanbotSDK */,
 			);
 			productName = "Scanbot Document Usecases";
 			productReference = F1B0CCA82A96332300389EA7 /* DocumentScannerRTUUIExample.app */;
@@ -274,7 +274,7 @@
 			);
 			mainGroup = F1B0CC9F2A96332300389EA7;
 			packageReferences = (
-				F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
+				F1CCE0992E326C1000CBFF7D /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
 			);
 			productRefGroup = F1B0CCA92A96332300389EA7 /* Products */;
 			projectDirPath = "";
@@ -550,20 +550,20 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
+		F1CCE0992E326C1000CBFF7D /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = "7.1.0-RC8";
+				version = 7.1.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		F164F77A2E0AEA1B001F6A5A /* ScanbotSDK */ = {
+		F1CCE09A2E326C1000CBFF7D /* ScanbotSDK */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = F164F7792E0AEA1B001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
+			package = F1CCE0992E326C1000CBFF7D /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
 			productName = ScanbotSDK;
 		};
 /* End XCSwiftPackageProductDependency section */
