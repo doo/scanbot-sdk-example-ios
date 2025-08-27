@@ -133,7 +133,7 @@ final class DetectorsManager {
         
         let url = SBSDKStorageLocation.applicationSupportFolderURL
         var pathString = url.scheme == "file" ? url.relativePath : url.absoluteString;
-        pathString = "\(pathString)\(UUID().uuidString)"
+        pathString = "\(pathString)/\(UUID().uuidString)"
         
         let location = SBSDKStorageLocation(baseURL: URL(fileURLWithPath: pathString))
         let storage = SBSDKIndexedImageStorage(storageLocation: location, fileFormat: .JPEG, encrypter: encrypter, encryptedImagesURLs: [imagePath])
