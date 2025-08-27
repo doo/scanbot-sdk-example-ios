@@ -26,6 +26,8 @@ final class StaticImageDetectionViewController: UIViewController {
         }
     }
     
+    private var imagePath: URL?
+    
     private var importAction: ImportAction?
     private var detectorsManager: DetectorsManager?
     private var alertsManager: AlertsManager?
@@ -35,8 +37,9 @@ final class StaticImageDetectionViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        importAction = ImportAction(completionHandler: { [weak self] image in
+        importAction = ImportAction(completionHandler: { [weak self] (image, path) in
             self?.image = image
+            self?.imagePath = path
         })
         detectorsManager = DetectorsManager(delegate: self)
         alertsManager = AlertsManager(presenter: self)
@@ -73,7 +76,7 @@ final class StaticImageDetectionViewController: UIViewController {
         for detector in detectorsManager.allDetectors {
             let action = UIAlertAction(title: detector.detectorName, style: .default) { [weak self] _ in
                 guard let image = self?.image else { return }
-                detectorsManager.detectInfo(on: image, using: detector)
+                detectorsManager.detectInfo(on: image, orFilePath: self?.imagePath ?? URL(fileURLWithPath: ""), using: detector)
             }
             alert.addAction(action)
         }
@@ -116,6 +119,10 @@ extension StaticImageDetectionViewController: ScannerCameraViewControllerDelegat
 }
 
 extension StaticImageDetectionViewController: DetectorsManagerDelegate {
+    func scanner(_ generator: ScanbotSDK.SBSDKPDFGenerator, didFindPolygon isSuccess: Bool?) {
+        alertsManager?.showSuccessAlert(with: "Success")
+    }
+    
     
     func scanner(_ scanner: SBSDKBarcodeScanner,
                  didFindBarcodes result: SBSDKBarcodeScannerResult?) {
