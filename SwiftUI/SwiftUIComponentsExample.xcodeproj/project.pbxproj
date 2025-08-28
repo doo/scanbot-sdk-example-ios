@@ -247,7 +247,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1300;
-				LastUpgradeCheck = 1540;
+				LastUpgradeCheck = 1620;
 				TargetAttributes = {
 					2878D92027185E530045F7EE = {
 						CreatedOnToolsVersion = 13.0;
@@ -540,7 +540,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.1.0;
+				version = 7.1.1;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
