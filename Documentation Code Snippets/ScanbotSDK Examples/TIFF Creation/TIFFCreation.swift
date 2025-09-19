@@ -37,9 +37,14 @@ func createTIFF(from images: [UIImage]) {
     // Create the TIFF generator using created parameters and the encrypter.
     let tiffImageGenerator = SBSDKTIFFGenerator(parameters: parameters, encrypter: encrypter)
 
+    // Create ImageRefs from UIImages.
+    let imageRefs: [SBSDKImageRef] = images.map { uiImage in
+        SBSDKImageRef.fromUIImage(image: uiImage)
+    }
+    
     // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.
     // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
-    tiffImageGenerator.generate(from: images, to: outputTIFFURL, completion: { url in
+    tiffImageGenerator.generate(from: imageRefs, to: outputTIFFURL, completion: { url in
         
         // Handle the URL.
     })

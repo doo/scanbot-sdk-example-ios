@@ -18,19 +18,20 @@ class ImageStoringViewController: UIViewController {
         // Create a storage location object. This will create the folder on the filesystem if neccessary.
         let documentsLocation = SBSDKStorageLocation(baseURL: documentsURL)
         
+        // Create an encrypter for the storage. This will encrypt the image data, before it is written to disk
+        // and decrypt it after it is read from disk.
+        // Setting the encrypter does not encrypt existing images in the storage, only the images that are added to the
+        // storage after setting the encrypter.
+        let encrypter = SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
+        
         // Initialize an indexed image storage at this location.
         // The indexed image storage is an array-like, disk-backed image storage.
         guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: documentsLocation,
                                                           fileFormat: .PNG,
-                                                          encrypter: nil) else {
+                                                          encryptionMode: .required,
+                                                          encrypter: encrypter) else {
             return
         }
-        
-        // Create and attach an encrypter to the storage. This will encrypt the image data, before it is written to disk
-        // and decrypt it after it is read from disk.
-        // Setting the encrypter does not encrypt existing images in the storage, only the images that are added to the
-        // storage after setting the encrypter.
-        imageStorage.encrypter = SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
     }
     
     func basicOperationsOnIndexedImageStorage() {
@@ -40,8 +41,12 @@ class ImageStoringViewController: UIViewController {
         guard let imageStorage = SBSDKIndexedImageStorage.temporary else { return }
         
         if let image = UIImage(named: "testDocument") {
+            
+            // Create an image ref from UIImage.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
             // Save an image to the storage.
-            let isAdded = imageStorage.add(image)
+            let isAdded = imageStorage.add(imageRef)
             // Check the result.
             print("Image added successfully: \(isAdded)")
         }
@@ -86,8 +91,11 @@ class ImageStoringViewController: UIViewController {
         // Create a key string.
         let key = "testKey"
 
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
         // Put the image into the storage using the key.
-        imageStorage.set(image: image, for: key)
+        imageStorage.set(image: imageRef, for: key)
 
         // Get the image belonging to the key.
         let storedImage = imageStorage.image(for: key)

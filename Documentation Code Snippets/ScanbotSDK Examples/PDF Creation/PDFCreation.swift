@@ -45,8 +45,11 @@ func createPDF(from image: UIImage) {
     let imagesLocation = SBSDKStorageLocation.init(baseURL: imagesURL)
     guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation) else { return }
     
+    // Create an image ref from UIImage.
+    let imageRef = SBSDKImageRef.fromUIImage(image: image)
+    
     // Add the image to the image storage.
-    imageStorage.add(image)
+    imageStorage.add(imageRef)
     
     // Create the PDF attributes.
     let pdfAttributes = SBSDKPDFAttributes(author: "Author",

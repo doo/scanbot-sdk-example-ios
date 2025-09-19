@@ -33,21 +33,25 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         configuration.maxImageSize = 2000
         configuration.returnQualityHeatmap = false
         
-        // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
-        
-        // Run the analyzer on the document image.
-        // If you have a filter applied and you wish to run the analyzer on the unfiltered image.
-        // Otherwise you can just simply use the `page.documentImage`.
-        if let unfilteredDocumentImage = page.unfilteredDocumentImage {
+        do {
             
-            // Run the quality analyzer on the image.
-            let result = analyzer.analyze(on: unfilteredDocumentImage)
+            // Initialize the analyzer.
+            let analyzer = try SBSDKDocumentQualityAnalyzer(configuration: configuration)
             
-            // Handle the analyzer result.
-            if let result {
+            // Run the analyzer on the document image.
+            // If you have a filter applied and you wish to run the analyzer on the unfiltered image.
+            // Otherwise you can just simply use the `page.documentImage`.
+            if let unfilteredDocumentImage = page.unfilteredDocumentImage {
+                
+                // Run the quality analyzer on the image.
+                let result = try analyzer.run(image: unfilteredDocumentImage)
+                
+                // Handle the analyzer result.
                 self.printResult(result)
             }
+        }
+        catch {
+            print("Error analyzing the document quality: \(error.localizedDescription)")
         }
     }
     

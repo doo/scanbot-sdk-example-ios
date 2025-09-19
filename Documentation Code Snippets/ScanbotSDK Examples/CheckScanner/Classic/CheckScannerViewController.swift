@@ -42,7 +42,7 @@ extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
         // Process the scanned result.
         
         // Get the cropped image.
-        let croppedImage = result.croppedImage?.toUIImage()
+        let croppedImage = try? result.croppedImage?.toUIImage()
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,

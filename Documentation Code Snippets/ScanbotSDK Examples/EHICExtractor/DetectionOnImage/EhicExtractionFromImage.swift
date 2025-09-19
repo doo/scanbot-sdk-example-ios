@@ -24,39 +24,37 @@ func extractEhicFromImage() {
     // the given country, the result will be IncompleteValidation.
     ehicConfiguration.expectedCountry = .germany
     
-    // Use the builder to construct the document data extractor configuration to extract european
-    // health insurance card.
-    let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
+    // Create an instance of data extractor configuration for EHIC extraction.
+    let configuration = SBSDKDocumentDataExtractorConfiguration(configurations: [ehicConfiguration])
     
-    // Set the accepted document types as european health insurance card.
-    builder.setAcceptedDocumentTypes([SBSDKDocumentsModelRootType.europeanHealthInsuranceCard])
-    
-    // Set the ehic configuration.
-    builder.setEuropeanHealthInsuranceCardConfiguration(ehicConfiguration)
-    
-    // Get an instance of the constructed document data extractor configuration.
-    let configuration = builder.buildConfiguration()
-    
-    // Create an instance of `SBSDKDocumentDataExtractor`.
-    let extractor = SBSDKDocumentDataExtractor(configuration: configuration)
-    
-    // Extract the document from the image using the extractor.
-    let result = extractor.extract(from: image)
-    
-    
-    // Process the result.
-    
-    // Get the status
-    let status = result?.status
-    
-    // Get the detection result.
-    let detectionResult = result?.documentDetectionResult
-    
-    // Get the cropped image.
-    let croppedImage = result?.croppedImage?.toUIImage()
-    
-    // Access the documents fields directly by iterating over the documents fields.
-    if let fields = result?.document?.fields.compactMap({ "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }) {
-        print(fields.joined(separator: "\n"))
+    do {
+        // Create an instance of extractor.
+        let extractor = try SBSDKDocumentDataExtractor(configuration: configuration)
+        
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
+        // Extract the document from the image using the extractor.
+        let result = try extractor.run(image: imageRef)
+        
+        
+        // Process the result.
+        
+        // Get the status
+        let status = result.status
+        
+        // Get the detection result.
+        let detectionResult = result.documentDetectionResult
+        
+        // Get the cropped image.
+        let croppedImage = try result.croppedImage?.toUIImage()
+        
+        // Access the documents fields directly by iterating over the documents fields.
+        if let fields = result.document?.fields.compactMap({ "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }) {
+            print(fields.joined(separator: "\n"))
+        }
+    }
+    catch {
+        print("Error extracting EHIC: \(error.localizedDescription)")
     }
 }

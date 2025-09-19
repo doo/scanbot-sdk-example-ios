@@ -14,7 +14,14 @@ func createScannedDocument(with images: [UIImage]) {
     let scannedDocument = SBSDKScannedDocument(documentImageSizeLimit: 0)
     
     // Add images to the document.
-    images.forEach { scannedDocument.addPage(with: $0) }
+    images.forEach { image in
+        
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
+        // Add page.
+        scannedDocument.addPage(with: imageRef)
+    }
 }
 
 func createFromDocument(_ document: SBSDKDocument) -> SBSDKScannedDocument? {

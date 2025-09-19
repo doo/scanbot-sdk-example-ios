@@ -48,7 +48,7 @@ extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerD
         }
         
         // Get the cropped image.
-        let croppedImage = result.creditCard?.crop?.toUIImage()
+        let croppedImage = try? result.creditCard?.crop?.toUIImage()
         
         // Or create a wrapper for the document if needed to access the fields more easily.
         // You must cast it to the specific document model wrapper subclass.

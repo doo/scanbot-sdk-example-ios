@@ -28,9 +28,18 @@ func scanMRZOnImage() {
     // Whether to accept or reject incomplete MRZ results.
     configuration.incompleteResultHandling = .accept
     
-    // Create an instance of `SBSDKMRZScanner` using the configuration.
-    let scanner = SBSDKMRZScanner(configuration: configuration)
-    
-    // Run the scanner from the image.
-    let result = scanner.scan(from: image)
+    do {
+        
+        // Create an instance of MRZ scanner using the configuration.
+        let scanner = try SBSDKMRZScanner(configuration: configuration)
+        
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
+        // Run the scanner on the image.
+        let result = try scanner.run(image: imageRef)
+    }
+    catch {
+        print("Error scanning MRZ: \(error.localizedDescription)")
+    }
 }

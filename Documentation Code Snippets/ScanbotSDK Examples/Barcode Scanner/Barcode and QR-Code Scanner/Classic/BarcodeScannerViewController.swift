@@ -80,7 +80,7 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
         
         for code in codes {
             // Get the source image.
-            let sourceImage = code.sourceImage?.toUIImage()
+            let sourceImage = try? code.sourceImage?.toUIImage()
         }
     }
     

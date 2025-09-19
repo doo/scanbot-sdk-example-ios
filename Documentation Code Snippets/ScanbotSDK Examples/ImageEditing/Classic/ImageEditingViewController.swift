@@ -19,8 +19,11 @@ class ImageEditingViewController: UIViewController {
         // Check if the image to edit is not nil.
         guard let image = self.editingImage else { return }
         
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
         // Create the page.
-        let page = SBSDKDocumentPage(image: image, polygon: nil, filter: .none)
+        let page = SBSDKDocumentPage(image: imageRef, polygon: nil, parametricFilters: .none)
 
         // Create the editing view controller.
         let editingViewController = SBSDKImageEditingViewController.create(page: page)

@@ -83,7 +83,7 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
         let barcode = codes.first
         
         // Get the source image.
-        let sourceImage = barcode?.sourceImage?.toUIImage()
+        let sourceImage = try? barcode?.sourceImage?.toUIImage()
         
         // Run the parser and check the result.
         if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.extractedDocument) {
