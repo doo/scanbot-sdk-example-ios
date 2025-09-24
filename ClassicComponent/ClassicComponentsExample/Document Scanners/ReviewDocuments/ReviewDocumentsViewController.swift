@@ -43,7 +43,7 @@ final class ReviewDocumentsViewController: UIViewController {
     }
     
     @IBAction private func importButtonTapped(_ item: UIBarButtonItem) {
-        importAction = ImportAction { [weak self] image in
+        importAction = ImportAction { [weak self] (image, path) in
             defer { self?.importAction = nil }
             guard let image = image else { 
                 return 

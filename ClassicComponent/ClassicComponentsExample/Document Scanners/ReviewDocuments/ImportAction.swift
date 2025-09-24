@@ -10,9 +10,9 @@ import UIKit
 
 final class ImportAction: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private var completionHandler: (UIImage?)->()
+    private var completionHandler: (UIImage?, URL?)->()
     
-    init(completionHandler: @escaping (UIImage?)->()) {
+    init(completionHandler: @escaping (UIImage?, URL?)->()) {
         self.completionHandler = completionHandler
     }
     
@@ -27,12 +27,14 @@ final class ImportAction: NSObject, UIImagePickerControllerDelegate, UINavigatio
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let path = info[UIImagePickerController.InfoKey.imageURL] as? URL // UIImagePickerControllerImageURL
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
-        completionHandler(image)
+        
+        completionHandler(image, path)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
-        completionHandler(nil)
+        completionHandler(nil, nil)
     }
 }
