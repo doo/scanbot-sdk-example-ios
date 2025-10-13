@@ -35,9 +35,10 @@ class CheckScannerViewController: UIViewController {
 }
 
 extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
-    
-    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
-                                    didScanCheck result: SBSDKCheckScanningResult) {
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController, 
+                                    didScanCheck result: SBSDKCheckScanningResult, 
+                                    isHighRes: Bool) {
+
         // Process the scanned result.
         
         // Get the cropped image.
