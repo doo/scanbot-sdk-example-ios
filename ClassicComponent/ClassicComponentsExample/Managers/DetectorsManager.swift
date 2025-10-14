@@ -13,9 +13,6 @@ protocol DetectorsManagerDelegate: AnyObject {
     func scanner(_ scanner: SBSDKBarcodeScanner,
                  didFindBarcodes result: SBSDKBarcodeScannerResult?)
     
-    func recognizer(_ recognizer: SBSDKHealthInsuranceCardRecognizer,
-                    didFindEHIC result: SBSDKEuropeanHealthInsuranceCardRecognitionResult?)
-    
     func extractor(_ extractor: SBSDKDocumentDataExtractor,
                    didExtractDocument result: SBSDKDocumentDataExtractionResult?)
     
@@ -37,14 +34,12 @@ protocol DetectorsManagerDelegate: AnyObject {
 
 final class DetectorsManager {
     enum Detector: CaseIterable {
-        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check, creditCard
+        case barcode, genericDocument, mrz, medicalCertificate, documentScanner, check, creditCard
         
         var detectorName: String {
             switch self {
             case .barcode:
                 return "Barcode"
-            case .ehic:
-                return "EU Health Card (EHIC)"
             case .genericDocument:
                 return "ID Card, Passport, Drivers License"
             case .mrz:
@@ -68,44 +63,46 @@ final class DetectorsManager {
         self.delegate = delegate
     }
     
-    func detectInfo(on image: UIImage, using detector: Detector) {
+    func detectInfo(on image: SBSDKImageRef, using detector: Detector) throws {
         switch detector {
         case .barcode:
-            let scanner = SBSDKBarcodeScanner()
-            let result = scanner.scan(from: image)
+            guard let scanner = try? SBSDKBarcodeScanner() else { return }
+            let result = try? scanner.run(image: image)
             delegate?.scanner(scanner, didFindBarcodes: result)
-        case .ehic:
-            let recognizer = SBSDKHealthInsuranceCardRecognizer()
-            let result = recognizer.recognize(from: image)
-            delegate?.recognizer(recognizer, didFindEHIC: result)
         case .genericDocument:
-            let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
+            let configuration = SBSDKDocumentDataExtractorConfiguration(configurations: [SBSDKDocumentDataExtractorCommonConfiguration()])
             
-            let extractor = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
-            let result = extractor.extract(from: image)
+            guard let extractor = try? SBSDKDocumentDataExtractor(configuration: configuration) else { return }
+            let result = try? extractor.run(image: image)
             delegate?.extractor(extractor, didExtractDocument: result)
         case .mrz:
-            let scanner = SBSDKMRZScanner()
-            let result = scanner.scan(from: image)
+            guard let scanner = try? SBSDKMRZScanner() else { return }
+            let result = try? scanner.run(image: image)
             delegate?.scanner(scanner, didScanMRZ: result)
         case .medicalCertificate:
-            let scanner = SBSDKMedicalCertificateScanner()
-            let result = scanner.scan(from: image, parameters: SBSDKMedicalCertificateScanningParameters())
+            guard let scanner = try? SBSDKMedicalCertificateScanner.create() else { return }
+            let scannerParameters = SBSDKMedicalCertificateScanningParameters()
+            let result = try? scanner.run(image: image, parameters: scannerParameters)
             delegate?.scanner(scanner, didScanMedicalCertificate: result)
         case .documentScanner:
             let configuration = SBSDKDocumentScannerConfiguration()
-            let scanner = SBSDKDocumentScanner(configuration: configuration)
-            let result = scanner.scan(from: image)
+            guard let scanner = try? SBSDKDocumentScanner(configuration: configuration) else { return }
+            let result = try? scanner.run(image: image)
             delegate?.scanner(scanner, didFindPolygon: result)
         case .check:
-            let scanner = SBSDKCheckScanner()
-            let result = scanner.scan(from: image)
+            let configuration = SBSDKCheckScannerConfiguration(
+                documentDetectionMode: .detectAndCropDocument,
+                acceptedCheckStandards: [.usa, .fra, .kwt, .aus, .ind, .isr, .uae, .can]
+            )
+            guard let scanner = try? SBSDKCheckScanner(configuration: configuration) else { return }
+            let result = try? scanner.run(image: image)
             delegate?.scanner(scanner, didScanCheck: result)
         case .creditCard:
             let configuration = SBSDKCreditCardScannerConfiguration()
-            configuration.scanningMode = .singleShot
-            let scanner = SBSDKCreditCardScanner(configuration: configuration)
-            let result = scanner.scan(from: image)
+            configuration.returnCreditCardImage = true
+            
+            guard let scanner = try? SBSDKCreditCardScanner(configuration: configuration) else { return }
+            let result = try? scanner.run(image: image)
             delegate?.scanner(scanner, didScanCreditCard: result)
         }
     }
@@ -115,16 +112,6 @@ final class DetectorsManager {
         let height = image.size.height
         let finderHeight = width / 4
         return CGRect(x: 0, y: (height / 2) - (finderHeight / 2), width: width, height: finderHeight)
-    }
-}
-
-extension SBSDKEuropeanHealthInsuranceCardRecognitionResult {
-    var stringRepresentation: String {
-        var result: String = ""
-        for field in fields {
-            result += "\(field.value)\n"
-        }
-        return result
     }
 }
 

@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 final class ImportAction: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    private var completionHandler: (UIImage?)->()
+    private var completionHandler: (SBSDKImageRef?)->()
     
-    init(completionHandler: @escaping (UIImage?)->()) {
+    init(completionHandler: @escaping (SBSDKImageRef?)->()) {
         self.completionHandler = completionHandler
     }
     
@@ -26,9 +27,11 @@ final class ImportAction: NSObject, UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         picker.presentingViewController?.dismiss(animated: true, completion: nil)
-        completionHandler(image)
+        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            completionHandler(imageRef)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

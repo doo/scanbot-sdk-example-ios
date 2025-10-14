@@ -11,16 +11,15 @@ import ScanbotSDK
 
 class ImageProcessingParameters {
     var polygon: SBSDKPolygon?
-    var filter: SBSDKImageFilterType?
+    var filter: SBSDKParametricFilter?
     var counterClockwiseRotations: Int?
     
     init() {
         polygon = SBSDKPolygon()
-        filter = SBSDKImageFilterType.none
         counterClockwiseRotations = 0
     }
     
-    init(polygon: SBSDKPolygon?, filter: SBSDKImageFilterType?, counterClockwiseRotations: Int?) {
+    init(polygon: SBSDKPolygon?, filter: SBSDKParametricFilter?, counterClockwiseRotations: Int?) {
         self.polygon = polygon
         self.filter = filter
         self.counterClockwiseRotations = counterClockwiseRotations
@@ -42,7 +41,7 @@ final class ImageManager {
     }
     
     @discardableResult
-    func add(image: UIImage, polygon: SBSDKPolygon) -> Bool {
+    func add(image: SBSDKImageRef, polygon: SBSDKPolygon) -> Bool {
         return document.addPage(with: image, polygon: polygon, filters: []) != nil
     }
     
@@ -50,7 +49,7 @@ final class ImageManager {
         return document.page(at: index)
     }
     
-    func originalImageAt(index: Int) -> UIImage? {
+    func originalImageAt(index: Int) -> SBSDKImageRef? {
         return document.page(at: index)?.originalImage
     }
 
@@ -58,7 +57,7 @@ final class ImageManager {
         return document.page(at: index)?.originalImageURI
     }
 
-    func processedImageAt(index: Int) -> UIImage? {
+    func processedImageAt(index: Int) -> SBSDKImageRef? {
         return document.page(at: index)?.documentImage
     }
         
@@ -85,7 +84,7 @@ final class ImageManager {
             page.polygon = polygon
         }
         if let filter = parameters.filter {
-            page.filters = [SBSDKLegacyFilter(filterType: filter.rawValue)]
+            page.filters = [filter]
         }
         return true
     }
