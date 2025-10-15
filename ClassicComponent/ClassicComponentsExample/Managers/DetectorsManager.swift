@@ -63,7 +63,7 @@ final class DetectorsManager {
         self.delegate = delegate
     }
     
-    func detectInfo(on image: SBSDKImageRef, using detector: Detector) throws {
+    func detectInfo(on image: SBSDKImageRef, using detector: Detector) {
         switch detector {
         case .barcode:
             guard let scanner = try? SBSDKBarcodeScanner() else { return }
