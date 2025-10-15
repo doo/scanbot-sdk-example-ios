@@ -24,12 +24,12 @@ final class SingleScanResultViewController: UIViewController {
         if page?.documentDetectionStatus == .errorNothingDetected {
             
             // Use the full original image if nothing detected
-            singlePageImageView.image = document.page(at: 0)?.originalImage
+            singlePageImageView.image = try? document.page(at: 0)?.originalImage?.toUIImage()
             
         } else {
             
             // Use the cropped image otherwise
-            singlePageImageView.image = document.page(at: 0)?.documentImage
+            singlePageImageView.image = try? document.page(at: 0)?.documentImage?.toUIImage()
         }
     }
     
@@ -42,7 +42,7 @@ final class SingleScanResultViewController: UIViewController {
         filterListViewController.selectedFilter = { [weak self] selectedFilter in
             
             self?.document.page(at: 0)?.filters = [selectedFilter]
-            self?.singlePageImageView.image = self?.document.page(at: 0)?.documentImage
+            self?.singlePageImageView.image = try? self?.document.page(at: 0)?.documentImage?.toUIImage()
         }
         
         self.present(filterListViewController, animated: true)
@@ -85,7 +85,7 @@ final class SingleScanResultViewController: UIViewController {
                     
                     // The screen is dismissed without errors.
                     
-                    self.singlePageImageView.image = page.documentImage
+                    self.singlePageImageView.image = try? page.documentImage?.toUIImage()
                 }
                 
             } else {
@@ -101,10 +101,10 @@ final class SingleScanResultViewController: UIViewController {
         guard let documentPageImage = document.page(at: 0)?.documentImage else { return }
         
         // Initialize document quality analyzer
-        let documentAnalyzer = SBSDKDocumentQualityAnalyzer()
+        let documentAnalyzer = try? SBSDKDocumentQualityAnalyzer()
         
         // Get the document quality analysis result by passing the image to the analyzer
-        let documentQualityResult = documentAnalyzer.analyze(on: documentPageImage)
+        let documentQualityResult = try? documentAnalyzer?.run(image: documentPageImage)
         
         let documentQuality = map(documentQualityResult?.quality)
         documentQualityLabel.text = "Document Quality: \(documentQuality)"
@@ -140,7 +140,7 @@ final class SingleScanResultViewController: UIViewController {
         let name = "ScanbotSDK_PNG_Example.png"
         let pngURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
-        guard let pngData = document.page(at: 0)?.documentImage?.pngData() else { return }
+        guard let pngData = try? document.page(at: 0)?.documentImage?.toUIImage().pngData() else { return }
         
         do {
             try pngData.write(to: pngURL)
@@ -160,7 +160,7 @@ final class SingleScanResultViewController: UIViewController {
         let name = "ScanbotSDK_JPG_Example.jpg"
         let jpgURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
-        guard let jpgData = document.page(at: 0)?.documentImage?.jpegData(compressionQuality: 0.8) else { return }
+        guard let jpgData = try? document.page(at: 0)?.documentImage?.toUIImage().jpegData(compressionQuality: 0.8) else { return }
         
         do {
             try jpgData.write(to: jpgURL)
@@ -211,12 +211,14 @@ final class SingleScanResultViewController: UIViewController {
         let images = (0..<document.pages.count).compactMap { document.page(at: $0)?.documentImage }
         
         // Define the generation parameters for the TIFF
-        // In this case using lowLightBinarization2 filter when generating as TIFF
+        // In this case using a custom binarization filter with a preset 4 when exporting as TIFF
         // as an optimal setting
         let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
         tiffGeneratorParameters.dpi = 300
         tiffGeneratorParameters.compression = .ccittT6
-        tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
+        let customFilter = SBSDKCustomBinarizationFilter()
+        customFilter.preset = .preset4
+        tiffGeneratorParameters.binarizationFilter = customFilter
         
         // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
         // and get the result

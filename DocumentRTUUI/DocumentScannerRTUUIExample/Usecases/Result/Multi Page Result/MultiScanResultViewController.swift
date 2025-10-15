@@ -77,12 +77,14 @@ extension MultiScanResultViewController {
         let images = (0..<document.pages.count).compactMap { document.page(at: $0)?.documentImage }
         
         // Define the generation parameters for the TIFF
-        // In this case using lowLightBinarization2 filter when exporting as TIFF
+        // In this case using a custom binarization filter with a preset 4 when exporting as TIFF
         // as an optimal setting
         let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
         tiffGeneratorParameters.dpi = 300
         tiffGeneratorParameters.compression = .ccittT6
-        tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
+        let customFilter = SBSDKCustomBinarizationFilter()
+        customFilter.preset = .preset4
+        tiffGeneratorParameters.binarizationFilter = customFilter
         
         // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
         // and get the result
@@ -146,12 +148,12 @@ extension MultiScanResultViewController: UICollectionViewDataSource, UICollectio
         if page?.documentDetectionStatus == .errorNothingDetected {
             
             // Use the full original image if nothing detected
-            cell.resultImageView.image = page?.originalImage
+            cell.resultImageView.image = try? page?.originalImage?.toUIImage()
             
         } else {
             
             // Use the cropped image otherwise
-            cell.resultImageView.image = page?.documentImage
+            cell.resultImageView.image = try? page?.documentImage?.toUIImage()
         }
         
         return cell

@@ -25,19 +25,22 @@ final class PickFromGalleryViewController: UIViewController {
            let image = pickedImages.first {
             
             // Create an instance of the scanner
-            let scanner = SBSDKDocumentScanner()
+            let scanner = try? SBSDKDocumentScanner()
             
-            // Scan from the image
-            let result = scanner.scan(from: image)
+            // Create an SBSDKImageRef from the image.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
+            // Scan from the imageRef
+            let result = try? scanner?.run(image: imageRef)
             
             // Create an instance of a document
             let document = SBSDKScannedDocument()
             
             // Add page to the document using the image and the detected polygon on the image (if any)
             if let polygon = result?.polygon {
-                document.addPage(with: image, polygon: polygon)
+                document.addPage(with: imageRef, polygon: polygon)
             } else {
-                document.addPage(with: image)
+                document.addPage(with: imageRef)
             }
             
             // Process the document
@@ -49,7 +52,7 @@ final class PickFromGalleryViewController: UIViewController {
         } else if pickedImages.count > 1 {
             
             // Create an instance of the scanner
-            let scanner = SBSDKDocumentScanner()
+            let scanner = try? SBSDKDocumentScanner()
             
             // Make an instance of the document
             let document = SBSDKScannedDocument()
@@ -57,14 +60,17 @@ final class PickFromGalleryViewController: UIViewController {
             // Iterate over multiple picked images
             pickedImages.forEach { image in
                 
-                // Scan from the image
-                let result = scanner.scan(from: image)
+                // Create an SBSDKImageRef from the image.
+                let imageRef = SBSDKImageRef.fromUIImage(image: image)
+                
+                // Scan from the imageRef
+                let result = try? scanner?.run(image: imageRef)
                 
                 // Add page to the document using the image and the detected polygon on the image (if any)
                 if let polygon = result?.polygon {
-                    document.addPage(with: image, polygon: polygon)
+                    document.addPage(with: imageRef, polygon: polygon)
                 } else {
-                    document.addPage(with: image)
+                    document.addPage(with: imageRef)
                 }
             }
             
