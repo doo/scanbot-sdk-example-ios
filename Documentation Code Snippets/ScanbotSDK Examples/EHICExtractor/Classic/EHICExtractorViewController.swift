@@ -27,20 +27,13 @@ class EHICExtractorViewController: UIViewController {
         // the given country, the result will be IncompleteValidation.
         ehicConfiguration.expectedCountry = .germany
         
-        // Use the builder to construct the document data extractor configuration to detect european
-        // health insurance card.
-        let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
+        // Create Data Extractor configuration for EHIC extraction.
+        let ehicRecognitionConfiguration = SBSDKEuropeanHealthInsuranceCardConfiguration()
+        let configuration = SBSDKDocumentDataExtractorConfiguration(
+            configurations: [ehicRecognitionConfiguration]
+        )
         
-        // Set the accepted document types as european health insurance card.
-        builder.setAcceptedDocumentTypes([SBSDKDocumentsModelRootType.europeanHealthInsuranceCard])
-        
-        // Set the ehic configuration.
-        builder.setEuropeanHealthInsuranceCardConfiguration(ehicConfiguration)
-        
-        // Get an instance of the constructed document data extractor configuration.
-        let configuration = builder.buildConfiguration()
-        
-        // Create the `SBSDKGenericDocumentRecognizerViewController` instance and embed it.
+        // Create the extractor view controller instance and embed it.
         self.extractorViewController = SBSDKDocumentDataExtractorViewController(parentViewController: self,
                                                                                 parentView: self.view,
                                                                                 configuration: configuration,
@@ -63,7 +56,7 @@ extension EHICExtractorViewController: SBSDKDocumentDataExtractorViewControllerD
         let detectionResult = result.documentDetectionResult
         
         // Get the cropped image.
-        let croppedImage = result.croppedImage?.toUIImage()
+        let croppedImage = try? result.croppedImage?.toUIImage()
         
         // Access the documents fields directly by iterating over the documents fields.
         if let fields = result.document?.fields.compactMap({ "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }) {

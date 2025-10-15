@@ -36,7 +36,7 @@ class TopBarBarcodeUI2ViewController: UIViewController {
         configuration.topBar.cancelButton.foreground.color = SBSDKUI2Color(colorString: "#FFFFFF")
         
         // Create and set an array of accepted barcode formats.
-        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.setBarcodeFormats(SBSDKBarcodeFormats.twod)
         
         // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,

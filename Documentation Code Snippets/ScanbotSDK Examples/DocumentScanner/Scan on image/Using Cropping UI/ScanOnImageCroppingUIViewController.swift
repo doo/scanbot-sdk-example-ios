@@ -36,8 +36,11 @@ class ScanOnImageCroppingUIViewController: UIViewController,
         // Create an instance of document.
         let document = SBSDKScannedDocument()
         
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: pickedImage)
+        
         // Add a page in document using the picked image.
-        guard let page = document.addPage(with: pickedImage) else { return }
+        guard let page = document.addPage(with: imageRef) else { return }
         
         // Create the default configuration object.
         let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid,

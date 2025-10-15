@@ -12,14 +12,17 @@ class ScannedPageProcessingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        applyFiltersAndRotateScannedPage()
+        do {
+            try applyFiltersAndRotateScannedPage()
+        } catch {
+            print("document loading failed: \(error.localizedDescription)")
+        }
     }
     
-    func applyFiltersAndRotateScannedPage() {
+    func applyFiltersAndRotateScannedPage() throws {
         
         // Retrieve the scanned document.
-        guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
+        let document = try SBSDKScannedDocument.loadDocument(documentUuid: "SOME_SAVED_UUID")
         
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }

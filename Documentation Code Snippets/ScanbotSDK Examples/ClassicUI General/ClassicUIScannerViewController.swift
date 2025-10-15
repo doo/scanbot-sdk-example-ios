@@ -107,10 +107,14 @@ class ClassicUIScannerViewController: UIViewController {
 
 extension ClassicUIScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectionResult?, autoSnapped: Bool) {
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
+                                       with result: SBSDKDocumentDetectionResult?,
+                                       autoSnapped: Bool) {
         // Process the detected document.
+        
+        // Convert ImageRef to UIImage if needed.
+        let documentUIImage = try? documentImage.toUIImage()
     }
 }
  

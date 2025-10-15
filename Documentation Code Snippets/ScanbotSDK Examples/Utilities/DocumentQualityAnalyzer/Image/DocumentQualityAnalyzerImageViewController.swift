@@ -43,15 +43,22 @@ class DocumentQualityAnalyzerImageViewController: UIViewController,
         configuration.maxImageSize = 2000
         configuration.returnQualityHeatmap = false
         
-        // Initialize the analyzer.
-        let analyzer = SBSDKDocumentQualityAnalyzer(configuration: configuration)
-        
-        // Run the quality analyzer on the image.
-        let result = analyzer.analyze(on: image)
-        
-        // Handle the result.
-        if let result {
+        do {
+            
+            // Initialize the analyzer.
+            let analyzer = try SBSDKDocumentQualityAnalyzer(configuration: configuration)
+            
+            // Create an image ref from UIImage.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
+            // Run the quality analyzer on the image.
+            let result = try analyzer.run(image: imageRef)
+            
+            // Handle the result.
             self.printResult(result)
+        }
+        catch {
+            print("Error analyzing the document quality: \(error.localizedDescription)")
         }
     }
     

@@ -78,8 +78,7 @@ extension BarcodesOverlayViewController: SBSDKBarcodeTrackingOverlayControllerDe
         print(barcode)
         
         // Get the source image.
-        let sourceImage = barcode.sourceImage?.toUIImage()
-        
+        let sourceImage = try? barcode.sourceImage?.toUIImage()
     }
     
     // Implement this method if you need to customize the polygon style individually for each barcode detected.
@@ -93,7 +92,9 @@ extension BarcodesOverlayViewController: SBSDKBarcodeTrackingOverlayControllerDe
     }
     
     // Implement this method if you need to customize the text style individually for each barcode detected.
-    func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController, textStyleFor barcode: SBSDKBarcodeItem) -> SBSDKBarcodeTrackedViewTextStyle? {
+    func barcodeTrackingOverlay(_ controller: SBSDKBarcodeTrackingOverlayController,
+                                textStyleFor barcode: SBSDKBarcodeItem,
+                                proposedStyle: SBSDKBarcodeTrackedViewTextStyle) -> SBSDKBarcodeTrackedViewTextStyle {
         let style = SBSDKBarcodeTrackedViewTextStyle()
         if barcode.format == SBSDKBarcodeFormat.qrCode {
             style.textBackgroundColor = UIColor.purple.withAlphaComponent(0.2)

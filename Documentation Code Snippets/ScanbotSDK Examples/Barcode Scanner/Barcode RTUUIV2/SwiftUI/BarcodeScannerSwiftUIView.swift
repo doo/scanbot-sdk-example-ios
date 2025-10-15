@@ -51,7 +51,7 @@ struct BarcodeScannerSwiftUIView: View {
         configuration.useCase = singleUsecase
         
         // Create and set an array of accepted barcode formats.
-        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.setBarcodeFormats(SBSDKBarcodeFormats.twod)
         
         return configuration
     }()
