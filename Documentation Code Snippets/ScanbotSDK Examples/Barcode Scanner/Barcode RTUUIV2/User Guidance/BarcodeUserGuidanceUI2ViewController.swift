@@ -36,7 +36,7 @@ class BarcodeUserGuidanceUI2ViewController: UIViewController {
         userGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
         
         // Create and set an array of accepted barcode formats.
-        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.setBarcodeFormats(SBSDKBarcodeFormats.twod)
         
         // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,

@@ -18,18 +18,22 @@ class ImageStoringViewController: UIViewController {
         // Create a storage location object. This will create the folder on the filesystem if neccessary.
         let documentsLocation = SBSDKStorageLocation(baseURL: documentsURL)
         
-        // Create an encrypter for the storage. This will encrypt the image data, before it is written to disk
+        // Create a crypting provider for the storage. This will encrypt the image data, before it is written to disk
         // and decrypt it after it is read from disk.
-        // Setting the encrypter does not encrypt existing images in the storage, only the images that are added to the
-        // storage after setting the encrypter.
-        let encrypter = SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
+        // Setting the crypting provider does not encrypt existing images in the storage, only the images that are added to the
+        // storage after setting the crypting provider.
+        // Passing a crypting provider to the indexed image storage will ignore the global Scanbot SDK crypting provider.
+        let cryptingProvider = SBSDKCryptingProvider(block: {
+            // Create and return an AES encrypter instance.
+            return SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
+        })
         
         // Initialize an indexed image storage at this location.
         // The indexed image storage is an array-like, disk-backed image storage.
         guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: documentsLocation,
                                                           fileFormat: .PNG,
                                                           encryptionMode: .required,
-                                                          encrypter: encrypter) else {
+                                                          cryptingProvider: cryptingProvider) else {
             return
         }
     }

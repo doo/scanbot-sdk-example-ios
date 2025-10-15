@@ -13,13 +13,17 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        analyzeScannedPageQuality()
+        do {
+            try analyzeScannedPageQuality()
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
-    func analyzeScannedPageQuality() {
+    func analyzeScannedPageQuality() throws {
         
         // Retrieve the scanned document.
-        guard let document = SBSDKScannedDocument(documentUuid: "SOME_SAVED_UUID") else { return }
+        let document = try SBSDKScannedDocument.loadDocument(documentUuid: "SOME_SAVED_UUID")
         
         // Retrieve the selected document page.
         guard let page = document.page(at: 0) else { return }
