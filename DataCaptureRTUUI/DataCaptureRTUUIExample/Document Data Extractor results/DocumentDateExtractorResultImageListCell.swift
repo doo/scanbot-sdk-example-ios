@@ -8,13 +8,14 @@
 
 import Foundation
 import UIKit
+import ScanbotSDK
 
 final class DocumentDateExtractorResultImageListCell: UITableViewCell {
     @IBOutlet private var titleLabel: UILabel?
     @IBOutlet private var resultImageView: UIImageView?
     
-    func configure(title: String?, image: UIImage?) {
+    func configure(title: String?, image: SBSDKImageRef?) {
         titleLabel?.text = title
-        resultImageView?.image = image
+        resultImageView?.image = try? image?.toUIImage()
     }
 }
