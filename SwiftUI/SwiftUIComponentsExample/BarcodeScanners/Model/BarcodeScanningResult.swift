@@ -26,7 +26,7 @@ struct BarcodeScanningResult {
             return BarcodeResult(type: barcode.format,
                                  rawTextString: barcode.text,
                                  rawTextStringWithExtension: barcode.displayText,
-                                 barcodeImage: barcode.sourceImage?.toUIImage() ?? UIImage())
+                                 barcodeImage: (try? barcode.sourceImage?.toUIImage()) ?? UIImage())
         })
     }
     
@@ -36,7 +36,7 @@ struct BarcodeScanningResult {
             return BarcodeResult(type: barcodeItem.barcode.format,
                                  rawTextString: barcodeItem.barcode.text,
                                  rawTextStringWithExtension: barcodeItem.barcode.displayText,
-                                 barcodeImage: barcodeItem.barcode.sourceImage?.toUIImage() ?? UIImage())
+                                 barcodeImage: (try? barcodeItem.barcode.sourceImage?.toUIImage()) ?? UIImage())
         })
     }
 }

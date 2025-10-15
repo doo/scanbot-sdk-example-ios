@@ -32,6 +32,10 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
         configuration.isViewFinderEnabled = true
         scannerViewController.viewFinderConfiguration = configuration
         
+        let barcodeConfiguration = scannerViewController.copyCurrentConfiguration()
+        barcodeConfiguration.returnBarcodeImage = true
+        scannerViewController.setConfiguration(barcodeConfiguration)
+        
         return scannerViewController
     }
     
