@@ -20,7 +20,7 @@ final class QualityAnalyzerDemoViewController: UIViewController {
         scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                    parentView: containerView,
                                                                    delegate: self)
-        analyzer = SBSDKDocumentQualityAnalyzer()
+        analyzer = try? SBSDKDocumentQualityAnalyzer()
         scannerViewController?.delegate = self
         scannerViewController?.suppressDetectionStatusLabel = true
         scannerViewController?.suppressPolygonLayer = true
@@ -34,8 +34,8 @@ final class QualityAnalyzerDemoViewController: UIViewController {
         present(picker, animated: true, completion: nil)
     }
     
-    private func estimateAndShowResults(from image: UIImage) {
-        if let result = analyzer?.analyze(on: image) {
+    private func estimateAndShowResults(from image: SBSDKImageRef) {
+        if let result = try? analyzer?.run(image: image) {
             DispatchQueue.main.async { [weak self] in
                 self?.show(result: result)
             }
@@ -74,9 +74,10 @@ final class QualityAnalyzerDemoViewController: UIViewController {
 }
 
 extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerDelegate {
+    
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
                                        with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
         estimateAndShowResults(from: originalImage)
@@ -88,7 +89,8 @@ extension QualityAnalyzerDemoViewController: UIImagePickerControllerDelegate, UI
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             dismiss(animated: true) { [weak self] in
-                self?.estimateAndShowResults(from: image)
+                let imageRef = SBSDKImageRef.fromUIImage(image: image)
+                self?.estimateAndShowResults(from: imageRef)
             }
         } else {
             dismiss(animated: true, completion: nil)

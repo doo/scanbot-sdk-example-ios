@@ -72,13 +72,8 @@ class MainTableActionHandler: NSObject {
     
     func showEHICScanning() {
         guardLicense {
-            UsecaseScanEHIC().start(presenter: self.presenter)
-        }
-    }
-    
-    func showMedicalCertificateScanning() {
-        guardLicense {
-            UsecaseScanMedicalCertificate(result: result).start(presenter: self.presenter)
+            UsecaseScanDocumentDataExtractor(documentTypes: [SBSDKDocumentsModelConstants.europeanHealthInsuranceCardDocumentType])
+                .start(presenter: self.presenter)
         }
     }
     
@@ -90,16 +85,16 @@ class MainTableActionHandler: NSObject {
     
     func showIDCardScanner() {
         guardLicense {
-            UsecaseScanDocumentDataExtractor(documentTypes: [.deIdCardBack,
-                                                             .deIdCardFront])
+            UsecaseScanDocumentDataExtractor(documentTypes: [SBSDKDocumentsModelConstants.deIdCardBackDocumentType,
+                                                             SBSDKDocumentsModelConstants.deIdCardFrontDocumentType])
                 .start(presenter: self.presenter)
         }
     }
     
     func showDriverLicenseScanner() {
         guardLicense {
-            UsecaseScanDocumentDataExtractor(documentTypes: [.europeanDriverLicenseBack,
-                                                             .europeanDriverLicenseFront])
+            UsecaseScanDocumentDataExtractor(documentTypes: [SBSDKDocumentsModelConstants.europeanDriverLicenseBackDocumentType,
+                                                             SBSDKDocumentsModelConstants.europeanDriverLicenseFrontDocumentType])
                 .start(presenter: self.presenter)
         }
     }

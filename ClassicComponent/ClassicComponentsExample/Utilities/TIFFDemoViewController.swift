@@ -11,7 +11,7 @@ import ScanbotSDK
 
 final class TIFFDemoViewController: UIViewController {
     @IBOutlet private var imagesCountLabel: UILabel?
-    private var images: [UIImage] = []
+    private var images: [SBSDKImageRef] = []
     
     private func showFile(at filePath: String) {
         
@@ -71,7 +71,8 @@ extension TIFFDemoViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            images.append(image)
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            images.append(imageRef)
         }
         picker.dismiss(animated: true) { [weak self] in
             self?.imagesCountLabel?.text = "Images added: \(self?.images.count ?? 0)"

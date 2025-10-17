@@ -31,7 +31,6 @@
 		082D0A5F20C81760009B1A7A /* MainTableActionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */; };
 		082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */; };
 		082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */; };
-		0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */; };
 		0889D10F20EA700C00A36316 /* Usecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D10E20EA700C00A36316 /* Usecase.swift */; };
 		0889D11520EA72E900A36316 /* UsecaseScanMRZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */; };
 		08B6F2EE20EA892D00691231 /* UsecaseBrowseImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08B6F2ED20EA892C00691231 /* UsecaseBrowseImages.swift */; };
@@ -47,7 +46,6 @@
 		28F2730A2791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28F273092791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift */; };
 		28FC46AF2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */; };
 		692227BC2524A95E00E81886 /* UsecaseScanTextPattern.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */; };
-		69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */; };
 		F1531D162A936638004C3F20 /* UsecaseScanVIN.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */; };
 		F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */; };
 		F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F7672E0AE8E1001F6A5A /* ScanbotSDK */; };
@@ -88,7 +86,6 @@
 		082D0A5C20C81760009B1A7A /* MainTableActionHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableActionHandler.swift; sourceTree = "<group>"; };
 		082D0A5D20C81760009B1A7A /* MainTableViewItemProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTableViewItemProvider.swift; sourceTree = "<group>"; };
 		082D0A6120C82710009B1A7A /* UIAlertControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertControllerExtensions.swift; sourceTree = "<group>"; };
-		0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMedicalCertificate.swift; sourceTree = "<group>"; };
 		0889D10E20EA700C00A36316 /* Usecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Usecase.swift; sourceTree = "<group>"; };
 		0889D11420EA72E900A36316 /* UsecaseScanMRZ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanMRZ.swift; sourceTree = "<group>"; };
 		08B6F2ED20EA892C00691231 /* UsecaseBrowseImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseBrowseImages.swift; sourceTree = "<group>"; };
@@ -106,7 +103,6 @@
 		692227BB2524A95E00E81886 /* UsecaseScanTextPattern.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanTextPattern.swift; sourceTree = "<group>"; };
 		6991C59B256C2989008188AD /* DataCaptureRTUUIExampleDemoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureRTUUIExampleDemoUITests.swift; sourceTree = "<group>"; };
 		6991C59D256C2989008188AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanEHIC.swift; sourceTree = "<group>"; };
 		F1531D152A936638004C3F20 /* UsecaseScanVIN.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsecaseScanVIN.swift; sourceTree = "<group>"; };
 		F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F164F7702E0AE923001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ScanbotSDKOCRData.bundle; sourceTree = "<group>"; };
@@ -193,9 +189,7 @@
 			children = (
 				0889D10E20EA700C00A36316 /* Usecase.swift */,
 				28BDF613279570EA00CC34C8 /* Data Detect Usecases */,
-				69CF30AF230155AB00AA5A07 /* UsecaseScanEHIC.swift */,
 				2844F29328214D1E007C6B39 /* UsecaseScanCheck.swift */,
-				0834B70427B6C76800F44791 /* UsecaseScanMedicalCertificate.swift */,
 				28FC46AE2E03079600936460 /* UsecaseScanDocumentDataExtractor.swift */,
 				28BDF614279572DB00CC34C8 /* Other Usecases */,
 			);
@@ -365,12 +359,10 @@
 				082D0A6020C81760009B1A7A /* MainTableViewItemProvider.swift in Sources */,
 				28F2730A2791908F00C424AC /* DocumentDateExtractorResultImageListCell.swift in Sources */,
 				28A650E62788966200CFD548 /* ReviewViewController.swift in Sources */,
-				69CF30B0230155AB00AA5A07 /* UsecaseScanEHIC.swift in Sources */,
 				082D0A3320C801AA009B1A7A /* AppDelegate.swift in Sources */,
 				082D0A6220C82710009B1A7A /* UIAlertControllerExtensions.swift in Sources */,
 				F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */,
 				28A650E82788968500CFD548 /* ReviewCollectionViewCell.swift in Sources */,
-				0834B70527B6C76800F44791 /* UsecaseScanMedicalCertificate.swift in Sources */,
 				11807BD32D5B70B900C21436 /* UsecaseScanCreditCard.swift in Sources */,
 				28F2730527918DEF00C424AC /* DocumentDataExtractorResultListViewController.swift in Sources */,
 				28F273072791903200C424AC /* DocumentDataExtractorResultTextListCell.swift in Sources */,
@@ -638,7 +630,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.1.2;
+				version = "8.0.0-Beta1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

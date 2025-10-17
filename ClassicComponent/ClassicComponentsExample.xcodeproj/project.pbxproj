@@ -39,7 +39,6 @@
 		2869C490274D11A60036F44D /* DocumentDataExtractorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C48F274D11A60036F44D /* DocumentDataExtractorViewController.swift */; };
 		2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C491274D49DC0036F44D /* MRZDemoViewController.swift */; };
 		2869C495274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */; };
-		2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C496274E49BE0036F44D /* EHICDemoViewController.swift */; };
 		2869C49E274E63790036F44D /* CheckViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C49D274E63790036F44D /* CheckViewController.swift */; };
 		2869C4A5274FA8110036F44D /* DemoPDFViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */; };
 		2884E28627455B9200C0ABA2 /* FiltersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2884E28527455B9200C0ABA2 /* FiltersManager.swift */; };
@@ -120,7 +119,6 @@
 		2869C48F274D11A60036F44D /* DocumentDataExtractorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorViewController.swift; sourceTree = "<group>"; };
 		2869C491274D49DC0036F44D /* MRZDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZDemoViewController.swift; sourceTree = "<group>"; };
 		2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QualityAnalyzerDemoViewController.swift; sourceTree = "<group>"; };
-		2869C496274E49BE0036F44D /* EHICDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EHICDemoViewController.swift; sourceTree = "<group>"; };
 		2869C49D274E63790036F44D /* CheckViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckViewController.swift; sourceTree = "<group>"; };
 		2869C4A2274F9B600036F44D /* DemoPDFViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPDFViewController.swift; sourceTree = "<group>"; };
 		2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TIFFDemoViewController.swift; sourceTree = "<group>"; };
@@ -197,7 +195,6 @@
 		286FF1D12757B79F007D47EF /* Health Documents Scanners */ = {
 			isa = PBXGroup;
 			children = (
-				2869C496274E49BE0036F44D /* EHICDemoViewController.swift */,
 				28E71F3B275672660061B433 /* MedicalCertificateScannerViewController.swift */,
 			);
 			path = "Health Documents Scanners";
@@ -485,7 +482,6 @@
 				288F0D42273C0A1E00BF615C /* ImageManager.swift in Sources */,
 				087C563C2772175F003440A9 /* ExportAction.swift in Sources */,
 				082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */,
-				2869C497274E49BE0036F44D /* EHICDemoViewController.swift in Sources */,
 				28AF046F27A0270200C00B33 /* AlertsManager.swift in Sources */,
 				2849C02B275133BC00D9760C /* DemoSelectionTableViewController.swift in Sources */,
 				2869C490274D11A60036F44D /* DocumentDataExtractorViewController.swift in Sources */,
@@ -747,7 +743,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 7.1.2;
+				version = "8.0.0-Beta1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

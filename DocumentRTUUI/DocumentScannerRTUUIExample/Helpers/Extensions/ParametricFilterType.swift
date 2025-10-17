@@ -9,7 +9,7 @@ import ScanbotSDK
 
 enum ParametricFilterType: CaseIterable {
     
-    case binarization, customBinarization, colorDocument, brightness, contrast, grayscale, legacy, whiteBlackPoint
+    case binarization, customBinarization, colorDocument, brightness, contrast, grayscale, whiteBlackPoint
     
     var name: String {
         switch self {
@@ -25,8 +25,6 @@ enum ParametricFilterType: CaseIterable {
             return "Contrast Filter"
         case .grayscale:
             return "Grayscale Filter"
-        case .legacy:
-            return "Legacy Filter"
         case .whiteBlackPoint:
             return "White Black Point Filter"
         }

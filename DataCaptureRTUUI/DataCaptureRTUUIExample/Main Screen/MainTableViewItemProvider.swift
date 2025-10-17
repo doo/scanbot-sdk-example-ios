@@ -50,11 +50,8 @@ class MainTableViewItemProvider {
         let ehicScanItem = MainTableViewItem(title: "Scan Health Insurance Card",
                                             action: { actionHandler.showEHICScanning() })
         
-        let medicalCertificateScanItem = MainTableViewItem(title: "Scan Medical Certificate",
-                                                           action: { actionHandler.showMedicalCertificateScanning() })
-        
 
-        let items3 = [ehicScanItem, medicalCertificateScanItem]
+        let items3 = [ehicScanItem]
         
         
         let idCardItem = MainTableViewItem(title: "Scan German ID card",

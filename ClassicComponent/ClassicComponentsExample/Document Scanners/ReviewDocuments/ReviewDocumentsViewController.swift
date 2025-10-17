@@ -45,14 +45,18 @@ final class ReviewDocumentsViewController: UIViewController {
     @IBAction private func importButtonTapped(_ item: UIBarButtonItem) {
         importAction = ImportAction { [weak self] image in
             defer { self?.importAction = nil }
-            guard let image = image else { 
-                return 
+            guard let image = image else {
+                return
             }
             DispatchQueue(label: "FilterQueue").async { [weak self] in
-                let result = SBSDKDocumentScanner().scan(from: image)
-                ImageManager.shared.add(image: image, polygon: result?.polygon ?? SBSDKPolygon())
-                DispatchQueue.main.async {
-                    self?.reloadData()
+                do {
+                    let result = try SBSDKDocumentScanner().run(image: image)
+                    ImageManager.shared.add(image: image, polygon: result.polygon ?? SBSDKPolygon())
+                    DispatchQueue.main.async {
+                        self?.reloadData()
+                    }
+                } catch {
+                    print("Failed to detect document. Description: \(error.localizedDescription)")
                 }
             }
         }
@@ -165,8 +169,13 @@ final class ReviewDocumentsViewController: UIViewController {
         DispatchQueue(label: "FilterQueue").sync { [weak self] in
             if let image = ImageManager.shared.originalImageAt(index: item),
                 let url = ImageManager.shared.originalImageURLAt(index: item) {
-                let quality = SBSDKDocumentQualityAnalyzer().analyze(on: image)
-                Self.qualityCache[url] = quality?.quality?.stringValue ?? "No document"
+                do {
+                    let quality = try SBSDKDocumentQualityAnalyzer().run(image: image)
+                    Self.qualityCache[url] = quality.quality?.stringValue ?? "No document"
+                } catch {
+                    print("Failed to analyze image quality. Description: \(error.localizedDescription)")
+                    Self.qualityCache[url] = "No document"
+                }
             }
             DispatchQueue.main.async {
                 self?.collectionView?.reloadItems(at: [IndexPath(item: item, section: 0)])
@@ -187,7 +196,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
         let image = ImageManager.shared.processedImageAt(index: indexPath.item)
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reviewCollectionCell",
                                                       for: indexPath) as! ReviewDocumentsCollectionViewCell
-        cell.previewImageView?.image = image
+        cell.previewImageView?.image = try? image?.toUIImage()
         
         if showsQuality {
             if let imageURL = ImageManager.shared.originalImageURLAt(index: indexPath.item) {
@@ -225,7 +234,7 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
 extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate {
     func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
                                     didApplyChangesWith polygon: SBSDKPolygon,
-                                    croppedImage: UIImage) {
+                                    croppedImage: SBSDKImageRef) {
      
         guard let imageIndex = selectedImageIndex else { return }
         guard let page = ImageManager.shared.pageAt(index: imageIndex) else { return }

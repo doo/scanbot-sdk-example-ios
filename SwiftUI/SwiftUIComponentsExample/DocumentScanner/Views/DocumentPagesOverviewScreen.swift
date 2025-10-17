@@ -17,7 +17,7 @@ struct DocumentPagesOverviewScreen: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible())]) {
                 ForEach(scanningResult.pages, id: \.uuid) { page in
-                    if let image = page.documentImagePreview {
+                    if let image = try? page.documentImagePreview?.toUIImage() {
                         Button(action: {
                             scanningResult.selectedPage = page
                             isShowingModal.toggle()

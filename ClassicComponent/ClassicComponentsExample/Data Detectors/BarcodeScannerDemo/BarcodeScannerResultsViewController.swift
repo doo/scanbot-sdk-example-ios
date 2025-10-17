@@ -34,7 +34,7 @@ extension BarcodeScannerResultsViewController: UITableViewDataSource, UITableVie
         
         cell.barcodeTextLabel?.text = results?[indexPath.row].displayText
         cell.barcodeTypeLabel?.text = results?[indexPath.row].format.name
-        cell.barcodeImageView?.image = results?[indexPath.row].sourceImage?.toUIImage()
+        cell.barcodeImageView?.image = try? results?[indexPath.row].sourceImage?.toUIImage()
         
         return cell
     }
@@ -45,7 +45,7 @@ extension BarcodeScannerResultsViewController: UITableViewDataSource, UITableVie
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        selectedBarcodeImage = results?[indexPath.row].sourceImage?.toUIImage()
+        selectedBarcodeImage = try? results?[indexPath.row].sourceImage?.toUIImage()
         selectedBarcodeText = results?[indexPath.row].displayText
         
         performSegue(withIdentifier: "barcodeResultDetails", sender: nil)

@@ -54,8 +54,8 @@ class DocumentScannerViewController: UIViewController {
 
 extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
                                        with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
         ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())

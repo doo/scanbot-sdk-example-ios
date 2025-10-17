@@ -10,53 +10,32 @@ import Foundation
 import ScanbotSDK
 
 struct FilterManager {
-    static let filters: [SBSDKImageFilterType] = [
-        .none,
-        .color,
-        .gray,
-        .pureGray,
-        .binarized,
-        .colorDocument,
-        .pureBinarized,
-        .backgroundClean,
-        .blackAndWhite,
-        .otsuBinarization,
-        .deepBinarization,
-        .edgeHighlight,
-        .lowLightBinarization,
-        .lowLightBinarization2
+    static let filters: [SBSDKParametricFilter] = [
+        .brightnessFilter(),
+        .colorDocumentFilter(),
+        .contrastFilter(),
+        .customBinarizationFilter(),
+        .grayscaleFilter(),
+        .scanbotBinarizationFilter(),
+        .whiteBlackPointFilter(),
     ]
     
-    static func name(for filter: SBSDKImageFilterType) -> String {
+    static func name(for filter: SBSDKParametricFilter) -> String {
         switch filter {
-        case .none:
-            return "None"
-        case .color:
+        case .brightnessFilter():
+            return "Brightness"
+        case .colorDocumentFilter():
             return "Color"
-        case .gray:
-            return "Optimized greyscale"
-        case .pureGray:
-            return "Pure greyscale"
-        case .binarized:
-            return "Binarized"
-        case .colorDocument:
-            return "Color document"
-        case .pureBinarized:
-            return "Pure binarized"
-        case .backgroundClean:
-            return "Background clean"
-        case .blackAndWhite:
+        case .contrastFilter():
+            return "Contrast"
+        case .customBinarizationFilter():
+            return "Custom binarization"
+        case .grayscaleFilter():
+            return "Gray Scale"
+        case .scanbotBinarizationFilter():
+            return "Scanbot binarization"
+        case .whiteBlackPointFilter():
             return "Black & white"
-        case .otsuBinarization:
-            return "Otsu binarization"
-        case .deepBinarization:
-            return "Deep binarization"
-        case .edgeHighlight:
-            return "Edge highlight"
-        case .lowLightBinarization:
-            return "Low light binarization"
-        case .lowLightBinarization2:
-            return "Low light binarization 2"
         default: return "UNKNOWN"
         }
     }
