@@ -37,7 +37,8 @@ enum ExampleCategory: String, CaseIterable {
                     PDFAttributesViewController.self,
                     ImageMetadataProcessorViewController.self,
                     CameraDeviceViewController.self,
-                    ZoomingImageScrollViewViewController.self]
+                    ZoomingImageScrollViewViewController.self,
+                    MockCameraViewController.self]
             
             
         case .document:
@@ -65,6 +66,8 @@ enum ExampleCategory: String, CaseIterable {
         case .barcode:
             return [BarcodeSwiftUIHostingViewController.self,
                     BarcodeLocalizationUI2ViewController.self,
+                    BarcodeGettingStartedUI2ViewController.self,
+                    BarcodeViewFinderUI2ViewController.self,
                     BarcodePaletteUI2ViewController.self,
                     SingleBarcodeScannerUI2ViewController.self,
                     MultipleBarcodeScannerUI2ViewController.self,
@@ -74,12 +77,16 @@ enum ExampleCategory: String, CaseIterable {
                     ActionBarConfigurationUI2ViewController.self,
                     BarcodeUserGuidanceUI2ViewController.self,
                     TopBarBarcodeUI2ViewController.self,
+                    TinyBarcodeScannerUI2ViewController.self,
                     BarcodesSheetModeUI2ViewController.self,
                     BarcodeScannerViewController.self,
                     BarcodesBatchViewController.self,
                     BarcodesOverlayViewController.self,
                     BarcodeScanAndCountViewController.self,
-                    BarcodeDataParserViewController.self]
+                    BarcodeDataParserViewController.self,
+                    BarcodeHandlingResultViewController.self,
+                    BarcodeImageResultHandlingViewController.self,
+                    BarcodeRawResultHandlingViewController.self]
         case .documentData:
             return [DocumentDataExtractorSwiftUIHostingViewController.self,
                     DocumentDataExtractorViewController.self,
@@ -96,6 +103,7 @@ enum ExampleCategory: String, CaseIterable {
             return [TextPatternSwiftUIHostingViewController.self,
                     TextPatternScannerViewController.self,
                     TextPatternLaunchingUI2ViewController.self,
+                    TextPatternFinderOverlayUI2ViewController.self,
                     TextPatternPaletteUI2ViewController.self,
                     TextPatternLocalizationUI2ViewController.self,
                     TextPatternIntroductionUI2ViewController.self,
@@ -141,7 +149,8 @@ enum ExampleCategory: String, CaseIterable {
                     VINUserGuidanceUI2ViewController.self,
                     VINTopBarUI2ViewController.self,
                     VINActionBarUI2ViewController.self,
-                    VINScanningScreenUI2ViewController.self]
+                    VINScanningScreenUI2ViewController.self,
+                    VINFinderOverlayUI2ViewController.self]
         case .creditCard:
             return [CreditCardSwiftUIHostingViewController.self,
                     CreditCardScannerViewController.self,
