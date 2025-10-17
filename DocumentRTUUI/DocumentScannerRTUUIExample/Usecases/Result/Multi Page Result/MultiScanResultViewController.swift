@@ -53,7 +53,9 @@ extension MultiScanResultViewController {
         let options = SBSDKOCREngineConfiguration.scanbotOCR()
 
         // Generate the document into a searchable PDF at the specified file url
-        let generator = SBSDKPDFGenerator(configuration: configuration, ocrConfiguration: options)
+        let generator = SBSDKPDFGenerator(configuration: configuration,
+                                          ocrConfiguration: options,
+                                          useEncryptionIfAvailable: false)
         
         // Start the generation operation and store the SBSDKProgress to watch the progress or cancel the operation.
         let progress = generator.generate(from: document, output: pdfURL) { finished, error in
@@ -88,7 +90,7 @@ extension MultiScanResultViewController {
         
         // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
         // and get the result
-        let tiffGenerator = SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, encrypter: nil)
+        let tiffGenerator = SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, useEncryptionIfAvailable: false)
         let success = tiffGenerator.generate(from: images, to: fileURL)
         
         if success == true {

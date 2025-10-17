@@ -20,23 +20,24 @@ class ExportAction {
             
             let ocrConfiguration = SBSDKOCREngineConfiguration.scanbotOCR()
             
-            let attributes = SBSDKPDFAttributes(author: "Scanbot SDK Example App", 
-                                                creator: "Scanbot SDK", 
-                                                title: "Demo", 
-                                                subject: "PDF Attributes", 
+            let attributes = SBSDKPDFAttributes(author: "Scanbot SDK Example App",
+                                                creator: "Scanbot SDK",
+                                                title: "Demo",
+                                                subject: "PDF Attributes",
                                                 keywords: "Scanbot,SDK,Demo,Example")
             
-            let configuration = SBSDKPDFConfiguration(attributes: attributes, 
-                                                      pageSize: .custom, 
+            let configuration = SBSDKPDFConfiguration(attributes: attributes,
+                                                      pageSize: .custom,
                                                       pageDirection: .auto,
-                                                      pageFit: .fitIn, 
-                                                      dpi: 200, 
+                                                      pageFit: .fitIn,
+                                                      dpi: 200,
                                                       jpegQuality: 80,
                                                       resamplingMethod: .lanczos4)
             
-            let _ = SBSDKPDFGenerator(configuration: configuration, 
-                                      ocrConfiguration: ocrConfiguration,
-                                      encrypter: nil).generate(from: document, output: url) { finished, error in
+            let generator = SBSDKPDFGenerator(configuration: configuration,
+                                              ocrConfiguration: ocrConfiguration,
+                                              useEncryptionIfAvailable: false)
+            generator.generate(from: document, output: url) { finished, error in
                 DispatchQueue.main.async {
                     completion(error, url)
                 }
@@ -52,7 +53,7 @@ class ExportAction {
             let params = binarize ? SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
             : SBSDKTIFFGeneratorParameters.defaultParameters
             
-            let generator = SBSDKTIFFGenerator(parameters: params)
+            let generator = SBSDKTIFFGenerator(parameters: params, useEncryptionIfAvailable: false)
             
             Task {
                 let result = await generator.generate(from: document, to: url)
