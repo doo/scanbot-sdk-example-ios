@@ -74,7 +74,7 @@ func createPDF(from image: UIImage) {
     
     // Set the created crypting provider as the default one for Scanbot SDK.
     // Important: If you set a default crypting provider, all other Scanbot SDK components will also use this encrypter, including all stored images.
-    Scanbot.setDefaultCryptingProvider(cryptingProvider)
+    Scanbot.defaultCryptingProvider = cryptingProvider
     
     // Create the PDF generator, enabling encryption.
     let generator = SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: true)

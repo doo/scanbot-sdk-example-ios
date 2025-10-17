@@ -38,7 +38,7 @@ func createTIFF(from images: [UIImage]) {
     
     // Set the created crypting provider as the default one for Scanbot SDK.
     // Important: If you set a default crypting provider, all other Scanbot SDK components will also use this encrypter, including all stored images.
-    Scanbot.setDefaultCryptingProvider(cryptingProvider)
+    Scanbot.defaultCryptingProvider = cryptingProvider
 
     // The `SBSDKTIFFGenerator` has parameters where you can define various options,
     // e.g. compression algorithm or whether the document should be binarized.
