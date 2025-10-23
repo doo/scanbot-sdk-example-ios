@@ -30,6 +30,7 @@ enum ExampleCategory: String, CaseIterable {
         switch self {
         case .utilities:
             return [ClassicUIScannerViewController.self,
+                    BarcodeClassicUIGeneralConfigurationViewController.self,
                     SoundControllerViewController.self,
                     ImageStoringViewController.self,
                     DocumentQualityAnalyzerScannedPageViewController.self,

@@ -1,5 +1,5 @@
 //
-//  ClassicUIScannerViewController.swift
+//  BarcodeClassicUIGeneralConfigurationViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Sebastian Husche on 11.11.24.
@@ -8,20 +8,19 @@
 import Foundation
 import ScanbotSDK
 
-class ClassicUIScannerViewController: UIViewController {
+class BarcodeClassicUIGeneralConfigurationViewController: UIViewController {
 
-    // The instance of the ClassicUI scanner view controller, as an example here SBSDKDocumentScannerViewController 
-    // is used, but this code applies to all SBSDKBaseScannerViewController-derived ClassicUI scanner view controllers.
-    var scannerViewController: SBSDKDocumentScannerViewController!
+    // The instance of the ClassicUI scanner view controller.
+    var scannerViewController: SBSDKBarcodeScannerViewController!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the ClassicUI scanner view controller instance. As an example here `SBSDKDocumentScannerViewController`
-        // is used, but this code applies to all SBSDKBaseScannerViewController-derived ClassicUI scanner view controllers.
-        self.scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
-                                                                        parentView: self.view,
-                                                                        delegate: self)
+        // Create the scanner view controller instance.
+        self.scannerViewController = SBSDKBarcodeScannerViewController(parentViewController: self,
+                                                                       parentView: self.view,
+                                                                       configuration: .init(),
+                                                                       delegate: self)
         
         // Now you can configure some general properties using one of the configuration objects.
         //
@@ -38,7 +37,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyGeneralConfiguration() {
 
-        // The general configuration lets you control timings, video settings and behaviour etc. 
+        // The general configuration lets you control timings, video settings and behaviour etc.
         
         // Read the current general configuration from the scanner view controller.
         let generalConfiguration = self.scannerViewController.generalConfiguration
@@ -54,7 +53,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyZoomConfiguration() {
 
-        // The zoom configuration lets you control the zooming behaviour of the scanner view controller, e.g. 
+        // The zoom configuration lets you control the zooming behaviour of the scanner view controller, e.g.
         // if zooming is enabled, the zoom range, the initial zoom factor, discrete zoom steps and zoom related gestures.
 
         // Read the current zoom configuration from the scanner view controller.
@@ -72,7 +71,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyEnergyConfiguration() {
         
-        // The energy configuration lets you control the energy consumption of the scanner view controller, e.g. by 
+        // The energy configuration lets you control the energy consumption of the scanner view controller, e.g. by
         // turning the energy-safe-mode on or off, changing the detection rates and the inactivity timeout.
 
         // Read the current energy configuration from the scanner view controller.
@@ -89,7 +88,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyViewFinderConfiguration() {
         
-        // The view finder configuration lets you control the appearance of the view finder, 
+        // The view finder configuration lets you control the appearance of the view finder,
         // e.g. if it is enabled, its aspect ratio, its colors and style, its offsets and insets and more.
         
         // Read the current view finder configuration from the scanner view controller.
@@ -106,16 +105,12 @@ class ClassicUIScannerViewController: UIViewController {
 
 }
 
-extension ClassicUIScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
-    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: SBSDKImageRef,
-                                       on originalImage: SBSDKImageRef,
-                                       with result: SBSDKDocumentDetectionResult?,
-                                       autoSnapped: Bool) {
-        // Process the detected document.
+extension BarcodeClassicUIGeneralConfigurationViewController: SBSDKBarcodeScannerViewControllerDelegate {
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didScanBarcodes codes: [SBSDKBarcodeItem]) {
         
-        // Convert ImageRef to UIImage if needed.
-        let documentUIImage = try? documentImage.toUIImage()
+        // Handle scanned barcodes.
     }
 }
- 
+
