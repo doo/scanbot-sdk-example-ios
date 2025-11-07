@@ -47,6 +47,7 @@ enum ExampleCategory: String, CaseIterable {
                     CropScreenUI2ViewController.self,
                     DocumentLaunchingUI2ViewController.self,
                     DocumentIntroductionUI2ViewController.self,
+                    DocumentPreviewModesUI2ViewController.self,
                     DocumentReviewScreenUI2ViewController.self,
                     DocumentReorderScreenUI2ViewController.self,
                     DocumentPaletteUI2ViewController.self,
