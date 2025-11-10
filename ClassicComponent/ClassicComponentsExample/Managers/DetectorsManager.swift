@@ -25,7 +25,7 @@ protocol DetectorsManagerDelegate: AnyObject {
     func scanner(_ scanner: SBSDKCheckScanner,
                  didScanCheck result: SBSDKCheckScanningResult?)
     
-    func scanner(_ scanner: SBSDKCreditCardScanner, 
+    func scanner(_ scanner: SBSDKCreditCardScanner,
                  didScanCreditCard result: SBSDKCreditCardScanningResult?)
     
     func scanner(_ scanner: SBSDKMRZScanner,
@@ -33,11 +33,14 @@ protocol DetectorsManagerDelegate: AnyObject {
     
     func scanner(_ scanner: SBSDKDocumentScanner, didFindPolygon result : SBSDKDocumentDetectionResult?)
     
+    
+    func scanner(_ generator: SBSDKPDFGenerator, didFindPolygon isSuccess : Bool?)
+    
 }
 
 final class DetectorsManager {
     enum Detector: CaseIterable {
-        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check, creditCard
+        case barcode, ehic, genericDocument, mrz, medicalCertificate, documentScanner, check, creditCard, pdfGenerator
         
         var detectorName: String {
             switch self {
@@ -57,6 +60,8 @@ final class DetectorsManager {
                 return "Check Scanner"
             case.creditCard:
                 return "Credit Card Scanner"
+            case.pdfGenerator:
+                return "PDF Generator"
             }
         }
     }
@@ -68,7 +73,7 @@ final class DetectorsManager {
         self.delegate = delegate
     }
     
-    func detectInfo(on image: UIImage, using detector: Detector) {
+    func detectInfo(on image: UIImage, orFilePath url: URL, using detector: Detector) {
         switch detector {
         case .barcode:
             let scanner = SBSDKBarcodeScanner()
@@ -107,8 +112,37 @@ final class DetectorsManager {
             let scanner = SBSDKCreditCardScanner(configuration: configuration)
             let result = scanner.scan(from: image)
             delegate?.scanner(scanner, didScanCreditCard: result)
+        case .pdfGenerator:
+            
+            let storage = DetectorsManager.getStorage(imagePath: url, encrypter: ScanbotUI.defaultImageStoreEncrypter)
+            
+            let pdfGenerator = SBSDKPDFGenerator(configuration: SBSDKPDFConfiguration(), ocrConfiguration: nil)
+            let outputUrl = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent("Agoda123.pdf")
+            
+            pdfGenerator.generate(from: storage, output: outputUrl) { isSuccess, error in
+                print("")
+                self.delegate?.scanner(pdfGenerator, didFindPolygon: isSuccess)
+            }
         }
     }
+    
+    internal static func getStorage(
+        imagePath: URL,
+        encrypter: SBSDKStorageCrypting?
+    ) -> SBSDKIndexedImageStorage {
+        
+        let url = SBSDKStorageLocation.applicationSupportFolderURL
+        var pathString = url.scheme == "file" ? url.relativePath : url.absoluteString;
+        pathString = "\(pathString)/\(UUID().uuidString)"
+        
+        let location = SBSDKStorageLocation(baseURL: URL(fileURLWithPath: pathString))
+        let storage = SBSDKIndexedImageStorage(storageLocation: location, fileFormat: .JPEG, encrypter: encrypter, encryptedImagesURLs: [imagePath])
+        if storage != nil {
+            return storage!
+        }
+        return SBSDKIndexedImageStorage.temporary!
+    }
+    
     
     private func makeFinderRect(for image: UIImage) -> CGRect {
         let width = image.size.width
