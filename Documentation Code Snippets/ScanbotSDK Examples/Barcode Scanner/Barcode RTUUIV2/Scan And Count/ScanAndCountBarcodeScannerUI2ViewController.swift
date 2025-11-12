@@ -1,14 +1,14 @@
 //
-//  MultipleBarcodeScannerUI2ViewController.swift
+//  ScanAndCountBarcodeScannerUI2ViewController.swift
 //  ScanbotSDK Examples
 //
-//  Created by Rana Sohaib on 19.12.23.
+//  Created by Rana Sohaib on 11.11.25.
 //
 
 import Foundation
 import ScanbotSDK
 
-class MultipleBarcodeScannerUI2ViewController: UIViewController {
+class ScanAndCountBarcodeScannerUI2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +25,11 @@ class MultipleBarcodeScannerUI2ViewController: UIViewController {
         // Initialize the multi scan usecase.
         let multiUsecase = SBSDKUI2MultipleScanningMode()
         
-        // Set the unique mode.
-        multiUsecase.mode = .unique
+        // Set the counting repeat delay.
+        multiUsecase.countingRepeatDelay = 1000
+        
+        // Set the counting mode.
+        multiUsecase.mode = .counting
         
         // Set the sheet mode of the barcodes preview.
         multiUsecase.sheet.mode = .collapsedSheet
