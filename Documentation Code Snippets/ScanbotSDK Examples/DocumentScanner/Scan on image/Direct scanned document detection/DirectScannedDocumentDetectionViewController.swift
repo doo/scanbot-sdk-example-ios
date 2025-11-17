@@ -29,7 +29,7 @@ class DirectScannedDocumentDetectionViewController {
                 if result.status == .ok, let polygon = result.polygon {
                     
                     // Apply the polygon on to the page.
-                    page.apply(polygon: polygon)
+                    try page.apply(polygon: polygon)
                     
                 } else {
                     

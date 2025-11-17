@@ -101,4 +101,10 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
     func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return true
     }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
 }

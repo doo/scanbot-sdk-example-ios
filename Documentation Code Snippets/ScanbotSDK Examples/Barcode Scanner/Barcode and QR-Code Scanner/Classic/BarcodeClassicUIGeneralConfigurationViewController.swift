@@ -112,5 +112,11 @@ extension BarcodeClassicUIGeneralConfigurationViewController: SBSDKBarcodeScanne
         
         // Handle scanned barcodes.
     }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
 }
 

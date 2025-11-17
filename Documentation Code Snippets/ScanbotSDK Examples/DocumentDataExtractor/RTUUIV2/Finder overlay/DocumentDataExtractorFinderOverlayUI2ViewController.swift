@@ -35,9 +35,13 @@ class DocumentDataExtractorFinderOverlayUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2DocumentDataExtractorViewController.present(on: self,
-                                                   configuration: configuration) { result in
-            
-            if let result {
+                                                   configuration: configuration) { controller, result, error in
+            if let error {
+                
+                // Handle the error.
+                print("Error extracting document data: \(error.localizedDescription)")
+                
+            } else if let result {
                 // Cast the resulted generic document to the appropriate document model using the `wrap` method.
                 if let genericDocument = result.document, let wrapper = genericDocument.wrap() {
                     // Use SBSDKDocumentsModelDeIdCardFront for German ID card front side
@@ -88,9 +92,6 @@ class DocumentDataExtractorFinderOverlayUI2ViewController: UIViewController {
                     }
                     // Other document types can be added as needed (passport, driver license, etc.)
                 }
-                
-            } else {
-                // Indicates that the cancel button was tapped.
             }
         }
     }

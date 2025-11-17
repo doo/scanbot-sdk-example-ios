@@ -23,10 +23,10 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
     // Or you can also use the default configuration object.
     let defaultPDFConfiguration = SBSDKPDFConfiguration()
     
-    // Create the PDF generator, do not encrypt the PDF.
-    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: false)
-    
     do {
+        // Create the PDF generator, do not encrypt the PDF.
+        let generator = try SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: false)
+        
         // If output URL is `nil` the default PDF location of the scanned document will be used.
         try generator.generate(from: scannedDocument)
     } catch {
@@ -76,9 +76,10 @@ func createPDF(from image: UIImage) {
     // Important: If you set a default crypting provider, all other Scanbot SDK components will also use this encrypter, including all stored images.
     Scanbot.defaultCryptingProvider = cryptingProvider
     
-    // Create the PDF generator, enabling encryption.
-    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: true)
     do {
+        // Create the PDF generator, enabling encryption.
+        let generator = try SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: true)
+        
         // Synchronously generates the PDF from the image storage into a PDF file with the given page size,
         // and saves it to the specified URL.
         try generator.generate(from: imageStorage,

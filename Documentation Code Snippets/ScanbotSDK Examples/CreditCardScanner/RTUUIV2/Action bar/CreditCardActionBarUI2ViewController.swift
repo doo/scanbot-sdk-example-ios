@@ -52,8 +52,13 @@ class CreditCardActionBarUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2CreditCardScannerViewController.present(on: self,
-                                                        configuration: configuration) { result in
-            if let result {
+                                                        configuration: configuration) { controller, result, error in
+            if let error {
+                
+                // Handle the error.
+                print("Error scanning credit card: \(error.localizedDescription)")
+                
+            } else if let result {
                 // Handle the result.
                 
                 // Cast the resulted generic document to the credit card model using the `wrap` method.
@@ -68,9 +73,6 @@ class CreditCardActionBarUI2ViewController: UIViewController {
                         print("Name: \(name.text), Confidence: \(name.confidence)")
                     }
                 }
-                
-            } else {
-                // Indicates that the cancel button was tapped.
             }
         }
     }

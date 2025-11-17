@@ -25,7 +25,7 @@ class ScannedPageProcessingViewController: UIViewController {
         let document = try SBSDKScannedDocument.loadDocument(documentUuid: "SOME_SAVED_UUID")
         
         // Retrieve the selected document page.
-        guard let page = document.page(at: 0) else { return }
+        let page = try document.page(at: 0)
 
         // Create the instances of the filters you want to apply.
         let filter1 = SBSDKScanbotBinarizationFilter(outputMode: .antialiased)
@@ -43,6 +43,6 @@ class ScannedPageProcessingViewController: UIViewController {
         
         // If you want to apply multiple changes to the page at once, use the apply(...) function.
         // This will result in a faster performance than applying each change individually.
-        page.apply(rotation: .clockwise90, polygon: SBSDKPolygon(), filters: [filter1, filter2])
+        try page.apply(rotation: .clockwise90, polygon: SBSDKPolygon(), filters: [filter1, filter2])
     }
 }

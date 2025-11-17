@@ -45,4 +45,10 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
         // Get the cropped image.
         let croppedImage = try? result.croppedImage?.toUIImage()
     }
+    
+    func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController,
+                                                 didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning Medical certificate: \(error.localizedDescription)")
+    }
 }

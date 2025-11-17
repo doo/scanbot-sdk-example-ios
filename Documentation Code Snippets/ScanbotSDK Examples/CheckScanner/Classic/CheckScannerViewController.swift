@@ -47,6 +47,12 @@ extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning check: \(error.localizedDescription)")
+    }
+    
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
                                     didChangeState state: SBSDKCheckScannerState) {
         
         // Update status label according to status

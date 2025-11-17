@@ -56,8 +56,13 @@ class CheckIntroductionUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2CheckScannerViewController.present(on: self,
-                                                   configuration: configuration) { result in
-            if let result {
+                                                   configuration: configuration) { controller, result, error in
+            if let error {
+                
+                // Handle the error.
+                print("Error scanning check: \(error.localizedDescription)")
+                
+            } else if let result {
                 // Handle the result.
                 
                 // Cast the resulted generic document to the appropriate check model using the `wrap` method.
@@ -88,9 +93,6 @@ class CheckIntroductionUI2ViewController: UIViewController {
                     }
                     // Other check types can be added as needed (AUS, FRA, IND, ISR, KWT, etc.)
                 }
-                
-            } else {
-                // Indicates that the cancel button was tapped.
             }
         }
     }

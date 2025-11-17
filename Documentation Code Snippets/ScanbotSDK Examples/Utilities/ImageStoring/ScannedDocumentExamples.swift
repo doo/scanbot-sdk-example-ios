@@ -9,27 +9,41 @@ import Foundation
 import ScanbotSDK
 
 func createScannedDocument(with images: [UIImage]) {
-    // Create a new document with the specified maximum image size.
-    // Setting the limit to 0, effectively disables the size limit.
-    let scannedDocument = SBSDKScannedDocument(documentImageSizeLimit: 0)
     
-    // Add images to the document.
-    images.forEach { image in
+    do {
+        // Create a new document with the specified maximum image size.
+        // Setting the limit to 0, effectively disables the size limit.
+        let scannedDocument = try SBSDKScannedDocument(documentImageSizeLimit: 0)
         
-        // Create an image ref from UIImage.
-        let imageRef = SBSDKImageRef.fromUIImage(image: image)
-        
-        // Add page.
-        scannedDocument.addPage(with: imageRef)
+        // Add images to the document.
+        try images.forEach { image in
+            
+            // Create an image ref from UIImage.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
+            // Add page.
+            try scannedDocument.addPage(with: imageRef)
+        }
+    }
+    catch {
+        print("Error occurred: \(error.localizedDescription)")
     }
 }
 
 func createFromDocument(_ document: SBSDKDocument) -> SBSDKScannedDocument? {
-    // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`.
-    let scannedDocument = SBSDKScannedDocument(document: document, documentImageSizeLimit: 2048)
     
-    // Return the newly created scanned document.
-    return scannedDocument
+    do {
+        // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`.
+        let scannedDocument = try SBSDKScannedDocument(document: document, documentImageSizeLimit: 2048)
+        
+        // Return the newly created scanned document.
+        return scannedDocument
+        
+    } catch {
+        
+        print("Error creating scanned document: \(error.localizedDescription)")
+        return nil
+    }
 }
 
 func accessImageURLs(of scannedDocument: SBSDKScannedDocument) {
@@ -51,15 +65,22 @@ func reorderPagesInScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
     // Create destination index at position 0.
     let destinationIndex = 0
     
-    // Execute the move operation on the scanned document.
-    scannedDocument.movePage(at: sourceIndex, to: destinationIndex)
+    do {
+        // Execute the move operation on the scanned document.
+        try scannedDocument.movePage(at: sourceIndex, to: destinationIndex)
+    }
+    catch {
+        print("Error moving page in scanned document: \(error.localizedDescription)")
+    }
 }
 
 func removeAllPagesFromScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
-    // Call the `removeAllPages(onError:)` to remove all pages from the document, but keep the document itself.
-    scannedDocument.removeAllPages { page, error in
-        // Eventually handle the error.
-        SBSDKLog.logError("Failed to remove page \(page) with error: \(error)")
+    do {
+        // Call the `removeAllPages() to remove all pages from the document, but keep the document itself.
+        try scannedDocument.removeAllPages()
+    }
+    catch {
+        print("Error removing all pages from scanned document: \(error.localizedDescription)")
     }
 }
 

@@ -35,7 +35,7 @@ class DocumentIntroductionUI2ViewController: UIViewController {
         
         // Configure the text.
         firstExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a receipt",
-                                                    color: SBSDKUI2Color(colorString: "#000000")) 
+                                                    color: SBSDKUI2Color(colorString: "#000000"))
         
         // Create a second introduction item.
         let secondExampleEntry = SBSDKUI2IntroListEntry()
@@ -44,31 +44,39 @@ class DocumentIntroductionUI2ViewController: UIViewController {
         secondExampleEntry.image = .checkIntroImage()
         
         // Configure the text.
-        secondExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a check", 
-                                                     color: SBSDKUI2Color(colorString: "#000000")) 
+        secondExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a check",
+                                                     color: SBSDKUI2Color(colorString: "#000000"))
         
         // Set the items into the configuration.
         introductionConfiguration.items = [firstExampleEntry, secondExampleEntry]
         
         // Set the screen title.
-        introductionConfiguration.title = SBSDKUI2StyledText(text: "Introduction", 
-                                                           color: SBSDKUI2Color(colorString: "#000000"))
+        introductionConfiguration.title = SBSDKUI2StyledText(text: "Introduction",
+                                                             color: SBSDKUI2Color(colorString: "#000000"))
         
         // Apply the introduction configuration.
         configuration.screens.camera.introduction = introductionConfiguration
         
         // Present the view controller modally.
-        SBSDKUI2DocumentScannerController.present(on: self,
-                                                  configuration: configuration) { document in
-            
-            // Completion handler to process the result.
-            
-            if let document {
-                // Handle the document.
+        do {
+            let controller = try SBSDKUI2DocumentScannerController.present(on: self,
+                                                                           configuration: configuration)
+            { controller, document, error in
                 
-            } else {
-                // Indicates that the cancel button was tapped.
+                // Completion handler to process the result.
+                
+                if let document {
+                    // Handle the document.
+                    
+                } else if let error {
+                    
+                    // Handle the error.
+                    print("Error scanning document: \(error.localizedDescription)")
+                }
             }
+        }
+        catch {
+            print("Error while presenting the document scanner: \(error.localizedDescription)")
         }
     }
 }

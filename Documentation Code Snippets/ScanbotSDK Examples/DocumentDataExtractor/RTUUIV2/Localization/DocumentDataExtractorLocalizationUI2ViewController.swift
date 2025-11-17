@@ -32,9 +32,14 @@ class DocumentDataExtractorLocalizationUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2DocumentDataExtractorViewController.present(on: self,
-                                                            configuration: configuration) { result in
+                                                            configuration: configuration) { controller, result, error in
             
-            if let result {
+            if let error {
+                
+                // Handle the error.
+                print("Error extracting document data: \(error.localizedDescription)")
+                
+            } else if let result {
                 // Handle the result.
                 
                 // Cast the resulted generic document to the appropriate document model using the `wrap` method.
@@ -87,8 +92,6 @@ class DocumentDataExtractorLocalizationUI2ViewController: UIViewController {
                     }
                     // Other document types can be added as needed (passport, driver license, etc.)
                 }
-            } else {
-                // Indicates that the cancel button was tapped.
             }
         }
     }

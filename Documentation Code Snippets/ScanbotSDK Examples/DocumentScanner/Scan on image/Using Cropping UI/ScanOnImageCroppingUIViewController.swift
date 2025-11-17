@@ -27,24 +27,28 @@ class ScanOnImageCroppingUIViewController: UIViewController,
         guard let pickedImage = info[.originalImage] as? UIImage else { return }
         
         picker.dismiss(animated: true) {
-            self.presentCroppingScreen(with: pickedImage)
+            do {
+                try self.presentCroppingScreen(with: pickedImage)
+            }
+            catch {
+                print("Error occurred in cropping screen: \(error.localizedDescription)")
+            }
         }
     }
     
-    func presentCroppingScreen(with pickedImage: UIImage) {
+    func presentCroppingScreen(with pickedImage: UIImage) throws {
         
         // Create an instance of document.
-        let document = SBSDKScannedDocument()
+        let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
         
         // Create an image ref from UIImage.
         let imageRef = SBSDKImageRef.fromUIImage(image: pickedImage)
         
         // Add a page in document using the picked image.
-        guard let page = document.addPage(with: imageRef) else { return }
+        let page = try document.addPage(with: imageRef)
         
         // Create the default configuration object.
-        let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid,
-                                                          pageUuid: page.uuid)
+        let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid, pageUuid: page.uuid)
         
         // Modify the configuration to your needs.
         // E.g. disable the rotation feature.
@@ -58,7 +62,8 @@ class ScanOnImageCroppingUIViewController: UIViewController,
         configuration.localization.croppingTopBarCancelButtonTitle = "Cancel"
         
         // Present the view controller modally.
-        SBSDKUI2CroppingViewController.present(on: self, configuration: configuration) { result in
+        try SBSDKUI2CroppingViewController.present(on: self,
+                                                   configuration: configuration) { controller, result, error in
             
             // Completion handler to process the result.
             if let result {

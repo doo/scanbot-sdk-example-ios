@@ -41,17 +41,25 @@ class DocumentReorderScreenUI2ViewController: UIViewController {
         configuration.screens.reorderPages = reorderScreenConfiguration
         
         // Present the view controller modally.
-        SBSDKUI2DocumentScannerController.present(on: self,
-                                                  configuration: configuration) { document in
-            
-            // Completion handler to process the result.
-            
-            if let document {
-                // Handle the document.
+        do {
+            let controller = try SBSDKUI2DocumentScannerController.present(on: self,
+                                                                           configuration: configuration)
+            { controller, document, error in
                 
-            } else {
-                // Indicates that the cancel button was tapped.
+                // Completion handler to process the result.
+                
+                if let document {
+                    // Handle the document.
+                    
+                } else if let error {
+                    
+                    // Handle the error.
+                    print("Error scanning document: \(error.localizedDescription)")
+                }
             }
+        }
+        catch {
+            print("Error while presenting the document scanner: \(error.localizedDescription)")
         }
     }
 }

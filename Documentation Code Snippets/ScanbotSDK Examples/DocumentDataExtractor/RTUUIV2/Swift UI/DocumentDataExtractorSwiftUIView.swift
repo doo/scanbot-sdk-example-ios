@@ -20,71 +20,83 @@ struct DocumentDataExtractorSwiftUIView: View {
     // An optional `SBSDKUI2DocumentDataExtractorUIResult` object containing the resulted document of the scanning process.
     @State var scannedDocument: SBSDKUI2DocumentDataExtractorUIResult?
     
+    // An optional error object representing any errors that may occur during the scanning process.
+    @State var scanError: Error?
+    
     var body: some View {
         
-        // Show the scanner, passing the configuration and handling the result.
-        SBSDKUI2DocumentDataExtractorView(configuration: configuration) { result in
+        if scannedDocument == nil, scanError == nil {
             
-            if let result {
-                scannedDocument = result
+            // Show the scanner, passing the configuration and handling the result.
+            SBSDKUI2DocumentDataExtractorView(configuration: configuration) { result, error in
                 
-                // Cast the resulted generic document to the appropriate document model using the `wrap` method.
-                if let genericDocument = result.document, let wrapper = genericDocument.wrap() {
-                    // Use SBSDKDocumentsModelDeIdCardFront for German ID card front side
-                    if let idCardFront = wrapper as? SBSDKDocumentsModelDeIdCardFront {
-                        // Retrieve values from the German ID card front
+                scannedDocument = result
+                scanError = error
+            }
+            .ignoresSafeArea()
+            
+        } else if let scanError {
+            
+            // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
+            
+        } else if let scannedDocument {
+            
+            // Process and show the scanned document here.
+            
+            // Cast the resulted generic document to the appropriate document model using the `wrap` method.
+            if let genericDocument = scannedDocument.document, let wrapper = genericDocument.wrap() {
+                
+                // Use SBSDKDocumentsModelDeIdCardFront for German ID card front
+                if let idCardFront = wrapper as? SBSDKDocumentsModelDeIdCardFront {
+                    VStack(alignment: .leading, spacing: 8) {
                         if let birthDate = idCardFront.birthDate?.value {
-                            print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
+                            Text("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
                         }
                         if let birthplace = idCardFront.birthplace?.value {
-                            print("Birthplace: \(birthplace.text), Confidence: \(birthplace.confidence)")
+                            Text("Birthplace: \(birthplace.text), Confidence: \(birthplace.confidence)")
                         }
                         if let cardAccessNumber = idCardFront.cardAccessNumber?.value {
-                            print("Card access number: \(cardAccessNumber.text), Confidence: \(cardAccessNumber.confidence)")
+                            Text("Card access number: \(cardAccessNumber.text), Confidence: \(cardAccessNumber.confidence)")
                         }
                         if let expiryDate = idCardFront.expiryDate?.value {
-                            print("Expiry date: \(expiryDate.text), Confidence: \(expiryDate.confidence)")
+                            Text("Expiry date: \(expiryDate.text), Confidence: \(expiryDate.confidence)")
                         }
                         if let givenNames = idCardFront.givenNames?.value {
-                            print("Given names: \(givenNames.text), Confidence: \(givenNames.confidence)")
+                            Text("Given names: \(givenNames.text), Confidence: \(givenNames.confidence)")
                         }
                         if let id = idCardFront.id?.value {
-                            print("ID: \(id.text), Confidence: \(id.confidence)")
+                            Text("ID: \(id.text), Confidence: \(id.confidence)")
                         }
                         if let maidenName = idCardFront.maidenName?.value {
-                            print("Maiden name: \(maidenName.text), Confidence: \(maidenName.confidence)")
+                            Text("Maiden name: \(maidenName.text), Confidence: \(maidenName.confidence)")
                         }
                         if let nationality = idCardFront.nationality?.value {
-                            print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                            Text("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
                         }
                         if let surname = idCardFront.surname?.value {
-                            print("Surname: \(surname.text), Confidence: \(surname.confidence)")
+                            Text("Surname: \(surname.text), Confidence: \(surname.confidence)")
                         }
                         if let series = idCardFront.series?.value {
-                            print("Series: \(series.text), Confidence: \(series.confidence)")
+                            Text("Series: \(series.text), Confidence: \(series.confidence)")
                         }
                         // Note: photo and signature are image fields and might need special handling
-                    } else {
-                        // Handle other document types
-                        print("Document detected, but not a German ID card front")
-                        // Access available fields from the document
+                    }
+                } else {
+                    VStack(alignment: .leading, spacing: 8) {
+                        Text("Document detected, but not a German ID card front")
                         if let fields = genericDocument.allFields(includeEmptyFields: false) {
-                            for field in fields {
+                            ForEach(Array(fields.enumerated()), id: \.offset) { _, field in
                                 if let value = field.value {
-                                    print("\(field.type.name): \(value.text), Confidence: \(value.confidence)")
+                                    Text("\(field.type.name): \(value.text), Confidence: \(value.confidence)")
                                 }
                             }
                         }
                     }
-                    // Other document types can be added as needed (passport, driver license, etc.)
                 }
-                
-            } else {
-                
-                // Dismiss your view here.
+                // Other document types can be added as needed (passport, driver license, etc.)
             }
         }
-        .ignoresSafeArea()
     }
 }
 

@@ -14,12 +14,17 @@ func createTIFF(from scannedDocument: SBSDKScannedDocument) {
     // e.g. compression algorithm or whether the document should be binarized.
     let parameters = SBSDKTIFFGeneratorParameters()
     
-    // Create the TIFF generator using created parameters, do not encrypt the generated TIFF files.
-    let generator = SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
-    
-    // Synchronously convert the scanned document to a multipage-TIFF file and saves it to the specified URL.
-    // If output URL is `nil`the default TIFF location of the scanned document will be used.
-    generator.generate(from: scannedDocument)
+    do {
+        // Create the TIFF generator using created parameters, do not encrypt the generated TIFF files.
+        let generator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
+        
+        // Synchronously convert the scanned document to a multipage-TIFF file and saves it to the specified URL.
+        // If output URL is `nil`the default TIFF location of the scanned document will be used.
+        try generator.generate(from: scannedDocument)
+    }
+    catch {
+        print("Error generating TIFF: \(error.localizedDescription)")
+    }
 }
 
 func createTIFF(from images: [UIImage]) {
@@ -44,18 +49,28 @@ func createTIFF(from images: [UIImage]) {
     // e.g. compression algorithm or whether the document should be binarized.
     let parameters = SBSDKTIFFGeneratorParameters()
     
-    // Create the TIFF generator using created parameters, enable encryption of the generated TIFF files.
-    let tiffImageGenerator = SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: true)
-
-    // Create ImageRefs from UIImages.
-    let imageRefs: [SBSDKImageRef] = images.map { uiImage in
-        SBSDKImageRef.fromUIImage(image: uiImage)
-    }
-    
-    // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.
-    // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
-    tiffImageGenerator.generate(from: imageRefs, to: outputTIFFURL, completion: { url in
+    do {
+        // Create the TIFF generator using created parameters, enable encryption of the generated TIFF files.
+        let tiffImageGenerator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: true)
         
-        // Handle the URL.
-    })
+        // Create ImageRefs from UIImages.
+        let imageRefs: [SBSDKImageRef] = images.map { uiImage in
+            SBSDKImageRef.fromUIImage(image: uiImage)
+        }
+        
+        // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.
+        // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
+        tiffImageGenerator.generate(from: imageRefs, to: outputTIFFURL, completion: { url, error in
+            
+            if let url = url {
+                // Handle the URL.
+                
+            } else if let error {
+                // Handle the error.
+            }
+        })
+    }
+    catch {
+        print("Error generating TIFF: \(error.localizedDescription)")
+    }
 }

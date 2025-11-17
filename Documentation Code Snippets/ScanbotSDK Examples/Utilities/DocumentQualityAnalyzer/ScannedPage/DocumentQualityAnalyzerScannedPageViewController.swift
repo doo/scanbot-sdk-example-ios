@@ -26,7 +26,7 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         let document = try SBSDKScannedDocument.loadDocument(documentUuid: "SOME_SAVED_UUID")
         
         // Retrieve the selected document page.
-        guard let page = document.page(at: 0) else { return }
+        let page = try document.page(at: 0)
         
         // Create the configuration.
         let configuration = SBSDKDocumentQualityAnalyzerConfiguration()

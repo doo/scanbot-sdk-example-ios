@@ -82,4 +82,10 @@ extension BarcodeScanAndCountViewController: SBSDKBarcodeScanAndCountViewControl
         // Provide a custom overlay view for the barcode
         return UIImageView(image: UIImage(named: "<image_name>"))
     }
+    
+    func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,
+                             didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
 }

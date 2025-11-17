@@ -15,14 +15,20 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
 
-        // Present the scanner view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, cancelled, error, result in
+                                                     configuration: configuration) { controller, result, error in
             
             // Completion handler to process the result.
-            // The `cancelled` parameter indicates if the cancel button was tapped.
             
-            controller.presentingViewController?.dismiss(animated: true)
+            if let result {
+                
+                // Process the result.
+                
+            } else if let error {
+                
+                print("Error scanning barcode: \(error.localizedDescription)")
+            }
         }
     }
     
@@ -33,12 +39,12 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
         
         // Present the scanner view controller modally on this view controller.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, cancelled, error, result in
+                                                     configuration: configuration) { controller, result, error in
 
-            if cancelled {
-                            
-                // Indicates that the cancel button was tapped.
-                controller.presentingViewController?.dismiss(animated: true)
+            if let error {
+                
+                // Handle the error.
+                print("Error scanning barcode: \(error.localizedDescription)")
                 
             } else if let items = result?.items {
                 
@@ -78,7 +84,6 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
                             print("\n" + "\(field.type.displayText ?? ""): \(field.value?.text ?? "")")
                         })
                     }
-                    
                 })
             }
         }

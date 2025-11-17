@@ -113,6 +113,11 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
             let fieldValue = wrapper.surname?.value?.text
             let confidence = wrapper.surname?.value?.confidence
         }
-        
+    }
+    
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
+                                             didFailExtraction error: any Error) {
+        // Handle the error.
+        print("Error extracting document data: \(error.localizedDescription)")
     }
 }

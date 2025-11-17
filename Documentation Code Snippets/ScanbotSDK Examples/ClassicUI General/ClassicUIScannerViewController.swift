@@ -107,6 +107,7 @@ class ClassicUIScannerViewController: UIViewController {
 }
 
 extension ClassicUIScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
+    
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
                                        didSnapDocumentImage documentImage: SBSDKImageRef,
                                        on originalImage: SBSDKImageRef,
@@ -116,6 +117,12 @@ extension ClassicUIScannerViewController: SBSDKDocumentScannerViewControllerDele
         
         // Convert ImageRef to UIImage if needed.
         let documentUIImage = try? documentImage.toUIImage()
+    }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
+                                       didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning document: \(error.localizedDescription)")
     }
 }
  

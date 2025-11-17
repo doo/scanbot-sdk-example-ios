@@ -25,23 +25,34 @@ class ImageEditingViewController: UIViewController {
         // Create the page.
         let page = SBSDKDocumentPage(image: imageRef, polygon: nil, parametricFilters: .none)
 
-        // Create the editing view controller.
-        let editingViewController = SBSDKImageEditingViewController.create(page: page)
-
-        // Set self as the delegate.
-        editingViewController.delegate = self
-
-        // Create and set up a navigation controller to present control buttons.
-        let navigationController = UINavigationController(rootViewController: editingViewController)
-        navigationController.modalPresentationStyle = .fullScreen
-
-        // Present the editing screen modally.
-        self.present(navigationController, animated: true, completion: nil)
+        do {
+            // Create the editing view controller.
+            let editingViewController = try SBSDKImageEditingViewController.create(page: page)
+            
+            // Set self as the delegate.
+            editingViewController.delegate = self
+            
+            // Create and set up a navigation controller to present control buttons.
+            let navigationController = UINavigationController(rootViewController: editingViewController)
+            navigationController.modalPresentationStyle = .fullScreen
+            
+            // Present the editing screen modally.
+            self.present(navigationController, animated: true, completion: nil)
+        }
+        catch {
+            print("Error occurred while editing the image: \(error.localizedDescription)")
+        }
     }
 }
 
 extension ImageEditingViewController: SBSDKImageEditingViewControllerDelegate {
-
+    
+    func imageEditingViewControllerDidFail(_ editingViewController: SBSDKImageEditingViewController,
+                                           with error: any Error) {
+        // Handle the error.
+        print("Error occurred while editing the image: \(error.localizedDescription)")
+    }
+    
     // Create a custom cancel button.
     func imageEditingViewControllerCancelButtonItem(_ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
         return UIBarButtonItem(systemItem: .cancel)

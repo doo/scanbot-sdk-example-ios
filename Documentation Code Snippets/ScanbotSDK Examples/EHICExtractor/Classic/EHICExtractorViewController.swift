@@ -44,6 +44,13 @@ class EHICExtractorViewController: UIViewController {
 extension EHICExtractorViewController: SBSDKDocumentDataExtractorViewControllerDelegate {
     
     func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
+                                             didFailExtraction error: any Error) {
+        // Handle the error.
+        print("Error extracting EHIC data: \(error.localizedDescription)")
+    }
+    
+    
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
                                              didExtract result: SBSDKDocumentDataExtractionResult,
                                              on image: UIImage) {
         

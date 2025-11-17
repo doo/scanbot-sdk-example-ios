@@ -66,4 +66,10 @@ extension MockCameraViewController: SBSDKBarcodeScannerViewControllerDelegate {
                                   didScanBarcodes codes: [SBSDKBarcodeItem]) {
         print("Codes count: \(codes.count)")
     }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
 }

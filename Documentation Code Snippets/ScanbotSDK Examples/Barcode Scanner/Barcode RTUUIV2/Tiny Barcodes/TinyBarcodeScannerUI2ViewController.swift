@@ -25,14 +25,21 @@ class TinyBarcodeScannerUI2ViewController: UIViewController {
         // Enable locking the focus at the minimum possible distance.
         configuration.cameraConfiguration.minFocusDistanceLock = true
         
-        // Present the scanner view controller modally on this view controller.
+        // Present the view controller modally.
         SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, cancelled, error, result in
+                                                     configuration: configuration) { controller, result, error in
             
             // Completion handler to process the result.
-            // The `cancelled` parameter indicates if the cancel button was tapped.
             
-            controller.presentingViewController?.dismiss(animated: true)
+            if let result {
+                
+                // Process the result.
+                
+            } else if let error {
+                
+                // Handle the error.
+                print("Error scanning barcode: \(error.localizedDescription)")
+            }
         }
     }
 }

@@ -87,4 +87,10 @@ extension BarcodesBatchViewController: SBSDKBarcodeScannerViewControllerDelegate
     func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return self.shouldDetectBarcodes
     }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
 }

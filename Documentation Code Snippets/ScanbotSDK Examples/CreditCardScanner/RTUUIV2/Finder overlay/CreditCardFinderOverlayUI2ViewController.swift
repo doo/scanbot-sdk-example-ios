@@ -38,13 +38,15 @@ class CreditCardFinderOverlayUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2CreditCardScannerViewController.present(on: self,
-                                                        configuration: configuration) { result in
+                                                        configuration: configuration) { controller, result, error in
             
             if let result {
                 // Handle the result.
                 
-            } else {
-                // Indicates that the cancel button was tapped.
+            } else if let error {
+                
+                // Handle the error.
+                print("Error scanning credit card: \(error.localizedDescription)")
             }
         }
     }

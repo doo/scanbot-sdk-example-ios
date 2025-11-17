@@ -32,7 +32,7 @@ class MRZLocalizationUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         SBSDKUI2MRZScannerViewController.present(on: self,
-                                                 configuration: configuration) { result in
+                                                 configuration: configuration) { controller, result, error in
             if let result {
                 // Handle the result.
                 
@@ -49,8 +49,10 @@ class MRZLocalizationUI2ViewController: UIViewController {
                     }
                 }
                 
-            } else {
-                // Indicates that the cancel button was tapped.
+            } else if let error {
+                
+                // Handle the error.
+                print("Error scanning MRZ: \(error.localizedDescription)")
             }
         }
     }
