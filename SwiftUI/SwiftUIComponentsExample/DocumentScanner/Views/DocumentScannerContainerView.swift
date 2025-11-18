@@ -49,6 +49,6 @@ struct DocumentScannerContainerView: View {
 struct DocumentScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
         DocumentScannerContainerView(scanner: .rtuUI, 
-                                     scanningResult: .constant(DocumentScanningResult(scannedDocument: SBSDKScannedDocument())))
+                                     scanningResult: .constant(DocumentScanningResult(scannedDocument: try! SBSDKScannedDocument(documentImageSizeLimit: 0))))
     }
 }

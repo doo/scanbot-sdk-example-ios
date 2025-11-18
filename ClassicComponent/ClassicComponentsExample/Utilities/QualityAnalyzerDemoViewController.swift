@@ -84,7 +84,7 @@ extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerD
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }
 

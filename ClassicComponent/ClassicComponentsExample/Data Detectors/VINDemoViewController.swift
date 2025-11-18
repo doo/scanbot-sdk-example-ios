@@ -44,6 +44,6 @@ extension VINDemoViewController: SBSDKVINScannerViewControllerDelegate {
     }
     
     func vinScannerViewController(_ controller: SBSDKVINScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }

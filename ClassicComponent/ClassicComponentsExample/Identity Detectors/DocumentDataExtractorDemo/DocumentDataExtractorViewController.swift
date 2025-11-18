@@ -67,7 +67,7 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
     
     func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController, didFailExtraction error: any Error) {
         indicator?.stopAnimating()
-        handleError(error)
+        sbsdk_showError(error)
     }
 }
 

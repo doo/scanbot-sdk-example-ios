@@ -69,7 +69,7 @@ final class TIFFDemoViewController: UIViewController {
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
-                    self?.handleError(error)
+                    self?.sbsdk_showError(error)
                 }
             }
         }

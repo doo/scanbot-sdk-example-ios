@@ -29,7 +29,7 @@ class UsecaseScanDocumentDataExtractor: Usecase {
         )
         
         configuration.scannerConfiguration = extractorConfiguration
-        let extractor = SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] result in
+        let extractor = SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] _, result , error in
             if let result {
                 let title = "Document Data Extractor Result"
                 var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
@@ -43,7 +43,7 @@ class UsecaseScanDocumentDataExtractor: Usecase {
                                                 message: message,
                                                 presenter: presenter, completion: nil)
             } else {
-                self?.didFinish()
+                self?.didFinish(error: error)
             }
         }
         

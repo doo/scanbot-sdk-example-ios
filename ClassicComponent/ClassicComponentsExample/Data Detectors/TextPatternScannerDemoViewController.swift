@@ -63,7 +63,7 @@ extension TextPatternScannerDemoViewController: SBSDKTextPatternScannerViewContr
     }
     
     func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
     
     func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController,

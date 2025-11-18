@@ -57,7 +57,7 @@ final class ReviewDocumentsViewController: UIViewController {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        self?.handleError(error)
+                        self?.sbsdk_showError(error)
                     }
                 }
             }
@@ -79,7 +79,7 @@ final class ReviewDocumentsViewController: UIViewController {
                             }
                         } catch {
                             DispatchQueue.main.async {
-                                self?.handleError(error)
+                                self?.sbsdk_showError(error)
                             }
                         }
                     }
@@ -100,7 +100,7 @@ final class ReviewDocumentsViewController: UIViewController {
         do {
             try ImageManager.shared.removeAllImages()
         } catch {
-            handleError(error)
+            sbsdk_showError(error)
         }
         reloadData()
     }
@@ -124,7 +124,7 @@ final class ReviewDocumentsViewController: UIViewController {
             ExportAction.exportToTIFF(ImageManager.shared.document, binarize: true) { [weak self] error, url in
                 self?.activityIndicator?.stopAnimating()
                 if let error {
-                    self?.handleError(error)
+                    self?.sbsdk_showError(error)
                     return
                 } else if let url {
                     self?.shareTIFF(at: url)
@@ -137,7 +137,7 @@ final class ReviewDocumentsViewController: UIViewController {
             ExportAction.exportToTIFF(ImageManager.shared.document, binarize: false) { [weak self] error, url in
                 self?.activityIndicator?.stopAnimating()
                 if let error {
-                    self?.handleError(error)
+                    self?.sbsdk_showError(error)
                     return
                 } else if let url {
                     self?.shareTIFF(at: url)
@@ -190,7 +190,7 @@ final class ReviewDocumentsViewController: UIViewController {
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
-                    self?.handleError(error)
+                    self?.sbsdk_showError(error)
                 }
             }
             DispatchQueue.main.async {
@@ -229,7 +229,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
                 cell.infoLabelText = nil
             }
         } catch {
-            handleError(error)
+            sbsdk_showError(error)
         }
         return cell
     }
@@ -246,7 +246,7 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
             editingViewController.delegate = self
             navigationController?.pushViewController(editingViewController, animated: true)
         } catch {
-            handleError(error)
+            sbsdk_showError(error)
         }
     }
 }
@@ -274,12 +274,12 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
             selectedImageIndex = nil
             editingViewController.navigationController?.popViewController(animated: true)
         } catch {
-            handleError(error)
+            sbsdk_showError(error)
         }
     }
     
     func imageEditingViewControllerDidFail(_ editingViewController: SBSDKImageEditingViewController, with error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
     
     func imageEditingViewControllerApplyButtonItem(

@@ -71,7 +71,7 @@ extension ScanAndCountViewController: SBSDKBarcodeScanAndCountViewControllerDele
     }
     
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
     
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,

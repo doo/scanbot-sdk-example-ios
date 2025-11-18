@@ -49,6 +49,6 @@ extension CreditCardDemoViewController: SBSDKCreditCardScannerViewControllerDele
     }
     
     func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }

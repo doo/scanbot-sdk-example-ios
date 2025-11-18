@@ -36,9 +36,16 @@ class Usecase: NSObject {
         Usecase.activeUsecases[self.id] = self
     }
     
-    func didFinish() {
+    func handleError(_ error: Error) {
+        presenter?.sbsdk_showError(error)
+    }
+    
+    func didFinish(error: Error?) {
         if Thread.current != Thread.main {
             fatalError("Usescases must be called on main thread.")
+        }
+        if let error {
+            handleError(error)
         }
         presenter = nil
         Usecase.activeUsecases.removeValue(forKey: self.id)

@@ -45,12 +45,12 @@ extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDeleg
             try ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
             updateUI()
         } catch {
-            handleError(error)
+            sbsdk_showError(error)
         }
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
     
 }

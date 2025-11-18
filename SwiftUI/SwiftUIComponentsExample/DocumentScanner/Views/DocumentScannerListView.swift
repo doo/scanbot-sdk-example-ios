@@ -12,7 +12,7 @@ struct DocumentScannerListView: View {
     
     private let scanners = DocumentScanner.allCases
     
-    @State var scanningResult = DocumentScanningResult(scannedDocument: SBSDKScannedDocument())
+    @State var scanningResult = DocumentScanningResult()
     @State private var selectedScanner: DocumentScanner?
     @State private var shouldCleanResults = false
     
@@ -48,7 +48,7 @@ struct DocumentScannerListView: View {
         .navigationBarTitle(Text("Document scanners"), displayMode: .inline)
         .onDisappear {
             if shouldCleanResults {
-                scanningResult = DocumentScanningResult(scannedDocument: SBSDKScannedDocument())
+                scanningResult = DocumentScanningResult()
             }
         }
     }

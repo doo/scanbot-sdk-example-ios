@@ -45,6 +45,6 @@ extension MRZDemoViewController: SBSDKMRZScannerViewControllerDelegate {
     }
     
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }

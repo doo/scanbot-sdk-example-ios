@@ -19,8 +19,16 @@ struct BarcodeResult: Identifiable {
 struct BarcodeScanningResult {
     let barcodeScannerName: String
     let scannedBarcodes: [BarcodeResult]
+    let error: Error?
+    
+    init(barcodeScannerName: String = "", error: Error) {
+        self.barcodeScannerName = barcodeScannerName
+        self.error = error
+        self.scannedBarcodes = []
+    }
     
     init(barcodeScannerName: String = "", scannedItems: [SBSDKBarcodeItem] = []) {
+        self.error = nil
         self.barcodeScannerName = barcodeScannerName
         self.scannedBarcodes = scannedItems.map({ barcode in
             return BarcodeResult(type: barcode.format,
@@ -31,6 +39,7 @@ struct BarcodeScanningResult {
     }
     
     init(barcodeScannerName: String = "", scannedResultItems: [SBSDKUI2BarcodeScannerUIItem] = []) {
+        self.error = nil
         self.barcodeScannerName = barcodeScannerName
         self.scannedBarcodes = scannedResultItems.map({ barcodeItem in
             return BarcodeResult(type: barcodeItem.barcode.format,

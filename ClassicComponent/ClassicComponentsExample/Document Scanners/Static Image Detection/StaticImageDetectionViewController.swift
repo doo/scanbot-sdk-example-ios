@@ -76,7 +76,7 @@ final class StaticImageDetectionViewController: UIViewController {
                 do {
                     try detectorsManager.detectInfo(on: image, using: detector)
                 } catch {
-                    self?.handleError(error)
+                    self?.sbsdk_showError(error)
                 }
             }
             alert.addAction(action)

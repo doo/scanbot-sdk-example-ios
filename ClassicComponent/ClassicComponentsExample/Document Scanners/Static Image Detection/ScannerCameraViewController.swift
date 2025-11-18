@@ -38,6 +38,6 @@ final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerV
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }

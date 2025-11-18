@@ -50,20 +50,26 @@ class SinglePageScanning {
         configuration.screens.camera.userGuidance.statesTitles.noDocumentFound = "Could not detect a document"
         
         // Present the document scanner on the presenter (presenter in our case is the UsecasesListTableViewController)
-        SBSDKUI2DocumentScannerController.present(on: presenter,
-                                                  configuration: configuration) { document in
-            
-            // Completion handler to process the result.
-                        
-            if let document {
+        do {
+            try SBSDKUI2DocumentScannerController.present(on: presenter,
+                                                          configuration: configuration) { _, document, error in
                 
-                // Process the document
-                let resultViewController = SingleScanResultViewController.make(with: document)
-                presenter.navigationController?.pushViewController(resultViewController, animated: true)
-                
-            } else {
-                // Indicates that the cancel button was tapped.
+                // Completion handler to process the result.
+                if let document {
+                    // Process the document
+                    let resultViewController = SingleScanResultViewController.make(with: document)
+                    presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                } else if let sdkError = error as? SBSDKError, sdkError.isCanceled {
+                    // Canceled. Do nothing.
+                } else if let error {
+                    // Show an error alert.
+                    presenter.sbsdk_showError(error)
+                }
             }
+        } catch {
+            
+            // Handle potential errors during the presentation of the document scanner
+            presenter.sbsdk_showError(error)
         }
     }
 }

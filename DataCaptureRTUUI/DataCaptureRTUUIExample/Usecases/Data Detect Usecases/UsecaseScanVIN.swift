@@ -15,7 +15,7 @@ class UsecaseScanVIN: Usecase {
         
         let configuration = SBSDKUI2VINScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2VINScannerViewController.create(with: configuration) { [weak self] result in
+        let scanner = SBSDKUI2VINScannerViewController.create(with: configuration) { [weak self] _, result, error in
             if let result {
                 guard !result.textResult.rawText.isEmpty || !result.barcodeResult.extractedVIN.isEmpty else {
                     return
@@ -26,7 +26,7 @@ class UsecaseScanVIN: Usecase {
                 UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
 
             } else {
-                self?.didFinish()
+                self?.didFinish(error: error)
             }
         }
         presentViewController(scanner)

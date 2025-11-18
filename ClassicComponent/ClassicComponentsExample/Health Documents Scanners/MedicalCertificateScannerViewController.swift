@@ -49,6 +49,6 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
     }
     
     func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
 }

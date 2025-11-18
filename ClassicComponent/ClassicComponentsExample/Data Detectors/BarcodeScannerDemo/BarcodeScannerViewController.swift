@@ -71,7 +71,7 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     }
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didFailScanning error: any Error) {
-        handleError(error)
+        sbsdk_showError(error)
     }
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didScanBarcodes codes: [SBSDKBarcodeItem]) {

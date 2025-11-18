@@ -26,7 +26,6 @@
 		082A62352B33033B000F66DC /* SBSDKGeometryUtilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */; };
 		0863F46E2CDB8EAB00E00765 /* SBSDKBarcodeItem+DisplayText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */; };
 		087C563C2772175F003440A9 /* ExportAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 087C563B2772175F003440A9 /* ExportAction.swift */; };
-		08DE74222ECC73C000A143FC /* UIViewController+Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08DE74212ECC73B900A143FC /* UIViewController+Error.swift */; };
 		11D852352CDD1A6E0000096B /* CreditCardDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */; };
 		2810181F274FEC27000350F5 /* TIFFDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */; };
 		28101823274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */; };
@@ -108,7 +107,6 @@
 		082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBSDKGeometryUtilities.swift; sourceTree = "<group>"; };
 		0863F46D2CDB8E9D00E00765 /* SBSDKBarcodeItem+DisplayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKBarcodeItem+DisplayText.swift"; sourceTree = "<group>"; };
 		087C563B2772175F003440A9 /* ExportAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExportAction.swift; sourceTree = "<group>"; };
-		08DE74212ECC73B900A143FC /* UIViewController+Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Error.swift"; sourceTree = "<group>"; };
 		11D852342CDD1A5C0000096B /* CreditCardDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardDemoViewController.swift; sourceTree = "<group>"; };
 		28101822274FF9DC000350F5 /* TextPatternScannerDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPatternScannerDemoViewController.swift; sourceTree = "<group>"; };
 		2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSelectionTableViewController.swift; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 		286FF1D32757B7FC007D47EF /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				08DE74212ECC73B900A143FC /* UIViewController+Error.swift */,
 				082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */,
 				2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */,
 				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
@@ -472,7 +469,6 @@
 				28AF0457279ACE4900C00B33 /* ImportAction.swift in Sources */,
 				2869C49E274E63790036F44D /* CheckViewController.swift in Sources */,
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
-				08DE74222ECC73C000A143FC /* UIViewController+Error.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift in Sources */,
 				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
@@ -747,7 +743,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = "8.0.0-RC2";
+				version = "8.0.0-RC3";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -18,7 +18,7 @@ final class PickFromGalleryViewController: UIViewController {
         uploadImageButton.layer.cornerRadius = 8
     }
     
-    private func showResult(for pickedImages: [UIImage]) {
+    private func showResult(for pickedImages: [UIImage]) throws {
         
         // If only one image is picked
         if pickedImages.count == 1,
@@ -34,13 +34,13 @@ final class PickFromGalleryViewController: UIViewController {
             let result = try? scanner?.run(image: imageRef)
             
             // Create an instance of a document
-            let document = SBSDKScannedDocument()
+            let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
             
             // Add page to the document using the image and the detected polygon on the image (if any)
             if let polygon = result?.polygon {
-                document.addPage(with: imageRef, polygon: polygon)
+                try document.addPage(with: imageRef, polygon: polygon)
             } else {
-                document.addPage(with: imageRef)
+                try document.addPage(with: imageRef)
             }
             
             // Process the document
@@ -55,10 +55,10 @@ final class PickFromGalleryViewController: UIViewController {
             let scanner = try? SBSDKDocumentScanner()
             
             // Make an instance of the document
-            let document = SBSDKScannedDocument()
+            let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
             
             // Iterate over multiple picked images
-            pickedImages.forEach { image in
+            try pickedImages.forEach { image in
                 
                 // Create an SBSDKImageRef from the image.
                 let imageRef = SBSDKImageRef.fromUIImage(image: image)
@@ -68,9 +68,9 @@ final class PickFromGalleryViewController: UIViewController {
                 
                 // Add page to the document using the image and the detected polygon on the image (if any)
                 if let polygon = result?.polygon {
-                    document.addPage(with: imageRef, polygon: polygon)
+                    try document.addPage(with: imageRef, polygon: polygon)
                 } else {
-                    document.addPage(with: imageRef)
+                    try document.addPage(with: imageRef)
                 }
             }
             
@@ -135,7 +135,11 @@ extension PickFromGalleryViewController: PHPickerViewControllerDelegate {
         }
         
         dispatchGroup.notify(queue: .main) {
-            self.showResult(for: pickedImages)
+            do {
+                try self.showResult(for: pickedImages)
+            } catch {
+                self.sbsdk_showError(error)
+            }
         }
     }
 }
@@ -151,7 +155,11 @@ extension PickFromGalleryViewController: UIImagePickerControllerDelegate, UINavi
         guard let image = info[.originalImage] as? UIImage else {
             return
         }
-        self.showResult(for: [image])
+        do {
+            try self.showResult(for: [image])
+        } catch {
+            self.sbsdk_showError(error)
+        }
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
