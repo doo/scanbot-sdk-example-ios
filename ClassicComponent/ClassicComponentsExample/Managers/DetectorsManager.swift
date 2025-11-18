@@ -63,46 +63,46 @@ final class DetectorsManager {
         self.delegate = delegate
     }
     
-    func detectInfo(on image: SBSDKImageRef, using detector: Detector) {
+    func detectInfo(on image: SBSDKImageRef, using detector: Detector) throws {
         switch detector {
         case .barcode:
-            guard let scanner = try? SBSDKBarcodeScanner() else { return }
-            let result = try? scanner.run(image: image)
+            let scanner = try SBSDKBarcodeScanner()
+            let result = try scanner.run(image: image)
             delegate?.scanner(scanner, didFindBarcodes: result)
         case .genericDocument:
             let configuration = SBSDKDocumentDataExtractorConfiguration(configurations: [SBSDKDocumentDataExtractorCommonConfiguration()])
             
-            guard let extractor = try? SBSDKDocumentDataExtractor(configuration: configuration) else { return }
-            let result = try? extractor.run(image: image)
+            let extractor = try SBSDKDocumentDataExtractor(configuration: configuration)
+            let result = try extractor.run(image: image)
             delegate?.extractor(extractor, didExtractDocument: result)
         case .mrz:
-            guard let scanner = try? SBSDKMRZScanner() else { return }
-            let result = try? scanner.run(image: image)
+            let scanner = try SBSDKMRZScanner()
+            let result = try scanner.run(image: image)
             delegate?.scanner(scanner, didScanMRZ: result)
         case .medicalCertificate:
-            guard let scanner = try? SBSDKMedicalCertificateScanner.create() else { return }
+            let scanner = try SBSDKMedicalCertificateScanner.create()
             let scannerParameters = SBSDKMedicalCertificateScanningParameters()
-            let result = try? scanner.run(image: image, parameters: scannerParameters)
+            let result = try scanner.run(image: image, parameters: scannerParameters)
             delegate?.scanner(scanner, didScanMedicalCertificate: result)
         case .documentScanner:
             let configuration = SBSDKDocumentScannerConfiguration()
-            guard let scanner = try? SBSDKDocumentScanner(configuration: configuration) else { return }
-            let result = try? scanner.run(image: image)
+            let scanner = try SBSDKDocumentScanner(configuration: configuration)
+            let result = try scanner.run(image: image)
             delegate?.scanner(scanner, didFindPolygon: result)
         case .check:
             let configuration = SBSDKCheckScannerConfiguration(
                 documentDetectionMode: .detectAndCropDocument,
                 acceptedCheckStandards: [.usa, .fra, .kwt, .aus, .ind, .isr, .uae, .can]
             )
-            guard let scanner = try? SBSDKCheckScanner(configuration: configuration) else { return }
-            let result = try? scanner.run(image: image)
+            let scanner = try SBSDKCheckScanner(configuration: configuration)
+            let result = try scanner.run(image: image)
             delegate?.scanner(scanner, didScanCheck: result)
         case .creditCard:
             let configuration = SBSDKCreditCardScannerConfiguration()
             configuration.returnCreditCardImage = true
             
-            guard let scanner = try? SBSDKCreditCardScanner(configuration: configuration) else { return }
-            let result = try? scanner.run(image: image)
+            let scanner = try SBSDKCreditCardScanner(configuration: configuration)
+            let result = try scanner.run(image: image)
             delegate?.scanner(scanner, didScanCreditCard: result)
         }
     }

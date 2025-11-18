@@ -52,16 +52,25 @@ final class TIFFDemoViewController: UIViewController {
             parameters.compression = SBSDKCompressionMode.lzw
         }
         Task {
-            let generator = SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
-            if let result = await generator.generate(from: images, to: fileURL) {
-                let alert = UIAlertController(title: "File saved",
-                                              message: "At path: \(result.path)",
-                                              preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK",
-                                             style: .default,
-                                             handler: nil)
-                alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
+            do {
+                let generator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
+                if let result = try await generator.generate(from: images, to: fileURL) {
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        let alert = UIAlertController(title: "File saved",
+                                                      message: "At path: \(result.path)",
+                                                      preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK",
+                                                     style: .default,
+                                                     handler: nil)
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async { [weak self] in
+                    self?.handleError(error)
+                }
             }
         }
     }

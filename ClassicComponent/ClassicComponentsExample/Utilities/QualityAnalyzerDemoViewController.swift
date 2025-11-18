@@ -82,6 +82,10 @@ extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerD
                                        autoSnapped: Bool) {
         estimateAndShowResults(from: originalImage)
     }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
 }
 
 extension QualityAnalyzerDemoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

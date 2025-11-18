@@ -44,7 +44,11 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
                                                  didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult) {
         
         if result.scanningSuccessful {
-            self.show(scannedResult: result)
+            show(scannedResult: result)
         }
+    }
+    
+    func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
     }
 }

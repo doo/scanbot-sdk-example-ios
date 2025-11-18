@@ -70,6 +70,10 @@ extension ScanAndCountViewController: SBSDKBarcodeScanAndCountViewControllerDele
         listCountLabel.text = String(count)
     }
     
+    func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
+    
     func barcodeScanAndCount(_ controller: SBSDKBarcodeScanAndCountViewController,
                              overlayForBarcode code: SBSDKBarcodeItem) -> UIView? {
         UIImageView(image: UIImage(systemName: "checkmark.circle.fill"))

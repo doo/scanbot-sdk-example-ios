@@ -57,12 +57,17 @@ final class TextPatternScannerDemoViewController: UIViewController {
 }
 
 extension TextPatternScannerDemoViewController: SBSDKTextPatternScannerViewControllerDelegate {
+    
     func textPatternScannerViewControllerShouldScan(_ controller: SBSDKTextPatternScannerViewController) -> Bool {
         return shouldScan
     }
     
+    func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
+    
     func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController,
-                                          didValidate result: SBSDKTextPatternScannerResult) {
+                                          didScanTextPattern result: SBSDKTextPatternScannerResult) {
         DispatchQueue.main.async { [weak self] in
             self?.show(result: result)
         }

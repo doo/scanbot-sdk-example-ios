@@ -76,7 +76,7 @@ final class StaticImageDetectionViewController: UIViewController {
                 do {
                     try detectorsManager.detectInfo(on: image, using: detector)
                 } catch {
-                    print("Error getting results: \(error.localizedDescription)")
+                    self?.handleError(error)
                 }
             }
             alert.addAction(action)

@@ -48,6 +48,10 @@ extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
         }
     }
     
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
+    
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
                                     didChangeState state: SBSDKCheckScannerState) { }
 }

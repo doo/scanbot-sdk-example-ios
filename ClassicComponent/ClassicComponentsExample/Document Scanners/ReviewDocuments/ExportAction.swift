@@ -13,6 +13,7 @@ class ExportAction {
     
     static func exportToPDF(_ document: SBSDKScannedDocument, completion: @escaping (Error?, URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
+            
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
                 .appendingPathExtension("pdf")
@@ -34,18 +35,22 @@ class ExportAction {
                                                       jpegQuality: 80,
                                                       resamplingMethod: .lanczos4)
             
-            let generator = SBSDKPDFGenerator(configuration: configuration,
-                                              ocrConfiguration: ocrConfiguration,
-                                              useEncryptionIfAvailable: false)
-            generator.generate(from: document, output: url) { finished, error in
-                DispatchQueue.main.async {
-                    completion(error, url)
+            Task {
+                do {
+                    let generator = try SBSDKPDFGenerator(configuration: configuration,
+                                                          ocrConfiguration: ocrConfiguration,
+                                                          useEncryptionIfAvailable: false)
+                    
+                    let result = try await generator.generate(from: document, output: url)
+                    DispatchQueue.main.async { completion(nil, result) }
+                } catch {
+                    DispatchQueue.main.async { completion(error, nil) }
                 }
             }
         }
     }
     
-    static func exportToTIFF(_ document: SBSDKScannedDocument, binarize: Bool, completion: @escaping (URL?) -> ()) {
+    static func exportToTIFF(_ document: SBSDKScannedDocument, binarize: Bool, completion: @escaping (Error?, URL?) -> ()) {
         DispatchQueue(label: "export_queue").async {
             let url = FileManager.default.temporaryDirectory
                 .appendingPathComponent("document")
@@ -53,12 +58,18 @@ class ExportAction {
             let params = binarize ? SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
             : SBSDKTIFFGeneratorParameters.defaultParameters
             
-            let generator = SBSDKTIFFGenerator(parameters: params, useEncryptionIfAvailable: false)
             
             Task {
-                let result = await generator.generate(from: document, to: url)
-                DispatchQueue.main.async { 
-                    completion(result) 
+                do {
+                    let generator = try SBSDKTIFFGenerator(parameters: params, useEncryptionIfAvailable: false)
+                    let result = try await generator.generate(from: document, to: url)
+                    DispatchQueue.main.async {
+                        completion(nil, result)
+                    }
+                } catch {
+                    DispatchQueue.main.async {
+                        completion(error, nil)
+                    }
                 }
             }
         }

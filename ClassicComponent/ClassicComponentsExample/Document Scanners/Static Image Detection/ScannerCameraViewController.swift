@@ -36,4 +36,8 @@ final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerV
         delegate?.cameraViewController(self, didCapture: documentImage)
         presentingViewController?.dismiss(animated: true, completion: nil)
     }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
 }

@@ -64,6 +64,11 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
             display(document: document, with: sourceImage)
         }
     }
+    
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController, didFailExtraction error: any Error) {
+        indicator?.stopAnimating()
+        handleError(error)
+    }
 }
 
 extension DocumentDataExtractorViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {

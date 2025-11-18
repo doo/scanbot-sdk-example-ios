@@ -19,11 +19,6 @@ class DocumentScannerViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard Scanbot.isLicenseValid else {
-            presentErrorAlert()
-            return
-        }
         scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                    parentView: scannerContainerView,
                                                                    delegate: self)
@@ -32,18 +27,6 @@ class DocumentScannerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
-    }
-    
-    private func presentErrorAlert() {
-        let alert = UIAlertController(title: "Error",
-                                      message: "The ScanbotSDK license has been expired",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
-                                      style: .default,
-                                      handler: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
     }
     
     private func updateUI() {
@@ -58,8 +41,17 @@ extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDeleg
                                        on originalImage: SBSDKImageRef,
                                        with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
-        ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
-        updateUI()
+        do {
+            try ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
+            updateUI()
+        } catch {
+            handleError(error)
+        }
     }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        handleError(error)
+    }
+    
 }
 
