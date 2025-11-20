@@ -53,14 +53,16 @@ class SinglePageFinderOverlayScanning {
                 } else {
                     // Indicates that an error occured or the cancel button was tapped.
                     if let sdkError = error as? SBSDKError, sdkError.isCanceled {
-                        // Cancel button was tapped.
-                    } else {
-                        // An error occurred during scanning.
+                        // Canceled. Do nothing.
+                    } else if let error {
+                        // Show an error alert.
+                        presenter.sbsdk_showError(error)
                     }
                 }
             }
-        } catch (let error) {
-            // An error occurred during presentation of the document scanner.
+        } catch {
+            // Handle potential errors during the presentation of the document scanner
+            presenter.sbsdk_showError(error)
         }
     }
 }
