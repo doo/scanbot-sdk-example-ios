@@ -116,31 +116,60 @@ extension PickFromGalleryViewController: PHPickerViewControllerDelegate {
         picker.dismiss(animated: true) { [weak self] in
             guard let self else { return }
             
-            var pickedImages = [UIImage]()
-            
-            let dispatchGroup = DispatchGroup()
-            
-            results.forEach { result in
-                
-                if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            Task {
+                do {
+                    let pickedImages = try await self.fetchMultipleImages(results: results)
                     
-                    dispatchGroup.enter()
+                    try await MainActor.run  {
+                        try self.showResult(for: pickedImages)
+                    }
                     
-                    result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                        
-                        if let image = image as? UIImage {
-                            pickedImages.append(image)
-                        }
-                        dispatchGroup.leave()
+                } catch {
+                    self.sbsdk_showError(error)
+                }
+            }
+        }
+    }
+    
+    private func fetchMultipleImages(results: [PHPickerResult]) async throws -> [UIImage] {
+        let imageItems = results
+            .map { $0.itemProvider }
+            .filter { $0.canLoadObject(ofClass: UIImage.self) }
+        
+        return try await withThrowingTaskGroup(of: UIImage?.self) { [weak self] group in
+            guard let self else { return [] }
+            for imageItem in imageItems {
+                group.addTask {
+                    if let image = try await self.loadImage(from: imageItem) {
+                        return image
+                    } else {
+                        return nil
                     }
                 }
             }
             
-            dispatchGroup.notify(queue: .main) {
-                do {
-                    try self.showResult(for: pickedImages)
-                } catch {
-                    self.sbsdk_showError(error)
+            var loadedImages: [UIImage] = []
+            for try await imageResult in group {
+                if let imageResult = imageResult {
+                    loadedImages.append(imageResult)
+                }
+            }
+            
+            return loadedImages
+        }
+    }
+    
+    @Sendable
+    private func loadImage(from provider: NSItemProvider) async throws -> UIImage? {
+        return try await withCheckedThrowingContinuation { continuation in
+            provider.loadObject(ofClass: UIImage.self) { (image, error) in
+                
+                if let image = image as? UIImage {
+                    continuation.resume(returning: image)
+                } else if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: SBSDKError.unknownError("Could not get the image"))
                 }
             }
         }
