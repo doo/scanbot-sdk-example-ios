@@ -25,19 +25,19 @@ final class PickFromGalleryViewController: UIViewController {
            let image = pickedImages.first {
             
             // Create an instance of the scanner
-            let scanner = try? SBSDKDocumentScanner()
+            let scanner = try SBSDKDocumentScanner()
             
             // Create an SBSDKImageRef from the image.
             let imageRef = SBSDKImageRef.fromUIImage(image: image)
             
             // Scan from the imageRef
-            let result = try? scanner?.run(image: imageRef)
+            let result = try scanner.run(image: imageRef)
             
             // Create an instance of a document
             let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
             
             // Add page to the document using the image and the detected polygon on the image (if any)
-            if let polygon = result?.polygon {
+            if let polygon = result.polygon {
                 try document.addPage(with: imageRef, polygon: polygon)
             } else {
                 try document.addPage(with: imageRef)
@@ -52,7 +52,7 @@ final class PickFromGalleryViewController: UIViewController {
         } else if pickedImages.count > 1 {
             
             // Create an instance of the scanner
-            let scanner = try? SBSDKDocumentScanner()
+            let scanner = try SBSDKDocumentScanner()
             
             // Make an instance of the document
             let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
@@ -64,10 +64,10 @@ final class PickFromGalleryViewController: UIViewController {
                 let imageRef = SBSDKImageRef.fromUIImage(image: image)
                 
                 // Scan from the imageRef
-                let result = try? scanner?.run(image: imageRef)
+                let result = try scanner.run(image: imageRef)
                 
                 // Add page to the document using the image and the detected polygon on the image (if any)
-                if let polygon = result?.polygon {
+                if let polygon = result.polygon {
                     try document.addPage(with: imageRef, polygon: polygon)
                 } else {
                     try document.addPage(with: imageRef)
@@ -111,54 +111,86 @@ extension PickFromGalleryViewController: PHPickerViewControllerDelegate {
     
     func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
         
-        picker.dismiss(animated: true)
-        
-        var pickedImages = [UIImage]()
-        
-        let dispatchGroup = DispatchGroup()
-        
-        results.forEach { result in
+        // Run after dismissal completes; otherwise alerts can't be presented
+        // because the `presentedViewController` is still the PHPickerViewController.
+        picker.dismiss(animated: true) { [weak self] in
+            guard let self else { return }
             
-            if result.itemProvider.canLoadObject(ofClass: UIImage.self) {
-                
-                dispatchGroup.enter()
-                
-                result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+            Task {
+                do {
+                    let pickedImages = try await self.fetchMultipleImages(results: results)
                     
-                    if let image = image as? UIImage {
-                        pickedImages.append(image)
+                    try await MainActor.run  {
+                        try self.showResult(for: pickedImages)
                     }
                     
-                    dispatchGroup.leave()
+                } catch {
+                    self.sbsdk_showError(error)
                 }
             }
         }
+    }
+    
+    private func fetchMultipleImages(results: [PHPickerResult]) async throws -> [UIImage] {
+        let imageItems = results
+            .map { $0.itemProvider }
+            .filter { $0.canLoadObject(ofClass: UIImage.self) }
         
-        dispatchGroup.notify(queue: .main) {
-            do {
-                try self.showResult(for: pickedImages)
-            } catch {
-                self.sbsdk_showError(error)
+        return try await withThrowingTaskGroup(of: UIImage?.self) { [weak self] group in
+            guard let self else { return [] }
+            for imageItem in imageItems {
+                group.addTask {
+                    if let image = try await self.loadImage(from: imageItem) {
+                        return image
+                    } else {
+                        return nil
+                    }
+                }
+            }
+            
+            var loadedImages: [UIImage] = []
+            for try await imageResult in group {
+                if let imageResult = imageResult {
+                    loadedImages.append(imageResult)
+                }
+            }
+            
+            return loadedImages
+        }
+    }
+    
+    @Sendable
+    private func loadImage(from provider: NSItemProvider) async throws -> UIImage? {
+        return try await withCheckedThrowingContinuation { continuation in
+            provider.loadObject(ofClass: UIImage.self) { (image, error) in
+                
+                if let image = image as? UIImage {
+                    continuation.resume(returning: image)
+                } else if let error {
+                    continuation.resume(throwing: error)
+                } else {
+                    continuation.resume(throwing: SBSDKError.unknownError("Could not get the image"))
+                }
             }
         }
     }
 }
-
 // Image picker for iOS 13
 extension PickFromGalleryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
-        picker.dismiss(animated: true)
-        
-        guard let image = info[.originalImage] as? UIImage else {
-            return
-        }
-        do {
-            try self.showResult(for: [image])
-        } catch {
-            self.sbsdk_showError(error)
+        // Just to ensure that it dosn't happen too to iOS 13 devices.
+        picker.dismiss(animated: true) {
+            guard let image = info[.originalImage] as? UIImage else {
+                return
+            }
+            do {
+                try self.showResult(for: [image])
+            } catch {
+                self.sbsdk_showError(error)
+            }
         }
     }
     
