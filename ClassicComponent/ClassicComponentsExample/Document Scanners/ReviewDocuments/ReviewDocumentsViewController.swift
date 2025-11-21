@@ -111,11 +111,12 @@ final class ReviewDocumentsViewController: UIViewController {
             self?.activityIndicator?.startAnimating()
             ExportAction.exportToPDF(ImageManager.shared.document) { [weak self] (error, url) in
                 self?.activityIndicator?.stopAnimating()
-                guard let url = url else {
-                    print("Failed to render PDF. Description: \(error?.localizedDescription ?? "")")
+                if let error {
+                    self?.sbsdk_showError(error)
                     return
+                } else if let url {
+                    self?.sharePDF(at: url)
                 }
-                self?.sharePDF(at: url)
             }
         }
 
@@ -190,6 +191,7 @@ final class ReviewDocumentsViewController: UIViewController {
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
+                    self?.showsQuality = false
                     self?.sbsdk_showError(error)
                 }
             }
@@ -230,6 +232,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
             }
         } catch {
             sbsdk_showError(error)
+            showsQuality = false
         }
         return cell
     }

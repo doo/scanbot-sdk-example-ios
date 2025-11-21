@@ -27,11 +27,13 @@ final class ImportAction: NSObject, UIImagePickerControllerDelegate, UINavigatio
     
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        picker.presentingViewController?.dismiss(animated: true, completion: nil)
-        if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            let imageRef = SBSDKImageRef.fromUIImage(image: image)
-            completionHandler(imageRef)
-        }
+        picker.presentingViewController?.dismiss(animated: true, completion: { [weak self] in
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+                let imageRef = SBSDKImageRef.fromUIImage(image: image)
+                self?.completionHandler(imageRef)
+            }
+        })
+        
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
