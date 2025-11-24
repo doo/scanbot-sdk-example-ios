@@ -25,7 +25,10 @@ final class MRZDemoViewController: UIViewController {
     }
     
     private func show(result: SBSDKMRZScannerResult?) {
-        let resultMessage = result?.toJson() ?? "Nothing detected"
+
+        guard let result, result.success else { return }
+
+        let resultMessage = result.toJson()
         let alert = UIAlertController(title: "Result",
                                       message: resultMessage,
                                       preferredStyle: .alert)
