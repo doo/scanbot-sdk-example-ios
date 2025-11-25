@@ -50,8 +50,8 @@ class VINTopBarUI2ViewController: UIViewController {
             print(result.barcodeResult.extractedVIN)
             print(result.barcodeResult.status)
             print(result.barcodeResult.rectangle)
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

@@ -65,8 +65,8 @@ class TextPatternUserGuidanceUI2ViewController: UIViewController {
                 print(symbolBox.recognitionConfidence)
                 print(symbolBox.boundingRect)
             }
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

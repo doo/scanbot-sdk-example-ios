@@ -50,8 +50,8 @@ class CreditCardLocalizationUI2ViewController: UIViewController {
                     print("Name: \(name.text), Confidence: \(name.confidence)")
                 }
             }
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

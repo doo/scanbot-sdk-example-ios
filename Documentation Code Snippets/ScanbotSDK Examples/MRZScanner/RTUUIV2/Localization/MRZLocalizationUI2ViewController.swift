@@ -50,8 +50,8 @@ class MRZLocalizationUI2ViewController: UIViewController {
                     print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
                 }
             }
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

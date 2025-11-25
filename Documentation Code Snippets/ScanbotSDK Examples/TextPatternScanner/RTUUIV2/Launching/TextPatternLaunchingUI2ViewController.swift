@@ -28,8 +28,9 @@ class TextPatternLaunchingUI2ViewController: UIViewController {
         do {
             let result = try await SBSDKUI2TextPatternScannerViewController.present(on: self,
                                                                                     configuration: configuration)
-        }
-        catch SBSDKError.operationCanceled {
+            // Process the result as needed.
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

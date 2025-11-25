@@ -72,8 +72,8 @@ class DocumentMultiPageUI2ViewController: UIViewController {
                 }
                 // Check out other available properties in `SBSDKScannedPage`
             }
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

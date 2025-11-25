@@ -58,8 +58,8 @@ class CheckLaunchingUI2ViewController: UIViewController {
                     // Other check types can be added as needed (AUS, FRA, IND, ISR, KWT, etc.)
                 }
             }
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {

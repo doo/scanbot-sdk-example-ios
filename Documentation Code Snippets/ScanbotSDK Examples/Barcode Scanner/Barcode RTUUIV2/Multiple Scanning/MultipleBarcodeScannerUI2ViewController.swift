@@ -63,8 +63,8 @@ class MultipleBarcodeScannerUI2ViewController: UIViewController {
                 // Check out other available properties in `SBSDKBarcodeItem`.
             }
             print(result.selectedZoomFactor)
-        }
-        catch SBSDKError.operationCanceled {
+        
+        } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             
         } catch {
