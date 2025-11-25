@@ -13,10 +13,13 @@ class DocumentPreviewModesUI2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startScanning()
+        // Start scanning here. Usually this is an action triggered by some button or menu.
+        Task {
+            await self.startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
@@ -49,24 +52,53 @@ class DocumentPreviewModesUI2ViewController: UIViewController {
         
         // Present the view controller modally.
         do {
-            let controller = try SBSDKUI2DocumentScannerController.present(on: self,
-                                                                           configuration: configuration)
-            { controller, document, error in
+            let result = try await SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration)
+            
+            // Handle the result.
+            print(result.uuid)
+            print(result.pageCount)
+            print(result.documentImageSizeLimit)
+            print(result.pdfURI)
+            print(result.tiffURI)
+            print(result.creationDate)
+            
+            // Check out other available properties in `SBSDKScannedDocument`.
+            
+            result.pages.forEach { scannedPage in
                 
-                // Completion handler to process the result.
+                print(scannedPage.uuid)
+                print(scannedPage.documentDetectionStatus)
+                print(scannedPage.polygon)
+                print(scannedPage.source)
                 
-                if let document {
-                    // Handle the document.
-                    
-                } else if let error {
-                    
-                    // Handle the error.
-                    print("Error scanning document: \(error.localizedDescription)")
+                let originalImage = scannedPage.originalImage
+                let originalImageURI = scannedPage.originalImageURI
+                
+                let documentImage = scannedPage.documentImage
+                let documentImageURI = scannedPage.documentImageURI
+                
+                let documentImagePreview = scannedPage.documentImagePreview
+                let documentImagePreviewURI = scannedPage.documentImagePreviewURI
+                
+                if let documentQuality = scannedPage.documentQuality {
+                    switch documentQuality {
+                    case .veryPoor: print("veryPoor")
+                    case .poor: print("poor")
+                    case .reasonable: print("reasonable")
+                    case .good: print("good")
+                    case .excellent: print("excellent")
+                    default: print("unknown")
+                    }
                 }
+                // Check out other available properties in `SBSDKScannedPage`
             }
         }
-        catch {
-            print("Error while presenting the document scanner: \(error.localizedDescription)")
+        catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning document: \(error.localizedDescription)")
         }
     }
 }

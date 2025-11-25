@@ -10,14 +10,16 @@ import ScanbotSDK
 
 class TextPatternIntroductionUI2ViewController: UIViewController {
     
-    override func viewDidLoad () {
+    override func viewDidLoad() {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2TextPatternScannerScreenConfiguration()
@@ -62,16 +64,29 @@ class TextPatternIntroductionUI2ViewController: UIViewController {
         configuration.introScreen.doneButton.background.fillColor = SBSDKUI2Color(colorString: "#C8193C")
         
         // Present the view controller modally.
-        SBSDKUI2TextPatternScannerViewController.present(on: self,
-                                                         configuration: configuration) { controller, result, error in
-            if let result {
-                // Handle the result.
-                
-            } else if let error {
-                
-                // Handle the error.
-                print("Error scanning text pattern: \(error.localizedDescription)")
+        do {
+            let result = try await SBSDKUI2TextPatternScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
+            // Handle the result.
+            print(result.rawText)
+            print(result.confidence)
+            result.wordBoxes.forEach { wordBox in
+                print(wordBox.text)
+                print(wordBox.recognitionConfidence)
+                print(wordBox.boundingRect)
             }
+            result.symbolBoxes.forEach { symbolBox in
+                print(symbolBox.symbol)
+                print(symbolBox.recognitionConfidence)
+                print(symbolBox.boundingRect)
+            }
+        }
+        catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning Text Pattern: \(error.localizedDescription)")
         }
     }
 }
