@@ -47,12 +47,6 @@ class ImageEditingViewController: UIViewController {
 
 extension ImageEditingViewController: SBSDKImageEditingViewControllerDelegate {
     
-    func imageEditingViewControllerDidFail(_ editingViewController: SBSDKImageEditingViewController,
-                                           with error: any Error) {
-        // Handle the error.
-        print("Error occurred while editing the image: \(error.localizedDescription)")
-    }
-    
     // Create a custom cancel button.
     func imageEditingViewControllerCancelButtonItem(_ editingViewController: SBSDKImageEditingViewController) -> UIBarButtonItem? {
         return UIBarButtonItem(systemItem: .cancel)
@@ -78,16 +72,20 @@ extension ImageEditingViewController: SBSDKImageEditingViewControllerDelegate {
                                target: nil,
                                action: nil)
     }
-
-    // Handle canceling the changes.
-    func imageEditingViewControllerDidCancelChanges(_ editingViewController: SBSDKImageEditingViewController) {
+    
+    func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
+                                    didApplyChangesWith polygon: SBSDKPolygon,
+                                    croppedImage: SBSDKImageRef) {
+        
+        // Process the edited image.
         self.dismiss(animated: true, completion: nil)
     }
+    
+    func imageEditingViewControllerDidFail(_ editingViewController: SBSDKImageEditingViewController,
+                                           with error: Error) {
+        // Handle the error.
+        print("Error occurred while editing the image: \(error.localizedDescription)")
 
-    // Handle applying the changes.
-    func imageEditingViewController(_ editingViewController: SBSDKImageEditingViewController,
-                                    didApplyChangesWith polygon: SBSDKPolygon, croppedImage: UIImage) {
-        // Process the edited image.
         self.dismiss(animated: true, completion: nil)
     }
 }
