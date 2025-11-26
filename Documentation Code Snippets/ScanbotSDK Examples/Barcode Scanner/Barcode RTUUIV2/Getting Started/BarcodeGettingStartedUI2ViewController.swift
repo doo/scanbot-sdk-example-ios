@@ -12,21 +12,21 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
     
     func launchRTUUIv2Scanner() {
         
-        // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
-
-        // Present the view controller modally.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, result, error in
+        Task {
+            // Create the default configuration object.
+            let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
             
-            // Completion handler to process the result.
-            
-            if let result {
+            // Present the view controller modally.
+            do {
+                let result = try await SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
+                // Process the result as needed.
                 
-                // Process the result.
+            } catch SBSDKError.operationCanceled {
+                print("The operation was cancelled before completion or by the user")
                 
-            } else if let error {
-                
+            } catch {
+                // Any other error
                 print("Error scanning barcode: \(error.localizedDescription)")
             }
         }
@@ -34,22 +34,16 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
     
     func handleScanResults() {
         
-        // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
-        
-        // Present the scanner view controller modally on this view controller.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, result, error in
-
-            if let error {
-                
-                // Handle the error.
-                print("Error scanning barcode: \(error.localizedDescription)")
-                
-            } else if let items = result?.items {
-                
+        Task {
+            // Create the default configuration object.
+            let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
+            
+            // Present the view controller modally.
+            do {
+                let result = try await SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
                 // Process result
-                items.forEach({ item in
+                result.items.forEach({ item in
                     
                     print("Barcode Identity String: \(item.barcode.identityString)")
                     print("Scan count: \(item.count)")
@@ -85,6 +79,13 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
                         })
                     }
                 })
+            }
+            catch SBSDKError.operationCanceled {
+                print("The operation was cancelled before completion or by the user")
+                
+            } catch {
+                // Any other error
+                print("Error scanning barcode: \(error.localizedDescription)")
             }
         }
     }

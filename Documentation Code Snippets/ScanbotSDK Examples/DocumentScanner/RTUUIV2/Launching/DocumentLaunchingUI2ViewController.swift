@@ -13,34 +13,27 @@ class DocumentLaunchingUI2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startScanning()
+        Task {
+            await self.startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // Present the view controller modally.
         do {
-            let controller = try SBSDKUI2DocumentScannerController.present(on: self,
-                                                                           configuration: configuration)
-            { controller, document, error in
-                
-                // Completion handler to process the result.
-                
-                if let document {
-                    // Handle the document.
-                    
-                } else if let error {
-                    
-                    // Handle the error.
-                    print("Error scanning document: \(error.localizedDescription)")
-                }
-            }
-        }
-        catch {
-            print("Error while presenting the document scanner: \(error.localizedDescription)")
+            let result = try await SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration)
+            
+            // Process the result as needed.
+            
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning document: \(error.localizedDescription)")
         }
     }
 }

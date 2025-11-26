@@ -16,26 +16,26 @@ func parseDataManually() {
     do {
         
         // Instantiate the parser.
-        let parser = try? SBSDKBarcodeDocumentParser(acceptedFormats: [.gs1])
+        let parser = try SBSDKBarcodeDocumentParser(acceptedFormats: [.gs1])
         
         // Run the parser and check the result.
-        if let document = try? parser?.parse(rawString: rawBarcodeString) {
+        let document = try parser.parse(rawString: rawBarcodeString)
             
-            // Get the parsed document.
-            guard let parsedDocument = document.parsedDocument else { return }
+        // Get the parsed document.
+        guard let parsedDocument = document.parsedDocument else { return }
+        
+        // Parse the resulted document as a GS1 document.
+        if let gs1ParsedDocument = SBSDKBarcodeDocumentModelGS1(document: parsedDocument) {
             
-            // Parse the resulted document as a GS1 document.
-            if let gs1ParsedDocument = SBSDKBarcodeDocumentModelGS1(document: parsedDocument) {
-                
-                // Retrieve the elements.
-                let elements = gs1ParsedDocument.elements
-                
-                // Enumerate over the elements.
-                for element in elements {
+            // Retrieve the elements.
+            let elements = gs1ParsedDocument.elements
+            
+            // Enumerate over the elements.
+            for element in elements {
                     
-                    // Do something with the element.
-                    
-                    print("\(element.dataTitle?.value?.text) = \(element.rawValue?.value?.text)")
+                // Do something with the element.
+                if let key = element.dataTitle?.value?.text, let value = element.rawValue?.value?.text {
+                    print("\(key) = \(value)")
                 }
             }
         }

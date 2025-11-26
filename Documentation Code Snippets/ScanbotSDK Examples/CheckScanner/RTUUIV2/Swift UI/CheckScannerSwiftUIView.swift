@@ -77,8 +77,8 @@ struct CheckScannerSwiftUIView: View {
                             }
                         }
                     }
+                    // Other check types can be added as needed (AUS, FRA, IND, ISR, KWT, etc.)
                 }
-                // Other check types can be added as needed (AUS, FRA, IND, ISR, KWT, etc.)
             } else {
                 Text("No document found.")
             }

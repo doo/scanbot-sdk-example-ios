@@ -14,10 +14,12 @@ class MRZScanningUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2MRZScannerScreenConfiguration()
@@ -51,30 +53,30 @@ class MRZScanningUI2ViewController: UIViewController {
         configuration.vibration.enabled = false
         
         // Present the view controller modally.
-        SBSDKUI2MRZScannerViewController.present(on: self,
-                                                 configuration: configuration) { controller, result, error in
+        do {
+            let result = try await SBSDKUI2MRZScannerViewController.present(on: self, configuration: configuration)
             
-            if let result {
-                // Handle the result.
+            // Handle the result.
+            
+            // Cast the resulted generic document to the MRZ model using the `wrap` method.
+            if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
                 
-                // Cast the resulted generic document to the MRZ model using the `wrap` method.
-                if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
-                    
-                    // Retrieve the values.
-                    // e.g
-                    if let birthDate = model.birthDate?.value {
-                        print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
-                    }
-                    if let nationality = model.nationality?.value {
-                        print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
-                    }
+                // Retrieve the values.
+                // e.g
+                if let birthDate = model.birthDate?.value {
+                    print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
                 }
-                
-            } else if let error {
-                
-                // Handle the error.
-                print("Error scanning MRZ: \(error.localizedDescription)")
+                if let nationality = model.nationality?.value {
+                    print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                }
             }
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning MRZ: \(error.localizedDescription)")
         }
     }
 }

@@ -14,10 +14,12 @@ class InfoMappingBarcodeScannerUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        self.startScanning()
+        Task {
+            await self.startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
@@ -62,20 +64,26 @@ class InfoMappingBarcodeScannerUI2ViewController: UIViewController {
         configuration.scannerConfiguration.setBarcodeFormats(SBSDKBarcodeFormats.twod)
         
         // Present the view controller modally.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, result, error in
+        do {
+            let result = try await SBSDKUI2BarcodeScannerViewController.present(on: self, configuration: configuration)
             
-            // Completion handler to process the result.
-            
-            if let result {
-                
-                // Process the result.
-                
-            } else if let error {
-                
-                // Handle the error.
-                print("Error scanning barcode: \(error.localizedDescription)")
+            // Handle the result.
+            result.items.forEach { barcodeItem in
+                // e.g
+                print(barcodeItem.count)
+                print(barcodeItem.barcode.format.name)
+                print(barcodeItem.barcode.text)
+                print(barcodeItem.barcode.textWithExtension)
+                // Check out other available properties in `SBSDKBarcodeItem`.
             }
+            print(result.selectedZoomFactor)
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning barcode: \(error.localizedDescription)")
         }
     }
 }

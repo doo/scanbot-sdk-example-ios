@@ -14,25 +14,28 @@ class VINLaunchingUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2VINScannerScreenConfiguration()
         
         // Present the view controller modally.
-        SBSDKUI2VINScannerViewController.present(on: self,
-                                                 configuration: configuration) { controller, result, error in
-            if let result {
-                // Handle the result.
-                
-            } else if let error {
-                
-                // Handle the error.
-                print("Error scanning VIN: \(error.localizedDescription)")
-            }
+        do {
+            let result = try await SBSDKUI2VINScannerViewController.present(on: self, configuration: configuration)
+            
+            // Process the result as needed.
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning VIN: \(error.localizedDescription)")
         }
     }
 }
