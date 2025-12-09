@@ -57,7 +57,10 @@ final class ReviewDocumentsViewController: UIViewController {
                     }
                 } catch {
                     DispatchQueue.main.async {
-                        self?.sbsdk_showError(error)
+                        self?.sbsdk_showError(error) { [weak self] _ in
+                            guard let self else { return }
+                            self.sbsdk_forceClose(animated: true, completion: nil)
+                        }
                     }
                 }
             }
@@ -79,7 +82,10 @@ final class ReviewDocumentsViewController: UIViewController {
                             }
                         } catch {
                             DispatchQueue.main.async {
-                                self?.sbsdk_showError(error)
+                                self?.sbsdk_showError(error) { [weak self] _ in
+                                    guard let self else { return }
+                                    self.sbsdk_forceClose(animated: true, completion: nil)
+                                }
                             }
                         }
                     }
@@ -138,7 +144,10 @@ final class ReviewDocumentsViewController: UIViewController {
             ExportAction.exportToTIFF(ImageManager.shared.document, binarize: false) { [weak self] error, url in
                 self?.activityIndicator?.stopAnimating()
                 if let error {
-                    self?.sbsdk_showError(error)
+                    self?.sbsdk_showError(error) { [weak self] _ in
+                        guard let self else { return }
+                        self.sbsdk_forceClose(animated: true, completion: nil)
+                    }
                     return
                 } else if let url {
                     self?.shareTIFF(at: url)
@@ -192,7 +201,10 @@ final class ReviewDocumentsViewController: UIViewController {
             } catch {
                 DispatchQueue.main.async { [weak self] in
                     self?.showsQuality = false
-                    self?.sbsdk_showError(error)
+                    self?.sbsdk_showError(error) { [weak self] _ in
+                        guard let self else { return }
+                        self.sbsdk_forceClose(animated: true, completion: nil)
+                    }
                 }
             }
             DispatchQueue.main.async {
@@ -231,7 +243,10 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
                 cell.infoLabelText = nil
             }
         } catch {
-            sbsdk_showError(error)
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
+            }
             showsQuality = false
         }
         return cell
@@ -249,7 +264,10 @@ extension ReviewDocumentsViewController: UICollectionViewDelegate {
             editingViewController.delegate = self
             navigationController?.pushViewController(editingViewController, animated: true)
         } catch {
-            sbsdk_showError(error)
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
+            }
         }
     }
 }
@@ -277,12 +295,18 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
             selectedImageIndex = nil
             editingViewController.navigationController?.popViewController(animated: true)
         } catch {
-            sbsdk_showError(error)
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
+            }
         }
     }
     
     func imageEditingViewControllerDidFail(_ editingViewController: SBSDKImageEditingViewController, with error: any Error) {
-        sbsdk_showError(error)
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
+        }
     }
     
     func imageEditingViewControllerApplyButtonItem(
