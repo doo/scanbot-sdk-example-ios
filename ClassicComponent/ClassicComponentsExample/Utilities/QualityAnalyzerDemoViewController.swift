@@ -35,9 +35,16 @@ final class QualityAnalyzerDemoViewController: UIViewController {
     }
     
     private func estimateAndShowResults(from image: SBSDKImageRef) {
-        if let result = try? analyzer?.run(image: image) {
-            DispatchQueue.main.async { [weak self] in
-                self?.show(result: result)
+        do {
+            if let result = try analyzer?.run(image: image) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.show(result: result)
+                }
+            }
+        } catch {
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
             }
         }
     }
@@ -84,7 +91,10 @@ extension QualityAnalyzerDemoViewController: SBSDKDocumentScannerViewControllerD
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
-        sbsdk_showError(error)
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
+        }
     }
 }
 

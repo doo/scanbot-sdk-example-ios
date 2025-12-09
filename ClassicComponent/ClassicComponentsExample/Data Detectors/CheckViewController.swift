@@ -49,7 +49,10 @@ extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController, didFailScanning error: any Error) {
-        sbsdk_showError(error)
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
+        }
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,

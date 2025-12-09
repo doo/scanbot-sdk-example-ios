@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 class Usecase: NSObject {
     
@@ -44,8 +45,10 @@ class Usecase: NSObject {
         if Thread.current != Thread.main {
             fatalError("Usescases must be called on main thread.")
         }
-        if let error {
-            handleError(error)
+        if let error = error as? SBSDKError {
+            if !error.isCanceled {
+                handleError(error)
+            }
         }
         presenter = nil
         Usecase.activeUsecases.removeValue(forKey: self.id)
