@@ -118,7 +118,10 @@ final class ReviewDocumentsViewController: UIViewController {
             ExportAction.exportToPDF(ImageManager.shared.document) { [weak self] (error, url) in
                 self?.activityIndicator?.stopAnimating()
                 if let error {
-                    self?.sbsdk_showError(error)
+                    self?.sbsdk_showError(error) { [weak self] _ in
+                        guard let self else { return }
+                        self.sbsdk_forceClose(animated: true, completion: nil)
+                    }
                     return
                 } else if let url {
                     self?.sharePDF(at: url)
@@ -131,7 +134,10 @@ final class ReviewDocumentsViewController: UIViewController {
             ExportAction.exportToTIFF(ImageManager.shared.document, binarize: true) { [weak self] error, url in
                 self?.activityIndicator?.stopAnimating()
                 if let error {
-                    self?.sbsdk_showError(error)
+                    self?.sbsdk_showError(error) { [weak self] _ in
+                        guard let self else { return }
+                        self.sbsdk_forceClose(animated: true, completion: nil)
+                    }
                     return
                 } else if let url {
                     self?.shareTIFF(at: url)
