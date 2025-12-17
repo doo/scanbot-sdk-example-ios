@@ -12,6 +12,7 @@ import ScanbotSDK
 class DocumentDataExtractorViewController: UIViewController {
     var extractorViewController:  SBSDKDocumentDataExtractorViewController?
     var indicator: UIActivityIndicatorView?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -66,6 +67,9 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
     }
     
     func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController, didFailExtraction error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         indicator?.stopAnimating()
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }

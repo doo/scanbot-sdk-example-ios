@@ -12,6 +12,7 @@ import ScanbotSDK
 final class CreditCardDemoViewController: UIViewController {
     
     private var scannerViewController: SBSDKCreditCardScannerViewController?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ extension CreditCardDemoViewController: SBSDKCreditCardScannerViewControllerDele
     }
     
     func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)

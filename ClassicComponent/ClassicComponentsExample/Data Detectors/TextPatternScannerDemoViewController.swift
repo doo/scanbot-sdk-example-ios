@@ -15,6 +15,7 @@ final class TextPatternScannerDemoViewController: UIViewController {
     
     private var textPatternScannerController: SBSDKTextPatternScannerViewController?
     private var shouldScan: Bool = false
+    private var isShowingError: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,6 +64,9 @@ extension TextPatternScannerDemoViewController: SBSDKTextPatternScannerViewContr
     }
     
     func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)

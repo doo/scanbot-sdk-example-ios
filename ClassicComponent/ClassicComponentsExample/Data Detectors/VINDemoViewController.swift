@@ -15,6 +15,7 @@ final class VINDemoViewController: UIViewController {
     @IBOutlet private var resultLabel: UILabel!
     
     private var scannerViewController: SBSDKVINScannerViewController!
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,9 @@ extension VINDemoViewController: SBSDKVINScannerViewControllerDelegate {
     }
     
     func vinScannerViewController(_ controller: SBSDKVINScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)

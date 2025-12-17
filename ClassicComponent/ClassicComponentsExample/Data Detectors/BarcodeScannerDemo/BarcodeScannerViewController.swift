@@ -21,6 +21,7 @@ class BarcodeScannerViewController: UIViewController {
     var selectedBarcodeTypes: [SBSDKBarcodeFormat] = SBSDKBarcodeFormats.all
     var currentResults: [SBSDKBarcodeItem]?
     var shouldScan: Bool = false
+    private var isShowingError: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,6 +72,9 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     }
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)

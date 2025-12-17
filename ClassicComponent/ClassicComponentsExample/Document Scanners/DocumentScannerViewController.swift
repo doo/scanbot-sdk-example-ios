@@ -16,6 +16,7 @@ class DocumentScannerViewController: UIViewController {
     
     @IBOutlet private var pageCountButton: UIBarButtonItem!
     @IBOutlet private var scannerContainerView: UIView!
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +54,9 @@ extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDeleg
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)
