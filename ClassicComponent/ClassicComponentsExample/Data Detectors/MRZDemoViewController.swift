@@ -12,6 +12,7 @@ import ScanbotSDK
 final class MRZDemoViewController: UIViewController {
     
     private var scannerViewController: SBSDKMRZScannerViewController?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,9 @@ extension MRZDemoViewController: SBSDKMRZScannerViewControllerDelegate {
     }
     
     func mrzScannerController(_ controller: SBSDKMRZScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)

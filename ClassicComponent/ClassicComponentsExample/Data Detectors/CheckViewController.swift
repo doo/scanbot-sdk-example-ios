@@ -13,6 +13,7 @@ import ScanbotSDK
 final class CheckViewController: UIViewController {
     
     private var recognizerViewController: SBSDKCheckScannerViewController?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,6 +50,9 @@ extension CheckViewController: SBSDKCheckScannerViewControllerDelegate {
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
         sbsdk_showError(error) { [weak self] _ in
             guard let self else { return }
             self.sbsdk_forceClose(animated: true, completion: nil)
