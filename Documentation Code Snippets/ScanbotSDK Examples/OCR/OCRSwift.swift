@@ -26,7 +26,7 @@ class OCRSwiftViewController {
         let ocrEngineManager = try SBSDKOCREngineManager(configuration: configuration_ML /* or configuration_Legacy */)
         
         // Run the recognizer.
-        // The OCR engine manager have different methods that enables support of running recognizer on various data types.
+        // The OCR engine manager has different methods that enable support of running recognizer on various data types.
         // e.g SBSDKImageRef, Image's URL, SBSDKImageStorage, SBSDKDocument or SBSDKScannedDocument.
         // And also supports there corresponding asynchronous methods.
         ocrEngineManager.recognize(from: imageURL) { result, error in

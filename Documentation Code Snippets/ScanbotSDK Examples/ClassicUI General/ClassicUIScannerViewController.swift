@@ -38,7 +38,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyGeneralConfiguration() {
 
-        // The general configuration lets you control timings, video settings and behaviour etc. 
+        // The general configuration lets you control timings, video settings and behavior etc.
         
         // Read the current general configuration from the scanner view controller.
         let generalConfiguration = self.scannerViewController.generalConfiguration
@@ -54,7 +54,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyZoomConfiguration() {
 
-        // The zoom configuration lets you control the zooming behaviour of the scanner view controller, e.g. 
+        // The zoom configuration lets you control the zooming behavior of the scanner view controller, e.g. 
         // if zooming is enabled, the zoom range, the initial zoom factor, discrete zoom steps and zoom related gestures.
 
         // Read the current zoom configuration from the scanner view controller.

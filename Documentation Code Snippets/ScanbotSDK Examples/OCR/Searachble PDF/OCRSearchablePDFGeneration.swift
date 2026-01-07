@@ -39,9 +39,9 @@ class OCRSearchablePDFGeneration {
                                                      useEncryptionIfAvailable: false)
             
             
-            // Generate the pdf.
+            // Generate the PDF.
             // You can also pass a custom output URI as a parameter, otherwise the default PDF location of the document `document.pdfURI` is used.
-            // The pdf generator also provides an asynchronous `async throws` method to generate pdf out of a document.
+            // The PDF generator also provides an asynchronous `async throws` method to generate PDF out of a document.
             // For the sake of this example, the method with a completion handler, is used.
             pdfGenerator.generate(from: document) { success, error in
                 
@@ -49,7 +49,7 @@ class OCRSearchablePDFGeneration {
                     let pdfUri = document.pdfURI
                     
                 } else if let error {
-                    print("Failed to create the pdf. Error: \(error.localizedDescription)")
+                    print("Failed to create the PDF. Error: \(error.localizedDescription)")
                 }
             }
         }
@@ -84,7 +84,7 @@ class OCRSearchablePDFGeneration {
                                                      ocrConfiguration: ocrConfiguration,
                                                      useEncryptionIfAvailable: false)
             
-            // Create a storage that conforms to `SBSDKImageStoring`. The sdk provides a built-in storage class `SBSDKIndexedImageStorage`.
+            // Create a storage that conforms to `SBSDKImageStoring`. The SDK provides a built-in storage class `SBSDKIndexedImageStorage`.
             // You can also pass your own custom storage class that conforms to `SBSDKImageStoring`.
             
             // You can also specify custom `storageLocation`, a different `fileFormat` of type `SBSDKImageFileFormat` and an
@@ -103,10 +103,10 @@ class OCRSearchablePDFGeneration {
             }
             
             // Create an output URL.
-            guard let outputUrl = URL(string: "<output_url") else { return }
+            guard let outputUrl = URL(string: "<output_url>") else { return }
             
-            // Generate the pdf.
-            // The pdf generator also provides an asynchronous `async throws` method.
+            // Generate the PDF.
+            // The PDF generator also provides an asynchronous `async throws` method.
             // For the sake of this example, the method with a completion handler, is used.
             pdfGenerator.generate(from: imageStorage, output: outputUrl) { success, error in
                 
@@ -115,7 +115,7 @@ class OCRSearchablePDFGeneration {
                     // PDF is successfully generated
                     
                 } else if let error {
-                    print("Failed to create the pdf. Error: \(error.localizedDescription)")
+                    print("Failed to create the PDF. Error: \(error.localizedDescription)")
                 }
             }
         }
