@@ -14,10 +14,12 @@ class TextPatternLocalizationUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2TextPatternScannerScreenConfiguration()
@@ -31,14 +33,29 @@ class TextPatternLocalizationUI2ViewController: UIViewController {
         localization.cameraPermissionCloseButton = NSLocalizedString("camera.permission.close", comment: "")
         
         // Present the view controller modally.
-        SBSDKUI2TextPatternScannerViewController.present(on: self,
-                                                         configuration: configuration) { result in
-            if let result {
-                // Handle the result.
-                
-            } else {
-                // Indicates that the cancel button was tapped.
+        do {
+            let result = try await SBSDKUI2TextPatternScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
+            // Handle the result.
+            print(result.rawText)
+            print(result.confidence)
+            result.wordBoxes.forEach { wordBox in
+                print(wordBox.text)
+                print(wordBox.recognitionConfidence)
+                print(wordBox.boundingRect)
             }
+            result.symbolBoxes.forEach { symbolBox in
+                print(symbolBox.symbol)
+                print(symbolBox.recognitionConfidence)
+                print(symbolBox.boundingRect)
+            }
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning Text Pattern: \(error.localizedDescription)")
         }
     }
 }

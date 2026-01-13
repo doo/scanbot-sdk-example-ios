@@ -91,16 +91,18 @@ class BarcodeGeneralConfiguration {
         // List of barcode document formats to extract.
         let documentFormats: [SBSDKBarcodeDocumentFormat] = [.gs1, .boardingPass, .swissQr]
         
-        // Instantiate the parser, providing the list of formats.
-        let parser = SBSDKBarcodeDocumentParser(extractedDocumentFormats: documentFormats)
-        
-        // Some raw barcode string.
-        let rawBarcodeString = "(01)02804086001986(3103)000220(15)220724(30)01(3922)00198"
+        do {
+            // Instantiate the parser, providing the list of formats.
+            let parser = try SBSDKBarcodeDocumentParser(acceptedFormats: documentFormats)
             
-        // Run the parser and check the result.
-        if let document = parser.parse(from: rawBarcodeString) {
+            // Some raw barcode string.
+            let rawBarcodeString = "(01)02804086001986(3103)000220(15)220724(30)01(3922)00198"
             
-            // Handle the result.
+            // Run the parser and handle the result.
+            let document = try parser.parse(rawString: rawBarcodeString)
+        }
+        catch {
+            print("Error running barcode document parser: \(error.localizedDescription)")
         }
     }
     

@@ -10,7 +10,7 @@ import Foundation
 import ScanbotSDK
 
 protocol ScannerCameraViewControllerDelegate: AnyObject {
-    func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: UIImage)
+    func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: SBSDKImageRef)
 }
 
 final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerViewControllerDelegate {
@@ -28,12 +28,16 @@ final class ScannerCameraViewController: UIViewController, SBSDKDocumentScannerV
     }
     
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
                                        with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
         
         delegate?.cameraViewController(self, didCapture: documentImage)
         presentingViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        sbsdk_showError(error)
     }
 }

@@ -17,54 +17,41 @@ class DocumentDataExtractorViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Define the types of documents that should be extracted.
-        // extract all supported document types.
-        let allTypes: [SBSDKDocumentsModelRootType] = SBSDKDocumentsModelRootType.allDocumentTypes
+        // To create a list of accepted document types.
+        var acceptedTypes = [String]()
         
-        // Extracts German ID cards only. Front and/or back side.
-        let idCardTypes: [SBSDKDocumentsModelRootType] = [
-            SBSDKDocumentsModelRootType.deIdCardFront,
-            SBSDKDocumentsModelRootType.deIdCardBack
-        ]
+        // To extract German ID cards.
+        acceptedTypes.append(SBSDKDocumentsModelConstants.deIdCardFrontDocumentType)
+        acceptedTypes.append(SBSDKDocumentsModelConstants.deIdCardBackDocumentType)
         
         // Extracts German passports. Front side only.
-        let passportTypes: [SBSDKDocumentsModelRootType] = [
-            SBSDKDocumentsModelRootType.dePassport
-        ]
+        acceptedTypes.append(SBSDKDocumentsModelConstants.dePassportDocumentType)
         
         // Extracts European driver's licenses only. Front and/or back side.
-        let driverLicenseTypes: [SBSDKDocumentsModelRootType] = [
-            SBSDKDocumentsModelRootType.europeanDriverLicenseFront,
-            SBSDKDocumentsModelRootType.europeanDriverLicenseBack
-        ];
+        acceptedTypes.append(SBSDKDocumentsModelConstants.europeanDriverLicenseFrontDocumentType)
+        acceptedTypes.append(SBSDKDocumentsModelConstants.europeanDriverLicenseBackDocumentType)
         
-        // Exclude these field types from the extraction process.
+        // To exclude field types from the extraction process.
         let excludedTypes = [SBSDKDocumentsModelConstants.mrzGenderFieldNormalizedName,
                              SBSDKDocumentsModelConstants.mrzIssuingAuthorityFieldNormalizedName,
                              SBSDKDocumentsModelConstants.deIdCardFrontNationalityFieldNormalizedName]
         
-        // Create a configuration builder.
-        let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-        
-        // Pass the above types here as required.
-        builder.setAcceptedDocumentTypes(allTypes)
+        // Create a configuration instance using the excluded and accepted document types.
+        let configuration = SBSDKDocumentDataExtractorConfiguration(
+            fieldExcludeList: excludedTypes,
+            configurations: [SBSDKDocumentDataExtractorCommonConfiguration(acceptedDocumentTypes: acceptedTypes)]
+        )
         
         // Enable the crops image extraction.
-        builder.setReturnCrops(true)
+        configuration.returnCrops = true
         
-        // Pass the above excluded types here to exclude them from the extraction process
-        for excludedField in excludedTypes {
-            builder.addExcludedField(excludedField)
-        }
-        
-        // Create the `SBSDKDocumentDataExtractorViewController` instance and
-        // embed it into this view controller's view.
+        // Create the extractor instance and embed it into this view controller's view.
         self.extractorController
         = SBSDKDocumentDataExtractorViewController(parentViewController: self,
-                                                   //Embed the extractor in this view controller's view.
+                                                   // Embed the extractor in this view controller's view.
                                                    parentView: self.view,
-                                                   // Build the configuration.
-                                                   configuration: builder.buildConfiguration(),
+                                                   // Embed the configuration.
+                                                   configuration: configuration,
                                                    // Set the delegate to this view controller.
                                                    delegate: self)
         
@@ -107,7 +94,7 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
         
         
         // Get the cropped image.
-        let croppedImage = result.croppedImage?.toUIImage()
+        let croppedImage = try? result.croppedImage?.toUIImage()
         
         // Or get a field by its name.
         if let nameField = result.document?.field(by: "Surname") {
@@ -126,6 +113,11 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
             let fieldValue = wrapper.surname?.value?.text
             let confidence = wrapper.surname?.value?.confidence
         }
-        
+    }
+    
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
+                                             didFailExtraction error: any Error) {
+        // Handle the error.
+        print("Error extracting document data: \(error.localizedDescription)")
     }
 }

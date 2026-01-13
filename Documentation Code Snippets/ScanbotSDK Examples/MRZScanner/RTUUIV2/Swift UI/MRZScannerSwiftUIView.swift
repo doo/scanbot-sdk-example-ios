@@ -19,33 +19,43 @@ struct MRZScannerSwiftUIView: View {
     // An optional `SBSDKUI2MRZScannerUIResult` object containing the resulted MRZ of the scanning process.
     @State var scannedMRZ: SBSDKUI2MRZScannerUIResult?
     
+    // An optional error object representing any errors that may occur during the scanning process.
+    @State var scanError: Error?
+    
     var body: some View {
         
-        // Show the scanner, passing the configuration and handling the result.
-        SBSDKUI2MRZScannerView(configuration: configuration) { result in
+        if scannedMRZ == nil && scanError == nil {
             
-            if let result {
+            // Show the scanner, passing the configuration and handling the result.
+            SBSDKUI2MRZScannerView(configuration: configuration) { result, error in
+                
                 scannedMRZ = result
-                
-                // Cast the resulted generic document to the MRZ model using the `wrap` method.
-                if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
-                    
-                    // Retrieve the values.
-                    // e.g
-                    if let birthDate = model.birthDate?.value {
-                        print("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
-                    }
-                    if let nationality = model.nationality?.value {
-                        print("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
-                    }
-                }
-                
-            } else {
-                
-                // Dismiss your view here.
+                scanError = error
             }
+            .ignoresSafeArea()
+            
+        } else if let scannedMRZ {
+            // Process and show the scanned MRZ here.
+            
+            // Cast the resulted generic document to the MRZ model using the `wrap` method.
+            if let model = scannedMRZ.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
+                
+                // Retrieve the values.
+                // e.g
+                if let birthDate = model.birthDate?.value {
+                    Text("Birth date: \(birthDate.text), Confidence: \(birthDate.confidence)")
+                }
+                if let nationality = model.nationality?.value {
+                    Text("Nationality: \(nationality.text), Confidence: \(nationality.confidence)")
+                }
+            }
+            
+        } else if let scanError {
+            
+            // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
+            
         }
-        .ignoresSafeArea()
     }
 }
 

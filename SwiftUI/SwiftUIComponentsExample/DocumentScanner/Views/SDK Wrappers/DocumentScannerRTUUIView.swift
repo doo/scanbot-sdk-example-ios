@@ -21,21 +21,24 @@ struct DocumentScannerRTUUIView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> SBSDKUI2DocumentScannerController {
         
         let configuration = SBSDKUI2DocumentScanningFlow()
-        
-        guard let scannerViewController = SBSDKUI2DocumentScannerController(configuration: configuration,
-                                                                            completion: handleResult(scannedDocument:)) 
-        else {
-            fatalError("Failed to create SBSDKUI2DocumentScannerView. The documentUuid does not exist.")
+        do {
+            let scannerViewController = try SBSDKUI2DocumentScannerController(configuration: configuration,
+                                                                              completion: { _, scannedDocument, error in
+                handleResult(scannedDocument: scannedDocument, error: error)
+            })
+            return scannerViewController
+        } catch {
+            fatalError("Failed to create SBSDKUI2DocumentScannerController: \(error)")
         }
-        
-        return scannerViewController
     }
     
-    func handleResult(scannedDocument: SBSDKScannedDocument?) {
+    func handleResult(scannedDocument: SBSDKScannedDocument?, error: Error?) {
         
-        guard let scannedDocument else { return }
-        scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)
-        
+        if let scannedDocument {
+            scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)
+        } else if let error {
+            scanningResult = DocumentScanningResult(error: error)
+        }
         presentationMode.wrappedValue.dismiss()
     }
     

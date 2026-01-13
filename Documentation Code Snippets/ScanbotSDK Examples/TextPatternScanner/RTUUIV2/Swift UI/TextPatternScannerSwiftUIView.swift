@@ -21,20 +21,31 @@ struct TextPatternScannerSwiftUIView: View {
     // text pattern of the scanning process.
     @State var scannedTextPattern: SBSDKUI2TextPatternScannerUIResult?
     
+    // An optional error object representing any errors that may occur during the scanning process.
+    @State var scanError: Error?
+    
     var body: some View {
         
-        // Show the scanner, passing the configuration and handling the result.
-        SBSDKUI2TextPatternScannerView(configuration: configuration) { result in
+        if let scannedTextPattern {
             
-            if let result {
+            // Process and show the scanned text pattern here.
+            Text("Text scanned: \(scannedTextPattern.rawText) with confidence: \(scannedTextPattern.confidence)")
+            
+        } else if let scanError {
+            
+            // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
+            
+        } else {
+            
+            // Show the scanner, passing the configuration and handling the result.
+            SBSDKUI2TextPatternScannerView(configuration: configuration) { result, error in
+                
                 scannedTextPattern = result
-                
-            } else {
-                
-                // Dismiss your view here.
+                scanError = error
             }
+            .ignoresSafeArea()
         }
-        .ignoresSafeArea()
     }
 }
 

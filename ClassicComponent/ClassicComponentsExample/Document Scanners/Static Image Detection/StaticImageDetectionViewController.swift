@@ -20,7 +20,7 @@ final class StaticImageDetectionViewController: UIViewController {
     @IBOutlet private var importPhotoButton: UIButton!
     @IBOutlet private var selectDetectorButton: UIButton!
     
-    private var image: UIImage? {
+    private var image: SBSDKImageRef? {
         didSet {
             updateUI()
         }
@@ -73,7 +73,11 @@ final class StaticImageDetectionViewController: UIViewController {
         for detector in detectorsManager.allDetectors {
             let action = UIAlertAction(title: detector.detectorName, style: .default) { [weak self] _ in
                 guard let image = self?.image else { return }
-                detectorsManager.detectInfo(on: image, using: detector)
+                do {
+                    try detectorsManager.detectInfo(on: image, using: detector)
+                } catch {
+                    self?.sbsdk_showError(error)
+                }
             }
             alert.addAction(action)
         }
@@ -87,7 +91,7 @@ final class StaticImageDetectionViewController: UIViewController {
     }
     
     func updateUI() {
-        imageView.image = image
+        imageView.image = try? image?.toUIImage()
         selectDetectorButton.isEnabled = image != nil
     }
     
@@ -110,7 +114,7 @@ final class StaticImageDetectionViewController: UIViewController {
 }
 
 extension StaticImageDetectionViewController: ScannerCameraViewControllerDelegate {
-    func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: UIImage) {
+    func cameraViewController(_ viewController: ScannerCameraViewController, didCapture image: SBSDKImageRef) {
         self.image = image
     }
 }
@@ -125,16 +129,6 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
         }
         barcodeResults = result.barcodes
         performSegue(withIdentifier: Segue.showBarcodeResults.rawValue, sender: self)
-    }
-    
-    func recognizer(_ recognizer: SBSDKHealthInsuranceCardRecognizer,
-                    didFindEHIC result: SBSDKEuropeanHealthInsuranceCardRecognitionResult?) {
-        guard let result = result,
-              result.status ==  SBSDKEuropeanHealthInsuranceCardRecognitionResultRecognitionStatus.success else {
-            alertsManager?.showFailureAlert()
-            return
-        }
-        alertsManager?.showSuccessAlert(with: result.toJson())
     }
     
     func extractor(_ extractor: SBSDKDocumentDataExtractor,
@@ -189,10 +183,13 @@ extension StaticImageDetectionViewController: DetectorsManagerDelegate {
             alertsManager?.showFailureAlert()
             return
         }
-        let processor = SBSDKImageProcessor(uiImage: image)
+        let processor = SBSDKImageProcessor()
         if let polygon = result.polygon {
-            processor.applyCrop(polygon: polygon)
+            do {
+                imageView.image = try processor.crop(image: image, polygon: polygon).toUIImage()
+            } catch {
+                print("Error cropping image: \(error.localizedDescription)")
+            }
         }
-        imageView.image = processor.processedImage
     }
 }

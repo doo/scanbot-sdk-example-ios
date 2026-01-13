@@ -33,6 +33,13 @@ class VINScannerViewController: UIViewController {
 extension VINScannerViewController: SBSDKVINScannerViewControllerDelegate {
     
     func vinScannerViewController(_ controller: SBSDKVINScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning VIN: \(error.localizedDescription)")
+    }
+    
+    
+    func vinScannerViewController(_ controller: SBSDKVINScannerViewController,
                                   didScanVIN result: SBSDKVINScannerResult) {
         
         // Process the result.

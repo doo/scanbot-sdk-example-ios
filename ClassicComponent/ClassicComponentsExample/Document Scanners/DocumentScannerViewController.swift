@@ -16,14 +16,10 @@ class DocumentScannerViewController: UIViewController {
     
     @IBOutlet private var pageCountButton: UIBarButtonItem!
     @IBOutlet private var scannerContainerView: UIView!
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard Scanbot.isLicenseValid else {
-            presentErrorAlert()
-            return
-        }
         scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                    parentView: scannerContainerView,
                                                                    delegate: self)
@@ -34,18 +30,6 @@ class DocumentScannerViewController: UIViewController {
         updateUI()
     }
     
-    private func presentErrorAlert() {
-        let alert = UIAlertController(title: "Error",
-                                      message: "The ScanbotSDK license has been expired",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Ok",
-                                      style: .default,
-                                      handler: { [weak self] _ in
-            self?.dismiss(animated: true, completion: nil)
-        }))
-        present(alert, animated: true, completion: nil)
-    }
-    
     private func updateUI() {
         pageCountButton?.isEnabled = Scanbot.isLicenseValid && ImageManager.shared.numberOfImages > 0
         pageCountButton?.title = "\(ImageManager.shared.numberOfImages) pages"
@@ -54,12 +38,30 @@ class DocumentScannerViewController: UIViewController {
 
 extension DocumentScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
                                        with result: SBSDKDocumentDetectionResult?,
                                        autoSnapped: Bool) {
-        ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
-        updateUI()
+        do {
+            try ImageManager.shared.add(image: originalImage, polygon: result?.polygon ?? SBSDKPolygon())
+            updateUI()
+        } catch {
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
+            }
+        }
     }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
+        }
+    }
+    
 }
 

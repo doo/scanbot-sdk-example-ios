@@ -22,27 +22,34 @@ class CheckScannerViewController: UIViewController {
         // Create a configuration with `detectAndCropDocument` to extract the check image.
         let configuration = SBSDKCheckScannerConfiguration(documentDetectionMode: .detectAndCropDocument)
         
-        // Customize the default accepted check types as needed.
-        // For this example we will use the following types of check.
-        configuration.acceptedCheckStandards = [.usa, .uae, .fra, .isr, .kwt, .aus, .ind, .can]
-        
         // Create the `SBSDKCheckScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKCheckScannerViewController(parentViewController: self,
                                                                      parentView: self.view,
                                                                      configuration: configuration,
                                                                      delegate: self)
+        
+        // Customize the default accepted check types as needed.
+        // For this example we will use the following types of check.
+        self.scannerViewController?.acceptedCheckTypes = [.usaCheck, .uaeCheck, .fraCheck, .isrCheck,
+                                                          .kwtCheck, .ausCheck, .indCheck, .canCheck]
     }
 }
 
 extension CheckScannerViewController: SBSDKCheckScannerViewControllerDelegate {
-    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController, 
-                                    didScanCheck result: SBSDKCheckScanningResult, 
-                                    isHighRes: Bool) {
 
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didScanCheck result: SBSDKCheckScanningResult,
+                                    isHighRes: Bool) {
         // Process the scanned result.
         
         // Get the cropped image.
-        let croppedImage = result.croppedImage?.toUIImage()
+        let croppedImage = try? result.croppedImage?.toUIImage()
+    }
+    
+    func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,
+                                    didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning check: \(error.localizedDescription)")
     }
     
     func checkScannerViewController(_ controller: SBSDKCheckScannerViewController,

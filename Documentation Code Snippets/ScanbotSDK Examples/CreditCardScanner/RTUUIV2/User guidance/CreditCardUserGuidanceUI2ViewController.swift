@@ -14,10 +14,12 @@ class CreditCardUserGuidanceUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2CreditCardScannerScreenConfiguration()
@@ -47,27 +49,30 @@ class CreditCardUserGuidanceUI2ViewController: UIViewController {
         scanStatusUserGuidance.background.fillColor = SBSDKUI2Color(colorString: "#7A000000")
         
         // Present the view controller modally.
-        SBSDKUI2CreditCardScannerViewController.present(on: self,
-                                                        configuration: configuration) { result in
-            if let result {
-                // Handle the result.
+        do {
+            let result = try await SBSDKUI2CreditCardScannerViewController.present(on: self,
+                                                                                   configuration: configuration)
+            // Handle the result.
+            
+            // Cast the resulted generic document to the credit card model using the `wrap` method.
+            if let model = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
                 
-                // Cast the resulted generic document to the credit card model using the `wrap` method.
-                if let model = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
-                    
-                    // Retrieve the values.
-                    // e.g
-                    if let cardNumber = model.cardNumber?.value {
-                        print("Card number: \(cardNumber.text), Confidence: \(cardNumber.confidence)")
-                    }
-                    if let name = model.cardholderName?.value {
-                        print("Name: \(name.text), Confidence: \(name.confidence)")
-                    }
+                // Retrieve the values.
+                // e.g
+                if let cardNumber = model.cardNumber?.value {
+                    print("Card number: \(cardNumber.text), Confidence: \(cardNumber.confidence)")
                 }
-                
-            } else {
-                // Indicates that the cancel button was tapped.
+                if let name = model.cardholderName?.value {
+                    print("Name: \(name.text), Confidence: \(name.confidence)")
+                }
             }
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning credit card: \(error.localizedDescription)")
         }
     }
 }

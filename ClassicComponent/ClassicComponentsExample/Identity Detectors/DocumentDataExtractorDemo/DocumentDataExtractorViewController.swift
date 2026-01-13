@@ -12,19 +12,19 @@ import ScanbotSDK
 class DocumentDataExtractorViewController: UIViewController {
     var extractorViewController:  SBSDKDocumentDataExtractorViewController?
     var indicator: UIActivityIndicatorView?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-        builder.setAcceptedDocumentTypes(documentTypes())
-        
-        let configuration = builder.buildConfiguration()
-        configuration.returnCrops = true
+        let config = SBSDKDocumentDataExtractorConfiguration(
+            configurations: [SBSDKDocumentDataExtractorCommonConfiguration()]
+        )
+        config.returnCrops = true
         
         extractorViewController = SBSDKDocumentDataExtractorViewController(parentViewController: self,
                                                                            parentView: view,
-                                                                           configuration: configuration,
+                                                                           configuration: config,
                                                                            delegate: self)
         
         indicator = UIActivityIndicatorView(style: .large)
@@ -38,11 +38,7 @@ class DocumentDataExtractorViewController: UIViewController {
         indicator?.center = CGPoint(x: view.bounds.midX, y: view.bounds.midY)
     }
     
-    private func documentTypes() -> [SBSDKDocumentsModelRootType] {
-        return SBSDKDocumentsModelRootType.allDocumentTypes
-    }
-    
-    private func display(document: SBSDKGenericDocument, with sourceImage: UIImage) {
+    private func display(document: SBSDKGenericDocument, with sourceImage: SBSDKImageRef) {
         if navigationController?.topViewController == self {
             let resultsVC = DocumentDataExtractorResultViewController.make(with: document, sourceImage: sourceImage)
             navigationController?.pushViewController(resultsVC, animated: true)
@@ -61,12 +57,23 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
     func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
                                              didExtract result: SBSDKDocumentDataExtractionResult,
                                           on image: UIImage) {
-        if result.status == .success {
+        if result.status == .ok || result.status == .okButInvalidDocument || result.status == .okButNotConfirmed {
             indicator?.stopAnimating()
         }
-        if let document = result.document, let sourceImage = document.crop?.toUIImage() {
+        if let document = result.document, let sourceImage = document.crop {
             viewController.resetDocumentAccumulation()
             display(document: document, with: sourceImage)
+        }
+    }
+    
+    func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController, didFailExtraction error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
+        indicator?.stopAnimating()
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
         }
     }
 }
@@ -81,14 +88,18 @@ extension DocumentDataExtractorViewController: UIImagePickerControllerDelegate, 
         let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         dismiss(animated: true) { [weak self] in
             guard let self = self else { return }
-            let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-            
-            builder.setAcceptedDocumentTypes(self.documentTypes())
-            
-            let recognizer = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
-                        
-            if let image = image, let document = recognizer.extract(from: image)?.document {
-                self.display(document: document, with: image)
+            if let image {
+                let config = SBSDKDocumentDataExtractorConfiguration(
+                    configurations: [SBSDKDocumentDataExtractorCommonConfiguration()]
+                )
+                config.returnCrops = true
+                
+                let recognizer = try? SBSDKDocumentDataExtractor(configuration: config)
+                let imageRef = SBSDKImageRef.fromUIImage(image: image)
+                
+                if let document = try? recognizer?.run(image: imageRef).document {
+                    self.display(document: document, with: imageRef)
+                }
             }
         }
     }

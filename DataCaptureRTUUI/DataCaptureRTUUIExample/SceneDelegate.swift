@@ -25,9 +25,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // See also Scanbot.setLicenseFailureHandler(handler) to setup a custom handler.
         Scanbot.setupDefaultLicenseFailureHandler()
         
-        // Demonstration of global SBSDKUI image storage encryption.
-        let encrypter = SBSDKAESEncrypter(password: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
-        ScanbotUI.defaultImageStoreEncrypter = encrypter
+        // Demonstration of global image storage encryption.
+        let provider = SBSDKCryptingProvider {
+            return SBSDKAESEncrypter(password: "EnterStrongPassphraseHereInsteadOfThisRidiculousText", mode: .AES128)
+        }
+        Scanbot.defaultCryptingProvider = provider
         // Now all images written to the disk are encrypted.
         
         if #available(iOS 15.0, *) {

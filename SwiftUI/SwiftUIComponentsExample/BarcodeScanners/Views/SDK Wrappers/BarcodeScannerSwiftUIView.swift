@@ -19,13 +19,10 @@ struct BarcodeScannerSwiftUIView: View {
     
     var body: some View {
         if isShown {
-            SBSDKUI2BarcodeScannerView(configuration: configure()) { result in
+            SBSDKUI2BarcodeScannerView(configuration: configure()) { result, error in
                 self.result = result
+                self.scanError = error
                 isShown.toggle()
-            } onCancel: { 
-                
-            } onError: { error in
-                scanError = error
             }
             .onDisappear() {
                 withAnimation {
@@ -40,7 +37,7 @@ struct BarcodeScannerSwiftUIView: View {
     
     func configure() -> SBSDKUI2BarcodeScannerScreenConfiguration{
         let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
-        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.common
+        configuration.scannerConfiguration.barcodeFormatConfigurations = [SBSDKBarcodeFormatCommonConfiguration()]
         return configuration
     }
 }

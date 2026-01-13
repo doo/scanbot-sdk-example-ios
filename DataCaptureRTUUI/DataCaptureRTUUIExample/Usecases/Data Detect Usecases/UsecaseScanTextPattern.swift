@@ -15,7 +15,7 @@ class UsecaseScanTextPattern: Usecase {
         
         let configuration = SBSDKUI2TextPatternScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2TextPatternScannerViewController.create(with: configuration) { [weak self] result in
+        let scanner = SBSDKUI2TextPatternScannerViewController.create(with: configuration) { [weak self] _, result, error in
             if let result {
                 guard result.rawText.count > 0 else {
                     return
@@ -26,7 +26,7 @@ class UsecaseScanTextPattern: Usecase {
                 UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
 
             } else {
-                self?.didFinish()
+                self?.didFinish(error: error)
             }
         }        
         presentViewController(scanner)

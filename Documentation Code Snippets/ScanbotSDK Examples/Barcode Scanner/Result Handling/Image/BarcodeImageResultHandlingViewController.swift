@@ -25,18 +25,26 @@ class BarcodeImageResultHandlingViewController: UIViewController {
         // Configure the scanner to return barcode image.
         configuration.returnBarcodeImage = true
         
-        // Create the `SBSDKBarcodeScanner` instance.
-        let scanner = SBSDKBarcodeScanner()
-        
-        let image = UIImage(named: "test_image")!
-        
-        // Run the scanner passing the image.
-        let result = scanner.scan(from: image)
-        
-        // Handle the result.
-        result?.barcodes.forEach({ barcode in
-            handle(barcode: barcode)
-        })
+        do {
+            // Create the scanner instance.
+            let scanner = try SBSDKBarcodeScanner()
+            
+            let image = UIImage(named: "test_image")!
+            
+            // Create an image ref from UIImage.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
+            // Run the scanner passing the image.
+            let result = try scanner.run(image: imageRef)
+            
+            // Handle the result.
+            result.barcodes.forEach({ barcode in
+                handle(barcode: barcode)
+            })
+        }
+        catch {
+            print("Error running barcode scanner: \(error.localizedDescription)")
+        }
     }
     
     // Handle the resulting barcode item's image.
@@ -50,14 +58,19 @@ class BarcodeImageResultHandlingViewController: UIViewController {
         // Since the image is of type `SBSDKImageRef`, it provides some useful operations.
         // e.g
         
-        // Convert to UIImage.
-        let uiImage = image?.toUIImage()
-        
-        // Information about the stored image.
-        let info = image?.info()
-        
-        // Save the image.
-        let success = image?.saveImage(path: "<path_to_save_at>",
-                                       options: SBSDKSaveImageOptions(quality: 70, encryptionMode: .disabled))
+        do {
+            // Convert to UIImage.
+            let uiImage = try image?.toUIImage()
+            
+            // Information about the stored image.
+            let info = try image?.info()
+            
+            // Save the image.
+            try image?.saveImage(path: "<path_to_save_at>",
+                                 options: SBSDKSaveImageOptions(quality: 70, encryptionMode: .disabled))
+        }
+        catch {
+            print("Error handling barcode image: \(error.localizedDescription)")
+        }
     }
 }

@@ -13,18 +13,26 @@ class BarcodeRawResultHandlingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Create the `SBSDKBarcodeScanner` instance.
-        let scanner = SBSDKBarcodeScanner()
-        
-        let image = UIImage(named: "test_image")!
-        
-        // Run the scanner passing the image.
-        let result = scanner.scan(from: image)
-        
-        // Handle the result.
-        result?.barcodes.forEach({ barcode in
-            handle(barcode: barcode)
-        })
+        do {
+            // Create the scanner instance.
+            let scanner = try SBSDKBarcodeScanner()
+            
+            let image = UIImage(named: "test_image")!
+            
+            // Create an image ref from UIImage.
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            
+            // Run the scanner passing the image.
+            let result = try scanner.run(image: imageRef)
+            
+            // Handle the result.
+            result.barcodes.forEach({ barcode in
+                handle(barcode: barcode)
+            })
+        }
+        catch {
+            print("Error running barcode scanner: \(error.localizedDescription)")
+        }
     }
     
     // Handle the resulting barcode item and it's raw values.

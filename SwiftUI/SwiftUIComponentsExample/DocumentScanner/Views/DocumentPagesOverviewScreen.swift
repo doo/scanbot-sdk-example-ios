@@ -17,7 +17,7 @@ struct DocumentPagesOverviewScreen: View {
         ScrollView(.horizontal, showsIndicators: false) {
             LazyHGrid(rows: [GridItem(.flexible())]) {
                 ForEach(scanningResult.pages, id: \.uuid) { page in
-                    if let image = page.documentImagePreview {
+                    if let image = try? page.documentImagePreview?.toUIImage() {
                         Button(action: {
                             scanningResult.selectedPage = page
                             isShowingModal.toggle()
@@ -28,17 +28,23 @@ struct DocumentPagesOverviewScreen: View {
                                 .padding(.vertical, 10)
                                 .frame(width: 100)
                         }
+                    } else {
+                        Label("No Image", systemImage: "exclamationmark.triangle")
                     }
                 }
             }
         }
         .fullScreenCover(item: $scanningResult.selectedPage, content: { page in
-            SBSDKUI2CroppingView(
-                configuration: SBSDKUI2CroppingConfiguration(
-                    documentUuid: scanningResult.documentUUID,
-                    pageUuid: page.uuid
-                ), completion: nil
-            )
+            if let documentUUID = scanningResult.documentUUID {
+                SBSDKUI2CroppingView(
+                    configuration: SBSDKUI2CroppingConfiguration(
+                        documentUuid: documentUUID,
+                        pageUuid: page.uuid
+                    ), completion: { _, _ in }
+                )
+            } else {
+                Label("No document UUID", systemImage: "exclamationmark.triangle")
+            }
         })
         .frame(height: 120)
     }

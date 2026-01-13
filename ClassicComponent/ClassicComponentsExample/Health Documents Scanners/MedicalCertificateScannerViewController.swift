@@ -12,6 +12,7 @@ import ScanbotSDK
 final class MedicalCertificateScannerViewController: UIViewController {
     private var recognizerViewController: SBSDKMedicalCertificateScannerViewController?
     private var alertsManager: AlertsManager?
+    private var isShowingError = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,7 +45,17 @@ extension MedicalCertificateScannerViewController: SBSDKMedicalCertificateScanne
                                                  didScanMedicalCertificate result: SBSDKMedicalCertificateScanningResult) {
         
         if result.scanningSuccessful {
-            self.show(scannedResult: result)
+            show(scannedResult: result)
+        }
+    }
+    
+    func medicalCertificateScannerViewController(_ controller: SBSDKMedicalCertificateScannerViewController, didFailScanning error: any Error) {
+        guard !isShowingError else { return }
+        
+        isShowingError = true
+        sbsdk_showError(error) { [weak self] _ in
+            guard let self else { return }
+            self.sbsdk_forceClose(animated: true, completion: nil)
         }
     }
 }

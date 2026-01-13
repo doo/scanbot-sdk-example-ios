@@ -32,6 +32,10 @@ struct BarcodeScannerClassicView: UIViewControllerRepresentable {
         configuration.isViewFinderEnabled = true
         scannerViewController.viewFinderConfiguration = configuration
         
+        let barcodeConfiguration = scannerViewController.copyCurrentConfiguration()
+        barcodeConfiguration.returnBarcodeImage = true
+        scannerViewController.setConfiguration(barcodeConfiguration)
+        
         return scannerViewController
     }
     
@@ -45,6 +49,14 @@ extension BarcodeScannerClassicView {
         
         init(_ parent: BarcodeScannerClassicView) {
             self.parent = parent
+        }
+        
+        func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didFailScanning error: any Error) {
+            if parent.presentationMode.wrappedValue.isPresented {
+                self.parent.scanningResult = BarcodeScanningResult(barcodeScannerName: "Classic Barcode Scanner",
+                                                                   error: error)
+                self.parent.presentationMode.wrappedValue.dismiss()
+            }
         }
         
         func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {

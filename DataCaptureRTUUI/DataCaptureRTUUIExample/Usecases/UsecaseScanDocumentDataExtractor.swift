@@ -11,22 +11,25 @@ import ScanbotSDK
 
 class UsecaseScanDocumentDataExtractor: Usecase {
     
-    let documentTypes: [SBSDKDocumentsModelRootType]
+    let documentTypes: [String]
     
-    init(documentTypes: [SBSDKDocumentsModelRootType]) {
+    init(documentTypes: [String]) {
         self.documentTypes = documentTypes
         super.init()
     }
     
     override func start(presenter: UIViewController) {
         super.start(presenter: presenter)
-        
         let configuration = SBSDKUI2DocumentDataExtractorScreenConfiguration()
-        let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-        builder.setAcceptedDocumentTypes(documentTypes)
+
+        let extractorConfiguration = SBSDKDocumentDataExtractorConfiguration(
+            configurations: [SBSDKDocumentDataExtractorCommonConfiguration(
+                acceptedDocumentTypes: documentTypes
+            )]
+        )
         
-        configuration.scannerConfiguration = builder.buildConfiguration()
-        let extractor = SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] result in
+        configuration.scannerConfiguration = extractorConfiguration
+        let extractor = SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] _, result , error in
             if let result {
                 let title = "Document Data Extractor Result"
                 var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
@@ -40,7 +43,7 @@ class UsecaseScanDocumentDataExtractor: Usecase {
                                                 message: message,
                                                 presenter: presenter, completion: nil)
             } else {
-                self?.didFinish()
+                self?.didFinish(error: error)
             }
         }
         
@@ -51,12 +54,22 @@ class UsecaseScanDocumentDataExtractor: Usecase {
 extension SBSDKDocumentDataExtractionStatus {
     var stringValue: String {
         switch self {
-        case .success:
-            return "Success"
+        case .ok:
+            return "OK"
+        case .okButInvalidDocument:
+            return "OKButInvalidDocument"
+        case .okButNotConfirmed:
+            return "OKButNotConfirmed"
+        case .scanningInProgressStillFocusing:
+            return "ScanningInProgressStillFocusing"
         case .errorNothingFound:
             return "ErrorNothingFound"
-        case .incompleteValidation:
-            return "Incomplete"
+        case .errorBadCrop:
+            return "ErrorBadCrop"
+        case .errorUnknownDocument:
+            return "ErrorUnknownDocument"
+        case .errorUnacceptableDocument:
+            return "ErrorUnacceptableDocument"
         default:
             return "\(self.rawValue)"
         }

@@ -11,16 +11,15 @@ import ScanbotSDK
 
 class ImageProcessingParameters {
     var polygon: SBSDKPolygon?
-    var filter: SBSDKImageFilterType?
+    var filter: SBSDKParametricFilter?
     var counterClockwiseRotations: Int?
     
     init() {
         polygon = SBSDKPolygon()
-        filter = SBSDKImageFilterType.none
         counterClockwiseRotations = 0
     }
     
-    init(polygon: SBSDKPolygon?, filter: SBSDKImageFilterType?, counterClockwiseRotations: Int?) {
+    init(polygon: SBSDKPolygon?, filter: SBSDKParametricFilter?, counterClockwiseRotations: Int?) {
         self.polygon = polygon
         self.filter = filter
         self.counterClockwiseRotations = counterClockwiseRotations
@@ -31,62 +30,60 @@ final class ImageManager {
     
     public static let shared = ImageManager()
     
-    public let document = SBSDKScannedDocument()
+    public let document: SBSDKScannedDocument
     
     private init() {
-        self.removeAllImages()
+        do {
+            document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
+        } catch {
+            fatalError("Failed to create SBSDKScannedDocument: \(error)")
+        }
     }
     
     var numberOfImages: Int {
         return document.pages.count 
     }
     
-    @discardableResult
-    func add(image: UIImage, polygon: SBSDKPolygon) -> Bool {
-        return document.addPage(with: image, polygon: polygon, filters: []) != nil
+    func add(image: SBSDKImageRef, polygon: SBSDKPolygon) throws {
+        try document.addPage(with: image, polygon: polygon, filters: [])
     }
     
-    func pageAt(index: Int) -> SBSDKScannedPage? {
-        return document.page(at: index)
+    func pageAt(index: Int) throws -> SBSDKScannedPage {
+        return try document.page(at: index)
     }
     
-    func originalImageAt(index: Int) -> UIImage? {
-        return document.page(at: index)?.originalImage
+    func originalImageAt(index: Int) throws -> SBSDKImageRef? {
+        let page = try document.page(at: index)
+        return page.originalImage
     }
 
-    func originalImageURLAt(index: Int) -> URL? {
-        return document.page(at: index)?.originalImageURI
+    func originalImageURLAt(index: Int) throws -> URL? {
+        let page = try document.page(at: index)
+        return page.originalImageURI
     }
 
-    func processedImageAt(index: Int) -> UIImage? {
-        return document.page(at: index)?.documentImage
+    func processedImageAt(index: Int) throws -> SBSDKImageRef? {
+        let page = try document.page(at: index)
+        return page.documentImage
     }
         
-    func removeImageAt(index: Int) {
-        if let page = document.page(at: index) {
-            document.removePage(page)
-        }
-    }
-    
-    func removeAllImages() {
-        document.removeAllPages()
+    func removeImageAt(index: Int) throws {
+        let page = try document.page(at: index)
+        try document.removePage(page)
     }
     
-    func processImageAt(_ index: Int, withParameters parameters: ImageProcessingParameters) -> Bool {
+    func removeAllImages() throws {
+        try document.removeAllPages()
+    }
+    
+    func processImageAt(_ index: Int, withParameters parameters: ImageProcessingParameters) throws {
         
-        guard let page = document.page(at: index) else {
-            return false
-        }
+        let page = try document.page(at: index)
         
-        if let rotations = parameters.counterClockwiseRotations {
-            page.rotation = SBSDKImageRotation.fromRotations(rotations)
-        }
-        if let polygon = parameters.polygon {
-            page.polygon = polygon
-        }
-        if let filter = parameters.filter {
-            page.filters = [SBSDKLegacyFilter(filterType: filter.rawValue)]
-        }
-        return true
+        let rotations = parameters.counterClockwiseRotations ?? 0
+        let polygon = parameters.polygon
+        let filters = parameters.filter != nil ? [parameters.filter!] : nil
+        
+        try page.apply(rotation: SBSDKImageRotation.fromRotations(rotations), polygon: polygon, filters: filters)
     }
 }

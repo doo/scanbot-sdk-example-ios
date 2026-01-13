@@ -62,28 +62,40 @@ class MultiplePageScanning {
         configuration.screens.cropping.bottomBar.rotateButton.visible = true
         configuration.screens.cropping.bottomBar.detectButton.visible = true
         
-        // Present the document scanner on the presenter (presenter in our case is the UsecasesListTableViewController)
-        SBSDKUI2DocumentScannerController.present(on: presenter,
-                                                  configuration: configuration) { document in
+        do {
+            // Present the document scanner on the presenter (presenter in our case is the UsecasesListTableViewController)
+            try SBSDKUI2DocumentScannerController.present(on: presenter,
+                                                          configuration: configuration) { _, document, error in
             
-            // Completion handler to process the result.
+                // Completion handler to process the result.
                         
-            if let document {
+                if let document {
                 
-                if document.pageCount == 1 {
+                    if document.pageCount == 1 {
                     
-                    let resultViewController = SingleScanResultViewController.make(with: document)
-                    presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                        let resultViewController = SingleScanResultViewController.make(with: document)
+                        presenter.navigationController?.pushViewController(resultViewController, animated: true)
                     
-                } else if document.pageCount > 1 {
+                    } else if document.pageCount > 1 {
                     
-                    let resultViewController = MultiScanResultViewController.make(with: document)
-                    presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                        let resultViewController = MultiScanResultViewController.make(with: document)
+                        presenter.navigationController?.pushViewController(resultViewController, animated: true)
+                    }
+                
+                } else if let sdkError = error as? SBSDKError, sdkError.isCanceled {
+
+                    // Indicates that the cancel button was tapped.
+
+                } else if let error {
+                    
+                    // An error occurred during scanning. Handle it here.
+                    presenter.sbsdk_showError(error)
                 }
-                
-            } else {
-                // Indicates that the cancel button was tapped.
             }
+        } catch {
+            
+            // An error occurred while presenting the document scanner. Handle it here.
+            presenter.sbsdk_showError(error)
         }
     }
 }

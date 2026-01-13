@@ -9,10 +9,12 @@ import SwiftUI
 import ScanbotSDK
 
 struct DocumentScannerClassicView: UIViewControllerRepresentable {
-    
+
+    @Environment(\.presentationMode) var presentationMode
+
     @Binding var scanningResult: DocumentScanningResult
     @Binding var isScanningEnabled: Bool
-    
+
     private let document = SBSDKDocument()
     
     func makeCoordinator() -> Coordinator {
@@ -41,18 +43,32 @@ extension DocumentScannerClassicView {
             return parent.isScanningEnabled
         }
         
+        func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController, didFailScanning error: any Error) {
+            if parent.presentationMode.wrappedValue.isPresented {
+                parent.scanningResult = DocumentScanningResult(error: error)
+                self.parent.presentationMode.wrappedValue.dismiss()
+            }
+        }
+        
         func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                           didSnapDocumentImage documentImage: UIImage,
-                                           on originalImage: UIImage,
+                                           didSnapDocumentImage documentImage: SBSDKImageRef,
+                                           on originalImage: SBSDKImageRef,
                                            with result: SBSDKDocumentDetectionResult?, autoSnapped: Bool) {
             
-            let documentPage = SBSDKDocumentPage(image: originalImage, polygon: result?.polygon, filter: .none)
-            parent.document.add(documentPage)
-            
-            guard let scannedDocument = SBSDKScannedDocument(document: parent.document, documentImageSizeLimit: 0)
-            else { return }
-            
-            parent.scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)
+            if parent.presentationMode.wrappedValue.isPresented {
+                
+                let documentPage = SBSDKDocumentPage(image: originalImage, polygon: result?.polygon, parametricFilters: .none)
+                
+                parent.document.add(documentPage)
+                
+                do {
+                    let scannedDocument = try SBSDKScannedDocument(document: parent.document, documentImageSizeLimit: 0)
+                    parent.scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)
+                } catch {
+                    parent.scanningResult = DocumentScanningResult(error: error)
+                }
+                self.parent.presentationMode.wrappedValue.dismiss()
+            }
         }
     }
 }

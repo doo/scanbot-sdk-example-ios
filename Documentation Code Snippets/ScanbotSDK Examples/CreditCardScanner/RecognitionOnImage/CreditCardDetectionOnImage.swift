@@ -13,22 +13,27 @@ func scanCreditCardFromImage() {
     // An image containing a credit card.
     guard let image = UIImage(named: "creditCardImage") else { return }
     
-    // Create the default `SBSDKCreditCardScannerConfiguration` object.
+    // Create the default configuration object.
     let configuration = SBSDKCreditCardScannerConfiguration()
-    
-    // Set the scanning mode to single shot.
-    configuration.scanningMode = .singleShot
     
     // Enable the credit card image extraction.
     configuration.returnCreditCardImage = true
     
-    // Create an instance of `SBSDKCreditCardScanner`.
-    let scanner = SBSDKCreditCardScanner(configuration: configuration)
-    
-    // Returns the result after running the scanner on the image.
-    let result = scanner.scan(from: image)
-    
-    // Get the cropped image.
-    let croppedImage = result?.creditCard?.crop?.toUIImage()
-    
+    do {
+        
+        // Create an instance of credit card scanner.
+        let scanner = try SBSDKCreditCardScanner(configuration: configuration)
+        
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
+        // Run credit card scanner on the image.
+        let result = try scanner.run(image: imageRef)
+        
+        // Get the cropped image.
+        let croppedImage = try result.creditCard?.crop?.toUIImage()
+    }
+    catch {
+        print("Error scanning credit card: \(error.localizedDescription)")
+    }
 }

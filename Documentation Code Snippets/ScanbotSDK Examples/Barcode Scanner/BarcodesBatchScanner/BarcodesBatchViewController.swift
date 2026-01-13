@@ -79,12 +79,18 @@ extension BarcodesBatchViewController: SBSDKBarcodeScannerViewControllerDelegate
         
         for code in codes {
             // Get the source image.
-            let sourceImage = code.sourceImage?.toUIImage()
+            let sourceImage = try? code.sourceImage?.toUIImage()
         }
     }
     
     // Implement this function when you need to pause the detection (e.g. when showing results)
     func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return self.shouldDetectBarcodes
+    }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
     }
 }

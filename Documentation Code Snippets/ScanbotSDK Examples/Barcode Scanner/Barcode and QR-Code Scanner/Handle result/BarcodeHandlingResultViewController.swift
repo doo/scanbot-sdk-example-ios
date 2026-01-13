@@ -27,6 +27,13 @@ class BarcodeHandlingResultViewController: UIViewController {
 extension BarcodeHandlingResultViewController: SBSDKBarcodeScannerViewControllerDelegate {
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
+    }
+    
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
                                   didScanBarcodes codes: [SBSDKBarcodeItem]) {
         
         // Process result

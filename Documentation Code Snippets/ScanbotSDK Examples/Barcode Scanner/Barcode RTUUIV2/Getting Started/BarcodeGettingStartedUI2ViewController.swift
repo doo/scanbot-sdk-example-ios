@@ -12,38 +12,38 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
     
     func launchRTUUIv2Scanner() {
         
-        // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
-
-        // Present the scanner view controller modally on this view controller.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, cancelled, error, result in
+        Task {
+            // Create the default configuration object.
+            let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
             
-            // Completion handler to process the result.
-            // The `cancelled` parameter indicates if the cancel button was tapped.
-            
-            controller.presentingViewController?.dismiss(animated: true)
+            // Present the view controller modally.
+            do {
+                let result = try await SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
+                // Process the result as needed.
+                
+            } catch SBSDKError.operationCanceled {
+                print("The operation was cancelled before completion or by the user")
+                
+            } catch {
+                // Any other error
+                print("Error scanning barcode: \(error.localizedDescription)")
+            }
         }
     }
     
     func handleScanResults() {
         
-        // Create the default configuration object.
-        let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
-        
-        // Present the scanner view controller modally on this view controller.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: configuration) { controller, cancelled, error, result in
-
-            if cancelled {
-                            
-                // Indicates that the cancel button was tapped.
-                controller.presentingViewController?.dismiss(animated: true)
-                
-            } else if let items = result?.items {
-                
+        Task {
+            // Create the default configuration object.
+            let configuration = SBSDKUI2BarcodeScannerScreenConfiguration()
+            
+            // Present the view controller modally.
+            do {
+                let result = try await SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                                                    configuration: configuration)
                 // Process result
-                items.forEach({ item in
+                result.items.forEach({ item in
                     
                     print("Barcode Identity String: \(item.barcode.identityString)")
                     print("Scan count: \(item.count)")
@@ -78,8 +78,14 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
                             print("\n" + "\(field.type.displayText ?? ""): \(field.value?.text ?? "")")
                         })
                     }
-                    
                 })
+            }
+            catch SBSDKError.operationCanceled {
+                print("The operation was cancelled before completion or by the user")
+                
+            } catch {
+                // Any other error
+                print("Error scanning barcode: \(error.localizedDescription)")
             }
         }
     }

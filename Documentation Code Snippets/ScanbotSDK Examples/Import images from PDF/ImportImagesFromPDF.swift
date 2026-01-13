@@ -13,9 +13,14 @@ func createScannedDocumentFromPDF(pdfURL: URL) {
     // Create an instance of the PDF page extractor.
     let pageExtractor = SBSDKPDFImageExtractor()
     
-    // Synchronously extract the pages from PDF and returns them as `SBSDKScannedDocument`.
-    // Each page of the PDF will be a separate `SBSDKScannedPage`.
-    let scannedDocument = pageExtractor.scannedDocument(from: pdfURL)
+    do {
+        // Synchronously extract the pages from PDF and returns them as `SBSDKScannedDocument`.
+        // Each page of the PDF will be a separate `SBSDKScannedPage`.
+        let scannedDocument = try pageExtractor.scannedDocument(from: pdfURL)
+    }
+    catch {
+        print("Error creating scanned document from PDF: \(error.localizedDescription)")
+    }
 }
 
 func createImagesFromPDF(pdfURL: URL) {

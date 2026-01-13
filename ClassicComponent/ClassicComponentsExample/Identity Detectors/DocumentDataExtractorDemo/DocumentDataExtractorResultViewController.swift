@@ -12,10 +12,10 @@ import ScanbotSDK
 final class DocumentDataExtractorResultViewController: UIViewController {
     var document: SBSDKGenericDocument?
     var flatDocument: [SBSDKGenericDocument]?
-    var sourceImage: UIImage?
+    var sourceImage: SBSDKImageRef?
     @IBOutlet var tableView: UITableView?
     
-    static func make(with document: SBSDKGenericDocument, sourceImage: UIImage) -> DocumentDataExtractorResultViewController {
+    static func make(with document: SBSDKGenericDocument, sourceImage: SBSDKImageRef) -> DocumentDataExtractorResultViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = storyboard.instantiateViewController(withIdentifier: "DocumentDataExtractorResultViewController") as!
         DocumentDataExtractorResultViewController
@@ -69,8 +69,11 @@ extension DocumentDataExtractorResultViewController: UITableViewDataSource {
         let field = flatDocument?[indexPath.section].fields[indexPath.row]
         cell.fieldTypeLabel.text = field?.type.name
         
-        let image = field?.image?.toUIImage()?.sbsdk_limited(to: CGSize(width: 10000.0, height: 80.0))
-        cell.fieldImageView.image = image
+        if let image = field?.image {
+            let processor = SBSDKImageProcessor()
+            let processedImage = try? processor.limitSizeToSize(image, sizeLimit: CGSize(width: 10000.0, height: 80.0))
+            cell.fieldImageView.image = try? processedImage?.toUIImage()
+        }
         
         if let value = field?.value, value.text.isEmpty == false {
             cell.extractedTextLabel.text = value.text

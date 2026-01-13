@@ -13,10 +13,13 @@ class DocumentIntroductionUI2ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.startScanning()
+        // Start scanning here. Usually this is an action triggered by some button or menu.
+        Task {
+            await self.startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
@@ -35,7 +38,7 @@ class DocumentIntroductionUI2ViewController: UIViewController {
         
         // Configure the text.
         firstExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a receipt",
-                                                    color: SBSDKUI2Color(colorString: "#000000")) 
+                                                    color: SBSDKUI2Color(colorString: "#000000"))
         
         // Create a second introduction item.
         let secondExampleEntry = SBSDKUI2IntroListEntry()
@@ -44,31 +47,68 @@ class DocumentIntroductionUI2ViewController: UIViewController {
         secondExampleEntry.image = .checkIntroImage()
         
         // Configure the text.
-        secondExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a check", 
-                                                     color: SBSDKUI2Color(colorString: "#000000")) 
+        secondExampleEntry.text = SBSDKUI2StyledText(text: "Some text explaining how to scan a check",
+                                                     color: SBSDKUI2Color(colorString: "#000000"))
         
         // Set the items into the configuration.
         introductionConfiguration.items = [firstExampleEntry, secondExampleEntry]
         
         // Set the screen title.
-        introductionConfiguration.title = SBSDKUI2StyledText(text: "Introduction", 
-                                                           color: SBSDKUI2Color(colorString: "#000000"))
+        introductionConfiguration.title = SBSDKUI2StyledText(text: "Introduction",
+                                                             color: SBSDKUI2Color(colorString: "#000000"))
         
         // Apply the introduction configuration.
         configuration.screens.camera.introduction = introductionConfiguration
         
         // Present the view controller modally.
-        SBSDKUI2DocumentScannerController.present(on: self,
-                                                  configuration: configuration) { document in
+        do {
+            let result = try await SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration)
             
-            // Completion handler to process the result.
+            // Handle the result.
+            print(result.uuid)
+            print(result.pageCount)
+            print(result.documentImageSizeLimit)
+            print(result.pdfURI)
+            print(result.tiffURI)
+            print(result.creationDate)
             
-            if let document {
-                // Handle the document.
+            // Check out other available properties in `SBSDKScannedDocument`.
+            
+            result.pages.forEach { scannedPage in
                 
-            } else {
-                // Indicates that the cancel button was tapped.
+                print(scannedPage.uuid)
+                print(scannedPage.documentDetectionStatus)
+                print(scannedPage.polygon)
+                print(scannedPage.source)
+                
+                let originalImage = scannedPage.originalImage
+                let originalImageURI = scannedPage.originalImageURI
+                
+                let documentImage = scannedPage.documentImage
+                let documentImageURI = scannedPage.documentImageURI
+                
+                let documentImagePreview = scannedPage.documentImagePreview
+                let documentImagePreviewURI = scannedPage.documentImagePreviewURI
+                
+                if let documentQuality = scannedPage.documentQuality {
+                    switch documentQuality {
+                    case .veryPoor: print("veryPoor")
+                    case .poor: print("poor")
+                    case .reasonable: print("reasonable")
+                    case .good: print("good")
+                    case .excellent: print("excellent")
+                    default: print("unknown")
+                    }
+                }
+                // Check out other available properties in `SBSDKScannedPage`
             }
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning document: \(error.localizedDescription)")
         }
     }
 }

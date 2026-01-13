@@ -83,7 +83,7 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
         let barcode = codes.first
         
         // Get the source image.
-        let sourceImage = barcode?.sourceImage?.toUIImage()
+        let sourceImage = try? barcode?.sourceImage?.toUIImage()
         
         // Run the parser and check the result.
         if let document = SBSDKBarcodeDocumentModelSwissQR(document: barcode?.extractedDocument) {
@@ -100,5 +100,11 @@ extension BarcodeDataParserViewController: SBSDKBarcodeScannerViewControllerDele
     // Implement this function if you need to pause the detection (e.g. when showing the results).
     func barcodeScannerControllerShouldScanBarcodes(_ controller: SBSDKBarcodeScannerViewController) -> Bool {
         return true
+    }
+    
+    func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController,
+                                  didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning barcode: \(error.localizedDescription)")
     }
 }

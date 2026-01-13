@@ -30,7 +30,13 @@ class TextPatternScannerViewController: UIViewController {
 extension TextPatternScannerViewController: SBSDKTextPatternScannerViewControllerDelegate {
     
     func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController,
-                                          didValidate result: SBSDKTextPatternScannerResult) {
+                                          didScanTextPattern result: SBSDKTextPatternScannerResult) {
         // Process the scanned result.
+    }
+    
+    func textPatternScannerViewController(_ controller: SBSDKTextPatternScannerViewController,
+                                          didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning text pattern: \(error.localizedDescription)")
     }
 }

@@ -22,20 +22,21 @@ class OCRSwiftViewController {
         let configuration_Legacy 
         = SBSDKOCREngineConfiguration.tesseract(withLanguageString: "de+en")
         
-        // Pass the configuration object to the initializer of the optical character recognizer engine.
-        let recognizer = SBSDKOCREngine(configuration: configuration_ML /* or configuration_Legacy */)
+        // Pass the configuration object to the initializer of the optical character recognizer engine manager.
+        let ocrEngineManager = try SBSDKOCREngineManager(configuration: configuration_ML /* or configuration_Legacy */)
         
-        // Run the recognizeOn... method of the recognizer.
-        recognizer.recognize(from: imageURL) { result, error in
+        // Run the recognizer.
+        // The OCR engine manager has different methods that enable support of running recognizer on various data types.
+        // e.g SBSDKImageRef, Image's URL, SBSDKImageStorage, SBSDKDocument or SBSDKScannedDocument.
+        // And also supports there corresponding asynchronous methods.
+        ocrEngineManager.recognize(from: imageURL) { result, error in
             
-            // In the completion handler check for the error and result.
+            // In the completion handler, check for the error and result.
             if let result = result, error == nil {
                 
-                // At the end enumerate all words and log them to the console together with their confidence values and bounding boxes.
+                // At the end enumerate all pages and their corresponding blocks and lines.
                 for page in result.pages {
-                    for word in page.words {
-                        print("Word: \(word.text), Confidence: \(word.confidenceValue), Polygon: \(word.polygon.description)")
-                    }
+                    
                 }
             }
         }

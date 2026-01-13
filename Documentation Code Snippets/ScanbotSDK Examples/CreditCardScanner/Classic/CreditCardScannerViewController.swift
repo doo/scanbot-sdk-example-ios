@@ -39,6 +39,13 @@ class CreditCardScannerViewController: UIViewController {
 extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerDelegate {
     
     func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController,
+                                         didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning credit card: \(error.localizedDescription)")
+    }
+    
+    
+    func creditCardScannerViewController(_ controller: SBSDKCreditCardScannerViewController,
                                          didScanCreditCard result: SBSDKCreditCardScanningResult) {
         
         // Access the document's fields directly by iterating over the document's fields.
@@ -48,7 +55,7 @@ extension CreditCardScannerViewController: SBSDKCreditCardScannerViewControllerD
         }
         
         // Get the cropped image.
-        let croppedImage = result.creditCard?.crop?.toUIImage()
+        let croppedImage = try? result.creditCard?.crop?.toUIImage()
         
         // Or create a wrapper for the document if needed to access the fields more easily.
         // You must cast it to the specific document model wrapper subclass.

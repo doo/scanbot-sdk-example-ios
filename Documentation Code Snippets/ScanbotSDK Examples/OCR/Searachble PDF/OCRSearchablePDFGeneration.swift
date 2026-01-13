@@ -31,23 +31,30 @@ class OCRSearchablePDFGeneration {
         // Create an OCR Engine configuration object.
         let ocrConfiguration = SBSDKOCREngineConfiguration.scanbotOCR()
        
-        // Create the PDF generator.
-        let pdfGenerator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                             ocrConfiguration: ocrConfiguration)
-
-        
-        // Generate the pdf.
-        // You can also pass a custom output URI as a parameter, otherwise the default PDF location of the document `document.pdfURI` is used.
-        // The pdf generator also provides an asynchronous `async throws` method to generate pdf out of a document.
-        // For the sake of this example, the method with a completion handler, is used.
-        pdfGenerator.generate(from: document) { success, error in
+        do {
             
-            if success {
-                let pdfUri = document.pdfURI
+            // Create the PDF generator.
+            let pdfGenerator = try SBSDKPDFGenerator(configuration: pdfConfiguration,
+                                                     ocrConfiguration: ocrConfiguration,
+                                                     useEncryptionIfAvailable: false)
+            
+            
+            // Generate the PDF.
+            // You can also pass a custom output URI as a parameter, otherwise the default PDF location of the document `document.pdfURI` is used.
+            // The PDF generator also provides an asynchronous `async throws` method to generate PDF out of a document.
+            // For the sake of this example, the method with a completion handler, is used.
+            pdfGenerator.generate(from: document) { success, error in
                 
-            } else if let error {
-                print("Failed to create the pdf. Error: \(error.localizedDescription)")
+                if success {
+                    let pdfUri = document.pdfURI
+                    
+                } else if let error {
+                    print("Failed to create the PDF. Error: \(error.localizedDescription)")
+                }
             }
+        }
+        catch {
+            print("Error generating PDF: \(error.localizedDescription)")
         }
     }
     
@@ -71,38 +78,49 @@ class OCRSearchablePDFGeneration {
         // Create an OCR Engine configuration object.
         let ocrConfiguration = SBSDKOCREngineConfiguration.scanbotOCR()
        
-        // Create the PDF generator.
-        let pdfGenerator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                             ocrConfiguration: ocrConfiguration)
-
-        // Create a storage that conforms to `SBSDKImageStoring`. The sdk provides a built-in storage class `SBSDKIndexedImageStorage`.
-        // You can also pass your own custom storage class that conforms to `SBSDKImageStoring`.
-        
-        // You can also specify custom `storageLocation`, a different `fileFormat` of type `SBSDKImageFileFormat` and an
-        // encrptor as a parameter. If not, the default location of `SBSDKStorageLocation` and a default
-        // file format of type `SBSDKImageFileFormat.JPEG` is used without an encrypter.
-        guard let imageStorage = SBSDKIndexedImageStorage() else { return }
-        
-        // Add your images in the storage.
-        images.forEach { image in
-            imageStorage.add(image)
-        }
-        
-        // Create an output URL.
-        guard let outputUrl = URL(string: "<output_url") else { return }
-        
-        // Generate the pdf.
-        // The pdf generator also provides an asynchronous `async throws` method.
-        // For the sake of this example, the method with a completion handler, is used.
-        pdfGenerator.generate(from: imageStorage, output: outputUrl) { success, error in
+        do {
+            // Create the PDF generator.
+            let pdfGenerator = try SBSDKPDFGenerator(configuration: pdfConfiguration,
+                                                     ocrConfiguration: ocrConfiguration,
+                                                     useEncryptionIfAvailable: false)
             
-            if success {
+            // Create a storage that conforms to `SBSDKImageStoring`. The SDK provides a built-in storage class `SBSDKIndexedImageStorage`.
+            // You can also pass your own custom storage class that conforms to `SBSDKImageStoring`.
+            
+            // You can also specify custom `storageLocation`, a different `fileFormat` of type `SBSDKImageFileFormat` and an
+            // encrptor as a parameter. If not, the default location of `SBSDKStorageLocation` and a default
+            // file format of type `SBSDKImageFileFormat.JPEG` is used without an encrypter.
+            guard let imageStorage = SBSDKIndexedImageStorage() else { return }
+            
+            // Add your images in the storage.
+            images.forEach { image in
                 
-                // PDF is successfully generated
+                // Create an image ref from UIImage.
+                let imageRef = SBSDKImageRef.fromUIImage(image: image)
                 
-            } else if let error {
-                print("Failed to create the pdf. Error: \(error.localizedDescription)")
+                // Add image to the storage.
+                imageStorage.add(imageRef)
             }
+            
+            // Create an output URL.
+            guard let outputUrl = URL(string: "<output_url>") else { return }
+            
+            // Generate the PDF.
+            // The PDF generator also provides an asynchronous `async throws` method.
+            // For the sake of this example, the method with a completion handler, is used.
+            pdfGenerator.generate(from: imageStorage, output: outputUrl) { success, error in
+                
+                if success {
+                    
+                    // PDF is successfully generated
+                    
+                } else if let error {
+                    print("Failed to create the PDF. Error: \(error.localizedDescription)")
+                }
+            }
+        }
+        catch {
+            print("Error generating PDF: \(error.localizedDescription)")
         }
     }
 }

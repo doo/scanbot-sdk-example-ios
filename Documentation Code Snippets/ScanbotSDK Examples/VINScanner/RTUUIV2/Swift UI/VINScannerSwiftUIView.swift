@@ -21,20 +21,43 @@ struct VINScannerSwiftUIView: View {
     // VIN of the scanning process.
     @State var scannedVIN: SBSDKUI2VINScannerUIResult?
     
+    // An optional error object representing any errors that may occur during the scanning process.
+    @State var scanError: Error?
+    
     var body: some View {
         
-        // Show the scanner, passing the configuration and handling the result.
-        SBSDKUI2VINScannerView(configuration: configuration) { result in
+        if scannedVIN == nil, scanError == nil {
             
-            if let result {
+            // Show the scanner, passing the configuration and handling the result.
+            SBSDKUI2VINScannerView(configuration: configuration) { result, error in
+                
                 scannedVIN = result
-                
-            } else {
-                
-                // Dismiss your view here.
+                scanError = error
             }
+            .ignoresSafeArea()
+            
+        } else if let scannedVIN {
+            
+            // Process and show the scanned VIN here.
+            Text("Scanned VIN Text: \(scannedVIN.textResult)")
+            Text("Scanned VIN Barcode Status: \(barcodeStatusString(scannedVIN.barcodeResult.status))")
+            Text("Barcode extracted VIN: \(scannedVIN.barcodeResult.extractedVIN)")
+            
+        } else if let scanError {
+            
+            // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
         }
-        .ignoresSafeArea()
+    }
+    
+    func barcodeStatusString(_ status: SBSDKVINBarcodeExtractionStatus) -> String {
+        switch status {
+        case .success: return "Success"
+        case .barcodeWithoutVin: return "Barcode without VIN"
+        case .noBarcodeFound: return "No barcode found"
+        case .barcodeExtractionDisabled: return "Barcode extraction disabled"
+        default: return "Unknown status"
+        }
     }
 }
 

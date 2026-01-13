@@ -10,9 +10,6 @@ import ScanbotSDK
 
 struct BarcodeScannerSwiftUIView: View {
     
-    // A boolean state variable indicating whether the barcode scanner interface should be presented.
-    @State var showScan: Bool = false
-    
     // An instance of `SBSDKUI2BarcodeScannerScreenConfiguration` which contains the configuration settings for the barcode scanner.
     let configuration: SBSDKUI2BarcodeScannerScreenConfiguration = {
         
@@ -51,7 +48,7 @@ struct BarcodeScannerSwiftUIView: View {
         configuration.useCase = singleUsecase
         
         // Create and set an array of accepted barcode formats.
-        configuration.scannerConfiguration.barcodeFormats = SBSDKBarcodeFormats.twod
+        configuration.scannerConfiguration.setBarcodeFormats(SBSDKBarcodeFormats.twod)
         
         return configuration
     }()
@@ -63,18 +60,24 @@ struct BarcodeScannerSwiftUIView: View {
     @State var scannerResult: SBSDKUI2BarcodeScannerUIResult?
     
     var body: some View {
-        if let scannerResult = self.scannerResult {
+        
+        if let scannerResult {
+            
             // Process and show the results here.
+            Text("Barcodes scanned: \(scannerResult.items.count)")
 
-        } else if let error = self.scanError {
+        } else if let scanError {
+            
             // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
 
         } else {
             // Show the scanner, pass the configuration and the button and error handlers.
             SBSDKUI2BarcodeScannerView(configuration: configuration, 
-                                       onSubmit: { result in scannerResult = result }, 
-                                       onCancel: { /* Dismiss your view here. */ }, 
-                                       onError: { error in scanError = error })
+                                       completion: { result, error in
+                scannerResult = result
+                scanError = error
+            })
             .ignoresSafeArea()
         }
     }

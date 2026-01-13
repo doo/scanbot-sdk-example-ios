@@ -56,28 +56,28 @@ struct DocumentScannerSwiftUIView: View {
     // An optional `SBSDKScannedDocument` object containing the resulted document of the scanning process.
     @State var scannedDocument: SBSDKScannedDocument?
     
-    @Environment(\.presentationMode) var presentationMode
+    // An optional error object representing any errors that may occur during the scanning process.
+    @State var scanError: Error?
     
     var body: some View {
         
-        if let document = self.scannedDocument {
+        if let scannedDocument {
             
             // Process and show the resulted document here.
-            Text("Process the resulted document!")
-
+            Text("Document scanned with \(scannedDocument.pages.count) pages")
+            
+        } else if let scanError {
+            
+            // Show error view here.
+            Text("Scan error: \(scanError.localizedDescription)")
+                
         } else {
             
             // Show the scanner, passing the configuration and handling the result.
             SBSDKUI2DocumentScannerView(configuration: configuration,
-                                        completion: { document in
-                if let document {
-                    scannedDocument = document
-                    
-                } else {
-                    
-                    // Dismiss your view here.
-                    presentationMode.wrappedValue.dismiss()
-                }
+                                        completion: { document, error in
+                scannedDocument = document
+                scanError = error
             })
             .ignoresSafeArea()
         }

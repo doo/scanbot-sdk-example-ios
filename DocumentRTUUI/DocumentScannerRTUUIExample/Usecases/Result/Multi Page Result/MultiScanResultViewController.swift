@@ -20,12 +20,17 @@ final class MultiScanResultViewController: UIViewController {
         
         // Filter selection callback handler
         filterListViewController.selectedFilter = { [weak self] selectedFilter in
+            guard let self else { return }
+            let numberOfPages = self.document.pages.count
             
-            let numberOfPages = self?.document.pages.count ?? 0
-            (0..<numberOfPages).forEach { index in
-                self?.document.page(at: index)?.filters = [selectedFilter]
+            do {
+                try (0..<numberOfPages).forEach { index in
+                    try self.document.page(at: index).filters = [selectedFilter]
+                }
+                self.collectionView.reloadData()
+            } catch {
+                sbsdk_showError(error)
             }
-            self?.collectionView.reloadData()
         }
         
         navigationController?.present(filterListViewController, animated: true)
@@ -52,17 +57,33 @@ extension MultiScanResultViewController {
         // Create and set the OCR configuration for HOCR.
         let options = SBSDKOCREngineConfiguration.scanbotOCR()
 
-        // Generate the document into a searchable PDF at the specified file url
-        let generator = SBSDKPDFGenerator(configuration: configuration, ocrConfiguration: options)
-        
-        // Start the generation operation and store the SBSDKProgress to watch the progress or cancel the operation.
-        let progress = generator.generate(from: document, output: pdfURL) { finished, error in
+        do {
+            // Generate the document into a searchable PDF at the specified file url
+            let generator = try SBSDKPDFGenerator(configuration: configuration,
+                                                  ocrConfiguration: options,
+                                                  useEncryptionIfAvailable: false)
             
-            if finished && error == nil {
-                
-                // Present the share screen
-                self.share(url: pdfURL)
+            // Start the generation operation and store the SBSDKProgress to watch the progress or cancel the operation.
+            let progress = generator.generate(from: document, output: pdfURL) { [weak self] finished, error in
+                guard let self else { return }
+                if finished && error == nil {
+                    
+                    // Present the share screen
+                    self.share(url: pdfURL)
+                } else if let sdkError = error as? SBSDKError, sdkError.isCanceled {
+                    
+                    // The operation was canceled. Handle if needed.
+                    
+                } else if let error {
+                    
+                    // An error occurred during the pdf generation. Show an error alert.
+                    self.sbsdk_showError(error)
+                }
             }
+        } catch {
+            
+            // An error occurred during the pdf generation. Show an error alert.
+            sbsdk_showError(error)
         }
     }
     
@@ -73,26 +94,25 @@ extension MultiScanResultViewController {
         let name = "ScanbotSDK_TIFF_Example.tiff"
         let fileURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent(name)
         
-        // Get the cropped images of all the pages of the document
-        let images = (0..<document.pages.count).compactMap { document.page(at: $0)?.documentImage }
-        
         // Define the generation parameters for the TIFF
-        // In this case using lowLightBinarization2 filter when exporting as TIFF
+        // In this case using a custom binarization filter with a preset 4 when exporting as TIFF
         // as an optimal setting
         let tiffGeneratorParameters = SBSDKTIFFGeneratorParameters.defaultParametersForBinaryImages
         tiffGeneratorParameters.dpi = 300
         tiffGeneratorParameters.compression = .ccittT6
-        tiffGeneratorParameters.binarizationFilter = SBSDKLegacyFilter(legacyFilter: .lowLightBinarization2)
-        
-        // Use `SBSDKTIFFGenerator` to write TIFF at the specified file url
-        // and get the result
-        let tiffGenerator = SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, encrypter: nil)
-        let success = tiffGenerator.generate(from: images, to: fileURL)
-        
-        if success == true {
+        let customFilter = SBSDKCustomBinarizationFilter()
+        customFilter.preset = .preset4
+        tiffGeneratorParameters.binarizationFilter = customFilter
+
+        do {
+            // Create and use `SBSDKTIFFGenerator` to write TIFF at the specified file url
+            let tiffGenerator = try SBSDKTIFFGenerator(parameters: tiffGeneratorParameters, useEncryptionIfAvailable: false)
+            try tiffGenerator.generate(from: document, to: fileURL)
             
             // Present the share screen if file is successfully written
             share(url: fileURL)
+        } catch {
+            sbsdk_showError(error)
         }
     }
 }
@@ -139,19 +159,25 @@ extension MultiScanResultViewController: UICollectionViewDataSource, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "MultiScanResultCollectionViewCell",
                                                       for: indexPath) as! MultiScanResultCollectionViewCell
         
-        // Retrieve the document page
-        let page = document.page(at: indexPath.row)
+        do {
+            // Retrieve the document page
+            let page = try document.page(at: indexPath.row)
         
-        // Check detection status
-        if page?.documentDetectionStatus == .errorNothingDetected {
+            // Check detection status
+            if page.documentDetectionStatus == .errorNothingDetected {
             
-            // Use the full original image if nothing detected
-            cell.resultImageView.image = page?.originalImage
+                // Use the full original image if nothing detected
+                cell.resultImageView.image = try page.originalImage?.toUIImage()
+                
+            } else {
+                
+                // Use the cropped image otherwise
+                cell.resultImageView.image = try page.documentImage?.toUIImage()
+            }
+        } catch {
             
-        } else {
-            
-            // Use the cropped image otherwise
-            cell.resultImageView.image = page?.documentImage
+            // An error occurred while retrieving the page or images.
+            sbsdk_showError(error)
         }
         
         return cell

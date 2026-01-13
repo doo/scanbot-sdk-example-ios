@@ -103,7 +103,7 @@ extension DocumentDataExtractorResultListViewController: UITableViewDataSource, 
                 let cell = tableView.dequeueReusableCell(withIdentifier: "DocumentDateExtractorResultImageListCell",
                                                          for: indexPath) as! DocumentDateExtractorResultImageListCell
                 cell.configure(title: displayText,
-                               image: field.image?.toUIImage())
+                               image: field.image)
                 return cell
             }
         }
@@ -145,7 +145,7 @@ extension DocumentDataExtractorResultListViewController: UITableViewDataSource, 
         if let value = field.value, !value.text.isEmpty {
             return max(44, calculateTextCellHeight(valueText: value.text, typeText: fieldTypeText))
         } else {
-            guard let image = field.image?.toUIImage() else { return 0 }
+            guard let image = field.image else { return 0 }
             return calculatedImageCellHeight(image)
         }
     }
@@ -159,11 +159,12 @@ extension DocumentDataExtractorResultListViewController: UITableViewDataSource, 
         return max(typeText, valueTextHeight) + 12
     }
     
-    private func calculatedImageCellHeight(_ image: UIImage) -> CGFloat {
-        if image.size.height < image.size.width {
-            return min(image.size.height, 50)
+    private func calculatedImageCellHeight(_ image: SBSDKImageRef) -> CGFloat {
+        guard let uiImage = try? image.toUIImage() else { return 0 }
+        if uiImage.size.height < uiImage.size.width {
+            return min(uiImage.size.height, 50)
         } else {
-            return min(image.size.height, 180)
+            return min(uiImage.size.height, 180)
         }
     }
 }

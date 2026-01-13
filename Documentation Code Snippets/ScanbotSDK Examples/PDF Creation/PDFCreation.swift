@@ -23,11 +23,10 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
     // Or you can also use the default configuration object.
     let defaultPDFConfiguration = SBSDKPDFConfiguration()
     
-    // Create the PDF generator.
-    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                      encrypter: nil)
-    
     do {
+        // Create the PDF generator, do not encrypt the PDF.
+        let generator = try SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: false)
+        
         // If output URL is `nil` the default PDF location of the scanned document will be used.
         try generator.generate(from: scannedDocument)
     } catch {
@@ -45,8 +44,11 @@ func createPDF(from image: UIImage) {
     let imagesLocation = SBSDKStorageLocation.init(baseURL: imagesURL)
     guard let imageStorage = SBSDKIndexedImageStorage(storageLocation: imagesLocation) else { return }
     
+    // Create an image ref from UIImage.
+    let imageRef = SBSDKImageRef.fromUIImage(image: image)
+    
     // Add the image to the image storage.
-    imageStorage.add(image)
+    imageStorage.add(imageRef)
     
     // Create the PDF attributes.
     let pdfAttributes = SBSDKPDFAttributes(author: "Author",
@@ -61,17 +63,27 @@ func createPDF(from image: UIImage) {
     // Or you can also use the default configuration object.
     let defaultPDFConfiguration = SBSDKPDFConfiguration()
     
-    // In case you want to encrypt your PDF file, create encrypter using a password and an encryption mode.
-    let encrypter = SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+    // In case you want to encrypt your PDF file, create a crypting provider, using a password and an encryption mode.
+    let cryptingProvider = SBSDKCryptingProvider(block: {
+        
+        // Create and return the AES encrypter with a password and an encryption mode.
+        // You can also use other encrypters, like `SBSDKAESGCM`.
+        // Make sure, you always create a new instance of the encrypter in this block.
+        return SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+    })
     
-    // Create the PDF generator.
-    let generator = SBSDKPDFGenerator(configuration: pdfConfiguration,
-                                      encrypter: nil)
+    // Set the created crypting provider as the default one for Scanbot SDK.
+    // Important: If you set a default crypting provider, all other Scanbot SDK components will also use this encrypter, including all stored images.
+    Scanbot.defaultCryptingProvider = cryptingProvider
+    
     do {
+        // Create the PDF generator, enabling encryption.
+        let generator = try SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: true)
+        
         // Synchronously generates the PDF from the image storage into a PDF file with the given page size,
         // and saves it to the specified URL.
         try generator.generate(from: imageStorage,
-                                  output: outputPDFURL)
+                               output: outputPDFURL)
     } catch {
         SBSDKLog.logError("Failed to generate PDF: \(error.localizedDescription).")
     }

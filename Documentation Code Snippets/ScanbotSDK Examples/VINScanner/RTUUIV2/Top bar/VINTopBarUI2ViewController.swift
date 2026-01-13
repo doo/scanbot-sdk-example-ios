@@ -14,10 +14,12 @@ class VINTopBarUI2ViewController: UIViewController {
         super.viewDidLoad()
         
         // Start scanning here. Usually this is an action triggered by some button or menu.
-        startScanning()
+        Task {
+            await startScanning()
+        }
     }
     
-    func startScanning() {
+    func startScanning() async {
         
         // Create the default configuration object.
         let configuration = SBSDKUI2VINScannerScreenConfiguration()
@@ -36,14 +38,25 @@ class VINTopBarUI2ViewController: UIViewController {
         configuration.topBar.cancelButton.foreground.color = SBSDKUI2Color(colorString: "#FFFFFF")
         
         // Present the view controller modally.
-        SBSDKUI2VINScannerViewController.present(on: self,
-                                                 configuration: configuration) { result in
-            if let result {
-                // Handle the result.
-                
-            } else {
-                // Indicates that the cancel button was tapped.
-            }
+        do {
+            let result = try await SBSDKUI2VINScannerViewController.present(on: self, configuration: configuration)
+            
+            // Handle the result.
+            print(result.textResult.rawText)
+            print(result.textResult.confidence)
+            print(result.textResult.validationSuccessful)
+            
+            // If expecting VIN from barcode.
+            print(result.barcodeResult.extractedVIN)
+            print(result.barcodeResult.status)
+            print(result.barcodeResult.rectangle)
+        
+        } catch SBSDKError.operationCanceled {
+            print("The operation was cancelled before completion or by the user")
+            
+        } catch {
+            // Any other error
+            print("Error scanning VIN: \(error.localizedDescription)")
         }
     }
 }

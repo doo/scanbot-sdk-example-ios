@@ -17,7 +17,7 @@ struct DocumentScannerSwiftUIView: View {
 
     var body: some View {
         
-        SBSDKUI2DocumentScannerView(configuration: SBSDKUI2DocumentScanningFlow()) { scannedDocument in
+        SBSDKUI2DocumentScannerView(configuration: SBSDKUI2DocumentScanningFlow()) { scannedDocument, error in
             
             if let scannedDocument {
                 scanningResult = DocumentScanningResult(scannedDocument: scannedDocument)

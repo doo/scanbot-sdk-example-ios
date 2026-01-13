@@ -11,7 +11,7 @@ import ScanbotSDK
 
 final class TIFFDemoViewController: UIViewController {
     @IBOutlet private var imagesCountLabel: UILabel?
-    private var images: [UIImage] = []
+    private var images: [SBSDKImageRef] = []
     
     private func showFile(at filePath: String) {
         
@@ -52,16 +52,28 @@ final class TIFFDemoViewController: UIViewController {
             parameters.compression = SBSDKCompressionMode.lzw
         }
         Task {
-            let generator = SBSDKTIFFGenerator(parameters: parameters)
-            if let result = await generator.generate(from: images, to: fileURL) {
-                let alert = UIAlertController(title: "File saved",
-                                              message: "At path: \(result.path)",
-                                              preferredStyle: .alert)
-                let okAction = UIAlertAction(title: "OK",
-                                             style: .default,
-                                             handler: nil)
-                alert.addAction(okAction)
-                present(alert, animated: true, completion: nil)
+            do {
+                let generator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
+                if let result = try await generator.generate(from: images, to: fileURL) {
+                    DispatchQueue.main.async { [weak self] in
+                        guard let self = self else { return }
+                        let alert = UIAlertController(title: "File saved",
+                                                      message: "At path: \(result.path)",
+                                                      preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK",
+                                                     style: .default,
+                                                     handler: nil)
+                        alert.addAction(okAction)
+                        self.present(alert, animated: true, completion: nil)
+                    }
+                }
+            } catch {
+                DispatchQueue.main.async { [weak self] in
+                    self?.sbsdk_showError(error) { [weak self] _ in
+                        guard let self else { return }
+                        self.sbsdk_forceClose(animated: true, completion: nil)
+                    }
+                }
             }
         }
     }
@@ -71,7 +83,8 @@ extension TIFFDemoViewController: UIImagePickerControllerDelegate, UINavigationC
     func imagePickerController(_ picker: UIImagePickerController,
                                didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            images.append(image)
+            let imageRef = SBSDKImageRef.fromUIImage(image: image)
+            images.append(imageRef)
         }
         picker.dismiss(animated: true) { [weak self] in
             self?.imagesCountLabel?.text = "Images added: \(self?.images.count ?? 0)"

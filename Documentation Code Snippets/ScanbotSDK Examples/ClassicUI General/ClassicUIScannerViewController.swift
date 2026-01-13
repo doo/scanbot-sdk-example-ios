@@ -17,7 +17,8 @@ class ClassicUIScannerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Create the scanner view controller instance.
+        // Create the ClassicUI scanner view controller instance. As an example here `SBSDKDocumentScannerViewController`
+        // is used, but this code applies to all SBSDKBaseScannerViewController-derived ClassicUI scanner view controllers.
         self.scannerViewController = SBSDKDocumentScannerViewController(parentViewController: self,
                                                                         parentView: self.view,
                                                                         delegate: self)
@@ -37,7 +38,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyGeneralConfiguration() {
 
-        // The general configuration lets you control timings, video settings and behaviour etc. 
+        // The general configuration lets you control timings, video settings and behavior etc.
         
         // Read the current general configuration from the scanner view controller.
         let generalConfiguration = self.scannerViewController.generalConfiguration
@@ -53,7 +54,7 @@ class ClassicUIScannerViewController: UIViewController {
     
     func applyZoomConfiguration() {
 
-        // The zoom configuration lets you control the zooming behaviour of the scanner view controller, e.g. 
+        // The zoom configuration lets you control the zooming behavior of the scanner view controller, e.g. 
         // if zooming is enabled, the zoom range, the initial zoom factor, discrete zoom steps and zoom related gestures.
 
         // Read the current zoom configuration from the scanner view controller.
@@ -106,11 +107,22 @@ class ClassicUIScannerViewController: UIViewController {
 }
 
 extension ClassicUIScannerViewController: SBSDKDocumentScannerViewControllerDelegate {
+    
     func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
-                                       didSnapDocumentImage documentImage: UIImage,
-                                       on originalImage: UIImage,
-                                       with result: SBSDKDocumentDetectionResult?, autoSnapped: Bool) {
+                                       didSnapDocumentImage documentImage: SBSDKImageRef,
+                                       on originalImage: SBSDKImageRef,
+                                       with result: SBSDKDocumentDetectionResult?,
+                                       autoSnapped: Bool) {
         // Process the detected document.
+        
+        // Convert ImageRef to UIImage if needed.
+        let documentUIImage = try? documentImage.toUIImage()
+    }
+    
+    func documentScannerViewController(_ controller: SBSDKDocumentScannerViewController,
+                                       didFailScanning error: any Error) {
+        // Handle the error.
+        print("Error scanning document: \(error.localizedDescription)")
     }
 }
  

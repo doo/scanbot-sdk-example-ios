@@ -19,100 +19,46 @@ class MainTableActionHandler: NSObject {
         self.presenter = presenter
     }
     
-    private func guardLicense(_ block: () -> ()) {
-        if Scanbot.isLicenseValid {
-            block()
-        } else {
-            showLicenseAlert()
-        }
-    }
-    
-    private func showLicenseAlert() {
-        let alert = UIAlertController(title: "Demo expired",
-                                      message: "The demo app will terminate because of the missing license key. Get your free 30-day license today!",
-                                      preferredStyle: .alert)
-        
-        let closeAction = UIAlertAction(title: "Close App", style: .default) { (_) in
-            self.presenter.dismiss(animated: true)
-        }
-        
-        let getLicenseAction = UIAlertAction(title: "Get License", style: .cancel) { (_) in
-            let url = URL(string: "https://scanbot.io/sdk/")!
-            UIApplication.shared.open(url, options: [:]) { _ in
-                objc_terminate()
-            }
-        }
-        
-        alert.addAction(closeAction)
-        alert.addAction(getLicenseAction)
-        alert.actions.forEach { (action) in
-            action.setValue(UIColor.black, forKey: "titleTextColor")
-        }
-        
-        presenter.present(alert, animated: true, completion: nil)
-    }
-        
     func showTextPatternScanner() {
-        guardLicense {
-            UsecaseScanTextPattern().start(presenter: self.presenter)
-        }
+        UsecaseScanTextPattern().start(presenter: self.presenter)
     }
     
     func showCheckScanner() {
-        guardLicense {
-            UsecaseScanCheck().start(presenter: self.presenter)
-        }
+        UsecaseScanCheck().start(presenter: self.presenter)
     }
     
     func showMRZScanning() {
-        guardLicense {
-            UsecaseScanMRZ().start(presenter: self.presenter)
-        }
+        UsecaseScanMRZ().start(presenter: self.presenter)
     }
     
     func showEHICScanning() {
-        guardLicense {
-            UsecaseScanEHIC().start(presenter: self.presenter)
-        }
-    }
-    
-    func showMedicalCertificateScanning() {
-        guardLicense {
-            UsecaseScanMedicalCertificate(result: result).start(presenter: self.presenter)
-        }
+        let documentTypes = [SBSDKDocumentsModelConstants.europeanHealthInsuranceCardDocumentType]
+        UsecaseScanDocumentDataExtractor(documentTypes: documentTypes).start(presenter: self.presenter)
     }
     
     func showAllImages() {
-        guardLicense {
-            UsecaseBrowseImages(result: result).start(presenter: self.presenter)
-        }
+        UsecaseBrowseImages(result: result).start(presenter: self.presenter)
     }
     
     func showIDCardScanner() {
-        guardLicense {
-            UsecaseScanDocumentDataExtractor(documentTypes: [.deIdCardBack,
-                                                             .deIdCardFront])
-                .start(presenter: self.presenter)
-        }
+        let documentTypes = [SBSDKDocumentsModelConstants.deIdCardBackDocumentType,
+                             SBSDKDocumentsModelConstants.deIdCardFrontDocumentType]
+        UsecaseScanDocumentDataExtractor(documentTypes: documentTypes)
+        .start(presenter: self.presenter)
     }
     
     func showDriverLicenseScanner() {
-        guardLicense {
-            UsecaseScanDocumentDataExtractor(documentTypes: [.europeanDriverLicenseBack,
-                                                             .europeanDriverLicenseFront])
-                .start(presenter: self.presenter)
-        }
+        let documentTypes = [SBSDKDocumentsModelConstants.europeanDriverLicenseBackDocumentType,
+                             SBSDKDocumentsModelConstants.europeanDriverLicenseFrontDocumentType]
+        UsecaseScanDocumentDataExtractor(documentTypes: documentTypes)
+        .start(presenter: self.presenter)
     }
     
     func showVinScanner() {
-        guardLicense {
-            UsecaseScanVIN().start(presenter: self.presenter)
-        }
+        UsecaseScanVIN().start(presenter: self.presenter)
     }
     
     func showCreditCardScanner() {
-        guardLicense {
-            UsecaseScanCreditCard().start(presenter: self.presenter)
-        }
+        UsecaseScanCreditCard().start(presenter: self.presenter)
     }
 }

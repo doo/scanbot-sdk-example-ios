@@ -19,24 +19,33 @@ struct BarcodeResult: Identifiable {
 struct BarcodeScanningResult {
     let barcodeScannerName: String
     let scannedBarcodes: [BarcodeResult]
+    let error: Error?
+    
+    init(barcodeScannerName: String = "", error: Error) {
+        self.barcodeScannerName = barcodeScannerName
+        self.error = error
+        self.scannedBarcodes = []
+    }
     
     init(barcodeScannerName: String = "", scannedItems: [SBSDKBarcodeItem] = []) {
+        self.error = nil
         self.barcodeScannerName = barcodeScannerName
         self.scannedBarcodes = scannedItems.map({ barcode in
             return BarcodeResult(type: barcode.format,
                                  rawTextString: barcode.text,
                                  rawTextStringWithExtension: barcode.displayText,
-                                 barcodeImage: barcode.sourceImage?.toUIImage() ?? UIImage())
+                                 barcodeImage: (try? barcode.sourceImage?.toUIImage()) ?? UIImage())
         })
     }
     
     init(barcodeScannerName: String = "", scannedResultItems: [SBSDKUI2BarcodeScannerUIItem] = []) {
+        self.error = nil
         self.barcodeScannerName = barcodeScannerName
         self.scannedBarcodes = scannedResultItems.map({ barcodeItem in
             return BarcodeResult(type: barcodeItem.barcode.format,
                                  rawTextString: barcodeItem.barcode.text,
                                  rawTextStringWithExtension: barcodeItem.barcode.displayText,
-                                 barcodeImage: barcodeItem.barcode.sourceImage?.toUIImage() ?? UIImage())
+                                 barcodeImage: (try? barcodeItem.barcode.sourceImage?.toUIImage()) ?? UIImage())
         })
     }
 }

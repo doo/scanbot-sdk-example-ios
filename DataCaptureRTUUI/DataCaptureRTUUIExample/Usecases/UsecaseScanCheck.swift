@@ -16,7 +16,7 @@ final class UsecaseScanCheck: Usecase {
         
         let configuration = SBSDKUI2CheckScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2CheckScannerViewController.create(with: configuration) { [weak self] result in
+        let scanner = SBSDKUI2CheckScannerViewController.create(with: configuration) { [weak self] _, result, error in
             if let result {
                 let title = "Check found"
                 var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
@@ -28,7 +28,7 @@ final class UsecaseScanCheck: Usecase {
                 UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
                 
             } else {
-                self?.didFinish()
+                self?.didFinish(error: error)
             }
         }
         presentViewController(scanner)

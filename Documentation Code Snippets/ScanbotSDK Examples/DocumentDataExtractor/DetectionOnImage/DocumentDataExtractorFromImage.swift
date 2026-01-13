@@ -13,24 +13,32 @@ func extractDocumentDataFromImage() {
     // The image containing the document.
     guard let image = UIImage(named: "genericDocumentImage") else { return }
     
-    // The types of generic documents to be extracted.
-    let typesToDetect = SBSDKDocumentsModelRootType.allDocumentTypes
-    
-    // Create a configuration builder.
-    let builder = SBSDKDocumentDataExtractorConfigurationBuilder()
-    
-    // Pass the above types here as required.
-    builder.setAcceptedDocumentTypes(typesToDetect)
+    // Create configuration for the extractor.
+    let configuration = SBSDKDocumentDataExtractorConfiguration(
+        configurations: [SBSDKDocumentDataExtractorCommonConfiguration(
+            acceptedDocumentTypes: [SBSDKDocumentsModelConstants.europeanDriverLicenseFrontDocumentType,
+                                    SBSDKDocumentsModelConstants.europeanDriverLicenseBackDocumentType]
+        )]
+    )
     
     // Enable the crops image extraction.
-    builder.setReturnCrops(true)
+    configuration.returnCrops = true
     
-    // Create an instance of `SBSDKDocumentDataExtractor`.
-    let extractor = SBSDKDocumentDataExtractor(configuration: builder.buildConfiguration())
-    
-    // Run the extractor on the image.
-    let result = extractor.extract(from: image)
-    
-    // Get the cropped image.
-    let croppedImage = result?.croppedImage?.toUIImage()
+    do {
+        
+        // Create an instance of extractor.
+        let extractor = try SBSDKDocumentDataExtractor(configuration: configuration)
+        
+        // Create an image ref from UIImage.
+        let imageRef = SBSDKImageRef.fromUIImage(image: image)
+        
+        // Run the extractor on the image.
+        let result = try extractor.run(image: imageRef)
+        
+        // Get the cropped image.
+        let croppedImage = try result.croppedImage?.toUIImage()
+    }
+    catch {
+        print("Error extracting document data: \(error.localizedDescription)")
+    }
 }
