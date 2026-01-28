@@ -10,7 +10,7 @@ import UIKit
 
 final class AlertsManager {
     
-    let presenter: UIViewController
+    weak var presenter: UIViewController?
     
     init(presenter: UIViewController) {
         self.presenter = presenter
@@ -25,7 +25,7 @@ final class AlertsManager {
         let copy = UIAlertAction(title: "Copy to clipboard", style: .default) { _ in
             UIPasteboard.general.string = results
             let copiedAlert = UIAlertController(title: "Copied", message: nil, preferredStyle: .alert)
-            self.presenter.present(copiedAlert, animated: true) {
+            self.presenter?.present(copiedAlert, animated: true) {
                 DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
                     copiedAlert.presentingViewController?.dismiss(animated: true, completion: nil)
                     completionHandler?()
@@ -34,7 +34,7 @@ final class AlertsManager {
         }
         alert.addAction(copy)
         alert.addAction(cancel)
-        presenter.present(alert, animated: true, completion: nil)
+        presenter?.present(alert, animated: true, completion: nil)
     }
     
     func showFailureAlert(completionHandler:(() -> ())? = nil) {
@@ -46,6 +46,6 @@ final class AlertsManager {
             completionHandler?()
         }
         alert.addAction(cancel)
-        presenter.present(alert, animated: true, completion: nil)
+        presenter?.present(alert, animated: true, completion: nil)
     }
 }
