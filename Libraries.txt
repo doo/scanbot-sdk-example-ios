@@ -1,4 +1,4 @@
-Open Source libraries used in ScanbotSDK for iOS version 8.0.2:
+Open Source libraries used in ScanbotSDK for iOS version 8.0.3:
 
 +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
 
