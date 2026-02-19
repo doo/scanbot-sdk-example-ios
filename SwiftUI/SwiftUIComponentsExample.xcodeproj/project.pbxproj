@@ -226,6 +226,7 @@
 				2878D91E27185E530045F7EE /* Frameworks */,
 				2878D91F27185E530045F7EE /* Resources */,
 				08072F7027216C1100863F12 /* Embed Frameworks */,
+				94F5953E2F45CA3D00436A60 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -285,6 +286,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94F5953E2F45CA3D00436A60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/../Libraries.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -af \"${BUILD_DIR%Build/*}/SourcePackages/checkouts/scanbot-sdk-ios-spm/LICENSE\" \"${SRCROOT}/../Libraries.txt\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2878D91D27185E530045F7EE /* Sources */ = {
@@ -540,7 +562,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 8.0.3;
+				version = "8.1.0-RC1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
