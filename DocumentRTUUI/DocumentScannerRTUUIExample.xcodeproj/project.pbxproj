@@ -232,6 +232,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F1B0CCBC2A96332400389EA7 /* Build configuration list for PBXNativeTarget "DocumentScannerRTUUIExample" */;
 			buildPhases = (
+				94F5953D2F45C9AB00436A60 /* ShellScript */,
 				F1B0CCA42A96332300389EA7 /* Sources */,
 				F1B0CCA52A96332300389EA7 /* Frameworks */,
 				F1B0CCA62A96332300389EA7 /* Resources */,
@@ -297,6 +298,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		94F5953D2F45C9AB00436A60 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${SRCROOT}/../Libraries.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\ncp -af \"${BUILD_DIR%Build/*}/SourcePackages/checkouts/scanbot-sdk-ios-spm/LICENSE\" \"${SRCROOT}/../Libraries.txt\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F1B0CCA42A96332300389EA7 /* Sources */ = {
@@ -555,7 +577,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 8.0.3;
+				version = "8.0.4-RC1";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
