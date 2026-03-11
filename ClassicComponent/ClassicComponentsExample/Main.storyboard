@@ -38,7 +38,7 @@
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         <label key="tableFooterView" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="All features will only work for 1 minute.   Copyright (c) 2025 Scanbot SDK GmbH. All rights reserved." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CgH-OK-GG0">
-                            <rect key="frame" x="0.0" y="1459.3333301544189" width="375" height="108"/>
+                            <rect key="frame" x="0.0" y="1515.3333301544189" width="375" height="108"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="16"/>
                             <nil key="textColor"/>
@@ -436,10 +436,39 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Combining Scanners" id="Hip-2f-thb" userLabel="Combining Scanners">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="QVy-E0-cpf" userLabel="Barcode + TextPattern Scanner Demo">
+                                        <rect key="frame" x="16" y="1325.3333301544189" width="343" height="58"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QVy-E0-cpf" id="n7b-SE-N5c">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode + TextPattern Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2C-KK-h60" userLabel="Barcode + TextPattern Scanner Demo">
+                                                    <rect key="frame" x="24" y="0.0" width="295" height="58"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Y2C-KK-h60" firstAttribute="leading" secondItem="n7b-SE-N5c" secondAttribute="leading" constant="24" id="06R-hg-5Mw"/>
+                                                <constraint firstItem="Y2C-KK-h60" firstAttribute="top" secondItem="n7b-SE-N5c" secondAttribute="top" id="QcZ-at-XHA"/>
+                                                <constraint firstAttribute="bottom" secondItem="Y2C-KK-h60" secondAttribute="bottom" id="UqJ-XW-q8e"/>
+                                                <constraint firstAttribute="trailing" secondItem="Y2C-KK-h60" secondAttribute="trailing" constant="24" id="nbK-tE-JtP"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="j4u-dy-wVZ" kind="show" id="Xd5-90-BvD"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="Utilities" id="EGY-pa-TYu">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="Nad-bm-cdX" userLabel="Quality Analyzer">
-                                        <rect key="frame" x="16" y="1325.3333301544189" width="343" height="58"/>
+                                        <rect key="frame" x="16" y="1439.3333301544189" width="343" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Nad-bm-cdX" id="3vf-5b-HSj">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
@@ -461,31 +490,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <segue destination="BT7-Vp-MF5" kind="show" id="u0Y-mq-npl"/>
-                                        </connections>
-                                    </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="8kS-2O-QMY" userLabel="Additional Frame Processor">
-                                        <rect key="frame" x="16" y="1383.3333301544189" width="343" height="58"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8kS-2O-QMY" id="ncw-jR-Kan">
-                                            <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Additional Frame Processor" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nA0-SW-Y1J" userLabel="Additional Frame Processor">
-                                                    <rect key="frame" x="24" y="0.0" width="295" height="58"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="nA0-SW-Y1J" firstAttribute="leading" secondItem="ncw-jR-Kan" secondAttribute="leading" constant="24" id="RDl-J6-A0W"/>
-                                                <constraint firstAttribute="bottom" secondItem="nA0-SW-Y1J" secondAttribute="bottom" id="d1V-6m-2Ii"/>
-                                                <constraint firstItem="nA0-SW-Y1J" firstAttribute="top" secondItem="ncw-jR-Kan" secondAttribute="top" id="rBt-ZJ-aLU"/>
-                                                <constraint firstAttribute="trailing" secondItem="nA0-SW-Y1J" secondAttribute="trailing" constant="24" id="y3w-0T-lQc"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <connections>
-                                            <segue destination="j4u-dy-wVZ" kind="show" id="UDP-3E-nip"/>
                                         </connections>
                                     </tableViewCell>
                                 </cells>
@@ -1645,7 +1649,7 @@
         <!--Additional Frame Processor View Controller-->
         <scene sceneID="mOT-jB-Fb9">
             <objects>
-                <viewController id="j4u-dy-wVZ" userLabel="Additional Frame Processor View Controller" customClass="AdditionalFrameProcessorViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="j4u-dy-wVZ" userLabel="Additional Frame Processor View Controller" customClass="BarcodeWithTextPatternScannerViewController" customModule="ClassicComponentsExample" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="8mR-Wg-Yg0"/>
                         <viewControllerLayoutGuide type="bottom" id="wil-zD-W2X"/>

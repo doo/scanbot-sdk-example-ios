@@ -62,7 +62,7 @@
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
 		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
-		F15D8FEE2F61B62200C8AC21 /* AdditionalFrameProcessorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D8FED2F61B62200C8AC21 /* AdditionalFrameProcessorViewController.swift */; };
+		F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */; };
 		F164F2402E09A2A3001F6A5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F164F23F2E09A2A3001F6A5A /* README.md */; };
 		F164F25F2E09B27F001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */; };
 		F164F74E2E0ADF4F001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F74D2E0ADF4F001F6A5A /* ScanbotSDK */; };
@@ -149,7 +149,7 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ClassicComponentsExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ClassicComponentsExample/Media.xcassets; sourceTree = SOURCE_ROOT; };
 		F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDemoViewController.swift; sourceTree = "<group>"; };
-		F15D8FED2F61B62200C8AC21 /* AdditionalFrameProcessorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalFrameProcessorViewController.swift; sourceTree = "<group>"; };
+		F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeWithTextPatternScannerViewController.swift; sourceTree = "<group>"; };
 		F164F23F2E09A2A3001F6A5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F164F7562E0AE0C2001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
@@ -216,7 +216,7 @@
 				082A62342B33033B000F66DC /* SBSDKGeometryUtilities.swift */,
 				2869C494274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift */,
 				2869C4A6274FAA780036F44D /* TIFFDemoViewController.swift */,
-				F15D8FED2F61B62200C8AC21 /* AdditionalFrameProcessorViewController.swift */,
+				F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -494,7 +494,7 @@
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift in Sources */,
-				F15D8FEE2F61B62200C8AC21 /* AdditionalFrameProcessorViewController.swift in Sources */,
+				F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */,
 				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
 				F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */,
