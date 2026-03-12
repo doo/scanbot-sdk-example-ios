@@ -436,16 +436,16 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Combining Scanners" id="Hip-2f-thb" userLabel="Combining Scanners">
+                            <tableViewSection headerTitle="Dual Scanners" id="Hip-2f-thb">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="QVy-E0-cpf" userLabel="Barcode + TextPattern Scanner Demo">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="QVy-E0-cpf" userLabel="Barcode + Text Scanner Demo">
                                         <rect key="frame" x="16" y="1325.3333301544189" width="343" height="58"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="QVy-E0-cpf" id="n7b-SE-N5c">
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="58"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode + TextPattern Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2C-KK-h60" userLabel="Barcode + TextPattern Scanner Demo">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Barcode + Text Scanner Demo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y2C-KK-h60" userLabel="Barcode + TextPattern Scanner Demo">
                                                     <rect key="frame" x="24" y="0.0" width="295" height="58"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
