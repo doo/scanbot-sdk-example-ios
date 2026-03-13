@@ -15,9 +15,9 @@ import ScanbotSDK
  With this approach, you can extract EAN codes from either visible text or barcodes within the same scanning UI, providing a seamless user experience for your customers.
 */
 
-enum ScanSource {
-    case barcode
-    case textPattern
+enum ScanResult {
+    case barcode(String)
+    case textPattern(String)
 }
 
 // Scans an EAN8 or EAN13 number from either a text line or from a valid barcode.
@@ -32,8 +32,8 @@ class BarcodeWithTextPatternScannerViewController: UIViewController {
     // The EAN validator to validate the EANs.
     private let validator = EANValidator()
     
-    // The final result string and its source.
-    var result: (value: String, source: ScanSource)? {
+    // The final result enum encapsulating the scan value and source.
+    var result: ScanResult? {
         didSet {
             if let result { self.handleResult(result) }
         }
@@ -47,9 +47,6 @@ class BarcodeWithTextPatternScannerViewController: UIViewController {
         
         // Setup the barcode scanner for additional frame processing.
         setupBarcodeScanner()
-        
-        // Info button.
-        setupInfoButton()
     }
     
     private func setupTextPatternScanner() {
@@ -161,60 +158,20 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKAdditionalFrameProce
     }
 }
 
-/**
- EANValidator is a custom content validator for EAN-8 and EAN-13 codes.
-
- Implements the SBSDKContentValidationCallback protocol, providing validation and cleanup of scanned text for use in barcode and text pattern recognition workflows.
- Ensures only valid, properly checksummed EAN codes are accepted.
-*/
-class EANValidator: NSObject, SBSDKContentValidationCallback {
-    
-    // SBSDKContentValidationCallback protocol implementation to validate text.
-    func validate(text: String) -> Bool {
-        return isValidEAN(text)
-    }
-    
-    // SBSDKContentValidationCallback protocol implementation to clean up text.
-    func clean(rawText: String) -> String {
-        return rawText.replacingOccurrences(of: " ", with: "")
-    }
-    
-    // The actual EAN8 or EAN13 validation function.
-    func isValidEAN(_ code: String) -> Bool {
-        // 1. Validate length and numeric characters
-        guard (code.count == 8 || code.count == 13),
-              code.allSatisfy(\.isNumber),
-              let lastChar = code.last,
-              let providedChecksum = lastChar.wholeNumberValue else {
-            return false
-        }
-        
-        // 2. Drop the checksum, reverse, and calculate
-        let payload = code.dropLast().reversed()
-        var sum = 0
-        
-        for (index, char) in payload.enumerated() {
-            guard let digit = char.wholeNumberValue else { return false }
-            // Even indices (0, 2, 4...) get multiplied by 3
-            let multiplier = (index % 2 == 0) ? 3 : 1
-            sum += digit * multiplier
-        }
-        
-        // 3. Modulo 10 calculation
-        let calculatedChecksum = (10 - (sum % 10)) % 10
-        
-        return calculatedChecksum == providedChecksum
-    }
-}
-
-// Result handling: shows scan source to user.
+// Helping functions.
 extension BarcodeWithTextPatternScannerViewController {
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        setupInfoButton()
+    }
     
     private func reset() {
         result = nil
     }
 
-    private func handleResult(_ result: (value: String, source: ScanSource)) {
+    private func handleResult(_ result: ScanResult) {
         showAlert(result: result)
     }
     
@@ -224,11 +181,11 @@ extension BarcodeWithTextPatternScannerViewController {
         if let barcodeResult,
            let string = barcodeResult.barcodes.first?.text,
            validator.isValidEAN(string) {
-            result = (string, .barcode)
+            result = .barcode(string)
             
         } else if let textPatternResult,
                   validator.isValidEAN(textPatternResult.rawText) {
-            result = (textPatternResult.rawText, .textPattern)
+            result = .textPattern(textPatternResult.rawText)
         }
     }
     
@@ -236,7 +193,7 @@ extension BarcodeWithTextPatternScannerViewController {
         showAlert(error: error)
     }
     
-    private func showAlert(error: Error? = nil, result: (value: String, source: ScanSource)? = nil) {
+    private func showAlert(error: Error? = nil, result: ScanResult? = nil) {
         
         if let error {
             let message = "An error occurred: \(error.localizedDescription)."
@@ -245,8 +202,13 @@ extension BarcodeWithTextPatternScannerViewController {
             present(alert, animated: true)
             
         } else if let result {
-            let sourceDescription = result.source == .barcode ? "Barcode" : "Text Pattern"
-            let message = "Scanned via \(sourceDescription): \(result.value)."
+            let message: String
+            switch result {
+            case .barcode(let value):
+                message = "Scanned via Barcode: \(value)."
+            case .textPattern(let value):
+                message = "Scanned via Text Pattern: \(value)."
+            }
             let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.reset() })
             present(alert, animated: true)

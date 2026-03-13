@@ -64,6 +64,7 @@
 		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
 		F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */; };
 		F15D96EC2F642EFE00C8AC21 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */; };
+		F15D96EF2F6438F200C8AC21 /* EANValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */; };
 		F164F2402E09A2A3001F6A5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F164F23F2E09A2A3001F6A5A /* README.md */; };
 		F164F25F2E09B27F001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */; };
 		F164F74E2E0ADF4F001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F74D2E0ADF4F001F6A5A /* ScanbotSDK */; };
@@ -152,6 +153,7 @@
 		F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDemoViewController.swift; sourceTree = "<group>"; };
 		F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeWithTextPatternScannerViewController.swift; sourceTree = "<group>"; };
 		F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EANValidator.swift; sourceTree = "<group>"; };
 		F164F23F2E09A2A3001F6A5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F164F7562E0AE0C2001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
@@ -351,7 +353,7 @@
 		F15D96E82F642EBD00C8AC21 /* Dual Scanners */ = {
 			isa = PBXGroup;
 			children = (
-				F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */,
+				F15D96ED2F6438DB00C8AC21 /* Barcode + TextPattern */,
 			);
 			path = "Dual Scanners";
 			sourceTree = "<group>";
@@ -362,6 +364,15 @@
 				F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */,
 			);
 			path = Helping;
+			sourceTree = "<group>";
+		};
+		F15D96ED2F6438DB00C8AC21 /* Barcode + TextPattern */ = {
+			isa = PBXGroup;
+			children = (
+				F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */,
+				F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */,
+			);
+			path = "Barcode + TextPattern";
 			sourceTree = "<group>";
 		};
 		F19EFE8829C4AAF900128396 /* Custom Tracking Info View */ = {
@@ -516,6 +527,7 @@
 				F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */,
 				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
+				F15D96EF2F6438F200C8AC21 /* EANValidator.swift in Sources */,
 				F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
