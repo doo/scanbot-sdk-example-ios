@@ -9,6 +9,17 @@
 import UIKit
 import ScanbotSDK
 
+/**
+ This view controller demonstrates how to combine Scanbot's Text Pattern Scanner and Barcode Scanner using the additional frame processor feature. 
+
+ With this approach, you can extract EAN codes from either visible text or barcodes within the same scanning UI, providing a seamless user experience for your customers.
+*/
+
+enum ScanSource {
+    case barcode
+    case textPattern
+}
+
 // Scans an EAN8 or EAN13 number from either a text line or from a valid barcode.
 class BarcodeWithTextPatternScannerViewController: UIViewController {
     
@@ -21,8 +32,8 @@ class BarcodeWithTextPatternScannerViewController: UIViewController {
     // The EAN validator to validate the EANs.
     private let validator = EANValidator()
     
-    // The final result string.
-    var result: String? {
+    // The final result string and its source.
+    var result: (value: String, source: ScanSource)? {
         didSet {
             if let result { self.handleResult(result) }
         }
@@ -119,7 +130,7 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKTextPatternScannerVi
         
         if result.validationSuccessful {
             // We found a matching text pattern, so we update the result. Delegate calls are made to the main thread.
-            self.updateResult(textPatternResult: result)
+            updateResult(textPatternResult: result)
         }
     }
     
@@ -133,18 +144,13 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKAdditionalFrameProce
     
     func process(frame: SBSDKImageRef) -> Bool {
         
-        // No need to scan if we already have a result. Skip over barcode scanning.
+        // Skip barcode scanning if already have a result.
         guard self.result == nil else { return false }
         
         do {
-            // Run the barcode scanner on the video frame and pass the result to the update function.
             let result = try barcodeScanner?.run(image: frame)
-            
-            // Dispatch the result to the main thread.
             DispatchQueue.main.sync { [weak self] in self?.updateResult(barcodeResult: result) }
-            
         } catch {
-            // ... or the error.
             DispatchQueue.main.sync { [weak self] in self?.handleError(error) }
         }
         
@@ -152,61 +158,48 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKAdditionalFrameProce
     }
 }
 
-// Helping functions.
+// Result handling: shows scan source to user.
 extension BarcodeWithTextPatternScannerViewController {
     
     private func reset() {
-        
-        // Reset the scanned result and continues scanning.
         result = nil
     }
 
-    private func handleResult(_ result: String) {
-        
-        // Handle the final scanned EAN code here.
+    private func handleResult(_ result: (value: String, source: ScanSource)) {
         showAlert(result: result)
     }
     
     private func updateResult(barcodeResult: SBSDKBarcodeScannerResult? = nil,
                               textPatternResult: SBSDKTextPatternScannerResult? = nil) {
         
-        // Extract the EAN string from the barcode results.
-        if let barcodeResult, let string = barcodeResult.barcodes.first?.text, validator.isValidEAN(string) {
-            result = string
+        if let barcodeResult,
+           let string = barcodeResult.barcodes.first?.text,
+           validator.isValidEAN(string) {
+            result = (string, .barcode)
             
-        // ... or from the text pattern scanner result.
-        } else if let textPatternResult, validator.isValidEAN(textPatternResult.rawText) {
-            result = textPatternResult.rawText
+        } else if let textPatternResult,
+                  validator.isValidEAN(textPatternResult.rawText) {
+            result = (textPatternResult.rawText, .textPattern)
         }
     }
     
     private func handleError(_ error: Error) {
-        
-        // Handle any error here.
         showAlert(error: error)
     }
     
-    private func showAlert(error: Error? = nil, result: String? = nil) {
-        // Helper function to either alert an error or a valid result.
+    private func showAlert(error: Error? = nil, result: (value: String, source: ScanSource)? = nil) {
         
         if let error {
-            // Handle an error.
-            
             let message = "An error occurred: \(error.localizedDescription)."
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.reset()
-            }))
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.reset() })
             present(alert, animated: true)
             
         } else if let result {
-            // Handle a valid EAN result.
-            
-            let message = "Scanned EAN: \(result)."
+            let sourceDescription = result.source == .barcode ? "Barcode" : "Text Pattern"
+            let message = "Scanned via \(sourceDescription): \(result.value)."
             let alert = UIAlertController(title: "Success", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.reset()
-            }))
+            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.reset() })
             present(alert, animated: true)
         }
     }
