@@ -436,7 +436,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Dual Scanners" id="Hip-2f-thb">
+                            <tableViewSection headerTitle="Dual Scanning" id="Hip-2f-thb" userLabel="Dual Scanning">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="58" id="QVy-E0-cpf" userLabel="Barcode + Text Scanner Demo">
                                         <rect key="frame" x="16" y="1325.3333301544189" width="343" height="58"/>
