@@ -47,6 +47,9 @@ class BarcodeWithTextPatternScannerViewController: UIViewController {
         
         // Setup the barcode scanner for additional frame processing.
         setupBarcodeScanner()
+        
+        // Info button.
+        setupInfoButton()
     }
     
     private func setupTextPatternScanner() {
@@ -158,6 +161,52 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKAdditionalFrameProce
     }
 }
 
+/**
+ EANValidator is a custom content validator for EAN-8 and EAN-13 codes.
+
+ Implements the SBSDKContentValidationCallback protocol, providing validation and cleanup of scanned text for use in barcode and text pattern recognition workflows.
+ Ensures only valid, properly checksummed EAN codes are accepted.
+*/
+class EANValidator: NSObject, SBSDKContentValidationCallback {
+    
+    // SBSDKContentValidationCallback protocol implementation to validate text.
+    func validate(text: String) -> Bool {
+        return isValidEAN(text)
+    }
+    
+    // SBSDKContentValidationCallback protocol implementation to clean up text.
+    func clean(rawText: String) -> String {
+        return rawText.replacingOccurrences(of: " ", with: "")
+    }
+    
+    // The actual EAN8 or EAN13 validation function.
+    func isValidEAN(_ code: String) -> Bool {
+        // 1. Validate length and numeric characters
+        guard (code.count == 8 || code.count == 13),
+              code.allSatisfy(\.isNumber),
+              let lastChar = code.last,
+              let providedChecksum = lastChar.wholeNumberValue else {
+            return false
+        }
+        
+        // 2. Drop the checksum, reverse, and calculate
+        let payload = code.dropLast().reversed()
+        var sum = 0
+        
+        for (index, char) in payload.enumerated() {
+            guard let digit = char.wholeNumberValue else { return false }
+            // Even indices (0, 2, 4...) get multiplied by 3
+            let multiplier = (index % 2 == 0) ? 3 : 1
+            sum += digit * multiplier
+        }
+        
+        // 3. Modulo 10 calculation
+        let calculatedChecksum = (10 - (sum % 10)) % 10
+        
+        return calculatedChecksum == providedChecksum
+    }
+}
+
 // Result handling: shows scan source to user.
 extension BarcodeWithTextPatternScannerViewController {
     
@@ -203,50 +252,16 @@ extension BarcodeWithTextPatternScannerViewController {
             present(alert, animated: true)
         }
     }
-}
-
-/**
- EANValidator is a custom content validator for EAN-8 and EAN-13 codes.
-
- Implements the SBSDKContentValidationCallback protocol, providing validation and cleanup of scanned text for use in barcode and text pattern recognition workflows.
- Ensures only valid, properly checksummed EAN codes are accepted.
-*/
-class EANValidator: NSObject, SBSDKContentValidationCallback {
     
-    // SBSDKContentValidationCallback protocol implementation to validate text.
-    func validate(text: String) -> Bool {
-        return isValidEAN(text)
+    private func setupInfoButton() {
+        let infoButton = UIBarButtonItem(image: UIImage(systemName: "info.circle"), style: .plain, target: self, action: #selector(showIntroduction))
+        navigationItem.rightBarButtonItem = infoButton
     }
     
-    // SBSDKContentValidationCallback protocol implementation to clean up text.
-    func clean(rawText: String) -> String {
-        return rawText.replacingOccurrences(of: " ", with: "")
-    }
-    
-    // The actual EAN8 or EAN13 validation function.
-    func isValidEAN(_ code: String) -> Bool {
-        // 1. Validate length and numeric characters
-        guard (code.count == 8 || code.count == 13),
-              code.allSatisfy(\.isNumber),
-              let lastChar = code.last,
-              let providedChecksum = lastChar.wholeNumberValue else {
-            return false
-        }
-        
-        // 2. Drop the checksum, reverse, and calculate
-        let payload = code.dropLast().reversed()
-        var sum = 0
-        
-        for (index, char) in payload.enumerated() {
-            guard let digit = char.wholeNumberValue else { return false }
-            // Even indices (0, 2, 4...) get multiplied by 3
-            let multiplier = (index % 2 == 0) ? 3 : 1
-            sum += digit * multiplier
-        }
-        
-        // 3. Modulo 10 calculation
-        let calculatedChecksum = (10 - (sum % 10)) % 10
-        
-        return calculatedChecksum == providedChecksum
+    @objc private func showIntroduction() {
+        let infoText = "This screen demonstrates how to combine Scanbot SDK's Barcode and Text Pattern Scanners into one seamless user experience using the Additional Frame Processor.\n\nThe Additional Frame Processor lets you apply custom scanning logic to every live camera frame, alongside the main scanner, making your workflows more powerful and flexible.\n\nThis example uses Additional Frame Processor to scan barcodes on top of the main Text Pattern scanner, to scan EAN codes from both barcodes and printed text lines in a single session without switching modes."
+        let introVC = IntroductionViewController(title: "Barcode + Text Pattern", infoText: infoText)
+        introVC.modalPresentationStyle = .formSheet
+        present(introVC, animated: true)
     }
 }
