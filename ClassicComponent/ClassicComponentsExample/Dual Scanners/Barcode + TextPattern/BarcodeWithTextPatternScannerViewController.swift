@@ -136,6 +136,7 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKTextPatternScannerVi
     
     func textPatternScannerViewController(_ controller: ScanbotSDK.SBSDKTextPatternScannerViewController,
                                           didFailScanning error: any Error) {
+        handleError(error)
     }
 }
 
@@ -196,11 +197,10 @@ extension BarcodeWithTextPatternScannerViewController {
     private func showAlert(error: Error? = nil, result: ScanResult? = nil) {
         
         if let error {
-            let message = "An error occurred: \(error.localizedDescription)."
-            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default) { _ in self.reset() })
-            present(alert, animated: true)
-            
+            sbsdk_showError(error) { [weak self] _ in
+                guard let self else { return }
+                self.sbsdk_forceClose(animated: true, completion: nil)
+            }
         } else if let result {
             let message: String
             switch result {
