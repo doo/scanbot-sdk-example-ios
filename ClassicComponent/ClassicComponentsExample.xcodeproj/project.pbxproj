@@ -62,6 +62,9 @@
 		C27562961DE45368003F5FE0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C27562851DE45368003F5FE0 /* Main.storyboard */; };
 		C27562A91DE453B2003F5FE0 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C27562A61DE453B2003F5FE0 /* Media.xcassets */; };
 		F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */; };
+		F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */; };
+		F15D96EC2F642EFE00C8AC21 /* IntroductionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */; };
+		F15D96EF2F6438F200C8AC21 /* EANValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */; };
 		F164F2402E09A2A3001F6A5A /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = F164F23F2E09A2A3001F6A5A /* README.md */; };
 		F164F25F2E09B27F001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */; };
 		F164F74E2E0ADF4F001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F74D2E0ADF4F001F6A5A /* ScanbotSDK */; };
@@ -148,6 +151,9 @@
 		C27562A41DE453B2003F5FE0 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = ClassicComponentsExample/Info.plist; sourceTree = SOURCE_ROOT; };
 		C27562A61DE453B2003F5FE0 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = ClassicComponentsExample/Media.xcassets; sourceTree = SOURCE_ROOT; };
 		F1531B0E2A935944004C3F20 /* VINDemoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINDemoViewController.swift; sourceTree = "<group>"; };
+		F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeWithTextPatternScannerViewController.swift; sourceTree = "<group>"; };
+		F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntroductionViewController.swift; sourceTree = "<group>"; };
+		F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EANValidator.swift; sourceTree = "<group>"; };
 		F164F23F2E09A2A3001F6A5A /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = SOURCE_ROOT; };
 		F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		F164F7562E0AE0C2001F6A5A /* ScanbotSDKOCRData.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ScanbotSDKOCRData.bundle; sourceTree = SOURCE_ROOT; };
@@ -304,11 +310,13 @@
 				286FF1D02757B783007D47EF /* Data Detectors */,
 				286FF1D12757B79F007D47EF /* Health Documents Scanners */,
 				286FF1D22757B7CD007D47EF /* Identity Detectors */,
+				F15D96E82F642EBD00C8AC21 /* Dual Scanners */,
 				286FF1D32757B7FC007D47EF /* Utilities */,
 				2849C02A275133BC00D9760C /* DemoSelectionTableViewController.swift */,
 				F164F25E2E09B27F001F6A5A /* SceneDelegate.swift */,
 				28E71F4427568CDC0061B433 /* AppDelegate.swift */,
 				C27562851DE45368003F5FE0 /* Main.storyboard */,
+				F15D96EA2F642EE600C8AC21 /* Helping */,
 				9ED845841AE670CC008B2731 /* Supporting Files */,
 			);
 			path = ClassicComponentsExample;
@@ -340,6 +348,31 @@
 				2866E407275527FA00490CC8 /* BarcodeScannerResultsTableViewCell.swift */,
 			);
 			path = BarcodeScannerDemo;
+			sourceTree = "<group>";
+		};
+		F15D96E82F642EBD00C8AC21 /* Dual Scanners */ = {
+			isa = PBXGroup;
+			children = (
+				F15D96ED2F6438DB00C8AC21 /* Barcode + TextPattern */,
+			);
+			path = "Dual Scanners";
+			sourceTree = "<group>";
+		};
+		F15D96EA2F642EE600C8AC21 /* Helping */ = {
+			isa = PBXGroup;
+			children = (
+				F15D96EB2F642EFB00C8AC21 /* IntroductionViewController.swift */,
+			);
+			path = Helping;
+			sourceTree = "<group>";
+		};
+		F15D96ED2F6438DB00C8AC21 /* Barcode + TextPattern */ = {
+			isa = PBXGroup;
+			children = (
+				F15D96EE2F6438EF00C8AC21 /* EANValidator.swift */,
+				F15D8FED2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift */,
+			);
+			path = "Barcode + TextPattern";
 			sourceTree = "<group>";
 		};
 		F19EFE8829C4AAF900128396 /* Custom Tracking Info View */ = {
@@ -491,8 +524,10 @@
 				28E71F4527568CDC0061B433 /* AppDelegate.swift in Sources */,
 				28F65BE8273414BF00905E6D /* DocumentScannerViewController.swift in Sources */,
 				2869C495274E3C9B0036F44D /* QualityAnalyzerDemoViewController.swift in Sources */,
+				F15D8FEE2F61B62200C8AC21 /* BarcodeWithTextPatternScannerViewController.swift in Sources */,
 				288AB3DA2A45A1CE00D6461E /* ScanAndCountBarcodeDetailsCell.swift in Sources */,
 				28AF0465279EB78E00C00B33 /* ScannerCameraViewController.swift in Sources */,
+				F15D96EF2F6438F200C8AC21 /* EANValidator.swift in Sources */,
 				F1531B0F2A935944004C3F20 /* VINDemoViewController.swift in Sources */,
 				2869C493274D4A060036F44D /* MRZDemoViewController.swift in Sources */,
 				28E8AA202A4331A00071539A /* ScanAndCountViewController.swift in Sources */,
@@ -511,6 +546,7 @@
 				28E273712735882100B3F7F4 /* ReviewDocumentsCollectionViewCell.swift in Sources */,
 				28E71F3C275672660061B433 /* MedicalCertificateScannerViewController.swift in Sources */,
 				6EE9904D21ECD75000182A94 /* AspectRatioDocumentScannerViewController.swift in Sources */,
+				F15D96EC2F642EFE00C8AC21 /* IntroductionViewController.swift in Sources */,
 				F19EFE8729C4AA6400128396 /* BarcodeScannerCustomCellViewController.swift in Sources */,
 				28A146652799BF95003B831E /* StaticImageDetectionViewController.swift in Sources */,
 				F164F25F2E09B27F001F6A5A /* SceneDelegate.swift in Sources */,
