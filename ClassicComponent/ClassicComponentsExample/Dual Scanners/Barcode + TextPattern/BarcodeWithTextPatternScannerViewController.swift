@@ -136,10 +136,7 @@ extension BarcodeWithTextPatternScannerViewController: SBSDKTextPatternScannerVi
     
     func textPatternScannerViewController(_ controller: ScanbotSDK.SBSDKTextPatternScannerViewController,
                                           didFailScanning error: any Error) {
-        sbsdk_showError(error) { [weak self] _ in
-            guard let self else { return }
-            self.sbsdk_forceClose(animated: true, completion: nil)
-        }
+        showAlert(error: error)
     }
 }
 
