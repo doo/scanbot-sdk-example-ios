@@ -63,13 +63,11 @@ class DocumentLocalizationUI2ViewController: UIViewController {
                 let documentImagePreview = scannedPage.documentImagePreview
                 let documentImagePreviewURI = scannedPage.documentImagePreviewURI
                 
-                if let documentQuality = scannedPage.documentQuality {
+                if let documentQuality = scannedPage.documentQualityAssessment {
                     switch documentQuality {
-                    case .veryPoor: print("veryPoor")
-                    case .poor: print("poor")
-                    case .reasonable: print("reasonable")
-                    case .good: print("good")
-                    case .excellent: print("excellent")
+                    case .acceptable: print("acceptable")
+                    case .unacceptable: print("unacceptable")
+                    case .uncertain: print("uncertain")
                     default: print("unknown")
                     }
                 }

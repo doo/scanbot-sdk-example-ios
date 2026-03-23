@@ -31,20 +31,19 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
         // - `none`: Skips the quality check entirely.
         configuration.screens.camera.acknowledgement.acknowledgementMode = .always
         
-        // Set the minimum acceptable document quality.
-        // Options: excellent, good, reasonable, poor, veryPoor, or noDocument.
-        configuration.screens.camera.acknowledgement.minimumQuality = .reasonable
+        // Set the minimum threshold of unacceptable and uncertain qualities.
+        configuration.screens.camera.documentQualityAnalyzerConfiguration.qualityUnacceptableUncertainThreshold  = 0.75
         
         // Set the background color for the acknowledgment screen.
         configuration.screens.camera.acknowledgement.backgroundColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // You can also configure the buttons in the bottom bar of the acknowledgment screen.
-        // E.g. to force the user to retake, if the captured document is not OK.
-        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenNotOkButton.visible = false
+        // E.g. to force the user to retake, if the captured document is not acceptable.
+        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenUncertainButton.visible = false
         
         // Hide the titles of the buttons.
-        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenNotOkButton.title.visible = false
-        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenOkButton.title.visible = false
+        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenUncertainButton.title.visible = false
+        configuration.screens.camera.acknowledgement.bottomBar.acceptWhenAcceptableButton.title.visible = false
         configuration.screens.camera.acknowledgement.bottomBar.retakeButton.title.visible = false
         
         // Configure the acknowledgment screen's hint message which is shown if the least acceptable quality is not met.
@@ -80,13 +79,11 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
                 let documentImagePreview = scannedPage.documentImagePreview
                 let documentImagePreviewURI = scannedPage.documentImagePreviewURI
                 
-                if let documentQuality = scannedPage.documentQuality {
+                if let documentQuality = scannedPage.documentQualityAssessment {
                     switch documentQuality {
-                    case .veryPoor: print("veryPoor")
-                    case .poor: print("poor")
-                    case .reasonable: print("reasonable")
-                    case .good: print("good")
-                    case .excellent: print("excellent")
+                    case .acceptable: print("acceptable")
+                    case .unacceptable: print("unacceptable")
+                    case .uncertain: print("uncertain")
                     default: print("unknown")
                     }
                 }

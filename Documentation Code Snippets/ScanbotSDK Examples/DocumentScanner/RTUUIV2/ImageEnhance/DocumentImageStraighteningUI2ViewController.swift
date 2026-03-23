@@ -1,14 +1,14 @@
 //
-//  DocumentFinderUI2ViewController.swift
+//  DocumentImageStraighteningUI2ViewController.swift
 //  ScanbotSDK Examples
 //
-//  Created by Rana Sohaib on 16.07.24.
+//  Created by Seifeddine Bouzid on 22.03.26.
 //
 
 import Foundation
 import ScanbotSDK
 
-class DocumentFinderUI2ViewController: UIViewController {
+class DocumentImageStraighteningUI2ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,34 +24,25 @@ class DocumentFinderUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
         
-        // Set the visibility of the view finder.
-        configuration.screens.camera.viewFinder.visible = true
+        // Create the parameters.
+        let parameters = SBSDKDocumentStraighteningParameters()
         
-        // Create the instance of the style, either `SBSDKUI2FinderCorneredStyle` or `SBSDKUI2FinderStrokedStyle`.
-        let style = SBSDKUI2FinderCorneredStyle(strokeColor: SBSDKUI2Color(colorString: "#FFFFFFFF"),
-                                                strokeWidth: 3.0,
-                                                cornerRadius: 10.0)
         
-        // Set the configured style.
-        configuration.screens.camera.viewFinder.style = style
+        // Configure the properties.
+        // e.g
+        parameters.straighteningMode = .straighten
+        parameters.aspectRatios = [SBSDKAspectRatio(width: 1, height: 1),
+                                   SBSDKAspectRatio(width: 16, height: 9),
+                                   SBSDKAspectRatio(width: 3, height: 4)]
         
-        // Set the desired aspect ratio of the view finder.
-        configuration.screens.camera.viewFinder.aspectRatio = SBSDKAspectRatio(width: 4.0, height: 5.0)
+        // Set the straightening parameters newly created.
+        configuration.outputSettings.straighteningParameters = parameters
         
-        // Set the overlay color.
-        configuration.screens.camera.viewFinder.overlayColor = SBSDKUI2Color(colorString: "#26000000")
+        // Pass the DOCUMENT_UUID here to resume an old session, or pass nil to start a new session or to resume a draft session.
+        configuration.documentUuid = nil
         
-        // Set the page limit.
-        configuration.outputSettings.pagesScanLimit = 1
-        
-        // Enable the tutorial screen.
-        configuration.screens.camera.introduction.showAutomatically = true
-        
-        // Disable the acknowledgment screen.
-        configuration.screens.camera.acknowledgement.acknowledgementMode = .none
-        
-        // Disable the review screen.
-        configuration.screens.review.enabled = false
+        // Controls whether to resume an existing draft session or start a new one when DOCUMENT_UUID is nil.
+        configuration.cleanScanningSession = true
         
         // Present the view controller modally.
         do {
@@ -77,23 +68,16 @@ class DocumentFinderUI2ViewController: UIViewController {
                 let originalImage = scannedPage.originalImage
                 let originalImageURI = scannedPage.originalImageURI
                 
+                // Document image is straightened.
                 let documentImage = scannedPage.documentImage
                 let documentImageURI = scannedPage.documentImageURI
                 
+                // Document image preview is straightened.
                 let documentImagePreview = scannedPage.documentImagePreview
                 let documentImagePreviewURI = scannedPage.documentImagePreviewURI
                 
-                if let documentQuality = scannedPage.documentQualityAssessment {
-                    switch documentQuality {
-                    case .acceptable: print("acceptable")
-                    case .unacceptable: print("unacceptable")
-                    case .uncertain: print("uncertain")
-                    default: print("unknown")
-                    }
-                }
-                // Check out other available properties in `SBSDKScannedPage`
             }
-        
+            
         } catch SBSDKError.operationCanceled {
             print("The operation was cancelled before completion or by the user")
             

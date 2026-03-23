@@ -35,6 +35,8 @@ enum ExampleCategory: String, CaseIterable {
                     ImageStoringViewController.self,
                     DocumentQualityAnalyzerScannedPageViewController.self,
                     DocumentQualityAnalyzerImageViewController.self,
+                    ImageEnhancerFromImageViewController.self,
+                    ImageEnhancerFromScannedPageViewController.self,
                     PDFAttributesViewController.self,
                     ImageMetadataProcessorViewController.self,
                     CameraDeviceViewController.self,
@@ -57,6 +59,7 @@ enum ExampleCategory: String, CaseIterable {
                     DocumentMultiPageUI2ViewController.self,
                     DocumentFinderUI2ViewController.self,
                     DocumentAcknowledgmentUI2ViewController.self,
+                    DocumentImageStraighteningUI2ViewController.self,
                     DocumentScannerViewController.self,
                     ScanOnImageCroppingUIViewController.self,
                     DirectDocumentDetectionViewController.self]

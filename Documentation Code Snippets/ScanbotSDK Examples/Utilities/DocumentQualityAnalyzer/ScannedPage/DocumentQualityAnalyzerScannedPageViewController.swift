@@ -33,7 +33,6 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         
         // Configure the properties.
         // e.g
-        configuration.detectOrientation = true
         configuration.maxImageSize = 2000
         configuration.returnQualityHeatmap = false
         
@@ -64,25 +63,17 @@ class DocumentQualityAnalyzerScannedPageViewController: UIViewController {
         
         print("Document found: \(result.documentFound)")
         print("Cumulative Quality Histogram: \(result.cumulativeQualityHistogram)")
+        print("Orientation of the document: \(result.orientation)")
         
-        if let orientation = result.orientation {
-            print("Orientation of the document: \(orientation)")
-        }
-        
-        if let quality = result.quality {
-            switch quality {
-            case .veryPoor:
-                print("The quality of the document is very poor")
-            case .poor:
-                print("The quality of the document is quite poor")
-            case .reasonable:
-                print("The quality of the document is reasonable")
-            case .good:
-                print("The quality of the document is good")
-            case .excellent:
-                print("The quality of the document is excellent")
-            default: break
-            }
+        let quality = result.quality
+        switch quality {
+        case .uncertain:
+            print("The quality of the document is uncertain")
+        case .unacceptable:
+            print("The quality of the document is unacceptable")
+        case .acceptable:
+            print("The quality of the document is acceptable")
+        default: break
         }
     }
 }
