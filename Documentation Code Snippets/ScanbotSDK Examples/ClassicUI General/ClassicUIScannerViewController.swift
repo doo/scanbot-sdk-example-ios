@@ -50,8 +50,8 @@ class ClassicUIScannerViewController: UIViewController {
 
     func applyZoomConfiguration() {
 
-        // Zooming is a camera-session feature and is configured on `viewModel.camera`. Set gestures,
-        // discrete zoom steps and the initial zoom factor directly — changes take effect immediately.
+        // Zooming is a camera-session feature and is configured on `viewModel.camera`. Set gestures
+        // and discrete zoom steps directly — changes take effect immediately.
         let camera = scannerViewController.viewModel.camera
         camera.isZoomingEnabled = true
         camera.isPinchToZoomEnabled = true
@@ -59,7 +59,6 @@ class ClassicUIScannerViewController: UIViewController {
         // Zoom steps define the discrete stops used by double-tap zooming and constrain the
         // effective zoom range. The first entry is the minimum, the last entry the maximum.
         camera.zoomSteps = [1.0, 12.0]
-        camera.initialZoomFactor = 2.0
     }
 
     func applyEnergyConfiguration() {
