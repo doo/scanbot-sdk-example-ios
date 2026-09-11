@@ -17,7 +17,7 @@ struct TextPatternScannerSwiftUIView: View {
         return SBSDKUI2TextPatternScannerScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2TextPatternScannerUIResult` object containing the resulted
+    // An optional `SBSDKUI2TextPatternScannerUIResult` object containing the resulting
     // text pattern of the scanning process.
     @State var scannedTextPattern: SBSDKUI2TextPatternScannerUIResult?
     

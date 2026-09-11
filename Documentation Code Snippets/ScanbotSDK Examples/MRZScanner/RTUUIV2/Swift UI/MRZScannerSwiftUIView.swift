@@ -16,7 +16,7 @@ struct MRZScannerSwiftUIView: View {
         return SBSDKUI2MRZScannerScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2MRZScannerUIResult` object containing the resulted MRZ of the scanning process.
+    // An optional `SBSDKUI2MRZScannerUIResult` object containing the resulting MRZ of the scanning process.
     @State var scannedMRZ: SBSDKUI2MRZScannerUIResult?
     
     // An optional error object representing any errors that may occur during the scanning process.
@@ -43,7 +43,7 @@ struct MRZScannerSwiftUIView: View {
         } else if let scannedMRZ {
             // Process and show the scanned MRZ here.
             
-            // Cast the resulted generic document to the MRZ model using the `wrap` method.
+            // Cast the resulting generic document to the MRZ model using the `wrap` method.
             if let model = scannedMRZ.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
                 
                 // Retrieve the values.

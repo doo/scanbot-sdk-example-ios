@@ -15,7 +15,7 @@ class ImageStoringViewController: UIViewController {
         // Initialize a folder URL within the application's documents folder to persist the images to.
         let documentsURL = SBSDKStorageLocation.applicationDocumentsFolderURL.appendingPathComponent("Images", isDirectory: true)
         
-        // Create a storage location object. This will create the folder on the filesystem if neccessary.
+        // Create a storage location object. This will create the folder on the filesystem if necessary.
         let documentsLocation = SBSDKStorageLocation(baseURL: documentsURL)
         
         // Create a crypting provider for the storage. This will encrypt the image data, before it is written to disk

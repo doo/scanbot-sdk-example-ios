@@ -94,7 +94,7 @@ extension InfoMappingBarcodeScannerUI2ViewController: SBSDKUI2BarcodeItemMapper 
                         onResult: @escaping (ScanbotSDK.SBSDKUI2BarcodeMappedData) -> Void,
                         onError: @escaping () -> Void) {
         
-        // Handle the item .
+        // Handle the item.
         // E.g. fetching the product info.
         
         let fetchedSuccessfully = true

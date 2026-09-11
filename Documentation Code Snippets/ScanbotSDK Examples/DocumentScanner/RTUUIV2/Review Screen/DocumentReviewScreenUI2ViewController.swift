@@ -34,7 +34,7 @@ class DocumentReviewScreenUI2ViewController: UIViewController {
         reviewScreenConfiguration.zoomButton.visible = false
         
         // Hide the add button.
-        reviewScreenConfiguration.toolBar.addButton.barButton.visible = false
+        reviewScreenConfiguration.toolbar.addButton.barButton.visible = false
         
         // Retrieve the instance of the reorder pages configuration from the main configuration object.
         let reorderScreenConfiguration = configuration.screens.reorderPages
@@ -49,10 +49,10 @@ class DocumentReviewScreenUI2ViewController: UIViewController {
         let croppingScreenConfiguration = configuration.screens.cropping
         
         // Hide the reset button.
-        croppingScreenConfiguration.toolBar.resetButton.visible = false
+        croppingScreenConfiguration.toolbar.resetButton.visible = false
         
         // Retrieve the retake button configuration from the main configuration object.
-        let retakeButtonConfiguration = configuration.screens.review.toolBar.retakeButton.barButton
+        let retakeButtonConfiguration = configuration.screens.review.toolbar.retakeButton.barButton
         
         // Show the retake button.
         retakeButtonConfiguration.visible = true

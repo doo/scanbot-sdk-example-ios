@@ -13,7 +13,7 @@ func handleError(_ error: Error) {
     print("Error: \(error.localizedDescription)")
     
     // Cast `Error` to type `SBSDKError` to access underlying SDK properties.
-    // We can safely assume that only `SBSDKErrors` are thrown
+    // We can safely assume that only `SBSDKErrors` are thrown.
     let sdkError = error as! SBSDKError
 
     // Use switch to determine the error and handle it according to your use case.
@@ -36,7 +36,7 @@ func handleError(_ error: Error) {
 
 func checkCanceledError(_ error: Error) {
     
-    // We can safely assume that only `SBSDKErrors` are thrown
+    // We can safely assume that only `SBSDKErrors` are thrown.
     let sdkError = error as! SBSDKError
     
     // Check if the error represents a canceled operation.

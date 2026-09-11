@@ -19,7 +19,7 @@ class CreditCardScannerViewController: UIViewController {
         // Create the default `SBSDKCreditCardScannerConfiguration` object.
         let configuration = SBSDKCreditCardScannerConfiguration()
         
-        // Disable the requiring of expiration date.
+        // Disable the requiring of the expiration date.
         configuration.requireExpiryDate = false
         
         // Disable the requiring of the card holder name.

@@ -27,7 +27,7 @@ class MRZFinderOverlayUI2ViewController: UIViewController {
         // To hide the example layout preset.
         configuration.mrzExampleOverlay = .noLayoutPreset()
         
-        // Configure the finder example overlay. You can choose between the two-line and three-line preset.
+        // Configure the finder example overlay. You can choose between the two-line and three-line presets.
         // Each example preset has a default text for each line, but you can change it according to your liking.
         // Each preset has a fixed aspect ratio adjusted to its number of lines. To override, please use 'aspectRatio'
         // parameter in 'viewFinder' field in the main configuration object.
@@ -63,7 +63,7 @@ class MRZFinderOverlayUI2ViewController: UIViewController {
             
             // Handle the result.
             
-            // Cast the resulted generic document to the MRZ model using the `wrap` method.
+            // Cast the resulting generic document to the MRZ model using the `wrap` method.
             if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
                 
                 // Retrieve the values.

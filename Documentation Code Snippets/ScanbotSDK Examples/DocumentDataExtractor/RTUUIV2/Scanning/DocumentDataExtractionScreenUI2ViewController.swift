@@ -74,7 +74,7 @@ class DocumentDataExtractionScreenUI2ViewController: UIViewController {
             let result = try await SBSDKUI2DocumentDataExtractorViewController.present(on: self,
                                                                                        configuration: configuration)
             
-            // Cast the resulted generic document to the appropriate document model using the `wrap` method.
+            // Cast the resulting generic document to the appropriate document model using the `wrap` method.
             if let genericDocument = result.document, let wrapper = genericDocument.wrap() {
                 
                 // Use SBSDKDocumentsModelDeIdCardFront for German ID card front side

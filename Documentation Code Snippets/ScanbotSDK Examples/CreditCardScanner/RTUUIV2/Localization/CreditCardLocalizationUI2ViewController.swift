@@ -38,7 +38,7 @@ class CreditCardLocalizationUI2ViewController: UIViewController {
                                                                                    configuration: configuration)
             // Handle the result.
             
-            // Cast the resulted generic document to the credit card model using the `wrap` method.
+            // Cast the resulting generic document to the credit card model using the `wrap` method.
             if let model = result.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
                 
                 // Retrieve the values.

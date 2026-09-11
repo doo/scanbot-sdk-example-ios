@@ -40,10 +40,10 @@ class BarcodeScanAndCountViewController: UIViewController {
         // Enable the barcode polygon overlay.
         polygonStyle.polygonDrawingEnabled = true
         
-        // Set the color for the results overlays polygons.
+        // Set the color for the results overlay polygons.
         polygonStyle.polygonColor = UIColor(red: 0, green: 0.81, blue: 0.65, alpha: 0.8)
         
-        // Set the color for the polygon's fill color.
+        // Set the color for the polygon's fill.
         polygonStyle.polygonFillColor = UIColor(red: 0, green: 0.81, blue: 0.65, alpha: 0.2)
         
         // Set the line width for the polygon.

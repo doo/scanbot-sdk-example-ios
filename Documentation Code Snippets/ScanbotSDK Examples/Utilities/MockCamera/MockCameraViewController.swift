@@ -40,7 +40,7 @@ class MockCameraViewController: UIViewController {
                                                                                            refreshOnEachFrame: false))
         
         // Alternatively, you can start replaying the camera feed from an image name
-        // (e.g. an asset catalog entry) instead of a URL. Uncomment this and remove
+        // (e.g. a bundled image file) instead of a URL. Uncomment this and remove
         // the `startReplay(with:)` call above if you'd rather replay by name.
         // You can also pass a separate image name for `capturedImageName` to be used when capturing a still image.
         // Or pass nil for `capturedImageName` to use the current frame of the `imageName` when capturing a still image.

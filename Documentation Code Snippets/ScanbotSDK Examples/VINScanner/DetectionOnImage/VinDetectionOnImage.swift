@@ -30,7 +30,7 @@ func scanVinOnImage() {
         // Run the scanner on the image.
         let result = try scanner.run(image: imageRef)
         
-        // If `extractVINFromBarcode` from the configuration is set to `True`, you must check the barcode result first.
+        // If `extractVINFromBarcode` from the configuration is set to `true`, you must check the barcode result first.
         if result.barcodeResult.status == .success && !result.barcodeResult.extractedVIN.isEmpty {
             print(result.barcodeResult.extractedVIN)
             

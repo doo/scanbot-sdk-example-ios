@@ -28,7 +28,7 @@ class MedicalCertificateScannerViewController: UIViewController {
         scanningParameters.recognizeBarcode = true
         scanningParameters.preprocessInput = false
         
-        // Create the `SBSDKMedicalCertificateRecognizerViewController` instance and embed it.
+        // Create the `SBSDKMedicalCertificateScannerViewController` instance and embed it.
         self.scannerViewController = SBSDKMedicalCertificateScannerViewController(parentViewController: self,
                                                                                   parentView: self.view,
                                                                                   scannerParameters: scanningParameters,

@@ -1,5 +1,5 @@
 //
-//  ImageEnhancerFromImageViewController.swift
+//  ImageEnhancerFromScannedPageViewController.swift
 //  ScanbotSDK Examples
 //
 //  Created by Seifeddine Bouzid on 18.03.26.

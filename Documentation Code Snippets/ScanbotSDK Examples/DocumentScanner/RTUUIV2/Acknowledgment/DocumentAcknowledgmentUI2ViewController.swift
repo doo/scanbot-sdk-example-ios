@@ -24,7 +24,7 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
         // Create the default configuration object.
         let configuration = SBSDKUI2DocumentScanningFlow()
 
-        // Set the acknowledgment mode
+        // Set the acknowledgment mode.
         // Modes:
         // - `always`: Runs the quality analyzer on the captured document and always displays the acknowledgment screen.
         // - `badQuality`: Runs the quality analyzer and displays the acknowledgment screen only if the quality is poor.
@@ -39,12 +39,12 @@ class DocumentAcknowledgmentUI2ViewController: UIViewController {
         
         // You can also configure the buttons in the bottom bar of the acknowledgment screen.
         // E.g. to force the user to retake, if the captured document is not acceptable.
-        configuration.screens.camera.acknowledgement.toolBar.acceptWhenAcceptableButton.visible = false
+        configuration.screens.camera.acknowledgement.toolbar.acceptWhenAcceptableButton.visible = false
         
         // Hide the titles of the buttons.
-        configuration.screens.camera.acknowledgement.toolBar.acceptWhenAcceptableButton.title.visible = false
-        configuration.screens.camera.acknowledgement.toolBar.acceptWhenAcceptableButton.title.visible = false
-        configuration.screens.camera.acknowledgement.toolBar.retakeButton.title.visible = false
+        configuration.screens.camera.acknowledgement.toolbar.acceptWhenAcceptableButton.title.visible = false
+        configuration.screens.camera.acknowledgement.toolbar.acceptWhenAcceptableButton.title.visible = false
+        configuration.screens.camera.acknowledgement.toolbar.retakeButton.title.visible = false
         
         // Configure the acknowledgment screen's hint message which is shown if the least acceptable quality is not met.
         configuration.screens.camera.acknowledgement.unacceptableQualityWarning.visible = true

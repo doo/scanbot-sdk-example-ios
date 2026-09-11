@@ -17,7 +17,7 @@ struct CreditCardScannerSwiftUIView: View {
         return SBSDKUI2CreditCardScannerScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2CreditCardScannerUIResult` object containing the resulted credit card of the scanning process.
+    // An optional `SBSDKUI2CreditCardScannerUIResult` object containing the resulting credit card of the scanning process.
     @State var scannedCreditCard: SBSDKUI2CreditCardScannerUIResult?
     
     // An optional error object representing any errors that may occur during the scanning process.
@@ -45,7 +45,7 @@ struct CreditCardScannerSwiftUIView: View {
             
             // Process and show the scanned credit card here.
             
-            // Cast the resulted generic document to the credit card model using the `wrap` method.
+            // Cast the resulting generic document to the credit card model using the `wrap` method.
             if let model = scannedCreditCard.creditCard?.wrap() as? SBSDKCreditCardDocumentModelCreditCard {
                 
                 // Retrieve the values.

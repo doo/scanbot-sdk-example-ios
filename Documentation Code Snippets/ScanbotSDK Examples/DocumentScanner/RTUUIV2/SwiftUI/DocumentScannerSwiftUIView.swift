@@ -36,12 +36,12 @@ struct DocumentScannerSwiftUIView: View {
         configuration.screens.camera.userGuidance.statesTitles.badAngles = "Bad angle"
         
         // Configure the bottom bar and the bottom bar buttons.
-        configuration.appearance.toolBarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
-        configuration.screens.camera.toolBar.importButton.title.visible = true
-        configuration.screens.camera.toolBar.autoSnappingModeButton.title.visible = true
-        configuration.screens.camera.toolBar.manualSnappingModeButton.title.visible = true
-        configuration.screens.camera.toolBar.torchOnButton.title.visible = true
-        configuration.screens.camera.toolBar.torchOffButton.title.visible = true
+        configuration.appearance.toolbarBackgroundColor = SBSDKUI2Color(colorString: "#C8193C")
+        configuration.screens.camera.toolbar.importButton.title.visible = true
+        configuration.screens.camera.toolbar.autoSnappingModeButton.title.visible = true
+        configuration.screens.camera.toolbar.manualSnappingModeButton.title.visible = true
+        configuration.screens.camera.toolbar.torchOnButton.title.visible = true
+        configuration.screens.camera.toolbar.torchOffButton.title.visible = true
         
         // Configure the document capture feedback.
         configuration.screens.camera.captureFeedback.cameraBlinkEnabled = true
@@ -53,7 +53,7 @@ struct DocumentScannerSwiftUIView: View {
         return configuration
     }()
     
-    // An optional `SBSDKScannedDocument` object containing the resulted document of the scanning process.
+    // An optional `SBSDKScannedDocument` object containing the resulting document of the scanning process.
     @State var scannedDocument: SBSDKScannedDocument?
     
     // An optional error object representing any errors that may occur during the scanning process.
@@ -63,7 +63,7 @@ struct DocumentScannerSwiftUIView: View {
         
         if let scannedDocument {
             
-            // Process and show the resulted document here.
+            // Process and show the resulting document here.
             Text("Document scanned with \(scannedDocument.pages.count) pages")
             
         } else if let scanError {

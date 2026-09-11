@@ -38,13 +38,13 @@ class ScanOnImageCroppingUIViewController: UIViewController,
     
     func presentCroppingScreen(with pickedImage: UIImage) throws {
         
-        // Create an instance of document.
+        // Create an instance of a document.
         let document = try SBSDKScannedDocument(documentImageSizeLimit: 0)
         
         // Create an image ref from UIImage.
         let imageRef = SBSDKImageRef.fromUIImage(image: pickedImage)
         
-        // Add a page in document using the picked image.
+        // Add a page in the document using the picked image.
         let page = try document.addPage(with: imageRef)
         
         // Create the default configuration object.
@@ -52,7 +52,7 @@ class ScanOnImageCroppingUIViewController: UIViewController,
         
         // Modify the configuration to your needs.
         // E.g. disable the rotation feature.
-        configuration.cropping.toolBar.rotateButton.visible = false
+        configuration.cropping.toolbar.rotateButton.visible = false
         
         // E.g. configure various colors.
         configuration.appearance.topBarBackgroundColor = SBSDKUI2Color(uiColor: UIColor.red)

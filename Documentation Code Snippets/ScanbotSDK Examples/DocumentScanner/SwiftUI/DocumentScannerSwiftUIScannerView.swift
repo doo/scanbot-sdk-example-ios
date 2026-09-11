@@ -10,7 +10,7 @@ import ScanbotSDK
 
 struct DocumentScannerSwiftUIScannerView: View {
 
-    // The scanner model backing the `SBSDKScannerView` below. It owns the camera session, the
+    // The scanner view model backing the `SBSDKScannerView` below. It owns the camera session, the
     // scanner configuration and the frame-engine state, and is the SwiftUI equivalent of the
     // Classic UI `SBSDKDocumentScannerViewController`.
     // `try!` is safe here for example purposes; a real app should surface the thrown

@@ -25,7 +25,7 @@ class BarcodeClassicUIGeneralConfigurationViewController: UIViewController {
         // Now you can configure some properties using configuration objects or the scanner's
         // model configuration properties.
         //
-        // For most viewfinder properties, use scannerViewController.model.configuration.* for reactive updates.
+        // For most viewfinder properties, use scannerViewController.viewModel.configuration.* for reactive updates.
         // For other configurations like general/zoom/energy, still use configuration objects.
         //
         // Configuration objects pattern (for general/zoom/energy):
@@ -34,7 +34,7 @@ class BarcodeClassicUIGeneralConfigurationViewController: UIViewController {
         // 3. Pass the modified configuration back to the scanner view controller to apply it.
         //
         // Model configuration properties pattern (for viewfinder and other reactive properties):
-        // 1. Directly set properties on scannerViewController.model.configuration.* for reactive updates.
+        // 1. Directly set properties on scannerViewController.viewModel.configuration.* for reactive updates.
         
         self.applyGeneralConfiguration()
         self.applyZoomConfiguration()
@@ -79,7 +79,7 @@ class BarcodeClassicUIGeneralConfigurationViewController: UIViewController {
     func applyEnergyConfiguration() {
         
         // The energy configuration lets you control the energy consumption of the scanner view controller, e.g. by
-        // turning the energy-safe-mode on or off, changing the detection rates and the inactivity timeout.
+        // turning the energy-save-mode on or off, changing the detection rates and the inactivity timeout.
 
         // Read the current energy configuration from the scanner view controller.
         let energyConfiguration = scannerViewController.energyConfiguration
@@ -99,9 +99,9 @@ class BarcodeClassicUIGeneralConfigurationViewController: UIViewController {
         // e.g. if it is enabled, its aspect ratio, its colors and style, its offsets and insets and more.
         
         // Use the scanner's model configuration for direct, reactive property updates.
-        self.scannerViewController.model.configuration.viewFinder.isViewFinderEnabled = true
-        self.scannerViewController.model.configuration.viewFinder.aspectRatio = SBSDKAspectRatio(width: 8.0, height: 5.0)
-        self.scannerViewController.model.configuration.viewFinder.lineColor = UIColor.white.withAlphaComponent(0.85)
+        self.scannerViewController.viewModel.configuration.viewFinder.isViewFinderEnabled = true
+        self.scannerViewController.viewModel.configuration.viewFinder.aspectRatio = SBSDKAspectRatio(width: 8.0, height: 5.0)
+        self.scannerViewController.viewModel.configuration.viewFinder.lineColor = UIColor.white.withAlphaComponent(0.85)
     }
 
 }

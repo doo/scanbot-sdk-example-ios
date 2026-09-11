@@ -42,7 +42,7 @@ class ScannedPageProcessingViewController: UIViewController {
         page.filters = [filter1, filter2]
         
         // If you want to apply multiple changes to the page at once, use the apply(...) function.
-        // This will result in a faster performance than applying each change individually.
+        // This will result in faster performance than applying each change individually.
         try page.apply(rotation: .clockwise90, polygon: SBSDKPolygon(), filters: [filter1, filter2])
     }
 }

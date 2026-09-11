@@ -122,7 +122,7 @@ class BarcodeGeneralConfiguration {
             maximumTextLength: 0,
             gs1Handling: .parse,
             strictMode: true,
-            formats: SBSDKBarcodeFormats.common // Set the desired barcodes formats to detect.
+            formats: SBSDKBarcodeFormats.common // Set the desired barcode formats to detect.
         )
         
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.

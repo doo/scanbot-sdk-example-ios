@@ -74,10 +74,10 @@ class DocumentScannerMigrationViewController: UIViewController {
         cameraScreenConfiguration.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapFeedbackMode.pageSnapCheckMarkAnimation()
 
         // You may hide the import button in the camera screen, if you don't need it:
-        cameraScreenConfiguration.toolBar.importButton.visible = false
+        cameraScreenConfiguration.toolbar.importButton.visible = false
 
         // Equivalent to uiConfiguration.bottomBarBackgroundColor = UIColor.blue, but not recommended:
-        configuration.appearance.toolBarBackgroundColor = SBSDKUI2Color(uiColor: UIColor.blue)
+        configuration.appearance.toolbarBackgroundColor = SBSDKUI2Color(uiColor: UIColor.blue)
 
         // However, now all the colors can be conveniently set using the Palette object:
         let palette = configuration.palette
@@ -85,7 +85,7 @@ class DocumentScannerMigrationViewController: UIViewController {
         palette.sbColorOnPrimary = SBSDKUI2Color(uiColor: UIColor.white)
         // ..
 
-        // Now all the text resources are in the localization object
+        // Now all the text resources are in the localization object.
         let localization = configuration.localization
         localization.cameraUserGuidanceReadyToCapture = "Don't move. Capturing document..."
 
@@ -128,10 +128,10 @@ class DocumentScannerMigrationViewController: UIViewController {
         viewFinder.visible = true
         viewFinder.aspectRatio = SBSDKAspectRatio(width: 3, height: 4)
 
-        let toolBar = cameraScreenConfiguration.toolBar
-        toolBar.previewButton = SBSDKUI2PreviewButton.noButtonMode()
-        toolBar.autoSnappingModeButton.visible = false
-        toolBar.importButton.visible = false
+        let toolbar = cameraScreenConfiguration.toolbar
+        toolbar.previewButton = SBSDKUI2PreviewButton.noButtonMode()
+        toolbar.autoSnappingModeButton.visible = false
+        toolbar.importButton.visible = false
 
         cameraScreenConfiguration.acknowledgement.acknowledgementMode = SBSDKUI2AcknowledgementMode.none
         cameraScreenConfiguration.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapFeedbackMode.pageSnapCheckMarkAnimation()
@@ -156,8 +156,8 @@ class DocumentScannerMigrationViewController: UIViewController {
     
     func createFromDocument(_ document: SBSDKDocument) throws -> SBSDKScannedDocument? {
 
-        // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`.
-        // `SBSDKDocument` doesn't support `documentImageSizeLimit`, but you can add it to unify size of the documents.
+        // Create the scanned document using convenience initializer `init(document:documentImageSizeLimit:)`.
+        // `SBSDKDocument` doesn't support `documentImageSizeLimit`, but you can add it to unify the size of the documents.
         let scannedDocument = try SBSDKScannedDocument(document: document, documentImageSizeLimit: 2048)
         
         // Return newly created scanned document.

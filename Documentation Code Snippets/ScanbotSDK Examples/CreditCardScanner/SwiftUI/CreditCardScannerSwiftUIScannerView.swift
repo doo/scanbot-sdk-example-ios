@@ -10,7 +10,7 @@ import ScanbotSDK
 
 struct CreditCardScannerSwiftUIScannerView: View {
 
-    // The scanner model backing the `SBSDKScannerView` below. It owns the camera session, the
+    // The scanner view model backing the `SBSDKScannerView` below. It owns the camera session, the
     // scanner configuration and the frame-engine state, and is the SwiftUI equivalent of the
     // Classic UI `SBSDKCreditCardScannerViewController`.
     @State private var viewModel: SBSDKCreditCardScannerViewModel = {
@@ -18,7 +18,7 @@ struct CreditCardScannerSwiftUIScannerView: View {
         // Create the default `SBSDKCreditCardScannerConfiguration` object.
         let configuration = SBSDKCreditCardScannerConfiguration()
 
-        // Disable the requiring of expiration date.
+        // Disable the requiring of the expiration date.
         configuration.requireExpiryDate = false
 
         // Disable the requiring of the card holder name.
@@ -72,7 +72,7 @@ struct CreditCardScannerSwiftUIScannerView: View {
                     }
 
                 case .everyFrame:
-                    // Fired for every processed frame, before validity is checked; nothing to do here.
+                    // Fired for every processed frame, regardless of validity; nothing to do here.
                     break
                 }
             }

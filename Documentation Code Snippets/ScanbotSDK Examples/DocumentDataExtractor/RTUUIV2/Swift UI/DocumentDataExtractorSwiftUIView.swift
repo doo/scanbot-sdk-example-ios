@@ -17,7 +17,7 @@ struct DocumentDataExtractorSwiftUIView: View {
         return SBSDKUI2DocumentDataExtractorScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2DocumentDataExtractorUIResult` object containing the resulted document of the scanning process.
+    // An optional `SBSDKUI2DocumentDataExtractorUIResult` object containing the resulting document of the scanning process.
     @State var scannedDocument: SBSDKUI2DocumentDataExtractorUIResult?
     
     // An optional error object representing any errors that may occur during the scanning process.
@@ -49,7 +49,7 @@ struct DocumentDataExtractorSwiftUIView: View {
             
             // Process and show the scanned document here.
             
-            // Cast the resulted generic document to the appropriate document model using the `wrap` method.
+            // Cast the resulting generic document to the appropriate document model using the `wrap` method.
             if let genericDocument = scannedDocument.document, let wrapper = genericDocument.wrap() {
                 
                 // Use SBSDKDocumentsModelDeIdCardFront for German ID card front

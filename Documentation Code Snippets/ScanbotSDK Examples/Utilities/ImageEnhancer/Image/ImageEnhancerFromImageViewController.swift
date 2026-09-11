@@ -63,7 +63,7 @@ class ImageEnhancerFromImageViewController: UIViewController,
             // Create an image ref from UIImage.
             let imageRef = SBSDKImageRef.fromUIImage(image: image)
             
-            // Straighten the image using the document enhancer.
+            // Straighten the image using the document straightener.
             let straightendedImageRef = try straightener.run(image: imageRef,
                                                              parameters: parameters,
                                                              priorCornersNormalized: corners)

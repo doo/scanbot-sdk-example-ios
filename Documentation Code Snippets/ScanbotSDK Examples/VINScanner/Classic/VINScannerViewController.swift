@@ -44,7 +44,7 @@ extension VINScannerViewController: SBSDKVINScannerViewControllerDelegate {
         
         // Process the result.
         
-        // If `extractVINFromBarcode` from the configuration is set to `True`, you must check the barcode result first.
+        // If `extractVINFromBarcode` from the configuration is set to `true`, you must check the barcode result first.
         if result.barcodeResult.status == .success && !result.barcodeResult.extractedVIN.isEmpty {
             print(result.barcodeResult.extractedVIN)
             

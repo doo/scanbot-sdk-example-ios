@@ -25,8 +25,8 @@ class ClassicUIScannerViewController: UIViewController {
                                                                         parentView: self.view,
                                                                         delegate: self)
 
-        // The scanner view controller exposes its state through its `model` (an
-        // `SBSDKBaseScannerModel`-derived observable object) and the underlying `viewModel.camera`.
+        // The scanner view controller exposes its state through its `viewModel` (an
+        // `SBSDKBaseScannerViewModel`-derived object): `viewModel.configuration` and `viewModel.camera`.
         // Set properties on either directly to configure the scanner at runtime. Both are
         // KVO-observable, so you can also react to their changes from Swift, SwiftUI and Obj-C.
 
@@ -38,12 +38,12 @@ class ClassicUIScannerViewController: UIViewController {
 
     func applyGeneralConfiguration() {
 
-        // General scanner behavior lives on the model's configuration. Timings, motion and video
+        // General scanner behavior lives on the view model's configuration. Timings, motion and video
         // settings are set directly on it — no configuration snapshot to read/modify/write.
         scannerViewController.viewModel.configuration.userInterface.minimumTimeWithoutDeviceMotionBeforeDetection = 0.5
 
         // Camera-session-level settings live on `viewModel.camera`. Setting the keep-alive timeout
-        // to `.greatestFiniteMagnitude` keeps the camera session alive until the model is
+        // to `.greatestFiniteMagnitude` keeps the camera session alive until the view model is
         // deallocated.
         scannerViewController.viewModel.camera.keepAliveTimeout = .greatestFiniteMagnitude
     }
@@ -63,7 +63,7 @@ class ClassicUIScannerViewController: UIViewController {
 
     func applyEnergyConfiguration() {
 
-        // Energy-saving behavior (detection rates, inactivity timeout) lives on the model's
+        // Energy-saving behavior (detection rates, inactivity timeout) lives on the view model's
         // user-interface sub-configuration and can be tweaked live.
         let userInterface = scannerViewController.viewModel.configuration.userInterface
         userInterface.isEnergySavingEnabled = true
@@ -74,7 +74,7 @@ class ClassicUIScannerViewController: UIViewController {
 
     func applyViewFinderConfiguration() {
 
-        // The view finder lives on the model's view-finder sub-configuration. Toggle it on, change its
+        // The view finder lives on the view model's view-finder sub-configuration. Toggle it on, change its
         // aspect ratio and appearance — SwiftUI-backed classic UI updates automatically.
         let viewFinder = scannerViewController.viewModel.configuration.viewFinder
         viewFinder.isViewFinderEnabled = true

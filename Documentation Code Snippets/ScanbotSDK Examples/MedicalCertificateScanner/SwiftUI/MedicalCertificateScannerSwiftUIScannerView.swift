@@ -10,7 +10,7 @@ import ScanbotSDK
 
 struct MedicalCertificateScannerSwiftUIScannerView: View {
 
-    // The scanner model backing the `SBSDKScannerView` below. It owns the camera session, the
+    // The scanner view model backing the `SBSDKScannerView` below. It owns the camera session, the
     // scanner configuration and the frame-engine state, and is the SwiftUI equivalent of the
     // Classic UI `SBSDKMedicalCertificateScannerViewController`.
     @State private var viewModel: SBSDKMedicalCertificateScannerViewModel = {
@@ -45,7 +45,7 @@ struct MedicalCertificateScannerSwiftUIScannerView: View {
                     let croppedImage = try? result.croppedImage?.toUIImage()
 
                 case .everyFrame:
-                    // Fired for every processed frame, before validity is checked; nothing to do here.
+                    // Fired for every processed frame, regardless of validity; nothing to do here.
                     break
 
                 case .failure(let error):

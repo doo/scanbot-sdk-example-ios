@@ -62,7 +62,7 @@ class DocumentDataExtractorViewController: UIViewController {
         self.extractorController.viewModel.camera.isTorchLightEnabled = false
         
         // Configure the viewfinder.
-        // Enable the view finder
+        // Enable the view finder.
         self.extractorController.viewModel.configuration.viewFinder.isViewFinderEnabled = true
         
         // Configure the view finder colors and line properties.

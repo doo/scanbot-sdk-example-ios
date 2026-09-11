@@ -38,7 +38,7 @@ class DocumentImageStraighteningUI2ViewController: UIViewController {
                                    SBSDKAspectRatio(width: 16, height: 9),
                                    SBSDKAspectRatio(width: 3, height: 4)]
         
-        // Set the straightening parameters newly created.
+        // Set the newly created straightening parameters.
         configuration.outputSettings.straighteningParameters = parameters
         
         // Pass the DOCUMENT_UUID here to resume an old session, or pass nil to start a new session or to resume a draft session.

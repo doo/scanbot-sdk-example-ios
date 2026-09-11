@@ -8,7 +8,7 @@
 import UIKit
 import ScanbotSDK
 
-// This is a simple, empty view controller which acts as a container and delegate for the `SBSDKBarcodeScannerViewController` conforming `SBSDKBarcodeTrackingOverlayControllerDelegate`.
+// This is a simple, empty view controller which acts as a container and delegate for the `SBSDKBarcodeScannerViewController` conforming to `SBSDKBarcodeTrackingOverlayControllerDelegate`.
 class BarcodesOverlayViewController: UIViewController {
     
     // The instance of the scanner view controller.
@@ -35,13 +35,13 @@ class BarcodesOverlayViewController: UIViewController {
                                                                        configuration: configuration)
         
         // Set self as a trackingViewController's delegate.
-        self.scannerViewController.model.trackingOverlay.delegate = self
+        self.scannerViewController.viewModel.trackingOverlay.delegate = self
         
         // Enable the barcodes tracking overlay.
-        self.scannerViewController.model.trackingOverlay.isTrackingOverlayEnabled = true
+        self.scannerViewController.viewModel.trackingOverlay.isTrackingOverlayEnabled = true
         
         // Get current tracking configuration object.
-        let trackingConfiguration = self.scannerViewController.model.trackingOverlay.trackingOverlayConfiguration
+        let trackingConfiguration = self.scannerViewController.viewModel.trackingOverlay.trackingOverlayConfiguration
         
         // Set the color for the polygons of the tracked barcodes.
         trackingConfiguration.defaultStyle.polygonColor = UIColor(red: 0, green: 0.81, blue: 0.65, alpha: 0.8)
@@ -63,7 +63,7 @@ class BarcodesOverlayViewController: UIViewController {
         trackingConfiguration.selectionStyle = selectionStyle
         
         // Re-assign to commit the changes and force the overlay to redraw already-tracked items.
-        self.scannerViewController.model.trackingOverlay.trackingOverlayConfiguration = trackingConfiguration
+        self.scannerViewController.viewModel.trackingOverlay.trackingOverlayConfiguration = trackingConfiguration
     }
 }
 

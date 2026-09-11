@@ -43,7 +43,7 @@ class MRZTopBarUI2ViewController: UIViewController {
             
             // Handle the result.
             
-            // Cast the resulted generic document to the MRZ model using the `wrap` method.
+            // Cast the resulting generic document to the MRZ model using the `wrap` method.
             if let model = result.mrzDocument?.wrap() as? SBSDKDocumentsModelMRZ {
                 
                 // Retrieve the values.

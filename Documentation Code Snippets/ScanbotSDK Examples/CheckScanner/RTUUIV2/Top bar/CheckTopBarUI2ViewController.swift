@@ -43,7 +43,7 @@ class CheckTopBarUI2ViewController: UIViewController {
             
             // Handle the result.
             
-            // Cast the resulted generic document to the appropriate check model using the `wrap` method.
+            // Cast the resulting generic document to the appropriate check model using the `wrap` method.
             if let genericDocument = result.check, let wrapper = genericDocument.wrap() {
                 // Select the appropriate check type based on the wrapper instance
                 if let usaCheck = wrapper as? SBSDKCheckDocumentModelUSACheck {

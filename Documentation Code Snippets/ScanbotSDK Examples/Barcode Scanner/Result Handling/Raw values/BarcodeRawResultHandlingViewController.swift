@@ -35,7 +35,7 @@ class BarcodeRawResultHandlingViewController: UIViewController {
         }
     }
     
-    // Handle the resulting barcode item and it's raw values.
+    // Handle the resulting barcode item and its raw values.
     func handle(barcode: SBSDKBarcodeItem) {
         
         // Retrieve raw text
@@ -64,7 +64,7 @@ class BarcodeRawResultHandlingViewController: UIViewController {
         // In case of frame accumulation, the index remains the same across frames.
         print("Global index: \(barcode.globalIndex)")
         
-        // Following properties are helpful to determine the position of the scanned barcode in the input image.
+        // The following properties are helpful to determine the position of the scanned barcode in the input image.
         print("Quad: \(barcode.quad)")
         print("Quad Normalized: \(barcode.quadNormalized)")
         print("Extended Quad: \(barcode.extendedQuad)")

@@ -16,7 +16,7 @@ struct BarcodeScannerSwiftUIScannerView: View {
     // The scanner model backing the `SBSDKScannerView` below. It owns the camera session, the
     // scanner configuration and the frame-engine state, and is the SwiftUI equivalent of the
     // Classic UI `SBSDKBarcodeScannerViewController`.
-    @State private var model: SBSDKBarcodeScannerModel = {
+    @State private var model: SBSDKBarcodeScannerViewModel = {
 
         // The barcode formats to be scanned.
         let formatsToDetect = SBSDKBarcodeFormats.all
@@ -30,12 +30,12 @@ struct BarcodeScannerSwiftUIScannerView: View {
         // Enable the barcode image extraction.
         configuration.returnBarcodeImage = true
 
-        return try! SBSDKBarcodeScannerModel(scannerConfiguration: configuration)
+        return try! SBSDKBarcodeScannerViewModel(scannerConfiguration: configuration)
     }()
 
     var body: some View {
 
-        // Embed the `SBSDKBarcodeScannerModel`-driven camera/detection UI.
+        // Embed the `SBSDKBarcodeScannerViewModel`-driven camera/detection UI.
         SBSDKScannerView(model: model)
             .onAppear {
                 // Enable the view finder.
@@ -73,7 +73,7 @@ struct BarcodeScannerSwiftUIScannerView: View {
                     }
 
                 case .everyFrame:
-                    // Fired for every processed frame, before validity is checked; nothing to do here.
+                    // Fired for every processed frame, regardless of validity; nothing to do here.
                     break
 
                 case .failure(let error):

@@ -43,7 +43,7 @@ class DocumentDataExtractorTopBarUI2ViewController: UIViewController {
                                                                                        configuration: configuration)
             // Handle the result.
             
-            // Cast the resulted generic document to the appropriate document model using the `wrap` method.
+            // Cast the resulting generic document to the appropriate document model using the `wrap` method.
             if let genericDocument = result.document, let wrapper = genericDocument.wrap() {
                 // Use SBSDKDocumentsModelDeIdCardFront for German ID card front side
                 if let idCardFront = wrapper as? SBSDKDocumentsModelDeIdCardFront {

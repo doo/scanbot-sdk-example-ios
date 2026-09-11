@@ -17,7 +17,7 @@ struct VINScannerSwiftUIView: View {
         return SBSDKUI2VINScannerScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2VINScannerUIResult` object containing the resulted
+    // An optional `SBSDKUI2VINScannerUIResult` object containing the resulting
     // VIN of the scanning process.
     @State var scannedVIN: SBSDKUI2VINScannerUIResult?
     

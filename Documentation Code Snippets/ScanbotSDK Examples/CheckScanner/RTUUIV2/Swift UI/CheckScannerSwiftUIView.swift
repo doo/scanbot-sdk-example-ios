@@ -17,7 +17,7 @@ struct CheckScannerSwiftUIView: View {
         return SBSDKUI2CheckScannerScreenConfiguration()
     }()
     
-    // An optional `SBSDKUI2CheckScannerUIResult` object containing the resulted check of the scanning process.
+    // An optional `SBSDKUI2CheckScannerUIResult` object containing the resulting check of the scanning process.
     @State var scannedCheck: SBSDKUI2CheckScannerUIResult?
     
     // An optional error object representing any errors that may occur during the scanning process.
@@ -49,7 +49,7 @@ struct CheckScannerSwiftUIView: View {
             
             // Process and show the scanned check here.
             
-            // Cast the resulted generic document to the appropriate check model using the `wrap` method.
+            // Cast the resulting generic document to the appropriate check model using the `wrap` method.
             if let genericDocument = scannedCheck.check, let wrapper = genericDocument.wrap() {
                 
                 // Select the appropriate check type based on the wrapper instance
