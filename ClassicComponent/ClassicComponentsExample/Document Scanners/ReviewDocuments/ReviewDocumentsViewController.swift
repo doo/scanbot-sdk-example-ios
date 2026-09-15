@@ -202,7 +202,7 @@ final class ReviewDocumentsViewController: UIViewController {
                    let url = try ImageManager.shared.originalImageURLAt(index: item) {
                     
                     let quality = try SBSDKDocumentQualityAnalyzer().run(image: image)
-                    Self.qualityCache[url] = quality.quality?.stringValue ?? "No document"
+                    Self.qualityCache[url] = quality.quality.stringValue
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
@@ -288,14 +288,14 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
         do {
             let page = try ImageManager.shared.pageAt(index: imageIndex)
             
-            var rotations = editingViewController.rotations
+            var rotations = editingViewController.viewModel.rotations
             while rotations < 0 {
                 rotations += 4
             }
             polygon.rotateCCW(UInt(rotations))
             
             page.polygon = polygon
-            page.rotation = SBSDKImageRotation.fromRotations(editingViewController.rotations)
+            page.rotation = SBSDKImageRotation.fromRotations(editingViewController.viewModel.rotations)
             
             self.reloadData()
             selectedImageIndex = nil

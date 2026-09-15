@@ -15,20 +15,23 @@ class UsecaseScanTextPattern: Usecase {
         
         let configuration = SBSDKUI2TextPatternScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2TextPatternScannerViewController.create(with: configuration) { [weak self] _, result, error in
-            if let result {
-                guard result.rawText.count > 0 else {
-                    return
+        do {
+            let scanner = try SBSDKUI2TextPatternScannerViewController.create(with: configuration) { [weak self] _, result, error in
+                if let result {
+                    guard result.rawText.count > 0 else {
+                        return
+                    }
+                    let message = result.rawText
+                    let title = "Text found"
+                    
+                    UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
                 }
-                let message = result.rawText
-                let title = "Text found"
-                
-                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
-
-            } else {
-                self?.didFinish(error: error)
             }
-        }        
-        presentViewController(scanner)
+            presentViewController(scanner)
+        } catch {
+            didFinish(error: error)
+        }
     }
 }

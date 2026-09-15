@@ -64,7 +64,7 @@ final class SingleScanResultViewController: UIViewController {
             let page = try document.page(at: 0)
             
             // Initialize the cropping configuration object using document and page uuids
-            let configuration = SBSDKUI2CroppingConfiguration(documentUuid: document.uuid,
+            let configuration = SBSDKUI2CroppingStandaloneConfiguration(documentUuid: document.uuid,
                                                               pageUuid: page.uuid)
             
             // Set the colors
@@ -75,9 +75,9 @@ final class SingleScanResultViewController: UIViewController {
             // Configure the screen
             // e.g
             configuration.cropping.topBarTitle.text = "Cropping Screen"
-            configuration.cropping.bottomBar.resetButton.visible = true
-            configuration.cropping.bottomBar.rotateButton.visible = true
-            configuration.cropping.bottomBar.detectButton.visible = true
+            configuration.cropping.toolbar.resetButton.visible = true
+            configuration.cropping.toolbar.rotateButton.visible = true
+            configuration.cropping.toolbar.detectButton.visible = true
             
             // Present the cropping view controller
             try SBSDKUI2CroppingViewController.present(on: self,
@@ -129,18 +129,14 @@ final class SingleScanResultViewController: UIViewController {
     }
     
     // Map document quality analysis result into string
-    private func map(_ documentQuality: SBSDKDocumentQuality?) -> String {
+    private func map(_ documentQuality: SBSDKDocumentQualityAssessment) -> String {
         switch documentQuality {
-        case .veryPoor:
-            return "Very Poor"
-        case .poor:
-            return "Poor"
-        case .reasonable:
-            return "Reasonable"
-        case .good:
-            return "Good"
-        case .excellent:
-            return "Excellent"
+        case .acceptable:
+            return "Acceptable"
+        case .unacceptable:
+            return "Unacceptable"
+        case .uncertain:
+            return "Uncertain"
         default:
             return "No Document"
         }

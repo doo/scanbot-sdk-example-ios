@@ -28,6 +28,12 @@ With our Ready-To-Use UI (RTU UI) components, you can integrate the Scanbot SDK 
   - For Data Capture Ready-To-Use UI open **DataCaptureRTUUI** > `DataCaptureRTUUIExample.xcodeproj` with Xcode, build and run.
   - For SwiftUI Components open **SwiftUI** > `SwiftUIComponentsExample.xcodeproj` with Xcode, build and run.
 
+> ℹ️ Each example app deliberately uses a single integration style, so you can compare both side by side:
+> * **ClassicComponent**, **DocumentRTUUI** and **DataCaptureRTUUI** integrate the Scanbot SDK through its **UIKit** APIs — the `SBSDK…ViewController` scanner view controllers and the `SBSDKUI2…ViewController` Ready-To-Use UI screens.
+> * **SwiftUI** integrates the SDK through its **native SwiftUI** APIs — the `SBSDKUI2…View` components for the Ready-To-Use UI, and `SBSDKScannerView` together with the feature view models for the classic components. It mirrors the scanner examples of the three UIKit apps (document, barcode and data capture scanners, plus still image detectors under *Utilities*).
+>
+> Two examples have no native SwiftUI equivalent in the SDK and are therefore only available in the UIKit apps: the Ready-To-Use UI medical certificate scanner, and the custom barcode tracking overlay of the Scan-and-Count example (its overlay provider is UIKit based, so the SwiftUI app uses the default overlay).
+
 ## Overview of the Scanbot SDK
 
 ### Document Scanner SDK
