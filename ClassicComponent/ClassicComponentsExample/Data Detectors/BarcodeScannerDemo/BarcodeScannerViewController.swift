@@ -83,7 +83,7 @@ extension BarcodeScannerViewController: SBSDKBarcodeScannerViewControllerDelegat
     
     func barcodeScannerController(_ controller: SBSDKBarcodeScannerViewController, didScanBarcodes codes: [SBSDKBarcodeItem]) {
         if !shouldScan { return }
-        if (!controller.isTrackingOverlayEnabled) {
+        if (!controller.viewModel.trackingOverlay.isTrackingOverlayEnabled) {
             shouldScan = false
             displayResults(codes)
         }

@@ -34,13 +34,17 @@ struct DocumentScannerContainerView: View {
     private func viewForScanner(_ scanner: DocumentScanner) -> some View {
         Group {
             switch scanner {
-            case .rtuUI:
-                DocumentScannerRTUUIView(scanningResult: $scanningResult)
+            case .rtuUISinglePage, .rtuUISinglePageWithFinder, .rtuUIMultiPage:
+                DocumentScannerRTUUIView(variant: scanner.flowVariant,
+                                         scanningResult: $scanningResult)
             case .classic:
-                DocumentScannerClassicView(scanningResult: $scanningResult,
+                DocumentScannerClassicView(usesViewFinder: false,
+                                           scanningResult: $scanningResult,
                                            isScanningEnabled: $isScanningEnabled)
-            case .swiftUI:
-                DocumentScannerSwiftUIView(scanningResult: $scanningResult)
+            case .classicWithFinder:
+                DocumentScannerClassicView(usesViewFinder: true,
+                                           scanningResult: $scanningResult,
+                                           isScanningEnabled: $isScanningEnabled)
             }
         }
     }
@@ -48,7 +52,7 @@ struct DocumentScannerContainerView: View {
 
 struct DocumentScannerContainerView_Previews: PreviewProvider {
     static var previews: some View {
-        DocumentScannerContainerView(scanner: .rtuUI, 
+        DocumentScannerContainerView(scanner: .rtuUISinglePage, 
                                      scanningResult: .constant(DocumentScanningResult(scannedDocument: try! SBSDKScannedDocument(documentImageSizeLimit: 0))))
     }
 }

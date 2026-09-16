@@ -29,25 +29,26 @@ class UsecaseScanDocumentDataExtractor: Usecase {
         )
         
         configuration.scannerConfiguration = extractorConfiguration
-        let extractor = SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] _, result , error in
-            if let result {
-                let title = "Document Data Extractor Result"
-                var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
-                
-                let fields = result.document?.fields.compactMap {
-                    "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
-                } ?? []
-                message += "\n" + fields.joined(separator: "\n")
-                
-                UIAlertController.showInfoAlert(title,
-                                                message: message,
-                                                presenter: presenter, completion: nil)
-            } else {
-                self?.didFinish(error: error)
+        do {
+            let extractor = try SBSDKUI2DocumentDataExtractorViewController.create(with: configuration) { [weak self] _, result , error in
+                if let result {
+                    let title = "Document Data Extractor Result"
+                    var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
+                    let fields = result.document?.fields.compactMap {
+                        "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
+                    } ?? []
+                    message += "\n" + fields.joined(separator: "\n")
+                    UIAlertController.showInfoAlert(title,
+                                                    message: message,
+                                                    presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
+                }
             }
+            presentViewController(extractor)
+        } catch {
+            didFinish(error: error)
         }
-        
-        presentViewController(extractor)
     }
 }
 
@@ -58,8 +59,8 @@ extension SBSDKDocumentDataExtractionStatus {
             return "OK"
         case .okButInvalidDocument:
             return "OKButInvalidDocument"
-        case .okButNotConfirmed:
-            return "OKButNotConfirmed"
+        case .okButLowConfidenceResults:
+            return "OKButLowConfidenceResults"
         case .scanningInProgressStillFocusing:
             return "ScanningInProgressStillFocusing"
         case .errorNothingFound:
