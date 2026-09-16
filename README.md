@@ -89,7 +89,7 @@ As a customer, you also get access to a dedicated support Slack or Microsoft Tea
 
 The Scanbot SDK examples will run one minute per session without a license. After that, all functionalities and UI components will stop working. 
 
-To try the Scanbot SDK without the one-minute limit, you can request a free, no-strings-attached [7-day](https://scanbot.io/trial/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) trial license.
+To try the Scanbot SDK without the one-minute limit, you can request a free, no-strings-attached [7-day](https://docs.scanbot.io/trial/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) trial license.
 
 Alternatively, check out our [demo apps](https://scanbot.io/demo-apps/?utm_source=github.com&utm_medium=referral&utm_campaign=dev_sites) to test the SDK.
 

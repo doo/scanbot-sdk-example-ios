@@ -12,7 +12,7 @@ final class FilterListViewController: UIViewController, UITableViewDataSource, U
     private var filters = ParametricFilterType.allCases
     private var selectedFilterIndex: IndexPath?
     
-    var selectedFilter: ((_ filter: SBSDKParametricFilter) -> ())?
+    var selectedFilter: ((_ filter: SBSDKParametricFilter?) -> ())?
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
@@ -24,7 +24,7 @@ final class FilterListViewController: UIViewController, UITableViewDataSource, U
         }
     }
     
-    func filter(selectedType: ParametricFilterType) -> SBSDKParametricFilter {
+    func filter(selectedType: ParametricFilterType) -> SBSDKParametricFilter? {
         
         switch selectedType {
         case .binarization:
@@ -41,6 +41,10 @@ final class FilterListViewController: UIViewController, UITableViewDataSource, U
             return SBSDKGrayscaleFilter()
         case .whiteBlackPoint:
             return SBSDKWhiteBlackPointFilter(blackPoint: 0.6, whitePoint: 0.6)
+        case .shadowRemoval:
+            return SBSDKColorDocumentShadowRemovalFilter()
+        case .none:
+            return nil
         }
         
     }

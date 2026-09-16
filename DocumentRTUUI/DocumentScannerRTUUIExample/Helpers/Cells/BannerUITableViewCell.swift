@@ -16,7 +16,7 @@ class BannerUITableViewCell: UITableViewCell {
     }
     
     @IBAction func getLicenseTapped(_ sender: UIButton) {
-        if let url = URL(string: "https://scanbot.io/trial/") {
+        if let url = URL(string: "https://docs.scanbot.io/trial/") {
             UIApplication.shared.open(url)
         }
     }

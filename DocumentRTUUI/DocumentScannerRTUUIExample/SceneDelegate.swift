@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Please note: The Scanbot SDK will run without a license key for one minute per session!
         // After the trial period has expired all Scanbot SDK functions as well as the UI components will stop working.
         // You can get an unrestricted "no-strings-attached" trial license key for free.
-        // Please submit the trial license form (https://scanbot.io/en/sdk/demo/trial) on our website by using
+        // Please submit the trial license form (https://docs.scanbot.io/trial/) on our website by using
         // the Bundle Identifier "io.scanbot.example.documentsdk.usecases.ios" of this example app.
 
         //Scanbot.setLicense("YOUR_LICENSE_KEY")

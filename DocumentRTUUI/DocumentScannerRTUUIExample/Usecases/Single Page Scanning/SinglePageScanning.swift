@@ -23,6 +23,7 @@ class SinglePageScanning {
         // Enable/Disable Auto Snapping behavior
         configuration.screens.camera.cameraConfiguration.autoSnappingEnabled = true
         
+        configuration.outputSettings.straighteningParameters.straighteningMode = .straighten
         
         // Configure the animation
         // You can choose between genie animation or checkmark animation

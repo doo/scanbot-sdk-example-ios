@@ -25,7 +25,7 @@ final class MultiScanResultViewController: UIViewController {
             
             do {
                 try (0..<numberOfPages).forEach { index in
-                    try self.document.page(at: index).filters = [selectedFilter]
+                    try self.document.page(at: index).filters = selectedFilter != nil ? [selectedFilter!] : []
                 }
                 self.collectionView.reloadData()
             } catch {
