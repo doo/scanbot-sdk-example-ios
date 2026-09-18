@@ -7,33 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DB0A6A461669BEDB12811204 /* DocumentDataExtractorRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */; };
-		AEC96A0728492CFA07B1EB28 /* DocumentDataExtractorClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */; };
-		67A4327B66B49184F584AEFE /* MedicalCertificateScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */; };
-		43314DFBCBF26A2F8174F884 /* TextPatternScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */; };
-		5CE73084402120BC65489715 /* TextPatternScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */; };
-		1378A0AD8A8578EFE692ACC4 /* VINScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */; };
-		69F36532A412EAD2A14D282D /* VINScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */; };
-		B3E52BC49D2CE96179CC3415 /* CreditCardScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */; };
-		2E4A511362ACABDD0928FE33 /* CreditCardScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */; };
-		D2DF74C74607FBAA06B464F0 /* CheckScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */; };
-		B2469A82B34C539ADC479232 /* CheckScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */; };
-		3DD0443E0BCA68C71944F63E /* MRZScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */; };
-		DA02006FA719E2528069323E /* MRZScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */; };
-		3A776481FC730D48B7B90692 /* UtilitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */; };
-		237F78EBE1FB652A364F8D86 /* UtilityDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */; };
-		A4DC5F11C6CCFBB9F82C0D68 /* ImageImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D2A293041C9CB27ED4FC6 /* ImageImportButton.swift */; };
-		65BF95A237805771E72AB3C4 /* BarcodeWithTextPatternScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4093827B0521C6D3B9B8469 /* BarcodeWithTextPatternScannerView.swift */; };
-		20CE19F8B03BF5C28E5D163E /* BarcodeScanAndCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB6DFE2410867D8FD96C30 /* BarcodeScanAndCountView.swift */; };
-		8A04DDCE9C6E9A8007583956 /* BarcodeTrackingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF01F82A2070C8B81A0B7056 /* BarcodeTrackingOverlayView.swift */; };
-		2E7E09E421CFB6BDA6C6FF8B /* EANValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAEB3F509A6719EDD94AD6A /* EANValidator.swift */; };
-		EF61A95C966127256A9E1599 /* DataCaptureContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61F3FAA232ECFD195BA15B /* DataCaptureContainerView.swift */; };
-		603C405D772535B0CFAF35B6 /* DataCaptureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA510B43BFC02F7447286104 /* DataCaptureListView.swift */; };
-		979B26607B4CECA7A44AC8E2 /* DataCaptureScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F093129D80267D97E18408 /* DataCaptureScanner.swift */; };
-		444F5C7886E409887310C5FE /* ScannerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD829A3CBA58E694C64B00D /* ScannerSession.swift */; };
-		813AF697A0C034BF5E8EBC38 /* ScanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD303FCEF728A5E10D4E8B /* ScanResultView.swift */; };
-		FA3C4E07F1F71996A3045211 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2C346335D85BE60D4947E /* ScanResult.swift */; };
 		0863F4702CDB8FFF00E00765 /* SBSDKBarcodeItem+DisplayText.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0863F46F2CDB8FFF00E00765 /* SBSDKBarcodeItem+DisplayText.swift */; };
+		1378A0AD8A8578EFE692ACC4 /* VINScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */; };
+		20CE19F8B03BF5C28E5D163E /* BarcodeScanAndCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FBB6DFE2410867D8FD96C30 /* BarcodeScanAndCountView.swift */; };
+		237F78EBE1FB652A364F8D86 /* UtilityDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */; };
 		285AE383271ED06300B5F728 /* BarcodeScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE380271ED06300B5F728 /* BarcodeScanner.swift */; };
 		285AE385271ED06300B5F728 /* BarcodeScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */; };
 		285AE38C271ED0A000B5F728 /* BarcodeScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */; };
@@ -47,12 +24,35 @@
 		2878D92527185E530045F7EE /* SwiftUIComponentsExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92427185E530045F7EE /* SwiftUIComponentsExample.swift */; };
 		2878D92727185E530045F7EE /* MainListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2878D92627185E530045F7EE /* MainListView.swift */; };
 		2878D92927185E540045F7EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2878D92827185E540045F7EE /* Assets.xcassets */; };
+		2E4A511362ACABDD0928FE33 /* CreditCardScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */; };
+		2E7E09E421CFB6BDA6C6FF8B /* EANValidator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2FAEB3F509A6719EDD94AD6A /* EANValidator.swift */; };
+		3A776481FC730D48B7B90692 /* UtilitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */; };
+		3DD0443E0BCA68C71944F63E /* MRZScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */; };
+		43314DFBCBF26A2F8174F884 /* TextPatternScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */; };
+		444F5C7886E409887310C5FE /* ScannerSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = ACD829A3CBA58E694C64B00D /* ScannerSession.swift */; };
+		5CE73084402120BC65489715 /* TextPatternScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */; };
+		603C405D772535B0CFAF35B6 /* DataCaptureListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA510B43BFC02F7447286104 /* DataCaptureListView.swift */; };
+		65BF95A237805771E72AB3C4 /* BarcodeWithTextPatternScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4093827B0521C6D3B9B8469 /* BarcodeWithTextPatternScannerView.swift */; };
+		67A4327B66B49184F584AEFE /* MedicalCertificateScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */; };
+		69F36532A412EAD2A14D282D /* VINScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */; };
+		813AF697A0C034BF5E8EBC38 /* ScanResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DD303FCEF728A5E10D4E8B /* ScanResultView.swift */; };
+		8A04DDCE9C6E9A8007583956 /* BarcodeTrackingOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DF01F82A2070C8B81A0B7056 /* BarcodeTrackingOverlayView.swift */; };
+		979B26607B4CECA7A44AC8E2 /* DataCaptureScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 42F093129D80267D97E18408 /* DataCaptureScanner.swift */; };
+		A4DC5F11C6CCFBB9F82C0D68 /* ImageImportButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6C0D2A293041C9CB27ED4FC6 /* ImageImportButton.swift */; };
+		AEC96A0728492CFA07B1EB28 /* DocumentDataExtractorClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */; };
+		B2469A82B34C539ADC479232 /* CheckScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */; };
+		B3E52BC49D2CE96179CC3415 /* CreditCardScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */; };
+		D2DF74C74607FBAA06B464F0 /* CheckScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */; };
+		DA02006FA719E2528069323E /* MRZScannerClassicView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */; };
+		DB0A6A461669BEDB12811204 /* DocumentDataExtractorRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */; };
+		EF61A95C966127256A9E1599 /* DataCaptureContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C61F3FAA232ECFD195BA15B /* DataCaptureContainerView.swift */; };
 		F164F77E2E0AEC93001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F77D2E0AEC93001F6A5A /* ScanbotSDK */; };
 		F17D77892C78AEE9004F4BE3 /* DocumentScannerListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D77882C78AEE9004F4BE3 /* DocumentScannerListView.swift */; };
 		F17D778B2C78B1D5004F4BE3 /* DocumentScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D778A2C78B1D5004F4BE3 /* DocumentScanner.swift */; };
 		F17D778D2C78B727004F4BE3 /* DocumentScannerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D778C2C78B727004F4BE3 /* DocumentScannerContainerView.swift */; };
 		F17D778F2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D778E2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift */; };
 		F17D77932C7DE38C004F4BE3 /* DocumentScanningResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F17D77922C7DE38C004F4BE3 /* DocumentScanningResult.swift */; };
+		FA3C4E07F1F71996A3045211 /* ScanResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E2C346335D85BE60D4947E /* ScanResult.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -69,34 +69,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentDataExtractorRTUUIView.swift"; sourceTree = "<group>"; };
-		0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DocumentDataExtractorClassicView.swift"; sourceTree = "<group>"; };
-		6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MedicalCertificateScannerView.swift"; sourceTree = "<group>"; };
-		7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextPatternScannerRTUUIView.swift"; sourceTree = "<group>"; };
-		DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TextPatternScannerClassicView.swift"; sourceTree = "<group>"; };
-		D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VINScannerRTUUIView.swift"; sourceTree = "<group>"; };
-		C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "VINScannerClassicView.swift"; sourceTree = "<group>"; };
-		FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardScannerRTUUIView.swift"; sourceTree = "<group>"; };
-		5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CreditCardScannerClassicView.swift"; sourceTree = "<group>"; };
-		00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckScannerRTUUIView.swift"; sourceTree = "<group>"; };
-		A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CheckScannerClassicView.swift"; sourceTree = "<group>"; };
-		042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MRZScannerRTUUIView.swift"; sourceTree = "<group>"; };
-		0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MRZScannerClassicView.swift"; sourceTree = "<group>"; };
-		FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilitiesListView.swift"; sourceTree = "<group>"; };
-		BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UtilityDetector.swift"; sourceTree = "<group>"; };
-		6C0D2A293041C9CB27ED4FC6 /* ImageImportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageImportButton.swift"; sourceTree = "<group>"; };
-		C4093827B0521C6D3B9B8469 /* BarcodeWithTextPatternScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeWithTextPatternScannerView.swift"; sourceTree = "<group>"; };
-		8FBB6DFE2410867D8FD96C30 /* BarcodeScanAndCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeScanAndCountView.swift"; sourceTree = "<group>"; };
-		DF01F82A2070C8B81A0B7056 /* BarcodeTrackingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BarcodeTrackingOverlayView.swift"; sourceTree = "<group>"; };
-		2FAEB3F509A6719EDD94AD6A /* EANValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EANValidator.swift"; sourceTree = "<group>"; };
-		1C61F3FAA232ECFD195BA15B /* DataCaptureContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureContainerView.swift"; sourceTree = "<group>"; };
-		AA510B43BFC02F7447286104 /* DataCaptureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureListView.swift"; sourceTree = "<group>"; };
-		42F093129D80267D97E18408 /* DataCaptureScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DataCaptureScanner.swift"; sourceTree = "<group>"; };
-		ACD829A3CBA58E694C64B00D /* ScannerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScannerSession.swift"; sourceTree = "<group>"; };
-		37DD303FCEF728A5E10D4E8B /* ScanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScanResultView.swift"; sourceTree = "<group>"; };
-		48E2C346335D85BE60D4947E /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ScanResult.swift"; sourceTree = "<group>"; };
+		00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckScannerRTUUIView.swift; sourceTree = "<group>"; };
+		042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZScannerRTUUIView.swift; sourceTree = "<group>"; };
 		08072F5A27215CA200863F12 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0863F46F2CDB8FFF00E00765 /* SBSDKBarcodeItem+DisplayText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SBSDKBarcodeItem+DisplayText.swift"; sourceTree = "<group>"; };
+		0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MRZScannerClassicView.swift; sourceTree = "<group>"; };
+		0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorClassicView.swift; sourceTree = "<group>"; };
+		1C61F3FAA232ECFD195BA15B /* DataCaptureContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureContainerView.swift; sourceTree = "<group>"; };
 		285AE380271ED06300B5F728 /* BarcodeScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanner.swift; sourceTree = "<group>"; };
 		285AE382271ED06300B5F728 /* BarcodeScanningResult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScanningResult.swift; sourceTree = "<group>"; };
 		285AE389271ED0A000B5F728 /* BarcodeScannerClassicView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BarcodeScannerClassicView.swift; sourceTree = "<group>"; };
@@ -111,11 +90,32 @@
 		2878D92427185E530045F7EE /* SwiftUIComponentsExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIComponentsExample.swift; sourceTree = "<group>"; };
 		2878D92627185E530045F7EE /* MainListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainListView.swift; sourceTree = "<group>"; };
 		2878D92827185E540045F7EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		2FAEB3F509A6719EDD94AD6A /* EANValidator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EANValidator.swift; sourceTree = "<group>"; };
+		37DD303FCEF728A5E10D4E8B /* ScanResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResultView.swift; sourceTree = "<group>"; };
+		42F093129D80267D97E18408 /* DataCaptureScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureScanner.swift; sourceTree = "<group>"; };
+		48E2C346335D85BE60D4947E /* ScanResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanResult.swift; sourceTree = "<group>"; };
+		5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardScannerClassicView.swift; sourceTree = "<group>"; };
+		6C0D2A293041C9CB27ED4FC6 /* ImageImportButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageImportButton.swift; sourceTree = "<group>"; };
+		6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MedicalCertificateScannerView.swift; sourceTree = "<group>"; };
+		7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPatternScannerRTUUIView.swift; sourceTree = "<group>"; };
+		8FBB6DFE2410867D8FD96C30 /* BarcodeScanAndCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeScanAndCountView.swift; sourceTree = "<group>"; };
+		A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckScannerClassicView.swift; sourceTree = "<group>"; };
+		AA510B43BFC02F7447286104 /* DataCaptureListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCaptureListView.swift; sourceTree = "<group>"; };
+		ACD829A3CBA58E694C64B00D /* ScannerSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScannerSession.swift; sourceTree = "<group>"; };
+		BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityDetector.swift; sourceTree = "<group>"; };
+		C4093827B0521C6D3B9B8469 /* BarcodeWithTextPatternScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeWithTextPatternScannerView.swift; sourceTree = "<group>"; };
+		C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINScannerClassicView.swift; sourceTree = "<group>"; };
+		D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VINScannerRTUUIView.swift; sourceTree = "<group>"; };
+		DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextPatternScannerClassicView.swift; sourceTree = "<group>"; };
+		DF01F82A2070C8B81A0B7056 /* BarcodeTrackingOverlayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BarcodeTrackingOverlayView.swift; sourceTree = "<group>"; };
+		E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentDataExtractorRTUUIView.swift; sourceTree = "<group>"; };
 		F17D77882C78AEE9004F4BE3 /* DocumentScannerListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerListView.swift; sourceTree = "<group>"; };
 		F17D778A2C78B1D5004F4BE3 /* DocumentScanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanner.swift; sourceTree = "<group>"; };
 		F17D778C2C78B727004F4BE3 /* DocumentScannerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerContainerView.swift; sourceTree = "<group>"; };
 		F17D778E2C7DCFD3004F4BE3 /* DocumentScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScannerRTUUIView.swift; sourceTree = "<group>"; };
 		F17D77922C7DE38C004F4BE3 /* DocumentScanningResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentScanningResult.swift; sourceTree = "<group>"; };
+		FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditCardScannerRTUUIView.swift; sourceTree = "<group>"; };
+		FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilitiesListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +135,15 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1A5B761A909978E8B608008B /* DataCapture */ = {
+			isa = PBXGroup;
+			children = (
+				DB67952F8FFFA3FBC7BCA4FB /* Views */,
+				55E7B2567C7D97CC8EB9F1DF /* Model */,
+			);
+			path = DataCapture;
 			sourceTree = "<group>";
 		};
 		285AE338271ECF9100B5F728 /* BarcodeScanners */ = {
@@ -268,6 +277,58 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		33A111514BC7BDDF1583156E /* Document Data Extractor */ = {
+			isa = PBXGroup;
+			children = (
+				E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */,
+				0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */,
+			);
+			path = "Document Data Extractor";
+			sourceTree = "<group>";
+		};
+		38DD9943F1BBF3C8C3BE9782 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		451BA4A277A8675FA55B4D79 /* MRZ */ = {
+			isa = PBXGroup;
+			children = (
+				042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */,
+				0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */,
+			);
+			path = MRZ;
+			sourceTree = "<group>";
+		};
+		55E7B2567C7D97CC8EB9F1DF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				42F093129D80267D97E18408 /* DataCaptureScanner.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		6C09971026CD6FCEBE5647DC /* Check */ = {
+			isa = PBXGroup;
+			children = (
+				00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */,
+				A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */,
+			);
+			path = Check;
+			sourceTree = "<group>";
+		};
+		757F6DCD23E338C379588412 /* Credit Card */ = {
+			isa = PBXGroup;
+			children = (
+				FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */,
+				5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */,
+			);
+			path = "Credit Card";
+			sourceTree = "<group>";
+		};
 		79EC4D3F3A26A556C96BE79B /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -276,24 +337,33 @@
 				37DD303FCEF728A5E10D4E8B /* ScanResultView.swift */,
 				48E2C346335D85BE60D4947E /* ScanResult.swift */,
 			);
-			path = "Shared";
+			path = Shared;
 			sourceTree = "<group>";
 		};
-		1A5B761A909978E8B608008B /* DataCapture */ = {
+		85C3C2404A990FC9A65953CC /* Text Pattern */ = {
 			isa = PBXGroup;
 			children = (
-				DB67952F8FFFA3FBC7BCA4FB /* Views */,
-				55E7B2567C7D97CC8EB9F1DF /* Model */,
+				7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */,
+				DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */,
 			);
-			path = "DataCapture";
+			path = "Text Pattern";
 			sourceTree = "<group>";
 		};
-		55E7B2567C7D97CC8EB9F1DF /* Model */ = {
+		A6F7551AA11A5391DD8B72D3 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
-				42F093129D80267D97E18408 /* DataCaptureScanner.swift */,
+				38DD9943F1BBF3C8C3BE9782 /* Views */,
+				EB83979D21B2368D97D161CE /* Model */,
 			);
-			path = "Model";
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		D3AE14F31CB7EBC38D3049F9 /* Medical Certificate */ = {
+			isa = PBXGroup;
+			children = (
+				6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */,
+			);
+			path = "Medical Certificate";
 			sourceTree = "<group>";
 		};
 		DB67952F8FFFA3FBC7BCA4FB /* Views */ = {
@@ -303,7 +373,24 @@
 				1C61F3FAA232ECFD195BA15B /* DataCaptureContainerView.swift */,
 				AA510B43BFC02F7447286104 /* DataCaptureListView.swift */,
 			);
-			path = "Views";
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DC91962F6079621BF1AC750E /* VIN */ = {
+			isa = PBXGroup;
+			children = (
+				D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */,
+				C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */,
+			);
+			path = VIN;
+			sourceTree = "<group>";
+		};
+		EB83979D21B2368D97D161CE /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		F9657318B4DE7B6AB9A2D53C /* Scanners */ = {
@@ -318,93 +405,6 @@
 				451BA4A277A8675FA55B4D79 /* MRZ */,
 			);
 			path = Scanners;
-			sourceTree = "<group>";
-		};
-		A6F7551AA11A5391DD8B72D3 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-				38DD9943F1BBF3C8C3BE9782 /* Views */,
-				EB83979D21B2368D97D161CE /* Model */,
-			);
-			path = "Utilities";
-			sourceTree = "<group>";
-		};
-		EB83979D21B2368D97D161CE /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				BE669CA87C4CF167C16CF2B9 /* UtilityDetector.swift */,
-			);
-			path = "Model";
-			sourceTree = "<group>";
-		};
-		38DD9943F1BBF3C8C3BE9782 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				FC31F2F72DD71650B47D8819 /* UtilitiesListView.swift */,
-			);
-			path = "Views";
-			sourceTree = "<group>";
-		};
-		451BA4A277A8675FA55B4D79 /* MRZ */ = {
-			isa = PBXGroup;
-			children = (
-				042063CEEECB7E77786E0AD2 /* MRZScannerRTUUIView.swift */,
-				0B3822D67D8FD992633BB69D /* MRZScannerClassicView.swift */,
-			);
-			path = "MRZ";
-			sourceTree = "<group>";
-		};
-		6C09971026CD6FCEBE5647DC /* Check */ = {
-			isa = PBXGroup;
-			children = (
-				00334B0D40F80F79367515EC /* CheckScannerRTUUIView.swift */,
-				A4E1D7A84651A85E41E539F0 /* CheckScannerClassicView.swift */,
-			);
-			path = "Check";
-			sourceTree = "<group>";
-		};
-		757F6DCD23E338C379588412 /* Credit Card */ = {
-			isa = PBXGroup;
-			children = (
-				FC30B289A035CE26F3D5FF46 /* CreditCardScannerRTUUIView.swift */,
-				5DEC69FE41F9F5E41521DE9C /* CreditCardScannerClassicView.swift */,
-			);
-			path = "Credit Card";
-			sourceTree = "<group>";
-		};
-		DC91962F6079621BF1AC750E /* VIN */ = {
-			isa = PBXGroup;
-			children = (
-				D17509156148FB9B4741FF48 /* VINScannerRTUUIView.swift */,
-				C563B7AD8D68CEAF4AA97E78 /* VINScannerClassicView.swift */,
-			);
-			path = "VIN";
-			sourceTree = "<group>";
-		};
-		85C3C2404A990FC9A65953CC /* Text Pattern */ = {
-			isa = PBXGroup;
-			children = (
-				7696D13664D32BD09679A3F5 /* TextPatternScannerRTUUIView.swift */,
-				DA318C52608EB328EB185561 /* TextPatternScannerClassicView.swift */,
-			);
-			path = "Text Pattern";
-			sourceTree = "<group>";
-		};
-		D3AE14F31CB7EBC38D3049F9 /* Medical Certificate */ = {
-			isa = PBXGroup;
-			children = (
-				6E0392C8BDB22EA7C651F689 /* MedicalCertificateScannerView.swift */,
-			);
-			path = "Medical Certificate";
-			sourceTree = "<group>";
-		};
-		33A111514BC7BDDF1583156E /* Document Data Extractor */ = {
-			isa = PBXGroup;
-			children = (
-				E822A04399C377346CB8AD55 /* DocumentDataExtractorRTUUIView.swift */,
-				0C61FC0C25A5BCDCC1A5AAE8 /* DocumentDataExtractorClassicView.swift */,
-			);
-			path = "Document Data Extractor";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -778,7 +778,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = "10.0.0-RC9";
+				version = "10.0.0-RC10";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
