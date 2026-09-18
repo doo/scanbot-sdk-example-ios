@@ -32,6 +32,41 @@ class BarcodeGettingStartedUI2ViewController: UIViewController {
         }
     }
     
+    func launchRTUUIv2Scanner(json: String) {
+        Task {
+            do {
+                let report = try SBSDKJSONValidator.validate(
+                    json: json,
+                    configurationClass: SBSDKUI2BarcodeScannerScreenConfiguration.self)
+                guard report.isValid else {
+                    var message = report.issues.map { "\($0.path): \($0.message)" }
+                        .joined(separator: "\n")
+                    if !report.isComplete {
+                        message += "\nFix the decoding error and validate again to check unknown fields."
+                    }
+                    let alert = UIAlertController(title: "Invalid JSON",
+                                                  message: message,
+                                                  preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .default))
+                    present(alert, animated: true)
+                    return
+                }
+                let configuration = try JSONDecoder().decode(
+                    SBSDKUI2BarcodeScannerScreenConfiguration.self, from: Data(json.utf8))
+                _ = try await SBSDKUI2BarcodeScannerViewController.present(
+                    on: self, configuration: configuration)
+            } catch SBSDKError.operationCanceled {
+                return
+            } catch {
+                let alert = UIAlertController(title: "Error creating the scanner",
+                                              message: error.localizedDescription,
+                                              preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .default))
+                present(alert, animated: true)
+            }
+        }
+    }
+
     func handleScanResults() {
         
         Task {

@@ -53,10 +53,10 @@ class BarcodeScanAndCountViewController: UIViewController {
         polygonStyle.cornerRadius = 8
         
         // Set the polygon style to apply it.
-        self.scannerViewController.model.configuration.polygonStyle = polygonStyle
+        self.scannerViewController.viewModel.configuration.polygonStyle = polygonStyle
         
         // Set the capture mode of the scanner.
-        self.scannerViewController.model.configuration.captureMode = .capturedImage
+        self.scannerViewController.viewModel.configuration.captureMode = .capturedImage
     }
 }
 
