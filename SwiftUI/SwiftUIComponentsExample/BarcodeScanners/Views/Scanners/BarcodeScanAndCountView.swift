@@ -14,7 +14,7 @@ struct BarcodeScanAndCountView: View {
     
     @Binding var isScanningEnabled: Bool
     
-    @State private var model: SBSDKBarcodeScanAndCountModel?
+    @State private var model: SBSDKBarcodeScanAndCountViewModel?
     @State private var countedBarcodes: [SBSDKBarcodeScannerAccumulatingResult] = []
     @StateObject private var state = ScannerSessionState()
     
@@ -72,7 +72,7 @@ struct BarcodeScanAndCountView: View {
             let formatConfiguration = SBSDKBarcodeFormatCommonConfiguration(formats: SBSDKBarcodeFormats.all)
             let configuration = SBSDKBarcodeScannerConfiguration(barcodeFormatConfigurations: [formatConfiguration])
             
-            let model = try SBSDKBarcodeScanAndCountModel(scannerConfiguration: configuration)
+            let model = try SBSDKBarcodeScanAndCountViewModel(scannerConfiguration: configuration)
             model.baseRuntime.isScanningEnabled = isScanningEnabled
             self.model = model
         } catch {
