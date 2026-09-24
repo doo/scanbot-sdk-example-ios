@@ -10,6 +10,11 @@ import ScanbotSDK
 
 func handleError(_ error: Error) {
     
+    if (error as? SBSDKError)?.isCanceled == true {
+        checkCanceledError(error)
+        return
+    }
+
     print("Error: \(error.localizedDescription)")
     
     // Cast `Error` to type `SBSDKError` to access underlying SDK properties.
@@ -36,11 +41,8 @@ func handleError(_ error: Error) {
 
 func checkCanceledError(_ error: Error) {
     
-    // We can safely assume that only `SBSDKErrors` are thrown.
-    let sdkError = error as! SBSDKError
-    
     // Check if the error represents a canceled operation.
-    if sdkError.isCanceled {
+    if let sdkError = error as? SBSDKError, sdkError.isCanceled {
         print("The operation was cancelled before completion or by the user: \(error.localizedDescription)")
     }
 }
