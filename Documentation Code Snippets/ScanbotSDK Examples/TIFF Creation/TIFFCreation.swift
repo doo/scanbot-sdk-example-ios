@@ -18,8 +18,8 @@ func createTIFF(from scannedDocument: SBSDKScannedDocument) {
         // Create the TIFF generator using created parameters, do not encrypt the generated TIFF files.
         let generator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
         
-        // Synchronously convert the scanned document to a multipage-TIFF file and saves it to the specified URL.
-        // If output URL is `nil`the default TIFF location of the scanned document will be used.
+        // Synchronously converts the scanned document to a multipage-TIFF file and saves it to the specified URL.
+        // If output URL is `nil` the default TIFF location of the scanned document will be used.
         try generator.generate(from: scannedDocument)
     }
     catch {
@@ -59,7 +59,7 @@ func createTIFF(from images: [UIImage]) {
         }
         
         // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.
-        // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
+        // The completion handler passes a file URL where the file was saved, or nil if the operation did not succeed.
         tiffImageGenerator.generate(from: imageRefs, to: outputTIFFURL, completion: { url, error in
             
             if let url = url {

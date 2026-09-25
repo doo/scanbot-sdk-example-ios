@@ -57,11 +57,11 @@ extension DocumentDataExtractorViewController: SBSDKDocumentDataExtractorViewCon
     func documentDataExtractorViewController(_ viewController: SBSDKDocumentDataExtractorViewController,
                                              didExtract result: SBSDKDocumentDataExtractionResult,
                                           on image: UIImage) {
-        if result.status == .ok || result.status == .okButInvalidDocument || result.status == .okButNotConfirmed {
+        if result.status == .ok || result.status == .okButInvalidDocument || result.status == .okButLowConfidenceResults {
             indicator?.stopAnimating()
         }
         if let document = result.document, let sourceImage = document.crop {
-            viewController.resetDocumentAccumulation()
+            viewController.viewModel.frameEngine.resetAccumulation()
             display(document: document, with: sourceImage)
         }
     }

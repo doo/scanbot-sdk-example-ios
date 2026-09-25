@@ -28,7 +28,7 @@ class DirectScannedDocumentDetectionViewController {
                 // Check the result and retrieve the detected polygon.
                 if result.status == .ok, let polygon = result.polygon {
                     
-                    // Apply the polygon on to the page.
+                    // Apply the polygon onto the page.
                     try page.apply(polygon: polygon)
                     
                 } else {

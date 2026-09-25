@@ -1,5 +1,5 @@
 //
-//  ScannedPageExamples.swift
+//  ScannedDocumentExamples.swift
 //  ScanbotSDK Examples
 //
 //  Created by Daniil Voitenko on 29.08.24.
@@ -33,7 +33,7 @@ func createScannedDocument(with images: [UIImage]) {
 func createFromDocument(_ document: SBSDKDocument) -> SBSDKScannedDocument? {
     
     do {
-        // Create the scanned document using convenience initializer `init?(document:documentImageSizeLimit:)`.
+        // Create the scanned document using convenience initializer `init(document:documentImageSizeLimit:)`.
         let scannedDocument = try SBSDKScannedDocument(document: document, documentImageSizeLimit: 2048)
         
         // Return the newly created scanned document.
@@ -76,7 +76,7 @@ func reorderPagesInScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
 
 func removeAllPagesFromScannedDocument(_ scannedDocument: SBSDKScannedDocument) {
     do {
-        // Call the `removeAllPages() to remove all pages from the document, but keep the document itself.
+        // Call the `removeAllPages()` to remove all pages from the document, but keep the document itself.
         try scannedDocument.removeAllPages()
     }
     catch {

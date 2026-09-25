@@ -22,7 +22,7 @@ final class ReviewDocumentsViewController: UIViewController {
     private var selectedImageIndex: Int?
     private var importAction: ImportAction?
     private static var showsQuality: Bool = false
-    private static var qualityCache = [URL: SBSDKDocumentQualityAssessment]()
+    private static var qualityCache = [URL: String]()
 
     private var showsQuality: Bool = showsQuality {
         didSet {
@@ -202,7 +202,7 @@ final class ReviewDocumentsViewController: UIViewController {
                    let url = try ImageManager.shared.originalImageURLAt(index: item) {
                     
                     let quality = try SBSDKDocumentQualityAnalyzer().run(image: image)
-                    Self.qualityCache[url] = quality.quality
+                    Self.qualityCache[url] = quality.quality.stringValue
                 }
             } catch {
                 DispatchQueue.main.async { [weak self] in
@@ -239,18 +239,7 @@ extension ReviewDocumentsViewController: UICollectionViewDataSource {
             if showsQuality {
                 if let imageURL = try ImageManager.shared.originalImageURLAt(index: indexPath.item) {
                     if let quality = Self.qualityCache[imageURL] {
-                        let qualityString: String
-                        switch quality {
-                        case .acceptable:
-                            qualityString = "Acceptable"
-                        case .unacceptable:
-                            qualityString = "Unacceptable"
-                        case .uncertain:
-                            qualityString = "Uncertain"
-                        default:
-                            qualityString = "No document"
-                        }
-                        cell.infoLabelText = String(format: "Q: \(qualityString)")
+                        cell.infoLabelText = String(format: "Q: \(quality)")
                     } else {
                         cell.infoLabelText = "Calculating..."
                         calculateQualityFor(indexPath.item)
@@ -299,14 +288,14 @@ extension ReviewDocumentsViewController: SBSDKImageEditingViewControllerDelegate
         do {
             let page = try ImageManager.shared.pageAt(index: imageIndex)
             
-            var rotations = editingViewController.rotations
+            var rotations = editingViewController.viewModel.rotations
             while rotations < 0 {
                 rotations += 4
             }
             polygon.rotateCCW(UInt(rotations))
             
             page.polygon = polygon
-            page.rotation = SBSDKImageRotation.fromRotations(editingViewController.rotations)
+            page.rotation = SBSDKImageRotation.fromRotations(editingViewController.viewModel.rotations)
             
             self.reloadData()
             selectedImageIndex = nil

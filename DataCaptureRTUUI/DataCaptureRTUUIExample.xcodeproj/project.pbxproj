@@ -50,7 +50,6 @@
 		F164F2612E09B2E4001F6A5A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F164F2602E09B2E4001F6A5A /* SceneDelegate.swift */; };
 		F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F164F7672E0AE8E1001F6A5A /* ScanbotSDK */; };
 		F164F7712E0AE923001F6A5A /* ScanbotSDKOCRData.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F164F7702E0AE923001F6A5A /* ScanbotSDKOCRData.bundle */; };
-		F18908932FF3EE1200067086 /* ScanbotSDK in Frameworks */ = {isa = PBXBuildFile; productRef = F18908922FF3EE1200067086 /* ScanbotSDK */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -114,7 +113,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F18908932FF3EE1200067086 /* ScanbotSDK in Frameworks */,
 				F164F7682E0AE8E1001F6A5A /* ScanbotSDK in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +305,7 @@
 			);
 			mainGroup = 082D0A2620C801AA009B1A7A;
 			packageReferences = (
-				F18908912FF3EE1200067086 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
+				F164F7662E0AE8E1001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */,
 			);
 			productRefGroup = 082D0A3020C801AA009B1A7A /* Products */;
 			projectDirPath = "";
@@ -483,7 +481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -538,7 +536,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -558,7 +556,7 @@
 				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -582,7 +580,7 @@
 				ENABLE_DEBUG_DYLIB = NO;
 				FRAMEWORK_SEARCH_PATHS = "";
 				INFOPLIST_FILE = DataCaptureRTUUIExample/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -651,15 +649,7 @@
 			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
 			requirement = {
 				kind = exactVersion;
-				version = 9.0.0;
-			};
-		};
-		F18908912FF3EE1200067086 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/doo/scanbot-sdk-ios-spm.git";
-			requirement = {
-				kind = exactVersion;
-				version = "9.0.3-RC3";
+				version = "10.0.0-RC11";
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -668,11 +658,6 @@
 		F164F7672E0AE8E1001F6A5A /* ScanbotSDK */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = F164F7662E0AE8E1001F6A5A /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
-			productName = ScanbotSDK;
-		};
-		F18908922FF3EE1200067086 /* ScanbotSDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = F18908912FF3EE1200067086 /* XCRemoteSwiftPackageReference "scanbot-sdk-ios-spm" */;
 			productName = ScanbotSDK;
 		};
 /* End XCSwiftPackageProductDependency section */

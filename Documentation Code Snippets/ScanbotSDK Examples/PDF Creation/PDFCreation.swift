@@ -17,7 +17,7 @@ func createPDF(from scannedDocument: SBSDKScannedDocument) {
                                            subject: "Subject",
                                            keywords: "Keywords")
     
-    // Create the PDF configuration object using above created attributes.
+    // Create the PDF configuration object using the attributes created above.
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes)
     // Or you can also use the default configuration object.
@@ -57,7 +57,7 @@ func createPDF(from image: UIImage) {
                                            subject: "Subject",
                                            keywords: "Keywords")
     
-    // Create the PDF configuration object using above created attributes.
+    // Create the PDF configuration object using the attributes created above.
     // You can also pass custom pageSize, pageDirection, pageFit, dpi, jpegQuality and resamplingMethod.
     let pdfConfiguration = SBSDKPDFConfiguration(attributes: pdfAttributes, jpegQuality: 100)
     // Or you can also use the default configuration object.
@@ -80,7 +80,7 @@ func createPDF(from image: UIImage) {
         // Create the PDF generator, enabling encryption.
         let generator = try SBSDKPDFGenerator(configuration: pdfConfiguration, useEncryptionIfAvailable: true)
         
-        // Synchronously generates the PDF from the image storage into a PDF file with the given page size,
+        // Synchronously generates the PDF from the image storage into a file with the given page size,
         // and saves it to the specified URL.
         try generator.generate(from: imageStorage,
                                output: outputPDFURL)

@@ -16,22 +16,26 @@ class UsecaseScanCreditCard: Usecase {
         
         let configuration = SBSDKUI2CreditCardScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2CreditCardScannerViewController.create(with: configuration) { [weak self] _, result, error  in
-            if let result {
-                let title = "Credit Card scanned"
-                var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
-                
-                let fields = result.creditCard?.fields.compactMap {
-                    "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
-                } ?? []
-                message += "\n" + fields.joined(separator: "\n")
-                
-                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
-            } else {
-                self?.didFinish(error: error)
+        do {
+            let scanner = try SBSDKUI2CreditCardScannerViewController.create(with: configuration) { [weak self] _, result, error  in
+                if let result {
+                    let title = "Credit Card scanned"
+                    var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
+                    
+                    let fields = result.creditCard?.fields.compactMap {
+                        "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
+                    } ?? []
+                    message += "\n" + fields.joined(separator: "\n")
+                    
+                    UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
+                }
             }
-        }        
-        presentViewController(scanner)
+            presentViewController(scanner)
+        } catch {
+            didFinish(error: error)
+        }
     }
 }
 

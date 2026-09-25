@@ -10,30 +10,20 @@ import ScanbotSDK
 
 struct BarcodeScannerListView: View {
     
-    private let scanners = BarcodeScanner.allCases
-    
     @State private var scannedResult = BarcodeScanningResult(scannedItems: [])
     @State private var selectedScanner: BarcodeScanner?
     @State private var shouldCleanResults = false
     
     var body: some View {
         List {
-            Section {
-                ForEach(scanners) { scanner in
-                    if scanner.shouldPresentModally {
-                        Button(action: { selectedScanner = scanner }) {
-                            Text(scanner.title)
-                                .foregroundColor(.primary)
-                        }
-                    } else {
-                        NavigationLink(destination: BarcodeScannerContainerView(scanner: scanner,
-                                                                                scanningResult: $scannedResult)
-                                        .onAppear { shouldCleanResults = true }
-                                        .onDisappear { shouldCleanResults = false }
-                        ) {
-                            Text(scanner.title)
-                        }
-                    }
+            Section(header: Text("Ready-to-use UI")) {
+                ForEach(BarcodeScanner.readyToUseUIScanners) { scanner in
+                    row(for: scanner)
+                }
+            }
+            Section(header: Text("Classic component")) {
+                ForEach(BarcodeScanner.classicScanners) { scanner in
+                    row(for: scanner)
                 }
             }
             if !scannedResult.scannedBarcodes.isEmpty {
@@ -58,6 +48,27 @@ struct BarcodeScannerListView: View {
         .onDisappear {
             if shouldCleanResults {
                 scannedResult = BarcodeScanningResult(scannedItems: [])
+            }
+        }
+    }
+}
+
+extension BarcodeScannerListView {
+    
+    @ViewBuilder
+    fileprivate func row(for scanner: BarcodeScanner) -> some View {
+        if scanner.shouldPresentModally {
+            Button(action: { selectedScanner = scanner }) {
+                Text(scanner.title)
+                    .foregroundColor(.primary)
+            }
+        } else {
+            NavigationLink(destination: BarcodeScannerContainerView(scanner: scanner,
+                                                                    scanningResult: $scannedResult)
+                            .onAppear { shouldCleanResults = true }
+                            .onDisappear { shouldCleanResults = false }
+            ) {
+                Text(scanner.title)
             }
         }
     }

@@ -43,8 +43,9 @@ class BarcodeGeneralConfiguration {
             addAdditionalQuietZone: false,
             minimum1DQuietZoneSize: 6,
             stripCheckDigits: false,
-            minimumTextLength: 1, maximumTextLength: 0,
-            checksum: true
+            minimumTextLength: 1, 
+            maximumTextLength: 0,
+            useCheckDigits: true
         )
         
         // Create an array of all the desired format configurations.
@@ -121,7 +122,7 @@ class BarcodeGeneralConfiguration {
             maximumTextLength: 0,
             gs1Handling: .parse,
             strictMode: true,
-            formats: SBSDKBarcodeFormats.common // Set the desired barcodes formats to detect.
+            formats: SBSDKBarcodeFormats.common // Set the desired barcode formats to detect.
         )
         
         // Create an instance of `SBSDKBarcodeScannerConfiguration`.

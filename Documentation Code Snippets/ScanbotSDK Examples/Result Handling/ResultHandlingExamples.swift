@@ -10,10 +10,15 @@ import ScanbotSDK
 
 func handleError(_ error: Error) {
     
+    if (error as? SBSDKError)?.isCanceled == true {
+        checkCanceledError(error)
+        return
+    }
+
     print("Error: \(error.localizedDescription)")
     
     // Cast `Error` to type `SBSDKError` to access underlying SDK properties.
-    // We can safely assume that only `SBSDKErrors` are thrown
+    // We can safely assume that only `SBSDKErrors` are thrown.
     let sdkError = error as! SBSDKError
 
     // Use switch to determine the error and handle it according to your use case.
@@ -36,11 +41,8 @@ func handleError(_ error: Error) {
 
 func checkCanceledError(_ error: Error) {
     
-    // We can safely assume that only `SBSDKErrors` are thrown
-    let sdkError = error as! SBSDKError
-    
     // Check if the error represents a canceled operation.
-    if sdkError.isCanceled {
+    if let sdkError = error as? SBSDKError, sdkError.isCanceled {
         print("The operation was cancelled before completion or by the user: \(error.localizedDescription)")
     }
 }
@@ -148,24 +150,29 @@ class CheckRTUUIResultHandlingExampleViewController: UIViewController {
     func startScanning() {
         
         // Present the view controller modally.
-        SBSDKUI2CheckScannerViewController.present(on: self,
-                                                   configuration: .init()) { controller, result, error in
-            if let error {
-                
-                // We can safely assume that only `SBSDKErrors` are thrown.
-                let sdkError = error as! SBSDKError
-                
-                // Check if the error represents a canceled operation.
-                if sdkError.isCanceled {
-                    print("The operation was cancelled before completion or by the user")
+        do {
+            try SBSDKUI2CheckScannerViewController.present(on: self,
+                                                           configuration: .init()) { controller, result, error in
+                if let error {
                     
-                } else {
-                    print("Error scanning check: \(sdkError.localizedDescription)")
+                    // We can safely assume that only `SBSDKErrors` are thrown.
+                    let sdkError = error as! SBSDKError
+                    
+                    // Check if the error represents a canceled operation.
+                    if sdkError.isCanceled {
+                        print("The operation was cancelled before completion or by the user")
+                        
+                    } else {
+                        print("Error scanning check: \(sdkError.localizedDescription)")
+                    }
+                    
+                } else if let result {
+                    // Handle the result.
                 }
-                
-            } else if let result {
-                // Handle the result.
             }
+        } catch {
+            // `present(...)` now throws on an invalid/missing license.
+            print("Failed to present the check scanner: \(error.localizedDescription)")
         }
     }
 }

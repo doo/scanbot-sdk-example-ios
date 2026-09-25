@@ -9,12 +9,12 @@
 import UIKit
 import ScanbotSDK
 
-class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
+/// A custom view that the barcode tracking overlay displays for every tracked barcode.
+class CustomTrackedBarcodeView: UIView {
     
     @IBOutlet var titleLabel: UILabel!
-
-    var barcode: SBSDKBarcodeItem?
     
+    var barcode: SBSDKBarcodeItem?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,50 +22,47 @@ class CustomTrackedBarcodeView: UIView, SBSDKTrackedBarcodeInfoViewable {
         backgroundColor = UIColor.clear
     }
     
-    static func make(withBarcode: SBSDKBarcodeItem) -> ScanbotSDK.SBSDKTrackedBarcodeInfoView {
+    static func make(with barcode: SBSDKBarcodeItem) -> CustomTrackedBarcodeView {
         let nib = UINib(nibName: "CustomTrackedBarcodeView", bundle: nil)
         guard let view = nib.instantiate(withOwner: nil).first as? CustomTrackedBarcodeView else {
             fatalError("View is not implemented properly.")
         }
-        view.barcode = withBarcode
+        view.barcode = barcode
         return view
     }
     
-    func update(barcodeFrame: CGRect, 
-                isHighlighted isSelected: Bool, 
-                textStyle: ScanbotSDK.SBSDKBarcodeTrackedViewTextStyle, 
-                polygonStyle: ScanbotSDK.SBSDKBarcodeTrackedViewPolygonStyle) {
+    /// Updates the view with the current tracking information and the style of the tracked barcode.
+    func update(with item: SBSDKBarcodeTrackingOverlayItem, style: SBSDKBarcodeTrackingOverlayStyle) {
         
-        guard let code = barcode else {
-            isHidden = true
-            return
-        }
+        barcode = item.barcode
         isHidden = false
-
+        
         var text = ""
-        if textStyle.textDrawingEnabled {
-            switch textStyle.trackingOverlayTextFormat {
-            case .code:
-                text = code.textWithExtension
-            case .codeAndType:
-                text = String("\(code.format.name)\n\(code.displayText)")
-            case .none:
-                break
-            @unknown default:
-                fatalError()
+        if style.textDrawingEnabled {
+            if let textOverride = style.textOverride {
+                text = textOverride
+            } else {
+                switch style.textFormat {
+                case .code:
+                    text = item.barcode.textWithExtension
+                case .codeAndType:
+                    text = String("\(item.barcode.format.name)\n\(item.barcode.displayText)")
+                case .none:
+                    break
+                @unknown default:
+                    break
+                }
             }
         }
         
-        backgroundColor = textStyle.textBackgroundColor.withAlphaComponent(0.2)
+        backgroundColor = style.textBackgroundColor.withAlphaComponent(0.2)
         titleLabel.text = text
-        titleLabel.font = textStyle.textFont
-        titleLabel.textColor = textStyle.textColor
-        titleLabel.backgroundColor = textStyle.textBackgroundColor
-        titleLabel.isHidden = !textStyle.textDrawingEnabled
+        titleLabel.font = style.textFont
+        titleLabel.textColor = style.textColor
+        titleLabel.backgroundColor = style.textBackgroundColor
+        titleLabel.isHidden = !style.textDrawingEnabled
         
         let insets = UIEdgeInsets(top: -8, left: -8, bottom: -(8 + 40), right: -8)
-        let rect = barcodeFrame.inset(by: insets)
-        frame = rect
+        frame = item.barcodeFrame.inset(by: insets)
     }
-    
 }

@@ -21,11 +21,9 @@ final class AspectRatioDocumentScannerViewController: DocumentScannerViewControl
             
             scannerViewController?.setConfiguration(configuration)
         }
-        let viewFinderConfiguration = scannerViewController?.viewFinderConfiguration ??
-        SBSDKBaseScannerViewFinderConfiguration.defaultConfiguration
-        
-        viewFinderConfiguration.isViewFinderEnabled = true
-        viewFinderConfiguration.aspectRatio = a4AspectRatio
-        scannerViewController?.viewFinderConfiguration = viewFinderConfiguration
+        if let viewFinderConfiguration = scannerViewController?.viewFinder {
+            viewFinderConfiguration.isViewFinderEnabled = true
+            viewFinderConfiguration.aspectRatio = a4AspectRatio
+        }
     }
 }
