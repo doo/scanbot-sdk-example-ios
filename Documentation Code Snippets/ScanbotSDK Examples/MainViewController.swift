@@ -26,11 +26,26 @@ class MainViewController: UIViewController, UITableViewDataSource, UITableViewDe
         if let cell = tableView.dequeueReusableCell(withIdentifier: "MainTableViewCell",
                                                     for: indexPath) as? MainTableViewCell {
             let category = ExampleCategory.allCases[indexPath.section]
-            cell.titleLabel.text = String(String(describing: category.examples[indexPath.row]).dropLast(14))
+            cell.titleLabel.text = Self.title(for: category.examples[indexPath.row])
             return cell
         }
         
         return UITableViewCell()
+    }
+    
+    private static func title(for example: UIViewController.Type) -> String {
+        let name = String(describing: example)
+        
+        guard let start = name.firstIndex(of: "<"), let end = name.lastIndex(of: ">") else {
+            return String(name.dropLast("ViewController".count))
+        }
+        
+        var base = String(name[name.index(after: start)..<end])
+        for suffix in ["SwiftUIScannerView", "SwiftUIView"] where base.hasSuffix(suffix) {
+            base = String(base.dropLast(suffix.count))
+            break
+        }
+        return "\(base) (SwiftUI)"
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

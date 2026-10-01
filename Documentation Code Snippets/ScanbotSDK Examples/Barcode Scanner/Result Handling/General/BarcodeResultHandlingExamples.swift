@@ -98,24 +98,28 @@ class BarcodeRTUUIResultHandlingExampleViewController: UIViewController {
     func startScanning() {
         
         // Present the view controller modally.
-        SBSDKUI2BarcodeScannerViewController.present(on: self,
-                                                     configuration: .init()) { controller, result, error in
-            if let error {
-                
-                // We can safely assume that only `SBSDKErrors` are thrown.
-                let sdkError = error as! SBSDKError
-                
-                // Check if the error represents a canceled operation.
-                if sdkError.isCanceled {
-                    print("The operation was cancelled before completion or by the user")
+        do {
+            try SBSDKUI2BarcodeScannerViewController.present(on: self,
+                                                         configuration: .init()) { controller, result, error in
+                if let error {
                     
-                } else {
-                    print("Error scanning barcodes: \(sdkError.localizedDescription)")
+                    // We can safely assume that only `SBSDKErrors` are thrown.
+                    let sdkError = error as! SBSDKError
+                    
+                    // Check if the error represents a canceled operation.
+                    if sdkError.isCanceled {
+                        print("The operation was cancelled before completion or by the user")
+                        
+                    } else {
+                        print("Error scanning barcodes: \(sdkError.localizedDescription)")
+                    }
+                    
+                } else if let result {
+                    // Handle the result.
                 }
-                
-            } else if let result {
-                // Handle the result.
             }
+        } catch {
+            print("Failed to create Barcode scanner: \(error)")
         }
     }
 }

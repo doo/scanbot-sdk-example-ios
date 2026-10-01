@@ -8,27 +8,65 @@
 import ScanbotSDK
 
 enum DocumentScanner: Identifiable, CaseIterable {
-    case rtuUI
+    case rtuUISinglePage
+    case rtuUISinglePageWithFinder
+    case rtuUIMultiPage
     case classic
-    case swiftUI
+    case classicWithFinder
     
     var id: Self { self }
     
     var title: String {
         switch self {
-        case .rtuUI:
-            return "RTU UI Document Scanner"
+        case .rtuUISinglePage:
+            return "RTU UI Single-Page Scanning"
+        case .rtuUISinglePageWithFinder:
+            return "RTU UI Single-Page Scanning with Finder"
+        case .rtuUIMultiPage:
+            return "RTU UI Multiple-Page Scanning"
         case .classic:
             return "Classic Document Scanner"
-        case .swiftUI:
-            return "Swift UI component"
+        case .classicWithFinder:
+            return "Classic Document Scanner with A4 Finder"
+        }
+    }
+    
+    var isReadyToUseUI: Bool {
+        switch self {
+        case .rtuUISinglePage, .rtuUISinglePageWithFinder, .rtuUIMultiPage:
+            return true
+        case .classic, .classicWithFinder:
+            return false
         }
     }
     
     var shouldPresentModally: Bool {
+        return isReadyToUseUI
+    }
+    
+    static var readyToUseUIScanners: [DocumentScanner] {
+        return allCases.filter { $0.isReadyToUseUI }
+    }
+    
+    static var classicScanners: [DocumentScanner] {
+        return allCases.filter { !$0.isReadyToUseUI }
+    }
+}
+
+/// The configuration variants of the ready-to-use UI document scanner.
+enum DocumentScanningFlowVariant {
+    case singlePage
+    case singlePageWithFinder
+    case multiplePage
+}
+
+extension DocumentScanner {
+    
+    var flowVariant: DocumentScanningFlowVariant {
         switch self {
-        case .rtuUI, .swiftUI: return true
-        case .classic: return false
+        case .rtuUISinglePageWithFinder: return .singlePageWithFinder
+        case .rtuUIMultiPage: return .multiplePage
+        default: return .singlePage
         }
     }
 }

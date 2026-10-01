@@ -18,8 +18,8 @@ func createTIFF(from scannedDocument: SBSDKScannedDocument) {
         // Create the TIFF generator using created parameters, do not encrypt the generated TIFF files.
         let generator = try SBSDKTIFFGenerator(parameters: parameters, useEncryptionIfAvailable: false)
         
-        // Synchronously convert the scanned document to a multipage-TIFF file and saves it to the specified URL.
-        // If output URL is `nil`the default TIFF location of the scanned document will be used.
+        // Synchronously converts the scanned document to a multipage-TIFF file and saves it to the specified URL.
+        // If output URL is `nil` the default TIFF location of the scanned document will be used.
         try generator.generate(from: scannedDocument)
     }
     catch {
@@ -32,13 +32,16 @@ func createTIFF(from images: [UIImage]) {
     // Specify the file URL where the TIFF will be saved to.
     guard let outputTIFFURL = URL(string: "outputTIFF") else { return }
 
-    // In case you want to encrypt your TIFF file, create a crypting provider, using a password and an encryption mode.
+    // In case you want to encrypt your TIFF file, create a crypting provider, using a key provider and an encryption mode.
     let cryptingProvider = SBSDKCryptingProvider(block: {
-        
-        // Create and return the AES encrypter with a password and an encryption mode.
-        // You can also use other encrypters, like `SBSDKAESGCM`.
+
+        // Create a key provider that derives the encryption key from a password and a salt.
+        let keyGenerator = SBSDKPBKDF2KeyGenerator(password: "password_example#42", salt: "salt_example#42", iterations: 10000)
+        let keyProvider = SBSDKVolatileKeyProvider(keyGenerator: keyGenerator)
+
+        // Create and return the AES-GCM encrypter with an encryption mode and the key provider.
         // Make sure, you always create a new instance of the encrypter in this block.
-        return SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+        return SBSDKAESGCMEncrypter(mode: .AES256, keyProvider: keyProvider, authenticationTag: nil)
     })
     
     // Set the created crypting provider as the default one for Scanbot SDK.
@@ -59,7 +62,7 @@ func createTIFF(from images: [UIImage]) {
         }
         
         // Asynchronously generate a multipage-TIFF file from the given images and save it to the specified URL.
-        // The completion handler passes a file URL where the file was to be saved, or nil if the operation did not succeed.
+        // The completion handler passes a file URL where the file was saved, or nil if the operation did not succeed.
         tiffImageGenerator.generate(from: imageRefs, to: outputTIFFURL, completion: { url, error in
             
             if let url = url {

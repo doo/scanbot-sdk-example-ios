@@ -15,20 +15,22 @@ class UsecaseScanVIN: Usecase {
         
         let configuration = SBSDKUI2VINScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2VINScannerViewController.create(with: configuration) { [weak self] _, result, error in
-            if let result {
-                guard !result.textResult.rawText.isEmpty || !result.barcodeResult.extractedVIN.isEmpty else {
-                    return
+        do {
+            let scanner = try SBSDKUI2VINScannerViewController.create(with: configuration) { [weak self] _, result, error in
+                if let result {
+                    guard !result.textResult.rawText.isEmpty || !result.barcodeResult.extractedVIN.isEmpty else {
+                        return
+                    }
+                    let message = result.textResult.rawText + "\n" + result.barcodeResult.extractedVIN
+                    let title = "VIN detected"
+                    UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
                 }
-                let message = result.textResult.rawText + "\n" + result.barcodeResult.extractedVIN
-                let title = "VIN detected"
-                
-                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
-
-            } else {
-                self?.didFinish(error: error)
             }
+            presentViewController(scanner)
+        } catch {
+            didFinish(error: error)
         }
-        presentViewController(scanner)
     }
 }

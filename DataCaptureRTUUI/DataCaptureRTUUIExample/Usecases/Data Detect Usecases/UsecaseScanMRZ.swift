@@ -16,15 +16,19 @@ class UsecaseScanMRZ: Usecase {
         
         let configuration = SBSDKUI2MRZScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2MRZScannerViewController.create(with: configuration) { [weak self] _, result, error in
-            if let result {
-                let title = "MRZ scanned"
-                let message = result.rawMRZ
-                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
-            } else {
-                self?.didFinish(error: error)
+        do {
+            let scanner = try SBSDKUI2MRZScannerViewController.create(with: configuration) { [weak self] _, result, error in
+                if let result {
+                    let title = "MRZ scanned"
+                    let message = result.rawMRZ
+                    UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
+                }
             }
+            presentViewController(scanner)
+        } catch {
+            didFinish(error: error)
         }
-        presentViewController(scanner)
     }
 }

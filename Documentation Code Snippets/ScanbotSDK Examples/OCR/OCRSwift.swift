@@ -18,7 +18,7 @@ class OCRSwiftViewController {
         // Create the OCR configuration object, either with the new ML engine...
         let configuration_ML = SBSDKOCREngineConfiguration.scanbotOCR()
         
-        // ...or with the legacy engine
+        // ...or with the legacy engine.
         let configuration_Legacy 
         = SBSDKOCREngineConfiguration.tesseract(withLanguageString: "de+en")
         
@@ -27,8 +27,8 @@ class OCRSwiftViewController {
         
         // Run the recognizer.
         // The OCR engine manager has different methods that enable support of running recognizer on various data types.
-        // e.g SBSDKImageRef, Image's URL, SBSDKImageStorage, SBSDKDocument or SBSDKScannedDocument.
-        // And also supports there corresponding asynchronous methods.
+        // e.g SBSDKImageRef, Image's URL, SBSDKImageStoring, SBSDKDocument or SBSDKScannedDocument.
+        // And also supports their corresponding asynchronous methods.
         ocrEngineManager.recognize(from: imageURL) { result, error in
             
             // In the completion handler, check for the error and result.

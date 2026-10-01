@@ -27,14 +27,14 @@ final class MedicalCertificateScannerViewController: UIViewController {
     }
     
     private func show(scannedResult: SBSDKMedicalCertificateScanningResult?) {
-        recognizerViewController?.isScanningEnabled = false
+        recognizerViewController?.viewModel.baseRuntime.isScanningEnabled = false
         if let scannedResult = scannedResult, scannedResult.scanningSuccessful {
             alertsManager?.showSuccessAlert(with: scannedResult.toJson(), completionHandler: {
-                self.recognizerViewController?.isScanningEnabled = true
+                self.recognizerViewController?.viewModel.baseRuntime.isScanningEnabled = true
             })
         } else {
             alertsManager?.showFailureAlert(completionHandler: {
-                self.recognizerViewController?.isScanningEnabled = true
+                self.recognizerViewController?.viewModel.baseRuntime.isScanningEnabled = true
             })
         }
     }

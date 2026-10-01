@@ -13,7 +13,7 @@ func extractDocumentDataFromImage() {
     // The image containing the document.
     guard let image = UIImage(named: "genericDocumentImage") else { return }
     
-    // Create configuration for the extractor.
+    // Create a configuration for the extractor.
     let configuration = SBSDKDocumentDataExtractorConfiguration(
         configurations: [SBSDKDocumentDataExtractorCommonConfiguration(
             acceptedDocumentTypes: [SBSDKDocumentsModelConstants.europeanDriverLicenseFrontDocumentType,
@@ -26,7 +26,7 @@ func extractDocumentDataFromImage() {
     
     do {
         
-        // Create an instance of extractor.
+        // Create an instance of the extractor.
         let extractor = try SBSDKDocumentDataExtractor(configuration: configuration)
         
         // Create an image ref from UIImage.

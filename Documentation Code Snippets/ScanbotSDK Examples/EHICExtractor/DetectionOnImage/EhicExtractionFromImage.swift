@@ -18,7 +18,7 @@ func extractEhicFromImage() {
     
     // Modify the configuration if needed.
     
-    // Although optional, but you can set the expected country if needed.
+    // Although optional, you can set the expected country if needed.
     // If this is set, then the validation rules for the given country are used.
     // If the expected country cannot be inferred or the inferred country doesn't match
     // the given country, the result will be IncompleteValidation.
@@ -40,7 +40,7 @@ func extractEhicFromImage() {
         
         // Process the result.
         
-        // Get the status
+        // Get the status.
         let status = result.status
         
         // Get the detection result.
@@ -49,7 +49,7 @@ func extractEhicFromImage() {
         // Get the cropped image.
         let croppedImage = try result.croppedImage?.toUIImage()
         
-        // Access the documents fields directly by iterating over the documents fields.
+        // Access the document's fields directly by iterating over them.
         if let fields = result.document?.fields.compactMap({ "\($0.type.displayText ?? ""): \($0.value?.text ?? "")" }) {
             print(fields.joined(separator: "\n"))
         }

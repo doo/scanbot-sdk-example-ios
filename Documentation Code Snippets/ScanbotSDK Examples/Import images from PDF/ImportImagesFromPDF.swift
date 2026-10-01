@@ -14,7 +14,7 @@ func createScannedDocumentFromPDF(pdfURL: URL) {
     let pageExtractor = SBSDKPDFImageExtractor()
     
     do {
-        // Synchronously extract the pages from PDF and returns them as `SBSDKScannedDocument`.
+        // Synchronously extracts the pages from the PDF and returns them as `SBSDKScannedDocument`.
         // Each page of the PDF will be a separate `SBSDKScannedPage`.
         let scannedDocument = try pageExtractor.scannedDocument(from: pdfURL)
     }
@@ -29,9 +29,9 @@ func createImagesFromPDF(pdfURL: URL) {
     let pageExtractor = SBSDKPDFImageExtractor()
     pageExtractor.scaleFactor = 2.0 // Optional: Set scaling for the extracted images.
     
-    // Extract the pages from the PDF and returns an array of UIImage
+    // Extracts the pages from the PDF and returns an array of `SBSDKImageRef`.
     let images = pageExtractor.extract(from: pdfURL)
     
-    // You can also use `extract(from:scaling:)` method to extract images with a scaling applied.
+    // The `scaleFactor` set above is applied to the images extracted by `extract(from:)`.
     let scaledImages = pageExtractor.extract(from: pdfURL)
 }

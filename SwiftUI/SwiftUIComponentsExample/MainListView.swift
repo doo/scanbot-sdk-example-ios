@@ -18,6 +18,12 @@ struct MainListView: View {
                 NavigationLink("Barcode Scanner") {
                     BarcodeScannerListView()
                 }
+                NavigationLink("Data Capture") {
+                    DataCaptureListView()
+                }
+                NavigationLink("Utilities") {
+                    UtilitiesListView()
+                }
             }
             .listStyle(InsetGroupedListStyle())
             .navigationBarTitle("Select Scanner")

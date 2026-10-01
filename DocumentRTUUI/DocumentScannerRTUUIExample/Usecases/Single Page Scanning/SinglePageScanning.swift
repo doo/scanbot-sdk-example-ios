@@ -35,11 +35,11 @@ class SinglePageScanning {
         configuration.screens.camera.captureFeedback.snapFeedbackMode = SBSDKUI2PageSnapCheckMarkAnimation()
         
         // Hide the auto snapping enable/disable button
-        configuration.screens.camera.bottomBar.autoSnappingModeButton.visible = false
-        configuration.screens.camera.bottomBar.manualSnappingModeButton.visible = false
-        configuration.screens.camera.bottomBar.importButton.title.visible = true
-        configuration.screens.camera.bottomBar.torchOnButton.title.visible = true
-        configuration.screens.camera.bottomBar.torchOffButton.title.visible = true
+        configuration.screens.camera.toolbar.autoSnappingModeButton.visible = false
+        configuration.screens.camera.toolbar.manualSnappingModeButton.visible = false
+        configuration.screens.camera.toolbar.importButton.title.visible = true
+        configuration.screens.camera.toolbar.torchOnButton.title.visible = true
+        configuration.screens.camera.toolbar.torchOffButton.title.visible = true
         
         // Set colors
         configuration.palette.sbColorPrimary = SBSDKUI2Color(uiColor: .appAccentColor)

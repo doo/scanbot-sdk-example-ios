@@ -16,22 +16,24 @@ final class UsecaseScanCheck: Usecase {
         
         let configuration = SBSDKUI2CheckScannerScreenConfiguration()
         
-        let scanner = SBSDKUI2CheckScannerViewController.create(with: configuration) { [weak self] _, result, error in
-            if let result {
-                let title = "Check found"
-                var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
-                let fields = result.check?.fields.compactMap {
-                    "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
-                } ?? []
-                message += "\n" + fields.joined(separator: "\n")
-                
-                UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
-                
-            } else {
-                self?.didFinish(error: error)
+        do {
+            let scanner = try SBSDKUI2CheckScannerViewController.create(with: configuration) { [weak self] _, result, error in
+                if let result {
+                    let title = "Check found"
+                    var message = "Recognition Status: \(result.recognitionStatus.stringValue)"
+                    let fields = result.check?.fields.compactMap {
+                        "\($0.type.displayText ?? ""): \($0.value?.text ?? "")"
+                    } ?? []
+                    message += "\n" + fields.joined(separator: "\n")
+                    UIAlertController.showInfoAlert(title, message: message, presenter: presenter, completion: nil)
+                } else {
+                    self?.didFinish(error: error)
+                }
             }
+            presentViewController(scanner)
+        } catch {
+            didFinish(error: error)
         }
-        presentViewController(scanner)
     }
 }
 

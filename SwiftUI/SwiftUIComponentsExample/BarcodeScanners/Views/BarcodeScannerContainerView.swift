@@ -36,11 +36,23 @@ struct BarcodeScannerContainerView: View {
             case .rtuUI:
                 BarcodeScannerRTUUIView(scanningResult: $scanningResult)
             case .classic:
-                BarcodeScannerClassicView(scanningResult: $scanningResult,
+                BarcodeScannerClassicView(usesViewFinder: false,
+                                          scannerName: scanner.title,
+                                          scanningResult: $scanningResult,
                                           isScanningEnabled: $isScanningEnabled,
                                           selectedBarcode: $selectedBarcode)
-            case .swiftUI:
-                BarcodeScannerSwiftUIView(scanningResult: $scanningResult)
+            case .classicWithFinder:
+                BarcodeScannerClassicView(usesViewFinder: true,
+                                          scannerName: scanner.title,
+                                          scanningResult: $scanningResult,
+                                          isScanningEnabled: $isScanningEnabled,
+                                          selectedBarcode: $selectedBarcode)
+            case .classicWithTrackingOverlay:
+                BarcodeTrackingOverlayView(isScanningEnabled: $isScanningEnabled)
+            case .scanAndCount:
+                BarcodeScanAndCountView(isScanningEnabled: $isScanningEnabled)
+            case .barcodeWithTextPattern:
+                BarcodeWithTextPatternScannerView(isScanningEnabled: $isScanningEnabled)
             }
         }
     }

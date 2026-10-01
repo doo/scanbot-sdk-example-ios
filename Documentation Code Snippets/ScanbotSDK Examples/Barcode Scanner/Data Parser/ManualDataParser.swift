@@ -24,7 +24,7 @@ func parseDataManually() {
         // Get the parsed document.
         guard let parsedDocument = document.parsedDocument else { return }
         
-        // Parse the resulted document as a GS1 document.
+        // Parse the resulting document as a GS1 document.
         if let gs1ParsedDocument = SBSDKBarcodeDocumentModelGS1(document: parsedDocument) {
             
             // Retrieve the elements.

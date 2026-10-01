@@ -74,13 +74,13 @@ class BarcodeWithTextPatternScannerViewController: UIViewController {
                                                                    delegate: self)
         
         // Configure the view finder of the scanner view controller to be able to scan a text line as well as a 1D barcode.
-        textPatternScanner?.viewFinderConfiguration.aspectRatio = SBSDKAspectRatio(width: 5.0, height: 1.0)
-        textPatternScanner?.viewFinderConfiguration.isViewFinderEnabled = true
-        textPatternScanner?.viewFinderConfiguration.preferredHeight = 50
+        textPatternScanner?.viewFinder.aspectRatio = SBSDKAspectRatio(width: 5.0, height: 1.0)
+        textPatternScanner?.viewFinder.isViewFinderEnabled = true
+        textPatternScanner?.viewFinder.preferredHeight = 50
         
         // Pass self as the additional frame processor.
         // Each video frame is not only passed to the text pattern scanner but also to self, where the barcode scanning is done.
-        textPatternScanner?.additionalFrameProcessor = self
+        textPatternScanner?.viewModel.frameEngine.additionalFrameProcessor = self
     }
     
     private func setupBarcodeScanner() {

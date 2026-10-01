@@ -22,8 +22,8 @@ final class QualityAnalyzerDemoViewController: UIViewController {
                                                                    delegate: self)
         analyzer = try? SBSDKDocumentQualityAnalyzer()
         scannerViewController?.delegate = self
-        scannerViewController?.suppressDetectionStatusLabel = true
-        scannerViewController?.suppressPolygonLayer = true
+        scannerViewController?.viewModel.configuration.suppressDetectionStatusLabel = true
+        scannerViewController?.viewModel.configuration.suppressPolygonLayer = true
     }
     
     @IBAction private func selectImageButtonDidPress(_ sender: Any) {
@@ -64,17 +64,7 @@ final class QualityAnalyzerDemoViewController: UIViewController {
     }
     
     private func show(result: SBSDKDocumentQualityAnalyzerResult) {
-        let quality: String
-        switch result.quality {
-        case .acceptable:
-            quality = "Acceptable"
-        case .unacceptable:
-            quality = "Unacceptable"
-        case .uncertain:
-            quality = "Uncertain"
-        default:
-            quality = "No document"
-        }
+        let quality = result.quality.stringValue
         let resultString = "Quality = \(quality)"
         let alert = UIAlertController(title: "Quality Analysis",
                                       message: resultString,
@@ -122,19 +112,15 @@ extension QualityAnalyzerDemoViewController: UIImagePickerControllerDelegate, UI
     }
 }
 
-extension SBSDKDocumentQuality {
+extension SBSDKDocumentQualityAssessment {
     var stringValue: String {
         switch self {
-        case .veryPoor:
-            return "Very Poor"
-        case .poor:
-            return "Poor"
-        case .reasonable:
-            return "Reasonable"
-        case .good:
-            return "Good"
-        case .excellent:
-            return "Excellent"
+        case .acceptable:
+            return "Acceptable"
+        case .unacceptable:
+            return "Unacceptable"
+        case .uncertain:
+            return "Uncertain"
         default:
             return ""
         }

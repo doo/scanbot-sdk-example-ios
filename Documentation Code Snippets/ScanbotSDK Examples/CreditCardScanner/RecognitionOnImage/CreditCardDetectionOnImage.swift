@@ -21,13 +21,13 @@ func scanCreditCardFromImage() {
     
     do {
         
-        // Create an instance of credit card scanner.
+        // Create an instance of the credit card scanner.
         let scanner = try SBSDKCreditCardScanner(configuration: configuration)
         
         // Create an image ref from UIImage.
         let imageRef = SBSDKImageRef.fromUIImage(image: image)
         
-        // Run credit card scanner on the image.
+        // Run the credit card scanner on the image.
         let result = try scanner.run(image: imageRef)
         
         // Get the cropped image.
