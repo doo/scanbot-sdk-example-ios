@@ -32,13 +32,16 @@ func createTIFF(from images: [UIImage]) {
     // Specify the file URL where the TIFF will be saved to.
     guard let outputTIFFURL = URL(string: "outputTIFF") else { return }
 
-    // In case you want to encrypt your TIFF file, create a crypting provider, using a password and an encryption mode.
+    // In case you want to encrypt your TIFF file, create a crypting provider, using a key provider and an encryption mode.
     let cryptingProvider = SBSDKCryptingProvider(block: {
-        
-        // Create and return the AES encrypter with a password and an encryption mode.
-        // You can also use other encrypters, like `SBSDKAESGCM`.
+
+        // Create a key provider that derives the encryption key from a password and a salt.
+        let keyGenerator = SBSDKPBKDF2KeyGenerator(password: "password_example#42", salt: "salt_example#42", iterations: 10000)
+        let keyProvider = SBSDKVolatileKeyProvider(keyGenerator: keyGenerator)
+
+        // Create and return the AES-GCM encrypter with an encryption mode and the key provider.
         // Make sure, you always create a new instance of the encrypter in this block.
-        return SBSDKAESEncrypter(password: "password_example#42", mode: .AES256)
+        return SBSDKAESGCMEncrypter(mode: .AES256, keyProvider: keyProvider, authenticationTag: nil)
     })
     
     // Set the created crypting provider as the default one for Scanbot SDK.

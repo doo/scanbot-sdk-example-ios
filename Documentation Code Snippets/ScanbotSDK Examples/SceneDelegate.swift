@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import ScanbotSDK
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -16,7 +17,46 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
         // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        runScreenshotAutomationIfNeeded(on: windowScene)
+    }
+
+    // MARK: - Documentation screenshot automation (temporary, not part of the examples)
+
+    private func runScreenshotAutomationIfNeeded(on windowScene: UIWindowScene) {
+        let environment = ProcessInfo.processInfo.environment
+        guard let exampleName = environment["SBSHOT_EXAMPLE"] else { return }
+
+        Scanbot.loggingEnabled = true
+
+        if let mockImageName = environment["SBSHOT_MOCK_IMAGE"] {
+            let mockImageURL = Bundle.main.url(forResource: mockImageName, withExtension: nil)
+            print("SBSHOT: mock image \(mockImageName) -> \(String(describing: mockImageURL))")
+            if let mockImageURL {
+                Scanbot.cameraMockData = SBSDKCameraMockData(label: "Mock Camera",
+                                                             imageURL: mockImageURL,
+                                                             capturedImageURL: nil,
+                                                             refreshOnEachFrame: false)
+            }
+        }
+
+        if environment["SBSHOT_ORIENTATION"] == "landscape", #available(iOS 16.0, *) {
+            windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+        }
+
+        guard let exampleClass = NSClassFromString("ScanbotSDK_Examples.\(exampleName)") as? UIViewController.Type else {
+            print("SBSHOT: unknown example \(exampleName)")
+            return
+        }
+
+        let delay = Double(environment["SBSHOT_DELAY"] ?? "") ?? 1.0
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) { [weak self] in
+            guard let navigationController = self?.window?.rootViewController as? UINavigationController else { return }
+            navigationController.pushViewController(exampleClass.init(), animated: false)
+            if environment["SBSHOT_ORIENTATION"] == "landscape", #available(iOS 16.0, *) {
+                windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .landscapeRight))
+            }
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

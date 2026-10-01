@@ -31,6 +31,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use this method to release any resources that were specific to the discarded scenes, as they will not return.
     }
 
+    // Documentation screenshot automation (temporary, not part of the examples).
+    func application(_ application: UIApplication,
+                     supportedInterfaceOrientationsFor window: UIWindow?) -> UIInterfaceOrientationMask {
+        switch ProcessInfo.processInfo.environment["SBSHOT_ORIENTATION"] {
+        case "landscape": return .landscapeRight
+        case "portrait": return .portrait
+        default: return .all
+        }
+    }
+
 
 }
 

@@ -36,8 +36,12 @@ struct ImageStoringSwiftUIView: View {
         // storage after setting the crypting provider.
         // Passing a crypting provider to the indexed image storage will ignore the global Scanbot SDK crypting provider.
         let cryptingProvider = SBSDKCryptingProvider(block: {
-            // Create and return an AES encrypter instance.
-            return SBSDKAESEncrypter(password: "xxxxx", mode: .AES256)
+            // Create a key provider that derives the encryption key from a password and a salt.
+            let keyGenerator = SBSDKPBKDF2KeyGenerator(password: "xxxxx", salt: "yyyyy", iterations: 10000)
+            let keyProvider = SBSDKVolatileKeyProvider(keyGenerator: keyGenerator)
+
+            // Create and return an AES-GCM encrypter instance.
+            return SBSDKAESGCMEncrypter(mode: .AES256, keyProvider: keyProvider, authenticationTag: nil)
         })
         
         // Initialize an indexed image storage at this location.

@@ -74,9 +74,9 @@ class DocumentCleanupScreenUI2ViewController: UIViewController {
         cleanupScreenConfiguration.toolbar.strokeSizeSlider.title.text = "Brush size"
         
         // Customize the stroke size indicator, the round preview of the current brush.
-        cleanupScreenConfiguration.strokeSizeIndicator.backgroundColor = SBSDKUI2Color(colorString: "#00C853")
-        cleanupScreenConfiguration.strokeSizeIndicator.borderColor = SBSDKUI2Color(colorString: "#FFFFFF")
-        cleanupScreenConfiguration.strokeSizeIndicator.opacity = 0.9
+        cleanupScreenConfiguration.stroke.color = SBSDKUI2Color(colorString: "#00C853")
+        cleanupScreenConfiguration.stroke.indicator.borderColor = SBSDKUI2Color(colorString: "#FFFFFF")
+        cleanupScreenConfiguration.stroke.indicator.opacity = 0.9
         
         // Optionally show an introduction screen the first time the user opens the cleanup screen.
         cleanupScreenConfiguration.introduction.showAutomatically = true
