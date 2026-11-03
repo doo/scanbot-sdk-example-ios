@@ -14,6 +14,7 @@ struct CropScreenUI2SwiftUIView: View {
 
         // Retrieve the instance of the crop configuration from the main configuration object.
         let cropScreenConfiguration = configuration.screens.cropping
+        cropScreenConfiguration.accessibilityToolbar.visible = true
 
         // For example disable the rotation feature...
         cropScreenConfiguration.toolbar.rotateButton.visible = false

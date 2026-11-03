@@ -18,8 +18,17 @@ struct DocumentReviewScreenUI2SwiftUIView: View {
         // Enable the review screen.
         reviewScreenConfiguration.enabled = true
 
-        // Hide the zoom button.
-        reviewScreenConfiguration.zoomButton.visible = false
+        // Show the zoom button.
+        reviewScreenConfiguration.zoomButton.visible = true
+        
+        let zoomOverlayConfiguration = reviewScreenConfiguration.zoomOverlay
+        zoomOverlayConfiguration.controlButton.backgroundColor = SBSDKUI2Color(uiColor: .darkGray)
+        zoomOverlayConfiguration.controlButton.foregroundColor = SBSDKUI2Color(uiColor: .white)
+        zoomOverlayConfiguration.controlButton.activeBackgroundColor = SBSDKUI2Color(uiColor: .white)
+        zoomOverlayConfiguration.controlButton.activeForegroundColor = SBSDKUI2Color(uiColor: .darkGray)
+        zoomOverlayConfiguration.controlOverlay.backgroundColor = SBSDKUI2Color(uiColor: .black)
+        zoomOverlayConfiguration.controlOverlay.zoomInButton.accessibilityDescription = "Zoom in on the page"
+        zoomOverlayConfiguration.closeButton.background.fillColor = SBSDKUI2Color(colorString: "#000000B3")
 
         // Hide the add button.
         reviewScreenConfiguration.toolbar.addButton.barButton.visible = false

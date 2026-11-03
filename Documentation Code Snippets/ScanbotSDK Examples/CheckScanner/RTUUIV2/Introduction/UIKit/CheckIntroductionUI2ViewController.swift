@@ -41,8 +41,8 @@ class CheckIntroductionUI2ViewController: UIViewController {
         // Or you can also use our default image.
         configuration.introScreen.image = .checkIntroDefaultImage()
         
-        // Configure the color of the handler on top.
-        configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")
+        // Configure the color of the handle at the top.
+        configuration.introScreen.handleColor = SBSDKUI2Color(colorString: "#EFEFEF")
         
         // Configure the color of the divider.
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")

@@ -58,9 +58,6 @@ struct FindAndPickBarcodeScannerUI2SwiftUIView: View {
         // Enable/Disable the automatic selection.
         usecase.arOverlay.automaticSelectionEnabled = false
 
-        // Enable/Disable the swipe to delete.
-        usecase.sheetContent.swipeToDelete.enabled = true
-
         // Enable/Disable allow partial scan.
         usecase.allowPartialScan = true
 

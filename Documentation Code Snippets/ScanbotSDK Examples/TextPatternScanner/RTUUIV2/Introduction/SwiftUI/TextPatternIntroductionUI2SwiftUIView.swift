@@ -37,8 +37,8 @@ struct TextPatternIntroductionUI2SwiftUIView: View {
         // alphabetic text field image.
         configuration.introScreen.image = .textPatternIntroAlphabeticField()
 
-        // Configure the color of the handler on top.
-        configuration.introScreen.handlerColor = SBSDKUI2Color(colorString: "#EFEFEF")
+        // Configure the color of the handle at the top.
+        configuration.introScreen.handleColor = SBSDKUI2Color(colorString: "#EFEFEF")
 
         // Configure the color of the divider.
         configuration.introScreen.dividerColor = SBSDKUI2Color(colorString: "#EFEFEF")

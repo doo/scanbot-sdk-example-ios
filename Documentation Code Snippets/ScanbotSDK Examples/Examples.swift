@@ -52,6 +52,7 @@ enum ExampleCategory: String, CaseIterable {
                     CameraDeviceViewController.self,
                     ExampleHostingViewController<CameraDeviceSwiftUIView>.self,
                     ZoomingImageScrollViewViewController.self,
+                    ExampleHostingViewController<ZoomingImageSwiftUIView>.self,
                     MockCameraViewController.self,
                     ExampleHostingViewController<MockCameraSwiftUIView>.self]
             
@@ -450,3 +451,4 @@ extension VINScannerSwiftUIView: ExampleSwiftUIView {}
 extension VINScanningScreenUI2SwiftUIView: ExampleSwiftUIView {}
 extension VINTopBarUI2SwiftUIView: ExampleSwiftUIView {}
 extension VINUserGuidanceUI2SwiftUIView: ExampleSwiftUIView {}
+extension ZoomingImageSwiftUIView: ExampleSwiftUIView {}
