@@ -48,9 +48,9 @@ struct ImageEnhancerFromImageSwiftUIView: View {
             let imageRef = SBSDKImageRef.fromUIImage(image: image)
             
             // Straighten the image using the document straightener.
-            let straightendedImageRef = try straightener.run(image: imageRef,
-                                                             parameters: parameters,
-                                                             priorCornersNormalized: corners)
+            let straightendedImageRef = try straightener.runWithPriorCorners(image: imageRef,
+                                                                             priorCornersNormalized: corners,
+                                                                             parameters: parameters)
         }
         catch {
             print("Failed to straighten image: \(error.localizedDescription)")

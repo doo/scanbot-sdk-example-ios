@@ -123,17 +123,6 @@ struct DocumentCleanupCustomUICanvasView: View {
             viewModel.onFailure = { error in
                 errorMessage = "Cleanup error: \(error.localizedDescription)"
             }
-            
-            // Called when a cleanup run completed with reduced quality because the affected
-            // area exceeded the configured maximum resolution.
-            viewModel.onReducedQuality = {
-                errorMessage = "The area was cleaned up with reduced quality."
-            }
-            
-            // Called when a stroke is rejected because the masked area is too large to process.
-            viewModel.onAreaTooLarge = {
-                errorMessage = "The selected area is too large. Please select a smaller area."
-            }
         }
     }
 }

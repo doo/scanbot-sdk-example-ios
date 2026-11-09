@@ -47,11 +47,7 @@ class DocumentCleanupScreenUI2ViewController: UIViewController {
         
         // The maximum number of undo/redo steps kept in memory. Use a smaller value to save memory.
         engineConfiguration.maxUndoRedoStackSize = 4
-        
-        // Downscales the stroke area to this value in pixels (width x height) to limit memory consumption
-        // and to speed up the cleanup. The smaller the value the faster it is, but the quality is lower too.
-        engineConfiguration.maxCleanupResolution = 1_200_000
-        
+                
         cleanupScreenConfiguration.engineConfiguration = engineConfiguration
         
         // Customize the top bar.

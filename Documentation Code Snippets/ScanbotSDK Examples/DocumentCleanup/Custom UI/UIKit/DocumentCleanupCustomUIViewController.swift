@@ -75,17 +75,6 @@ class DocumentCleanupCustomUIViewController: UIViewController,
             print("Cleanup error: \(error.localizedDescription)")
         }
         
-        // Called when a cleanup run completed with reduced quality because the affected
-        // area exceeded the configured maximum resolution.
-        viewModel.onReducedQuality = {
-            print("The area was cleaned up with reduced quality.")
-        }
-        
-        // Called when a stroke is rejected because the masked area is too large to process.
-        viewModel.onAreaTooLarge = {
-            print("The selected area is too large. Please select a smaller area.")
-        }
-        
         // `SBSDKDocumentCleanupCanvas` renders the image and handles the painting and the
         // pinch-to-zoom gestures. It is a SwiftUI view, so it is embedded in a hosting controller.
         // All surrounding chrome - top bar, toolbar, undo / redo / reset controls and stroke size
