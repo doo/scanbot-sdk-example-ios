@@ -16,16 +16,16 @@ struct TextPatternActionBarUI2SwiftUIView: View {
         // Retrieve the instance of the action bar from the configuration object.
         let actionBar = configuration.actionBar
 
-        // Show the flash button.
-        actionBar.flashButton.visible = true
+        // Show the torch button.
+        actionBar.torchButton.visible = true
 
-        // Configure the inactive state of the flash button.
-        actionBar.flashButton.backgroundColor = SBSDKUI2Color(colorString: "#7A000000")
-        actionBar.flashButton.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
+        // Configure the inactive state of the torch button.
+        actionBar.torchButton.backgroundColor = SBSDKUI2Color(colorString: "#7A000000")
+        actionBar.torchButton.foregroundColor = SBSDKUI2Color(colorString: "#FFFFFF")
 
-        // Configure the active state of the flash button.
-        actionBar.flashButton.activeBackgroundColor = SBSDKUI2Color(colorString: "#FFCE5C")
-        actionBar.flashButton.activeForegroundColor = SBSDKUI2Color(colorString: "#000000")
+        // Configure the active state of the torch button.
+        actionBar.torchButton.activeBackgroundColor = SBSDKUI2Color(colorString: "#FFCE5C")
+        actionBar.torchButton.activeForegroundColor = SBSDKUI2Color(colorString: "#000000")
 
         // Show the zoom button.
         actionBar.zoomButton.visible = true

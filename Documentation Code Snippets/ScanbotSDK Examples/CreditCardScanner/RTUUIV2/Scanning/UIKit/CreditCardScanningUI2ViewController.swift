@@ -62,7 +62,7 @@ class CreditCardScanningUI2ViewController: UIViewController {
         configuration.viewFinder.style = SBSDKUI2FinderCorneredStyle(strokeWidth: 3.0)
         
         // Configure the action bar.
-        configuration.actionBar.flashButton.visible = true
+        configuration.actionBar.torchButton.visible = true
         configuration.actionBar.zoomButton.visible = true
         configuration.actionBar.flipCameraButton.visible = false
         
