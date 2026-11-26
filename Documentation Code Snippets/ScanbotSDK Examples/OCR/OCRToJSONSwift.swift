@@ -21,8 +21,11 @@ class OCRToJSONSwiftViewController: UIViewController {
         do {
             let document = try await SBSDKUI2DocumentScannerController.present(on: self, configuration: configuration)
 
-            // Steps 2 and 3: run OCR on the page and create the JSON.
-            let json = try await createJSON(from: document)
+            // Step 2: run OCR on the page.
+            let result = try await runOCR(on: document)
+
+            // Step 3: create the JSON.
+            let json = try createJSON(from: result)
 
             // Pass the JSON to your LLM.
             print(json)
@@ -36,6 +39,16 @@ class OCRToJSONSwiftViewController: UIViewController {
     }
     // @EndTag("Scanning a page")
 
+    // @Tag("Running OCR")
+    func runOCR(on document: SBSDKScannedDocument) async throws -> SBSDKOCRResult {
+
+        // Run OCR with the default settings.
+        let configuration = SBSDKOCREngineConfiguration.scanbotOCR()
+        let ocrEngineManager = SBSDKOCREngineManager(configuration: configuration)
+        return try await ocrEngineManager.recognize(from: document)
+    }
+    // @EndTag("Running OCR")
+
     // @Tag("Creating the JSON")
     struct LineText: Encodable {
         let text: String
@@ -46,14 +59,9 @@ class OCRToJSONSwiftViewController: UIViewController {
         let lines: [LineText]
     }
 
-    func createJSON(from document: SBSDKScannedDocument) async throws -> String {
+    func createJSON(from result: SBSDKOCRResult) throws -> String {
 
-        // Step 2: run OCR on the scanned page.
-        let configuration = SBSDKOCREngineConfiguration.scanbotOCR()
-        let ocrEngineManager = SBSDKOCREngineManager(configuration: configuration)
-        let result = try await ocrEngineManager.recognize(from: document)
-
-        // Step 3: collect the text and the position of every line.
+        // Collect the text and the position of every line.
         var pages: [PageText] = []
         for page in result.pages {
             var lines: [LineText] = []
